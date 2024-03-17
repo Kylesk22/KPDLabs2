@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 
 //include your index.scss file into the bundle
 import "../styles/index.css";
+import "../../../bootstrap.min (3).css"
+import DomineBold from "../fonts/Domine Bold.ttf"
 
 //import your own components
 import Layout from "./layout";

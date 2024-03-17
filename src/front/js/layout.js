@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -7,8 +7,14 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
+
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Signup } from "./pages/Signup";
+import { UserPage } from "./pages/UserPage";
+import Orb from "../../front/img/image.png";
+
+
 
 //create your first component
 const Layout = () => {
@@ -16,15 +22,23 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
+    
+    const [loggedIn, setLoggedIn] = useState(false)
+
     return (
-        <div>
+        
+        <div style={{
+            backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}>
+         {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
+                    <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/>
                     <Routes>
+                        {/* <Route element={<Demo />} path="/demo" />
+                        <Route element={<Single />} path="/single/:theid" /> */}
                         <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<UserPage logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/account/:user_id" />
+                        <Route element={<Signup logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/signup" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

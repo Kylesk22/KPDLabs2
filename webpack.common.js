@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const { STLLoader } = require('./src/front/js/component/Scan');
 
 module.exports = {
   entry: [
@@ -27,12 +28,13 @@ module.exports = {
           }]
         }, //css only files
         {
-          test: /\.(png|svg|jpg|gif|jpeg|webp)$/, use: {
+          test: /\.(png|svg|jpg|gif|jpeg|webp|stl)$/, use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]' }
           }
         }, //for images
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
+        
     ]
   },
   resolve: {

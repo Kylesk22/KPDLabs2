@@ -1,3 +1,31 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.websiteTitle {
+    
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    translate: -5%;
+
+}
+
+@font-face {
+    font-family: "Domine Bold";
+    src: local("Domine Bold"),
+     url("../fonts/Domine\ Bold.ttf") format("truetype");
+    font-weight: bold;
+    }
+
+.font-face-db {
+    font-family: "DomineBold";
+    }
+
+
+.tooth {
+    stroke: #212529;
+    stroke-width: 2px;
+    fill: white;
+}
+

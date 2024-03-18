@@ -12,7 +12,7 @@ export const Login = props => {
     const [password, setPassword] = useState("");
 
 
-    const url = process.env.DATABASE_URL
+    const url = process.env.BACKEND_URL
     let user;
 
     // useEffect(()=>{

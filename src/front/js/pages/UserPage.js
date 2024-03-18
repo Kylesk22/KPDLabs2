@@ -21,7 +21,7 @@ export const UserPage = props => {
     
 
     let id = sessionStorage.getItem("id");
-    const url = `http://127.0.0.1:3001/api`
+    const url = process.env.BACKEND_URL
     
     
     useEffect(()=>{

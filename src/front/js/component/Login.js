@@ -12,7 +12,7 @@ export const Login = props => {
     const [password, setPassword] = useState("");
 
 
-    const url = "http://127.0.0.1:3001/api/"
+    const url = process.env.DATABASE_URL
     let user;
 
     // useEffect(()=>{

@@ -21,6 +21,7 @@ typing-extensions = "*"
 colorama = "*"
 bcrypt = "*"
 flask-jwt-extended = "*"
+pydo = "*"
 
 [requires]
 python_version = "3.10"

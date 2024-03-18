@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 export const SideBar = props => {
     const [currentPage, setCurrentPage] = useState("home")
     const [cases, setCases] = useState([{}])
-    const url = `http://127.0.0.1:3001/api`
+    const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");
   
     

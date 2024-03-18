@@ -76,7 +76,7 @@ export const SingleOrder = props => {
 
         let caseId = props.singleCaseId
         
-        const url = `http://127.0.0.1:3001/api`
+        const url = process.env.BACKEND_URL
         console.log(`${url}/${id}/${caseId}`)
         const options = {
             method:"GET",

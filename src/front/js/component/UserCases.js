@@ -8,7 +8,7 @@ import { SingleOrder } from "./SingleOrder.js";
 
 export const UserCases = props => {
     const [cases, setCases] = useState([{}])
-    const url = `http://127.0.0.1:3001/api`
+    const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");
     const [pageMin, setPageMin]=useState(0)
     const [pageMax, setPageMax]=useState(20)

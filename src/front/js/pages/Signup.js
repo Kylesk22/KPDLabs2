@@ -18,7 +18,7 @@ export const Signup = props => {
     const { store, actions } = useContext(Context);
     
 
-    const url = "http://127.0.0.1:3001/api/"
+    const url = process.env.BACKEND_URL
     let newUser;
 
     function submitHandler(e){

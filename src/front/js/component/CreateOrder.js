@@ -72,7 +72,7 @@ const uploadFile = (file) => {
         console.log(stlFile)
         uploadFile(stlFile)
         
-        const url = `http://127.0.0.1:3001/api`
+        const url = process.env.BACKEND_URL
 
             // for (let i = 0; i < stlFile.length; i++) {
             // // const stl_url = window.URL.createObjectURL(new Blob([stlFile]));

@@ -34,6 +34,7 @@ export const Home = () => {
 	const [scan, setScan] = useState()
 	const [loggedIn, setLoggedIn] =useState(false);
 	const isLargeScreen = window.innerWidth >= 992
+	const[isLoaded, setIsLoaded] = useState(false)
 	
 	
 	
@@ -44,11 +45,14 @@ export const Home = () => {
 		console.log(scan)
 	
 	}
-
+	useEffect(()=>{
+		setIsLoaded(true)
+	},[])
 	
 	
 
 	return (
+		<> {(isLoaded)?
 		<div >
 			{(!sessionStorage.getItem("id"))?
 			<div>
@@ -56,7 +60,7 @@ export const Home = () => {
 			
 			<div className="row text-center">
 				<div className="d-none d-md-block col-lg-8 ms-auto me-auto">
-					<ThreeScene2/>
+					<ThreeScene2 />
 					{/* <Scene3/> */}
 				</div>
 				
@@ -177,5 +181,6 @@ export const Home = () => {
 			</div>
 			</div>:<Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
 		</div>
+:""}</>
 	);
 };

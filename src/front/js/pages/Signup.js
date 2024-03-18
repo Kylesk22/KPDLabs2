@@ -67,14 +67,12 @@ export const Signup = props => {
 
     return (
         <div className="row">
-            <div className="col-8">
-                <img src={Crowns} style={{width: "400px", marginTop: "10%", marginLeft: "20%", boxShadow: "7px 7px 7px 7px #158cba"}}/>
 
-            </div>
             {(!loggedIn)?
-            <div className="col-4 pe-5 mt-5" >
-
-                <form className="form container bg bg-secondary" style={{borderRadius: "5%"}} onSubmit={submitHandler}>
+            
+            <div className="lg-col-4 sm-col-8 text-center" >
+            
+                <form className="form container lg-col-4" style={{borderRadius: "5%", maxWidth: "600px"}} onSubmit={submitHandler}>
                     <div className="form-group mx-3">
                         <label htmlFor="firstName" className="form-label mt-4" style={{textAlign: "center"}} >First Name</label>
                         <input type="text" className="form-control" id="firstName" placeholder="First Name" value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
@@ -108,7 +106,7 @@ export const Signup = props => {
                     </div>
                     <br/>
                     <div className="form-group mx-auto w-100 text-center" >
-                        <button className="btn btn-primary mb-4 mx-auto" type="submit" value="Submit">
+                        <button className="btn btn-primary mb-4 mx-auto" type="submit" value="Submit">Submit
                         </button>
                     </div>
                 </form>

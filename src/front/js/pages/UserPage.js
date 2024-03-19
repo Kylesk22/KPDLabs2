@@ -4,12 +4,15 @@ import { CreateOrder } from "../component/CreateOrder";
 import { UserCases } from "../component/UserCases";
 import { Link, Navigate } from "react-router-dom";
 import { SingleOrder } from "../component/SingleOrder";
+import { ContactUs } from "../component/ContactUs";
+import { UpdateAccountInfo } from "../component/UpdateAccountInfo";
 
 
 
 
 export const UserPage = props => {
     const [page, setPage] = useState("home")
+    const [firstNameLower, setFirstNameLower] =useState("")
     const [firstName, setFirstName] = useState(sessionStorage.getItem("firstName"))
     const [lastName, setLastName] = useState(sessionStorage.getItem("lastName"))
     const [email, setEmail] = useState(sessionStorage.getItem("email"))
@@ -17,7 +20,7 @@ export const UserPage = props => {
     const [caseId, setCaseId] = useState("")
     const [cases, setCases] = useState([{}])
     const [singleCaseId, setSingleCaseId] = useState("")
-
+    const [address, setAddress] = useState("")
     
 
     let id = sessionStorage.getItem("id");
@@ -41,7 +44,7 @@ export const UserPage = props => {
             },
             
         }
-        fetch(`${url}/${id}`, options)
+        fetch(`${url}${id}`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()
@@ -49,8 +52,10 @@ export const UserPage = props => {
 
                     setEmail(data.email)
                     setFirstName(data.fname.toUpperCase())
+                    setFirstNameLower(data.fname)
                     setLastName(data.lname)
                     setLoggedIn(true);
+                    setAddress(data.address)
 
                     
                 })}
@@ -133,6 +138,10 @@ export const UserPage = props => {
                 <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?
                 <SingleOrder singleCaseId = {singleCaseId}/>:
+                (page === "updateAccountInfo")?
+                <UpdateAccountInfo firstName={firstNameLower} lastName ={lastName} address = {address} email={email} />:
+                (page === "contactUs")?
+                <ContactUs/>:
                 ""
                 
 

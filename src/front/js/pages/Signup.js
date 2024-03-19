@@ -45,9 +45,9 @@ export const Signup = props => {
                 return res.json()
                 .then((data)=>{
 
-                    sessionStorage.setItem("email", email);
-                    sessionStorage.setItem("firstName", data.fname);
-                    sessionStorage.setItem("lastName", data.lname);
+                    // sessionStorage.setItem("email", email);
+                    // sessionStorage.setItem("firstName", data.fname);
+                    // sessionStorage.setItem("lastName", data.lname);
                     sessionStorage.setItem("id", data.id)
                     setLoggedIn(true);
                     props.updateLogState(true)

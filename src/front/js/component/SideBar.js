@@ -56,17 +56,17 @@ export const SideBar = props => {
                 <div className="list-group list-group-flush ">
             
                         <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "home"  ? "active" : ""}`} onClick={()=>setCurrentPage("home")}>
-                            <i className="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+                            <i className="fas fa-house fa-fw me-3"></i><span>Home</span>
                         </a>
                         <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "create" ? "active" : ""}`} onClick={()=>setCurrentPage("create")}>
-                            <i className="fas fa-chart-area fa-fw me-3"></i><span>Create a Case</span>
+                            <i className="fas fa-plus fa-fw me-3"></i><span>Create a Case</span>
                         </a>
                         <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "userCases" ? "active" : ""}`} onClick={()=>{setCurrentPage("userCases")}}>
                             <i className="fas fa-lock fa-fw me-3"></i><span>Your Cases</span></a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccount" ? "active" : ""}`} onClick={()=>setCurrentPage("updateAccount")}><i
-                            className="fas fa-chart-line fa-fw me-3"></i><span>Update Account</span></a>
+                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccountInfo" ? "active" : ""}`} onClick={()=>setCurrentPage("updateAccountInfo")}><i
+                            className="fas fa-pen-nib fa-fw me-3"></i><span>Update Account</span></a>
                         <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contactUs" ? "active" : ""}`} onClick={()=>setCurrentPage("contactUs")}>
-                            <i className="fas fa-chart-pie fa-fw me-3"></i><span>Contact Us</span>
+                            <i className="fas fa-address-book fa-fw me-3"></i><span>Contact Us</span>
                         </a>
                         {/* <a href="#" className="list-group-item list-group-item-action py-2 ripple"><i
                             className="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a>

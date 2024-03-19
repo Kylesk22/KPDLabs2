@@ -112,7 +112,9 @@ def login():
 #getting user info for userPage
 @api.route('/<int:id>', methods=['GET'])
 def getInfo(id):
+    print(id)
     info = User.query.filter_by(id=id).first()
+    print("HELLLLLOOO")
 
 
     return jsonify(info.serialize()), 200

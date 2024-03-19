@@ -179,6 +179,6 @@ export const Home = () => {
 			</div>
 			</div>:<Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
 		</div>
-:""}</>
+</>
 	);
 };

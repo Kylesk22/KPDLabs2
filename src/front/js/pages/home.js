@@ -45,14 +45,12 @@ export const Home = () => {
 		console.log(scan)
 	
 	}
-	useEffect(()=>{
-		setIsLoaded(true)
-	},[])
+	
 	
 	
 
 	return (
-		<> {(isLoaded)?
+		<> 
 		<div >
 			{(!sessionStorage.getItem("id"))?
 			<div>

@@ -35,6 +35,7 @@ export const Signup = props => {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.DIGITALOCEAN_TOKEN}`
             },
             body: JSON.stringify(newUser)
         }

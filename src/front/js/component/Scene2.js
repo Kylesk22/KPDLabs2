@@ -143,7 +143,7 @@ class ThreeScene2 extends Component {
         })
 
         const loader5 = new STLLoader()
-        loader3.load(STLModel, function (geometry) {
+        loader5.load(STLModel, function (geometry) {
             let group = new THREE.Group()
             scene.add(group)
     
@@ -187,8 +187,8 @@ class ThreeScene2 extends Component {
   animate = () => {
     // -----Step 3--------
     //Rotate Models
-    if (this.cube) this.cube.rotation.y += 0.01;
-    if (this.freedomMesh) this.freedomMesh.rotation.y += 0.01;
+    // if (this.cube) this.cube.rotation.y += 0.01;
+    // if (this.freedomMesh) this.freedomMesh.rotation.y += 0.01;
 
     this.renderScene();
     this.frameId = window.requestAnimationFrame(this.animate);

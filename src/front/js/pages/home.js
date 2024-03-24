@@ -48,7 +48,7 @@ export const Home = () => {
 	
 	useEffect(()=>{
 		setTimeout(()=>
-		setIsLoaded(true),1000)
+		setIsLoaded(true),5000)
 		
 	},[])
 	

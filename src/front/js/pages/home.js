@@ -46,7 +46,9 @@ export const Home = () => {
 	
 	}
 	
-	
+	useEffect(()=>{
+		setIsLoaded(true)
+	},[])
 	
 
 	return (
@@ -58,7 +60,9 @@ export const Home = () => {
 			
 			<div className="row text-center">
 				<div className="d-none d-md-block col-lg-8 ms-auto me-auto">
-					<ThreeScene2 />
+					{(isLoaded)?
+					<ThreeScene2 />:""
+}
 					{/* <Scene3/> */}
 				</div>
 				

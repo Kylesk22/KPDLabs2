@@ -1,11 +1,12 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file
+from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file, redirect, render_template
+
 from api.models import db, User, Scans, Case
 from api.utils import generate_sitemap, APIException
 from werkzeug.utils import secure_filename
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from datetime import datetime
@@ -15,6 +16,41 @@ import base64
 import io
 import os
 from pydo import Client
+from flask_cors import CORS, cross_origin
+
+app = Flask(__name__)
+app.url_map.strict_slashes = False
+db_url = os.getenv("DATABASE_URL")
+
+jwt = JWTManager(app) 
+
+# @jwt.unauthorized_loader
+# def unauthorized_callback(callback):
+#     # No auth header
+#     return redirect(app.config['BASE_URL'] + '/api/signup', 302)
+
+# @jwt.invalid_token_loader
+# def invalid_token_callback(callback):
+#     # Invalid Fresh/Non-Fresh Access token in auth header
+#     # resp = make_response(redirect(app.config['BASE_URL'] + '/api/signup'))
+#     resp = make_response("no token")
+#     unset_jwt_cookies(resp)
+#     return resp, 302
+
+# @jwt.expired_token_loader
+# def expired_token_callback(callback):
+#     # Expired auth header
+#     resp = make_response(redirect(app.config['BASE_URL'] + '/api/token/refresh'))
+#     unset_access_cookies(resp)
+#     return resp, 302
+
+def assign_access_refresh_tokens(email, url):
+    access_token = create_access_token(identity=email)
+    refresh_token = create_refresh_token(identity=email)
+    resp = make_response(redirect(url, 302))
+    set_access_cookies(resp, access_token)
+    set_refresh_cookies(resp, refresh_token)
+    return resp
 
 # client = Client(token=os.environ.get("DIGITALOCEAN_TOKEN"))
 
@@ -42,6 +78,7 @@ from pydo import Client
 
 
 api = Blueprint('api', __name__)
+CORS(app, supports_credentials=True)
 
 
 # @api.route('/hello', methods=['POST', 'GET'])
@@ -103,21 +140,77 @@ def login():
 
     if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')):
         access_token = create_access_token(identity=email)
+        # refresh_token = create_refresh_token(identity=email)
+
+        res = make_response(checkEmail.serialize())
+
+        # res.set_cookie('token', access_token, max_age=7200, httponly=True, samesite=None)
+
+        #---------add for Development---------------
+        # res.headers['Set-Cookie'] = f'access_token_cookie={access_token}; SameSite=None; Secure'
+
+        # res.headers['Set-Cookie'] = f'refresh_token_cookie={refresh_token}; SameSite=None; Secure'
+    
+        set_access_cookies(res, access_token, max_age=3600)
+        # set_refresh_cookies(res, refresh_token, max_age=3600)
         
-        return jsonify(access_token=access_token, user=checkEmail.serialize())
+        return res, 200
     else: 
-        return jsonify({"msg": "Bad username or password"}), 401
+        
+        res = make_response(
+                jsonify(
+                    {"message": "Invalid username or password"}
+                ),
+                401,
+            )
+        return res
     
 
+# @api.route('/logout', methods=['GET'])
+# def unset_jwt():
+#     resp = make_response(redirect(app.config[db_url] + '/', 302))
+#     unset_jwt_cookies(resp)
+#     return resp
+# @api.route('/token/refresh', methods=['GET'])
+# @jwt_required(refresh=True)
+# def refresh():
+#     # Refreshing expired Access token
+#     email = get_jwt_identity()
+#     print(email)
+#     access_token = create_access_token(identity=email)
+#     resp = make_response(jsonify({"message":"Created"}), 302)
+#     set_access_cookies(resp, access_token)
+#     return resp
+
+
+@app.route('/<int:id>', methods=['OPTIONS'])
+def handle_options():
+    response = jsonify({'message': 'Preflight request successful'})
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+
+    
+    return response, 200
 #getting user info for userPage
 @api.route('/<int:id>', methods=['GET'])
+@jwt_required()
 def getInfo(id):
+    username = get_jwt_identity()
+    print(username)
     print(id)
     info = User.query.filter_by(id=id).first()
-    print("HELLLLLOOO")
+ 
+    res = make_response(jsonify(info.serialize()), 200)
+    res.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.headers.add('Access-Control-Allow-Credentials', 'true')
+    res.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    res.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
 
+    
 
-    return jsonify(info.serialize()), 200
+    return res, 200
 
 
 
@@ -174,6 +267,7 @@ def download_file(file_id):
 
 
 @api.route('/<int:id>/new_case', methods=['POST', 'PUT'])
+@jwt_required()
 def new_case(id):
     now = datetime.now()
     if request.method == 'PUT':
@@ -303,6 +397,7 @@ def new_case(id):
     # return print("Hello")
 
 @api.route('/<int:id>/cases', methods=['GET'])
+@jwt_required()
 def cases(id):
     user_cases = User.query.filter_by(id=id).first()
     case_list = user_cases.case_number
@@ -317,6 +412,7 @@ def cases(id):
     return serialized_cases, 200
 
 @api.route('/<int:id>/<int:case_id>', methods=['GET'])
+@jwt_required()
 def case(id, case_id):
     user_id = id
     user_case = Case.query.filter_by(id=case_id).first()

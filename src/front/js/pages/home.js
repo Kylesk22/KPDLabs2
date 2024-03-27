@@ -7,6 +7,7 @@ import { Link, Navigate } from "react-router-dom";
 
 
 
+
 import * as THREE from "three";
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
@@ -74,8 +75,8 @@ export const Home = () => {
 									
 					<div className="text-center mt-5 ms-auto "  style={{zIndex:"1"}}>
 						
-						<h3 style={{textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>Our Promise</h3>
-						<div style={{color: "white", textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>
+						<h3 className="montserrat" style={{textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>Our Promise</h3>
+						<div className="montserrat" style={{color: "white", textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>
 							As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction.
 						</div>
 						
@@ -91,14 +92,14 @@ export const Home = () => {
 				</div>
 			</div>
 			<div className="row ms-auto me-auto mt-5" id="products" >
-				<h2 className="text-center" style={{backgroundImage: "linear-gradient(#996515, #FFD700)", color: "black"}}>
+				<h2 id="products" className="text-center" style={{backgroundImage: "linear-gradient(#996515, #FFD700)", color: "black"}}>
 					<strong>Products</strong>
 				</h2>
 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
 				// style={{border: "solid", borderColor: "#FFD700"}}
 				>
 					
-					<h4 style={{color: "#FFD700"}}>Crown and Bridge</h4>
+					<h4 style={{color: "#d4af37"}} id="products">Crown and Bridge</h4>
 					<div className="card mt-3 mb-3" >
 						<img className="card-img-top" src={Zirc} height="325px"/>
 						<div className="card-body">
@@ -120,7 +121,7 @@ export const Home = () => {
 				// style={{border: "solid", borderColor: "#FFD700"}}
 				>
 					
-					<h4 style={{color: "#FFD700"}}>Veneer</h4>
+					<h4 id="products" style={{color: "#d4af37"}}>Veneer</h4>
 					<div className="card mt-3 mb-3" >
 						<img className="card-img-top" src={ZircV} height="325px"/>
 						<div className="card-body">
@@ -142,7 +143,7 @@ export const Home = () => {
 				// style={{border: "solid", borderColor: "#FFD700"}}
 				>
 					
-					<h4 style={{color: "#FFD700"}}>Partial</h4>
+					<h4 id="products" style={{color: "#d4af37"}}>Partial</h4>
 					<div className="card mt-3 mb-3" >
 						<img className="card-img-top" src={Partial} height="325px"/>
 						<div className="card-body">
@@ -155,7 +156,7 @@ export const Home = () => {
 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
 				// style={{border: "solid", borderColor: "#FFD700"}}
 				>
-					<h4 style={{color: "#FFD700"}}>Denture</h4>
+					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
 					<div className="card mt-3 mb-3" >
 						<img className="card-img-top" src={Denture} height="325px"/>
 						<div className="card-body">
@@ -172,7 +173,7 @@ export const Home = () => {
 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
 						</div>
 					</div>
-					<h4 style={{color: "#FFD700"}}>Denture</h4>
+					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
 					<div className="card mt-3 mb-3" >
 						<img className="card-img-top" src={TryIn} height="325px"/>
 						<div className="card-body">

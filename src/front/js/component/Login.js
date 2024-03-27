@@ -31,8 +31,12 @@ export const Login = props => {
         }
         const options = {
             method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
             headers:{
                 "Content-Type": "application/json",
+                
             },
             body: JSON.stringify(user)
         }
@@ -41,21 +45,23 @@ export const Login = props => {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
-
-                    sessionStorage.setItem("id", data.user.id)
-                    setId(data.user.id)
+                    sessionStorage.setItem("id", data.id)
+                    setId(data.id)
                     setLoggedIn(true);
                     props.updateLogState(true)
-                    
-                })}
-            return(res.json())
-            .then((body)=>{alert(body.message)})
-            
-            })
-       
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
         .catch((err)=> {
             console.log(err);
-    })
+            alert(err); // Or display a more user-friendly message
+        });
     }
 
 

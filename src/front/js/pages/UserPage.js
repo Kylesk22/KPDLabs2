@@ -34,13 +34,43 @@ export const UserPage = props => {
         }
         console.log(page)
 
+        // 
+        const options1 = {
+            method:"GET",
+            credentials: "same-origin",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            
+            
+        }
+        fetch(`${url}token/refresh`, options1)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                   
 
+                    
+                })}
+            return(res.json())
+            .then((body)=>{alert(body.message)})
+            
+            })
+       
+        .catch((err)=> {
+            console.log(err);
+    })
+
+        // 
        
         
         const options = {
             method:"GET",
+            credentials: 'include',
             headers:{
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             
         }

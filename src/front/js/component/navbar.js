@@ -4,6 +4,7 @@ import { Login } from "../component/Login";
 import Logo from "../../img/logo-color.png"
 import KPDLogo from "../../img/KPD-Logo.png"
 import KPDtransparent from "../../img/KPD-Transparent.png"
+import "../../styles/home.css";
 
 
 export const Navbar = (props) => {
@@ -36,14 +37,18 @@ export const Navbar = (props) => {
 	return (
 		(loggedIn) ? 	
 		
-		<nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong " style={{border: "none"}}>
+		<nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong" style={{border: "none"}}>
 			<a className="navbar-brand ms-3" href="/"><img  src={KPDtransparent}/></a>
 		
 			<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
 			</button>
 			
-
+			<div className="d-none d-lg-flex justify-content-center align-items-center flex-grow-1" id="companyName">
+        		<h2 id = "companyName">Kronemeyer Precision Dental</h2>
+    		</div>
+			
+			
 			{/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item active">
@@ -82,6 +87,9 @@ export const Navbar = (props) => {
 			<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
 			</button>
+			<div id ="companyName" className="d-none d-lg-flex justify-content-center align-items-center flex-grow-1" style={{width: "100%"}}>
+        <h2 id="companyName" style={{margin: "0"}}>Kronemeyer Precision Dental</h2>
+    </div>
 			
 			<div className="collapse navbar-collapse " id="navbarSupportedContent">
 				

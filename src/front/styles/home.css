@@ -1,7 +1,18 @@
-/*
-    home.css: This website contains selectors only used in home.css
+#companyName{
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #d4af37;
+  }
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+#products {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    }
+.montserrat{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }

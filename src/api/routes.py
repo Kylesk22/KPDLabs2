@@ -194,7 +194,7 @@ def login():
 #     response.headers.add('Access-Control-Allow-Credentials', 'true')
 
     
-    return response, 200
+    # return response, 200
 #getting user info for userPage
 @api.route('/<int:id>', methods=['GET'])
 @jwt_required()
@@ -205,10 +205,10 @@ def getInfo(id):
     info = User.query.filter_by(id=id).first()
  
     res = make_response(jsonify(info.serialize()), 200)
-    res.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-    res.headers.add('Access-Control-Allow-Credentials', 'true')
-    res.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    res.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+    # res.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    # res.headers.add('Access-Control-Allow-Credentials', 'true')
+    # res.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    # res.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
 
     
 

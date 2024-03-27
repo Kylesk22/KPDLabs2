@@ -80,6 +80,7 @@ export const SingleOrder = props => {
         console.log(`${url}/${id}/${caseId}`)
         const options = {
             method:"GET",
+            credentials: 'include',
             headers:{
                 "Content-Type": "application/json",
             },

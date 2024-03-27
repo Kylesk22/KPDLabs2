@@ -37,7 +37,7 @@ export const UserPage = props => {
         // 
         const options1 = {
             method:"GET",
-            credentials: "same-origin",
+            credentials: 'include',
             headers:{
                 "Content-Type": "application/json",
             },

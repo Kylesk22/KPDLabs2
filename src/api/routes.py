@@ -184,14 +184,14 @@ def login():
 #     set_access_cookies(resp, access_token)
 #     return resp
 
-
-@app.route('/<int:id>', methods=['OPTIONS'])
-def handle_options():
-    response = jsonify({'message': 'Preflight request successful'})
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    response.headers.add('Access-Control-Allow-Credentials', 'true')
+#######ADD FOR DEVELOPMENT#####
+# @app.route('/<int:id>', methods=['OPTIONS'])
+# def handle_options():
+#     response = jsonify({'message': 'Preflight request successful'})
+#     response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
 
     
     return response, 200

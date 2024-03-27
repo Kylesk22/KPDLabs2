@@ -86,7 +86,7 @@ export const UserPage = props => {
             },
             
         }
-        fetch(`${url}${id}`, options)
+        fetch(`${url}/${id}`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()

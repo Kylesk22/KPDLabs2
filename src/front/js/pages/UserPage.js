@@ -25,6 +25,18 @@ export const UserPage = props => {
 
     let id = sessionStorage.getItem("id");
     const url = process.env.BACKEND_URL
+
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Return null if cookie not found
+    }
+    
     
     
     useEffect(()=>{

@@ -124,8 +124,10 @@ def signup():
     res.headers['Content-Type'] = 'application/json'
     print(f"response:{res}")
     # user= new_user.serialize()
+    set_access_cookies(res, access_token, max_age=3600)
 
-    res.set_cookie('token', access_token, max_age=7200, httponly=True)
+    #---working---
+    # res.set_cookie('token', access_token, max_age=7200, httponly=True)
     # res.set_cookie('info', user)
     return res, 200
 

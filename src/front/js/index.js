@@ -3,6 +3,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //include your index.scss file into the bundle
+import "../styles/jquery"
+import "../styles/jquery.fancybox"
+import "../styles/jquery-ui"
+import "../styles/jquery.form.min"
+import "../styles/jquery.validate.min"
+import "../styles/script"
+import "../styles/fontawesome.css"
+import "../styles/progress-bar"
+import "../styles/popper.min"
+import "../styles/mixitup"
+import "../styles/wow"
+import "../styles/slick.min"
+import "../styles/slick-animation.min"
+import "../styles/appear"
+
+
+
+
 import "../styles/index.css";
 import "../../../bootstrap.min.css"
 import "../styles/slick-theme.css"
@@ -70,20 +88,20 @@ import "../fonts/linearicons-free.eot"
 import "../fonts/linearicons-free.ttf"
 import "../fonts/linearicons-free.woff"
 
-import "../styles/jquery"
-import "../styles/jquery.fancybox"
-import "../styles/jquery-ui"
-import "../styles/jquery.form.min"
-import "../styles/jquery.validate.min"
-import "../styles/script"
-import "../styles/fontawesome.css"
-import "../styles/progress-bar"
-import "../styles/popper.min"
-import "../styles/mixitup"
-import "../styles/wow"
-import "../styles/slick.min"
-import "../styles/slick-animation.min"
-import "../styles/appear"
+// import "../styles/jquery"
+// import "../styles/jquery.fancybox"
+// import "../styles/jquery-ui"
+// import "../styles/jquery.form.min"
+// import "../styles/jquery.validate.min"
+// import "../styles/script"
+// import "../styles/fontawesome.css"
+// import "../styles/progress-bar"
+// import "../styles/popper.min"
+// import "../styles/mixitup"
+// import "../styles/wow"
+// import "../styles/slick.min"
+// import "../styles/slick-animation.min"
+// import "../styles/appear"
 
 import DomineBold from "../fonts/Domine Bold.ttf"
 

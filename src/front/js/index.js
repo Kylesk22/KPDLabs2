@@ -79,12 +79,11 @@ import "../styles/script"
 import "../styles/fontawesome.css"
 import "../styles/progress-bar"
 import "../styles/popper.min"
-import "../styles/appear"
-import "../styles/appear"
 import "../styles/mixitup"
 import "../styles/wow"
 import "../styles/slick.min"
 import "../styles/slick-animation.min"
+import "../styles/appear"
 
 import DomineBold from "../fonts/Domine Bold.ttf"
 

@@ -68,6 +68,7 @@ import Logo from "../../img/KPD-Transparent.png"
 import BKG from "../../img/Background.jpg"
 import Lines from "../../img/lines.jpg" 
 import Intro from "../../img/footer-flip.jpg"
+import AboutBKG from "../../img/testi-bg.jpg"
 
 
 
@@ -640,7 +641,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- about-section --> */}
-<section className="about-section">
+<section className="about-section" style={{backgroundImage:{AboutBKG}}}>
   <div className="auto-container">
 	<div className="row"> 
 	  {/* <!-- content-column --> */}
@@ -670,15 +671,15 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  </div>
 			</div> */}
 		  </div>
-		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> <img src={Denture} alt=""/> </div>
+		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> <img src={BKG} alt=""/> </div>
 		</div>
 	  </div>
 	  {/* <!-- image-column --> */}
 	  <div className="image-column col-lg-6 wow fadeInRight" data-wow-delay="600ms">
 		<div className="inner-column">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<figure className="image-2 overlay-anim bounce-y"><img src={Denture} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={BKG} alt=""/></figure>
+			<figure className="image-2 overlay-anim bounce-y"><img src={BKG} style={{width: "250px", height: "200px"}} alt=""/></figure>
 		  </div>
 		</div>
 	  </div>

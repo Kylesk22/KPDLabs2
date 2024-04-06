@@ -71,7 +71,20 @@ import Intro from "../../img/footer-flip.jpg"
 import AboutBKG from "../../img/testi-bg.jpg"
 import Mill from "../../img/mill.jpg"
 
-
+import "../../styles/jquery"
+import "../../styles/jquery.fancybox"
+import "../../styles/jquery-ui"
+import "../../styles/jquery.form.min"
+import "../../styles/jquery.validate.min"
+import "../../styles/script"
+import "../../styles/fontawesome.css"
+import "../../styles/progress-bar"
+import "../../styles/popper.min"
+import "../../styles/mixitup"
+import "../../styles/wow"
+import "../../styles/slick.min"
+import "../../styles/slick-animation.min"
+import "../../styles/appear"
 
 
 

@@ -69,6 +69,7 @@ import BKG from "../../img/Background.jpg"
 import Lines from "../../img/lines.jpg" 
 import Intro from "../../img/footer-flip.jpg"
 import AboutBKG from "../../img/testi-bg.jpg"
+import Mill from "../../img/mill.jpg"
 
 
 
@@ -605,8 +606,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End banner-section -->
 
 <!-- service section --> */}
-<section className="service-section pt-0 pb-0">
-  <div className="auto-container">
+<section className="service-section pt-0 pb-0" style={{backgroundColor: "#f4f5f8"}}>
+  <div className="auto-container" >
 	<div className="row g-0"> 
 	  {/* <!-- service-block --> */}
 	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="400ms">
@@ -641,7 +642,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- about-section --> */}
-<section className="about-section" style={{backgroundImage:{AboutBKG}}}>
+<section className="about-section" style={{backgroundImage: `url(${AboutBKG})`}}>
   <div className="auto-container">
 	<div className="row"> 
 	  {/* <!-- content-column --> */}
@@ -671,14 +672,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  </div>
 			</div> */}
 		  </div>
-		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> <img src={BKG} alt=""/> </div>
+		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> 
+		  {/* <img src={BKG} alt=""/>  */}
+		  </div>
 		</div>
 	  </div>
 	  {/* <!-- image-column --> */}
 	  <div className="image-column col-lg-6 wow fadeInRight" data-wow-delay="600ms">
 		<div className="inner-column">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={BKG} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={Mill} alt=""/></figure>
 			<figure className="image-2 overlay-anim bounce-y"><img src={BKG} style={{width: "250px", height: "200px"}} alt=""/></figure>
 		  </div>
 		</div>
@@ -692,7 +695,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <!-- service-section --> */}
 <section className="service-section-two">
   <div className="auto-container">
-	<div className="sec-title text-center"> <span className="sub-title">::::::  SERVICES WE’RE OFFERING  ::::::</span>
+	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
 	  <h2>Provide Best Quality Services<br/>Thats Stand Behind</h2>
 	</div>
 	<div className="row"> 
@@ -704,8 +707,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<i className="flaticon-clock-1"></i>
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Data Visualization</a></h4>
-			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<h4 className="title"><a href="page-service-details.html">Crown and Bridge</a></h4>
+			<div className="text">Zirconia</div>
 			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
@@ -718,8 +721,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<i className="flaticon-monitor-1"></i>
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Ul/Ux Design</a></h4>
-			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<h4 className="title"><a href="page-service-details.html">Veneer</a></h4>
+			<div className="text">Zirconia</div>
 			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
@@ -732,8 +735,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<i className="flaticon-cog-1"></i>
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Digital Marketing</a></h4>
-			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<h4 className="title"><a href="page-service-details.html">Partial</a></h4>
+			<div className="text">TCS Unbreakable</div>
 			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
@@ -744,27 +747,27 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- service-banner --> */}
-<section className="service-banner">
+{/* <section className="service-banner">
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" data-wow-delay="400ms">
 	  <h2>IT Solutions And Services <br/>at Your Fingertips</h2>
 	  <a href="page-about.html" className="ser-btn theme-btn">Discover More</a>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
-<section className="project-section">
+{/* <section className="project-section">
   <div className="auto-container">
 	<div className="sec-title"> <span className="sub-title">RECENTLY COMPLETED WORK  ::::::</span>
 	  <h2>Improve and Enhance the <br/>Best Tech Projects</h2>
 	  <a href="page-projects.html" className="ser-btn theme-btn">Discover More</a>
 	</div>
 	<div className="outer-box">
-	  <div className="row"> 
+	  <div className="row">  */}
 		{/* <!-- project-block --> */}
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
+		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -774,9 +777,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!-- project-block --> */}
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
+		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -786,9 +789,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!-- project-block --> */}
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
+		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -798,9 +801,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!-- project-block --> */}
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
+		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -814,11 +817,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}
-<section className="client-section pt-0">
+{/* <section className="client-section pt-0">
   <div className="auto-container">
 	<div className="outer-box">
 	  <figure className="image wow fadeInLeft" data-wow-delay="400ms"><a href="#"><img src={Denture} alt=""/></a></figure>
@@ -828,7 +831,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <figure className="image wow fadeInLeft" data-wow-delay="1100ms"><a href="#"><img src={Denture} alt=""/></a></figure>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End client section --> 
 
 <!-- about-section-two --> */}
@@ -839,11 +842,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="image-column col-lg-6 wow fadeInLeft" data-wow-delay="400ms">
 		<div className="inner-column">
 		  <div className="image-box">
-			<figure className="image overlay-anim"> <img src={Denture} alt=""/>
+			<figure className="image overlay-anim"> 
+			{/* <img src={Denture} alt=""/> */}
 			  <div className="btn-box"> <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" className="play-now" data-fancybox="gallery" data-caption=""><i className="icon fa fa-play" aria-hidden="true"></i><span className="ripple"></span></a> </div>
 			</figure>
 			<div className="exp-box">
-			  <h3 className="title">Professional IT Technology Services you can Trust</h3>
+			  <h3 className="title">Professional Dental Lab You Can Trust</h3>
 			</div>
 		  </div>
 		</div>

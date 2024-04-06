@@ -1,0 +1,75 @@
+/*** 
+
+====================================================================
+Section Title
+====================================================================
+
+***/
+
+.sec-title {
+    position: relative;
+    margin-bottom: 53px;
+    @include media-breakpoint-down(sm){
+        margin-bottom: 40px;
+    }
+    .sub-title{
+        position: relative;
+        font-size: 16px;
+        color: var(--theme-color1);
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 12px;
+        font-family: var(--text-font);
+    }
+    h2 {
+        color: var(--sec-title-color);
+        display: block;
+        font-family: var(--title-font);
+        font-size: var(--sec-title-font-size);
+        letter-spacing: -0.5px;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 2;
+        @include media-breakpoint-down(md) {
+            font-size: 42px;
+            line-height: 50px;
+        } 
+        @include media-breakpoint-down(sm) {
+            font-size: 34px;
+            line-height: 42px;
+        }
+    }
+    .ser-btn{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--theme-color-dark);
+        text-transform: uppercase;
+        background-color: var(--theme-color1);
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 39px;
+        &:hover{
+            color: var(--theme-color-light);
+        }
+    }
+    .text {
+        margin-top: 50px;
+    }
+    &.light{
+        .text,
+        h2,
+        h1{
+            color: #fff;
+        }
+        .sub-title {
+            color: var(--theme-color1);
+            letter-spacing: 1.5px;
+        }
+    }
+}

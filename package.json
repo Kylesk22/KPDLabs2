@@ -74,13 +74,19 @@
 	},
 	"dependencies": {
 		"aws-sdk": "^2.1579.0",
+		"bootstrap": "^5.3.3",
+		"jquery": "^3.7.1",
+		"node-sass": "^9.0.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
+		"react-bootstrap": "^2.10.2",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"react-select-us-states": "^0.1.2",
 		"s3cmd": "^1.1.0",
+		"sass": "^1.72.0",
+		"slick-carousel": "^1.8.1",
 		"stl-loader": "^1.0.0",
 		"three": "^0.150.1"
 	}

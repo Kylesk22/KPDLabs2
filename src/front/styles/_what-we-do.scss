@@ -1,0 +1,78 @@
+/*** 
+
+====================================================================
+    what-we-do-section
+====================================================================
+
+***/
+
+.what-we-do-section{
+    position: relative;
+    padding: 47px 0 120px;
+    .content-column{
+        .inner-column{
+            .title{
+                font-weight: 700;
+                margin-bottom: 10px;
+                @include media-breakpoint-down(sm) {
+                    line-height: 40px;
+                }
+            }
+            .text{
+                line-height: 30px;
+                margin-bottom: 29px;
+            }
+            .list{
+                margin-bottom: 39px;
+                li{
+                    position: relative;
+                    color: var(--theme-color-dark);
+                    line-height: 42px;
+                    font-weight: 700;
+                    padding-left: 35px;
+                    i{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        color: var(--theme-color1);
+                    }
+                }
+            }
+            .ser-btn {
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--theme-color-dark);
+                text-transform: uppercase;
+                background-color: var(--theme-color1);
+                display: inline-block;
+                height: 60px;
+                line-height: 60px;
+                padding: 0 39px;
+                &:hover{
+                    color: var(--theme-color-light);
+                }
+            }
+        }
+    }
+    .image-column{
+        @include media-breakpoint-down(xl) {
+            margin-bottom: 40px;
+        }
+        .image{
+            img{
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.custom-tab-content {
+    .custom-tab-slide {
+        display: none;
+        &.current {
+            display: block;
+        }
+    }
+}

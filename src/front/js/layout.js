@@ -27,16 +27,18 @@ const Layout = () => {
 
     return (
         
-        <div style={{
-            backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}>
+        <div 
+        // style={{
+        //     backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}
+            >
          {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/>
+                    {/* <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/> */}
                     <Routes>
                         {/* <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" /> */}
-                        <Route element={<Home />} path="/" />
+                        <Route element={<Home logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/" />
                         <Route element={<UserPage logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/account/:user_id" />
                         <Route element={<Signup logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/signup" />
                         <Route element={<h1>Not found!</h1>} />

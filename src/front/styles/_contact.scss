@@ -1,0 +1,93 @@
+/*** 
+
+====================================================================
+    contact banner
+====================================================================
+
+***/
+
+.contact-banner{
+    position: relative;
+    margin-bottom: -39px;
+    z-index: 99;
+    .outer-box{
+        position: relative;
+        background-color: var(--theme-color1);
+        padding: 57px 78px 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include media-breakpoint-down(xl) {
+            padding: 57px 20px 56px;
+        }
+        @include media-breakpoint-down(lg) {
+            padding: 57px 70px 56px;
+        }
+        @include media-breakpoint-down(lg) {
+            flex-direction: column;
+            text-align: center;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 295px;
+            height: 188px;
+            background-image: url(../img/lines2-1.png);
+        }
+        .content-box{
+            z-index: 99;
+            position: relative;
+            @include media-breakpoint-down(lg) {
+                margin-bottom: 20px;
+            }
+            span{
+                font-size: 18px;
+                font-weight: 700;
+                color: var(--theme-color-dark);
+                display: inline-block;
+                @include media-breakpoint-down(sm) {
+                    line-height: 20px;
+                }
+
+            }
+            .title{
+                font-weight: 700;
+                margin-bottom: 0;
+                @include media-breakpoint-down(lg) {
+                    line-height: 35px;
+                    margin-top: 10px;
+                }
+            }
+        }
+        .btn-box{
+            position: relative;
+            z-index: 99;
+            .ser-btn {
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--theme-color-dark);
+                background-color: var(--theme-color-light);
+                display: inline-block;
+                height: 60px;
+                line-height: 60px;
+                padding: 0 39px;
+                &:hover{
+                    color: var(--theme-color-light);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .contact-banner .outer-box{padding: 57px 42px 56px;}
+}
+
+@media only screen and (max-width:480px) {
+    .contact-banner .outer-box {padding: 57px 20px 56px;}
+    .contact-banner .outer-box .content-box .title{font-size: 24px;line-height: 30px;}
+    .contact-banner .outer-box .content-box span{font-size: 16px;line-height: 20px;}
+    .contact-banner .outer-box .btn-box .ser-btn{height: 45px;line-height: 45px;}
+}

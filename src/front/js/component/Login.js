@@ -68,8 +68,8 @@ export const Login = props => {
     return(
         <>
             {(!loggedIn)? 
-            <div>
-            <h1>Login</h1>
+            <div >
+            {/* <h2 >Login</h2> */}
             <div className="form container form container-fluid" onSubmit={submitHandler} >
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 ">Email address</label>

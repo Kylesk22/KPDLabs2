@@ -1,0 +1,120 @@
+/*** 
+
+====================================================================
+    Clients Section two
+====================================================================
+
+***/
+
+.client-section{
+    position: relative;
+    padding: 120px 0;
+    .outer-box{
+        display: flex;
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image{
+            margin-right: 142px;
+            @include media-breakpoint-down(xl) {
+                margin-right: 90px;
+            }
+            @include media-breakpoint-down(lg) {
+                margin-right: 55px;
+            }
+            @include media-breakpoint-down(md) {
+                margin-right: 35px;
+            }
+            @include media-breakpoint-down(sm) {
+                margin-right: 0;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            &:last-child{
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/*** 
+
+====================================================================
+    Clients Section two
+====================================================================
+
+***/
+
+.client-section-two{
+    position: relative;
+    .outer-box{
+        display: flex;
+        background-color: #f4f5f8;
+        padding: 120px 100px 120px 0;
+        margin-right: -100px;
+        @include media-breakpoint-down(xxl) {
+            margin-right: 0;
+            padding: 120px 100px;
+            &::before{
+                display: none;
+            }
+        }
+        @include media-breakpoint-down(xl) {
+            padding: 120px 50px;
+        }
+        @include media-breakpoint-down(md) {
+            flex-wrap: wrap;
+            padding: 80px;
+            justify-content: space-between;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 80%;
+            width: 100%;
+            height: 100%;
+            background-color: #f4f5f8;
+            @include media-breakpoint-down(xl) {
+                
+            }
+        }
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image{
+            margin-right: 142px;
+            img {
+                filter: grayscale(1);
+                transition: all 0.3s ease;
+                &:hover {
+                    filter: grayscale(0);
+                }
+            }
+            @include media-breakpoint-down(xxl) {
+                margin-right: 100px;
+            }
+            @include media-breakpoint-down(lg) {
+                margin-right: 55px;
+            }
+            @include media-breakpoint-down(md) {
+                margin-right: 45px;
+                margin-bottom: 40px;
+            }
+            @include media-breakpoint-down(sm) {
+                margin-right: 0;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            &:last-child{
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

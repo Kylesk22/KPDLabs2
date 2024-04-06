@@ -1,0 +1,75 @@
+/*** 
+
+====================================================================
+	googel-maps-Section
+====================================================================
+
+***/
+
+.googel-map-section{
+    position: relative;
+    .outer-box{
+        .goole-iframe{
+            iframe{
+                width: 100%;
+                height: 473px;
+            }
+        }
+    }
+}
+
+
+/*** 
+
+====================================================================
+	map-section
+====================================================================
+
+***/
+
+.map-section{
+    position: relative;
+    .goole-iframe{
+        iframe{
+            width: 100%;
+            height: 553px;
+        }
+    }
+    .map-content{
+        .content-box{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 370px;
+            background-color: #191919;
+            padding: 53px 60px 55px;
+            border-radius: 10px;
+            @include media-breakpoint-down(sm){
+                width: 292px;
+                padding: 40px 27px 40px;
+            }
+            .text{
+                font-size: 17px;
+                color: var(--theme-color-light);
+                margin-bottom: 24px;
+            }
+            .content-list{
+                li{
+                    color: var(--theme-color-light);
+                    position: relative;
+                    font-size: 17px;
+                    padding-left: 27px;
+                    padding-bottom: 8px;
+                    &:last-child{
+                        padding-bottom: 0;
+                    }
+                    i{
+                        position: absolute;
+                        top: 2px;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

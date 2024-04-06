@@ -1,10 +1,50 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import "../../styles/slick-theme.css"
+import "../../styles/slick.css"
+import "../../styles/style.css"
+
 import { Login } from "../component/Login";
 import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Link, Navigate } from "react-router-dom";
+import { Modal } from 'react-bootstrap';
 
+import "../../styles/_about.scss"
+import "../../styles/_banner.scss"
+import "../../styles/_benefit.scss"
+import "../../styles/_button.scss"
+import "../../styles/_call-to-action.scss"
+import "../../styles/_client.scss"
+import "../../styles/_contact.scss"
+import "../../styles/_faq.scss"
+import "../../styles/_feature.scss"
+import "../../styles/_food.scss"
+import "../../styles/_footer.scss"
+import "../../styles/_funfact.scss"
+import "../../styles/_googel-maps.scss"
+import "../../styles/_header.scss"
+import "../../styles/_main-slider.scss"
+import "../../styles/_marquee.scss"
+import "../../styles/_mega-menu.scss"
+import "../../styles/_menegement.scss"
+import "../../styles/_mobile-menu.scss"
+import "../../styles/_news.scss"
+import "../../styles/_offer.scss"
+import "../../styles/_pricing.scss"
+import "../../styles/_process.scss"
+import "../../styles/_progress.scss"
+import "../../styles/_reset.scss"
+import "../../styles/_projects.scss"
+import "../../styles/_room.scss"
+import "../../styles/_search-popup.scss"
+import "../../styles/_section-title.scss"
+import "../../styles/_services.scss"
+import "../../styles/_team.scss"
+import "../../styles/_testimonials.scss"
+import "../../styles/_what-we-do.scss"
+import "../../styles/_why-choose.scss"
+import "../../styles/_page-title.scss"
 
 
 
@@ -24,18 +64,36 @@ import Denture from "../../img/Denture.jpg"
 import WaxRim from "../../img/WaxRim.jpg"
 import TryIn from "../../img/TryIn.jpg"
 import Ribbon from "../../img/Ribbon.png"
+import Logo from "../../img/KPD-Transparent.png"
+import BKG from "../../img/Background.jpg"
+import Lines from "../../img/lines.jpg" 
+import Intro from "../../img/footer-flip.jpg"
 
 
 
 
 
-export const Home = () => {
+
+export const Home = (props) => {
 	const { store, actions } = useContext(Context);
 	const [image, setImage] = useState()
 	const [scan, setScan] = useState()
-	const [loggedIn, setLoggedIn] =useState(false);
 	const isLargeScreen = window.innerWidth >= 992
-	const[isLoaded, setIsLoaded] = useState(false)
+	const [loggedIn, setLoggedIn] = useState(props.logState);
+	const [pressedLogIn, setPressedLogin] = useState(false);
+	const [show, setShow] = useState(props.logState);
+	const [showModal, setShowModal] = useState(false);
+
+	const handleToggleModal = () => {
+	  setShowModal(!showModal);
+	};
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => {
+		setShow(true);
+		console.log(loggedIn)
+	
+	};
 	
 	
 	
@@ -47,142 +105,1129 @@ export const Home = () => {
 	
 	}
 	
+	function sendEmail() {
+        var recipient = "kpdlabs@kpdlabs.com";
+        var subject = "Feedback";
+    
+        window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject);
+    }
 	
 	
 
 	return (
-		<> 
-		<div >
-			{(!sessionStorage.getItem("id"))?
-			<div>
+		
+// 		<> 
+// 		<div >
+// 			{(!sessionStorage.getItem("id"))?
+// 			<div>
 			
 			
-			<div className="row text-center ">
-				<div className="d-none d-md-block col-lg-8 ms-auto me-auto ps-3">
+// 			<div className="row text-center ">
+// 				<div className="d-none d-md-block col-lg-8 ms-auto me-auto ps-3">
 					
-					<ThreeScene2 />
+// 					<ThreeScene2 />
 					
-}
-					{/* <Scene3/> */}
-				</div>
+// }
+// 					{/* <Scene3/> */}
+// 				</div>
 				
-				<div className="col-sm-12 col-lg-3 ms-auto me-auto" >
+// 				<div className="col-sm-12 col-lg-3 ms-auto me-auto" >
 				
 									
-					<div className="text-center mt-5 ms-auto "  style={{zIndex:"1"}}>
+// 					<div className="text-center mt-5 ms-auto "  style={{zIndex:"1"}}>
 						
-						<h3 className="montserrat" style={{textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>Our Promise</h3>
-						<div className="montserrat" style={{color: "white", textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>
-							As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction.
-						</div>
+// 						<h3 className="montserrat" style={{textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>Our Promise</h3>
+// 						<div className="montserrat" style={{color: "white", textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>
+// 							As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction.
+// 						</div>
 						
 						
 						
-					</div>
+// 					</div>
 			
 			
-				</div>
+// 				</div>
 				
-				<div className="d-none d-md-block col-lg-1">
+// 				<div className="d-none d-md-block col-lg-1">
 					
-				</div>
-			</div>
-			<div className="row ms-auto me-auto mt-5" id="products" >
-				<h2 id="products" className="text-center" style={{backgroundImage: "linear-gradient(#996515, #FFD700)", color: "black"}}>
-					<strong>Products</strong>
-				</h2>
-				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-				// style={{border: "solid", borderColor: "#FFD700"}}
-				>
+// 				</div>
+// 			</div>
+// 			<div className="row ms-auto me-auto mt-5" id="products" >
+// 				<h2 id="products" className="text-center" style={{backgroundImage: "linear-gradient(#996515, #FFD700)", color: "black"}}>
+// 					<strong>Products</strong>
+// 				</h2>
+// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
+// 				// style={{border: "solid", borderColor: "#FFD700"}}
+// 				>
 					
-					<h4 style={{color: "#d4af37"}} id="products">Crown and Bridge</h4>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={Zirc} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title">Zirconia</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-					{/* <div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={Lith} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title">Lithium Disilicate</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700"}}>More Info</a>
-						</div>
-					</div> */}
-				</div>
-				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-				// style={{border: "solid", borderColor: "#FFD700"}}
-				>
+// 					<h4 style={{color: "#d4af37"}} id="products">Crown and Bridge</h4>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={Zirc} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title">Zirconia</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 					{/* <div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={Lith} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title">Lithium Disilicate</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700"}}>More Info</a>
+// 						</div>
+// 					</div> */}
+// 				</div>
+// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
+// 				// style={{border: "solid", borderColor: "#FFD700"}}
+// 				>
 					
-					<h4 id="products" style={{color: "#d4af37"}}>Veneer</h4>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={ZircV} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title">Zirconia</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-					{/* <div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={LithV} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title">Lithium Disilicate</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "darkgoldenrod"}}>More Info</a>
-						</div>
-					</div> */}
-				</div>
-				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-				// style={{border: "solid", borderColor: "#FFD700"}}
-				>
+// 					<h4 id="products" style={{color: "#d4af37"}}>Veneer</h4>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={ZircV} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title">Zirconia</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 					{/* <div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={LithV} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title">Lithium Disilicate</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "darkgoldenrod"}}>More Info</a>
+// 						</div>
+// 					</div> */}
+// 				</div>
+// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
+// 				// style={{border: "solid", borderColor: "#FFD700"}}
+// 				>
 					
-					<h4 id="products" style={{color: "#d4af37"}}>Partial</h4>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={Partial} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title"> TCS Unbreakable</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-				</div>
-				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-				// style={{border: "solid", borderColor: "#FFD700"}}
-				>
-					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={Denture} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title"> PMMA base with Multilayer PMMA denture teeth</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={WaxRim} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title">Wax rim with PMMA base plate</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
-					<div className="card mt-3 mb-3" >
-						<img className="card-img-top" src={TryIn} height="325px"/>
-						<div className="card-body">
-							<h5 className="card-title"> Wax try in monolithic PMMA denture</h5>
-							<p className="card-text"></p>
-							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-						</div>
-					</div>
-				</div>
+// 					<h4 id="products" style={{color: "#d4af37"}}>Partial</h4>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={Partial} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title"> TCS Unbreakable</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 				</div>
+// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
+// 				// style={{border: "solid", borderColor: "#FFD700"}}
+// 				>
+// 					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={Denture} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title"> PMMA base with Multilayer PMMA denture teeth</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={WaxRim} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title">Wax rim with PMMA base plate</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
+// 					<div className="card mt-3 mb-3" >
+// 						<img className="card-img-top" src={TryIn} height="325px"/>
+// 						<div className="card-body">
+// 							<h5 className="card-title"> Wax try in monolithic PMMA denture</h5>
+// 							<p className="card-text"></p>
+// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
+// 						</div>
+// 					</div>
+// 				</div>
 				
-			</div>
-			</div>:<Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
+// 			</div>
+// 			</div>:<Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
+// 		</div>
+	<>
+		<div className="page-wrapper">
+
+{/* <!-- Main Header-->  */}
+<header className="main-header header-style-one">
+  <div className="logo-box">
+	<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
+  </div>
+  {/* <!-- header-top --> */}
+  <div className="header-top">
+	<div className="top-left">
+	  <ul>
+	  <li>
+  <a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
+    <i className="fas fa-location-dot"></i>
+    3393 US Hwy 17-92 West Haines City, FL
+  </a>
+</li>
+		<li><a href="#" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
+	  </ul>
+	</div>
+	<div className="top-right">
+	  <ul className="login-btn">
+		<li className="active"><a href="#" onClick={handleToggleModal}><i className="fa fa-user"></i>Login</a></li>
+		<Modal show={showModal} onHide={handleToggleModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Login logState={loggedIn} updateLogState={setLoggedIn} />
+        </Modal.Body>
+        {/* You can add a footer here if needed */}
+      </Modal>
+		<li><a href="/signup">Sign up</a></li>
+	  </ul>
+	  <ul className="social-icons">
+		<li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
+		{/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
+		<li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+		{/* <li><a href="#"><i className="fa-brands fa-youtube"></i></a></li> */}
+	  </ul>
+	</div>
+  </div>
+  <div className="header-lower"> 
+	{/* <!-- Main box --> */}
+	<div className="main-box"> 
+	  {/* <!--Nav Box--> */}
+	  <div className="nav-outer">
+		<nav className="nav main-menu">
+		  <ul className="navigation">
+			<li className="current dropdown"> <a href="/">Home</a>
+			  
+			</li>
+			<li className="dropdown"> <a href="#">About Us</a>
+			  {/* <ul>
+				<li><a href="page-about.html">About</a></li>
+				<li className="dropdown"> <a href="#">Projects</a>
+				  <ul>
+					<li><a href="page-projects.html">Projects List</a></li>
+					<li><a href="page-project-details.html">Project Details</a></li>
+				  </ul>
+				</li>
+				<li className="dropdown"> <a href="#">Team</a>
+				  <ul>
+					<li><a href="page-team.html">Team List</a></li>
+					<li><a href="page-team-details.html">Team Details</a></li>
+				  </ul>
+				</li>
+				<li><a href="page-testimonial.html">Testimonial</a></li>
+				<li><a href="page-pricing.html">Pricing</a></li>
+				<li><a href="page-faq.html">FAQ</a></li>
+				<li><a href="page-404.html">Page 404</a></li>
+			  </ul> */}
+			</li>
+			<li className="dropdown"> <a href="#">Products</a>
+			  <ul>
+				<li><a href="">Crown and Bridge</a></li>
+				<li><a href="">Veneer</a></li>
+				<li><a href="">Partial</a></li>
+				<li><a href="">Denture</a></li>
+			  </ul>
+			</li>
+			{/* <li className="dropdown"> <a href="#">Shop</a>
+			  <ul>
+				<li><a href="shop-products.html">Products</a></li>
+				<li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
+				<li><a href="shop-product-details.html">Product Details</a></li>
+				<li><a href="shop-cart.html">Cart</a></li>
+				<li><a href="shop-checkout.html">Checkout</a></li>
+			  </ul>
+			</li>
+			<li className="dropdown"> <a href="#">News</a>
+			  <ul>
+				<li><a href="news-grid.html">News Grid</a></li>
+				<li><a href="news-details.html">News Details</a></li>
+			  </ul>
+			</li> */}
+			<li><a href="page-contact.html">Contact</a></li>
+		  </ul>
+		</nav>
+		{/* <!-- Main Menu End-->  */}
+	  </div>
+	  <div className="outer-box"> <a href="tel:123456789" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span>
+		<h6 className="title">+ 12 (3456) 7890</h6>
+		</a>
+		<div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div>
+		<div className="btn"> <a href="page-contact.html" className="theme-btn">get solution</a> </div>
+		<div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
+	  </div>
+	</div>
+	{/* <!-- Mobile Menu  -->  */}
+  </div>
+  <div className="mobile-menu">
+	<div className="menu-backdrop"></div>
+	
+	{/* <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--> */}
+	<nav className="menu-box">
+	  <div className="upper-box">
+		<div className="nav-logo"><a href="index.html"><img src={Logo} alt="" title=""/></a></div>
+		<div className="close-btn"><i className="icon fa fa-times"></i></div>
+	  </div>
+	  <ul className="navigation clearfix">
+		{/* <!--Keep This Empty / Menu will come through Javascript--> */}
+	  </ul>
+	  <ul className="contact-list-one">
+		<li> 
+		  {/* <!-- Contact Info Box --> */}
+		  <div className="contact-info-box"> <i className="icon lnr-icon-phone-handset"></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
+		</li>
+		<li> 
+		  {/* <!-- Contact Info Box --> */}
+		  <div className="contact-info-box"> <span className="icon lnr-icon-envelope1"></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
+		</li>
+		<li> 
+		  {/* <!-- Contact Info Box --> */}
+		  <div className="contact-info-box"> <span className="icon lnr-icon-clock"></span> <span className="title">Send Email</span> Mon - Sat 8:00 - 6:30, Sunday - CLOSED </div>
+		</li>
+	  </ul>
+	  <ul className="social-links">
+		<li><a href="#"><i className="fab fa-twitter"></i></a></li>
+		<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+		<li><a href="#"><i className="fab fa-pinterest"></i></a></li>
+		<li><a href="#"><i className="fab fa-instagram"></i></a></li>
+	  </ul>
+	</nav>
+  </div>
+  {/* <!-- End Mobile Menu -->  */}
+  
+  {/* <!-- Header Search --> */}
+  <div className="search-popup"> <span className="search-back-drop"></span>
+	<button className="close-search"><span className="fa fa-times"></span></button>
+	<div className="search-inner">
+	  <form method="post" action="index.html">
+		<div className="form-group">
+		  <input type="search" name="search-field"  placeholder="Search..." required=""/>
+		  <button type="submit"><i className="fa fa-search"></i></button>
 		</div>
-</>
+	  </form>
+	</div>
+  </div>
+  {/* <!-- End Header Search -->  */}
+  
+  {/* <!-- Sticky Header  --> */}
+  <div className="sticky-header">
+	<div className="auto-container">
+	  <div className="inner-container"> 
+		{/* <!--Logo--> */}
+		<div className="logo"> <a href="index.html" title=""><img src={Logo} alt="" title=""/></a> </div>
+		
+		{/* <!--Right Col--> */}
+		<div className="nav-outer"> 
+		  {/* <!-- Main Menu --> */}
+		  <nav className="main-menu">
+			<div className="navbar-collapse show collapse clearfix">
+			  <ul className="navigation clearfix">
+				{/* <!--Keep This Empty / Menu will come through Javascript--> */}
+			  </ul>
+			</div>
+		  </nav>
+		  {/* <!-- Main Menu End--> 
+		  
+		  <!--Mobile Navigation Toggler--> */}
+		  <div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  {/* <!-- End Sticky Menu -->  */}
+</header>
+  {/* <!--End Main Header -->
+
+<!-- banner-section  --> */}
+
+{/* <section className="banner-section">
+<div className="banner-slider slick-initialized slick-slider"><button className="slick-prev slick-arrow" aria-label="Previous" type="button" >Previous</button>
+	<div className="slick-list draggable"><div className="slick-track" 
+	// style={{opacity: 1, transform: `translate3d(-1470px, 0px, 0px)`}}
+	><div className="banner-slide slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabIndex="-1" 
+	// style={{width: "1470px"}}
+	> 
+	<img src={BKG} alt=""/>
+		<div className="outer-box">
+			<div className="auto-container">
+				<div className="content-box"> <span className="sub-title">Next level Automation System</span>
+				<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" className="fadeInLeft animated" 
+// style={{opacity: 1, animationDelay: "0.2s"}}
+>Cast Effective Digital Marketing Agency</h1>
+					<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" >Discover More</a> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div className="banner-slide slick-slide " data-slick-index="0" aria-hidden="false" tabIndex="0" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title">Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" className="fadeInLeft animated" 
+// style={{opacity: 1, animationDelay: "0.2s"}}
+>Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn fadeInUp animated" tabIndex="0" 
+// style={{opacity: 1, animationDelay: "0.4s"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div><div className="banner-slide slick-slide " data-slick-index="1" aria-hidden="true" tabIndex="-1" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2" 
+// style={{opacity: 0, animationDelay: "0.2s"}}
+>Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
+style={{opacity: 0, animationDelay: "0.2s"}} 
+className="">Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
+// style={{opacity: 1, animationDelay: "0.4s"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" tabIndex="-1" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title">Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
+// style={{opacity: 0, animationDelay: "0.2s"}} 
+className="">Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
+// style={{opacity: 1, animationDelay: "0.4s"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="3" id="" aria-hidden="true" tabIndex="-1" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title">Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
+// style={{opacity: 0}}
+>Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1"  
+// style={{opacity: 1, animationDelay: "0.4s"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="4" id="" aria-hidden="true" tabIndex="-1" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2" 
+// style={{opacity: "0"}}
+>Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
+// style={{opacity: "0"}}
+>Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
+// style={{opacity: "0"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabIndex="-1" 
+// style={{width: "1470px"}}
+> <img src={BKG} alt=""/>
+<div className="outer-box">
+<div className="auto-container">
+<div className="content-box"> <span className="sub-title">Next level Automation System</span>
+<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
+// style={{opacity: 0}}
+>Cast Effective Digital Marketing Agency</h1>
+<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
+// style={{opacity: "0"}}
+>Discover More</a> </div>
+</div>
+</div>
+</div>
+</div></div></div>
+
+
+<button className="slick-next slick-arrow" aria-label="Next" type="button" >Next</button></div>
+</section> */}
+
+<section className="banner-section">
+  <div className="banner-slider slick-initialized slick-slider" >
+	<div className="banner-slide" ><img src={Intro} style={{position: "absolute"}}/> 
+	{/* <img src={BKG} alt=""/> */}
+	
+	  <div className="outer-box">
+		<div className="auto-container">
+		  <div className="content-box"> <span className="sub-title">DENTAL SOLUTIONS</span>
+			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Premium craftsmanship. Fast delivery. Unbeatable value.</h1>
+			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
+		  </div>
+		</div>
+	  </div>
+	  <div className="d-none d-md-block col-lg-8 float-end" style={{width: "700px", position: "relative"}}><ThreeScene2/></div>
+	  
+	</div>
+	
+	
+	{/* <div className="banner-slide"> <img src={BKG} alt=""/>
+	  <div className="outer-box">
+		<div className="auto-container">
+		  <div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2">Next level Automation System</span>
+			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Cast Effective Digital Marketing Agency</h1>
+			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div className="banner-slide"> <img src={BKG} alt=""/>
+	  <div className="outer-box">
+		<div className="auto-container">
+		  <div className="content-box"> <span className="sub-title">Next level Automation System</span>
+			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Cast Effective Digital Marketing Agency</h1>
+			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
+		  </div>
+		</div>
+	  </div>
+	</div> */}
+  </div>
+  
+</section>
+{/* <!-- End banner-section -->
+
+<!-- service section --> */}
+<section className="service-section pt-0 pb-0">
+  <div className="auto-container">
+	<div className="row g-0"> 
+	  {/* <!-- service-block --> */}
+	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="400ms">
+		<div className="inner-box">
+		  <div className="icon-box"> <i className="fa-solid fa-award"></i>
+			<h5 className="title"><a href="page-about.html">Unparalleled Quality</a></h5>
+		  </div>
+		  <div className="text">Get the right fit, the first time</div>
+		</div>
+	  </div>
+	  {/* <!-- service-block --> */}
+	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="600ms">
+		<div className="inner-box">
+		  <div className="icon-box"> <i className="fa-solid fa-circle-dollar-to-slot"></i>
+			<h5 className="title"><a href="page-about.html">Affordable Price</a></h5>
+		  </div>
+		  <div className="text">Competitive pricing on all products</div>
+		</div>
+	  </div>
+	  {/* <!-- service-block --> */}
+	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="800ms">
+		<div className="inner-box">
+		  <div className="icon-box"> <i className="fa-solid fa-person-running"></i>
+			<h5 className="title"><a href="page-about.html">Quick Turnaround</a></h5>
+		  </div>
+		  <div className="text">Standard production 4-6 days</div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End service-section -->
+
+<!-- about-section --> */}
+<section className="about-section">
+  <div className="auto-container">
+	<div className="row"> 
+	  {/* <!-- content-column --> */}
+	  <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
+		<div className="inner-column">
+		  <div className="sec-title"> <span className="sub-title">KPD Labs ::::::</span>
+			<h2>Our Promise</h2>
+			<div className="text">As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction. </div>
+		  </div>
+		  <div className="row"> 
+			{/* <!-- about-block --> */}
+			{/* <div className="about-block col-sm-6">
+			  <div className="inner-box">
+				<div className="icon-box"> <i className="flaticon-support-2"></i>
+				  <h4 className="title">Internal Networking</h4>
+				</div>
+				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
+			  </div>
+			</div> */}
+			{/* <!-- about-block --> */}
+			{/* <div className="about-block col-sm-6">
+			  <div className="inner-box">
+				<div className="icon-box"> <i className="flaticon-typography"></i>
+				  <h4 className="title">Manage IT Services</h4>
+				</div>
+				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
+			  </div>
+			</div> */}
+		  </div>
+		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> <img src={Denture} alt=""/> </div>
+		</div>
+	  </div>
+	  {/* <!-- image-column --> */}
+	  <div className="image-column col-lg-6 wow fadeInRight" data-wow-delay="600ms">
+		<div className="inner-column">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<figure className="image-2 overlay-anim bounce-y"><img src={Denture} alt=""/></figure>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+  </div>
+</section>
+{/* <!-- End about-section -->
+
+<!-- service-section --> */}
+<section className="service-section-two">
+  <div className="auto-container">
+	<div className="sec-title text-center"> <span className="sub-title">::::::  SERVICES WE’RE OFFERING  ::::::</span>
+	  <h2>Provide Best Quality Services<br/>Thats Stand Behind</h2>
+	</div>
+	<div className="row"> 
+	  {/* <!-- service-block-two --> */}
+	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<i className="flaticon-clock-1"></i>
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="page-service-details.html">Data Visualization</a></h4>
+			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- service-block-two --> */}
+	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<i className="flaticon-monitor-1"></i>
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="page-service-details.html">Ul/Ux Design</a></h4>
+			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- service-block-two --> */}
+	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<i className="flaticon-cog-1"></i>
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="page-service-details.html">Digital Marketing</a></h4>
+			<div className="text">Sed non odio non elit porttitor Donec elit sit fermentum amet</div>
+			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End service-section -->
+
+<!-- service-banner --> */}
+<section className="service-banner">
+  <div className="auto-container">
+	<div className="outer-box wow fadeInUp" data-wow-delay="400ms">
+	  <h2>IT Solutions And Services <br/>at Your Fingertips</h2>
+	  <a href="page-about.html" className="ser-btn theme-btn">Discover More</a>
+	</div>
+  </div>
+</section>
+{/* <!-- end service section --> 
+
+<!-- project-section --> */}
+<section className="project-section">
+  <div className="auto-container">
+	<div className="sec-title"> <span className="sub-title">RECENTLY COMPLETED WORK  ::::::</span>
+	  <h2>Improve and Enhance the <br/>Best Tech Projects</h2>
+	  <a href="page-projects.html" className="ser-btn theme-btn">Discover More</a>
+	</div>
+	<div className="outer-box">
+	  <div className="row"> 
+		{/* <!-- project-block --> */}
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
+		  <div className="inner-box">
+			<div className="image-box">
+			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			</div>
+			<div className="content-box"> <span>Technology</span>
+			  <h4 className="title"><a href="page-project-details.html">Technology Traning</a></h4>
+			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			</div>
+		  </div>
+		</div>
+		{/* <!-- project-block --> */}
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
+		  <div className="inner-box">
+			<div className="image-box">
+			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			</div>
+			<div className="content-box"> <span>IDEA</span>
+			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4>
+			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			</div>
+		  </div>
+		</div>
+		{/* <!-- project-block --> */}
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
+		  <div className="inner-box">
+			<div className="image-box">
+			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			</div>
+			<div className="content-box"> <span>Security</span>
+			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4>
+			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			</div>
+		  </div>
+		</div>
+		{/* <!-- project-block --> */}
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
+		  <div className="inner-box">
+			<div className="image-box">
+			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			</div>
+			<div className="content-box"> <span>Development</span>
+			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4>
+			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End project-section --> 
+
+<!-- client section --> */}
+<section className="client-section pt-0">
+  <div className="auto-container">
+	<div className="outer-box">
+	  <figure className="image wow fadeInLeft" data-wow-delay="400ms"><a href="#"><img src={Denture} alt=""/></a></figure>
+	  <figure className="image wow fadeInLeft" data-wow-delay="600ms"><a href="#"><img src={Denture} alt=""/></a></figure>
+	  <figure className="image wow fadeInLeft" data-wow-delay="800ms"><a href="#"><img src={Denture} alt=""/></a></figure>
+	  <figure className="image wow fadeInLeft" data-wow-delay="1000ms"><a href="#"><img src={Denture} alt=""/></a></figure>
+	  <figure className="image wow fadeInLeft" data-wow-delay="1100ms"><a href="#"><img src={Denture} alt=""/></a></figure>
+	</div>
+  </div>
+</section>
+{/* <!-- End client section --> 
+
+<!-- about-section-two --> */}
+<section className="about-section-two pt-0">
+  <div className="auto-container">
+	<div className="row"> 
+	  {/* <!-- image-column --> */}
+	  <div className="image-column col-lg-6 wow fadeInLeft" data-wow-delay="400ms">
+		<div className="inner-column">
+		  <div className="image-box">
+			<figure className="image overlay-anim"> <img src={Denture} alt=""/>
+			  <div className="btn-box"> <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" className="play-now" data-fancybox="gallery" data-caption=""><i className="icon fa fa-play" aria-hidden="true"></i><span className="ripple"></span></a> </div>
+			</figure>
+			<div className="exp-box">
+			  <h3 className="title">Professional IT Technology Services you can Trust</h3>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- content-column --> */}
+	  <div className="content-column col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+		<div className="inner-column">
+		  <div className="sec-title"> <span className="sub-title">TECH MANAGEMENT  ::::::</span>
+			<h2>The Best Source For IT Solutions</h2>
+			<div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </div>
+		  </div>
+		  <div className="title-box">
+			<h6 className="title">Lorem Ipsum is simply available typesetting industry been the industry standard. </h6>
+		  </div>
+		  <div className="content-box"> 
+			{/* <!--Skills--> */}
+			<div className="skills"> 
+			  {/* <!--Skill Item--> */}
+			  <div className="skill-item">
+				<div className="skill-header">
+				  <h6 className="skill-title">Technology</h6>
+				</div>
+				<div className="skill-bar">
+				  <div className="bar-inner">
+					<div className="bar progress-line" data-width="86">
+					  <div className="skill-percentage">
+						<div className="count-box"><span className="count-text" data-speed="3000" data-stop="86">0</span>%</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div className="btn-box"> <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End about-section-two --> 
+
+<!-- testimonial-section --> */}
+<section className="testimonial-section">
+  <div className="auto-container">
+	<div className="row"> 
+	  {/* <!-- content-column --> */}
+	  <div className="content-column col-lg-5 col wow fadeInUp" data-wow-delay="400ms">
+		<div className="inner-column">
+		  <div className="sec-title"> <span className="sub-title">OUR FEEDBAKCS  ::::::</span>
+			<h2>What They are Talking About Company</h2>
+		  </div>
+		  <div className="btn-wrap pt-slider">
+			<button className="prev-btn"><i className="fa fa-angle-left"></i></button>
+			<button className="next-btn"><i className="fa fa-angle-right"></i></button>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- block-column --> */}
+	  <div className="col-lg-7 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay="400ms">
+		<div className="outer-box">
+		  <div className="row testimonial-slider"> 
+			{/* <!-- testimonial-block --> */}
+			<div className="testimonial-block col-md-6">
+			  <div className="inner-box">
+				<ul className="rating">
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				</ul>
+				<div className="auther-info">
+				  <h4 className="name">Sarah Albert</h4>
+				  <span className="designation">DESIGNER</span>
+				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
+				  <img src={Denture} alt=""/>
+				</div>
+			  </div>
+			</div>
+			{/* <!-- testimonial-block --> */}
+			<div className="testimonial-block col-md-6">
+			  <div className="inner-box">
+				<ul className="rating">
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				</ul>
+				<div className="auther-info">
+				  <h4 className="name">Kenvin Martin</h4>
+				  <span className="designation">DESIGNER</span>
+				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
+				  <img src={Denture} alt=""/>
+				</div>
+			  </div>
+			</div>
+			{/* <!-- testimonial-block --> */}
+			<div className="testimonial-block col-md-6">
+			  <div className="inner-box">
+				<ul className="rating">
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				</ul>
+				<div className="auther-info">
+				  <h4 className="name">Sarah Albert</h4>
+				  <span className="designation">DESIGNER</span>
+				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
+				  <img src={Denture} alt=""/>
+				</div>
+			  </div>
+			</div>
+			{/* <!-- testimonial-block --> */}
+			<div className="testimonial-block col-md-6">
+			  <div className="inner-box">
+				<ul className="rating">
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				  <li><i className="fa fa-star"></i></li>
+				</ul>
+				<div className="auther-info">
+				  <h4 className="name">Kenvin Martin</h4>
+				  <span className="designation">DESIGNER</span>
+				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
+				  <img src={Denture} alt=""/>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End testimonial-section --> 
+
+<!-- FAQ Section --> */}
+<section className="faqs-section">
+  <div className="auto-container">
+	<div className="row"> 
+	  {/* <!-- FAQ Column --> */}
+	  <div className="faq-column col-lg-6 wow fadeInUp" data-wow-delay="400ms">
+		<div className="inner-column">
+		  <div className="sec-title"> <span className="sub-title">QUESTIONS & ANSWERS  ::::::</span>
+			<h2>Frequently Asked <br/>Questions For You</h2>
+		  </div>
+		  <ul className="accordion-box">
+			{/* <!--Block--> */}
+			<li className="accordion block">
+			  <div className="acc-btn">Is my technology allowed on tech? <i className="icon fa fa-angle-right"></i> </div>
+			  <div className="acc-content">
+				<div className="content">
+				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				</div>
+			  </div>
+			</li>
+			{/* <!--Block--> */}
+			<li className="accordion block active-block">
+			  <div className="acc-btn active">How to soft launch your business? <i className="icon fa fa-angle-right"></i> </div>
+			  <div className="acc-content current">
+				<div className="content">
+				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				</div>
+			  </div>
+			</li>
+			{/* <!--Block--> */}
+			<li className="accordion block">
+			  <div className="acc-btn">How to turn visitors into contributors <i className="icon fa fa-angle-right"></i> </div>
+			  <div className="acc-content">
+				<div className="content">
+				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				</div>
+			  </div>
+			</li>
+			{/* <!--Block--> */}
+			<li className="accordion block">
+			  <div className="acc-btn">How can i find my solutions? <i className="icon fa fa-angle-right"></i> </div>
+			  <div className="acc-content">
+				<div className="content">
+				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				</div>
+			  </div>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+	  {/* <!-- image-column --> */}
+	  <div className="image-column col-lg-6 wow fadeInUp" data-wow-delay="600ms">
+		<div className="inner-column">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<div className="exp-box bounce-y"> <i className="flaticon-chat"></i>
+			  <h6 className="title">Top Quality Marketing Solution</h6>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!--End FAQ Section --> 
+
+<!-- news-section --> */}
+<section className="news-section pt-0">
+  <div className="auto-container">
+	<div className="sec-title text-center wow fadeInUp" data-wow-delay="400ms"> <span className="sub-title">::::::  FROM THE BLOG  ::::::</span>
+	  <h2>Our Latest News Update <br/>and Artical </h2>
+	</div>
+	<div className="row"> 
+	  {/* <!-- news-block --> */}
+	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<span className="date">11 MAR, 2023</span>
+		  </div>
+		  <div className="content-box">
+			<div className="auther-info"> <img src={Denture} alt=""/>
+			  <ul className="auther-content">
+				<li>By Jackson Mile</li>
+				<li>3 Comments</li>
+			  </ul>
+			</div><h4 className="title"><a href="news-details.html">Crypto Exchange For influencers in China</a></h4>
+			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- news-block --> */}
+	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<span className="date">11 MAR, 2023</span>
+		  </div>
+		  <div className="content-box">
+			<div className="auther-info"> <img src={Denture} alt=""/>
+			  <ul className="auther-content">
+				<li>By Jackson Mile</li>
+				<li>3 Comments</li>
+			  </ul>
+			</div>
+			<h4 className="title"><a href="news-details.html">Technology Support us Allows Erie to Serve</a></h4>
+			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- news-block --> */}
+	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<span className="date">11 MAR, 2023</span>
+		  </div>
+		  <div className="content-box">
+			<div className="auther-info"> <img src={Denture} alt=""/>
+			  <ul className="auther-content">
+				<li>By Jackson Mile</li>
+				<li>3 Comments</li>
+			  </ul>
+			</div>
+			<h4 className="title"><a href="news-details.html">Necessity May Give us Best Virtual Court</a></h4>
+			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End news-section -->
+
+<!-- contact-banner --> */}
+<section className="contact-banner">
+  <div className="auto-container">
+	<div className="outer-box">
+	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> <span>We’re here to help to grow your business</span>
+		<h3 className="title">Looking for the Best IT Business Solutions?</h3>
+	  </div>
+	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> </div>
+	</div>
+  </div>
+</section>
+{/* <!-- End contect-banner --> 
+
+<!-- Main Footer --> */}
+<footer className="main-footer">
+  <div className="bg-image"  style={{backgroundImage: Image}}></div>
+  {/* <!--Widgets Section--> */}
+  <div className="widgets-section">
+	<div className="auto-container">
+	  <div className="row"> 
+		{/* <!--Footer Column--> */}
+		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft">
+		  <div className="footer-widget about-widget">
+			<div className="logo"><a href="index.html"><img src={Denture} alt="" /></a></div>
+			<div className="text">Desires to obtain pain of itself, because it is pain, but occasionally circumstances.</div>
+			<div className="subscribe-form">
+			  <form method="post" action="#">
+				<div className="form-group">
+				  <input type="email" name="email" className="email"  placeholder="Your Address" required=""/>
+				  <button type="button" className="theme-btn"><i className="fa fa-paper-plane"></i></button>
+				</div>
+			  </form>
+			</div>
+		  </div>
+		</div>
+		{/* <!--Footer Column--> */}
+		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="400ms">
+		  <div className="footer-widget gallery-widget">
+			<h3 className="widget-title">Our Projects</h3>
+			<div className="widget-content">
+			  <div className="outer clearfix">
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		{/* <!--Footer Column--> */}
+		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="600ms">
+		  <div className="footer-widget links-sec">
+			<h3 className="widget-title">Quick Links</h3>
+			<ul className="user-links">
+			  <li><a href="#">About Company</a></li>
+			  <li><a href="#">Meet the Team</a></li>
+			  <li><a href="#">News & Media</a></li>
+			  <li><a href="#">Our Projects</a></li>
+			  <li><a href="#">Our Services</a></li>
+			  <li><a href="#">Contact</a></li>
+			</ul>
+		  </div>
+		</div>
+		{/* <!--Footer Column--> */}
+		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="800ms">
+		  <div className="footer-widget contact-widget">
+			<h3 className="widget-title">Contact Now</h3>
+			<div className="widget-content">
+			  <div className="text"><i className="fa-solid fa-location-dot"></i>66 Road Broklyn Street, 600 New York, USA</div>
+			  <ul className="contact-info">
+				<li><i className="fa fa-envelope"></i> <a href="mailto:needhelp@yourdomain.com">needhelp@company.com</a><br/>
+				</li>
+				<li><i className="fa fa-phone"></i> <a href="tel:+926668880000">+92 666 888 0000</a><br/>
+				</li>
+			  </ul>
+			  <ul className="social-icons">
+				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i className="fab fa-twitter"></i></a></li>
+				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i className="fab fa-google"></i></a></li>
+			  </ul>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  {/* <!--Footer Bottom--> */}
+  <div className="footer-bottom"/>
+	<div className="auto-container">
+	  <div className="inner-container">
+		<div className="copyright-text text-center">© zitch Copyright reserved by <a href="index.html">kodesolution.com</a>
+		<a href="#" className="footer-btn"></a>
+	  </div>
+	</div>
+  </div>
+</footer>
+{/* <!--End Main Footer --> */}
+
+
+</div>
+{/* <!-- End Page Wrapper -->
+<!-- Scroll To Top --> */}
+<div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div>
+
+	</>
+
 	);
 };

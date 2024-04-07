@@ -84,7 +84,7 @@ import "../../styles/mixitup"
 import "../../styles/wow"
 import "../../styles/slick.min"
 import "../../styles/slick-animation.min"
-import "../../styles/appear"
+// import "../../styles/appear"
 
 
 

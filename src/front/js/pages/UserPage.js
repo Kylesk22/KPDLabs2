@@ -164,7 +164,7 @@ export const UserPage = props => {
     return(
         <div >
             {(sessionStorage.getItem("id"))?
-            <div style={{position: "relative", marginTop:"150px", marginBottom: "500px"}}>
+            <div>
             <div className="row">
                 <div className="col-12 text-center">
                     <h1>Welcome Dr. {firstName}</h1>

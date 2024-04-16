@@ -165,12 +165,12 @@ export const UserPage = props => {
         <div >
             {(sessionStorage.getItem("id"))?
             <div>
-            <div className="row" style={{position: "relative", marginTop:"150px"}}>
+            <div className="row" >
                 <div className="col-12 text-center">
                     <h1>Welcome Dr. {firstName}</h1>
                 </div>
             </div>
-            <div style={{marginBottom: "500px"}}>
+            <div>
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?

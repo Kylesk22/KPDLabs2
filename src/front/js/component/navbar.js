@@ -247,7 +247,7 @@ export const Navbar = (props) => {
   {/* <!-- End Sticky Menu -->  */}
 </header>:
 
-<header className="main-header header-style-one" >
+<header className="main-header header-style-one" style={{height: "135px"}} >
 		<div className="logo-box ">
 		  <div className="logo ps-lg-4 ps-5 mx-auto"><a href="/"><img src={Logo} alt=""/></a></div>
 		 <strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>

@@ -162,7 +162,7 @@ export const UserPage = props => {
     }
 
     return(
-        <div>
+        <div style={{position: "relative", marginTop:"150px", marginBottom: "500px"}}>
             {(sessionStorage.getItem("id"))?
             <div>
             <div className="row">

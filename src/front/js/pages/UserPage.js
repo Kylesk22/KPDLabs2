@@ -170,7 +170,7 @@ export const UserPage = props => {
                     <h1>Welcome Dr. {firstName}</h1>
                 </div>
             </div>
-            <div>
+            <div style={{paddingBottom: "500px"}}>
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?

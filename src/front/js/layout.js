@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import { Signup } from "./pages/Signup";
 import { UserPage } from "./pages/UserPage";
 import { Login } from "./component/Login";
+import { Forgot } from "./pages/Forgot";
 import{AboutUs} from "./pages/AboutUs";
 import{ContactUs} from "./pages/ContactUs";
 import{Crown} from "./pages/Crown";
@@ -55,6 +56,7 @@ const Layout = () => {
                         <Route element={<Partial/>} path = "/partial"/>
                         <Route element={<Denture/>} path = "/denture"/>
                         <Route element={<Login logState ={loggedIn} updateLogState={setLoggedIn}/> } path = "/login"/>
+                        <Route element={<Forgot /> } path = "/forgot"/>
                         
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

@@ -8,6 +8,8 @@ import Intro from "../../img/footer-flip.jpg"
 
 
 export const Forgot = props => {
+    const [email, setEmail] = useState("")
+
     const verificationCode = () => {
         user = {
             email,
@@ -43,25 +45,25 @@ export const Forgot = props => {
         });
     }
 
-    }
+    
 
 
     return(
-        <div style={{paddingTop: "200px"}}>
-             <div className="form container form container-fluid" onSubmit={submitHandler} style={{width: "300px"}}>
+        <div style={{paddingTop: "200px", paddingBottom: "500px"}}>
+             <div className="form container form container-fluid"  style={{width: "300px"}}>
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <small id="emailHelp" className="form-text text-muted">abc@abc.com.</small>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                    <button className="btn btn-primary">Send Verification Code</button>
-                </div>
+                </div> */}
                 {/* <Link to="/signup">
                     <button className="btn btn-primary">Signup</button>
                 </Link>  */}
                 <div className="form-group mx-auto w-100 text-center" >
-                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={submitHandler}>Submit
+                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={()=>verificationCode()}>Get Verfication Code
                         </button>
                     </div>
                 

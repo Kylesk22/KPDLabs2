@@ -167,6 +167,27 @@ def login():
             )
         return res
     
+@api.route('/forgotPassword', methods=['GET'])
+def forgot_pw():
+    email = request.json.get("email", None)
+    checkEmail = User.query.filter_by(email=email).first()
+
+    if checkEmail is not None:
+        res = make_response(
+            jsonify(
+                {"message": "Email found!"}
+            )
+        )
+        return(res)
+    else:
+        res = make_response(
+            jsonify(
+                {"message": "Email not found, please check entered email is correct."}
+            )
+        )
+        return(res)
+
+    
 
 # @api.route('/logout', methods=['GET'])
 # def unset_jwt():

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Signup } from "../pages/Signup";
 
+import Intro from "../../img/footer-flip.jpg"
+
 
 
 
@@ -66,11 +68,11 @@ export const Login = props => {
 
 
     return(
-        <>
+        <div className="">
             {(!loggedIn)? 
-            <div >
-            {/* <h2 >Login</h2> */}
-            <div className="form container form container-fluid" onSubmit={submitHandler} >
+            <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
+            <h2 style={{color: "white"}}>Login</h2> 
+            <div className="form container form container-fluid" onSubmit={submitHandler} style={{width: "300px"}}>
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 ">Email address</label>
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
@@ -96,6 +98,6 @@ export const Login = props => {
             
             : <Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
         
-        </>
+        </div>
     )
 }

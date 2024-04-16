@@ -58,7 +58,7 @@ export const Navbar = (props) => {
 	
 	return (
 		(!loggedIn) ? 	
-		<header className="main-header header-style-one">
+		<header className="main-header header-style-one" >
 		<div className="logo-box ">
 		  <div className="logo ps-lg-4 ps-5 mx-auto"><a href="/"><img src={Logo} alt=""/></a></div>
 		 <strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
@@ -78,16 +78,15 @@ export const Navbar = (props) => {
 		  </div>
 		  <div className="top-right">
 			<ul className="login-btn">
-			  <li className="active"><a href="" onClick={handleToggleModal}><i className="fa-solid fa-user"></i>Login</a></li>
-			  <Modal show={showModal} onHide={handleToggleModal}>
+			  <li className="active"><a href="/login" ><i className="fa-solid fa-user"></i>Login</a></li>
+			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
 				<Modal.Title>Login</Modal.Title>
 			  </Modal.Header>
 			  <Modal.Body>
 				<Login logState={loggedIn} updateLogState={setLoggedIn} />
 			  </Modal.Body>
-			  {/* You can add a footer here if needed */}
-			</Modal>
+			</Modal> */}
 			  <li><a href="/signup">Sign up</a></li>
 			</ul>
 			<ul className="social-icons">
@@ -164,8 +163,49 @@ export const Navbar = (props) => {
 			  <div className="btn"> <a href="page-contact.html" className="theme-btn">get solution</a> </div>
 			  <div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
 			</div>
-		  </div>
+		 </div>
 		</div>
+
+
+		{/* <div className="mobile-menu">
+      <div className="menu-backdrop"></div>
+      
+      
+      <nav className="menu-box">
+        <div className="upper-box">
+          <div className="nav-logo"><a href="/"><img src={Logo} alt="" title=""/></a></div>
+          <div className="close-btn"><i className="icon fa fa-times"></i></div>
+        </div>
+        <ul className="navigation clearfix">
+          
+        </ul>
+        <ul className="contact-list-one">
+          <li> 
+           
+            <div className="contact-info-box"> <i className="icon lnr-icon-phone-handset"></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
+          </li>
+          <li> 
+          
+            <div className="contact-info-box"> <span className="icon lnr-icon-envelope1"></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
+          </li>
+          <li> 
+            
+            <div className="contact-info-box"> <span className="icon lnr-icon-clock"></span> <span className="title">Send Email</span> Mon - Sat 8:00 - 6:30, Sunday - CLOSED </div>
+          </li>
+        </ul>
+        <ul className="social-links">
+          <li><a href="#"><i className="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i className="fab fa-pinterest"></i></a></li>
+          <li><a href="#"><i className="fab fa-instagram"></i></a></li>
+        </ul>
+      </nav>
+    </div> */}
+
+
+
+
+
 		<div className="search-popup"> <span className="search-back-drop"></span>
 	<button className="close-search"><span className="fa fa-times"></span></button>
 	<div className="search-inner">
@@ -199,7 +239,7 @@ export const Navbar = (props) => {
 		  {/* <!-- Main Menu End--> 
 		  
 		  <!--Mobile Navigation Toggler--> */}
-		  <div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
+		  <div className="mobile-nav-toggler"> <i className="fas fa-bars"></i> </div>
 		</div>
 	  </div>
 	</div>

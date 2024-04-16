@@ -12,6 +12,12 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Signup } from "./pages/Signup";
 import { UserPage } from "./pages/UserPage";
+import{AboutUs} from "./pages/AboutUs";
+import{ContactUs} from "./pages/ContactUs";
+import{Crown} from "./pages/Crown";
+import{Veneer} from "./pages/Veneer";
+import{Partial} from "./pages/Partial";
+import{Denture} from "./pages/Denture";
 import Orb from "../../front/img/image.png";
 
 
@@ -34,13 +40,20 @@ const Layout = () => {
          {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    {/* <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/> */}
+                    <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/>
                     <Routes>
                         {/* <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" /> */}
                         <Route element={<Home logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/" />
                         <Route element={<UserPage logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/account/:user_id" />
                         <Route element={<Signup logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/signup" />
+                        <Route element={<AboutUs/>} path = "/aboutus"/>
+                        <Route element={<ContactUs/>} path = "/contactus"/>
+                        <Route element={<Crown/>} path = "/crownandbridge"/>
+                        <Route element={<Veneer/>} path = "/veneer"/>
+                        <Route element={<Partial/>} path = "/partial"/>
+                        <Route element={<Denture/>} path = "/denture"/>
+                        
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

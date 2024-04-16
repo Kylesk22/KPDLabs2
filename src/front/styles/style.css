@@ -9608,17 +9608,7 @@ Page Title
   font-weight: 400;
   text-transform: capitalize;
 }
-.page-breadcrumb li:after {
-  position: absolute;
-  content: "\f105";
-  right: -6px;
-  top: 1px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 900;
-  font-family: "Font Awesome 6 Pro";
-  color: #ffffff;
-}
+
 .page-breadcrumb li:last-child {
   padding-right: 0px;
   margin-right: 0px;

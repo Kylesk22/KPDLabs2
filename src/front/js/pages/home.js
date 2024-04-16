@@ -1,9 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
+import Sparkle from 'react-sparkle'
 import "../../styles/home.css";
 import "../../styles/slick-theme.css"
 import "../../styles/slick.css"
 import "../../styles/style.css"
+import "../../styles/animate.css"
+import { Fade, Slide } from "react-awesome-reveal";
 
 import { Login } from "../component/Login";
 import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
@@ -70,6 +73,9 @@ import Lines from "../../img/lines.jpg"
 import Intro from "../../img/footer-flip.jpg"
 import AboutBKG from "../../img/testi-bg.jpg"
 import Mill from "../../img/mill.jpg"
+import Lines21 from "../../img/lines2-1.png"
+import FootBKG from "../../img/footer-bg.jpg"
+import Layer11 from "../../img/layer1-1.jpg"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -266,195 +272,9 @@ export const Home = (props) => {
 	<>
 		<div className="page-wrapper">
 
-{/* <!-- Main Header-->  */}
-<header className="main-header header-style-one">
-  <div className="logo-box">
-	<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
-  </div>
-  {/* <!-- header-top --> */}
-  <div className="header-top">
-	<div className="top-left">
-	  <ul>
-	  <li>
-  <a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
-    <i className="fas fa-location-dot"></i>
-    3393 US Hwy 17-92 West Haines City, FL
-  </a>
-</li>
-		<li><a href="#" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
-	  </ul>
-	</div>
-	<div className="top-right">
-	  <ul className="login-btn">
-		<li className="active"><a href="#" onClick={handleToggleModal}><i className="fa fa-user"></i>Login</a></li>
-		<Modal show={showModal} onHide={handleToggleModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Login logState={loggedIn} updateLogState={setLoggedIn} />
-        </Modal.Body>
-        {/* You can add a footer here if needed */}
-      </Modal>
-		<li><a href="/signup">Sign up</a></li>
-	  </ul>
-	  <ul className="social-icons">
-		<li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
-		{/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
-		<li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-		{/* <li><a href="#"><i className="fa-brands fa-youtube"></i></a></li> */}
-	  </ul>
-	</div>
-  </div>
-  <div className="header-lower"> 
-	{/* <!-- Main box --> */}
-	<div className="main-box"> 
-	  {/* <!--Nav Box--> */}
-	  <div className="nav-outer">
-		<nav className="nav main-menu">
-		  <ul className="navigation">
-			<li className="current dropdown"> <a href="/">Home</a>
-			  
-			</li>
-			<li className="dropdown"> <a href="#">About Us</a>
-			  {/* <ul>
-				<li><a href="page-about.html">About</a></li>
-				<li className="dropdown"> <a href="#">Projects</a>
-				  <ul>
-					<li><a href="page-projects.html">Projects List</a></li>
-					<li><a href="page-project-details.html">Project Details</a></li>
-				  </ul>
-				</li>
-				<li className="dropdown"> <a href="#">Team</a>
-				  <ul>
-					<li><a href="page-team.html">Team List</a></li>
-					<li><a href="page-team-details.html">Team Details</a></li>
-				  </ul>
-				</li>
-				<li><a href="page-testimonial.html">Testimonial</a></li>
-				<li><a href="page-pricing.html">Pricing</a></li>
-				<li><a href="page-faq.html">FAQ</a></li>
-				<li><a href="page-404.html">Page 404</a></li>
-			  </ul> */}
-			</li>
-			<li className="dropdown"> <a href="#">Products</a>
-			  <ul>
-				<li><a href="">Crown and Bridge</a></li>
-				<li><a href="">Veneer</a></li>
-				<li><a href="">Partial</a></li>
-				<li><a href="">Denture</a></li>
-			  </ul>
-			</li>
-			{/* <li className="dropdown"> <a href="#">Shop</a>
-			  <ul>
-				<li><a href="shop-products.html">Products</a></li>
-				<li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
-				<li><a href="shop-product-details.html">Product Details</a></li>
-				<li><a href="shop-cart.html">Cart</a></li>
-				<li><a href="shop-checkout.html">Checkout</a></li>
-			  </ul>
-			</li>
-			<li className="dropdown"> <a href="#">News</a>
-			  <ul>
-				<li><a href="news-grid.html">News Grid</a></li>
-				<li><a href="news-details.html">News Details</a></li>
-			  </ul>
-			</li> */}
-			<li><a href="page-contact.html">Contact</a></li>
-		  </ul>
-		</nav>
-		{/* <!-- Main Menu End-->  */}
-	  </div>
-	  <div className="outer-box"> <a href="tel:123456789" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span>
-		<h6 className="title">+ 12 (3456) 7890</h6>
-		</a>
-		<div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div>
-		<div className="btn"> <a href="page-contact.html" className="theme-btn">get solution</a> </div>
-		<div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
-	  </div>
-	</div>
-	{/* <!-- Mobile Menu  -->  */}
-  </div>
-  <div className="mobile-menu">
-	<div className="menu-backdrop"></div>
-	
-	{/* <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--> */}
-	<nav className="menu-box">
-	  <div className="upper-box">
-		<div className="nav-logo"><a href="index.html"><img src={Logo} alt="" title=""/></a></div>
-		<div className="close-btn"><i className="icon fa fa-times"></i></div>
-	  </div>
-	  <ul className="navigation clearfix">
-		{/* <!--Keep This Empty / Menu will come through Javascript--> */}
-	  </ul>
-	  <ul className="contact-list-one">
-		<li> 
-		  {/* <!-- Contact Info Box --> */}
-		  <div className="contact-info-box"> <i className="icon lnr-icon-phone-handset"></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
-		</li>
-		<li> 
-		  {/* <!-- Contact Info Box --> */}
-		  <div className="contact-info-box"> <span className="icon lnr-icon-envelope1"></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
-		</li>
-		<li> 
-		  {/* <!-- Contact Info Box --> */}
-		  <div className="contact-info-box"> <span className="icon lnr-icon-clock"></span> <span className="title">Send Email</span> Mon - Sat 8:00 - 6:30, Sunday - CLOSED </div>
-		</li>
-	  </ul>
-	  <ul className="social-links">
-		<li><a href="#"><i className="fab fa-twitter"></i></a></li>
-		<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-		<li><a href="#"><i className="fab fa-pinterest"></i></a></li>
-		<li><a href="#"><i className="fab fa-instagram"></i></a></li>
-	  </ul>
-	</nav>
-  </div>
-  {/* <!-- End Mobile Menu -->  */}
-  
-  {/* <!-- Header Search --> */}
-  <div className="search-popup"> <span className="search-back-drop"></span>
-	<button className="close-search"><span className="fa fa-times"></span></button>
-	<div className="search-inner">
-	  <form method="post" action="index.html">
-		<div className="form-group">
-		  <input type="search" name="search-field"  placeholder="Search..." required=""/>
-		  <button type="submit"><i className="fa fa-search"></i></button>
-		</div>
-	  </form>
-	</div>
-  </div>
-  {/* <!-- End Header Search -->  */}
-  
-  {/* <!-- Sticky Header  --> */}
-  <div className="sticky-header">
-	<div className="auto-container">
-	  <div className="inner-container"> 
-		{/* <!--Logo--> */}
-		<div className="logo"> <a href="index.html" title=""><img src={Logo} alt="" title=""/></a> </div>
-		
-		{/* <!--Right Col--> */}
-		<div className="nav-outer"> 
-		  {/* <!-- Main Menu --> */}
-		  <nav className="main-menu">
-			<div className="navbar-collapse show collapse clearfix">
-			  <ul className="navigation clearfix">
-				{/* <!--Keep This Empty / Menu will come through Javascript--> */}
-			  </ul>
-			</div>
-		  </nav>
-		  {/* <!-- Main Menu End--> 
-		  
-		  <!--Mobile Navigation Toggler--> */}
-		  <div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
-		</div>
-	  </div>
-	</div>
-  </div>
-  {/* <!-- End Sticky Menu -->  */}
-</header>
-  {/* <!--End Main Header -->
 
-<!-- banner-section  --> */}
+
+
 
 {/* <section className="banner-section">
 <div className="banner-slider slick-initialized slick-slider"><button className="slick-prev slick-arrow" aria-label="Previous" type="button" >Previous</button>
@@ -582,10 +402,35 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	
 	  <div className="outer-box">
 		<div className="auto-container">
-		  <div className="content-box"> <span className="sub-title">DENTAL SOLUTIONS</span>
-			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Premium craftsmanship. Fast delivery. Unbeatable value.</h1>
-			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
+		
+		  <div className="content-box"> 
+		  <Fade cascade>
+		  <ul>
+			<li>
+				
+		  		<span className="sub-title">DENTAL SOLUTIONS</span>
+				  
+			</li>
+		  	<li>
+			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Wizards of <br/>Dental Technology
+			<Sparkle
+				minSize={6}
+				maxSize={12}
+				count={40}
+				fadeOutSpeed={12}
+				color={'#ffaa17'}
+				flickerSpeed={'slowest'}
+
+			/></h1>
+			</li>
+			<li>
+			<div className="btn-box"> <a href="/aboutus" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
+			</li>
+			</ul>
+			</Fade>
 		  </div>
+		  
+		  
 		</div>
 	  </div>
 	  <div className="d-none d-md-block col-lg-8 float-end" style={{width: "700px", position: "relative"}}><ThreeScene2/></div>
@@ -695,7 +540,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="inner-column">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Mill} alt=""/></figure>
-			<figure className="image-2 overlay-anim bounce-y"><img src={BKG} style={{width: "250px", height: "200px"}} alt=""/></figure>
+			{/* <figure className="image-2 overlay-anim bounce-y"><img src={BKG} style={{width: "250px", height: "200px"}} alt=""/></figure> */}
 		  </div>
 		</div>
 	  </div>
@@ -709,14 +554,14 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <section className="service-section-two">
   <div className="auto-container">
 	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
-	  <h2>Provide Best Quality Services<br/>Thats Stand Behind</h2>
+	  <h2>Providing Quality Produccts<br/>At The Right Price</h2>
 	</div>
 	<div className="row"> 
 	  {/* <!-- service-block-two --> */}
 	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={Zirc} alt=""/></figure>
 			<i className="flaticon-clock-1"></i>
 		  </div>
 		  <div className="content-box">
@@ -730,7 +575,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={ZircV} alt=""/></figure>
 			<i className="flaticon-monitor-1"></i>
 		  </div>
 		  <div className="content-box">
@@ -744,7 +589,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={Partial} alt=""/></figure>
 			<i className="flaticon-cog-1"></i>
 		  </div>
 		  <div className="content-box">
@@ -848,25 +693,25 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End client section --> 
 
 <!-- about-section-two --> */}
-<section className="about-section-two pt-0">
+{/* <section className="about-section-two pt-0">
   <div className="auto-container">
-	<div className="row"> 
+	<div className="row">  */}
 	  {/* <!-- image-column --> */}
-	  <div className="image-column col-lg-6 wow fadeInLeft" data-wow-delay="400ms">
+	  {/* <div className="image-column col-lg-6 wow fadeInLeft" data-wow-delay="400ms">
 		<div className="inner-column">
 		  <div className="image-box">
-			<figure className="image overlay-anim"> 
+			<figure className="image overlay-anim">  */}
 			{/* <img src={Denture} alt=""/> */}
-			  <div className="btn-box"> <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" className="play-now" data-fancybox="gallery" data-caption=""><i className="icon fa fa-play" aria-hidden="true"></i><span className="ripple"></span></a> </div>
-			</figure>
+			  {/* <div className="btn-box"> <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" className="play-now" data-fancybox="gallery" data-caption=""><i className="icon fa fa-play" aria-hidden="true"></i><span className="ripple"></span></a> </div> */}
+			{/* </figure>
 			<div className="exp-box">
 			  <h3 className="title">Professional Dental Lab You Can Trust</h3>
 			</div>
 		  </div>
 		</div>
-	  </div>
+	  </div> */}
 	  {/* <!-- content-column --> */}
-	  <div className="content-column col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+	  {/* <div className="content-column col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 		<div className="inner-column">
 		  <div className="sec-title"> <span className="sub-title">TECH MANAGEMENT  ::::::</span>
 			<h2>The Best Source For IT Solutions</h2>
@@ -875,11 +720,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  <div className="title-box">
 			<h6 className="title">Lorem Ipsum is simply available typesetting industry been the industry standard. </h6>
 		  </div>
-		  <div className="content-box"> 
+		  <div className="content-box">  */}
 			{/* <!--Skills--> */}
-			<div className="skills"> 
+			{/* <div className="skills">  */}
 			  {/* <!--Skill Item--> */}
-			  <div className="skill-item">
+			  {/* <div className="skill-item">
 				<div className="skill-header">
 				  <h6 className="skill-title">Technology</h6>
 				</div>
@@ -900,15 +745,15 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End about-section-two --> 
 
 <!-- testimonial-section --> */}
-<section className="testimonial-section">
+{/* <section className="testimonial-section">
   <div className="auto-container">
-	<div className="row"> 
+	<div className="row">  */}
 	  {/* <!-- content-column --> */}
-	  <div className="content-column col-lg-5 col wow fadeInUp" data-wow-delay="400ms">
+	  {/* <div className="content-column col-lg-5 col wow fadeInUp" data-wow-delay="400ms">
 		<div className="inner-column">
 		  <div className="sec-title"> <span className="sub-title">OUR FEEDBAKCS  ::::::</span>
 			<h2>What They are Talking About Company</h2>
@@ -918,13 +763,13 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<button className="next-btn"><i className="fa fa-angle-right"></i></button>
 		  </div>
 		</div>
-	  </div>
+	  </div> */}
 	  {/* <!-- block-column --> */}
-	  <div className="col-lg-7 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay="400ms">
+	  {/* <div className="col-lg-7 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay="400ms">
 		<div className="outer-box">
-		  <div className="row testimonial-slider"> 
+		  <div className="row testimonial-slider">  */}
 			{/* <!-- testimonial-block --> */}
-			<div className="testimonial-block col-md-6">
+			{/* <div className="testimonial-block col-md-6">
 			  <div className="inner-box">
 				<ul className="rating">
 				  <li><i className="fa fa-star"></i></li>
@@ -940,9 +785,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				  <img src={Denture} alt=""/>
 				</div>
 			  </div>
-			</div>
+			</div> */}
 			{/* <!-- testimonial-block --> */}
-			<div className="testimonial-block col-md-6">
+			{/* <div className="testimonial-block col-md-6">
 			  <div className="inner-box">
 				<ul className="rating">
 				  <li><i className="fa fa-star"></i></li>
@@ -958,9 +803,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				  <img src={Denture} alt=""/>
 				</div>
 			  </div>
-			</div>
+			</div> */}
 			{/* <!-- testimonial-block --> */}
-			<div className="testimonial-block col-md-6">
+			{/* <div className="testimonial-block col-md-6">
 			  <div className="inner-box">
 				<ul className="rating">
 				  <li><i className="fa fa-star"></i></li>
@@ -976,9 +821,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				  <img src={Denture} alt=""/>
 				</div>
 			  </div>
-			</div>
+			</div> */}
 			{/* <!-- testimonial-block --> */}
-			<div className="testimonial-block col-md-6">
+			{/* <div className="testimonial-block col-md-6">
 			  <div className="inner-box">
 				<ul className="rating">
 				  <li><i className="fa fa-star"></i></li>
@@ -1000,11 +845,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End testimonial-section --> 
 
 <!-- FAQ Section --> */}
-<section className="faqs-section">
+<section className="faqs-section" style={{backgroundColor: "#F6F6F6"}}>
   <div className="auto-container">
 	<div className="row"> 
 	  {/* <!-- FAQ Column --> */}
@@ -1053,8 +898,20 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </ul>
 		</div>
 	  </div>
+	  <div className="image-column col-lg-6" style={{backgroundImage: `url(${Layer11})`}} >
+		{/* <img src={Layer11}></img> */}
+		<div className="inner-column">
+		  <div className="image-box">
+			{/* <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<div className="exp-box bounce-y"> <i className="flaticon-chat"></i>
+			  <h6 className="title">Top Quality Marketing Solution</h6> */}
+			{/* </div> */}
+		  </div>
+		</div>
+		
+	  </div>
 	  {/* <!-- image-column --> */}
-	  <div className="image-column col-lg-6 wow fadeInUp" data-wow-delay="600ms">
+	  {/* <div className="image-column col-lg-6 wow fadeInUp" data-wow-delay="600ms">
 		<div className="inner-column">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -1063,21 +920,21 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</div>
 		  </div>
 		</div>
-	  </div>
+	  </div> */}
 	</div>
   </div>
 </section>
 {/* <!--End FAQ Section --> 
 
 <!-- news-section --> */}
-<section className="news-section pt-0">
+{/* <section className="news-section pt-0">
   <div className="auto-container">
 	<div className="sec-title text-center wow fadeInUp" data-wow-delay="400ms"> <span className="sub-title">::::::  FROM THE BLOG  ::::::</span>
 	  <h2>Our Latest News Update <br/>and Artical </h2>
 	</div>
-	<div className="row"> 
+	<div className="row">  */}
 	  {/* <!-- news-block --> */}
-	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -1093,9 +950,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
 		  </div>
 		</div>
-	  </div>
+	  </div> */}
 	  {/* <!-- news-block --> */}
-	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -1112,9 +969,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
 		  </div>
 		</div>
-	  </div>
+	  </div> */}
 	  {/* <!-- news-block --> */}
-	  <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -1131,87 +988,87 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
 		  </div>
 		</div>
-	  </div>
-	</div>
+	  </div> */}
+	{/* </div>
   </div>
-</section>
+</section> */}
 {/* <!-- End news-section -->
 
 <!-- contact-banner --> */}
-<section className="contact-banner">
+<section className="contact-banner" style={{backgroundColor: "#F6F6F6"}}>
   <div className="auto-container">
-	<div className="outer-box">
-	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> <span>We’re here to help to grow your business</span>
-		<h3 className="title">Looking for the Best IT Business Solutions?</h3>
+	<div className="outer-box" style={{backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat"}}>
+	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> <span>We’re here for your dental needs. </span>
+		<h3 className="title">Ready to try out the Wizards of Dental Technology?</h3>
 	  </div>
-	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> </div>
+	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="/signup" className="ser-btn theme-btn">Sign Up</a> </div>
 	</div>
   </div>
 </section>
 {/* <!-- End contect-banner --> 
 
 <!-- Main Footer --> */}
-<footer className="main-footer">
-  <div className="bg-image"  style={{backgroundImage: Image}}></div>
+{/* <footer className="main-footer" style={{backgroundImage: `url(${FootBKG})`}}>
+  <div className="bg-image"  ></div> */}
   {/* <!--Widgets Section--> */}
-  <div className="widgets-section">
+  {/* <div className="widgets-section">
 	<div className="auto-container">
-	  <div className="row"> 
+	  <div className="row">  */}
 		{/* <!--Footer Column--> */}
-		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft">
+		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft">
 		  <div className="footer-widget about-widget">
-			<div className="logo"><a href="index.html"><img src={Denture} alt="" /></a></div>
-			<div className="text">Desires to obtain pain of itself, because it is pain, but occasionally circumstances.</div>
-			<div className="subscribe-form">
-			  <form method="post" action="#">
+			<div className="logo"><a href="index.html"><img src={Logo} alt="" /></a></div>
+			<div className="text">Wizards of Dental Technology</div>
+			<div className="subscribe-form"> */}
+			  {/* <form method="post" action="#">
 				<div className="form-group">
 				  <input type="email" name="email" className="email"  placeholder="Your Address" required=""/>
 				  <button type="button" className="theme-btn"><i className="fa fa-paper-plane"></i></button>
 				</div>
-			  </form>
-			</div>
+			  </form> */}
+			{/* </div>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!--Footer Column--> */}
-		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="400ms">
+		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="400ms">
 		  <div className="footer-widget gallery-widget">
-			<h3 className="widget-title">Our Projects</h3>
+			<h3 className="widget-title">Our Products</h3>
 			<div className="widget-content">
 			  <div className="outer clearfix">
 				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
 				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure> */}
+				{/* <figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
 				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-			  </div>
+				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure> */}
+			  {/* </div>
 			</div>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!--Footer Column--> */}
-		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="600ms">
+		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="600ms">
 		  <div className="footer-widget links-sec">
 			<h3 className="widget-title">Quick Links</h3>
 			<ul className="user-links">
-			  <li><a href="#">About Company</a></li>
-			  <li><a href="#">Meet the Team</a></li>
-			  <li><a href="#">News & Media</a></li>
+			  <li><a href="/aboutus">About Us</a></li>
+			  <li><a href="#">Products</a></li> */}
+			  {/* <li><a href="#">News & Media</a></li>
 			  <li><a href="#">Our Projects</a></li>
-			  <li><a href="#">Our Services</a></li>
-			  <li><a href="#">Contact</a></li>
+			  <li><a href="#">Our Services</a></li> */}
+			  {/* <li><a href="#">Contact Us</a></li>
 			</ul>
 		  </div>
-		</div>
+		</div> */}
 		{/* <!--Footer Column--> */}
-		<div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="800ms">
+		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="800ms">
 		  <div className="footer-widget contact-widget">
 			<h3 className="widget-title">Contact Now</h3>
 			<div className="widget-content">
-			  <div className="text"><i className="fa-solid fa-location-dot"></i>66 Road Broklyn Street, 600 New York, USA</div>
+			  <div className="text"><i className="fa-solid fa-location-dot"></i>3393 US Hwy 17-92 West Haines City, FL, USA</div>
 			  <ul className="contact-info">
-				<li><i className="fa fa-envelope"></i> <a href="mailto:needhelp@yourdomain.com">needhelp@company.com</a><br/>
+				<li><i className="fas fa-envelope"></i> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a><br/>
 				</li>
-				<li><i className="fa fa-phone"></i> <a href="tel:+926668880000">+92 666 888 0000</a><br/>
+				<li><i className="fas fa-phone"></i> <a href="tel:+926668880000">+92 666 888 0000</a><br/>
 				</li>
 			  </ul>
 			  <ul className="social-icons">
@@ -1225,10 +1082,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		</div>
 	  </div>
 	</div>
-  </div>
+  </div> */}
   
   {/* <!--Footer Bottom--> */}
-  <div className="footer-bottom"/>
+  {/* <div className="footer-bottom"/>
 	<div className="auto-container">
 	  <div className="inner-container">
 		<div className="copyright-text text-center">© zitch Copyright reserved by <a href="index.html">kodesolution.com</a>
@@ -1236,7 +1093,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</footer>
+</footer> */}
 {/* <!--End Main Footer --> */}
 
 
@@ -1244,6 +1101,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End Page Wrapper -->
 <!-- Scroll To Top --> */}
 <div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div>
+
+
 
 	</>
 

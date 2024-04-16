@@ -28,7 +28,7 @@ Page Title
 }
 
 .page-title {
-    background-color: var(--theme-color2);
+    
     position: relative;
     background-repeat: no-repeat;
     background-position: center;
@@ -43,7 +43,7 @@ Page Title
         margin-top: 240px;
     }
     &:before {
-        background-color: rgba(17, 32, 33, 0.8);
+        
         bottom: 0;
         content: "";
         left: 0;
@@ -68,47 +68,7 @@ Page Title
 .page-breadcrumb {
     position: relative;
     margin-top: 5px;
-    li {
-        position: relative;
-        display: inline-block;
-        margin-right: 12px;
-        padding-right: 13px;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 400;
-        text-transform: capitalize;
-        &:after {
-            position: absolute;
-            content: "\f105";
-            right: -6px;
-            top: 1px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 900;
-            font-family: 'Font Awesome 6 Pro';
-            color: #ffffff;
-        }
-        &:last-child {
-            &::after {
-                display: none;
-            }
-            padding-right: 0px;
-            margin-right: 0px;
-        }
-        a {
-            color: var(--theme-color3);
-            font-weight: 500;
-            text-transform: capitalize;
-            transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
-            -ms-transition: all 0.3s ease;
-            -o-transition: all 0.3s ease;
-            &:hover {
-                color: #ffffff;
-            }
-        }
-    }
+   
 }
 .page-title.style-two {
     background-position: center center;

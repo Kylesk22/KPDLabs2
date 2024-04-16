@@ -245,7 +245,93 @@ export const Navbar = (props) => {
 	</div>
   </div>
   {/* <!-- End Sticky Menu -->  */}
-</header>:""
+</header>:
+
+<header className="main-header header-style-one" >
+		<div className="logo-box ">
+		  <div className="logo ps-lg-4 ps-5 mx-auto"><a href="/"><img src={Logo} alt=""/></a></div>
+		 <strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
+		</div>
+		{/* <!-- header-top --> */}
+		<div className="header-top">
+		  <div className="top-left">
+			<ul>
+			<li>
+		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
+		  <i className="fas fa-location-dot"></i>
+		  3393 US Hwy 17-92 West Haines City, FL
+		</a>
+	  </li>
+			  <li><a href="" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
+			</ul>
+		  </div>
+		  <div className="top-right">
+			<ul className="log-out">
+				<li>
+				<Link to="/">
+					<button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={(logout)}>Log Out</button>
+                </Link>
+				</li>
+			  
+			</ul>
+			<ul className="social-icons">
+			  <li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
+			  {/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
+			  <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+			  {/* <li><a href="#"><i className="fa-brands fa-youtube"></i></a></li> */}
+			</ul>
+		  </div>
+		</div>
+		<div className="header-lower"> 
+		  {/* <!-- Main box --> */}
+		  <div className="main-box"> 
+			{/* <!--Nav Box--> */}
+			<div className="nav-outer">
+			  <nav className="nav main-menu">
+				
+			  </nav>
+			  {/* <!-- Main Menu End-->  */}
+			</div>
+			
+		 </div>
+		</div>
+
+
+
+
+
+
+
+		
+  {/* <!-- End Header Search -->  */}
+  
+  {/* <!-- Sticky Header  --> */}
+  <div className="sticky-header">
+	<div className="auto-container">
+	  <div className="inner-container"> 
+		{/* <!--Logo--> */}
+		<div className="logo"> <a href="/" title=""><img src={Logo} alt="" title=""/></a> </div>
+		
+		{/* <!--Right Col--> */}
+		<div className="nav-outer"> 
+		  {/* <!-- Main Menu --> */}
+		  <nav className="main-menu">
+			<div className="navbar-collapse show collapse clearfix">
+			  <ul className="navigation clearfix">
+				{/* <!--Keep This Empty / Menu will come through Javascript--> */}
+			  </ul>
+			</div>
+		  </nav>
+		  {/* <!-- Main Menu End--> 
+		  
+		  <!--Mobile Navigation Toggler--> */}
+		  <div className="mobile-nav-toggler"> <i className="fas fa-bars"></i> </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  {/* <!-- End Sticky Menu -->  */}
+</header>
 
 
 

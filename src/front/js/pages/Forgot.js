@@ -26,37 +26,31 @@ export const Forgot = props => {
 
 
     async function sendEmail(userEmail, verificationCode) {
-        const SENDGRID_API_KEY = 'YOUR_SENDGRID_API_KEY';
-        const SENDGRID_API_URL = 'https://api.sendgrid.com/v3/mail/send';
+        const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY;
+        const MAILGUN_DOMAIN = 'help.kpdlabs.com';
+        const MAILGUN_API_URL = `https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`;
     
-        const data = {
-            personalizations: [
-                {
-                    to: [{ email: userEmail }],
-                    subject: 'Password Reset Verification Code'
-                }
-            ],
-            from: { email: 'kpdlabs@kpdlabs.com' },
-            content: [
-                {
-                    type: 'text/plain',
-                    value: `Your verification code is: ${verificationCode}`
-                }
-            ]
-        };
+        const formData = new FormData();
+        formData.append('from', 'your_email@example.com');
+        formData.append('to', userEmail);
+        formData.append('subject', 'Password Reset Verification Code');
+        formData.append('text', `Your verification code is: ${verificationCode}`);
     
         try {
-            const response = await axios.post(SENDGRID_API_URL, data, {
+            const response = await fetch(MAILGUN_API_URL, {
+                method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${SENDGRID_API_KEY}`,
-                    'Content-Type': 'application/json'
-                }
+                    Authorization: `Basic ${Buffer.from(`api:${MAILGUN_API_KEY}`).toString('base64')}`
+                },
+                body: formData
             });
-            console.log('Email sent: ', response.data);
+            const responseData = await response.json();
+            console.log('Email sent: ', responseData);
         } catch (error) {
             console.error('Error sending email: ', error);
         }
     }
+    
 
     const validateCode = () => {
 

@@ -31,16 +31,16 @@ export const Forgot = props => {
         const MAILGUN_API_URL = `https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`;
     
         const formData = new FormData();
-        formData.append('from', 'your_email@example.com');
+        formData.append('from', 'kpdlabs@kpdlabs.com');
         formData.append('to', userEmail);
         formData.append('subject', 'Password Reset Verification Code');
         formData.append('text', `Your verification code is: ${verificationCode}`);
-    
+
         try {
             const response = await fetch(MAILGUN_API_URL, {
                 method: 'POST',
                 headers: {
-                    Authorization: `Basic ${Buffer.from(`api:${MAILGUN_API_KEY}`).toString('base64')}`
+                    Authorization: `Basic ${btoa(`api:${MAILGUN_API_KEY}`)}`
                 },
                 body: formData
             });
@@ -48,7 +48,7 @@ export const Forgot = props => {
             console.log('Email sent: ', responseData);
         } catch (error) {
             console.error('Error sending email: ', error);
-        }
+    }
     }
     
 

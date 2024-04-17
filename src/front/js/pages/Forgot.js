@@ -5,7 +5,7 @@ import { Signup } from "../pages/Signup";
 import Intro from "../../img/footer-flip.jpg"
 
 
-
+import axios from 'axios';
 
 export const Forgot = props => {
     const [email, setEmail] = useState("")
@@ -80,9 +80,9 @@ export const Forgot = props => {
         fetch(`${url}/forgotPassword`, options)
         .then((res)=> {
             if (res.ok) {
-                let response = res.json()
+                
                 let genCode = generateVerificationCode(6)
-                alert(response.message)
+                alert(res.message.json())
                 sendEmail(email, genCode)
 
                 return res.json()

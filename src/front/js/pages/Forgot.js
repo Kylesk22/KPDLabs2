@@ -18,7 +18,7 @@ export const Forgot = props => {
             email,
         }
         const options = {
-            method:"GET",
+            method:"POST",
 
             
             headers:{

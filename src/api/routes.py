@@ -167,7 +167,7 @@ def login():
             )
         return res
     
-@api.route('/forgotPassword', methods=['GET'])
+@api.route('/forgotPassword', methods=['POST'])
 def forgot_pw():
     email = request.json.get("email", None)
     checkEmail = User.query.filter_by(email=email).first()

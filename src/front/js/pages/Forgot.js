@@ -80,8 +80,10 @@ export const Forgot = props => {
         fetch(`${url}/forgotPassword`, options)
         .then((res)=> {
             if (res.ok) {
-                alert(res.message)
-                sendEmail(email, generateVerificationCode(6))
+                response = res.json()
+                let genCode = generateVerificationCode(6)
+                alert(response.message)
+                sendEmail(email, genCode)
 
                 return res.json()
                 
@@ -124,7 +126,7 @@ export const Forgot = props => {
                     <div>
                         {(showCode)?
                         <div>
-                        <input placeholder="Enter Verfication Code Here" value={code} onClick={()=>{setCode(e.target.value)}}></input>
+                        <input placeholder="Enter Verfication Code Here" value={code} onClick={(e)=>{setCode(e.target.value)}}></input>
                         <button onClick={()=>{validateCode()}}></button>
                         </div>
                     :""}

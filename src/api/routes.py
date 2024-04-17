@@ -172,6 +172,33 @@ def login():
             )
         return res
     
+@api.route('/updatePassword', methods=['PUT'])
+def update_pw():
+    email = request.json.get("email", None)
+    new_pass = request.json.get("newPW")
+    user_info = User.query.filter_by(email=email).first()
+
+    unsaltPass = new_pass.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(unsaltPass, salt)
+
+
+    user_info.password = hashed.decode("utf-8", "ignore")
+    db.session.commit()
+
+    id = user_info.id
+
+    res = make_response(
+        jsonify(
+            {"id": id }
+        )
+    )
+
+
+   
+    return(res)
+
+
 @api.route('/forgotPassword', methods=['POST'])
 def forgot_pw():
     email = request.json.get("email", None)
@@ -188,7 +215,34 @@ def forgot_pw():
     else:
         res = make_response(
             jsonify(
-                {"message": "Email not found, please check entered email is correct."}
+                {"message": "Email not found, please check entered email is correct."},
+                {"data": "Email not found"}
+            )
+        )
+        return(res)
+    
+@api.route('/validateanswers', methods=['POST'])
+def validate_answers():
+    email = request.json.get("email", None)
+    security1 = request.json.get("securityAnswer1", None)
+    security2 = request.json.get("securityAnswer2", None)
+    user_info = User.query.filter_by(email=email).first()
+    saved_answer_1 = user_info.security_answer_1
+    saved_answer_2 = user_info.security_answer_2
+
+    
+
+    if security1 == saved_answer_1 and security2 == saved_answer_2:
+        res = make_response(
+            jsonify(
+                {"message": "Success"},
+            )
+        )
+        return(res)
+    else:
+        res = make_response(
+            jsonify(
+                {"message": "Answer Incorrect, Please Try Again"},
             )
         )
         return(res)

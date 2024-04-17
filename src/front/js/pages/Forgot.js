@@ -80,7 +80,7 @@ export const Forgot = props => {
         fetch(`${url}/forgotPassword`, options)
         .then((res)=> {
             if (res.ok) {
-                response = res.json()
+                let response = res.json()
                 let genCode = generateVerificationCode(6)
                 alert(response.message)
                 sendEmail(email, genCode)

@@ -9,9 +9,59 @@ import Intro from "../../img/footer-flip.jpg"
 
 export const Forgot = props => {
     const [email, setEmail] = useState("")
+    const [showCode, setShowCode] = useState(false)
+    const [code, setCode] = useState("")
 
     const url = process.env.BACKEND_URL
     let user;
+
+    function generateVerificationCode(length) {
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let vCode = '';
+        for (let i = 0; i < length; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return vCode;
+    }
+
+
+    async function sendEmail(userEmail, verificationCode) {
+        const SENDGRID_API_KEY = 'YOUR_SENDGRID_API_KEY';
+        const SENDGRID_API_URL = 'https://api.sendgrid.com/v3/mail/send';
+    
+        const data = {
+            personalizations: [
+                {
+                    to: [{ email: userEmail }],
+                    subject: 'Password Reset Verification Code'
+                }
+            ],
+            from: { email: 'kpdlabs@kpdlabs.com' },
+            content: [
+                {
+                    type: 'text/plain',
+                    value: `Your verification code is: ${verificationCode}`
+                }
+            ]
+        };
+    
+        try {
+            const response = await axios.post(SENDGRID_API_URL, data, {
+                headers: {
+                    Authorization: `Bearer ${SENDGRID_API_KEY}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log('Email sent: ', response.data);
+        } catch (error) {
+            console.error('Error sending email: ', error);
+        }
+    }
+
+    const validateCode = () => {
+
+    }
+
 
     const verificationCode = () => {
         user = {
@@ -30,15 +80,17 @@ export const Forgot = props => {
         fetch(`${url}/forgotPassword`, options)
         .then((res)=> {
             if (res.ok) {
+                alert(res.message)
+                sendEmail(email, generateVerificationCode(6))
+
                 return res.json()
-                .then((data)=>{
-                    
-                });
+                
             } else {
                 return res.json()
                 .then((body)=>{
                     console.log(body)
                     alert(body.message);
+                    setShowCode(false)
                 });
             }
         })
@@ -66,8 +118,16 @@ export const Forgot = props => {
                     <button className="btn btn-primary">Signup</button>
                 </Link>  */}
                 <div className="form-group mx-auto w-100 text-center" >
-                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={()=>verificationCode()}>Get Verfication Code
+                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={()=>{verificationCode(); setShowCode(true)}}>Get Verfication Code
                         </button>
+                    </div>
+                    <div>
+                        {(showCode)?
+                        <div>
+                        <input placeholder="Enter Verfication Code Here" value={code} onClick={()=>{setCode(e.target.value)}}></input>
+                        <button onClick={()=>{validateCode()}}></button>
+                        </div>
+                    :""}
                     </div>
                 
             </div>

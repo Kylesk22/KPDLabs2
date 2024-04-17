@@ -82,10 +82,13 @@ export const Forgot = props => {
             if (res.ok) {
                 
                 let genCode = generateVerificationCode(6)
-                alert(res.message.json())
+                
                 sendEmail(email, genCode)
 
                 return res.json()
+                .then((body)=>{
+                    alert(body.message)
+                })
                 
             } else {
                 return res.json()

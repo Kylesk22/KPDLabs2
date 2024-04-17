@@ -180,7 +180,8 @@ def forgot_pw():
     if checkEmail is not None:
         res = make_response(
             jsonify(
-                {"message": "Email found!"}
+                {"message": "Email found!"},
+                {"data": checkEmail.serialize()}
             )
         )
         return(res)

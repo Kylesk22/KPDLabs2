@@ -105,7 +105,8 @@ export const Forgot = props => {
 
 
     return(
-        <div style={{paddingTop: "200px", paddingBottom: "500px"}}>
+        <div style={{paddingTop: "200px", paddingBottom: "500px", textAlign: "center", backgroundImage: `url(${Intro})`}}>
+            <h2 style={{color: "white"}}>Password Recovery</h2>
              <div className="form container form container-fluid"  style={{width: "300px"}}>
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>

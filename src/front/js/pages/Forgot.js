@@ -75,9 +75,11 @@ export const Forgot = props => {
         .then((res)=> {
             if (res.ok) {
                 
-                let genCode = generateVerificationCode(6)
+                // USE THIS FOR EMAIL VERIFICATION
+
+                // let genCode = generateVerificationCode(6)
                 
-                sendEmail(email, genCode)
+                // sendEmail(email, genCode)
 
                 return res.json()
                 .then((body)=>{
@@ -117,8 +119,9 @@ export const Forgot = props => {
                     <button className="btn btn-primary">Signup</button>
                 </Link>  */}
                 <div className="form-group mx-auto w-100 text-center" >
-                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={()=>{verificationCode(); setShowCode(true)}}>Get Verfication Code
-                        </button>
+                        {/* this button is for email verification code*/}
+                        {/* <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={()=>{verificationCode(); setShowCode(true)}}>Get Verfication Code
+                        </button> */}
                     </div>
                     <div>
                         {(showCode)?

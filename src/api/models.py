@@ -17,6 +17,10 @@ class User(db.Model):
     lname = db.Column(db.String(50), unique=False, nullable=False)
     user_scans = db.relationship('Scans', backref='user')
     case_number = db.relationship('Case', backref='user')
+    security_question_1 = db.Column(db.String(50), unique=False, nullable=False)
+    security_answer_1 = db.Column(db.String(50), unique=False, nullable=False)
+    security_question_2 = db.Column(db.String(50), unique=False, nullable=False)
+    security_answer_2 = db.Column(db.String(50), unique=False, nullable=False)
     #scans = db.Column(db.)
     
 
@@ -30,6 +34,8 @@ class User(db.Model):
             "address":self.address,
             "fname":self.fname,
             "lname":self.lname,
+            "security_question_1": self.security_question_1,
+            "security_question_2": self.security_question_2,
             # "cases":self.case_number,
             # "scans": self.scans,
             # do not serialize the password, its a security breach

@@ -12,10 +12,15 @@ export const Signup = props => {
     const [password, setPassword] = useState("")
     const [streetAddress, setStreetAddress] = useState("")
     const [city, setCity] = useState("")
+    const [zip, setZip] = useState("")
     const [stateSelect, setStateSelect] = useState("AL")
     const [email, setEmail] = useState("")
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
+    const [security1, setSecurity1] = useState("")
+    const [security2, setSecurity2] = useState("")
+    const [security1Answer, setSecurity1Answer] = useState("")
+    const [security2Answer, setSecurity2Answer] = useState("")
     const { store, actions } = useContext(Context);
     
 
@@ -27,9 +32,13 @@ export const Signup = props => {
         newUser = {
             firstName,
             lastName,
-            "address": `${streetAddress} ${city}, ${stateSelect}`,
+            "address": `${streetAddress} ${city}, ${stateSelect}, ${zip}`,
             email,
             password,
+            security1,
+            security2,
+            security1Answer,
+            security2Answer
         }
         const options = {
             method:"POST",
@@ -99,6 +108,10 @@ export const Signup = props => {
                         </SelectUSState>
                     </div>
                     <div className="form-group mx-3">
+                        <label htmlFor="zip" className="form-label mt-4 " style={{textAlign: "center", color:"white"}}>Zip Code</label>
+                        <input type="text" className="form-control" id="zip" placeholder="Zip Code" value={zip} onChange={(e)=>setZip(e.target.value)}/>
+                    </div>
+                    <div className="form-group mx-3">
                         <label htmlFor="userEmail" className="form-label mt-4 "  style={{color:"white"}}>Email address</label>
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>We'll never share your email with anyone else.</small>
@@ -106,6 +119,40 @@ export const Signup = props => {
                     <div className="form-group mx-3">
                         <label htmlFor="userPassword" className="form-label mt-4"  style={{color:"white"}}>Password</label>
                         <input type="password" className="form-control" id="userPasswrod" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/> 
+                    </div>
+                    <div className="form-group mx-3">
+                        <label htmlFor="security1" className="form-label mt-4"  style={{color:"white"}}>Security Question 1</label>
+                        <select className="form-select" id="security1"  aria-label="Security">   
+                            <option value="What is the name of your first pet?" onClick={()=>setSecurity1("What is the name of your first pet?")}>What is the name of your first pet?</option>
+                            <option value="What is the city or town where you were born?" onClick={()=>setSecurity1("What is the city or town where you were born?")}>What is the city or town where you were born?</option>
+                            <option value="What is the name of your favorite childhood teacher?" onClick={()=>setSecurity1("What is the name of your favorite childhood teacher?")}>What is the name of your favorite childhood teacher?</option>
+                            <option value="What is the make and model of your first car?" onClick={()=>setSecurity1("What is the make and model of your first car?")}>What is the make and model of your first car?</option>
+                            <option value="What is the name of the street you grew up on?" onClick={()=>setSecurity1("What is the name of the street you grew up on?")}>What is the name of the street you grew up on?</option>
+                            <option value="What is your favorite book or movie?" onClick={()=>setSecurity1("What is your favorite book or movie?")}>What is your favorite book or movie?</option>
+                            <option value="What is your favorite food or restaurant?" onClick={()=>setSecurity1("What is your favorite food or restaurant?")}>What is your favorite food or restaurant?</option>
+                            <option value="What is the name of your maternal grandmother?" onClick={()=>setSecurity1("What is the name of your maternal grandmother?")}>What is the name of your maternal grandmother?</option>
+
+                        </select>
+                        <br></br>
+                        <input type="text" className="form-control" id="security1" placeholder="Answer" value={security1Answer} onChange={(e)=>setSecurity1Answer(e.target.value)}/>
+                        <small id="passRecovery" className="form-text text-muted"  style={{color:"white"}}>Password Recovery</small> 
+                    </div>
+                    <div className="form-group mx-3">
+                        <label htmlFor="security2" className="form-label mt-4"  style={{color:"white"}}>Security Question 2</label>
+                        <select className="form-select" id="security2" aria-label="Security">   
+                            <option value="What is the name of your first pet?" onClick={()=>setSecurity2("What is the name of your first pet?")}>What is the name of your first pet?</option>
+                            <option value="What is the city or town where you were born?" onClick={()=>setSecurity2("What is the city or town where you were born?")}>What is the city or town where you were born?</option>
+                            <option value="What is the name of your favorite childhood teacher?" onClick={()=>setSecurity2("What is the name of your favorite childhood teacher?")}>What is the name of your favorite childhood teacher?</option>
+                            <option value="What is the make and model of your first car?" onClick={()=>setSecurity2("What is the make and model of your first car?")}>What is the make and model of your first car?</option>
+                            <option value="What is the name of the street you grew up on?" onClick={()=>setSecurity2("What is the name of the street you grew up on?")}>What is the name of the street you grew up on?</option>
+                            <option value="What is your favorite book or movie?" onClick={()=>setSecurity2("What is your favorite book or movie?")}>What is your favorite book or movie?</option>
+                            <option value="What is your favorite food or restaurant?" onClick={()=>setSecurity2("What is your favorite food or restaurant?")}>What is your favorite food or restaurant?</option>
+                            <option value="What is the name of your maternal grandmother?" onClick={()=>setSecurity2("What is the name of your maternal grandmother?")}>What is the name of your maternal grandmother?</option>
+
+                        </select>
+                        <br></br>
+                        <input type="text" className="form-control" id="security2" placeholder="Answer" value={security2Answer} onChange={(e)=>setSecurity2Answer(e.target.value)}/> 
+                        <small id="passRecovery" className="form-text text-muted"  style={{color:"white"}}>Password Recovery</small> 
                     </div>
                     <br/>
                     <div className="form-group mx-auto w-100 text-center" >

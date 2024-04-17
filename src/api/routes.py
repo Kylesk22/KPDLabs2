@@ -113,6 +113,11 @@ def signup():
         address = user_info["address"],
         fname = user_info["firstName"],
         lname = user_info["lastName"],
+        security_question_1 = user_info["security1"],
+        security_question_2 = user_info["security2"],
+        security_answer_1 = user_info["security1Answer"],
+        security_answer_2 = user_info["security2Answer"],
+        
     )
 
     db.session.add(new_user)

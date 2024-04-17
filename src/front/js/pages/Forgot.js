@@ -10,6 +10,9 @@ import Intro from "../../img/footer-flip.jpg"
 export const Forgot = props => {
     const [email, setEmail] = useState("")
 
+    const url = process.env.BACKEND_URL
+    let user;
+
     const verificationCode = () => {
         user = {
             email,

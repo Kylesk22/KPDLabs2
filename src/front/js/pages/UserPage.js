@@ -163,7 +163,7 @@ export const UserPage = props => {
 
     return(
         <div >
-            {(sessionStorage.getItem("id"))?
+            {(getCookie("access_token_cookie"))?
             <div>
             <div className="row" style={{paddingTop: "150px"}}>
                 <div className="col-12 text-center">

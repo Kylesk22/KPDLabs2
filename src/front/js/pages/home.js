@@ -554,7 +554,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <section className="service-section-two">
   <div className="auto-container">
 	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
-	  <h2>Providing Quality Produccts<br/>At The Right Price</h2>
+	  <h2>Providing Quality Products<br/>At The Right Price</h2>
 	</div>
 	<div className="row"> 
 	  {/* <!-- service-block-two --> */}

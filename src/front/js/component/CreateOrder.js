@@ -30,7 +30,7 @@ const uploadSTLFilesToSpaces = async () => {
                 Bucket: 'case-scans',
                 Key: `${caseNum}/${stlF.name}`, // Specify the key (path) under which the file will be stored
                 Body: stlF, // Provide the File object directly
-                ContentType: stlF.type, // Specify the content type of the file
+                ContentType: 'application/sla', // Specify the content type of the file
                 ACL: 'public-read' // Optionally, set the ACL (Access Control List) to control access permissions
             };
 

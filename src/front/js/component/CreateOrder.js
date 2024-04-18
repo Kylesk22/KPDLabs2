@@ -11,7 +11,7 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 export const CreateOrder = props => {
 //testing new
 const s3Client = new S3Client({
-    endpoint: "https://case-scans.nyc3.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
+    endpoint: "https://nyc3.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
     forcePathStyle: false, // Configures to use subdomain/virtual calling format.
     region: "nyc3", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (for example, nyc3).
     credentials: {

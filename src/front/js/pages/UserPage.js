@@ -26,13 +26,6 @@ export const UserPage = props => {
     let id = sessionStorage.getItem("id");
     const url = process.env.BACKEND_URL
 
-    const logout = () => {
-		sessionStorage.clear();
-		setLoggedIn(false);
-		props.updateLogState(false)
-
-	}
-
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
         for (let cookie of cookies) {
@@ -170,7 +163,7 @@ export const UserPage = props => {
 
     return(
         <div >
-            {(getCookie("access_token_cookie"))?
+            {(sessionStorage.getItem("id"))?
             <div>
             <div className="row" style={{paddingTop: "150px"}}>
                 <div className="col-12 text-center">
@@ -197,11 +190,7 @@ export const UserPage = props => {
 
                 }
             </div>
-            </div>:
-            <div>
-                
-                <Navigate to= {`/`}> </Navigate>
-            </div>}
+            </div>:<Navigate to= {`/`}> </Navigate>}
         </div>
     )
 }

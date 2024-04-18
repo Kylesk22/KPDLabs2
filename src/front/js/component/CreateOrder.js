@@ -9,6 +9,30 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 
 export const CreateOrder = props => {
+
+
+    const [crownTooth, setCrownTooth] = useState([])
+    const [toothInput, setToothInput] = useState("")
+    const [toothInput2, setToothInput2] = useState("")
+    const [patientName, setPatientName] = useState("")
+    const [stlFile, setStlFile] = useState([])
+    const [fileName, setFileName] = useState([])
+    const [photos, setPhotos] = useState([])
+    const [photoName, setPhotoName] = useState([])
+    const [caseNum, setCaseNum ] = useState(props.caseId)
+    const [product, setProduct] = useState("")
+    const [shade, setShade] = useState("")
+    const [finish, setFinish] = useState("")
+    const [page, setPage] = useState(props.page)
+    const [bridge, setBridge] = useState('false')
+    const[bridgeTooth, setBridgeTooth] = useState([])
+    const [note, setNote] = useState("")
+    const reader = new FileReader();
+    let id = sessionStorage.getItem("id");
+    let stl_urls = []
+    let photo_urls = []
+
+
 //testing new
 const s3Client = new S3Client({
     endpoint: "https://nyc3.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
@@ -120,26 +144,7 @@ const uploadFile = (file) => {
     });
   };
 
-    const [crownTooth, setCrownTooth] = useState([])
-    const [toothInput, setToothInput] = useState("")
-    const [toothInput2, setToothInput2] = useState("")
-    const [patientName, setPatientName] = useState("")
-    const [stlFile, setStlFile] = useState([])
-    const [fileName, setFileName] = useState([])
-    const [photos, setPhotos] = useState([])
-    const [photoName, setPhotoName] = useState([])
-    const [caseNum, setCaseNum ] = useState(props.caseId)
-    const [product, setProduct] = useState("")
-    const [shade, setShade] = useState("")
-    const [finish, setFinish] = useState("")
-    const [page, setPage] = useState(props.page)
-    const [bridge, setBridge] = useState('false')
-    const[bridgeTooth, setBridgeTooth] = useState([])
-    const [note, setNote] = useState("")
-    const reader = new FileReader();
-    let id = sessionStorage.getItem("id");
-    let stl_urls = []
-    let photo_urls = []
+    
 
 
     const uploadCase = () => {
@@ -147,6 +152,7 @@ const uploadFile = (file) => {
         // const formData = new FormData();
         // formData.append('file', stlFile);
         console.log(stlFile)
+        console.log(caseNum)
         uploadObject();
         
         const url = process.env.BACKEND_URL

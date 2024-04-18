@@ -51,7 +51,7 @@ export const SideBar = props => {
     // }
     return (
         <div className="container pt-4" style={{width: "20%", position: "absolute"}}>
-            <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">
+            <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden " >
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
             

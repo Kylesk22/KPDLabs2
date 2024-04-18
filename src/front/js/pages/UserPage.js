@@ -6,6 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import { SingleOrder } from "../component/SingleOrder";
 import { ContactUs } from "../component/ContactUs";
 import { UpdateAccountInfo } from "../component/UpdateAccountInfo";
+import AboutBKG from "../../img/testi-bg.jpg"
 
 
 
@@ -164,7 +165,7 @@ export const UserPage = props => {
     return(
         <div >
             {(sessionStorage.getItem("id"))?
-            <div>
+            <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
                 <div className="col-12 text-center">
                     <h1>Welcome Dr. {firstName}</h1>

@@ -5,16 +5,43 @@ import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AWS from 'aws-sdk';
 
+
 export const CreateOrder = props => {
 
-   
+
 
 AWS.config.update({
   accessKeyId: process.env.SPACES_KEY,
   secretAccessKey: process.env.SPACES_SECRET_KEY,
   endpoint: 'https://case-scans.nyc3.digitaloceanspaces.com', // Change to your Space's endpoint
-  region: 'us-east-1' // Change to the appropriate region if different
+ 
 });
+
+// Assuming stlFile is an array of file paths to STL files
+
+
+// Function to upload STL files to DigitalOcean Spaces
+const uploadSTLFilesToSpaces = async () => {
+    try {
+        // Loop through each STL file
+        for (const stlF of stlFile) {
+            // Set up the parameters for uploading to DigitalOcean Spaces
+            const params = {
+                Bucket: 'case-scans',
+                Key: `${caseNum}/${stlF.name}`, // Specify the key (path) under which the file will be stored
+                Body: stlF, // Provide the File object directly
+                ContentType: stlF.type, // Specify the content type of the file
+                ACL: 'public-read' // Optionally, set the ACL (Access Control List) to control access permissions
+            };
+
+            // Upload the file to DigitalOcean Spaces
+            await s3.putObject(params).promise(); // Using promise to await the upload operation
+            console.log(`${stlF.name} uploaded successfully`);
+        }
+    } catch (err) {
+        console.error('Error uploading files:', err);
+    }
+};
 
 const s3 = new AWS.S3();
 
@@ -70,7 +97,7 @@ const uploadFile = (file) => {
         // const formData = new FormData();
         // formData.append('file', stlFile);
         console.log(stlFile)
-        uploadFile(stlFile)
+        uploadSTLFilesToSpaces()
         
         const url = process.env.BACKEND_URL
 

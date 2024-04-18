@@ -164,6 +164,7 @@ const uploadFile = (file) => {
                 method:"PUT",
                 headers:{
                     "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": getCookie("csrf_access_token"),
                 },
                 body: JSON.stringify(updateCase)
             }

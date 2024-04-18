@@ -199,7 +199,7 @@ export const UserPage = props => {
             </div>
             </div>:
             <div>
-                {logout()}
+                
                 <Navigate to= {`/`}> </Navigate>
             </div>}
         </div>

@@ -33,7 +33,6 @@ const params = {
     }
   };
 
-
   const uploadObject = async () => {
     try {
 

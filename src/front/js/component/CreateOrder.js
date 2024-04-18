@@ -5,47 +5,47 @@ import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AWS from 'aws-sdk';
 
-import { PutObjectCommand, S3Client } from 'aws-sdk';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 
 export const CreateOrder = props => {
 //testing new
-// const s3Client = new S3Client({
-//     endpoint: "https://case-scans.nyc3.cdn.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
-//     forcePathStyle: false, // Configures to use subdomain/virtual calling format.
-//     region: "us-east-1", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (for example, nyc3).
-//     credentials: {
-//         accessKeyId: process.env.SPACES_KEY, // Access key pair. You can create access key pairs using the control panel or API.
-//         secretAccessKey: process.env.SPACES_SECRET_KEY // Secret access key defined through an environment variable.
-//     }
-// });
+const s3Client = new S3Client({
+    endpoint: "https://case-scans.nyc3.cdn.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
+    forcePathStyle: false, // Configures to use subdomain/virtual calling format.
+    region: "us-east-1", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (for example, nyc3).
+    credentials: {
+        accessKeyId: process.env.SPACES_KEY, // Access key pair. You can create access key pairs using the control panel or API.
+        secretAccessKey: process.env.SPACES_SECRET_KEY // Secret access key defined through an environment variable.
+    }
+});
 
 
-// const params = {
-//     Bucket: "case-scans", // The path to the directory you want to upload the object to, starting with your Space name.
-//     Key: `${caseNum}/${stlFile.name}`, // Object key, referenced whenever you want to access this file later.
-//     Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
-//     ACL: "private", // Defines ACL permissions, such as private or public.
-//     Metadata: { // Defines metadata tags.
-//       "x-amz-meta-my-key": "your-value"
-//     }
-//   };
+const params = {
+    Bucket: "case-scans", // The path to the directory you want to upload the object to, starting with your Space name.
+    Key: `${caseNum}/${stlFile.name}`, // Object key, referenced whenever you want to access this file later.
+    Body: "Hello, World!", // The object's contents. This variable is an object, not a string.
+    ACL: "private", // Defines ACL permissions, such as private or public.
+    Metadata: { // Defines metadata tags.
+      "x-amz-meta-my-key": "your-value"
+    }
+  };
 
 
-//   const uploadObject = async () => {
-//     try {
-//       const data = await s3Client.send(new PutObjectCommand(params));
-//       console.log(
-//         "Successfully uploaded object: " +
-//           params.Bucket +
-//           "/" +
-//           params.Key
-//       );
-//       return data;
-//     } catch (err) {
-//       console.log("Error", err);
-//     }
-//   };
+  const uploadObject = async () => {
+    try {
+      const data = await s3Client.send(new PutObjectCommand(params));
+      console.log(
+        "Successfully uploaded object: " +
+          params.Bucket +
+          "/" +
+          params.Key
+      );
+      return data;
+    } catch (err) {
+      console.log("Error", err);
+    }
+  };
   
   
   // Step 5: Call the uploadObject function.
@@ -140,7 +140,7 @@ const uploadFile = (file) => {
         // const formData = new FormData();
         // formData.append('file', stlFile);
         console.log(stlFile)
-        uploadSTLFilesToSpaces();
+        uploadObject();
         
         const url = process.env.BACKEND_URL
 

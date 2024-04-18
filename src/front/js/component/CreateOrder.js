@@ -140,7 +140,7 @@ const uploadFile = (file) => {
         // const formData = new FormData();
         // formData.append('file', stlFile);
         console.log(stlFile)
-        uploadObject();
+        // uploadObject();
         
         const url = process.env.BACKEND_URL
 

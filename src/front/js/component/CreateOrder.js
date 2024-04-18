@@ -13,7 +13,7 @@ export const CreateOrder = props => {
 AWS.config.update({
   accessKeyId: process.env.SPACES_KEY,
   secretAccessKey: process.env.SPACES_SECRET_KEY,
-  endpoint: 'https://case-scans.nyc3.digitaloceanspaces.com', // Change to your Space's endpoint
+  endpoint: 'https://case-scans.nyc3.cdn.digitaloceanspaces.com', // Change to your Space's endpoint
  
 });
 

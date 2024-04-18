@@ -153,7 +153,7 @@ const uploadFile = (file) => {
             
 
             const updateCase = {
-                "stl_urls" :stl_urls,
+                "stl_urls" : `${caseNum}/${stl_urls}.name`,
                 "case": caseNum,
                 "name": patientName,
                 "product": product,

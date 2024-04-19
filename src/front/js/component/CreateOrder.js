@@ -103,7 +103,7 @@ const uploadObject = async () => {
                 ContentType: "text/plain"
             };
 
-            console.log(stlFile[i]);
+            
 
             const data = await s3Client.send(new PutObjectCommand(params));
             console.log("Successfully uploaded object: " + params.Bucket + "/" + params.Key);
@@ -111,6 +111,37 @@ const uploadObject = async () => {
         }
 
         return uploadedFiles;
+    } catch (err) {
+        console.log("Error", err);
+        return [];
+    }
+};
+
+const uploadPictures = async () => {
+    try {
+        console.log(photos.length);
+        const uploadedPhotos = [];
+
+        for (let i = 0; i < photos.length; i++) {
+            const params = {
+                Bucket: "case-scans",
+                Key: `${caseNum}/${photos[i].name}`,
+                Body: photos[i],
+                ACL: "private",
+                Metadata: {
+                    "x-amz-meta-my-key": `${caseNum}`
+                },
+                ContentType: "text/plain"
+            };
+
+            
+
+            const data = await s3Client.send(new PutObjectCommand(params));
+            console.log("Successfully uploaded photo: " + params.Bucket + "/" + params.Key);
+            uploadedPhotos.push(data);
+        }
+
+        return uploadedPhotos;
     } catch (err) {
         console.log("Error", err);
         return [];
@@ -189,9 +220,9 @@ AWS.config.update({
 
     const uploadCase = () => {
 
-        console.log(stlFile)
-        console.log(caseNum)
+       
         uploadObject();
+        uploadPictures();
         
         const url = process.env.BACKEND_URL
 

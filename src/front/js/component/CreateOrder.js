@@ -49,6 +49,7 @@ const s3Client = new S3Client({
 
   const uploadObject = async () => {
     try {
+        console.log(stlFile)
         for (let i = 0; i < stlFile.length; i++) {
         const params = {
     
@@ -64,7 +65,7 @@ const s3Client = new S3Client({
           };
 
 
-
+          console.log(stlFile[i])
 
 
       const data = await s3Client.send(new PutObjectCommand(params));

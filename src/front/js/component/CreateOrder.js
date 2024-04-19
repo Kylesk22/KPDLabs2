@@ -559,7 +559,7 @@ AWS.config.update({
                 </button>
                 
                 <div style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
-                    {fileName.join(', ')} {/* Display selected file names */}
+                    {photoName.join(', ')} {/* Display selected file names */}
                 </div>
                 </div>
                 {/* <div className="text-center col-8 col-lg-4 pt-3">

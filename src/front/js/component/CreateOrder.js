@@ -525,13 +525,13 @@ AWS.config.update({
             </div>
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4 pt-3">
-                <label  htmlFor="scanUpload"><h5>Upload Photos</h5></label>
+                <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>
                 <br></br>
                 {/* <input className="form-control" required id="scanUpload" type="file" multiple style={{borderRadius: "1rem", minHeight:"40px"}}  value={fileName} onChange={(e)=>{[...fileName, setFileName(e.target.value)]; setStlFile([...stlFile, e.target.files[0]]); console.log(stlFile)}}></input> */}
                 <input 
                     className="form-control" 
                     
-                    id="scanUpload" 
+                    id="picUpload" 
                     type="file" 
                     multiple 
                     style={{ display: 'none' }} // Hide the file input
@@ -541,7 +541,7 @@ AWS.config.update({
                         const newPicName = [...photoName];
 
                         // Loop through each selected file and add it to the new arrays
-                        for (let i = 0; i < files.length; i++) {
+                        for (let i = 0; i < pics.length; i++) {
                             newPics.push(pics[i]);
                             newPicName.push(pics[i].name);
                         }
@@ -553,7 +553,7 @@ AWS.config.update({
                 />
                 <button 
                     className="btn btn-primary"
-                    onClick={() => document.getElementById('scanUpload').click()} // Trigger file input click
+                    onClick={() => document.getElementById('picUpload').click()} // Trigger file input click
                 >
                     Select Files
                 </button>

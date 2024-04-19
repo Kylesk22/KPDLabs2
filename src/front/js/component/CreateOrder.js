@@ -54,7 +54,8 @@ const params = {
     ACL: "private", // Defines ACL permissions, such as private or public.
     Metadata: { // Defines metadata tags.
       "x-amz-meta-my-key": `${caseNum}`
-    }
+    },
+    ContentType: "application/sla"
   };
 
   const uploadObject = async () => {
@@ -95,118 +96,68 @@ AWS.config.update({
 
 
 // Function to upload STL files to DigitalOcean Spaces
-const uploadSTLFilesToSpaces = async () => {
-    try {
-        // Loop through each STL file
-        for (const stlF of stlFile) {
-            // Set up the parameters for uploading to DigitalOcean Spaces
-            const params = {
-                Bucket: 'case-scans',
-                Key: `${caseNum}/${stlF.name}`, // Specify the key (path) under which the file will be stored
-                Body: stlF, // Provide the File object directly
-                ContentType: 'application/sla', // Specify the content type of the file
-                ACL: 'public-read' // Optionally, set the ACL (Access Control List) to control access permissions
-            };
+// const uploadSTLFilesToSpaces = async () => {
+//     try {
+//         // Loop through each STL file
+//         for (const stlF of stlFile) {
+//             // Set up the parameters for uploading to DigitalOcean Spaces
+//             const params = {
+//                 Bucket: 'case-scans',
+//                 Key: `${caseNum}/${stlF.name}`, // Specify the key (path) under which the file will be stored
+//                 Body: stlF, // Provide the File object directly
+//                 ContentType: 'application/sla', // Specify the content type of the file
+//                 ACL: 'public-read' // Optionally, set the ACL (Access Control List) to control access permissions
+//             };
 
-            // Upload the file to DigitalOcean Spaces
-            await s3.putObject(params).promise(); // Using promise to await the upload operation
-            console.log(`${stlF.name} uploaded successfully`);
-        }
-    } catch (err) {
-        console.error('Error uploading files:', err);
-    }
-};
+//             // Upload the file to DigitalOcean Spaces
+//             await s3.putObject(params).promise(); // Using promise to await the upload operation
+//             console.log(`${stlF.name} uploaded successfully`);
+//         }
+//     } catch (err) {
+//         console.error('Error uploading files:', err);
+//     }
+// };
 
-const s3 = new AWS.S3();
+// const s3 = new AWS.S3();
 
-const uploadFile = (file) => {
-    // Create a FormData object and append the file to it
-    const formData = new FormData();
-    formData.append('file', file);
+// const uploadFile = (file) => {
+//     // Create a FormData object and append the file to it
+//     const formData = new FormData();
+//     formData.append('file', file);
   
-    // Extract the Blob object from FormData
-    const blob = formData.get('file');
+//     // Extract the Blob object from FormData
+//     const blob = formData.get('file');
   
-    const params = {
-      Bucket: 'case-scans',
-      Key: caseNum ? `${caseNum}/${file.name}` : file.name,
-      Body: blob,
-      ContentType: file.type, // Set the Content-Type header
-    };
+//     const params = {
+//       Bucket: 'case-scans',
+//       Key: caseNum ? `${caseNum}/${file.name}` : file.name,
+//       Body: blob,
+//       ContentType: file.type, // Set the Content-Type header
+//     };
   
-    // Use the putObject method to upload the file
-    s3.putObject(params, (err, data) => {
-      if (err) {
-        console.error('Error uploading file:', err);
-      } else {
-        console.log('File uploaded successfully:', data);
-      }
-    });
-  };
+//     // Use the putObject method to upload the file
+//     s3.putObject(params, (err, data) => {
+//       if (err) {
+//         console.error('Error uploading file:', err);
+//       } else {
+//         console.log('File uploaded successfully:', data);
+//       }
+//     });
+//   };
 
     
 
 
     const uploadCase = () => {
 
-        // const formData = new FormData();
-        // formData.append('file', stlFile);
         console.log(stlFile)
         console.log(caseNum)
         uploadObject();
         
         const url = process.env.BACKEND_URL
 
-            // for (let i = 0; i < stlFile.length; i++) {
-            // // const stl_url = window.URL.createObjectURL(new Blob([stlFile]));
-            //     let stl_url = window.URL.createObjectURL(new Blob([stlFile[i]]));
-            //     stl_urls.push(stl_url)
+       
 
-            // }
-            
-            // for (let i = 0; i < photos.length; i++) {
-            //     // const stl_url = window.URL.createObjectURL(new Blob([stlFile]));
-            //         let photos_url = window.URL.createObjectURL(new Blob([photos[i]]));
-            //         photo_urls.push(photos_url)
-    
-            //     }
-        
-
-        // fetch(`${url}/${id}/new_scans`, {
-        //     method: 'POST',
-        //     headers:{
-        //         "Content-Type": "multipart/form-data",
-        //     },
-        //     body: formData
-        // })
-        // .then(response => {
-        //     if (!response.ok) {
-        //         throw new Error('Network response was not ok');
-        //     }
-        //     return response.json();
-        // })
-        // .then(data => {
-        //     console.log(data);
-        // })
-        // .catch(error => {
-        //     console.error('There was a problem with the fetch operation:', error);
-        // });
-    
-
-
-        //   const link = document.createElement('a');
-        //   link.href = url;
-        //   link.setAttribute('download', stlFile.name);
-
-        //   document.body.appendChild(link);
-        //   link.click();
-
-            
-
-        
-
-
-            
 
             const updateCase = {
                 "stl_urls" : `${caseNum}/${stl_urls}.name`,

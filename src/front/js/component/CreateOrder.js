@@ -59,7 +59,7 @@ const s3Client = new S3Client({
             Metadata: { // Defines metadata tags.
               "x-amz-meta-my-key": `${caseNum}`
             },
-            ContentType: "application/sla"
+            ContentType: "text/plain"
           };
 
 

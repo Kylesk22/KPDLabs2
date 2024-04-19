@@ -53,7 +53,7 @@ const params = {
     Body: stlFile, // The object's contents. This variable is an object, not a string.
     ACL: "private", // Defines ACL permissions, such as private or public.
     Metadata: { // Defines metadata tags.
-      "x-amz-meta-my-key": caseNum
+      "x-amz-meta-my-key": `${caseNum}`
     }
   };
 

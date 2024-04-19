@@ -54,7 +54,7 @@ const s3Client = new S3Client({
 
             Bucket: "case-scans", // The path to the directory you want to upload the object to, starting with your Space name.
             Key: `${caseNum}/${stlFile[0].name}`, // Object key, referenced whenever you want to access this file later.
-            Body: stlFile, // The object's contents. This variable is an object, not a string.
+            Body: stlFile[0], // The object's contents. This variable is an object, not a string.
             ACL: "private", // Defines ACL permissions, such as private or public.
             Metadata: { // Defines metadata tags.
               "x-amz-meta-my-key": `${caseNum}`

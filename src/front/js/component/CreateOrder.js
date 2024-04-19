@@ -530,7 +530,7 @@ AWS.config.update({
                 {/* <input className="form-control" required id="scanUpload" type="file" multiple style={{borderRadius: "1rem", minHeight:"40px"}}  value={fileName} onChange={(e)=>{[...fileName, setFileName(e.target.value)]; setStlFile([...stlFile, e.target.files[0]]); console.log(stlFile)}}></input> */}
                 <input 
                     className="form-control" 
-                    required 
+                    
                     id="scanUpload" 
                     type="file" 
                     multiple 
@@ -573,7 +573,7 @@ AWS.config.update({
                 {/* <input className="form-control" required id="scanUpload" type="file" multiple style={{borderRadius: "1rem", minHeight:"40px"}}  value={fileName} onChange={(e)=>{[...fileName, setFileName(e.target.value)]; setStlFile([...stlFile, e.target.files[0]]); console.log(stlFile)}}></input> */}
                 <input 
                     className="form-control" 
-                    required 
+                    
                     id="scanUpload" 
                     type="file" 
                     multiple 

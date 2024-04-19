@@ -53,39 +53,70 @@ const s3Client = new S3Client({
 
 
 
-  const uploadObject = async () => {
-    try {
-        console.log(stlFile)
-        for (let i = 0; i < stlFile.length; i++) {
-        const params = {
+//   const uploadObject = async () => {
+//     try {
+//         console.log(stlFile.length)
+//         for (let i = 0; i < stlFile.length; i++) {
+//         const params = {
     
 
-            Bucket: "case-scans", // The path to the directory you want to upload the object to, starting with your Space name.
-            Key: `${caseNum}/${stlFile[i].name}`, // Object key, referenced whenever you want to access this file later.
-            Body: stlFile[i], // The object's contents. This variable is an object, not a string.
-            ACL: "private", // Defines ACL permissions, such as private or public.
-            Metadata: { // Defines metadata tags.
-              "x-amz-meta-my-key": `${caseNum}`
-            },
-            ContentType: "text/plain"
-          };
+//             Bucket: "case-scans", // The path to the directory you want to upload the object to, starting with your Space name.
+//             Key: `${caseNum}/${stlFile[i].name}`, // Object key, referenced whenever you want to access this file later.
+//             Body: stlFile[i], // The object's contents. This variable is an object, not a string.
+//             ACL: "private", // Defines ACL permissions, such as private or public.
+//             Metadata: { // Defines metadata tags.
+//               "x-amz-meta-my-key": `${caseNum}`
+//             },
+//             ContentType: "text/plain"
+//           };
 
 
-          console.log(stlFile[i])
+//           console.log(stlFile[i])
 
 
-      const data = await s3Client.send(new PutObjectCommand(params));
-      console.log(
-        "Successfully uploaded object: " +
-          params.Bucket +
-          "/" +
-          params.Key
-      );
-      return data;
-    }} catch (err) {
-      console.log("Error", err);
+//       const data = await s3Client.send(new PutObjectCommand(params));
+//       console.log(
+//         "Successfully uploaded object: " +
+//           params.Bucket +
+//           "/" +
+//           params.Key
+//       );
+//       return data;
+//     }} catch (err) {
+//       console.log("Error", err);
+//     }
+//   };
+const uploadObject = async () => {
+    try {
+        console.log(stlFile.length);
+        const uploadedFiles = [];
+
+        for (let i = 0; i < stlFile.length; i++) {
+            const params = {
+                Bucket: "case-scans",
+                Key: `${caseNum}/${stlFile[i].name}`,
+                Body: stlFile[i],
+                ACL: "private",
+                Metadata: {
+                    "x-amz-meta-my-key": `${caseNum}`
+                },
+                ContentType: "text/plain"
+            };
+
+            console.log(stlFile[i]);
+
+            const data = await s3Client.send(new PutObjectCommand(params));
+            console.log("Successfully uploaded object: " + params.Bucket + "/" + params.Key);
+            uploadedFiles.push(data);
+        }
+
+        return uploadedFiles;
+    } catch (err) {
+        console.log("Error", err);
+        return [];
     }
-  };
+};
+
   
   
   // Step 5: Call the uploadObject function.
@@ -158,7 +189,7 @@ AWS.config.update({
 
     const uploadCase = () => {
 
-        console.log(stlFile[0].name)
+        console.log(stlFile)
         console.log(caseNum)
         uploadObject();
         

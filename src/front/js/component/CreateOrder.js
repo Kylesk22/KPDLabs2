@@ -34,10 +34,18 @@ export const CreateOrder = props => {
 
 
 
-    useEffect(()=>{
-        console.log(stlFile)
-        console.log(fileName.join(', '))
-    })
+ 
+
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Return null if cookie not found
+    }
 
 //testing new
 const s3Client = new S3Client({

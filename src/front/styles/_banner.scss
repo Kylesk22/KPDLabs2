@@ -9,6 +9,9 @@
 .banner-section{
     position: relative;
     height: 100vh;
+    @media only screen and (max-width:1200px){
+        margin-top: 30px;
+    }
     .slick-prev,
     .slick-next{
         left: auto;

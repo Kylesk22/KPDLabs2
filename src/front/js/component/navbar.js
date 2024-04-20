@@ -15,12 +15,16 @@ import "../../styles/animate.css"
 import { Fade, Slide } from "react-awesome-reveal";
 
 
+
+
 export const Navbar = (props) => {
 	const [loggedIn, setLoggedIn] = useState(props.logState);
 	const [pressedLogIn, setPressedLogin] = useState(false);
 
 	const [show, setShow] = useState(props.logState);
 	const [showModal, setShowModal] = useState(false);
+	const [mobileActive, setMobileActive] = useState(false)
+	const [displayProducts, setDisplayProducts] = useState(false)
 
 	const handleToggleModal = () => {
 		setShowModal(!showModal);
@@ -161,52 +165,67 @@ export const Navbar = (props) => {
 			  </a>
 			  <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div>
 			  <div className="btn"> <a href="page-contact.html" className="theme-btn">get solution</a> </div>
-			  <div className="mobile-nav-toggler"> <i className="fa fa-bars"></i> </div>
+			  <div className="mobile-nav-toggler"  onClick={()=>setMobileActive(true)}> <i className="fa-solid fa-bars mobile-menu-visible"></i> </div>
 			</div>
 		 </div>
 		</div>
 
+	<div className={`${mobileActive ? 'mobile-menu-visible' : ''}`} >
+		<div className={`mobile-menu `} >
+		<div className="menu-backdrop"></div>
+		
+		
+		<nav className="menu-box">
+			<div className="upper-box" style={{backgroundColor: "black"}}>
+			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" title=""/></a></div>
+			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
+			</div>
+			<ul className="navigation clearfix">
+				<li className="current dropdown"> <a href="/">Home</a>
+					
+				</li>
+				<li className="dropdown"> <a href="/aboutus">About Us</a></li>
+				<li className="dropdown" onClick={()=>setDisplayProducts(true)}> <a href="#">Products</a>
+					<ul style={{ display: displayProducts ? "block" : "none" }}>
+					  <li><a href="/crownandbridge">Crown and Bridge</a></li>
+					  <li><a href="/veneer">Veneer</a></li>
+					  <li><a href="/partial">Partial</a></li>
+					  <li><a href="/denture">Denture</a></li>
+					</ul>
+					<div className="dropdown-btn"><i className="fas fa-angle-down"></i></div>
+				</li>
+				<li><a href="/contactus">Contact</a></li>
+			
+			</ul>
+			<ul className="contact-list-one">
+			<li> 
+			
+				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
+			</li>
+			<li> 
+			
+				<div className="contact-info-box"> <span className="icon fas fa-envelope" style={{fontSize: "25px"}}></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
+			</li>
+			<li> 
+				
+				<div className="contact-info-box"> <i className="icon fas fa-clock" style={{fontSize: "25px"}}></i> <span className="title">Hours</span> Mon - Fri 9:00AM - 5:00PM</div>
+			</li>
+			</ul>
+			<ul className="social-links">
+			<li><a href="#"><i className="fab fa-twitter"></i></a></li>
+			<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+			<li><a href="#"><i className="fab fa-pinterest"></i></a></li>
+			<li><a href="#"><i className="fab fa-instagram"></i></a></li>
+			</ul>
+		</nav>
+		</div>
+	</div>
 
-		{/* <div className="mobile-menu">
-      <div className="menu-backdrop"></div>
-      
-      
-      <nav className="menu-box">
-        <div className="upper-box">
-          <div className="nav-logo"><a href="/"><img src={Logo} alt="" title=""/></a></div>
-          <div className="close-btn"><i className="icon fa fa-times"></i></div>
-        </div>
-        <ul className="navigation clearfix">
-          
-        </ul>
-        <ul className="contact-list-one">
-          <li> 
-           
-            <div className="contact-info-box"> <i className="icon lnr-icon-phone-handset"></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
-          </li>
-          <li> 
-          
-            <div className="contact-info-box"> <span className="icon lnr-icon-envelope1"></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
-          </li>
-          <li> 
-            
-            <div className="contact-info-box"> <span className="icon lnr-icon-clock"></span> <span className="title">Send Email</span> Mon - Sat 8:00 - 6:30, Sunday - CLOSED </div>
-          </li>
-        </ul>
-        <ul className="social-links">
-          <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i className="fab fa-pinterest"></i></a></li>
-          <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-        </ul>
-      </nav>
-    </div> */}
 
 
 
 
-
-		<div className="search-popup"> <span className="search-back-drop"></span>
+		{/* <div className="search-popup"> <span className="search-back-drop"></span>
 	<button className="close-search"><span className="fa fa-times"></span></button>
 	<div className="search-inner">
 	  <form method="post" action="index.html">
@@ -216,7 +235,7 @@ export const Navbar = (props) => {
 		</div>
 	  </form>
 	</div>
-  </div>
+  </div> */}
   {/* <!-- End Header Search -->  */}
   
   {/* <!-- Sticky Header  --> */}

@@ -1100,7 +1100,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 </div>
 {/* <!-- End Page Wrapper -->
 <!-- Scroll To Top --> */}
-<div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div>
+{/* <div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div> */}
 
 
 

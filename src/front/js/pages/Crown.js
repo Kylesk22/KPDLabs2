@@ -29,7 +29,7 @@ import { Slide } from "react-awesome-reveal";
 
 export const Crown = props => {
 
-    const [currentPage, setCurrentPage] = useState("indications")
+    const [currentPage, setCurrentPage] = useState("product")
 
     function sendEmail() {
         var recipient = "kpdlabs@kpdlabs.com";
@@ -235,7 +235,9 @@ return(
             <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
-            
+                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "product"  ? "active" : ""}`} onClick={()=>setCurrentPage("product")}>
+                            <i className="fas fa-house fa-fw me-3"></i><span>Product Information</span>
+                        </a>
                         <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Indications</span>
                         </a>
@@ -302,7 +304,11 @@ return(
         </div> */}
 
         <div className="col-8 text-center mt-3 me-4" style={{border: "1px black solid"}}>
-            {(currentPage === "indications")?
+            {(currentPage === "product")?
+            <Slide>
+                Product Information
+            </Slide>:
+            (currentPage === "indications")?
             <Slide>
                 Indications
             </Slide>:

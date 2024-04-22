@@ -367,21 +367,22 @@ def new_case(id):
         update_case.name = name
         update_case.teeth = teeth
         update_case.product = product
+       
         update_case.update_date.append(update_date)
         
         db.session.commit()
 
-        # for scan in blob_scans:
+        for scan in blob_scans:
             
 
         
-        #     new_scan = Scans(
-        #         scan = scan,
-        #         user_id = id,
-        #         case_id = case
-        #     )
-        #     db.session.add(new_scan)
-        #     db.session.commit()
+            new_scan = Scans(
+                scan = scan,
+                user_id = id,
+                case_id = case
+            )
+            db.session.add(new_scan)
+            db.session.commit()
         
         res = make_response("updated")
         res.headers['Content-Type'] = 'application/json'

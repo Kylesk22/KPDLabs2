@@ -240,7 +240,7 @@ AWS.config.update({
 
 
             const updateCase = {
-                "stl_urls" : `${caseNum}/${stl_urls}.name`,
+                "stl_urls" : fileName,
                 "case": caseNum,
                 "name": patientName,
                 "product": product,

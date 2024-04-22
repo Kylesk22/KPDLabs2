@@ -13,9 +13,45 @@ export const UpdateAccountInfo = props => {
     const [streetAddress, setStreetAddress] = useState("")
     const [city, setCity] = useState("")
     const [stateSelect, setStateSelect] = useState("AL")
+    const [zip, setZip] = useState("")
     const [email, setEmail] = useState("")
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
+
+    const url = process.env.BACKEND_URL
+    let newUser;
+
+    function submitHandler(e){
+       
+        
+        
+        e.preventDefault();
+        newUser = {
+            "address": `${streetAddress} ${city}, ${stateSelect}, ${zip}`,
+        }
+        const options = {
+            method:"PUT",
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(newUser)
+        }
+        fetch(`${url}/updateAccount`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    alert(data.message)
+                })}
+            
+            })
+       
+        .catch((err)=> {
+            console.log(err);
+            alert("Error updating address")
+    })
+    }
     
     
     return(
@@ -23,43 +59,29 @@ export const UpdateAccountInfo = props => {
             
             <div className="lg-col-4 sm-col-8 text-center" >
             
-                <form className="form container lg-col-4"  style={{borderRadius: "5%", maxWidth: "600px"}} >
-                    {/* <div className="form-group mx-3">
-                        <label htmlFor="firstName" className="form-label mt-4" style={{textAlign: "center"}} >First Name</label>
-                        <input type="text" className="form-control" readOnly id="firstName" placeholder="First Name" value={firstName}  />
+                <form className="form container lg-col-4"  style={{borderRadius: "5%", maxWidth: "600px"}} onSubmit={submitHandler}>
+                <div className="form-group mx-3">
+                        <label htmlFor="streetAddress" className="form-label mt-4 " style={{textAlign: "center", color:"black"}} >Street Address</label>
+                        <input style={{backgroundColor: "white", border: "black 1px solid"}} type="text" required className="form-control" id="streetAddress" placeholder="StreetAddress" value={streetAddress} onChange={(e)=>setStreetAddress(e.target.value)} />
                     </div>
                     <div className="form-group mx-3">
-                        <label htmlFor="lastName" className="form-label mt-4 " style={{textAlign: "center"}} >Last Name</label>
-                        <input type="text" className="form-control" readOnly id="lastName" placeholder="Last Name" value={lastName}  />
-                    </div> */}
-                    <div className="form-group mx-3">
-                        <label htmlFor="streetAddress" className="form-label mt-4 " style={{textAlign: "center"}} >Street Address</label>
-                        <input type="text" className="form-control" readOnly id="streetAddress" placeholder="StreetAddress" value={streetAddress}  />
+                        <label htmlFor="city" className="form-label mt-4 " style={{textAlign: "center", color:"black"}}>City</label>
+                        <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="city" placeholder="City" value={city} onChange={(e)=>setCity(e.target.value)}/>
                     </div>
                     <div className="form-group mx-3">
-                        <label htmlFor="city" className="form-label mt-4 " style={{textAlign: "center"}}>City</label>
-                        <input type="text" className="form-control" readOnly id="city" placeholder="City" value={city} />
-                    </div>
-                    <div className="form-group mx-3">
-                        <label htmlFor="stateSelect" className="form-label mt-4">State</label>
+                        <label htmlFor="stateSelect" className="form-label mt-4" style={{color:"black"}}>State</label>
                         <br></br>
-                        <SelectUSState id="stateSelect" readOnly className="form-control"  value={stateSelect}>
+                        <SelectUSState id="stateSelect"  required className="form-control states" onChange={(e)=>{setStateSelect(e)}} value={stateSelect}>
                         </SelectUSState>
                     </div>
                     <div className="form-group mx-3">
-                        <label htmlFor="userEmail" className="form-label mt-4 ">Email address</label>
-                        <input  type="email" className="form-control" id="userEmail" readOnly aria-describedby="emailHelp" placeholder="Enter email" value={email} />
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label htmlFor="zip" className="form-label mt-4 " style={{textAlign: "center", color:"black"}}>Zip Code</label>
+                        <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="zip" placeholder="Zip Code" value={zip} onChange={(e)=>setZip(e.target.value)}/>
                     </div>
-                    {/* <div className="form-group mx-3">
-                        <label htmlFor="userPassword" className="form-label mt-4">Password</label>
-                        <input type="password" className="form-control" readOnly id="userPasswrod" placeholder="Password" value={password} /> 
-                    </div> */}
-                    <br/>
-                    {/* <div className="form-group mx-auto w-100 text-center" >
+                    <div className="form-group mx-auto w-100 text-center mt-4" >
                         <button className="btn btn-primary mb-4 mx-auto" type="submit" value="Submit">Submit
                         </button>
-                    </div> */}
+                    </div> 
                 </form>
             </div>
 

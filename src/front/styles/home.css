@@ -17,3 +17,29 @@
     font-style: normal;
     }
 
+
+    @media only screen and (max-width:480px) {
+    
+      .about-us-page{margin-top: 170px !important; padding-top: 20px !important;};
+      
+   
+    }
+
+    @media only screen and (max-width:480px) {
+    
+      .contact-us-page{margin-top: 170px !important; padding-top: 20px !important;};
+      
+   
+    }
+    @media only screen and (max-width:480px) {
+    
+     
+      .products-page{margin-top: 170px !important};
+   
+    }
+
+    .states {
+      border: 1px solid black !important;
+      background-color: white !important;
+
+    }

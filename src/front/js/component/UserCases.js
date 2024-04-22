@@ -6,6 +6,7 @@ import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STL
 import { SingleOrder } from "./SingleOrder.js";
 
 
+
 export const UserCases = props => {
     const [cases, setCases] = useState([{}])
     const url = process.env.BACKEND_URL
@@ -57,7 +58,7 @@ export const UserCases = props => {
     
             
         return (
-        <div className="container mt-5 ">
+        <div className="container">
             <div className = "row justify-content-end" >
                 <div className="col-10 ">
                     <div className="row" >

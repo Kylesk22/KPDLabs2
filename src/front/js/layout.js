@@ -32,6 +32,7 @@ const Layout = () => {
 
     
     const [loggedIn, setLoggedIn] = useState(false)
+    const [mobileActive, setMobileActive] = useState(false)
 
     return (
         
@@ -42,7 +43,7 @@ const Layout = () => {
          {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar logState ={loggedIn} updateLogState={setLoggedIn}/>
+                    <Navbar movbileActive={mobileActive} setMobileActive={setMobileActive} logState ={loggedIn} updateLogState={setLoggedIn}/>
                     <Routes>
                         {/* <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" /> */}

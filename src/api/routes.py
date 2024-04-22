@@ -504,3 +504,17 @@ def case(id, case_id):
     print(case)  
    
     return case.serialize(), 200
+
+@api.route('/<int:id>/updateAccount', methods=['PUT'])
+@jwt_required()
+def update_account(id):
+    user_info = request.get_json()
+    user = User.query.filter_by(id=id).first()
+    user.address = user_info["address"]
+
+    db.session.commit()
+
+    
+    print(case)  
+   
+    return case.serialize(), 200

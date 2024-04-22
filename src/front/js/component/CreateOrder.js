@@ -342,21 +342,21 @@ AWS.config.update({
     return(
         <>
         <form className="form form-container" data-toggle="validator" role="form">
-            <div className="row">
-                <div className="text-center">
+            <div className="row form-group justify-content-center">
+                <div className="text-center col-4">
                     <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
                 </div>
             </div>
             <div className="row form-group justify-content-center">
                 <div className="text-center col-4 pt-3">
                 <label  htmlFor="patientName"><h5>Patient Name</h5></label>
-                <input className="form-control" required id="patientName" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={patientName} onChange={(e)=>setPatientName(e.target.value)}></input>
+                <input className="form-control" required id="patientName" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}}  value={patientName} onChange={(e)=>setPatientName(e.target.value)}></input>
                 </div>
             </div>
             <div className="d-flex row pt-4 justify-content-center" >
                 <div className="col-4 form-group text-center pb-4 ">
                     <label  htmlFor="toothInput"><h5>Selected Teeth</h5></label>
-                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px"}} readOnly={true} value={crownTooth} onChange={(e)=>setToothInput(e.target.value)}></input>
+                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>setToothInput(e.target.value)}></input>
                 </div>
                 <div className="col-9 col-lg-3 px-5" >
                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >
@@ -545,15 +545,15 @@ AWS.config.update({
             <div className="row form-group justify-content-center mt-3">
                 <div className="text-center col-8 col-lg-4 pt-3">
                 <label htmlFor="Notes" className="form-label"><h5>Prescription Information</h5></label>
-                <textarea className="form-control" id="Notes" rows="3" value={note} placeholder={"Please include all pertinent case information as well as if any teeth are part of a bridge. Please note any virtual extractions"} onChange={(e)=>setNote(e.target.value)}></textarea>
+                <textarea className="form-control" style={{backgroundColor:"white", border:"black 1px solid"}} id="Notes" rows="3" value={note} placeholder={"Please include all pertinent case information as well as if any teeth are part of a bridge. Please note any virtual extractions"} onChange={(e)=>setNote(e.target.value)}></textarea>
            
                 </div>
             </div>
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Shade</h5></label>
-                    <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Shade">
-   
+                    <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade">
+                        <option value="Select One">Select One</option>
                         <option value="A1" onClick={()=>setShade("A1")}>A1</option>
                         <option value="A2" onClick={()=>setShade("A2")}>A2</option>
                         <option value="A3" onClick={()=>setShade("A3")}>A3</option>
@@ -577,8 +577,8 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Product</h5></label>
-                    <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Product">
-   
+                    <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product">
+                        <option value="Select One">Select One</option>
                         <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
                         <option value="PMMA Temporary" onClick={()=>setProduct("PMMA Temporary")}>PMMA Temporary</option>
                     </select>
@@ -588,8 +588,8 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
-                    <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish">
-                        
+                    <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish">
+                        <option value="Select One">Select One</option>
                         <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
                         <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option>
                     </select>

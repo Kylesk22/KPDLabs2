@@ -10,7 +10,7 @@ export const ContactUs = props => {
     }
     return(
         <div>
-            <div className="row justify-content-center mt-5 text-center">
+            <div className="row justify-content-center text-center">
                 <div className="col-3">
                 
                 <button className = "btn btn-primary" onClick={()=>sendEmail()}>Send Feedback Email</button>

@@ -63,10 +63,10 @@ export const Navbar = (props) => {
 	return (
 		(!loggedIn) ? 	
 		<header className="main-header header-style-one" >
-		<div className="logo-box ">
-		  <div className="logo ps-lg-4 ps-5 mx-auto"><a href="/"><img src={Logo} alt=""/></a></div>
-		 <strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
-		</div>
+			<div className="logo-box ">
+			<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
+			<strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
+			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">
 		  <div className="top-left">
@@ -239,30 +239,30 @@ export const Navbar = (props) => {
   {/* <!-- End Header Search -->  */}
   
   {/* <!-- Sticky Header  --> */}
-  <div className="sticky-header">
+  {/* <div className="sticky-header">
 	<div className="auto-container">
-	  <div className="inner-container"> 
+	  <div className="inner-container">  */}
 		{/* <!--Logo--> */}
-		<div className="logo"> <a href="/" title=""><img src={Logo} alt="" title=""/></a> </div>
+		{/* <div className="logo"> <a href="/" title=""><img src={Logo} alt="" title=""/></a> </div> */}
 		
 		{/* <!--Right Col--> */}
-		<div className="nav-outer"> 
+		{/* <div className="nav-outer">  */}
 		  {/* <!-- Main Menu --> */}
-		  <nav className="main-menu">
+		  {/* <nav className="main-menu">
 			<div className="navbar-collapse show collapse clearfix">
-			  <ul className="navigation clearfix">
+			  <ul className="navigation clearfix"> */}
 				{/* <!--Keep This Empty / Menu will come through Javascript--> */}
-			  </ul>
+			  {/* </ul>
 			</div>
-		  </nav>
+		  </nav> */}
 		  {/* <!-- Main Menu End--> 
 		  
 		  <!--Mobile Navigation Toggler--> */}
-		  <div className="mobile-nav-toggler"> <i className="fas fa-bars"></i> </div>
+		  {/* <div className="mobile-nav-toggler"> <i className="fas fa-bars"></i> </div>
 		</div>
 	  </div>
 	</div>
-  </div>
+  </div> */}
   {/* <!-- End Sticky Menu -->  */}
 </header>:
 

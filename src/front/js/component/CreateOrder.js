@@ -245,6 +245,9 @@ AWS.config.update({
                 "name": patientName,
                 "product": product,
                 "teeth": crownTooth,
+                "finish": finish,
+                "shade": shade,
+                "note": note
             }
             
             const options = {
@@ -552,7 +555,7 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Shade</h5></label>
-                    <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade">
+                    <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="A1" onClick={()=>setShade("A1")}>A1</option>
                         <option value="A2" onClick={()=>setShade("A2")}>A2</option>
@@ -577,7 +580,7 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Product</h5></label>
-                    <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product">
+                    <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
                         <option value="PMMA Temporary" onClick={()=>setProduct("PMMA Temporary")}>PMMA Temporary</option>
@@ -588,7 +591,7 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
-                    <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish">
+                    <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
                         <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option>

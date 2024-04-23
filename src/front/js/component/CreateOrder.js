@@ -241,6 +241,7 @@ AWS.config.update({
 
             const updateCase = {
                 "stl_urls" : fileName,
+                "photos": photoName,
                 "case": caseNum,
                 "name": patientName,
                 "product": product,

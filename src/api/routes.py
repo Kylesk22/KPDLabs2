@@ -362,6 +362,7 @@ def new_case(id):
         notes = request.json.get("note", None)
         finish = request.json.get("finish", None)
         blob_scans = request.json.get("stl_urls", None)
+        photos = request.json.get("photos", None)
         update_date  = str(now.strftime("%d/%m/%Y %H:%M:%S"))
         
         
@@ -391,6 +392,17 @@ def new_case(id):
             db.session.add(new_scan)
             db.session.commit()
         
+        for photo in photos:
+              
+            new_photo = Scans(
+                scan = photo,
+                scan_name = photo,
+                user_id = id,
+                case_id = case
+            )
+            db.session.add(new_photo)
+            db.session.commit()
+
         res = make_response("updated")
         res.headers['Content-Type'] = 'application/json'
         print(f"response:{res}")

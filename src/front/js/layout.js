@@ -36,7 +36,7 @@ const Layout = () => {
 
     return (
         
-        <div 
+        <div style={{overflowX: "hidden"}}
         // style={{
         //     backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}
             >

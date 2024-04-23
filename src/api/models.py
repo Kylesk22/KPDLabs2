@@ -45,7 +45,7 @@ class Scans(db.Model):
     __tablename__ = "scans"
     id = db.Column(db.Integer, primary_key=True)
     scan_name = db.Column(db.String(255), nullable= True)
-    scan = db.Column(LargeBinary)
+    scan = db.Column(db.String(255), nullable= True)
     # name = db.Column(db.Text, nullable = False)
     # mimetype = db.Column(db.Text, nullable = False)
     uploaded_at = db.Column(db.DateTime, default=datetime.utcnow)

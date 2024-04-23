@@ -18,6 +18,17 @@ export const UpdateAccountInfo = props => {
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
 
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Return null if cookie not found
+    }
+
     const url = process.env.BACKEND_URL
     let newUser;
 

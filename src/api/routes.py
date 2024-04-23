@@ -358,7 +358,7 @@ def new_case(id):
         name = request.json.get("name", None)
         teeth = request.json.get("teeth", None)
         product = request.json.get("product", None)
-        blob_scans = request.json.get("stl_urls")
+        blob_scans = request.json.get("stl_urls", None)
         update_date  = now.strftime("%d/%m/%Y %H:%M:%S")
         print(name)
         
@@ -378,6 +378,7 @@ def new_case(id):
         
             new_scan = Scans(
                 scan = scan,
+                scan_name = scan,
                 user_id = id,
                 case_id = case
             )

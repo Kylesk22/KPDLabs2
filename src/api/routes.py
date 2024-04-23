@@ -362,11 +362,11 @@ def new_case(id):
         notes = request.json.get("note", None)
         finish = request.json.get("finish", None)
         blob_scans = request.json.get("stl_urls", None)
-        update_date  = now.strftime("%d/%m/%Y %H:%M:%S")
-        print(name)
+        update_date  = str(now.strftime("%d/%m/%Y %H:%M:%S"))
+        
         
         update_case = Case.query.filter_by(id=case).first()
-        print(update_case)
+        
         update_case.name = name
         update_case.teeth = teeth
         update_case.product = product

@@ -235,26 +235,26 @@ return(
             <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "product"  ? "active" : ""}`} onClick={()=>setCurrentPage("product")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "product"  ? "active" : ""}`} onClick={()=>setCurrentPage("product")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Product Information</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Indications</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contraindications" ? "active" : ""}`} onClick={()=>setCurrentPage("contraindications")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contraindications" ? "active" : ""}`} onClick={()=>setCurrentPage("contraindications")}>
                             <i className="fas fa-plus fa-fw me-3"></i><span>Contraindications</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "preparation" ? "active" : ""}`} onClick={()=>{setCurrentPage("preparation")}}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "preparation" ? "active" : ""}`} onClick={()=>{setCurrentPage("preparation")}}>
                             <i className="fas fa-lock fa-fw me-3"></i><span>Preparation Guidelines</span></a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "margins" ? "active" : ""}`} onClick={()=>setCurrentPage("margins")}><i
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "margins" ? "active" : ""}`} onClick={()=>setCurrentPage("margins")}><i
                             className="fas fa-pen-nib fa-fw me-3"></i><span>Margins</span></a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "cementation" ? "active" : ""}`} onClick={()=>setCurrentPage("cementation")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "cementation" ? "active" : ""}`} onClick={()=>setCurrentPage("cementation")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Cementation</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "technical" ? "active" : ""}`} onClick={()=>setCurrentPage("technical")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "technical" ? "active" : ""}`} onClick={()=>setCurrentPage("technical")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Technical Tip</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "ada" ? "active" : ""}`} onClick={()=>setCurrentPage("ada")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "ada" ? "active" : ""}`} onClick={()=>setCurrentPage("ada")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>ADA Codes</span>
                         </a>
                         {/* <a href="#" className="list-group-item list-group-item-action py-2 ripple"><i

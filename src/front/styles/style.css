@@ -11733,3 +11733,9 @@ Sidebar
   background-color: #fff;
   height: 180px;
 }
+
+@media (max-width: 991.98px) {
+  .header-top .top-left {
+      display: none !important;
+  }
+}

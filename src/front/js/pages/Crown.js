@@ -229,7 +229,7 @@ return(
 	</section>
 
   <section className="" style={{height:"350px"}}>
-    <div className="ps-5">
+    <div className="ps-3">
       <div className="row"> 
       <div className="container pt-4 col-4" style={{width: "20%", paddingRight: "20px"}}>
             <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">

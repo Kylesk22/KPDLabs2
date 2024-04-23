@@ -104,6 +104,10 @@ export const Home = (props) => {
 	const [pressedLogIn, setPressedLogin] = useState(false);
 	const [show, setShow] = useState(props.logState);
 	const [showModal, setShowModal] = useState(false);
+	const [faq1, setFaq1] = useState(false)
+	const [faq2, setFaq2] = useState(false)
+	const [faq3, setFaq3] = useState(false)
+	const [faq4, setFaq4] = useState(false)
 
 	const handleToggleModal = () => {
 	  setShowModal(!showModal);
@@ -551,10 +555,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End about-section -->
 
 <!-- service-section --> */}
-<section className="service-section-two">
+<section className="service-section-two" id="products">
   <div className="auto-container">
 	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
-	  <h2>Providing Quality Products<br/>At The Right Price</h2>
+	  <h2>Providing Quality Products<br/> At The Right Price</h2>
 	</div>
 	<div className="row"> 
 	  {/* <!-- service-block-two --> */}
@@ -562,12 +566,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Zirc} alt=""/></figure>
-			<i className="flaticon-clock-1"></i>
+			{/* <i className="flaticon-clock-1"></i> */}
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="page-service-details.html">Crown and Bridge</a></h4>
 			<div className="text">Zirconia</div>
-			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+			<a href="/crownandbridge" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
 	  </div>
@@ -576,7 +580,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={ZircV} alt=""/></figure>
-			<i className="flaticon-monitor-1"></i>
+			{/* <i className="flaticon-monitor-1"></i> */}
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="page-service-details.html">Veneer</a></h4>
@@ -590,7 +594,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Partial} alt=""/></figure>
-			<i className="flaticon-cog-1"></i>
+			{/* <i className="flaticon-cog-1"></i> */}
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="page-service-details.html">Partial</a></h4>
@@ -860,38 +864,43 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <ul className="accordion-box">
 			{/* <!--Block--> */}
-			<li className="accordion block">
-			  <div className="acc-btn">Is my technology allowed on tech? <i className="icon fa fa-angle-right"></i> </div>
-			  <div className="acc-content">
+			<li className={`accordion block ${faq1 ? 'active-block' : ''}`}>
+			  <div className={`acc-btn ${faq1 ? 'active' : ''}`} onClick={()=>{
+				!faq1 ? setFaq1(true): setFaq1(false)}}>How do I get started with KPD? <i className="icon fas fa-angle-right" 
+			  ></i> </div>
+			  <div className={`acc-content${faq1 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				  <div className="text">Click <a href="/signup">signup</a> and make an account with us! Feel free to <a href="/contact">contact</a> us with any questions regarding signing up!</div>
 				</div>
 			  </div>
 			</li>
 			{/* <!--Block--> */}
-			<li className="accordion block active-block">
-			  <div className="acc-btn active">How to soft launch your business? <i className="icon fa fa-angle-right"></i> </div>
-			  <div className="acc-content current">
+			<li className={`accordion block ${faq2 ? 'active-block' : ''}`}>
+			  <div className={`acc-btn ${faq2 ? 'active' : ''}`} onClick={()=>{
+				!faq2 ? setFaq2(true): setFaq2(false)}}>What materials do we offer?<i className="icon fas fa-angle-right"  ></i> </div>
+			  <div className={`acc-content${faq2 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				  <div className="text">We currently offer Zirconia for crown, bridge, and veneer. TCS unbreakable for partials. PMMA for Dentures</div>
 				</div>
 			  </div>
 			</li>
 			{/* <!--Block--> */}
-			<li className="accordion block">
-			  <div className="acc-btn">How to turn visitors into contributors <i className="icon fa fa-angle-right"></i> </div>
-			  <div className="acc-content">
+			<li className={`accordion block ${faq3 ? 'active-block' : ''}`}>
+			  <div className={`acc-btn ${faq3 ? 'active' : ''}`} onClick={()=>{
+				!faq3 ? setFaq3(true): setFaq3(false)}}>What are KPD's terms? <i className="icon fas fa-angle-right"  ></i> </div>
+			  <div className={`acc-content${faq3 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				  <div className="text">Check out our <a href="/terms">terms</a></div>
 				</div>
 			  </div>
 			</li>
 			{/* <!--Block--> */}
-			<li className="accordion block">
-			  <div className="acc-btn">How can i find my solutions? <i className="icon fa fa-angle-right"></i> </div>
-			  <div className="acc-content">
+			<li className={`accordion block ${faq4 ? 'active-block' : ''}`}>
+			  <div className={`acc-btn ${faq4 ? 'active' : ''}`} onClick={()=>{
+				!faq4 ? setFaq4(true): setFaq4(false)}}>What is KPD's turnaround time? <i className="icon fas fa-angle-right"  ></i> </div>
+			  <div className={`acc-content${faq4 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
+				  <div className="text">4-6 Business days on average, rush availabe.</div>
 				</div>
 			  </div>
 			</li>

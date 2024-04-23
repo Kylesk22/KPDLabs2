@@ -50,16 +50,21 @@ export const Footer = () => (
 		{/* </div> */}
 		{/* <!--Footer Column--> */}
 		<div className="footer-column col-lg-4 col-sm-6 fadeInLeft" >
-		  <div className="footer-widget links-sec">
+		  <div className="footer-widget contact-widget">
 			<h3 className="widget-title">Quick Links</h3>
-			<ul className="user-links">
+			{/* <ul className="widget-content">
 			  <li><a href="/aboutus">About Us</a></li>
 			  <li><a href="#">Products</a></li>
-			  {/* <li><a href="#">News & Media</a></li>
-			  <li><a href="#">Our Projects</a></li>
-			  <li><a href="#">Our Services</a></li> */}
 			  <li><a href="/contactus">Contact Us</a></li>
-			</ul>
+			</ul> */}
+			<ul className="contact-info ">
+				<li><i className="fa-solid fa-angle-right"></i> <a href="/aboutus">About Us</a><br/>
+				</li>
+				<li><i className="fa-solid fa-angle-right"></i> <a href="#products">Products</a><br/>
+				</li>
+				<li><i className="fa-solid fa-angle-right"></i> <a href="/contactus">Contact Us</a><br/>
+				</li>
+			  </ul>
 		  </div>
 		</div>
 		{/* <!--Footer Column--> */}

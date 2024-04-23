@@ -15,6 +15,7 @@ import Kyle from "../../img/Kyle.png"
 import Laurie from "../../img/Laurie.jpg"
 
 import Intro from "../../img/footer-flip.jpg"
+import AboutBKG from "../../img/testi-bg.jpg"
 
 import { Slide } from "react-awesome-reveal";
 
@@ -228,7 +229,7 @@ return(
 		</div>
 	</section>
 
-  <section className="" style={{minHeight:"350px", paddingTop: "50px", paddingBottom: "50px"}}>
+  <section className="" style={{minHeight:"350px", paddingTop: "50px", paddingBottom: "50px", backgroundImage: `url(${AboutBKG}`}}>
     <div className="ps-3">
       <div className="row"> 
       <div className="container pt-4 col-4" style={{width: "20%", paddingRight: "20px"}}>
@@ -241,19 +242,19 @@ return(
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Indications</span>
                         </a>
-                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contraindications" ? "active" : ""}`} onClick={()=>setCurrentPage("contraindications")}>
+                        {/* <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contraindications" ? "active" : ""}`} onClick={()=>setCurrentPage("contraindications")}>
                             <i className="fas fa-plus fa-fw me-3"></i><span>Contraindications</span>
-                        </a>
+                        </a> */}
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "preparation" ? "active" : ""}`} onClick={()=>{setCurrentPage("preparation")}}>
                             <i className="fas fa-lock fa-fw me-3"></i><span>Preparation Guidelines</span></a>
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "margins" ? "active" : ""}`} onClick={()=>setCurrentPage("margins")}><i
                             className="fas fa-pen-nib fa-fw me-3"></i><span>Margins</span></a>
-                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "cementation" ? "active" : ""}`} onClick={()=>setCurrentPage("cementation")}>
+                        {/* <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "cementation" ? "active" : ""}`} onClick={()=>setCurrentPage("cementation")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Cementation</span>
                         </a>
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "technical" ? "active" : ""}`} onClick={()=>setCurrentPage("technical")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Technical Tip</span>
-                        </a>
+                        </a> */}
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "ada" ? "active" : ""}`} onClick={()=>setCurrentPage("ada")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>ADA Codes</span>
                         </a>
@@ -303,14 +304,17 @@ return(
           </div>
         </div> */}
 
-        <div className="col-8 text-center mt-3 me-4" style={{border: "1px black solid"}}>
+        <div className="col-8 text-center mt-3 me-4" >
             {(currentPage === "product")?
             <Slide>
-                Product Information
+                <h2>1250 MPA  43% Translucency</h2>
+                <br></br>
+                <div>Our white zirconia is crafted from biocompatible zirconium dioxide, tailored for applications in single unit crowns and bridges up to 14 units. The inclusion of yttrium oxide stabilizer fortifies the material, enhancing resistance against cracks while bolstering tensile and compressive strength. Furthermore, a meticulous grain size distribution within the material, coupled with the infusion of aluminum oxide, ensures heightened strength during milling and subsequent clinical application. These exceptional mechanical properties, alongside excellent chemical resilience and unparalleled biocompatibility, position our zirconia as the premier material choice for fixed dental restorations.</div>
             </Slide>:
             (currentPage === "indications")?
             <Slide>
-                Indications
+                <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 unites</h3>
+                <div>Inlays and Onlays</div>
             </Slide>:
             (currentPage === "contraindications")?
             <div>
@@ -334,7 +338,12 @@ return(
             </div>:
             (currentPage === "ada")?
             <div>
-                ADA
+                <h2>ADA Codes</h2>
+                <div>Single Unit
+                    <ol>
+                        <li>D2740 Crown – porcelain/ceramic substrate</li>
+                    </ol>
+                </div>
             </div>: ""
 }
         </div>

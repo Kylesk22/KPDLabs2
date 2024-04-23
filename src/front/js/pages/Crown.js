@@ -228,7 +228,7 @@ return(
 		</div>
 	</section>
 
-  <section className="" style={{height:"350px"}}>
+  <section className="" style={{minHeight:"350px", paddingTop: "50px", paddingBottom: "50px"}}>
     <div className="ps-3">
       <div className="row"> 
       <div className="container pt-4 col-4" style={{width: "20%", paddingRight: "20px"}}>

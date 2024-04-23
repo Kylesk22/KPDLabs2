@@ -562,44 +562,57 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
 	<div className="row"> 
 	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Zirc} alt=""/></figure>
 			{/* <i className="flaticon-clock-1"></i> */}
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Crown and Bridge</a></h4>
+			<h4 className="title"><a href="/crownandbridge">Crown and Bridge</a></h4>
 			<div className="text">Zirconia</div>
 			<a href="/crownandbridge" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
 	  </div>
 	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={ZircV} alt=""/></figure>
 			{/* <i className="flaticon-monitor-1"></i> */}
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Veneer</a></h4>
+			<h4 className="title"><a href="/veneer">Veneer</a></h4>
 			<div className="text">Zirconia</div>
-			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+			<a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
 	  </div>
 	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="image-box">
 			<figure className="image overlay-anim"><img src={Partial} alt=""/></figure>
 			{/* <i className="flaticon-cog-1"></i> */}
 		  </div>
 		  <div className="content-box">
-			<h4 className="title"><a href="page-service-details.html">Partial</a></h4>
+			<h4 className="title"><a href="/partial">Partial</a></h4>
 			<div className="text">TCS Unbreakable</div>
-			<a href="page-service-details.html" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+			<a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			{/* <i className="flaticon-cog-1"></i> */}
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="/denture">Denture</a></h4>
+			<div className="text">Removeable</div>
+			<a href="/denture" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
 	  </div>

@@ -370,6 +370,9 @@ def new_case(id):
         update_case.name = name
         update_case.teeth = teeth
         update_case.product = product
+        update_case.shade = shade
+        update_case.notes = notes
+        update_case.finish = finish
        
         update_case.update_date.append(update_date)
         

@@ -210,6 +210,13 @@ export const Navbar = (props) => {
 				
 				<div className="contact-info-box"> <i className="icon fas fa-clock" style={{fontSize: "25px"}}></i> <span className="title">Hours</span> Mon - Fri 9:00AM - 5:00PM</div>
 			</li>
+			<li>
+		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
+		  <i className="icon fas fa-location-dot"></i>
+		  3393 US Hwy 17-92 West Haines City, FL
+		</a>
+	  </li>
+			  <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
 			</ul>
 			<ul className="social-links">
 			<li><a href="#"><i className="fab fa-twitter"></i></a></li>

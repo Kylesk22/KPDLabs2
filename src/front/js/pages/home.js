@@ -78,7 +78,7 @@ import Mill from "../../img/mill.jpg"
 import Lines21 from "../../img/lines2-1.png"
 import FootBKG from "../../img/footer-bg.jpg"
 import Layer11 from "../../img/layer1-1.jpg"
-import MillingClip from "../../img/MillingClip1080p.mp4"
+import MillingClip from "../../img/MillingClip1080p2.mp4"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -548,6 +548,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	
   </div>
 </section>
+
 {/* <!-- End about-section -->
 
 <!-- service-section --> */}

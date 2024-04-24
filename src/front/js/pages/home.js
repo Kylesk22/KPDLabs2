@@ -893,7 +893,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				!faq4 ? setFaq4(true): setFaq4(false)}}>What is KPD's turnaround time? <i className="icon fas fa-angle-right"  ></i> </div>
 			  <div className={`acc-content${faq4 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">4-6 Business days on average, rush availabe.</div>
+				  <div className="text">4-6 Business days on average, rush available.</div>
 				</div>
 			  </div>
 			</li>

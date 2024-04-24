@@ -527,10 +527,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="inner-column">
 		  <div className="image-box">
 			
-				{/* <img src={Mill} alt=""/> */}
-				{/* <i className="icon fas fa-play">
-				<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption=""><source src={MillingClip} type="video/mp4"/></video>
-				</i> */}
+				
 
 			{/* <div className="video-container">
 			<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
@@ -538,7 +535,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</video>
 			
 			</div> */}
-			<CustomVideoPlayer videoSrc={MillingClip}/>
+			{/* <video width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
+				<source src={MillingClip} type="video/mp4"/>
+			</video> */}
+			<CustomVideoPlayer/>
 
 
 		  </div>

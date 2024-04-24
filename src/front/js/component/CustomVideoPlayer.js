@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import "../../styles/home.css";
+import MillingClip from "../../img/MillingClip1080p.mp4"
 
 
-const CustomVideoPlayer = ({ videoSrc }) => {
+const CustomVideoPlayer = ({videoSrc}) => {
   const [showPlayButton, setShowPlayButton] = useState(true);
 
   const handlePlayClick = () => {
@@ -19,7 +20,7 @@ const CustomVideoPlayer = ({ videoSrc }) => {
   return (
     <div className="video-container">
       <video id="myVideo" width="320" height="240" muted className="play-now" data-fancybox="gallery" data-caption="" onEnded={handleVideoEnded}>
-        <source src={videoSrc} type="video/mp4" />
+        <source src={MillingClip} type="video/mp4" />
       </video>
       {showPlayButton && (
         <>

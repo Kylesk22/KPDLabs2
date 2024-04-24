@@ -83,7 +83,7 @@ return (
 		  <div className="footer-widget contact-widget">
 			<h3 className="widget-title ">Contact Now</h3>
 			<div className="widget-content ">
-			  <div className="text"><i className="fa-solid fa-location-dot"></i>3393 US Hwy 17-92 West Haines City, FL, USA</div>
+			  <div className="text"><i className="fa-solid fa-location-dot"></i>3393 US Hwy 17-92 West <div className="footer-breakpoint"></div>Haines City, FL, USA</div>
 			  <ul className="contact-info ">
 				<li><i className="fas fa-envelope"></i> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a><br/>
 				</li>

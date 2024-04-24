@@ -236,7 +236,7 @@ return(
     <div className="ps-3">
       <div className="row"> 
       <div className="container pt-4 col-4" style={{width: "20%", paddingRight: "20px"}}>
-            <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">
+            <nav id="sidebarMenu" className="sidebar bg-white text-break text-nowrap overflow-hidden ">
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "product"  ? "active" : ""}`} onClick={()=>setCurrentPage("product")}>

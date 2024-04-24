@@ -47,6 +47,16 @@
       
    
     }
+    @media only screen and (max-width:480px) {
+    
+     
+      .footer-breakpoint {
+        content: '\A'; /* This generates a new line */
+        white-space: pre; /* Preserve the white space */
+      }
+      
+   
+    }
 
     @media (min-width: 1200px) and (max-width: 1600px) {
       .logo-text {

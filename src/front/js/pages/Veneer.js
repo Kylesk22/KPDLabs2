@@ -63,16 +63,16 @@ return(
   <section className="" style={{minHeight:"350px", paddingTop: "50px", paddingBottom: "50px", backgroundImage: `url(${AboutBKG}`}}>
     <div className="ps-3">
       <div className="row"> 
-      <div className="container pt-4 col-4" style={{width: "20%", paddingRight: "20px"}}>
-            <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden ">
+      <div className="container pt-4 col-4 padding-container" style={{width: "20%", paddingRight: "20px"}}>
+            <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden product-sidebar">
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
                         <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "product"  ? "active" : ""}`} onClick={()=>setCurrentPage("product")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Product Information</span>
                         </a>
-                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
+                        {/* <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "indications"  ? "active" : ""}`} onClick={()=>setCurrentPage("indications")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Indications</span>
-                        </a>
+                        </a> */}
                         {/* <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contraindications" ? "active" : ""}`} onClick={()=>setCurrentPage("contraindications")}>
                             <i className="fas fa-plus fa-fw me-3"></i><span>Contraindications</span>
                         </a> */}
@@ -107,7 +107,7 @@ return(
         </div>
       
 
-        <div className="col-8 text-center mt-3 me-4" >
+        <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "product")?
             <Fade>
                 <h2>1050 MPA  47% Translucency</h2>

@@ -15,8 +15,10 @@ import Laurie from "../../img/Laurie.jpg"
 
 import Intro from "../../img/footer-flip.jpg"
 
-
-
+import AboutBKG from "../../img/testi-bg.jpg"
+import CustomVideoPlayer from "../component/CustomVideoPlayer"
+import MillingClip from "../../img/MillingClip1080p.mp4"
+import Lines from "../../img/lines.jpg"
 
 
 export const AboutUs = props => {
@@ -218,57 +220,75 @@ return(
 		</div>
 	</section>
 
-  <section className="about-section">
-    <div className="auto-container">
-      <div className="row"> 
-       
-        <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
-          <div className="inner-column">
-            <div className="sec-title"> <span className="sub-title">ABOUT KPD LABS  ::::::</span>
-              <h2>We Bring Technical Engineering to Dental, Providing YOU with Precise Results</h2>
-              <div className="text">Using our original design process and in house created software solutions, we vow to give you the best results in a timely manner.</div>
-            </div>
-            <div className="row"> 
-          
-              <div className="about-block col-sm-6">
-                <div className="inner-box">
-                  <div className="icon-box"> <i className="flaticon-support-2"></i>
-                    <h4 className="title">Internal Networking</h4>
-                  </div>
-                  <div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
-                </div>
-              </div>
-          
-              <div className="about-block col-sm-6">
-                <div className="inner-box">
-                  <div className="icon-box"> <i className="flaticon-typography"></i>
-                    <h4 className="title">Manage IT Services</h4>
-                  </div>
-                  <div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
-                </div>
-              </div>
-            </div>
-            <div className="btn-box"> <a href="" className="btn theme-btn" onClick={()=>sendEmail()}>Contact Us</a> <img src="" alt=""/> </div>
-          </div>
-        </div>
-     
-        <div className="image-column col-lg-6 wow fadeInRight" data-wow-delay="600ms">
-          <div className="inner-column">
-            <div className="image-box">
-              <figure className="image overlay-anim"><img src="" alt=""/></figure>
-              <figure className="image-2 overlay-anim bounce-y"><img src="" alt=""/></figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section className="about-section" 
+  // style={{backgroundImage: `url(${AboutBKG})`}}
+  >
+  <div className="auto-container">
+	<div className="row"> 
+	  {/* <!-- content-column --> */}
+	  <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
+		<div className="inner-column">
+		  <div className="sec-title"> <span className="sub-title">KPD Labs ::::::</span>
+			<h2>Our Promise</h2>
+			<div className="text">As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction. </div>
+		  </div>
+		  <div className="row"> 
+			{/* <!-- about-block --> */}
+			{/* <div className="about-block col-sm-6">
+			  <div className="inner-box">
+				<div className="icon-box"> <i className="flaticon-support-2"></i>
+				  <h4 className="title">Internal Networking</h4>
+				</div>
+				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
+			  </div>
+			</div> */}
+			{/* <!-- about-block --> */}
+			{/* <div className="about-block col-sm-6">
+			  <div className="inner-box">
+				<div className="icon-box"> <i className="flaticon-typography"></i>
+				  <h4 className="title">Manage IT Services</h4>
+				</div>
+				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
+			  </div>
+			</div> */}
+		  </div>
+		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> 
+		  {/* <img src={BKG} alt=""/>  */}
+		  </div>
+		</div>
+	  </div>
+	  {/* <!-- image-column --> */}
+	  <div className="image-column col-lg-6 wow fadeInRight millvideo" data-wow-delay="600ms" >
+		<div className="inner-column">
+		  <div className="image-box">
+			
+				{/* <img src={Mill} alt=""/> */}
+				{/* <i className="icon fas fa-play">
+				<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption=""><source src={MillingClip} type="video/mp4"/></video>
+				</i> */}
+
+			{/* <div className="video-container">
+			<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
+				<source src={MillingClip} type="video/mp4"/>
+			</video>
+			
+			</div> */}
+			<CustomVideoPlayer videoSrc={MillingClip}/>
+
+
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+  </div>
+</section>
 
  
  
 
 
-  <section className="main-section"> 
+  {/* <section className="main-section"> 
 
     <div className="process-section pb-0">
       <div className="auto-container">
@@ -423,7 +443,7 @@ return(
       </div>
     </div>
 
-  </section>
+  </section> */}
 
   <section className="team-section">
     <div className="auto-container">

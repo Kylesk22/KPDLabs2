@@ -13,6 +13,8 @@ import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Link, Navigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 
+import CustomVideoPlayer from "../component/CustomVideoPlayer"
+
 import "../../styles/_about.scss"
 import "../../styles/_banner.scss"
 import "../../styles/_benefit.scss"
@@ -58,12 +60,12 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import ThreeScene2 from "../component/Scene2";
 import { Scene3 } from "../component/Scene3";
 
-import Zirc from "../../img/zirconia.png"
+import Zirc from "../../img/Crown.png"
 import Lith from "../../img/LithiumDisilicateCrown.jpg"
-import ZircV from "../../img/ZircVeneer.jpg"
+import ZircV from "../../img/Veneer.png"
 import LithV from "../../img/LithiumDisilicateVeneer.jpg"
 import Partial from "../../img/TCS Unbreakable Partial Denture.png"
-import Denture from "../../img/Denture.jpg"
+import Denture from "../../img/Denture.png"
 import WaxRim from "../../img/WaxRim.jpg"
 import TryIn from "../../img/TryIn.jpg"
 import Ribbon from "../../img/Ribbon.png"
@@ -76,6 +78,7 @@ import Mill from "../../img/mill.jpg"
 import Lines21 from "../../img/lines2-1.png"
 import FootBKG from "../../img/footer-bg.jpg"
 import Layer11 from "../../img/layer1-1.jpg"
+import MillingClip from "../../img/MillingClip1080p.mp4"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -520,11 +523,24 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		</div>
 	  </div>
 	  {/* <!-- image-column --> */}
-	  <div className="image-column col-lg-6 wow fadeInRight" data-wow-delay="600ms">
+	  <div className="image-column col-lg-6 wow fadeInRight millvideo" data-wow-delay="600ms">
 		<div className="inner-column">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Mill} alt=""/></figure>
-			{/* <figure className="image-2 overlay-anim bounce-y"><img src={BKG} style={{width: "250px", height: "200px"}} alt=""/></figure> */}
+			
+				{/* <img src={Mill} alt=""/> */}
+				{/* <i className="icon fas fa-play">
+				<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption=""><source src={MillingClip} type="video/mp4"/></video>
+				</i> */}
+
+			{/* <div className="video-container">
+			<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
+				<source src={MillingClip} type="video/mp4"/>
+			</video>
+			
+			</div> */}
+			<CustomVideoPlayer videoSrc={MillingClip}/>
+
+
 		  </div>
 		</div>
 	  </div>
@@ -540,12 +556,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
 	  <h2>Providing Quality Products<br/> At The Right Price</h2>
 	</div>
-	<div className="row"> 
+	<div className="row "> 
 	  {/* <!-- service-block-two --> */}
 	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
 		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Zirc} alt=""/></figure>
+		  <div className="image-box" >
+			<figure className="image overlay-animr">
+				
+					<img src={Zirc} alt="" className="product-pic" />
+				
+			</figure>
 			{/* <i className="flaticon-clock-1"></i> */}
 		  </div>
 		  <div className="content-box">
@@ -559,7 +579,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={ZircV} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
 			{/* <i className="flaticon-monitor-1"></i> */}
 		  </div>
 		  <div className="content-box">
@@ -573,7 +593,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Partial} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
 			{/* <i className="flaticon-cog-1"></i> */}
 		  </div>
 		  <div className="content-box">
@@ -586,7 +606,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			<figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
 			{/* <i className="flaticon-cog-1"></i> */}
 		  </div>
 		  <div className="content-box">

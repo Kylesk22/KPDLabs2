@@ -28,11 +28,23 @@ module.exports = {
           }]
         }, //css only files
         {
-          test: /\.(png|svg|jpg|gif|jpeg|webp|stl)$/, use: {
+          test: /\.(png|svg|jpg|gif|jpeg|webp|stl|mp4)$/, use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]' }
           }
         }, //for images
+        {
+          test: /\.mp4$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'videos/'
+              }
+            }
+          ]
+        },
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
         
     ]

@@ -153,17 +153,12 @@ return(
             <div>
                 <h2>ADA Codes</h2>
                 <div className="row">
-                    <div className="col-6">
+                    
                         <ol><h4>Single Unit</h4>                   
-                                <li>D2740 Crown – porcelain/ceramic substrate</li>
+                                <li>D2962</li>
                         </ol>
-                    </div>
-                    <div className="col-6">
-                        <ol><h4>Bridgework</h4> 
-                            <li>D6740 Crown – porcelain/ceramic</li>
-                            <li>D6245 Pontic – porcelain/ceramic</li>
-                        </ol>
-                    </div>
+                    
+                
                 </div>
             </div>: ""
 }

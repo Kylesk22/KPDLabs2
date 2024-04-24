@@ -38,6 +38,12 @@
    
     }
 
+    @media (min-width: 1200px) and (max-width: 1600px) {
+      .logo-text {
+          font-size: 11px !important;
+      }
+  }
+
     .states {
       border: 1px solid black !important;
       background-color: white !important;

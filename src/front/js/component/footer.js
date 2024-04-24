@@ -10,7 +10,18 @@ import "../../styles/slick.css"
 import "../../styles/style.css"
 import "../../styles/animate.css"
 
-export const Footer = () => (
+export const Footer = () => {
+	// Create a new Date object
+const currentDate = new Date();
+
+// Get the current year
+const currentYear = currentDate.getFullYear();
+
+
+
+
+
+return (
 	<footer className="main-footer" style={{backgroundImage: `url(${FootBKG})`}}>
   <div className="bg-image"  ></div>
   {/* <!--Widgets Section--> */}
@@ -96,10 +107,10 @@ export const Footer = () => (
   <div className="footer-bottom" style={{zIndex:1}}/>
 	<div className="auto-container">
 	  <div className="inner-container">
-		<div className="copyright-text text-center">© zitch Copyright reserved by <a href="index.html">kodesolution.com</a>
+		<div className="copyright-text text-center">© {currentYear} KPD Labs Copyright All Rights Reserved <a href="index.html">kodesolution.com</a>
 		<a href="#" className="footer-btn"></a>
 	  </div>
 	</div>
   </div>
 </footer>
-);
+)};

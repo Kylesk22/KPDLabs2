@@ -399,15 +399,15 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <button className="slick-next slick-arrow" aria-label="Next" type="button" >Next</button></div>
 </section> */}
 
-<section className="banner-section">
+<section className="banner-section" >
   <div className="banner-slider slick-initialized slick-slider" >
 	<div className="banner-slide" ><img src={Intro} style={{position: "absolute"}}/> 
 	{/* <img src={BKG} alt=""/> */}
 	
-	  <div className="outer-box">
-		<div className="auto-container">
+	  <div className="outer-box" style={{zIndex: "2"}} >
+		<div className="auto-container" style={{zIndex: "2"}}>
 		
-		  <div className="content-box"> 
+		  <div className="content-box" style={{zIndex: "2"}}> 
 		  <Fade cascade>
 		  <ul>
 			<li>
@@ -416,7 +416,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				  
 			</li>
 		  	<li>
-			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Wizards of <br/>Dental Technology
+			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" >Wizards of <br/>Dental Technology
 			<Sparkle
 				minSize={6}
 				maxSize={12}
@@ -437,31 +437,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  
 		</div>
 	  </div>
-	  <div className="d-none d-md-block col-lg-8 float-end" style={{width: "700px", position: "relative"}}><ThreeScene2/></div>
+	  <div className="d-none d-md-block col-lg-8 float-end 3models" style={{width: "700px", position: "relative", zIndex:"1"}}><ThreeScene2/></div>
 	  
 	</div>
 	
-	
-	{/* <div className="banner-slide"> <img src={BKG} alt=""/>
-	  <div className="outer-box">
-		<div className="auto-container">
-		  <div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2">Next level Automation System</span>
-			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Cast Effective Digital Marketing Agency</h1>
-			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div className="banner-slide"> <img src={BKG} alt=""/>
-	  <div className="outer-box">
-		<div className="auto-container">
-		  <div className="content-box"> <span className="sub-title">Next level Automation System</span>
-			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2">Cast Effective Digital Marketing Agency</h1>
-			<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Discover More</a> </div>
-		  </div>
-		</div>
-	  </div>
-	</div> */}
+
   </div>
   
 </section>

@@ -65,7 +65,7 @@ export const Navbar = (props) => {
 		<header className="main-header header-style-one" >
 			<div className="logo-box ">
 			<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
-			<strong> <span style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
+			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
 			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">
@@ -163,8 +163,8 @@ export const Navbar = (props) => {
 			<div className="outer-box"> <a href="tel:8634382102" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span>
 			  <h6 className="title">863-438-2102</h6>
 			  </a>
-			  <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div>
-			  <div className="btn"> <a href="page-contact.html" className="theme-btn">get solution</a> </div>
+			  {/* <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div> */}
+			  <div className="btn"> <a href="/contactus" className="theme-btn">get solution</a> </div>
 			  <div className="mobile-nav-toggler"  onClick={()=>setMobileActive(true)}> <i className="fa-solid fa-bars mobile-menu-visible"></i> </div>
 			</div>
 		 </div>
@@ -200,7 +200,7 @@ export const Navbar = (props) => {
 			<ul className="contact-list-one">
 			<li> 
 			
-				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:+92880098670">+92 (8800) - 98670</a> </div>
+				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:863-438-2102">863-438-2102</a> </div>
 			</li>
 			<li> 
 			

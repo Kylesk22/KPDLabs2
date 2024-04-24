@@ -202,3 +202,8 @@
   }
 
 
+.right-image{
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}

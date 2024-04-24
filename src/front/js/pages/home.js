@@ -489,6 +489,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 
 <!-- about-section --> */}
 <section className="about-section" style={{backgroundImage: `url(${AboutBKG})`}}>
+	
   <div className="auto-container">
 	<div className="row"> 
 	  {/* <!-- content-column --> */}
@@ -549,6 +550,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
 	
   </div>
+  
 </section>
 
 {/* <!-- End about-section -->

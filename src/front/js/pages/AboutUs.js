@@ -220,9 +220,11 @@ return(
 		</div>
 	</section>
 
-  <section className="about-section" 
-  // style={{backgroundImage: `url(${AboutBKG})`}}
+  <section className="about-section " 
+  style={{backgroundImage: `url(${AboutBKG})`}}
+  // style={{backgroundImage: `url(${Lines})`}}
   >
+    
   <div className="auto-container">
 	<div className="row"> 
 	  {/* <!-- content-column --> */}
@@ -252,7 +254,7 @@ return(
 			  </div>
 			</div> */}
 		  </div>
-		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> 
+		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
 		  {/* <img src={BKG} alt=""/>  */}
 		  </div>
 		</div>
@@ -445,7 +447,7 @@ return(
 
   </section> */}
 
-  <section className="team-section">
+  <section className="team-section" >
     <div className="auto-container">
       <div className="sec-title text-center"> <span className="sub-title">::::::  Expert Team Members  ::::::</span>
         <h2>Meet our Professional <br/>Team Members</h2>
@@ -474,7 +476,7 @@ return(
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
           <div className="inner-box">
             <div className="image-box">
-              <figure className="image"><a href=""><img src="" alt=""/></a></figure>
+              <figure className="image"><a href=""><img src={Kyle} alt=""/></a></figure>
               <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>

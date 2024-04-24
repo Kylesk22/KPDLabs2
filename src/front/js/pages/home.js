@@ -13,6 +13,7 @@ import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Link, Navigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 
+import ReactPlayer from 'react-player'
 import CustomVideoPlayer from "../component/CustomVideoPlayer"
 
 import "../../styles/_about.scss"
@@ -539,6 +540,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				<source src={MillingClip} type="video/mp4"/>
 			</video> */}
 			<CustomVideoPlayer/>
+			
 
 
 		  </div>

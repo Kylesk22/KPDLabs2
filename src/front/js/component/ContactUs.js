@@ -73,34 +73,34 @@ return(
 						<div className="row">
 							<div className="col-sm-6">
 								<div className="mb-3">
-									<input name="form_name" className="form-control" type="text" placeholder="Enter Name" value={name} onChange={(e)=>setName(e.target.value)}/>
+									<input name="form_name" className="form-control info-box-outline" type="text" placeholder="Enter Name" value={name} onChange={(e)=>setName(e.target.value)}/>
 								</div>
 							</div>
 							<div className="col-sm-6">
 								<div className="mb-3">
-									<input name="form_email" className="form-control required email" type="email" placeholder="Enter Email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
+									<input name="form_email" className="form-control required email info-box-outline" type="email" placeholder="Enter Email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
 								</div>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col-sm-6">
 								<div className="mb-3">
-									<input name="form_subject" className="form-control required" type="text" placeholder="Case Number" value={subject} onChange={(e)=>setSubject(e.target.value)}/>
+									<input name="form_subject" className="form-control required info-box-outline" type="text" placeholder="Case Number" value={subject} onChange={(e)=>setSubject(e.target.value)}/>
 								</div>
 							</div>
 							<div className="col-sm-6">
 								<div className="mb-3">
-									<input name="form_phone" className="form-control" type="text" placeholder="Enter Phone" value={phone} onChange={(e)=> setPhone(e.target.value)} />
+									<input name="form_phone" className="form-control info-box-outline" type="text" placeholder="Enter Phone" value={phone} onChange={(e)=> setPhone(e.target.value)} />
 								</div>
 							</div>
 						</div>
 						<div className="mb-3">
-							<textarea name="form_message" className="form-control required" rows="7" placeholder="Enter Message" value={emailBody} onChange={(e)=>{setEmailBody(e.target.value)}} ></textarea>
+							<textarea name="form_message" className="form-control required info-box-outline" rows="7" placeholder="Enter Message" value={emailBody} onChange={(e)=>{setEmailBody(e.target.value)}} ></textarea>
 						</div>
 						<div className="mb-5">
 							<input name="form_botcheck" className="form-control" type="hidden" value="" />
-							<button type="submit" className="theme-btn btn-style-one" data-loading-text="Please wait..."><span className="btn-title">Send message</span></button>
-							<button type="reset" className="theme-btn btn-style-one bg-theme-color5"><span className="btn-title">Reset</span></button>
+							<button type="submit" className="theme-btn btn-style-one" data-loading-text="Please wait..." style={{border: "black 1px solid"}}><span className="btn-title">Send message</span></button>
+							<button type="reset" className="theme-btn btn-style-one bg-theme-color5" style={{border: "black 1px solid"}}><span className="btn-title">Reset</span></button>
 						</div>
 					</form>
 					

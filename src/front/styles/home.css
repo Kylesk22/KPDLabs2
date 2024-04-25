@@ -223,3 +223,10 @@
   } 
 
 }
+
+.info-box-outline{
+  
+  min-height: 40px !important;
+  background-color: white !important;
+  border: black 1px solid !important;
+}

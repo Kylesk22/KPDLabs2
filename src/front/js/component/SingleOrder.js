@@ -128,12 +128,12 @@ export const SingleOrder = props => {
     return(
         <>
         <form className="form form-container" data-toggle="validator" role="form">
-            <div className="row"> 
+            <div className="row mt-4"> 
                 <div className="text-center">
-                    <button className="btn btn-primary" onClick={()=>setPage("userCases")} style={{width: "150px"}}>Back</button>
+                    <button className="theme-btn" onClick={()=>setPage("userCases")} style={{width: "150px"}}>Back</button>
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-3">
                 <div className="text-center">
                     <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
                 </div>

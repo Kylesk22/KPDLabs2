@@ -65,7 +65,7 @@ return(
 			<div className="row">
 				<div className="col-xl-7 col-lg-6">
 					<div className="sec-title">
-						<span className="sub-title">Send us email</span>
+						<span className="sub-title">Send us an email</span>
 						<h2>Feel free to write</h2>
 					</div>
 				

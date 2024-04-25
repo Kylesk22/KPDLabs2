@@ -76,7 +76,7 @@ export const UserCases = props => {
                                 <>
                                 <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}} >{item["id"]}</div>
                                 <div className = "col-5 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{item["name"]}</div>
-                                <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}></div>
+                                <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{item["status"]}</div>
                                 
                                 </>
                                 

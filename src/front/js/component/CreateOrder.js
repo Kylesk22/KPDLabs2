@@ -248,7 +248,8 @@ AWS.config.update({
                 "teeth": crownTooth,
                 "finish": finish,
                 "shade": shade,
-                "note": note
+                "note": note,
+                "status": "Created"
             }
             
             const options = {

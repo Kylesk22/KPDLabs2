@@ -102,6 +102,13 @@ export const SingleOrder = props => {
                     setPatientName(data.name);
                     setCaseNum(data.id);
                     setCrownTooth(data.teeth);
+                    for (let tooth in crownTooth){
+                        const element = document.getElementById(tooth);
+                        element.style.fill = "#137ea7"
+                    }
+                    
+                    
+                    
                     console.log(data["case scans"])
                     for (let scan in data["case scans"]){
                         let add_scan = data["case scans"][scan]["scan"]

@@ -62,9 +62,9 @@ export const UserCases = props => {
             <div className = "row justify-content-end" >
                 <div className="col-10 ">
                     <div className="row" >
-                    <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}   onClick={()=>{console.log(cases)}} >Case #</div>
-                    <div className = "col-5 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
-                    <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
+                    <div className = "col-2 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}}   onClick={()=>{console.log(cases)}} ><strong>Case #</strong></div>
+                    <div className = "col-5 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
+                    <div className = "col-3 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}}><strong>Status</strong></div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
@@ -74,9 +74,9 @@ export const UserCases = props => {
                             <div key={index} className="row" onClick={()=>{setSinglePage("singleCase"), props.setSingleCaseID(item["id"])}}>
                                 {(index <= pageMax && index >= pageMin)?
                                 <>
-                                <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}} >{item["id"]}</div>
-                                <div className = "col-5 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{item["name"]}</div>
-                                <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{item["status"]}</div>
+                                <div className = "col-2 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}} >{item["id"]}</div>
+                                <div className = "col-5 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}}>{item["name"]}</div>
+                                <div className = "col-3 text-center" style={{border: "solid grey 1px", color:"black", backgroundColor:"white"}}>{item["status"]}</div>
                                 
                                 </>
                                 

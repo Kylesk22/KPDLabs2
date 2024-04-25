@@ -12,6 +12,7 @@ import { Link, Navigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 import Kyle from "../../img/Kyle.png"
 import Laurie from "../../img/Laurie.jpg"
+import Casey from "../../img/casey2.jpg"
 
 import Intro from "../../img/footer-flip.jpg"
 
@@ -476,7 +477,7 @@ return(
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
           <div className="inner-box">
             <div className="image-box">
-              <figure className="image"><a href=""><img src={Kyle} alt=""/></a></figure>
+              <figure className="image"><a href=""><img src={Casey} alt=""/></a></figure>
               <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>

@@ -122,6 +122,9 @@ export const SingleOrder = props => {
     return(
         <>
         <form className="form form-container" data-toggle="validator" role="form">
+            <div className="row"> 
+                <button className="btn btn-primary" onClick={()=>setPage("userCases")}>Back</button>
+            </div>
             <div className="row">
                 <div className="text-center">
                     <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>

@@ -255,9 +255,9 @@ return(
 			  </div>
 			</div> */}
 		  </div>
-		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
-		  {/* <img src={BKG} alt=""/>  */}
-		  </div>
+		  {/* <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
+	
+		  </div> */}
 		</div>
 	  </div>
 	  {/* <!-- image-column --> */}

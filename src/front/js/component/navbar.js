@@ -43,6 +43,8 @@ export const Navbar = (props) => {
 		sessionStorage.clear();
 		setLoggedIn(false);
 		props.updateLogState(false)
+		window.location.href = "/";
+
 
 	}
 
@@ -293,7 +295,7 @@ export const Navbar = (props) => {
 		  </div>
 		  <div className="top-right">
 			<ul className="login-btn">
-			  <li className="active" onClick={()=>logout()}><a href="/" ><i className="fa-solid fa-user"></i>Logout</a></li>
+			  <li className="active" onClick={()=>logout()}><i className="fa-solid fa-user"></i>Logout</li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
 				<Modal.Title>Login</Modal.Title>

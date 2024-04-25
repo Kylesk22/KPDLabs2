@@ -519,7 +519,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  </div>
 			</div> */}
 		  </div>
-		  <div className="btn-box"> <a href="page-about.html" className="btn theme-btn">Discover More</a> 
+		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
 		  {/* <img src={BKG} alt=""/>  */}
 		  </div>
 		</div>
@@ -603,7 +603,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/partial">Partial</a></h4>
-			<div className="text">TCS Unbreakable</div>
+			<div className="text">Milled TCS Unbreakable</div>
 			<a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>
@@ -616,7 +616,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/denture">Denture</a></h4>
-			<div className="text">Removeable</div>
+			<div className="text">Milled Multilayer PMMA</div>
 			<a href="/denture" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>

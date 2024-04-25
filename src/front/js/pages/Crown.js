@@ -316,7 +316,7 @@ return(
             </Fade>:
             (currentPage === "indications")?
             <div>
-                <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 unites</h3>
+                <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 units</h3>
                 <div>Inlays and Onlays</div>
             </div>:
             (currentPage === "contraindications")?

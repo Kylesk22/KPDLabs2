@@ -383,7 +383,7 @@ export const Navbar = (props) => {
 		 </div>
 		</div>
 
-	{/* <div className={`${mobileActive ? 'mobile-menu-visible' : ''}`} > */}
+	<div className={`${mobileActive ? 'mobile-menu-visible' : ''}`} >
 		<div className={`mobile-menu `} >
 		<div className="menu-backdrop"></div>
 		
@@ -439,7 +439,7 @@ export const Navbar = (props) => {
 			</ul>
 		</nav>
 		</div>
-	{/* </div> */}
+	</div>
 
 
 

@@ -27,6 +27,12 @@ export const SingleOrder = props => {
     let stl_urls = []
     let photo_urls = []
 
+    useEffect(()=>{
+        
+        props.handleGetPage(page);
+        console.log(page)
+    },[page])
+
     const downloadCase = () => {
         //   const link = document.createElement('a');
           console.log(stlFile)}

@@ -40,14 +40,14 @@ export const ContactUs = props => {
 
 return(
 <>
-<div className="page-wrapper">
+{/* <div className="page-wrapper"> */}
 
 	
     
   
 
 
-  <section className="contact-us-page banner-slide" style={{backgroundImage: `url(${Intro})`, position: "relative", backgroundRepeat: "no-repeat", marginTop: "125px", padding: "110px, 0, 110px", minHeight: "350px"}}>
+  {/* <section className="contact-us-page banner-slide" style={{backgroundImage: `url(${Intro})`, position: "relative", backgroundRepeat: "no-repeat", marginTop: "125px", padding: "110px, 0, 110px", minHeight: "350px"}}>
 		<div className="auto-container">
 			<div className="title-outer text-center">
 				<h1 className="title"  style={{color: "white", fontSize: "64px", marginBottom: "17px", paddingTop: "100px", fontWeight: "700"}}>Contact Us</h1>
@@ -58,7 +58,7 @@ return(
 				</ul>
 			</div>
 		</div>
-	</section>
+	</section> */}
 
 	<section className="contact-details">
 		<div className="container pb-70">
@@ -158,10 +158,10 @@ return(
  
 
 
-</div>
+{/* </div> */}
 
 
 
-<div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div>
+{/* <div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-up"></span></div> */}
 
 </>)}

@@ -34,6 +34,9 @@ const Layout = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [mobileActive, setMobileActive] = useState(false)
 
+    useEffect(()=>{
+        console.log(loggedIn)
+    })
     return (
         
         <div style={{overflowX: "hidden"}}

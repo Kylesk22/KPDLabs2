@@ -898,7 +898,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				!faq2 ? setFaq2(true): setFaq2(false)}}>What materials do we offer?<i className="icon fas fa-angle-right"  ></i> </div>
 			  <div className={`acc-content${faq2 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">We currently offer Zirconia for crown, bridge, and veneer. TCS unbreakable for partials. PMMA for Dentures</div>
+				  <div className="text">We currently offer Zirconia for crown, bridge, and veneer. Milled TCS unbreakable for partials. Milled Multiplayer PMMA With Gingival PMMA Base for Dentures.</div>
 				</div>
 			  </div>
 			</li>
@@ -908,7 +908,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				!faq3 ? setFaq3(true): setFaq3(false)}}>What are KPD's terms? <i className="icon fas fa-angle-right"  ></i> </div>
 			  <div className={`acc-content${faq3 ? 'current' : ''}`}>
 				<div className="content">
-				  <div className="text">Check out our <a href="/terms">terms</a></div>
+				  <div className="text">Check out our <a href="/terms">terms.</a></div>
 				</div>
 			  </div>
 			</li>

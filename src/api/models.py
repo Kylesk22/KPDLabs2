@@ -78,6 +78,7 @@ class Case(db.Model):
     shade = db.Column(db.String(50), unique=False, nullable=True)
     finish = db.Column(db.String(50), unique=False, nullable=True)
     notes = db.Column(db.String(255), nullable= True)
+    status = db.Column(db.String(50), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     creation_date = db.Column(db.String(50))
     update_date = db.Column(MutableList.as_mutable(PickleType), default=[])
@@ -93,6 +94,10 @@ class Case(db.Model):
             "user id":self.user_id,
             "teeth":self.teeth,
             "product": self.product,
+            "shade": self.shade,
+            "finish": self.finish,
+            "notes": self.notes,
+            "status": self.status,
             "creation date": self.creation_date,
             "update date": self.update_date,
             "case scans":[scan.serialize() for scan in self.case_scans]

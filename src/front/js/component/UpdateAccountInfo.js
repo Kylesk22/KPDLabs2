@@ -70,7 +70,7 @@ export const UpdateAccountInfo = props => {
             
             <div className="lg-col-4 sm-col-8 text-center" >
             
-                <form className="form container lg-col-4"  style={{borderRadius: "5%", maxWidth: "600px"}} onSubmit={submitHandler}>
+                <form className="form container lg-col-4 update-box"  style={{borderRadius: "5%", maxWidth: "600px"}} onSubmit={submitHandler}>
                 <div className="form-group mx-3">
                         <label htmlFor="streetAddress" className="form-label mt-4 " style={{textAlign: "center", color:"black"}} >Street Address</label>
                         <input style={{backgroundColor: "white", border: "black 1px solid"}} type="text" required className="form-control" id="streetAddress" placeholder="StreetAddress" value={streetAddress} onChange={(e)=>setStreetAddress(e.target.value)} />

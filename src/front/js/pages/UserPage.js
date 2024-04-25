@@ -167,7 +167,7 @@ export const UserPage = props => {
             {(sessionStorage.getItem("id"))?
             <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
-                <div className="col-12 text-center">
+                <div className="col-12 text-center user-header">
                     <h1>Welcome Dr. {firstName}</h1>
                 </div>
             </div>

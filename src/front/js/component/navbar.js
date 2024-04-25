@@ -293,7 +293,7 @@ export const Navbar = (props) => {
 		  </div>
 		  <div className="top-right">
 			<ul className="login-btn">
-			  <li className="active" onClick={()=>logout}><a href="/" ><i className="fa-solid fa-user"></i>Logout</a></li>
+			  <li className="active" onClick={()=>logout()}><a href="/" ><i className="fa-solid fa-user"></i>Logout</a></li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
 				<Modal.Title>Login</Modal.Title>
@@ -381,7 +381,7 @@ export const Navbar = (props) => {
 		 </div>
 		</div>
 
-	<div className={`${mobileActive ? 'mobile-menu-visible' : ''}`} >
+	{/* <div className={`${mobileActive ? 'mobile-menu-visible' : ''}`} > */}
 		<div className={`mobile-menu `} >
 		<div className="menu-backdrop"></div>
 		
@@ -437,7 +437,7 @@ export const Navbar = (props) => {
 			</ul>
 		</nav>
 		</div>
-	</div>
+	{/* </div> */}
 
 
 

@@ -130,7 +130,7 @@ export const SingleOrder = props => {
         <form className="form form-container" data-toggle="validator" role="form">
             <div className="row mt-4"> 
                 <div className="text-center">
-                    <button className="theme-btn" onClick={()=>setPage("userCases")} style={{width: "150px"}}>Back</button>
+                    <button className="theme-btn" onClick={()=>setPage("userCases")} style={{width: "170px"}}>Back</button>
                 </div>
             </div>
             <div className="row mt-3">

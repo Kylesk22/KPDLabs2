@@ -61,12 +61,12 @@ return(
 	</section> */}
 
 	<section className="contact-details">
-		<div className="container pb-70">
+		<div className="container pb-70 inside-contact">
 			<div className="row">
 				<div className="col-xl-7 col-lg-6">
 					<div className="sec-title">
 						<span className="sub-title">Send us an email</span>
-						<h2>Feedback or Case Questions?</h2>
+						<h2 className="inside-contact-header">Feedback or Case Questions?</h2>
 					</div>
 				
 					<form id="contact_form" name="contact_form" className=""  onSubmit={()=>fullEmail()}>

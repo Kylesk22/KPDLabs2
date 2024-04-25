@@ -89,6 +89,10 @@
       
       width: 100% !important;
     }
+
+    .inside-contact-header{
+      font-size: 30px !important;
+    }
     
   
   }
@@ -206,4 +210,16 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: right;
+}
+
+.inside-contact{
+  padding-left: 80px !important;
+}
+
+@media (min-width: 767px) and (max-width: 922px) {
+  
+  .inside-contact{
+    padding-left: 120px !important;
+  } 
+
 }

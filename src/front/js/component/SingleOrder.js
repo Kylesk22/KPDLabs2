@@ -105,6 +105,7 @@ export const SingleOrder = props => {
                     for (let tooth in crownTooth){
                         const element = document.getElementById(tooth);
                         element.style.fill = "#137ea7"
+                        console.log(tooth)
                     }
                     
                     

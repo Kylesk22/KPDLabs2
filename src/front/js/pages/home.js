@@ -441,7 +441,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  
 		</div>
 	  </div>
-	  <div className="d-none d-md-block col-lg-8 float-end 3models" style={{width: "700px", position: "relative", zIndex:"1"}}><ThreeScene2/></div>
+	  <div className="d-none d-md-flex outer-box col-lg-8 float-end 3models" 
+	  style={{width: "50%", position: "absolute", zIndex:"1", left:"auto", right:"0"}}
+	  ><ThreeScene2/></div>
 	  
 	</div>
 	
@@ -459,7 +461,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="400ms">
 		<div className="inner-box">
 		  <div className="icon-box"> <i className="fa-solid fa-award"></i>
-			<h5 className="title"><a href="page-about.html">Unparalleled Quality</a></h5>
+			<h5 className="title"><a href="">Unparalleled Quality</a></h5>
 		  </div>
 		  <div className="text">Get the right fit, the first time</div>
 		</div>
@@ -468,7 +470,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="600ms">
 		<div className="inner-box">
 		  <div className="icon-box"> <i className="fa-solid fa-circle-dollar-to-slot"></i>
-			<h5 className="title"><a href="page-about.html">Affordable Price</a></h5>
+			<h5 className="title"><a href="">Affordable Price</a></h5>
 		  </div>
 		  <div className="text">Competitive pricing on all products</div>
 		</div>
@@ -477,7 +479,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="800ms">
 		<div className="inner-box">
 		  <div className="icon-box"> <i className="fa-solid fa-person-running"></i>
-			<h5 className="title"><a href="page-about.html">Quick Turnaround</a></h5>
+			<h5 className="title"><a href="">Quick Turnaround</a></h5>
 		  </div>
 		  <div className="text">Standard production 4-6 days</div>
 		</div>

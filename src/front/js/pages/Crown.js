@@ -317,7 +317,7 @@ return(
             (currentPage === "indications")?
             <div>
                 <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 units</h3>
-                <div>Inlays and Onlays</div>
+                <h3>Inlays and Onlays</h3>
             </div>:
             (currentPage === "contraindications")?
             <div>

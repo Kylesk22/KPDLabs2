@@ -442,7 +442,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		</div>
 	  </div>
 	  <div className="d-none d-md-flex outer-box col-lg-8 float-end 3models" 
-	  style={{width: "50%", position: "absolute", zIndex:"1", left:"auto", right:"0"}}
+	  style={{width: "50%", height:"auto", position: "absolute", zIndex:"1", left:"auto", right:"0"}}
 	  ><ThreeScene2/></div>
 	  
 	</div>

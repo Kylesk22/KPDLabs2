@@ -8,11 +8,16 @@ import "../../styles/home.css";
 import { Modal } from 'react-bootstrap';
 import Sparkle from 'react-sparkle'
 import "../../styles/home.css";
+import "../../styles/index.css";
 import "../../styles/slick-theme.css"
 import "../../styles/slick.css"
 import "../../styles/style.css"
 import "../../styles/animate.css"
 import { Fade, Slide } from "react-awesome-reveal";
+import Wizards from "../../img/kpd_wizards-justletters.png"
+
+import Painter from "../../fonts/SignPainter-HouseScript-Regular.ttf"
+
 
 
 
@@ -25,6 +30,17 @@ export const Navbar = (props) => {
 	const [showModal, setShowModal] = useState(false);
 	const [mobileActive, setMobileActive] = useState(false)
 	const [displayProducts, setDisplayProducts] = useState(false)
+
+
+	const fontFamily = `
+    @font-face {
+		font-family: "Painter2";
+		src: local("SignPainter-HouseScript-Regular"),
+			url("../../fonts/SignPainter-HouseScript-Regular.ttf") format("truetype");
+			font-weight: normal;
+			font-style: normal
+    }
+  `;
 
 	const handleToggleModal = () => {
 		setShowModal(!showModal);
@@ -314,36 +330,19 @@ export const Navbar = (props) => {
 			</ul>
 		  </div>
 		</div>
-		<div className="header-lower"> 
+		<div className="header-lower mob-title" style={{backgroundColor: "#222429"}}> 
 		  {/* <!-- Main box --> */}
-		  <div className="main-box"> 
+		  <div className="main-box" style={{marginLeft: "auto", marginRight: "auto" }}> 
 			{/* <!--Nav Box--> */}
-			<div className="nav-outer">
+			<div className="nav-outer wizards mob-height" style={{marginLeft: "auto", marginRight: "auto", fontSize: "50px", color: "#ffaa17"}}> Wizards of Dental Technology
 			  <nav className="nav main-menu">
-				<ul className="navigation">
-				  <li className="current dropdown"> <a href="/">Home</a>
+				{/* <img src={Wizards}></img> */}
+				{/* <ul className="navigation"> */}
+				  {/* <li className="current dropdown"> <a href="/">Home</a>
 					
 				  </li>
 				  <li className="dropdown"> <a href="/aboutus">About Us</a>
-					{/* <ul>
-					  <li><a href="page-about.html">About</a></li>
-					  <li className="dropdown"> <a href="#">Projects</a>
-						<ul>
-						  <li><a href="page-projects.html">Projects List</a></li>
-						  <li><a href="page-project-details.html">Project Details</a></li>
-						</ul>
-					  </li>
-					  <li className="dropdown"> <a href="#">Team</a>
-						<ul>
-						  <li><a href="page-team.html">Team List</a></li>
-						  <li><a href="page-team-details.html">Team Details</a></li>
-						</ul>
-					  </li>
-					  <li><a href="page-testimonial.html">Testimonial</a></li>
-					  <li><a href="page-pricing.html">Pricing</a></li>
-					  <li><a href="page-faq.html">FAQ</a></li>
-					  <li><a href="page-404.html">Page 404</a></li>
-					</ul> */}
+					
 				  </li>
 				  <li className="dropdown"> <a href="#">Products</a>
 					<ul>
@@ -353,31 +352,18 @@ export const Navbar = (props) => {
 					  <li><a href="/denture">Denture</a></li>
 					</ul>
 				  </li>
-				  {/* <li className="dropdown"> <a href="#">Shop</a>
-					<ul>
-					  <li><a href="shop-products.html">Products</a></li>
-					  <li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
-					  <li><a href="shop-product-details.html">Product Details</a></li>
-					  <li><a href="shop-cart.html">Cart</a></li>
-					  <li><a href="shop-checkout.html">Checkout</a></li>
-					</ul>
-				  </li>
-				  <li className="dropdown"> <a href="#">News</a>
-					<ul>
-					  <li><a href="news-grid.html">News Grid</a></li>
-					  <li><a href="news-details.html">News Details</a></li>
-					</ul>
-				  </li> */}
-				  <li><a href="/contactus">Contact</a></li>
-				</ul>
+				 
+				  <li><a href="/contactus">Contact</a></li> */}
+				{/* </ul> */}
 			  </nav>
 			  {/* <!-- Main Menu End-->  */}
 			</div>
-			<div className="outer-box"> <a href="tel:8634382102" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span>
-			  <h6 className="title">863-438-2102</h6>
-			  </a>
+			<div className="outer-box"> 
+			{/* <a href="tel:8634382102" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span> */}
+			  {/* <h6 className="title">863-438-2102</h6>
+			  </a> */}
 			  {/* <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div> */}
-			  <div className="btn"> <a href="/contactus" className="theme-btn">get solution</a> </div>
+			  {/* <div className="btn"> <a href="/contactus" className="theme-btn">get solution</a> </div> */}
 			  <div className="mobile-nav-toggler"  onClick={()=>setMobileActive(true)}> <i className="fa-solid fa-bars mobile-menu-visible"></i> </div>
 			</div>
 		 </div>

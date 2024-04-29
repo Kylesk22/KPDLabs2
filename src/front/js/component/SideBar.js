@@ -50,22 +50,22 @@ export const SideBar = props => {
 
     // }
     return (
-        <div className="container pt-4" style={{width: "20%", position: "absolute"}}>
+        <div className="container pt-4 user-sidebar" style={{width: "20%", position: "absolute"}}>
             <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden " >
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
             
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "home"  ? "active" : ""}`} onClick={()=>setCurrentPage("home")}>
+                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "home"  ? "active" : ""}`} onClick={()=>setCurrentPage("home")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Home</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "create" ? "active" : ""}`} onClick={()=>setCurrentPage("create")}>
+                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "create" ? "active" : ""}`} onClick={()=>setCurrentPage("create")}>
                             <i className="fas fa-plus fa-fw me-3"></i><span>Create a Case</span>
                         </a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "userCases" ? "active" : ""}`} onClick={()=>{setCurrentPage("userCases")}}>
-                            <i className="fas fa-lock fa-fw me-3"></i><span>Your Cases</span></a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccountInfo" ? "active" : ""}`} onClick={()=>setCurrentPage("updateAccountInfo")}><i
+                        {/* <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "userCases" ? "active" : ""}`} onClick={()=>{setCurrentPage("userCases")}}>
+                            <i className="fas fa-lock fa-fw me-3"></i><span>Your Cases</span></a> */}
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccountInfo" ? "active" : ""}`} onClick={()=>setCurrentPage("updateAccountInfo")}><i
                             className="fas fa-pen-nib fa-fw me-3"></i><span>Update Account</span></a>
-                        <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contactUs" ? "active" : ""}`} onClick={()=>setCurrentPage("contactUs")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contactUs" ? "active" : ""}`} onClick={()=>setCurrentPage("contactUs")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Contact Us</span>
                         </a>
                         {/* <a href="#" className="list-group-item list-group-item-action py-2 ripple"><i

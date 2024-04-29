@@ -60,7 +60,7 @@ return(
 		</div>
 	</section> */}
 
-	<section className="contact-details">
+	<section className="contact-details contact-us-display">
 		<div className="container pb-70 inside-contact">
 			<div className="row">
 				<div className="col-xl-7 col-lg-6">

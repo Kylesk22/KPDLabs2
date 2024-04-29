@@ -167,19 +167,19 @@ export const UserPage = props => {
             {(sessionStorage.getItem("id"))?
             <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
-                <div className="col-12 text-center user-header">
-                    <h1>Welcome Dr. {firstName}</h1>
+                <div className="col-12 user-header" style={{minHeight: "157px"}}>
+                    <h3 style={{paddingTop: "50px"}}>Welcome {firstName} {lastName}</h3>
                 </div>
             </div>
-            <div style={{paddingBottom: "500px"}}>
+            <div  style={{paddingBottom: "500px"}}>
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?
-                <div></div>:
+                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "create")?
                 <CreateOrder handleGetPage={getPage} getCase = {generateCase} caseId = {caseId}/>:
-                (page === "userCases")?
-                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
+                // (page === "userCases")?
+                // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?
                 <SingleOrder singleCaseId = {singleCaseId} handleGetPage={getPage} page={page}/>:
                 (page === "updateAccountInfo")?

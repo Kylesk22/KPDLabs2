@@ -1,10 +1,19 @@
 
+
 #companyName{
     font-family: "Great Vibes", cursive;
     font-weight: 400;
     font-style: normal;
     color: #d4af37;
   }
+
+.wizards{
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #d4af37;
+  
+}
 
 #products {
     font-family: "Roboto", sans-serif;
@@ -224,6 +233,14 @@
 
 }
 
+@media (min-width: 767px) and (max-width: 922px) {
+  
+  .inside-contact{
+    padding-left: 120px !important;
+  } 
+
+}
+
 .info-box-outline{
   
   min-height: 40px !important;
@@ -241,6 +258,55 @@
   }
 
 
-  
+  }
 
-}
+  @media only screen and (max-width:1200px) {
+    
+     
+    .mob-title {
+     background-color: transparent !important;
+  
+    }
+    
+ 
+  }
+  @media only screen and (min-width:1200px) {
+    
+     
+    .mob-title {
+     height: 100px;
+  
+    }
+    
+ 
+  }
+  @media only screen and (min-width:1200px) {
+    
+     
+    .mob-height {
+     padding-top: 20px;
+  
+    }
+    
+ 
+  }
+  @media only screen and (max-width:1000px) {
+    
+     .user-sidebar {
+      display: none !important
+     }
+    
+    
+ 
+  }
+  @media only screen and (min-width:1000px) {
+    
+    .contact-us-display{
+      width: 80%;
+      margin-left: auto;
+    }
+   
+   
+
+ }
+

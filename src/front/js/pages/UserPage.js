@@ -101,6 +101,7 @@ export const UserPage = props => {
         fetch(`${url}/${id}`, options)
         .then((res)=> {
             if (res.ok) {
+                console.log(res)
                 return res.json()
                 .then((data)=>{
 
@@ -113,6 +114,7 @@ export const UserPage = props => {
 
                     if (data.msg=== "Token has expired"){
                         logout()
+                        console.log(data.msg)
                     }
 
                     

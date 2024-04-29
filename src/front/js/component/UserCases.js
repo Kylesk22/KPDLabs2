@@ -60,11 +60,11 @@ export const UserCases = props => {
         return (
         <div className="container">
             <div className = "row justify-content-end" >
-                <div className="col-10 ">
+                <div className="col-md-10 col-12">
                     <div className="row" >
-                    <div className = "col-2 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}   onClick={()=>{console.log(cases)}} ><strong>Case #</strong></div>
-                    <div className = "col-5 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
-                    <div className = "col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Status</strong></div>
+                    <div className = "col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}   onClick={()=>{console.log(cases)}} ><strong>Case #</strong></div>
+                    <div className = "col-md-5 col-6 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
+                    <div className = "col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Status</strong></div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">

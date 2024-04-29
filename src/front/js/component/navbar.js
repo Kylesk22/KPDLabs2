@@ -380,20 +380,15 @@ export const Navbar = (props) => {
 			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 			</div>
 			<ul className="navigation clearfix">
-				<li className="current dropdown"> <a href="/">Home</a>
+				<li className="current dropdown"> <a onClick={()=>props.setUserPage("home")}>Home</a>
 					
 				</li>
-				<li className="dropdown"> <a href="/aboutus">About Us</a></li>
-				<li className="dropdown" onClick={()=>setDisplayProducts(true)}> <a href="#">Products</a>
-					<ul style={{ display: displayProducts ? "block" : "none" }}>
-					  <li><a href="/crownandbridge">Crown and Bridge</a></li>
-					  <li><a href="/veneer">Veneer</a></li>
-					  <li><a href="/partial">Partial</a></li>
-					  <li><a href="/denture">Denture</a></li>
-					</ul>
-					<div className="dropdown-btn"><i className="fas fa-angle-down"></i></div>
+				<li className="dropdown"> <a onClick={()=>props.setUserPage("create")}>Create A Case</a></li>
+				<li className="dropdown" > <a onClick={()=>props.setUserPage("updateAccountInfo")}>Products</a>
+					
+					
 				</li>
-				<li><a href="/contactus">Contact</a></li>
+				<li><a onClick={()=>props.setUserPage("contactUs")}>Contact</a></li>
 			
 			</ul>
 			<ul className="contact-list-one">

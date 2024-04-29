@@ -38,7 +38,9 @@ export const UserPage = props => {
         return null; // Return null if cookie not found
     }
     
-    
+    useEffect(()=>{
+        setPage(props.userPage)
+    },[props.userPage])
     
     useEffect(()=>{
         if (caseId === ""){
@@ -168,7 +170,7 @@ export const UserPage = props => {
             <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
                 <div className="col-12 user-header" style={{minHeight: "157px"}}>
-                    <h3 style={{paddingTop: "50px"}}>Welcome {firstName} {lastName}</h3>
+                    <h3 style={{paddingTop: "50px"}}>Welcome {firstNameLower} {lastName}</h3>
                 </div>
             </div>
             <div  style={{paddingBottom: "500px"}}>

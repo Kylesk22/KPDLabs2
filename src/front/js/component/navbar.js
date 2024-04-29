@@ -222,11 +222,11 @@ export const Navbar = (props) => {
 			</li>
 			<li> 
 			
-				<div className="contact-info-box"> <span className="icon fas fa-envelope" style={{fontSize: "25px"}}></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
+				<div className="contact-info-box"> <span className="icon fas fa-envelope" style={{fontSize: "25px"}}></span> <span className="title">Send Email</span> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a> </div>
 			</li>
 			<li> 
 				
-				<div className="contact-info-box"> <i className="icon fas fa-clock" style={{fontSize: "25px"}}></i> <span className="title">Hours</span> Mon - Fri 9:00AM - 5:00PM</div>
+				<div className="contact-info-box" onClick={()=>sendEmail()}> <i className="icon fas fa-clock" style={{fontSize: "25px"}}></i> <span className="title">Hours</span> Mon - Fri 9:00AM - 5:00PM</div>
 			</li>
 			<li>
 		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
@@ -234,7 +234,7 @@ export const Navbar = (props) => {
 		  3393 US Hwy 17-92 West Haines City, FL
 		</a>
 	  </li>
-			  <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
+			  {/* <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li> */}
 			</ul>
 			<ul className="social-links">
 			<li><a href="#"><i className="fab fa-twitter"></i></a></li>
@@ -311,7 +311,7 @@ export const Navbar = (props) => {
 		  </div>
 		  <div className="top-right">
 			<ul className="login-btn">
-			  <li className="active" onClick={()=>logout()}><i className="fa-solid fa-user" style={{color: "#ffaa17"}}></i>Logout</li>
+			  <li className="active" onClick={()=>logout()} style={{color: "white"}}><i className="fa-solid fa-user" style={{color: "#ffaa17"}}></i> Logout</li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
 				<Modal.Title>Login</Modal.Title>
@@ -384,7 +384,7 @@ export const Navbar = (props) => {
 					
 				</li>
 				<li className="dropdown"> <a onClick={()=>props.setUserPage("create")}>Create A Case</a></li>
-				<li className="dropdown" > <a onClick={()=>props.setUserPage("updateAccountInfo")}>Products</a>
+				<li className="dropdown" > <a onClick={()=>props.setUserPage("updateAccountInfo")}>Update Account</a>
 					
 					
 				</li>
@@ -398,7 +398,7 @@ export const Navbar = (props) => {
 			</li>
 			<li> 
 			
-				<div className="contact-info-box"> <span className="icon fas fa-envelope" style={{fontSize: "25px"}}></span> <span className="title">Send Email</span> <a href="mailto:help@company.com">help@company.com</a> </div>
+				<div className="contact-info-box"> <span className="icon fas fa-envelope" style={{fontSize: "25px"}}></span> <span className="title">Send Email</span> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a> </div>
 			</li>
 			<li> 
 				
@@ -410,7 +410,7 @@ export const Navbar = (props) => {
 		  3393 US Hwy 17-92 West Haines City, FL
 		</a>
 	  </li>
-			  <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
+			  {/* <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li> */}
 			</ul>
 			<ul className="social-links">
 			<li><a href="#"><i className="fab fa-twitter"></i></a></li>

@@ -27,6 +27,15 @@ export const UserPage = props => {
     let id = sessionStorage.getItem("id");
     const url = process.env.BACKEND_URL
 
+    const logout = () => {
+		sessionStorage.clear();
+		setLoggedIn(false);
+		props.updateLogState(false)
+		window.location.href = "/";
+
+
+	}
+
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
         for (let cookie of cookies) {
@@ -101,6 +110,10 @@ export const UserPage = props => {
                     setLastName(data.lname)
                     setLoggedIn(true);
                     setAddress(data.address)
+
+                    if (data.msg=== "Token has expired"){
+                        logout()
+                    }
 
                     
                 })}

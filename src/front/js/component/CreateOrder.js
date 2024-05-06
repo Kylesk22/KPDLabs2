@@ -630,7 +630,7 @@ AWS.config.update({
                 />
                 <button 
                     className="btn btn-primary"
-                    onClick={() => document.getElementById('picUpload').click()} // Trigger file input click
+                    onClick={(e) => {e.preventDefault(); document.getElementById('picUpload').click()}} // Trigger file input click
                 >
                     Select Files
                 </button>
@@ -673,7 +673,7 @@ AWS.config.update({
                 />
                 <button 
                     className="btn btn-primary"
-                    onClick={() => document.getElementById('scanUpload').click()} // Trigger file input click
+                    onClick={(e) =>{ e.preventDefault(); document.getElementById('scanUpload').click()}} // Trigger file input click
                 >
                     Select Files
                 </button>

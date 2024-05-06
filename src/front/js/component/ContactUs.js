@@ -69,7 +69,7 @@ return(
 						<h2 className="inside-contact-header">Feedback or Case Questions?</h2>
 					</div>
 				
-					<form id="contact_form" name="contact_form" className=""  onSubmit={()=>fullEmail()}>
+					<form id="contact_form" name="contact_form" className=""  onSubmit={(e)=> {e.preventDefault(); fullEmail()}}>
 						<div className="row">
 							<div className="col-sm-6">
 								<div className="mb-3">

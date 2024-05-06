@@ -533,10 +533,12 @@ def update_account(id):
     user_info = request.get_json()
     user = User.query.filter_by(id=id).first()
     user.address = user_info["address"]
+   
 
     db.session.commit()
+    res = make_response("updated")
 
     
     print(case)  
    
-    return  200
+    return res, 200

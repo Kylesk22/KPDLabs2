@@ -92,7 +92,7 @@ export const Navbar = (props) => {
 			<li>
 		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
 		  <i className="fas fa-location-dot"></i>
-		  3393 US Hwy 17-92 West Haines City, FL
+		  3393 US Hwy 17-92 West Haines City, FL 33844
 		</a>
 	  </li>
 			  <li><a href="" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
@@ -231,7 +231,7 @@ export const Navbar = (props) => {
 			<li>
 		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
 		  <i className="icon fas fa-location-dot"></i>
-		  3393 US Hwy 17-92 West Haines City, FL
+		  3393 US Hwy 17-92 West Haines City, FL 33844
 		</a>
 	  </li>
 			  {/* <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li> */}
@@ -303,7 +303,7 @@ export const Navbar = (props) => {
 			<li>
 		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
 		  <i className="fas fa-location-dot"></i>
-		  3393 US Hwy 17-92 West Haines City, FL
+		  3393 US Hwy 17-92 West Haines City, FL 33844
 		</a>
 	  </li>
 			  <li><a href="" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
@@ -407,7 +407,7 @@ export const Navbar = (props) => {
 			<li>
 		<a href="https://www.google.com/maps/search/?api=1&query=3393+US+Hwy+17-92+West+Haines+City,+FL" target="_blank">
 		  <i className="icon fas fa-location-dot"></i>
-		  3393 US Hwy 17-92 West Haines City, FL
+		  3393 US Hwy 17-92 West Haines City, FL 33844
 		</a>
 	  </li>
 			  {/* <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li> */}

@@ -73,13 +73,17 @@ export const UserPage = props => {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
-                    console.log(data)
+                    
                    
 
                     
                 })}
             return(res.json())
-            .then((body)=>{alert(body.message)})
+            .then((body)=>{
+                if (body.msg=== "Token has expired"){
+                    logout()
+                }
+                alert(body.message)})
             
             })
        

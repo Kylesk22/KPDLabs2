@@ -137,7 +137,7 @@ return(
 								</div>
 								<div className="text">
 									<h6>Visit anytime</h6>
-									<span>3393 US Hwy 17-92 West Haines City, FL</span>
+									<span>3393 US Hwy 17-92 West Haines City, FL 33844</span>
 								</div>
 							</li>
 						</ul>

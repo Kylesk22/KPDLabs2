@@ -49,7 +49,7 @@ export const UpdateAccountInfo = props => {
             },
             body: JSON.stringify(newUser)
         }
-        fetch(`${url}/updateAccount`, options)
+        fetch(`${url}/${id}/updateAccount`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()

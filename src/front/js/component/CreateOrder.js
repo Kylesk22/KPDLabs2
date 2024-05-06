@@ -346,7 +346,7 @@ AWS.config.update({
     }
     return(
         <>
-        <form className="form form-container" data-toggle="validator" role="form" onSubmit={()=>uploadCase()}>
+        <form className="form form-container" data-toggle="validator" role="form" onSubmit={()=>uploadCase}>
             <div className="row form-group justify-content-center">
                 <div className="text-center col-4">
                     <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>

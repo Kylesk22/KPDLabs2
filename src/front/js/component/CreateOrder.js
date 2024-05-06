@@ -346,7 +346,7 @@ AWS.config.update({
     }
     return(
         <>
-        <form className="form form-container" data-toggle="validator" role="form">
+        <form className="form form-container" data-toggle="validator" role="form" onSubmit={()=>uploadCase()}>
             <div className="row form-group justify-content-center">
                 <div className="text-center col-4">
                     <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
@@ -691,7 +691,7 @@ AWS.config.update({
            
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>
+                    <button className="btn btn-primary" type = "submit"  >Upload</button>
                 </div>
             </div>
             

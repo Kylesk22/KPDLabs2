@@ -536,9 +536,6 @@ def update_account(id):
    
 
     db.session.commit()
-    res = make_response("updated")
-
-    
-    print(case)  
    
-    return res, 200
+   
+    return jsonify({"message": "Account updated successfully"}), 200

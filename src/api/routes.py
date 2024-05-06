@@ -539,4 +539,4 @@ def update_account(id):
     
     print(case)  
    
-    return case.serialize(), 200
+    return  200

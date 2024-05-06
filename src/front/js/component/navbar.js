@@ -179,7 +179,7 @@ export const Navbar = (props) => {
 			  {/* <!-- Main Menu End-->  */}
 			</div>
 			<div className="outer-box"> <a href="tel:8634382102" className="content-btn"> <i className="fa-solid fa-phone"></i> <span>Call Anytime</span>
-			  <h6 className="title">863-438-2102</h6>
+			  <h6 className="title">863-438-2109</h6>
 			  </a>
 			  {/* <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div> */}
 			  <div className="btn"> <a href="/contactus" className="theme-btn">get solution</a> </div>
@@ -218,7 +218,7 @@ export const Navbar = (props) => {
 			<ul className="contact-list-one">
 			<li> 
 			
-				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:863-438-2102">863-438-2102</a> </div>
+				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:863-438-2109">863-438-2109</a> </div>
 			</li>
 			<li> 
 			
@@ -394,7 +394,7 @@ export const Navbar = (props) => {
 			<ul className="contact-list-one">
 			<li> 
 			
-				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:863-438-2102">863-438-2102</a> </div>
+				<div className="contact-info-box"> <i className="icon fas fa-phone" style={{fontSize: "25px"}}></i> <span className="title">Call Now</span> <a href="tel:863-438-2109">863-438-2109</a> </div>
 			</li>
 			<li> 
 			

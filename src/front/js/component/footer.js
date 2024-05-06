@@ -87,7 +87,7 @@ return (
 			  <ul className="contact-info ">
 				<li><i className="fas fa-envelope"></i> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a><br/>
 				</li>
-				<li><i className="fas fa-phone"></i> <a href="tel:8634382102">863-438-2102</a><br/>
+				<li><i className="fas fa-phone"></i> <a href="tel:8634382109">863-438-2109</a><br/>
 				</li>
 			  </ul>
 			  <ul className="social-icons justify-content-center">

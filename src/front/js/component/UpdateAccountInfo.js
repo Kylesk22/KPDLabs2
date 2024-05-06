@@ -17,6 +17,7 @@ export const UpdateAccountInfo = props => {
     const [email, setEmail] = useState("")
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
+    let id = sessionStorage.getItem("id");
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');

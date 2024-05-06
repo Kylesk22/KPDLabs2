@@ -74,10 +74,13 @@ export const UserCases = props => {
                             <div key={index} className="row" onClick={()=>{setSinglePage("singleCase"), props.setSingleCaseID(item["id"])}}>
                                 {(index <= pageMax && index >= pageMin)?
                                 <>
+                                {(item["name"])?
+                                <div>
                                 <div className = "col-md-2 col-3  text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}} >{item["id"]}</div>
                                 <div className = "col-md-5 col-6 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}>{item["name"]}</div>
                                 <div className = "col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}>{item["status"]}</div>
-                                
+                                </div>
+                                :""}    
                                 </>
                                 
                             :""}

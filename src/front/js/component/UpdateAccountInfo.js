@@ -42,6 +42,7 @@ export const UpdateAccountInfo = props => {
         }
         const options = {
             method:"PUT",
+            credentials: 'include',
             headers:{
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),

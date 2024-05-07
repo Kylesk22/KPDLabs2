@@ -5,6 +5,11 @@ import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AWS from 'aws-sdk';
 
+import Zirc from "../../img/Crown.png"
+import ZircV from "../../img/Veneer.png"
+import Partial from "../../img/TCS Unbreakable Partial Denture.png"
+import Denture from "../../img/Denture.png"
+
 import "../../styles/createOrder.css"
 
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';

@@ -17,6 +17,7 @@ class User(db.Model):
     lname = db.Column(db.String(50), unique=False, nullable=False)
     license_number = db.Column(db.String(50), unique=True, nullable=False)
     creation_date = db.Column(db.String(50))
+    pricing_package = db.Column(db.String(50), unique=False)
     user_scans = db.relationship('Scans', backref='user')
     case_number = db.relationship('Case', backref='user')
     security_question_1 = db.Column(db.String(50), unique=False, nullable=False)
@@ -37,6 +38,7 @@ class User(db.Model):
             "fname":self.fname,
             "lname":self.lname,
             "license":self.license_number,
+            "pricing_package": self.pricing_package,
             "created":self.creation_date,
             "security_question_1": self.security_question_1,
             "security_question_2": self.security_question_2,

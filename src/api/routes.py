@@ -120,7 +120,7 @@ def signup():
         address = user_info["address"],
         fname = user_info["firstName"],
         lname = user_info["lastName"],
-        creation_date = now_eastern.strftime("%d/%m/%Y %H:%M:%S"),
+        creation_date = now_eastern.strftime("%m/%d/%Y %H:%M:%S"),
         license_number = user_info["license"],
         security_question_1 = user_info["security1"],
         security_question_2 = user_info["security2"],
@@ -362,7 +362,8 @@ def download_file(file_id):
 @api.route('/<int:id>/new_case', methods=['POST', 'PUT'])
 @jwt_required()
 def new_case(id):
-    now = datetime.now()
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
     if request.method == 'PUT':
         case = request.json.get("case", None)
         name = request.json.get("name", None)
@@ -373,7 +374,7 @@ def new_case(id):
         finish = request.json.get("finish", None)
         blob_scans = request.json.get("stl_urls", None)
         photos = request.json.get("photos", None)
-        update_date  = str(now.strftime("%d/%m/%Y %H:%M:%S"))
+        update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
         
         
         update_case = Case.query.filter_by(id=case).first()
@@ -443,7 +444,7 @@ def new_case(id):
                     
                     user_id = id
 
-                    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                    dt_string = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
                 
                     new_case = Case(
                         user_id = user_id,
@@ -464,7 +465,7 @@ def new_case(id):
                 
                 user_id = id
 
-                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                dt_string = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             
                 new_case = Case(
                     user_id = user_id,

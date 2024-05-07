@@ -9,6 +9,7 @@ import Intro from "../../img/footer-flip.jpg"
 export const Signup = props => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
+    const [license, setLicense] = useState("")
     const [password, setPassword] = useState("")
     const [streetAddress, setStreetAddress] = useState("")
     const [city, setCity] = useState("")
@@ -36,6 +37,7 @@ export const Signup = props => {
         newUser = {
             firstName,
             lastName,
+            license,
             "address": `${streetAddress} ${city}, ${stateSelect}, ${zip}`,
             email,
             password,
@@ -96,6 +98,10 @@ export const Signup = props => {
                     <div className="form-group mx-3">
                         <label htmlFor="lastName" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Last Name</label>
                         <input type="text" required className="form-control" id="lastName" placeholder="Last Name" value={lastName} onChange={(e)=>setLastName(e.target.value)} />
+                    </div>
+                    <div className="form-group mx-3">
+                        <label htmlFor="license" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >License Number</label>
+                        <input type="text" required className="form-control" id="license" placeholder="License Num" value={license} onChange={(e)=>setLicense(e.target.value)} />
                     </div>
                     <div className="form-group mx-3">
                         <label htmlFor="streetAddress" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Street Address</label>

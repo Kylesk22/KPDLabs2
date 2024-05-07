@@ -353,6 +353,7 @@ AWS.config.update({
     return(
         <>
             {(type==="")?
+            <div className="col-8 justify-content-end">
                 <div className="row "> 
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
@@ -366,9 +367,7 @@ AWS.config.update({
                     {/* <i className="flaticon-clock-1"></i> */}
                     </div>
                     <div className="content-box">
-                    <h4 className="title"><a href="/crownandbridge">Crown and Bridge</a></h4>
-                    <div className="text">Zirconia/PMMA Temporary</div>
-                    <a href="/crownandbridge" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+                    <h4 className="title"><a >Crown and Bridge</a></h4>                 
                     </div>
                 </div>
                 </div>
@@ -380,9 +379,7 @@ AWS.config.update({
                     {/* <i className="flaticon-monitor-1"></i> */}
                     </div>
                     <div className="content-box">
-                    <h4 className="title"><a href="/veneer">Veneer</a></h4>
-                    <div className="text">Zirconia/PMMA Temporary</div>
-                    <a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+                    <h4 className="title"><a >Veneer</a></h4>
                     </div>
                 </div>
                 </div>
@@ -394,9 +391,7 @@ AWS.config.update({
                     {/* <i className="flaticon-cog-1"></i> */}
                     </div>
                     <div className="content-box">
-                    <h4 className="title"><a href="/partial">Partial</a></h4>
-                    <div className="text">Milled TCS Unbreakable</div>
-                    <a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+                    <h4 className="title"><a >Partial</a></h4>
                     </div>
                 </div>
                 </div>
@@ -407,12 +402,11 @@ AWS.config.update({
                     {/* <i className="flaticon-cog-1"></i> */}
                     </div>
                     <div className="content-box">
-                    <h4 className="title"><a href="/denture">Denture</a></h4>
-                    <div className="text">Milled Multilayer PMMA</div>
-                    <a href="/denture" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+                    <h4 className="title"><a >Denture</a></h4>
                     </div>
                 </div>
                 </div>
+            </div>
             </div>
             :
             (type==="crown")?

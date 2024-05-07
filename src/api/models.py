@@ -15,6 +15,8 @@ class User(db.Model):
     address = db.Column(db.String(), unique=False, nullable=False)
     fname = db.Column(db.String(30), unique=False, nullable=False)
     lname = db.Column(db.String(50), unique=False, nullable=False)
+    license_number = db.Column(db.String(50), unique=True, nullable=False)
+    creation_date = db.Column(db.String(50))
     user_scans = db.relationship('Scans', backref='user')
     case_number = db.relationship('Case', backref='user')
     security_question_1 = db.Column(db.String(50), unique=False, nullable=False)
@@ -34,6 +36,8 @@ class User(db.Model):
             "address":self.address,
             "fname":self.fname,
             "lname":self.lname,
+            "license":self.license_number,
+            "created":self.creation_date,
             "security_question_1": self.security_question_1,
             "security_question_2": self.security_question_2,
             # "cases":self.case_number,

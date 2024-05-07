@@ -23,6 +23,7 @@ from flask_jwt_extended import JWTManager
 from flask_jwt_extended import set_access_cookies
 from flask_jwt_extended import unset_jwt_cookies
 from flask_cors import CORS
+import click
 
 #from models import Person
 
@@ -110,6 +111,27 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0 # avoid cache memory
     return response
 
+@app.cli.command("dropdb")
+def drop_database():
+    """Drop the database."""
+    if app.config['SQLALCHEMY_DATABASE_URI'].startswith('sqlite'):
+        # For SQLite, just delete the file
+        db_file = app.config['SQLALCHEMY_DATABASE_URI'].replace('sqlite:///', '')
+        if os.path.exists(db_file):
+            os.remove(db_file)
+            click.echo("SQLite database dropped successfully.")
+        else:
+            click.echo("SQLite database does not exist.")
+    else:
+        # For other databases, issue a warning as dropping databases may be irreversible
+        click.echo("WARNING: Dropping database for non-SQLite databases is irreversible and will result in permanent loss of data.")
+        click.echo("Please confirm by typing 'dropdb_confirm'")
+        confirmation = input().strip()
+        if confirmation == 'dropdb_confirm':
+            db.drop_all()
+            click.echo("Database dropped successfully.")
+        else:
+            click.echo("Database drop aborted.")
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

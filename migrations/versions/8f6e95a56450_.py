@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6b81a7b9f424
-Revises: 8fe26d04de35
-Create Date: 2024-03-17 20:58:40.721102
+Revision ID: 8f6e95a56450
+Revises: 75d87fc534a8
+Create Date: 2024-05-07 11:45:40.659976
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6b81a7b9f424'
-down_revision = '8fe26d04de35'
+revision = '8f6e95a56450'
+down_revision = '75d87fc534a8'
 branch_labels = None
 depends_on = None
 
@@ -25,14 +25,25 @@ def upgrade():
     sa.Column('address', sa.String(), nullable=False),
     sa.Column('fname', sa.String(length=30), nullable=False),
     sa.Column('lname', sa.String(length=50), nullable=False),
+    sa.Column('license_number', sa.String(length=50), nullable=False),
+    sa.Column('creation_date', sa.String(length=50), nullable=True),
+    sa.Column('security_question_1', sa.String(length=50), nullable=False),
+    sa.Column('security_answer_1', sa.String(length=50), nullable=False),
+    sa.Column('security_question_2', sa.String(length=50), nullable=False),
+    sa.Column('security_answer_2', sa.String(length=50), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('license_number')
     )
     op.create_table('case',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.Text(), nullable=True),
     sa.Column('teeth', sa.String(length=50), nullable=True),
     sa.Column('product', sa.String(length=50), nullable=True),
+    sa.Column('shade', sa.String(length=50), nullable=True),
+    sa.Column('finish', sa.String(length=50), nullable=True),
+    sa.Column('notes', sa.String(length=255), nullable=True),
+    sa.Column('status', sa.String(length=50), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('creation_date', sa.String(length=50), nullable=True),
     sa.Column('update_date', sa.PickleType(), nullable=True),
@@ -42,7 +53,7 @@ def upgrade():
     op.create_table('scans',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('scan_name', sa.String(length=255), nullable=True),
-    sa.Column('scan', sa.LargeBinary(), nullable=True),
+    sa.Column('scan', sa.String(length=255), nullable=True),
     sa.Column('uploaded_at', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('case_id', sa.Integer(), nullable=True),

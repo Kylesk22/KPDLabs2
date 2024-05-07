@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import os
 import bcrypt
 import base64
@@ -17,6 +17,10 @@ import io
 import os
 from pydo import Client
 from flask_cors import CORS, cross_origin
+
+utc = timezone.utc
+eastern = timezone(timedelta(hours=-5))
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -94,6 +98,9 @@ CORS(app, supports_credentials=True)
 #Signup Route/hash and salt pw/create new user/return jwt
 @api.route('/signup', methods=['POST'])
 def signup():
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
+
     user_info = request.get_json()
 
     unsaltPass = user_info['password'].encode('utf-8')
@@ -113,6 +120,8 @@ def signup():
         address = user_info["address"],
         fname = user_info["firstName"],
         lname = user_info["lastName"],
+        creation_date = now_eastern.strftime("%d/%m/%Y %H:%M:%S"),
+        license = user_info["license"],
         security_question_1 = user_info["security1"],
         security_question_2 = user_info["security2"],
         security_answer_1 = user_info["security1Answer"],

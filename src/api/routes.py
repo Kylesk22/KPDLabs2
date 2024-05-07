@@ -19,7 +19,7 @@ from pydo import Client
 from flask_cors import CORS, cross_origin
 
 utc = timezone.utc
-eastern = timezone(timedelta(hours=-5))
+eastern = timezone(timedelta(hours=-4))
 
 
 app = Flask(__name__)

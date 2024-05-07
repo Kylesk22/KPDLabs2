@@ -353,7 +353,7 @@ AWS.config.update({
     return(
         <>
             {(type==="")?
-            <div className="col-8 justify-content-end">
+            <div className="col-lg-8 create-order-type" style={{margin:"auto", paddingLeft:"100px"}}>
                 <div className="row "> 
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">

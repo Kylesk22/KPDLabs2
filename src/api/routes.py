@@ -121,7 +121,7 @@ def signup():
         fname = user_info["firstName"],
         lname = user_info["lastName"],
         creation_date = now_eastern.strftime("%d/%m/%Y %H:%M:%S"),
-        license = user_info["license"],
+        license_number = user_info["license"],
         security_question_1 = user_info["security1"],
         security_question_2 = user_info["security2"],
         security_answer_1 = user_info["security1Answer"],

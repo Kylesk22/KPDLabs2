@@ -38,7 +38,7 @@ export const CreateOrder = props => {
     const [type, setType] = useState("")
     let price = 0;
     let price2 = 0;
-    let total = price1 + price2
+    let total = price + price2
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []

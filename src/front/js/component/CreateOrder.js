@@ -651,10 +651,20 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Zirconia" onClick={()=>{setProduct("Zirconia"); price += 60 }}>Zirconia</option>
-                                <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary"); price += 35}}>PMMA Temporary</option>
+                                <option value="Zirconia" onClick={()=>{setProduct("Zirconia")}}>Zirconia</option>
+                                <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
-                            <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>{price}</small>
+                            <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
+                                {(product === "Zirconia")?
+                                    price += 60
+                                
+                                :(product==="PMMA Temporary")?
+                                    price += 35
+                                
+                                : ""
+                                }
+                                {price}
+                                </small>
                         </div>
                     </div>
                     

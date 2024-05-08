@@ -37,6 +37,8 @@ export const CreateOrder = props => {
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
     let price = 0;
+    let price2 = 0;
+    let total = price1 + price2
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -675,7 +677,16 @@ AWS.config.update({
                                 <option value="Select One">Select One</option>
                                 <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze"); setPrice(price + 20)}}>Stain and Glaze</option>
-                                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>{(finish==="Stain and Glaze")? $20 : ""}</small>
+                                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>
+                                {(finish === "Polished")?
+                                    ""
+                                
+                                :(product==="PMMA Temporary")?
+                                `$${price2 += 20}`
+                                
+                                : ""
+                                }
+                                    </small>
                             </select>
                         </div>
                     </div>
@@ -772,7 +783,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  >Upload</button>
                         </div>
-                        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${price}</small>
+                        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${total}</small>
                     </div>
                     
                 

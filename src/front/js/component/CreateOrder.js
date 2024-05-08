@@ -1164,9 +1164,9 @@ AWS.config.update({
                     <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
                     <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="A1" onClick={()=>setGumShade("A1")}>A1</option>
-                        <option value="A2" onClick={()=>setGumShade("A2")}>A2</option>
-                        <option value="Bleach" onClick={()=>setGumShade("Bleach")}>Bleach</option>
+                        <option value="Pink" onClick={()=>setGumShade("Pink")}>Pink</option>
+                        <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
+                        <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink Fiber</option>
                     </select>
                 </div>
             </div>
@@ -1178,21 +1178,21 @@ AWS.config.update({
                         <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
                         <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
-                        <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
+                        <option value="Final Denture" onClick={()=>setProduct("Final Denture")}>Final Denture</option>
                     </select>
                 </div>
             </div>
             
-            {/* <div className="row form-group text-center justify-content-center mt-5">
+            <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
                     <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="Standard" onClick={()=>setFinish("Standard")}>Polished</option>
-                        <option value="Premium" onClick={()=>setFinish("Premium")}>Stain and Glaze</option>
+                        <option value="Standard" onClick={()=>setFinish("Standard")}>Standard</option>
+                        <option value="Premium" onClick={()=>setFinish("Premium")}>Premium</option>
                     </select>
                 </div>
-            </div> */}
+            </div>
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4 pt-3">
                 <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>

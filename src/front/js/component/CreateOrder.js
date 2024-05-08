@@ -656,14 +656,14 @@ AWS.config.update({
                             </select>
                             <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
                                 {(product === "Zirconia")?
-                                    price += 60
+                                    `$${price += 60}`
                                 
                                 :(product==="PMMA Temporary")?
-                                    price += 35
+                                `$${price += 35}`
                                 
                                 : ""
                                 }
-                                {price}
+                                
                                 </small>
                         </div>
                     </div>

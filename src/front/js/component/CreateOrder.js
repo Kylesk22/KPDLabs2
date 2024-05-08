@@ -681,7 +681,7 @@ AWS.config.update({
                                 {(finish === "Polished")?
                                     ""
                                 
-                                :(product==="PMMA Temporary")?
+                                :(product==="Stain and Glaze")?
                                 `$${price2 += 20}`
                                 
                                 : ""
@@ -782,8 +782,9 @@ AWS.config.update({
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  >Upload</button>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${total}</small>
                         </div>
-                        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${total}</small>
+                        
                     </div>
                     
                 

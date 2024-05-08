@@ -36,6 +36,7 @@ export const CreateOrder = props => {
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
+    const [price, setPrice] = useState(0);
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -650,9 +651,10 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
-                                <option value="PMMA Temporary" onClick={()=>setProduct("PMMA Temporary")}>PMMA Temporary</option>
+                                <option value="Zirconia" onClick={()=>{setProduct("Zirconia"); setPrice(price + 60)}}>Zirconia</option>
+                                <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary"); setPrice(price + 35)}}>PMMA Temporary</option>
                             </select>
+                            <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>{price}</small>
                         </div>
                     </div>
                     
@@ -661,8 +663,9 @@ AWS.config.update({
                             <label  htmlFor="finish"><h5>Finish</h5></label>
                             <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
-                                <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option>
+                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
+                                <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze"); setPrice(price + 20)}}>Stain and Glaze</option>
+                                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>{(finish==="Stain and Glaze")? $20 : ""}</small>
                             </select>
                         </div>
                     </div>
@@ -759,6 +762,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  >Upload</button>
                         </div>
+                        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${price}</small>
                     </div>
                     
                 

@@ -784,7 +784,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  >Upload</button>
                             <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Total = ${price + price2}</small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Unit Total = ${price + price2}</small>
                         </div>
                         
                     </div>

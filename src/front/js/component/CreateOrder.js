@@ -62,7 +62,7 @@ export const CreateOrder = props => {
                 setLowerArch(true)
             }
            
-    }
+    }}
 
 
     function getCookie(name) {

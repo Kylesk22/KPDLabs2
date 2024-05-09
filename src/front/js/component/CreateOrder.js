@@ -54,11 +54,12 @@ export const CreateOrder = props => {
             if (tooth < 16){
                 setUpperArch(true)
             }
+            else{setUpperArch(false)}
             if (tooth> 17){
                 setLowerArch(true)
             }
             else{
-                setUpperArch(false);
+                
                 setLowerArch(false)
             }
         }

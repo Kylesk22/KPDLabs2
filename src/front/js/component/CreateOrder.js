@@ -825,7 +825,7 @@ AWS.config.update({
             <div className="d-flex row pt-4 justify-content-center" >
                 <div className="col-4 form-group text-center pb-4 ">
                     <label  htmlFor="toothInput"><h5>Selected Teeth</h5></label>
-                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>{setToothInput(e.target.value); calculateArches()}}></input>
+                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>{setToothInput(e.target.value); calculateArches(); console.log(lowerArch); console.log(upperArch)}}></input>
                 </div>
                 <div className="col-9 col-lg-3 px-5" >
                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >
@@ -956,7 +956,7 @@ AWS.config.update({
                         <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
-                                {(product === "Custom Tray" && (!lowerArch && upperArch) || (lowerArch && !upperArch))?
+                                {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
                                     `$${(price += 35)}`
                                 

@@ -36,6 +36,8 @@ export const CreateOrder = props => {
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
+    const [lowerArch, setLowerArch] = useState(false)
+    const [upperArch, setUpperArch] = useState(false)
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -46,7 +48,16 @@ export const CreateOrder = props => {
 
 
 
- 
+    function calculateArches(){
+        for (let i = 0; i < crownTooth.length; i++){
+            if (crownTooth(i) < 16){
+                setLowerArch(true)
+            }
+            if (crownTooth(i)> 17){
+                setUpperArch(true)
+            }
+        }
+    }
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
@@ -355,6 +366,13 @@ AWS.config.update({
                 toothFill.style.fill = "#137ea7"
             }
     }
+
+
+
+
+    useEffect(()=>{
+        calculateArches()
+    })
     return(
         <>
             {(type==="")?
@@ -656,16 +674,17 @@ AWS.config.update({
                                 <option value="Zirconia" onClick={()=>{setProduct("Zirconia")}}>Zirconia</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
-                            <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
-                                {(product === "Zirconia")?
-                                    `$${(price += 60)*crownTooth.length}`
-                                
-                                :(product==="PMMA Temporary")?
-                                `$${(price += 35)*crownTooth.length}`
-                                
-                                : ""
-                                }
-                                
+                            <small id="productPrice" className="form-text text-muted"  style={{color:"black"}}>
+                                <strong>
+                                    {(product === "Zirconia")?
+                                        `$${(price += 60)*crownTooth.length}`
+                                    
+                                    :(product==="PMMA Temporary")?
+                                    `$${(price += 35)*crownTooth.length}`
+                                    
+                                    : ""
+                                    }
+                                </strong>
                                 </small>
                         </div>
                     </div>
@@ -938,6 +957,28 @@ AWS.config.update({
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
                     </select>
+                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
+                                {(product === "Custom Tray" && (!lowerArch && upperArch) || (lowerArch && !upperArch))?
+                                
+                                    `$${(price += 35)}`
+                                
+
+                                : (product === "Custom Tray" && lowerArch && upperArch)?    
+                                    `$${(price += 35)*2}`
+
+                                :(product==="Wax Rim")?
+                                `$${(price += 50)}`
+                                
+                                :(product==="Try In")?
+                                `$${(price += 50)}`
+
+                                :(product==="TCS Unbreakable")?
+                                `$${(price += 250)}`
+                                
+                                :""
+                                }
+                                
+                                </small>
                 </div>
             </div>
             
@@ -1043,6 +1084,8 @@ AWS.config.update({
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit"  >Upload</button>
+                    <br></br>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Case Total = ${(price)}</small>
                 </div>
             </div>
             

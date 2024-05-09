@@ -377,7 +377,7 @@ AWS.config.update({
         console.log(lowerArch); 
         console.log(upperArch)
         }
-    })
+    }, [crownTooth])
 
    
     return(

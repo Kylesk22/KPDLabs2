@@ -58,6 +58,7 @@ export const CreateOrder = props => {
             }
         }
     }
+    
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');

@@ -331,6 +331,9 @@ AWS.config.update({
     // })
     
     function toothHandler(e){
+        calculateArches(); 
+        console.log(lowerArch); 
+        console.log(upperArch)
         let toothId = e.target.id;
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`);
@@ -825,7 +828,7 @@ AWS.config.update({
             <div className="d-flex row pt-4 justify-content-center" >
                 <div className="col-4 form-group text-center pb-4 ">
                     <label  htmlFor="toothInput"><h5>Selected Teeth</h5></label>
-                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>{setToothInput(e.target.value); calculateArches(); console.log(lowerArch); console.log(upperArch)}}></input>
+                    <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>{setToothInput(e.target.value)}}></input>
                 </div>
                 <div className="col-9 col-lg-3 px-5" >
                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >

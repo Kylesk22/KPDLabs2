@@ -36,8 +36,9 @@ export const CreateOrder = props => {
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
-    let price = 0;
-    let price2 = 0;
+    const [price, setPrice] = useState(0)
+    const [price2, setPrice2] = useState(0)
+    
     let total = price + price2
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -658,14 +659,14 @@ AWS.config.update({
                             </select>
                             <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
                                 {(product === "Zirconia")?
-                                    `$${price += 60}`
+                                    setPrice(60)
                                 
                                 :(product==="PMMA Temporary")?
-                                `$${price += 35}`
+                                    setPrice(35)
                                 
                                 : ""
                                 }
-                                
+                                {price}
                                 </small>
                         </div>
                     </div>

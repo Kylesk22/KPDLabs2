@@ -49,20 +49,19 @@ export const CreateOrder = props => {
 
 
     function calculateArches(){
+        setUpperArch(false)
+        setLowerArch(false)
         for (let i = 0; i < crownTooth.length; i++){
             let tooth = crownTooth[i]
+            
             if (tooth < 16){
                 setUpperArch(true)
             }
-            else{setUpperArch(false)}
+            
             if (tooth> 17){
                 setLowerArch(true)
             }
-            else{
-                
-                setLowerArch(false)
-            }
-        }
+           
     }
 
 
@@ -978,14 +977,23 @@ AWS.config.update({
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
                                     `$${(price += 35)*2}`
 
-                                :(product==="Wax Rim")?
-                                `$${(price += 50)}`
-                                
-                                :(product==="Try In")?
+                                :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
-                                :(product==="TCS Unbreakable")?
+                                : (product === "Wax Rim" && lowerArch && upperArch)?    
+                                    `$${(price += 50)*2}`
+                                
+                                :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                `$${(price += 50)}`
+
+                                : (product === "Try In" && lowerArch && upperArch)?    
+                                    `$${(price += 50)*2}`
+
+                                :(product==="TCS Unbreakable" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`
+
+                                : (product === "TCS Unbreakable" && lowerArch && upperArch)?    
+                                    `$${(price += 250)*2}`
                                 
                                 :""
                                 }

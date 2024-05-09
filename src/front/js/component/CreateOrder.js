@@ -50,10 +50,10 @@ export const CreateOrder = props => {
 
     function calculateArches(){
         for (let i = 0; i < crownTooth.length; i++){
-            if (crownTooth(i) < 16){
+            if (crownTooth[i] < 16){
                 setLowerArch(true)
             }
-            if (crownTooth(i)> 17){
+            if (crownTooth[i]> 17){
                 setUpperArch(true)
             }
         }

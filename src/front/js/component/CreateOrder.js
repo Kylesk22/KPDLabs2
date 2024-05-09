@@ -1296,7 +1296,7 @@ AWS.config.update({
                                 `$${(price += 250)}`
 
                                 : (product === "Final Denture" && lowerArch && upperArch)?    
-                                    `$${(price += 250)*2}`
+                                    `$${(price += 500)}`
                                 
                                 :""
                                 }

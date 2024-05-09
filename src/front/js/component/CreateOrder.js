@@ -685,7 +685,7 @@ AWS.config.update({
                                 <option value="Zirconia" onClick={()=>{setProduct("Zirconia")}}>Zirconia</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
-                            <small id="productPrice" className="form-text text-muted"  style={{color:"black"}}>
+                            <small id="productPrice" className="form-text text-muted" >
                                 <strong>
                                     {(product === "Zirconia")?
                                         `$${(price += 60)*crownTooth.length}`
@@ -709,7 +709,7 @@ AWS.config.update({
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
                                 
                             </select>
-                            <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}>
+                            <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(finish === "Polished")?
                                 `$${(price2 += 0)*crownTooth.length}`
                                 
@@ -718,7 +718,7 @@ AWS.config.update({
                                 
                                 : ""
                                 }
-                                    </small>
+                                   </strong> </small>
                         </div>
                     </div>
                     <div className="row form-group justify-content-center mt-5">
@@ -814,7 +814,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  >Upload</button>
                             <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Case Total = ${(price + price2)*crownTooth.length}</small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length}</strong></small>
                         </div>
                         
                     </div>
@@ -968,7 +968,7 @@ AWS.config.update({
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
                     </select>
-                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}>
+                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
                                     `$${(price += 35)}`
@@ -984,10 +984,10 @@ AWS.config.update({
                                     `$${(price += 50)*2}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 50)}`
+                                `$${(price += 35)}`
 
                                 : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 50)*2}`
+                                    `$${(price += 35)*2}`
 
                                 :(product==="TCS Unbreakable" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`
@@ -998,7 +998,7 @@ AWS.config.update({
                                 :""
                                 }
                                 
-                                </small>
+                                </strong></small>
                 </div>
             </div>
             
@@ -1105,7 +1105,7 @@ AWS.config.update({
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit"  >Upload</button>
                     <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}>Case Total = ${(price)}</small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price)}</strong></small>
                 </div>
             </div>
             
@@ -1271,6 +1271,37 @@ AWS.config.update({
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="Final Denture" onClick={()=>setProduct("Final Denture")}>Final Denture</option>
                     </select>
+                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                
+                                    `$${(price += 35)}`
+                                
+
+                                : (product === "Custom Tray" && lowerArch && upperArch)?    
+                                    `$${(price += 35)*2}`
+
+                                :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                `$${(price += 50)}`
+
+                                : (product === "Wax Rim" && lowerArch && upperArch)?    
+                                    `$${(price += 50)*2}`
+                                
+                                :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                `$${(price += 50)}`
+
+                                : (product === "Try In" && lowerArch && upperArch)?    
+                                    `$${(price += 50)*2}`
+
+                                :(product==="Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                `$${(price += 250)}`
+
+                                : (product === "Final Denture" && lowerArch && upperArch)?    
+                                    `$${(price += 250)*2}`
+                                
+                                :""
+                                }
+                                
+                                </strong></small>
                 </div>
             </div>
             
@@ -1282,6 +1313,19 @@ AWS.config.update({
                         <option value="Standard" onClick={()=>setFinish("Standard")}>Standard</option>
                         <option value="Premium" onClick={()=>setFinish("Premium")}>Premium</option>
                     </select>
+                    <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {(finish === "Standard")?
+                                `$${(price2 += 0)}`
+                                
+                                :(finish==="Premium" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                `$${(price2 += 100)}`
+
+                                :(finish==="Premium" && lowerArch && upperArch)?
+                                `$${(price2 += 200)}`
+                                
+                                : ""
+                                }
+                                   </strong> </small>
                 </div>
             </div>
             <div className="row form-group justify-content-center mt-5">
@@ -1376,6 +1420,8 @@ AWS.config.update({
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit"  >Upload</button>
+                    <br></br>
+                    <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)}</strong></small>
                 </div>
             </div>
             

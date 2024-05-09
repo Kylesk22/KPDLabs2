@@ -50,15 +50,16 @@ export const CreateOrder = props => {
 
     function calculateArches(){
         for (let i = 0; i < crownTooth.length; i++){
-            if (crownTooth[i] < 16){
+            let tooth = crownTooth[i]
+            if (tooth < 16){
                 setLowerArch(true)
             }
-            if (crownTooth[i]> 17){
+            if (tooth> 17){
                 setUpperArch(true)
             }
         }
     }
-    
+
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');

@@ -681,10 +681,10 @@ AWS.config.update({
                             </select>
                             <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}>
                                 {(finish === "Polished")?
-                                    ""
+                                `$${(price2 += 0)*crownTooth.length}`
                                 
                                 :(finish==="Stain and Glaze")?
-                                `$${price2 += 20}`
+                                `$${(price2 += 20)*crownTooth.length}`
                                 
                                 : ""
                                 }

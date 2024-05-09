@@ -1304,7 +1304,7 @@ AWS.config.update({
                                 </strong></small>
                 </div>
             </div>
-            
+            {(product === "Final Denture")?
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
@@ -1328,6 +1328,7 @@ AWS.config.update({
                                    </strong> </small>
                 </div>
             </div>
+            :""}
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4 pt-3">
                 <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>

@@ -975,25 +975,25 @@ AWS.config.update({
                                 
 
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
-                                    `$${(price += 35)*2}`
+                                    `$${(price += 70)}`
 
                                 :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
                                 : (product === "Wax Rim" && lowerArch && upperArch)?    
-                                    `$${(price += 50)*2}`
+                                    `$${(price += 100)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 35)}`
 
                                 : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 35)*2}`
+                                    `$${(price += 70)}`
 
                                 :(product==="TCS Unbreakable" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`
 
                                 : (product === "TCS Unbreakable" && lowerArch && upperArch)?    
-                                    `$${(price += 250)*2}`
+                                    `$${(price += 500)}`
                                 
                                 :""
                                 }
@@ -1278,19 +1278,19 @@ AWS.config.update({
                                 
 
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
-                                    `$${(price += 35)*2}`
+                                    `$${(price += 70)}`
 
                                 :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
                                 : (product === "Wax Rim" && lowerArch && upperArch)?    
-                                    `$${(price += 50)*2}`
+                                    `$${(price += 100)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
                                 : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 50)*2}`
+                                    `$${(price += 100)}`
 
                                 :(product==="Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`

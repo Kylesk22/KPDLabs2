@@ -333,9 +333,7 @@ AWS.config.update({
     // })
     
     function toothHandler(e){
-        calculateArches(); 
-        console.log(lowerArch); 
-        console.log(upperArch)
+        
         let toothId = e.target.id;
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`);
@@ -373,7 +371,13 @@ AWS.config.update({
     }
 
 
-
+    useEffect(()=>{
+        if (crownTooth){
+        calculateArches(); 
+        console.log(lowerArch); 
+        console.log(upperArch)
+        }
+    })
 
    
     return(

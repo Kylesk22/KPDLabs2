@@ -18,6 +18,7 @@ export const UpdateAccountInfo = props => {
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
     let id = sessionStorage.getItem("id");
+    const [backendAdd, setBackendAdd] = useState(props.address.split(","))
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
@@ -65,7 +66,10 @@ export const UpdateAccountInfo = props => {
             alert("Error updating address")
     })
     }
-     useEffect(()=>{console.log(props.address)})
+     useEffect(()=>{
+        console.log(props.address)
+        console.log(backendAdd)
+    })
     
     return(
         <div className="row">

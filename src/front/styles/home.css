@@ -37,6 +37,13 @@
 
     @media only screen and (max-width:480px) {
     
+     
+      .signup-text{padding-top: 220px !important}
+   
+    }
+
+    @media only screen and (max-width:480px) {
+    
       .contact-us-page{margin-top: 170px !important; padding-top: 20px !important;};
       
    

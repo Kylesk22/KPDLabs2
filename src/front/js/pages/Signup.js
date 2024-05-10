@@ -5,6 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Context } from "../store/appContext";
 import Intro from "../../img/footer-flip.jpg"
+import "../../styles/home.css";
 
 export const Signup = props => {
     const [firstName, setFirstName] = useState("")

@@ -10,6 +10,7 @@ export const UpdateAccountInfo = props => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [password, setPassword] = useState("")
+    const [backendAdd, setBackendAdd] = useState(props.address.split(","))
     const [streetAddress, setStreetAddress] = useState(backendAdd[0])
     const [city, setCity] = useState(backendAdd[1])
     const [stateSelect, setStateSelect] = useState(backendAdd[2])
@@ -18,7 +19,7 @@ export const UpdateAccountInfo = props => {
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
     let id = sessionStorage.getItem("id");
-    const [backendAdd, setBackendAdd] = useState(props.address.split(","))
+    
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');

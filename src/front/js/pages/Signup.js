@@ -82,7 +82,7 @@ export const Signup = props => {
     
 
     return (
-        <div className="row" style={{paddingTop: "170px", backgroundImage: `url(${Intro})`}}>
+        <div className="row signup-text" style={{paddingTop: "170px", backgroundImage: `url(${Intro})`}}>
 
             {(!loggedIn)?
             

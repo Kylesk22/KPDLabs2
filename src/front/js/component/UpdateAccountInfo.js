@@ -18,6 +18,10 @@ export const UpdateAccountInfo = props => {
     const [email, setEmail] = useState("")
     const [loggedIn, setLoggedIn] = useState(props.logState)
     const [ID, setID] = useState("")
+    const [editStreet, setEditStreet] = useState(false)
+    const [editCity, setEditCity] = useState(false)
+    const [editState, setEditState] = useState(false)
+    const [editZip, setEditZip] = useState(false)
     let id = sessionStorage.getItem("id");
     
 
@@ -80,22 +84,39 @@ export const UpdateAccountInfo = props => {
                 <form className="form container lg-col-4 update-box"  style={{borderRadius: "5%", maxWidth: "600px"}} onSubmit={submitHandler}>
                 <div className="form-group mx-3">
                         <label htmlFor="streetAddress" className="form-label mt-4 " style={{textAlign: "center", color:"black"}} >Street Address</label>
-                        <input style={{backgroundColor: "white", border: "black 1px solid"}} type="text" required className="form-control" id="streetAddress" placeholder="StreetAddress" value={streetAddress} onChange={(e)=>setStreetAddress(e.target.value)} />
+                        <input className="form-control" id="streetAddress" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={streetAddress} ></input>
+                        <button onClick={()=>setEditStreet(true)}></button>
+                        {(editStreet)?
+                            <input style={{backgroundColor: "white", border: "black 1px solid"}} type="text" required className="form-control" id="streetAddress" placeholder="StreetAddress" value={streetAddress} onChange={(e)=>setStreetAddress(e.target.value)} />
+                        :""}
                     </div>
                     <div className="form-group mx-3">
                         <label htmlFor="city" className="form-label mt-4 " style={{textAlign: "center", color:"black"}}>City</label>
-                        <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="city" placeholder="City" value={city} onChange={(e)=>setCity(e.target.value)}/>
+                        <input className="form-control" id="city" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={city} ></input>
+                        <button onClick={()=>setEditCity(true)}></button>
+                        {(editCity)?
+                            <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="city" placeholder="City" value={city} onChange={(e)=>setCity(e.target.value)}/>
+                        :""}
+                        
                     </div>
                     <div className="form-group mx-3">
                         <label htmlFor="stateSelect" className="form-label mt-4" style={{color:"black"}}>State</label>
                         <br></br>
-                        <SelectUSState id="stateSelect"  required className="form-control states" onChange={(e)=>{setStateSelect(e)}} value={stateSelect}>
-                        </SelectUSState>
+                        <input className="form-control" id="state" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={stateSelect} ></input>
+                        <button onClick={()=>setEditState(true)}></button>
+                        {(editState)?
+                            <SelectUSState id="stateSelect"  required className="form-control states" onChange={(e)=>{setStateSelect(e)}} value={stateSelect}>
+                            </SelectUSState>
+                        :""}
                     </div>
                     <div className="form-group mx-3">
                         <label htmlFor="zip" className="form-label mt-4 " style={{textAlign: "center", color:"black"}}>Zip Code</label>
-                        <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="zip" placeholder="Zip Code" value={zip} onChange={(e)=>setZip(e.target.value)}/>
-                    </div>
+                        <input className="form-control" id="city" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={zip} ></input>
+                        <button onClick={()=>editZip(true)}></button>
+                        {(editZip)?
+                            <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="zip" placeholder="Zip Code" value={zip} onChange={(e)=>setZip(e.target.value)}/>
+                        :""}
+                        </div>
                     <div className="form-group mx-auto w-100 text-center mt-4" >
                         <button className="btn btn-primary mb-4 mx-auto" type="submit" value="Submit">Submit
                         </button>

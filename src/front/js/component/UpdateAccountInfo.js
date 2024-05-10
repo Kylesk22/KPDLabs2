@@ -65,7 +65,7 @@ export const UpdateAccountInfo = props => {
             alert("Error updating address")
     })
     }
-    
+     useEffect(()=>{console.log(props.address)})
     
     return(
         <div className="row">

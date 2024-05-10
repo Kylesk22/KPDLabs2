@@ -46,7 +46,19 @@ export const CreateOrder = props => {
     let stl_urls = []
     let photo_urls = []
 
+    pricePackage1 = {
+        Zirconia : 60,
+        PMMATemp : 35,
+        StainGlaze: 20,
+        CustomTray: 35,
+        PartialTryIn: 35,
+        DentureTryIn: 50,
+        WaxRim: 50,
+        TCSUnbreakable: 250,
+        Denture: 250,
+        PremiumDenture: 100
 
+    }
 
     function calculateArches(){
         setUpperArch(false)

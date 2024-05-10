@@ -39,7 +39,7 @@ export const Signup = props => {
             firstName,
             lastName,
             license,
-            "address": `${streetAddress} ${city}, ${stateSelect}, ${zip}`,
+            "address": `${streetAddress}, ${city}, ${stateSelect}, ${zip}`,
             email,
             password,
             security1,

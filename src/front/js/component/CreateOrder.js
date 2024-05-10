@@ -46,7 +46,7 @@ export const CreateOrder = props => {
     let stl_urls = []
     let photo_urls = []
 
-    pricePackage1 = {
+    const pricePackage1 = {
         Zirconia : 60,
         PMMATemp : 35,
         StainGlaze: 20,

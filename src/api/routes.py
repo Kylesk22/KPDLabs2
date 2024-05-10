@@ -116,6 +116,7 @@ def signup():
     
     new_user = User(
         email = user_info["email"],
+        role = "User",
         password = hashed.decode("utf-8", "ignore"),
         address = user_info["address"],
         fname = user_info["firstName"],
@@ -146,6 +147,20 @@ def signup():
     # res.set_cookie('info', user)
     return res, 200
 
+@api.route('/admin-login', methods=['POST'])
+def admin_login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    unSaltPass = password.encode('utf-8')
+    checkEmail = User.query.filter_by(email=email).first()
+
+    if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "admin":
+       
+        admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
+
+        return jsonify({'token': admin_token}), 200
+    else:
+        return jsonify({'message': 'Invalid username or password'}), 401
 
 @api.route('/login', methods=['POST'])
 def login():

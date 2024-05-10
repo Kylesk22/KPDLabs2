@@ -16,6 +16,7 @@ import { Login } from "./component/Login";
 import { Forgot } from "./pages/Forgot";
 import{AboutUs} from "./pages/AboutUs";
 import{ContactUs} from "./pages/ContactUs";
+import {AdminLogin} from "./component/AdminLogin"
 import{Crown} from "./pages/Crown";
 import{Veneer} from "./pages/Veneer";
 import{Partial} from "./pages/Partial";
@@ -63,6 +64,9 @@ const Layout = () => {
                         <Route element={<Denture/>} path = "/denture"/>
                         <Route element={<Login logState ={loggedIn} updateLogState={setLoggedIn}/> } path = "/login"/>
                         <Route element={<Forgot /> } path = "/forgot"/>
+                        <Route element={<AdminLogin /> } path = "/admin/login"/>
+                        <Route element={<AdminPage /> } path = "/admin/:user_id"/>
+                        
                         
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

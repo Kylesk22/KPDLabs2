@@ -42,15 +42,13 @@ export const AdminLogin = props => {
             },
             body: JSON.stringify(user)
         }
-        fetch(`${url}/login`, options)
+        fetch(`${url}/admin-login`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
                     sessionStorage.setItem("id", data.id)
-                    setId(data.id)
-                    setLoggedIn(true);
-                    props.updateLogState(true)
+                    window.location.href = `./admin/${id}`
                 });
             } else {
                 return res.json()
@@ -69,9 +67,9 @@ export const AdminLogin = props => {
 
     return(
         <div className="">
-            {(!loggedIn)? 
+           
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
-            <h2 style={{color: "white"}}>Login</h2> 
+            <h2 style={{color: "white"}}>ADMIN</h2> 
             <div className="form container form container-fluid" onSubmit={submitHandler} style={{width: "300px"}}>
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>
@@ -81,10 +79,7 @@ export const AdminLogin = props => {
                 <div className="form-group">
                     <label htmlFor="userPassword" className="form-label mt-4" style={{color: "white"}}>Password</label>
                     <input type="password" className="form-control" id="userPasswrod" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/> 
-                    <Link to="/forgot">
-                        <span style={{color: "white"}}>Forgot Password?</span>
-                        
-                    </Link>
+                    
                 </div>
                 {/* <Link to="/signup">
                     <button className="btn btn-primary">Signup</button>
@@ -98,7 +93,7 @@ export const AdminLogin = props => {
             </div>
             </div>
             
-            : <Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
+            
         
         </div>
     )

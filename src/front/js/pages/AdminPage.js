@@ -7,7 +7,7 @@ import { SingleOrder } from "./SingleOrder.js";
 
 
 
-export const Admin = props => {
+export const AdminPage = props => {
     const [cases, setCases] = useState([{}])
     const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");

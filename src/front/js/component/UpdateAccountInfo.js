@@ -112,7 +112,7 @@ export const UpdateAccountInfo = props => {
                     <div className="form-group mx-3">
                         <label htmlFor="zip" className="form-label mt-4 " style={{textAlign: "center", color:"black"}}>Zip Code</label>
                         <input className="form-control" id="city" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={zip} ></input>
-                        <button className="btn btn-primary mb-4 mx-auto" onClick={(e)=>{e.preventDefault();editZip(true)}}>Edit</button>
+                        <button className="btn btn-primary mb-4 mx-auto" onClick={(e)=>{e.preventDefault(); setEditZip(true)}}>Edit</button>
                         {(editZip)?
                             <input type="text" style={{backgroundColor: "white", border: "black 1px solid"}} required className="form-control" id="zip" placeholder="Zip Code" value={zip} onChange={(e)=>setZip(e.target.value)}/>
                         :""}

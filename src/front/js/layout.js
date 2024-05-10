@@ -17,6 +17,7 @@ import { Forgot } from "./pages/Forgot";
 import{AboutUs} from "./pages/AboutUs";
 import{ContactUs} from "./pages/ContactUs";
 import {AdminLogin} from "./component/AdminLogin"
+import {AdminPage} from "./pages/AdminPage"
 import{Crown} from "./pages/Crown";
 import{Veneer} from "./pages/Veneer";
 import{Partial} from "./pages/Partial";

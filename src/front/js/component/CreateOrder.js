@@ -38,6 +38,7 @@ export const CreateOrder = props => {
     const [type, setType] = useState("")
     const [lowerArch, setLowerArch] = useState(false)
     const [upperArch, setUpperArch] = useState(false)
+    const [finalPrice, setFinalPrice] = useState(0)
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -291,7 +292,7 @@ AWS.config.update({
                 "status": "Created",
                 "type": type,
                 "gum_shade": gumShade,
-                "price": total,
+                "price": finalPrice,
             }
             
             const options = {
@@ -1436,7 +1437,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  >Upload</button>
+                    <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
                     <br></br>
                     <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)}</strong></small>
                 </div>

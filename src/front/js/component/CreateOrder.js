@@ -288,7 +288,10 @@ AWS.config.update({
                 "finish": finish,
                 "shade": shade,
                 "note": note,
-                "status": "Created"
+                "status": "Created",
+                "type": type,
+                "gum_shade": gumShade,
+                "price": total,
             }
             
             const options = {
@@ -320,6 +323,7 @@ AWS.config.update({
                         setBridgeTooth([])
                         setNote("")
                         setType("")
+                        setGumShade("")
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")

@@ -10,6 +10,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
+    role = db.Column(db.String(20))
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     address = db.Column(db.String(), unique=False, nullable=False)
@@ -79,14 +80,17 @@ class Case(db.Model):
     id = db.Column(db.Integer, primary_key=True)
    
     name = db.Column(db.Text, nullable = True)
+    type = db.Column(db.String(50))
     teeth = db.Column(db.String(50), unique=False, nullable=True)
     product = db.Column(db.String(50), unique=False, nullable=True)
     shade = db.Column(db.String(50), unique=False, nullable=True)
+    gum_shade = db.Column(db.String(50), unique=False, nullable=True)
     finish = db.Column(db.String(50), unique=False, nullable=True)
     notes = db.Column(db.String(255), nullable= True)
     status = db.Column(db.String(50), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     creation_date = db.Column(db.String(50))
+    price = db.Column(db.String(50))
     update_date = db.Column(MutableList.as_mutable(PickleType), default=[])
     case_scans = db.relationship('Scans', backref='case')
 
@@ -98,12 +102,15 @@ class Case(db.Model):
             "id": self.id,
             "name": self.name,
             "user id":self.user_id,
+            "type": self.type,
             "teeth":self.teeth,
             "product": self.product,
             "shade": self.shade,
+            "gum shade": self.gum_shade,
             "finish": self.finish,
             "notes": self.notes,
             "status": self.status,
+            "price": self.price,
             "creation date": self.creation_date,
             "update date": self.update_date,
             "case scans":[scan.serialize() for scan in self.case_scans]

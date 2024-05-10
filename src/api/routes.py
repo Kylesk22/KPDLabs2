@@ -375,7 +375,11 @@ def new_case(id):
         finish = request.json.get("finish", None)
         blob_scans = request.json.get("stl_urls", None)
         photos = request.json.get("photos", None)
+        type = request.json.get("type", None)
+        gum_shade = request.json.get("gum_shade", None)
+        price = request.json.get("price", None)
         update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+        
         
         
         update_case = Case.query.filter_by(id=case).first()
@@ -387,6 +391,9 @@ def new_case(id):
         update_case.notes = notes
         update_case.finish = finish
         update_case.status = "Created"
+        update_case.type = type
+        update_case.gum_shade = gum_shade
+        update_case.price = price
        
         update_case.update_date.append(update_date)
         

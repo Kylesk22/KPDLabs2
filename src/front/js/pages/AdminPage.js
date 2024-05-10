@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
-import { SingleOrder } from "./SingleOrder.js";
+
 
 
 

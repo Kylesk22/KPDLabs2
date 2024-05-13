@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_jwt_claims
 from datetime import datetime, timezone, timedelta
 import os
 import bcrypt
@@ -161,6 +162,19 @@ def admin_login():
         return jsonify({'token': admin_token}), 200
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
+    
+@api.route('/admin/<int:id>', methods=['GET'])
+@jwt_required()
+def getAllInfo(id):
+    current_user = get_jwt_identity()
+    user_role = get_jwt_claims().get('role')
+    if user_role == "admin" and current_user.role == "admin":
+        all_users = User.query.all().serialize()
+        all_cases = Case.query.all().serialize()
+
+        return jsonify(all_users, all_cases)
+    else:
+        return jsonify({"message": "You are not an admin, please log in at kpdlabs.com"})
 
 @api.route('/login', methods=['POST'])
 def login():

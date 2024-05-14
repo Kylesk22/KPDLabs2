@@ -200,7 +200,7 @@ def login():
         access_token = create_access_token(identity=email)
         # refresh_token = create_refresh_token(identity=email)
         
-        cookies_res = make_response(email)
+        cookies_res =  make_response(jsonify({'email': email}))
 
         res = make_response(checkEmail.serialize())
 

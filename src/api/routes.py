@@ -74,46 +74,14 @@ def admin_required():
         return decorator
 
     return wrapper
-# client = Client(token=os.environ.get("DIGITALOCEAN_TOKEN"))
 
-# req = {
-#   "rules": [
-#     {
-#       "type": "ip_addr",
-#       "value": "192.168.1.1"
-#     },
-#     {
-#       "type": "k8s",
-#       "value": "ff2a6c52-5a44-4b63-b99c-0e98e7a63d61"
-#     },
-#     {
-#       "type": "droplet",
-#       "value": "163973392"
-#     },
-#     {
-#       "type": "tag",
-#       "value": "backend"
-#     }
-#   ]
-# }
-# update_resp = client.databases.update_firewall_rules(database_cluster_uuid="a7a8bas", body=req)
 
 
 api = Blueprint('api', __name__)
 CORS(app, supports_credentials=True)
 
 
-# @api.route('/hello', methods=['POST', 'GET'])
-# def handle_hello():
 
-#     response_body = {
-#         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-#     }
-
-#     return jsonify(response_body), 200
-
-
-#Signup Route/hash and salt pw/create new user/return jwt
 @api.route('/signup', methods=['POST'])
 def signup():
     now_utc = datetime.now(utc)
@@ -185,7 +153,7 @@ def admin_login():
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
         
-        set_access_cookies(res, admin_token, max_age=3600)
+        set_access_cookies(res, admin_token, max_age=3600,  additional_claims={"is_administrator": True})
         
         return response, 200
     else:

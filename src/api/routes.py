@@ -2,13 +2,15 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file, redirect, render_template
-
+from functools import wraps
 from api.models import db, User, Scans, Case
 from api.utils import generate_sitemap, APIException
 from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+from flask_jwt_extended import verify_jwt_in_request
+from flask_jwt_extended import get_jwt
 
 from datetime import datetime, timezone, timedelta
 import os
@@ -57,6 +59,20 @@ def assign_access_refresh_tokens(email, url):
     set_refresh_cookies(resp, refresh_token)
     return resp
 
+def admin_required():
+    def wrapper(fn):
+        @wraps(fn)
+        def decorator(*args, **kwargs):
+            verify_jwt_in_request()
+            claims = get_jwt()
+            if claims["is_administrator"]:
+                return fn(*args, **kwargs)
+            else:
+                return jsonify(msg="Admins only!"), 403
+
+        return decorator
+
+    return wrapper
 # client = Client(token=os.environ.get("DIGITALOCEAN_TOKEN"))
 
 # req = {
@@ -157,7 +173,7 @@ def admin_login():
 
     if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "Admin":
        
-        admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
+        admin_token = create_access_token(identity=email, additional_claims={"is_administrator": True})
 
         
         
@@ -175,13 +191,13 @@ def admin_login():
         return jsonify({'message': 'Invalid username or password'}), 401
     
 @api.route('/admin/<int:id>', methods=['GET'])
-@jwt_required()
+@admin_required()
 def getAllInfo(id):
     current_user_email = get_jwt_identity()
-    print(current_user_email)
+    
     current_user = User.query.filter_by(email=current_user_email).first()
-    user_role = get_jwt_identity().get('role')
-    if user_role == "admin" and current_user.role == "Admin":
+    
+    if current_user.role == "Admin":
         all_users = User.query.all().serialize()
         all_cases = Case.query.all().serialize()
 

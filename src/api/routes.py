@@ -160,7 +160,7 @@ def admin_login():
         admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
         res = make_response(checkEmail.serialize())
 
-        return jsonify(res, {'token': admin_token}), 200
+        return res, jsonify({'token': admin_token}), 200
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
     

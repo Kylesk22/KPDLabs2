@@ -28,11 +28,11 @@ export const AdminPage = props => {
         return null; // Return null if cookie not found
     }
 
-    useEffect(()=>{
+    // useEffect(()=>{
         
-        props.handleGetPage(singlePage);
+    //     props.handleGetPage(singlePage);
 
-    },[singlePage])
+    // },[singlePage])
     
 
     useEffect(()=>{

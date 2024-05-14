@@ -57,7 +57,7 @@ export const AdminPage = props => {
                         newUsers[userId] = fullName;
                     }
                     setUsers(newUsers);
-                    console.log(users)
+                    
                     
                     
 
@@ -74,7 +74,9 @@ export const AdminPage = props => {
     },[])
 
     
-            
+    useEffect(()=>{
+        console.log(users)
+    })
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
         <div className="container">

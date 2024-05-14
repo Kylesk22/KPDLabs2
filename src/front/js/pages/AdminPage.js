@@ -73,12 +73,12 @@ export const AdminPage = props => {
             <div  >
                 <div >
                     <div className="row" >
-                    <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}   onClick={()=>{console.log(cases)}} >Case #</div>
+                    <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}   onClick={()=>{console.log(cases)}} >Case #</div>
                     <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Dr.</div>
                     <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Patient Name</div>
                     <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Type</div>
                     <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Creation Date</div>
-                    <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Status</div>
+                    <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Status</div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">

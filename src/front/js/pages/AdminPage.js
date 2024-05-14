@@ -28,11 +28,7 @@ export const AdminPage = props => {
         return null; // Return null if cookie not found
     }
 
-    // useEffect(()=>{
-        
-    //     props.handleGetPage(singlePage);
-
-    // },[singlePage])
+   
     
 
     useEffect(()=>{
@@ -45,13 +41,13 @@ export const AdminPage = props => {
             },
             
         }
-        fetch(`${url}/${id}/cases`, options)
+        fetch(`admin/${id}`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
-                    
-                    setCases([...cases, ...data])
+                    console.log(data)
+                    // setCases([...cases, ...data])
                     
                     
 

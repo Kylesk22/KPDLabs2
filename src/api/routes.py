@@ -159,7 +159,7 @@ def getAllInfo(id):
         all_users_list = list(map(lambda x: x.serialize(), all_users))
         all_cases_list = list(map(lambda x: x.serialize(), all_cases))
 
-        return jsonify(all_users_list, all_cases_list)
+        return jsonify({"users": all_users_list, "cases":all_cases_list})
     else:
         return jsonify({"message": "You are not an admin, please log in at kpdlabs.com"})
 

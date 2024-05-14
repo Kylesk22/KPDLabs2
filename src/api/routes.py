@@ -59,20 +59,21 @@ def assign_access_refresh_tokens(email, url):
     set_refresh_cookies(resp, refresh_token)
     return resp
 
-def admin_required():
-    def wrapper(fn):
-        @wraps(fn)
-        def decorator(*args, **kwargs):
+def admin_required(fn):
+    @wraps(fn)
+    def decorator(*args, **kwargs):
+        try:
             verify_jwt_in_request()
-            claims = get_jwt()
-            if claims["is_administrator"]:
+            current_user = get_jwt_identity()
+            if current_user.get("is_administrator"):
                 return fn(*args, **kwargs)
             else:
                 return jsonify(msg="Admins only!"), 403
+        except Exception as e:
+            # Handle any exceptions that might occur during JWT verification
+            return jsonify(msg="Invalid token"), 401
 
-        return decorator
-
-    return wrapper
+    return decorator
 # client = Client(token=os.environ.get("DIGITALOCEAN_TOKEN"))
 
 # req = {

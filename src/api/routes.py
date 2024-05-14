@@ -159,13 +159,15 @@ def admin_login():
        
         admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
 
-        set_access_cookies(admin_token, max_age=3600)
+        
         
         # Create a response with the serialized user and token
         res = make_response(jsonify({'user': checkEmail.serialize()}), 200)
         
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
+
+        set_access_cookies(res, admin_token, max_age=3600)
         
         return res
     else:

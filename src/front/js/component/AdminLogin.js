@@ -47,9 +47,9 @@ export const AdminLogin = props => {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
-                    sessionStorage.setItem("id", data.id)
-                    console.log(data)
-                    // window.location.href = `/admin/${id}`
+                    sessionStorage.setItem("id", data.user.id)
+                    
+                    window.location.href = `/admin/${id}`
                 });
             } else {
                 return res.json()

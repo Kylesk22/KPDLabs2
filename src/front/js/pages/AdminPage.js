@@ -3,12 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
-
+import AboutBKG from "../../img/testi-bg.jpg"
 
 
 
 export const AdminPage = props => {
     const [cases, setCases] = useState([{}])
+    const [users, setUsers] = useState([{}])
     const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");
     const [pageMin, setPageMin]=useState(0)
@@ -47,7 +48,8 @@ export const AdminPage = props => {
                 return res.json()
                 .then((data)=>{
                     console.log(data)
-                    // setCases([...cases, ...data])
+                    setCases([...cases, ...data.cases])
+                    setUsers([...users, ...data.users])
                     
                     
 
@@ -66,12 +68,15 @@ export const AdminPage = props => {
     
             
         return (
-        <div className="container">
+        <div className="container" style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "150px"}}>
             <div className = "row justify-content-end" >
                 <div className="col-10 ">
                     <div className="row" >
                     <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}   onClick={()=>{console.log(cases)}} >Case #</div>
+                    <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Dr.</div>
                     <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Patient Name</div>
+                    <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Type</div>
+                    <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Creation Date</div>
                     <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Status</div>
                 </div>
                 <div className = "row justinfy-content-end">

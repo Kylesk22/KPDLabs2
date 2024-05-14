@@ -158,9 +158,14 @@ def admin_login():
     if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "Admin":
        
         admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
-        res = make_response(checkEmail.serialize())
-
-        return res, jsonify({'token': admin_token}), 200
+        
+        # Create a response with the serialized user and token
+        res = make_response(jsonify({'user': checkEmail.serialize(), 'token': admin_token}), 200)
+        
+        # Set any additional headers if needed
+        res.headers['Content-Type'] = 'application/json'
+        
+        return res
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
     

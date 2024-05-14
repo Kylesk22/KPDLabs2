@@ -48,9 +48,9 @@ export const AdminLogin = props => {
                 return res.json()
                 .then((data)=>{
                     sessionStorage.setItem("id", data.user.id)
-                    setId(data.user.id)
-                    let receivedID=data.user.id
-                    window.location.href = `/admin/${receivedID}`
+                    
+                   
+                    window.location.href = `/admin/${data.user.id}`
                 });
             } else {
                 return res.json()

@@ -178,6 +178,7 @@ def admin_login():
 @jwt_required()
 def getAllInfo(id):
     current_user_email = get_jwt_identity()
+    print(current_user_email)
     current_user = User.query.filter_by(email=current_user_email).first()
     user_role = get_jwt_identity().get('role')
     if user_role == "admin" and current_user.role == "Admin":

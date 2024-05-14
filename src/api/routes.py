@@ -153,10 +153,13 @@ def getAllInfo(id):
     current_user = User.query.filter_by(email=current_user_email).first()
     
     if current_user.role == "Admin":
-        all_users = User.query.all().serialize()
-        all_cases = Case.query.all().serialize()
+        all_users = User.query.all()
+        all_cases = Case.query.all()
 
-        return jsonify(all_users, all_cases)
+        all_users_list = list(map(lambda x: x.serialize(), all_users))
+        all_cases_list = list(map(lambda x: x.serialize(), all_cases))
+
+        return jsonify(all_users_list, all_cases_list)
     else:
         return jsonify({"message": "You are not an admin, please log in at kpdlabs.com"})
 

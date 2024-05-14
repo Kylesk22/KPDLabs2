@@ -68,7 +68,8 @@ export const AdminPage = props => {
     
             
         return (
-        <div className="container" style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "150px"}}>
+            <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
+        <div className="container" >
             <div className = "row justify-content-end" >
                 <div className="col-10 ">
                     <div className="row" >
@@ -117,5 +118,6 @@ export const AdminPage = props => {
                 </div>
             </div>
 
+        </div>
         </div>)
 }

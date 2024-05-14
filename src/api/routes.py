@@ -162,14 +162,15 @@ def admin_login():
         
         
         # Create a response with the serialized user and token
-        res = make_response(jsonify({'user': checkEmail.serialize()}), 200)
+        res = make_response(jsonify({'email': email}))
+        response = make_response(checkEmail.serialize())
         
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
 
         set_access_cookies(res, admin_token, max_age=3600)
         
-        return res
+        return response, 200
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
     
@@ -198,6 +199,8 @@ def login():
     if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')):
         access_token = create_access_token(identity=email)
         # refresh_token = create_refresh_token(identity=email)
+        
+        cookies_res = make_response(email)
 
         res = make_response(checkEmail.serialize())
 
@@ -208,7 +211,7 @@ def login():
 
         # res.headers['Set-Cookie'] = f'refresh_token_cookie={refresh_token}; SameSite=None; Secure'
     
-        set_access_cookies(res, access_token, max_age=3600)
+        set_access_cookies(cookies_res, access_token, max_age=3600)
         # set_refresh_cookies(res, refresh_token, max_age=3600)
         
         return res, 200

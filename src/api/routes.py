@@ -183,7 +183,7 @@ def admin_login():
         
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
-
+        print(admin_token)
         set_access_cookies(res, admin_token, max_age=3600)
         
         return response, 200

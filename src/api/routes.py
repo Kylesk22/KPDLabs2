@@ -64,8 +64,8 @@ def admin_required():
         @wraps(fn)
         def decorator(*args, **kwargs):
             verify_jwt_in_request()
-            claims = get_jwt_identity()
-            if claims.get("is_administrator"):
+            claims = get_jwt()
+            if claims["is_administrator"]:
                 return fn(*args, **kwargs)
             else:
                 return jsonify(msg="Admins only!"), 403
@@ -183,7 +183,7 @@ def admin_login():
         
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
-        print(admin_token)
+        
         set_access_cookies(res, admin_token, max_age=3600)
         
         return response, 200

@@ -41,7 +41,7 @@ export const AdminPage = props => {
             },
             
         }
-        fetch(`admin/${id}`, options)
+        fetch(`${url}/admin/${id}`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()

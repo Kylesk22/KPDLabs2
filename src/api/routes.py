@@ -157,7 +157,7 @@ def admin_login():
 
     if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "Admin":
        
-        admin_token = create_access_token(identity=email, role="admin")
+        admin_token = create_access_token(identity=email, additional_claims={"role": "admin"})
 
         return jsonify({'token': admin_token}), 200
     else:

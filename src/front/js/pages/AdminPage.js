@@ -69,8 +69,8 @@ export const AdminPage = props => {
             
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
-        <div className="container" style={{width: "80%"}}>
-            <div className = "row justify-content-end" >
+        <div className="container">
+            <div  >
                 <div className="col-10 ">
                     <div className="row" >
                     <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}   onClick={()=>{console.log(cases)}} >Case #</div>

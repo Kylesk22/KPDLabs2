@@ -155,7 +155,7 @@ def admin_login():
     unSaltPass = password.encode('utf-8')
     checkEmail = User.query.filter_by(email=email).first()
 
-    if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "admin":
+    if checkEmail is not None and bcrypt.checkpw(unSaltPass, checkEmail.password.encode('utf-8')) and checkEmail.role == "Admin":
        
         admin_token = create_access_token(identity=email, role="admin")
 
@@ -169,7 +169,7 @@ def getAllInfo(id):
     current_user_email = get_jwt_identity()
     current_user = User.query.filter_by(email=current_user_email).first()
     user_role = get_jwt_identity().get('role')
-    if user_role == "admin" and current_user.role == "admin":
+    if user_role == "admin" and current_user.role == "Admin":
         all_users = User.query.all().serialize()
         all_cases = Case.query.all().serialize()
 

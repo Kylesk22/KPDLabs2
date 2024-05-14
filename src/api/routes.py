@@ -211,7 +211,7 @@ def login():
 
         # res.headers['Set-Cookie'] = f'refresh_token_cookie={refresh_token}; SameSite=None; Secure'
     
-        set_access_cookies(cookies_res, access_token, max_age=3600)
+        set_access_cookies(res, access_token, max_age=3600)
         # set_refresh_cookies(res, refresh_token, max_age=3600)
         
         return res, 200

@@ -66,6 +66,7 @@ def admin_required():
             verify_jwt_in_request()
             claims = get_jwt()
             print(claims)
+            print(get_jwt_identity())
             if claims["is_administrator"]:
                 return fn(*args, **kwargs)
             else:
@@ -153,7 +154,7 @@ def admin_login():
         # Set any additional headers if needed
         res.headers['Content-Type'] = 'application/json'
         
-        set_access_cookies(res, admin_token, max_age=3600,  additional_claims={"is_administrator": True})
+        set_access_cookies(res, admin_token, max_age=3600, )
         
         return response, 200
     else:

@@ -16,6 +16,8 @@ export const AdminPage = props => {
     const [pageMax, setPageMax]=useState(20)
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState(props.page)
+
+    
   
     function shippoTest(){
         
@@ -31,7 +33,7 @@ export const AdminPage = props => {
             },
             
         }
-        fetch(`/shippo`, options)
+        fetch(`${url}/shippo`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()

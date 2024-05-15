@@ -138,7 +138,7 @@ def admin_login():
         
       
         
-        set_access_cookies(res, admin_token, max_age=3600, )
+        set_access_cookies(response, admin_token, max_age=3600, )
         
         return response, 200
     else:

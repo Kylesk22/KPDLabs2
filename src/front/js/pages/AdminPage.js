@@ -18,6 +18,17 @@ export const AdminPage = props => {
     const [singlePage, setSinglePage] = useState(props.page)
 
     
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Return null if cookie not found
+    }
+
   
     function shippoTest(){
         
@@ -29,7 +40,7 @@ export const AdminPage = props => {
             
             headers:{
                 "Content-Type": "application/json",
-                
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
             
         }

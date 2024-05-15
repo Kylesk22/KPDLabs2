@@ -21,6 +21,9 @@ import os
 from pydo import Client
 from flask_cors import CORS, cross_origin
 
+import shippo
+from shippo.models import components
+
 utc = timezone.utc
 eastern = timezone(timedelta(hours=-4))
 
@@ -118,6 +121,8 @@ def signup():
     # res.set_cookie('token', access_token, max_age=7200, httponly=True)
     # res.set_cookie('info', user)
     return res, 200
+
+
 
 @api.route('/admin-login', methods=['POST'])
 def admin_login():
@@ -574,3 +579,27 @@ def update_account(id):
    
    
     return jsonify({"message": "Account updated successfully"}), 200
+
+@api.route('/shippo', methods=['POST'])
+@jwt_required()
+def shippo():
+    # Assuming shippo.Shippo() returns the SDK instance
+    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+
+    # Assuming addresses.create() returns Shippo's response
+    shippo_response = shippo_sdk.addresses.create(
+        components.AddressCreateRequest(
+            name="Shawn Ippotle",
+            company="Shippo",
+            street1="215 Clayton St.",
+            city="San Francisco",
+            state="CA",
+            zip="94117",
+            country="US",  # iso2 country code
+            phone="+1 555 341 9393",
+            email="shippotle@shippo.com"
+        )
+    )
+
+    # Return Shippo's response as JSON to the frontend
+    return jsonify(shippo_response)

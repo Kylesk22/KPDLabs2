@@ -16,32 +16,41 @@ export const AdminPage = props => {
     const [pageMax, setPageMax]=useState(20)
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState(props.page)
-    // const [singleCaseId, setSingleCaseID] = useState("")
-
-    // const shippoTest = () => {
-    //     const shippo = require('shippo')(shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7); // Assuming you have set the API token as an environment variable
-
-    //     (async () => {
-    //         try {
-    //             const addressFrom = await shippo.addresses.create({
-    //                 name: "Shawn Ippotle",
-    //                 company: "Shippo",
-    //                 street1: "215 Clayton St.",
-    //                 city: "San Francisco",
-    //                 state: "CA",
-    //                 zip: "94117",
-    //                 country: "US", // iso2 country code
-    //                 phone: "+1 555 341 9393",
-    //                 email: "shippotle@shippo.com",
-    //             });
-    //             console.log(addressFrom);
-    //         } catch (error) {
-    //             console.error('Error creating address:', error);
-    //         }
-    //     })();
+  
+    function shippoTest(e){
+        e.preventDefault();
         
-
-    // }
+        const options = {
+            method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
+            headers:{
+                "Content-Type": "application/json",
+                
+            },
+            
+        }
+        fetch(`/shippo`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
+        .catch((err)=> {
+            console.log(err);
+            alert(err); // Or display a more user-friendly message
+        });
+    }
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
@@ -152,7 +161,7 @@ export const AdminPage = props => {
                             </div>
                     </div>
                     <div>
-                            {/* <button onClick={()=>shippoTest()}>Test Shippo</button> */}
+                            <button onClick={()=>shippoTest()}>Test Shippo</button>
                     </div>
                     </div>
                 </div>

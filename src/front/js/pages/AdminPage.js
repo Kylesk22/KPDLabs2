@@ -152,7 +152,7 @@ export const AdminPage = props => {
                             </div>
                     </div>
                     <div>
-                            <button onClick={()=>shippoTest()}>Test Shippo</button>
+                            {/* <button onClick={()=>shippoTest()}>Test Shippo</button> */}
                     </div>
                     </div>
                 </div>

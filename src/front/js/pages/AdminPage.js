@@ -18,6 +18,31 @@ export const AdminPage = props => {
     const [singlePage, setSinglePage] = useState(props.page)
     // const [singleCaseId, setSingleCaseID] = useState("")
 
+    const shippoTest = () => {
+        const shippo = require('shippo')(shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7); // Assuming you have set the API token as an environment variable
+
+        (async () => {
+            try {
+                const addressFrom = await shippo.addresses.create({
+                    name: "Shawn Ippotle",
+                    company: "Shippo",
+                    street1: "215 Clayton St.",
+                    city: "San Francisco",
+                    state: "CA",
+                    zip: "94117",
+                    country: "US", // iso2 country code
+                    phone: "+1 555 341 9393",
+                    email: "shippotle@shippo.com",
+                });
+                console.log(addressFrom);
+            } catch (error) {
+                console.error('Error creating address:', error);
+            }
+        })();
+        
+
+    }
+
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
         for (let cookie of cookies) {
@@ -125,6 +150,9 @@ export const AdminPage = props => {
                             </>
                             }
                             </div>
+                    </div>
+                    <div>
+                            <button onClick={()=>shippoTest()}>Test Shippo</button>
                     </div>
                     </div>
                 </div>

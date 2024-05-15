@@ -17,8 +17,8 @@ export const AdminPage = props => {
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState(props.page)
   
-    function shippoTest(e){
-        e.preventDefault();
+    function shippoTest(){
+        
         
         const options = {
             method:"POST",
@@ -161,7 +161,7 @@ export const AdminPage = props => {
                             </div>
                     </div>
                     <div>
-                            <button onClick={()=>shippoTest()}>Test Shippo</button>
+                            <button className="btn btn-primary" onClick={()=>shippoTest()}>Test Shippo</button>
                     </div>
                     </div>
                 </div>

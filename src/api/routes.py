@@ -609,6 +609,7 @@ def create_shippo_user():
 def get_rates():
 
     user_info = request.get_json()
+    print(user_info)
 
     # Assuming shippo.Shippo() returns the SDK instance
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")

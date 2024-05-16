@@ -285,12 +285,11 @@ export const AdminSingleCase = props => {
                 setFinish(patientData.finish);
                 setNote(patientData.notes);
                 setShade(patientData.shade);
-                console.log(patientData["user id"])
                 setGumShade(patientData["gum shade"]);
                 setType(patientData.type);
                 setPrice(patientData.price);
                 setDrId(patientData["user id"]);
-    
+                let doctorId = patientData["user id"]
                 // Update tooth colors
                 for (const tooth in crownTooth) {
                     const element = document.getElementById(tooth);
@@ -298,7 +297,7 @@ export const AdminSingleCase = props => {
                 }
     
                 // Fetch doctor data
-                const doctorResponse = await fetch(`${url}/${drId}`, options);
+                const doctorResponse = await fetch(`${url}/${doctorId}`, options);
                 if (!doctorResponse.ok) {
                     const { message } = await doctorResponse.json();
                     throw new Error(message);

@@ -281,7 +281,7 @@ export const AdminSingleCase = props => {
                 };
     
                 // Fetch patient data
-                const patientResponse = await fetch(`${url}/${id}/${caseId}`, options);
+                const patientResponse = await fetch(`${url}/${id}/${case_id}`, options);
                 if (!patientResponse.ok) {
                     const { message } = await patientResponse.json();
                     throw new Error(message);

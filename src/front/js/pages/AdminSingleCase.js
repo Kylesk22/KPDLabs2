@@ -193,9 +193,7 @@ export const AdminSingleCase = props => {
     },[])
 
     
-    useEffect(()=>{
-        console.log(users)
-    })
+  
         return (
             <>
             <form className="form form-container" data-toggle="validator" role="form">

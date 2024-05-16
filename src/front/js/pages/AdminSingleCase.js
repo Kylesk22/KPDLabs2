@@ -28,6 +28,7 @@ export const AdminSingleCase = props => {
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
+    const [type, setType] = useState("")
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -166,10 +167,11 @@ export const AdminSingleCase = props => {
                     setCaseNum(data.id);
                     setCrownTooth(data.teeth);
                     setProduct(data.product)
-                    setFinish(data.finsih);
+                    setFinish(data.finish);
                     setNote(data.notes);
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
+                    setType(data.type)
                     setPrice(data.price);
                     for (let tooth in crownTooth){
                         const element = document.getElementById(tooth);
@@ -201,7 +203,7 @@ export const AdminSingleCase = props => {
     })
     },[])
 
-    
+    useEffect(()=>console.log(gumShade))
   
         return (
             <>
@@ -216,6 +218,12 @@ export const AdminSingleCase = props => {
                 <div className="row mt-3">
                     <div className="text-center">
                         <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
+                    </div>
+                </div>
+                <div className="row form-group justify-content-center">
+                    <div className="text-center col-4 pt-3">
+                    <label  htmlFor="type"><h5>Device Type</h5></label>
+                    <input className="form-control" required id="type" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={type} ></input>
                     </div>
                 </div>
                 <div className="row form-group justify-content-center">
@@ -325,7 +333,7 @@ export const AdminSingleCase = props => {
                 {(gumShade)?
                 <div>
                     <label  htmlFor="gum shade"><h5>Gum Shade</h5></label>
-                        <input className="form-select" id="gum shade"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">
+                        <input className="form-select" id="gum shade"  style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">
 
                     </input>
                 </div>
@@ -334,7 +342,7 @@ export const AdminSingleCase = props => {
                 <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
                         <label  htmlFor="product"><h5>Product</h5></label>
-                        <input className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={product} aria-label="Product">
+                        <input className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px"}} value={product} aria-label="Product">
 
                         </input>
                     </div>
@@ -343,7 +351,7 @@ export const AdminSingleCase = props => {
                 <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
                         <label  htmlFor="finish"><h5>Finish</h5></label>
-                        <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+                        <input className="form-select" id="finish"   style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
 
                         </input>
                     </div>

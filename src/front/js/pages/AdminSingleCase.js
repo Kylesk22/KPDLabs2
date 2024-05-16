@@ -29,7 +29,7 @@ export const AdminSingleCase = props => {
     let id = sessionStorage.getItem("id");
     let stl_urls = []
     let photo_urls = []
-
+    const { case_id } = useParams()
     
     function getCookie(name) {
         const cookies = document.cookie.split('; ');

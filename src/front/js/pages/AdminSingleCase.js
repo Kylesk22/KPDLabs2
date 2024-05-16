@@ -501,7 +501,9 @@ export const AdminSingleCase = props => {
                     </div>
                 </div>
                 <div className="row form-group justify-content-center mt-3">
-                    <button className="btn btn-primary" onClick={()=>shippoTest2()}>Get Rates</button>
+                    <div className="text-center col-8 col-lg-4 pt-3">
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
+                    </div>
                 </div>
                
                 {/* <div className="row form-group justify-content-center mt-5">

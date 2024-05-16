@@ -108,16 +108,6 @@ export const AdminSingleCase = props => {
         });
     }
 
-    function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            const [cookieName, cookieValue] = cookie.split('=');
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-        return null; // Return null if cookie not found
-    }
 
     function shippoTest2(){
 
@@ -295,6 +285,7 @@ export const AdminSingleCase = props => {
                 setFinish(patientData.finish);
                 setNote(patientData.notes);
                 setShade(patientData.shade);
+                console.log(patientData["user id"])
                 setGumShade(patientData["gum shade"]);
                 setType(patientData.type);
                 setPrice(patientData.price);

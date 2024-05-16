@@ -624,11 +624,11 @@ def get_rates():
     )
 
     address_to = components.AddressCreateRequest(
-        name= user_info.name,
-        street1= user_info.street,
-        city=user_info.city,
-        state= user_info.state,
-        zip= user_info.zip,
+        name= request.json.get("name", None)
+        street1= request.json.get("street", None)
+        city= request.json.get("city", None)
+        state= request.json.get("state", None),
+        zip= request.json.get("zip", None),
         country="US"
     )
 

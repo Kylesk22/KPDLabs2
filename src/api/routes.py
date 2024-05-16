@@ -607,6 +607,9 @@ def create_shippo_user():
 @api.route('/shippo/get_rates', methods=['POST'])
 @jwt_required()
 def get_rates():
+
+    user_info = request.get_json()
+
     # Assuming shippo.Shippo() returns the SDK instance
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 
@@ -620,11 +623,11 @@ def get_rates():
     )
 
     address_to = components.AddressCreateRequest(
-        name="Mr Hippo",
-        street1="Broadway 1",
-        city="New York",
-        state="NY",
-        zip="10007",
+        name= user_info.name,
+        street1= user_info.street,
+        city=user_info.city,
+        state= user_info.state,
+        zip= user_info.zip,
         country="US"
     )
 

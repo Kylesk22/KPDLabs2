@@ -112,19 +112,11 @@ export const AdminSingleCase = props => {
     function shippoTest2(){
 
         const userInfo = {
-            "stl_urls" : fileName,
-            "photos": photoName,
-            "case": caseNum,
-            "name": patientName,
-            "product": product,
-            "teeth": crownTooth,
-            "finish": finish,
-            "shade": shade,
-            "note": note,
-            "status": "Created",
-            "type": type,
-            "gum_shade": gumShade,
-            "price": finalPrice,
+            "name" : drName,
+            "street" : drStreet,
+            "city": drCity,
+            "state": drState,
+            "zip": drZip,
         }
         
         const options = {
@@ -320,11 +312,7 @@ export const AdminSingleCase = props => {
     }, []);
     
 
-    useEffect(()=>{
-        console.log(gumShade);
-        console.log(drCity)
-        }
-        )
+    
   
         return (
             <>

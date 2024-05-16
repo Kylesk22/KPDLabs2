@@ -23,6 +23,7 @@ export const AdminSingleCase = props => {
     const [finish, setFinish] = useState("")
     const [page, setPage] = useState(props.page)
     const [shade, setShade] = useState("")
+    const [price, setPrice] = useState("")
     const [gumShade, setGumShade] = useState("")
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])

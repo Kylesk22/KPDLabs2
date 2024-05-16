@@ -29,6 +29,15 @@ export const AdminSingleCase = props => {
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
+
+    const [drId, setDrId] = useState("")
+    const [drName, setDrName] = useState("")
+    const [drStreet, setDrStreet] = useState("")
+    const [drCity, setDrCity] = useState("")
+    const [drState, setDrState] = useState("")
+    const [drZip, setDrZip] = useState("")
+
+
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -49,6 +58,22 @@ export const AdminSingleCase = props => {
   
     function shippoTest(){
         
+        const userInfo = {
+            "stl_urls" : fileName,
+            "photos": photoName,
+            "case": caseNum,
+            "name": patientName,
+            "product": product,
+            "teeth": crownTooth,
+            "finish": finish,
+            "shade": shade,
+            "note": note,
+            "status": "Created",
+            "type": type,
+            "gum_shade": gumShade,
+            "price": finalPrice,
+        }
+        
         
         const options = {
             method:"POST",
@@ -59,6 +84,7 @@ export const AdminSingleCase = props => {
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
+            body: JSON.stringify(userInfo)
             
         }
         fetch(`${url}/shippo/create_user`, options)
@@ -94,7 +120,22 @@ export const AdminSingleCase = props => {
     }
 
     function shippoTest2(){
-        
+
+        const userInfo = {
+            "stl_urls" : fileName,
+            "photos": photoName,
+            "case": caseNum,
+            "name": patientName,
+            "product": product,
+            "teeth": crownTooth,
+            "finish": finish,
+            "shade": shade,
+            "note": note,
+            "status": "Created",
+            "type": type,
+            "gum_shade": gumShade,
+            "price": finalPrice,
+        }
         
         const options = {
             method:"POST",
@@ -105,7 +146,7 @@ export const AdminSingleCase = props => {
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
-            
+            body: JSON.stringify(userInfo)
         }
         fetch(`${url}/shippo/get_rates`, options)
         .then((res)=> {
@@ -128,82 +169,172 @@ export const AdminSingleCase = props => {
         });
     }
 
-    function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            const [cookieName, cookieValue] = cookie.split('=');
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-        return null; // Return null if cookie not found
-    }
-
+ 
    
     
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        let caseId = props.singleCaseId
+    //     let caseId = props.singleCaseId
         
-        const url = process.env.BACKEND_URL
-        console.log(`${url}/${id}/${case_id}`)
-        const options = {
-            method:"GET",
-            credentials: 'include',
-            headers:{
-                "Content-Type": "application/json",
-            },
+    //     const url = process.env.BACKEND_URL
+    //     console.log(`${url}/${id}/${case_id}`)
+    //     const options = {
+    //         method:"GET",
+    //         credentials: 'include',
+    //         headers:{
+    //             "Content-Type": "application/json",
+    //         },
             
-        }
-        fetch(`${url}/${id}/${case_id}`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
+    //     }
+    //     fetch(`${url}/${id}/${case_id}`, options)
+    //     .then((res)=> {
+    //         if (res.ok) {
+    //             return res.json()
+    //             .then((data)=>{
                     
-                    console.log(data)
-                    setPatientName(data.name);
-                    setCaseNum(data.id);
-                    setCrownTooth(data.teeth);
-                    setProduct(data.product)
-                    setFinish(data.finish);
-                    setNote(data.notes);
-                    setShade(data.shade);
-                    setGumShade(data["gum shade"]);
-                    setType(data.type)
-                    setPrice(data.price);
-                    for (let tooth in crownTooth){
-                        const element = document.getElementById(tooth);
-                        element.style.fill = "#137ea7"
-                        console.log(tooth)
-                    }
+    //                 console.log(data)
+    //                 setPatientName(data.name);
+    //                 setCaseNum(data.id);
+    //                 setCrownTooth(data.teeth);
+    //                 setProduct(data.product)
+    //                 setFinish(data.finish);
+    //                 setNote(data.notes);
+    //                 setShade(data.shade);
+    //                 setGumShade(data["gum shade"]);
+    //                 setType(data.type)
+    //                 setPrice(data.price);
+    //                 setDrId(data["user id"])
+    //                 for (let tooth in crownTooth){
+    //                     const element = document.getElementById(tooth);
+    //                     element.style.fill = "#137ea7"
+    //                     console.log(tooth)
+    //                 }
                     
                     
                     
-                    console.log(data["case scans"])
-                    for (let scan in data["case scans"]){
-                        let add_scan = data["case scans"][scan]["scan"]
-                        setStlFile([...stlFile, add_scan])
-                    }
+    //                 console.log(data["case scans"])
+    //                 for (let scan in data["case scans"]){
+    //                     let add_scan = data["case scans"][scan]["scan"]
+    //                     setStlFile([...stlFile, add_scan])
+    //                 }
 
                     
                     
                     
 
                     
-                })}
-            return(res.json())
-            .then((body)=>{alert(body.message)})
+    //             })}
+    //                 return(res.json())
+    //                 .then((body)=>{alert(body.message)})
             
-            })
+    //         })
        
-        .catch((err)=> {
-            console.log(err);
-    })
-    },[])
+    //     .catch((err)=> {
+    //         console.log(err);
+    // })
 
-    useEffect(()=>console.log(gumShade))
+
+    // fetch(`${url}/${drId}`, options)
+    //     .then((res)=> {
+    //         if (res.ok) {
+    //             return res.json()
+    //             .then((data)=>{
+                    
+                    
+    //                 setDrName(`${data.fname} ${data.lname}`)
+    //                 let add = data.address.split(",")
+    //                 setDrStreet(add[0])
+    //                 setDrCity(add[1])
+    //                 setDrState(add[2])
+    //                 setDrZip(add[3])
+                   
+                    
+                    
+                  
+                    
+                    
+                    
+
+                    
+    //             })}
+                    
+            
+    //         })
+       
+    //     .catch((err)=> {
+    //         console.log(err);
+    // })
+
+    // }
+    // ,[])
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const url = process.env.BACKEND_URL;
+                const options = {
+                    method: "GET",
+                    credentials: 'include',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                };
+    
+                // Fetch patient data
+                const patientResponse = await fetch(`${url}/${id}/${caseId}`, options);
+                if (!patientResponse.ok) {
+                    const { message } = await patientResponse.json();
+                    throw new Error(message);
+                }
+                const patientData = await patientResponse.json();
+    
+                setPatientName(patientData.name);
+                setCaseNum(patientData.id);
+                setCrownTooth(patientData.teeth);
+                setProduct(patientData.product);
+                setFinish(patientData.finish);
+                setNote(patientData.notes);
+                setShade(patientData.shade);
+                setGumShade(patientData["gum shade"]);
+                setType(patientData.type);
+                setPrice(patientData.price);
+                setDrId(patientData["user id"]);
+    
+                // Update tooth colors
+                for (const tooth in crownTooth) {
+                    const element = document.getElementById(tooth);
+                    element.style.fill = "#137ea7";
+                }
+    
+                // Fetch doctor data
+                const doctorResponse = await fetch(`${url}/${drId}`, options);
+                if (!doctorResponse.ok) {
+                    const { message } = await doctorResponse.json();
+                    throw new Error(message);
+                }
+                const doctorData = await doctorResponse.json();
+    
+                setDrName(`${doctorData.fname} ${doctorData.lname}`);
+                const addressParts = doctorData.address.split(",");
+                setDrStreet(addressParts[0]);
+                setDrCity(addressParts[1]);
+                setDrState(addressParts[2]);
+                setDrZip(addressParts[3]);
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred while fetching data. Please try again later.");
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
+
+    useEffect(()=>{
+        console.log(gumShade);
+        console.log(drCity)
+        }
+        )
   
         return (
             <>
@@ -390,6 +521,9 @@ export const AdminSingleCase = props => {
                     <input className="form-control" id="Price" rows="3"  readOnly value={price} ></input>
                
                     </div>
+                </div>
+                <div className="row form-group justify-content-center mt-3">
+                    <button className="btn btn-primary" onClick={()=>shippoTest2()}>Get Rates</button>
                 </div>
                
                 {/* <div className="row form-group justify-content-center mt-5">

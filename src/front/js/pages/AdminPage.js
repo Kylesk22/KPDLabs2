@@ -30,97 +30,10 @@ export const AdminPage = props => {
     }
 
   
-    function shippoTest(){
-        
-        
-        const options = {
-            method:"POST",
-            withCredntials: true,
-            credentials: 'include',
-            
-            headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
-            },
-            
-        }
-        fetch(`${url}/shippo/create_user`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-                    console.log(data)
-                });
-            } else {
-                return res.json()
-                .then((body)=>{
-                    console.log(body)
-                    alert(body.message);
-                });
-            }
-        })
-        .catch((err)=> {
-            console.log(err);
-            alert(err); // Or display a more user-friendly message
-        });
-    }
+  
 
-    function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            const [cookieName, cookieValue] = cookie.split('=');
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-        return null; // Return null if cookie not found
-    }
-
-    function shippoTest2(){
-        
-        
-        const options = {
-            method:"POST",
-            withCredntials: true,
-            credentials: 'include',
-            
-            headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
-            },
-            
-        }
-        fetch(`${url}/shippo/get_rates`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-                    console.log(data)
-                });
-            } else {
-                return res.json()
-                .then((body)=>{
-                    console.log(body)
-                    alert(body.message);
-                });
-            }
-        })
-        .catch((err)=> {
-            console.log(err);
-            alert(err); // Or display a more user-friendly message
-        });
-    }
-
-    function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            const [cookieName, cookieValue] = cookie.split('=');
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-        return null; // Return null if cookie not found
-    }
+   
+    
 
    
     
@@ -224,10 +137,7 @@ export const AdminPage = props => {
                             }
                             </div>
                     </div>
-                    <div>
-                            <button className="btn btn-primary" onClick={()=>shippoTest()}>Test Shippo</button>
-                            <button className="btn btn-primary" onClick={()=>shippoTest2()}>Get Rates</button>
-                    </div>
+                    
                     </div>
                 </div>
 

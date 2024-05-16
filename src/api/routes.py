@@ -606,7 +606,7 @@ def create_shippo_user():
 
 @api.route('/shippo/get_rates', methods=['POST'])
 @jwt_required()
-def create_shippo_user():
+def get_rates():
     # Assuming shippo.Shippo() returns the SDK instance
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 

@@ -611,11 +611,11 @@ def get_rates():
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 
     address_from = components.AddressCreateRequest(
-        name="Shawn Ippotle",
-        street1="215 Clayton St.",
-        city="San Francisco",
-        state="CA",
-        zip="94117",
+        name="KPD Labs",
+        street1="3393 Us Highway 17 92 W",
+        city="Haines City",
+        state="FL",
+        zip="33844",
         country="US"
     )
 

@@ -15,7 +15,7 @@ export const AdminPage = props => {
     const [pageMin, setPageMin]=useState(0)
     const [pageMax, setPageMax]=useState(20)
     const [pageNumber, setPageNumber] = useState(1)
-    const [singlePage, setSinglePage] = useState(props.page)
+    const [singlePage, setSinglePage] = useState("")
 
     
     function getCookie(name) {
@@ -176,7 +176,7 @@ export const AdminPage = props => {
             <div  >
                 <div >
                     <div className="row" >
-                    <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}   onClick={()=>{console.log(cases)}} >Case #</div>
+                    <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Case #</div>
                     <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Dr.</div>
                     <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Patient Name</div>
                     <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>Type</div>
@@ -188,22 +188,27 @@ export const AdminPage = props => {
                 
                 {cases.map((item, index) => {
                         return (
-                            <div key={index} className="row" onClick={()=>{setSinglePage("singleCase"), props.setSingleCaseID(item["id"])}}>
+                            <Link to = {`/admin/${id}/${item["id"]}`}>
+                            <div key={index} className="row" >
+                            
                                 {(index <= pageMax && index >= pageMin)?
-                                <>
-                                {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
-                                <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
-                                <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
-                                <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
-                                <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{users[`${item["user id"]}`]}</div>
-                                <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
-                                <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["type"]}</div>
-                                <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["creation date"]}</div>
-                                <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["status"]}</div>
-                                </>
+                                
+                                    <>
+                                    
+                                        {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
+                                        <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
+                                        <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
+                                        <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
+                                        <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{users[`${item["user id"]}`]}</div>
+                                        <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["type"]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["creation date"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["status"]}</div>
+                                    </>
                                 
                             :""}
                             </div>
+                            </Link>
                             
                         );
                     })}

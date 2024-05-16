@@ -221,7 +221,7 @@ export const AdminPage = props => {
                     </div>
                     <div>
                             <button className="btn btn-primary" onClick={()=>shippoTest()}>Test Shippo</button>
-                            <button className="btn btn-primary" onClick={()=>shippoTest()}>Get Rates</button>
+                            <button className="btn btn-primary" onClick={()=>shippoTest2()}>Get Rates</button>
                     </div>
                     </div>
                 </div>

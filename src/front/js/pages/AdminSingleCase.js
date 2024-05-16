@@ -22,6 +22,8 @@ export const AdminSingleCase = props => {
     const [product, setProduct] = useState("")
     const [finish, setFinish] = useState("")
     const [page, setPage] = useState(props.page)
+    const [shade, setShade] = useState("")
+    const [gumShade, setGumShade] = useState("")
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
@@ -162,6 +164,12 @@ export const AdminSingleCase = props => {
                     setPatientName(data.name);
                     setCaseNum(data.id);
                     setCrownTooth(data.teeth);
+                    setProduct(data.product)
+                    setFinish(data.finsih);
+                    setNote(data.notes);
+                    setShade(data.shade);
+                    setGumShade(data["gum shade"]);
+                    setPrice(data.price);
                     for (let tooth in crownTooth){
                         const element = document.getElementById(tooth);
                         element.style.fill = "#137ea7"
@@ -196,7 +204,7 @@ export const AdminSingleCase = props => {
   
         return (
             <>
-            <form className="form form-container" data-toggle="validator" role="form">
+            <form className="form form-container" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
                 <div className="row mt-4"> 
                     <div className="text-center">
                         <Link to = {`/admin/${id}`}>
@@ -305,26 +313,38 @@ export const AdminSingleCase = props => {
                             </svg>
                     </div>
                 </div>
-               
                 <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
-                        <label  htmlFor="product"><h5>Select Product</h5></label>
-                        <select className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Product">
-       
-                            <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
-                            <option value="PMMA Temporary" onClick={()=>setProduct("PMMA Temporary")}>PMMA Temporary</option>
-                        </select>
+                        <label  htmlFor="shade"><h5>Shade</h5></label>
+                        <input className="form-select" id="shade"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={shade} aria-label="Shade">
+
+                        </input>
+                    </div>
+                </div>
+                {(gumShade)?
+                <div>
+                    <label  htmlFor="gum shade"><h5>Gum Shade</h5></label>
+                        <input className="form-select" id="gum shade"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">
+
+                    </input>
+                </div>
+                :""}
+                
+                <div className="row form-group text-center justify-content-center mt-5">
+                    <div className= "col-8 col-lg-4">
+                        <label  htmlFor="product"><h5>Product</h5></label>
+                        <input className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={product} aria-label="Product">
+
+                        </input>
                     </div>
                 </div>
                 
                 <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
                         <label  htmlFor="finish"><h5>Finish</h5></label>
-                        <select className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish">
-                            
-                            <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
-                            <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option>
-                        </select>
+                        <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+
+                        </input>
                     </div>
                 </div>
                 {/* <div className="row form-group justify-content-center mt-5">
@@ -351,6 +371,14 @@ export const AdminSingleCase = props => {
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <label htmlFor="Notes" className="form-label" ><h5>Prescription Information</h5></label>
                     <textarea className="form-control" id="Notes" rows="3"  readOnly value={note} onChange={(e)=>setNote(e.target.value)}></textarea>
+               
+                    </div>
+                </div>
+
+                <div className="row form-group justify-content-center mt-3">
+                    <div className="text-center col-8 col-lg-4 pt-3">
+                    <label htmlFor="Price" className="form-label" ><h5>Price</h5></label>
+                    <input className="form-control" id="Price" rows="3"  readOnly value={price} ></input>
                
                     </div>
                 </div>

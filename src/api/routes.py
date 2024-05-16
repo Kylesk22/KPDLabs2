@@ -580,9 +580,9 @@ def update_account(id):
    
     return jsonify({"message": "Account updated successfully"}), 200
 
-@api.route('/shippo', methods=['POST'])
+@api.route('/shippo/create_user', methods=['POST'])
 @jwt_required()
-def shippos():
+def create_shippo_user():
     # Assuming shippo.Shippo() returns the SDK instance
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 
@@ -603,3 +603,48 @@ def shippos():
 
     # Return Shippo's response as JSON to the frontend
     return jsonify(shippo_response)
+
+@api.route('/shippo/get_rates', methods=['POST'])
+@jwt_required()
+def create_shippo_user():
+    # Assuming shippo.Shippo() returns the SDK instance
+    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+
+    address_from = components.AddressCreateRequest(
+        name="Shawn Ippotle",
+        street1="215 Clayton St.",
+        city="San Francisco",
+        state="CA",
+        zip="94117",
+        country="US"
+    )
+
+    address_to = components.AddressCreateRequest(
+        name="Mr Hippo",
+        street1="Broadway 1",
+        city="New York",
+        state="NY",
+        zip="10007",
+        country="US"
+    )
+
+    parcel = components.ParcelCreateRequest(
+        length="5",
+        width="5",
+        height="5",
+        distance_unit=components.DistanceUnitEnum.IN,
+        weight="2",
+        mass_unit=components.WeightUnitEnum.LB
+    )
+
+    shipment = shippo_sdk.shipments.create(
+        components.ShipmentCreateRequest(
+            address_from=address_from,
+            address_to=address_to,
+            parcels=[parcel],
+            async_=False
+        )
+    )
+
+    # Return Shippo's response as JSON to the frontend
+    return jsonify(shipment)

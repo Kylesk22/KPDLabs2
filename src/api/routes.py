@@ -658,14 +658,14 @@ def get_rates():
 def get_label():
     # Get the first rate in the rates results.
     # Customize this based on your business logic.
-    rate = request.json.get("rate", None)
-    print(rate)
+    rates = request.json.get("rate", None)
+    print(rates)
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 
     # Purchase the desired rate. 
     transaction = shippo_sdk.transactions.create(
         components.TransactionCreateRequest(
-            rate=rate.object_id,
+            rate=rates["object_id"],
             label_file_type=components.LabelFileTypeEnum.PDF,
             async_=False
         )

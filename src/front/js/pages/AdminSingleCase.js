@@ -36,7 +36,7 @@ export const AdminSingleCase = props => {
     const [drCity, setDrCity] = useState("")
     const [drState, setDrState] = useState("")
     const [drZip, setDrZip] = useState("")
-
+    const [rates, setRates] = useState([])
 
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -136,6 +136,9 @@ export const AdminSingleCase = props => {
                 return res.json()
                 .then((data)=>{
                     console.log(data)
+                    for (let i=0; i < data.rates; i++){
+                    setRates([...rates, data.rates[i]])
+                    }
                 });
             } else {
                 return res.json()
@@ -505,12 +508,17 @@ export const AdminSingleCase = props => {
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
                     </div>
                 </div>
+                <div className="row justify-content-center mt-3">
+                    {rates.map((item, index) => {
+                        return (
+                            <div>
+                                {item}
+                            </div>
+                            
+                    )})}
+                </div>
                
-                {/* <div className="row form-group justify-content-center mt-5">
-                    <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>
-                    </div>
-                </div> */}
+                
                 
             
             </form>

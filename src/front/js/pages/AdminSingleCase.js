@@ -109,53 +109,43 @@ export const AdminSingleCase = props => {
     }
 
 
-    function shippoTest2(){
-
+    function shippoTest2() {
         const userInfo = {
-            "name" : drName,
-            "street" : drStreet,
+            "name": drName,
+            "street": drStreet,
             "city": drCity,
             "state": drState,
             "zip": drZip,
-        }
-        
+        };
+    
         const options = {
-            method:"POST",
-            withCredntials: true,
+            method: "POST",
             credentials: 'include',
-            
-            headers:{
+            headers: {
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
             body: JSON.stringify(userInfo)
-        }
+        };
+    
         fetch(`${url}/shippo/get_rates`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-                    console.log(data)
-                    for (let i=0; i < data.rates.length; i++){
-                    setRates([...rates, data.rates[i]])
-                    console.log(rates)
-                    }
-                    
-                });
-            } else {
-                return res.json()
-                .then((body)=>{
-                    console.log(body)
-                    alert(body.message);
-                });
-            }
-        })
-        .catch((err)=> {
-            console.log(err);
-            alert(err); // Or display a more user-friendly message
-        });
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .then((data) => {
+                // Update rates state
+                setRates(prevRates => [...prevRates, ...data.rates]);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching rates. Please try again later.');
+            });
     }
-
+    
  
    
     

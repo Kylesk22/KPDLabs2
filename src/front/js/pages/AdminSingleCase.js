@@ -557,9 +557,9 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center mt-3">
                     {(labelUrl)?
-                    <a href={labelUrl} >
-                        <button>Label</button>
-                    </a>
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
+                        Label
+                    </button>
                      :""   }
                 </div>
                 

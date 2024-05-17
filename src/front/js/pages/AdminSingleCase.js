@@ -138,7 +138,8 @@ export const AdminSingleCase = props => {
             })
             .then((data) => {
                 // Update rates state
-                setRates(prevRates => [...prevRates, ...data.rates]);
+                // setRates(prevRates => [...prevRates, ...data.rates]);
+                console.log(data.rates)
             })
             .catch((error) => {
                 console.error('Error:', error);

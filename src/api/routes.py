@@ -659,6 +659,7 @@ def get_label():
     # Get the first rate in the rates results.
     # Customize this based on your business logic.
     rate = request.json.get("rate", None)
+    print(rate)
     shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
 
     # Purchase the desired rate. 

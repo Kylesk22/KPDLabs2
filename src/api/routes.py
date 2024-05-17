@@ -621,7 +621,7 @@ def get_rates():
         state="FL",
         zip="33844",
         country="US",
-        email="kpdlabs@kpdlabs.com"
+        email="kpdlabs@kpdlabs.com",
         phone="8634382109"
     )
 

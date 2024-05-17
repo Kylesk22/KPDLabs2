@@ -652,3 +652,29 @@ def get_rates():
 
     # Return Shippo's response as JSON to the frontend
     return jsonify(shipment)
+
+@api.route('/shippo/get_label', methods=['POST'])
+@jwt_required()
+def get_label():
+    # Get the first rate in the rates results.
+    # Customize this based on your business logic.
+    rate = request.json.get("rate", None)
+    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+
+    # Purchase the desired rate. 
+    transaction = shippo_sdk.transactions.create(
+        components.TransactionCreateRequest(
+            rate=rate.object_id,
+            label_file_type=components.LabelFileTypeEnum.PDF,
+            async_=False
+        )
+    )
+
+    # Retrieve label url and tracking number or error message
+    if transaction.status == "SUCCESS":
+        print(transaction.label_url)
+        print(transaction.tracking_number)
+        return(transaction.label_url, transaction.tracking_number)
+    else:
+        print(transaction.messages)
+        return(transaction.messages)

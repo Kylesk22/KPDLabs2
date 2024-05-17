@@ -154,7 +154,40 @@ export const AdminSingleCase = props => {
             });
     }
     
- 
+    function getLabel(selectedRate){
+        const userInfo = {
+            "rate": selectedRate
+        };
+
+        const options = {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(userInfo)
+        };
+    
+        fetch(`${url}/shippo/get_label`, options)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .then((data) => {
+                // Update rates state
+                // setRates(prevRates => [...prevRates, ...data.rates]);
+                console.log(data)
+                
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching rates. Please try again later.');
+            });
+    }
    
     
 
@@ -511,7 +544,7 @@ export const AdminSingleCase = props => {
                 <div className="row justify-content-center mt-3">
                     {rates.map((item, index) => {
                         return (
-                            <div className="col-3" style={{border: "black 1px solid"}}key={index}>
+                            <div className="col-2" style={{border: "black 1px solid"}}key={index} onClick={(item)=> getLabel(item)}>
                                 <div>{item.amount}</div>
                                 <div>{item.provider}</div>
                                 <div>{item.servicelevel.name}</div>
@@ -519,6 +552,7 @@ export const AdminSingleCase = props => {
                             
                     )})}
                 </div>
+                
                <button onClick={(e)=>{e.preventDefault(); console.log(rates)}}>Test</button>
                 
                 

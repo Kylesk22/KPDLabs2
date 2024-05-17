@@ -517,7 +517,7 @@ export const AdminSingleCase = props => {
                             
                     )})}
                 </div> */}
-               
+               <button onClick={()=>console.log(rates)}>Test</button>
                 
                 
             

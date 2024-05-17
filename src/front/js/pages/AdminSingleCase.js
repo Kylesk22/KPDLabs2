@@ -140,11 +140,11 @@ export const AdminSingleCase = props => {
                 // Update rates state
                 // setRates(prevRates => [...prevRates, ...data.rates]);
                 console.log(data.rates)
-                const newRates = [];
+                const newRates = {};
                 for (let i = 0; i < data.rates.length; i++){
                     console.log(data.rates[i])
                     let thisRate= data.rates[i]
-                    newRates.push(thisRate)
+                    newRates[i] = thisRate
                 }
                 setRates(newRates)
             })

@@ -140,7 +140,7 @@ export const AdminSingleCase = props => {
                     setRates([...rates, data.rates[i]])
                     console.log(rates)
                     }
-                
+                    console.log(rates)
                 });
             } else {
                 return res.json()

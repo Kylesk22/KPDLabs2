@@ -142,6 +142,7 @@ export const AdminSingleCase = props => {
                 console.log(data.rates)
                 for (let i = 0; i < data.rates.length; i++){
                     console.log(data.rates[i])
+                    setRates(...rates, data.rates[i])
                 }
             })
             .catch((error) => {

@@ -38,6 +38,8 @@ export const AdminSingleCase = props => {
     const [drZip, setDrZip] = useState("")
     const [rates, setRates] = useState([])
 
+    const [labelUrl, setLabelUrl] = useState("")
+
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -181,6 +183,7 @@ export const AdminSingleCase = props => {
                 // Update rates state
                 // setRates(prevRates => [...prevRates, ...data.rates]);
                 console.log(data)
+                setLabelUrl(data)
                 
             })
             .catch((error) => {
@@ -551,6 +554,13 @@ export const AdminSingleCase = props => {
                             </div>
                             
                     )})}
+                </div>
+                <div className="row form-group justify-content-center mt-3">
+                    {(labelUrl)?
+                    <a href="url" download={labelUrl}>
+                        <button>Download File</button>
+                    </a>
+                     :""   }
                 </div>
                 
                <button onClick={(e)=>{e.preventDefault(); console.log(rates)}}>Test</button>

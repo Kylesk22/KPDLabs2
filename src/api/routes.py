@@ -678,7 +678,7 @@ def get_label():
     if transaction.status == "SUCCESS":
         print(transaction.label_url)
         print(transaction.tracking_number)
-        return(transaction.label_url)
+        return jsonify(transaction.label_url)
     else:
         print(transaction.messages)
         return(transaction.messages)

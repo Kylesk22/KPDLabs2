@@ -508,7 +508,7 @@ export const AdminSingleCase = props => {
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
                     </div>
                 </div>
-                <div className="row justify-content-center mt-3">
+                {/* <div className="row justify-content-center mt-3">
                     {rates.map((item, index) => {
                         return (
                             <div key={index}>
@@ -516,7 +516,7 @@ export const AdminSingleCase = props => {
                             </div>
                             
                     )})}
-                </div>
+                </div> */}
                <button onClick={(e)=>{e.preventDefault(); console.log(rates)}}>Test</button>
                 
                 

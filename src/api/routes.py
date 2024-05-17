@@ -620,7 +620,8 @@ def get_rates():
         city="Haines City",
         state="FL",
         zip="33844",
-        country="US"
+        country="US",
+        email="kpdlabs@kpdlabs.com"
     )
 
     address_to = components.AddressCreateRequest(

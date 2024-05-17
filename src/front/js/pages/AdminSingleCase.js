@@ -511,7 +511,7 @@ export const AdminSingleCase = props => {
                 <div className="row justify-content-center mt-3">
                     {rates.map((item, index) => {
                         return (
-                            <div key={index}>
+                            <div className="col-3" style={{border: "black 1px solid"}}key={index}>
                                 <div>{item.amount}</div>
                                 <div>{item.provider}</div>
                                 <div>{item.servicelevel.name}</div>

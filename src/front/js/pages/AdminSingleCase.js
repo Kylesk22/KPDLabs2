@@ -194,6 +194,52 @@ export const AdminSingleCase = props => {
    
     
 
+
+
+
+
+
+
+
+
+
+
+    ////////////////downloading from DO//////////////////
+    const s3Client = new S3Client({
+        endpoint: "https://nyc3.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
+        forcePathStyle: false, // Configures to use subdomain/virtual calling format.
+        region: "nyc3", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (for example, nyc3).
+        credentials: {
+            accessKeyId: process.env.SPACES_KEY, // Access key pair. You can create access key pairs using the control panel or API.
+            secretAccessKey: process.env.SPACES_SECRET_KEY // Secret access key defined through an environment variable.
+        }
+    });
+
+    const downloadObject = async (localFilePath) => {
+        try {
+            const params = {
+                Bucket: "case-scans",
+                Key: `${caseNum}`
+            };
+    
+            // Download the object from Spaces
+            const data = await s3Client.getObject(params).promise();
+    
+            // Write the object content to a local file
+            // require('fs').writeFileSync(localFilePath, data.Body);
+    
+            console.log(`Successfully downloaded object: case-scans/${caseNum}`);
+            return true;
+        } catch (err) {
+            console.error('Error downloading object:', err);
+            return false;
+        }
+    };
+    
+    // Example usage
+    const bucketName = 'your-bucket-name';
+    const objectKey = 'path/to/your/object';
+    const localFilePath = '/path/to/save/local/file';
     // useEffect(()=>{
 
     //     let caseId = props.singleCaseId
@@ -480,10 +526,12 @@ export const AdminSingleCase = props => {
                 </div>
                 {(gumShade)?
                 <div>
+                    <div className= "col-8 col-lg-4">
                     <label  htmlFor="gum shade"><h5>Gum Shade</h5></label>
                         <input className="form-select" id="gum shade"  style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">
 
                     </input>
+                    </div>
                 </div>
                 :""}
                 
@@ -520,7 +568,7 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={()=>{console.log(stlFile); downloadSTLFromBlob(stlFile)}}>Upload</button>
+                        <button className="btn btn-primary" onClick={()=>{downloadObject()}}>download</button>
                     </div>
                 </div>
     
@@ -557,9 +605,11 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center mt-3">
                     {(labelUrl)?
+                    <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
                         Label
                     </button>
+                    </div>
                      :""   }
                 </div>
                 

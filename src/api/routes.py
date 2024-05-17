@@ -623,6 +623,7 @@ def get_rates():
         country="US",
         email="kpdlabs@kpdlabs.com",
         phone="8634382109",
+        test="true"
     )
 
     address_to = components.AddressCreateRequest(

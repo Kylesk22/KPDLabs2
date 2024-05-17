@@ -512,7 +512,9 @@ export const AdminSingleCase = props => {
                     {rates.map((item, index) => {
                         return (
                             <div key={index}>
-                                <div>{item}</div>
+                                <div>{item.amount}</div>
+                                <div>{item.provider}</div>
+                                <div>{item.servicelevel.name}</div>
                             </div>
                             
                     )})}

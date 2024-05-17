@@ -138,6 +138,7 @@ export const AdminSingleCase = props => {
                     console.log(data)
                     for (let i=0; i < data.rates; i++){
                     setRates([...rates, data.rates[i]])
+                    console.log(rates)
                     }
                 
                 });
@@ -316,7 +317,7 @@ export const AdminSingleCase = props => {
     }, []);
     
 
-    useEffect(()=>console.log(rates))
+
   
         return (
             <>

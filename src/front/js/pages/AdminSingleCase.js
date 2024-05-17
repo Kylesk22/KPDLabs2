@@ -136,11 +136,11 @@ export const AdminSingleCase = props => {
                 return res.json()
                 .then((data)=>{
                     console.log(data)
-                    for (let i=0; i < data.rates; i++){
+                    for (let i=0; i < data.rates.length; i++){
                     setRates([...rates, data.rates[i]])
                     console.log(rates)
                     }
-                    console.log(rates)
+                    
                 });
             } else {
                 return res.json()

@@ -569,7 +569,7 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={()=>{downloadObject()}}>download</button>
+                        <button className="btn btn-primary" onClick={()=>{e.preventDefault();downloadObject()}}>download</button>
                     </div>
                 </div>
     

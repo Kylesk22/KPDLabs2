@@ -139,6 +139,7 @@ export const AdminSingleCase = props => {
                     for (let i=0; i < data.rates; i++){
                     setRates([...rates, data.rates[i]])
                     }
+                
                 });
             } else {
                 return res.json()
@@ -315,7 +316,7 @@ export const AdminSingleCase = props => {
     }, []);
     
 
-    
+    useEffect(()=>console.log(rates))
   
         return (
             <>

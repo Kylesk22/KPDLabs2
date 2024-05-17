@@ -140,6 +140,9 @@ export const AdminSingleCase = props => {
                 // Update rates state
                 // setRates(prevRates => [...prevRates, ...data.rates]);
                 console.log(data.rates)
+                for (let i = 0; i < data.rates.length; i++){
+                    console.log(data.rates[i])
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);

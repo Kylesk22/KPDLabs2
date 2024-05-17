@@ -557,8 +557,8 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center mt-3">
                     {(labelUrl)?
-                    <a href="url" download={labelUrl}>
-                        <button>Download File</button>
+                    <a href={labelUrl} >
+                        <button>Label</button>
                     </a>
                      :""   }
                 </div>

@@ -810,6 +810,8 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <br></br>
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
@@ -1242,8 +1244,10 @@ AWS.config.update({
                             checked={shipping === 'Standard'}
                             onChange={(e)=>{setShipping(e.target.value)}}
                         />
-                         Standard 
+                          Standard 
                         </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1593,6 +1597,8 @@ AWS.config.update({
                         />
                          Standard 
                         </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1969,6 +1975,8 @@ AWS.config.update({
                         />
                          Standard 
                         </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input

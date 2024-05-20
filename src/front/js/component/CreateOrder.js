@@ -799,6 +799,7 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping</h5></label>
+                        <br></br>
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
@@ -816,6 +817,7 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Production</h5></label>
+                        <br></br>
                         <label style={{color:"black"}}>
                         <input
                             type="radio"

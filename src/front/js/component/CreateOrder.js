@@ -1173,7 +1173,7 @@ AWS.config.update({
                 
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                            <button className="btn btn-primary" type = "submit"  >Upload</button>
+                            <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice((price+price2)*crownTooth.length)}} >Upload</button>
                             <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length}</strong></small>
                         </div>
@@ -1466,7 +1466,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  >Upload</button>
+                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price))}}>Upload</button>
                     <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price)}</strong></small>
                 </div>

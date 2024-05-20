@@ -82,7 +82,7 @@ CORS(app, supports_credentials=True)
 
 
 # add the admin
-setup_admin(app)
+# setup_admin(app)
 
 # add the admin
 setup_commands(app)

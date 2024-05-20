@@ -511,6 +511,9 @@ export const AdminSingleCase = props => {
                                 <option value="A2" onClick={()=>setCaseStatus("Finish")}>Finish</option>
                                 <option value="A2" onClick={()=>setCaseStatus("Ready to Ship")}>Ready to Ship</option>
                                 <option value="A3" onClick={()=>setCaseStatus("Shipped")}>Shipped</option>
+                                <option value="A3" onClick={()=>setCaseStatus("Billed")}>Billed</option>
+                                <option value="A3" onClick={()=>setCaseStatus("Closed")}>Closed</option>
+                                <option value="A3" onClick={()=>setCaseStatus("Void")}>Void</option>
                             </select>
                     </div>
                 </div>

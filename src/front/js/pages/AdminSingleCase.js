@@ -689,7 +689,7 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center mt-3">
                     <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase()}}>Get Rates</button>
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase()}}>Update Case</button>
                     </div>
                 </div>
                 <div className="row form-group justify-content-center mt-3">

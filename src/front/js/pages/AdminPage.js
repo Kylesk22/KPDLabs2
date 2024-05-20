@@ -132,7 +132,7 @@ export const AdminPage = props => {
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
                 
-                {cases.map((item, index) => {
+                {sortedCases.map((item, index) => {
                         return (
                             <Link to = {`/admin/${id}/${item["id"]}`}>
                             <div key={index} className="row" >

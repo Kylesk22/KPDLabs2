@@ -17,6 +17,31 @@ export const AdminPage = props => {
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState("")
 
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (columnName) => {
+        if (sortBy === columnName) {
+        // If already sorting by this column, toggle the sort order
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+        // If sorting by a new column, set the column and default to ascending order
+        setSortBy(columnName);
+        setSortOrder('asc');
+        }
+    };
+
+    const sortedCases = cases.sort((a, b) => {
+        // Perform sorting based on the selected column and sort order
+        if (sortBy) {
+        const comparison = a[sortBy].localeCompare(b[sortBy]);
+        return sortOrder === 'asc' ? comparison : -comparison;
+        } else {
+        // If no column is selected for sorting, maintain the original order
+        return 0;
+        }
+    });
+
     
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
@@ -89,12 +114,12 @@ export const AdminPage = props => {
             <div  >
                 <div >
                     <div className="row" >
-                    <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Case #</div>
-                    <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Dr.</div>
-                    <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Patient Name</div>
-                    <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Type</div>
-                    <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Creation Date</div>
-                    <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:"#202020"}}>Status</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
+                    <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
+                    <div className = "col-3 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
+                    <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
+                    <div className = "col-2 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Creation Date</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">

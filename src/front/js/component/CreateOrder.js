@@ -798,30 +798,32 @@ AWS.config.update({
                     
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label>
+                        <label style={{color:"black"}}>
                         <input
                             type="radio"
                             value="Express"
                             checked={shipping === 'Express'}
                             onChange={(e)=>{setShipping(e.target.value)}}
                         />
-                        Express 
+                         Express 
                         </label>
+                        <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>Express Shipping $35 Fee</small>
                         </div>
                     </div>
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label>
+                        <label style={{color:"black"}}>
                         <input
                             type="radio"
                             value="Rush"
                             checked={production === 'Rush'}
                             onChange={(e)=>{setProduction(e.target.value)}}
                         />
-                        Rush Production 
+                         Rush Production 
                         </label>
+                        <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
                         </div>
                     </div>

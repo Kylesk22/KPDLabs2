@@ -501,11 +501,12 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center">
                     <div className="text-center col-4 pt-3">
-                        <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
+                    <label  htmlFor="status"><h5>Status</h5></label>
+                        <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
                                 <option value={caseStatus}>{caseStatus}</option>
-                                <option value="A1" onClick={()=>setShade("A1")}>A1</option>
-                                <option value="A2" onClick={()=>setShade("A2")}>A2</option>
-                                <option value="A3" onClick={()=>setShade("A3")}>A3</option>
+                                <option value="A1" onClick={()=>setCaseStatus("Design")}>Design</option>
+                                <option value="A2" onClick={()=>setCaseStatus("Production")}>Production</option>
+                                <option value="A3" onClick={()=>setCaseStatus("Shipped")}>Shipped</option>
                             </select>
                     </div>
                 </div>

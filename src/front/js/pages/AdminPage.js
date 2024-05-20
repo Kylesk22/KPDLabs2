@@ -17,7 +17,7 @@ export const AdminPage = props => {
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState("")
 
-    const [sortBy, setSortBy] = useState(null);
+    const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('asc');
 
     const handleSort = (columnName) => {
@@ -33,7 +33,11 @@ export const AdminPage = props => {
 
     const sortedCases = cases.sort((a, b) => {
         // Perform sorting based on the selected column and sort order
-        if (sortBy) {
+        
+
+        
+        
+        if (sortBy && sortBy !== "user id") {
           const valA = typeof a[sortBy] === 'string' ? a[sortBy].toLowerCase() : a[sortBy];
           const valB = typeof b[sortBy] === 'string' ? b[sortBy].toLowerCase() : b[sortBy];
     
@@ -44,11 +48,27 @@ export const AdminPage = props => {
             return sortOrder === 'asc' ? 1 : -1;
           }
           return 0;
-        } else {
+        } 
+        if (sortBy === "user id") {
+            const valA = users[a].toLowerCase()
+            const valB = users[b].toLowerCase()
+            if (valA < valB) {
+                return sortOrder === 'asc' ? -1 : 1;
+              }
+              if (valA > valB) {
+                return sortOrder === 'asc' ? 1 : -1;
+              }
+              return 0;
+            } 
+            
+          
+        
+        else {
           // If no column is selected for sorting, maintain the original order
           return 0;
         }
-      });
+      
+    });
 
     
     function getCookie(name) {

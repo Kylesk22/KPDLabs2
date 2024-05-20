@@ -803,6 +803,16 @@ AWS.config.update({
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
+                            value="Standard"
+                            checked={shipping === 'Standard'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Standard 
+                        </label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
                             value="Express"
                             checked={shipping === 'Express'}
                             onChange={(e)=>{setShipping(e.target.value)}}
@@ -817,6 +827,18 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Production</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Standard"
+                            checked={production === 'Standard'}
+                            onChange={(e)=>{setProduction(e.target.value)}}
+                        />
+                         Standard Production 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1216,6 +1238,16 @@ AWS.config.update({
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
+                            value="Standard"
+                            checked={shipping === 'Standard'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Standard 
+                        </label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
                             value="Express"
                             checked={shipping === 'Express'}
                             onChange={(e)=>{setShipping(e.target.value)}}
@@ -1230,6 +1262,18 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Production</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Standard"
+                            checked={production === 'Standard'}
+                            onChange={(e)=>{setProduction(e.target.value)}}
+                        />
+                         Standard Production 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1543,6 +1587,16 @@ AWS.config.update({
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
+                            value="Standard"
+                            checked={shipping === 'Standard'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Standard 
+                        </label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
                             value="Express"
                             checked={shipping === 'Express'}
                             onChange={(e)=>{setShipping(e.target.value)}}
@@ -1557,6 +1611,18 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Production</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Standard"
+                            checked={production === 'Standard'}
+                            onChange={(e)=>{setProduction(e.target.value)}}
+                        />
+                         Standard Production 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1897,6 +1963,16 @@ AWS.config.update({
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
+                            value="Standard"
+                            checked={shipping === 'Standard'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Standard 
+                        </label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
                             value="Express"
                             checked={shipping === 'Express'}
                             onChange={(e)=>{setShipping(e.target.value)}}
@@ -1911,6 +1987,18 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Production</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Standard"
+                            checked={production === 'Standard'}
+                            onChange={(e)=>{setProduction(e.target.value)}}
+                        />
+                         Standard Production 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input

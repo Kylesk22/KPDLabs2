@@ -400,6 +400,8 @@ def new_case(id):
         type = request.json.get("type", None)
         gum_shade = request.json.get("gum_shade", None)
         price = request.json.get("price", None)
+        shipping = request.json.get("shipping", None)
+        production = request.json.get("production", None)
         update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
         
         
@@ -416,6 +418,8 @@ def new_case(id):
         update_case.type = type
         update_case.gum_shade = gum_shade
         update_case.price = price
+        update_case.shipping = shipping
+        update_case.production = production
        
         update_case.update_date.append(update_date)
         

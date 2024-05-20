@@ -39,6 +39,8 @@ export const CreateOrder = props => {
     const [lowerArch, setLowerArch] = useState(false)
     const [upperArch, setUpperArch] = useState(false)
     const [finalPrice, setFinalPrice] = useState(0)
+    const [shipping, setShipping] = useState("Standard")
+    const [production, setProduction] = useState("Standard")
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -259,6 +261,8 @@ AWS.config.update({
                 "type": type,
                 "gum_shade": gumShade,
                 "price": finalPrice,
+                "shipping": shipping,
+                "production": production,
             }
             
             const options = {
@@ -792,6 +796,36 @@ AWS.config.update({
                     </div>
 
                     
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label>
+                        <input
+                            type="radio"
+                            value="Express"
+                            checked={shipping === 'Express'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                        Express 
+                        </label>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Express Shipping $35 Fee</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label>
+                        <input
+                            type="radio"
+                            value="Rush"
+                            checked={production === 'Rush'}
+                            onChange={(e)=>{setProduction(e.target.value)}}
+                        />
+                        Rush Production 
+                        </label>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        </div>
+                    </div>
+
                 
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">

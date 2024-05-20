@@ -500,9 +500,9 @@ export const AdminSingleCase = props => {
                     </div>
                 </div>
                 <div className="row mt-3">
-                    <div className="text-center">
+                    <div className="text-center col-4">
                         <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
-                                <option value={caseStatus}></option>
+                                <option value={caseStatus}>{caseStatus}</option>
                                 <option value="A1" onClick={()=>setShade("A1")}>A1</option>
                                 <option value="A2" onClick={()=>setShade("A2")}>A2</option>
                                 <option value="A3" onClick={()=>setShade("A3")}>A3</option>

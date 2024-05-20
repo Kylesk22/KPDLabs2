@@ -34,13 +34,21 @@ export const AdminPage = props => {
     const sortedCases = cases.sort((a, b) => {
         // Perform sorting based on the selected column and sort order
         if (sortBy) {
-        const comparison = a[sortBy].localeCompare(b[sortBy]);
-        return sortOrder === 'asc' ? comparison : -comparison;
+          const valA = typeof a[sortBy] === 'string' ? a[sortBy].toLowerCase() : a[sortBy];
+          const valB = typeof b[sortBy] === 'string' ? b[sortBy].toLowerCase() : b[sortBy];
+    
+          if (valA < valB) {
+            return sortOrder === 'asc' ? -1 : 1;
+          }
+          if (valA > valB) {
+            return sortOrder === 'asc' ? 1 : -1;
+          }
+          return 0;
         } else {
-        // If no column is selected for sorting, maintain the original order
-        return 0;
+          // If no column is selected for sorting, maintain the original order
+          return 0;
         }
-    });
+      });
 
     
     function getCookie(name) {

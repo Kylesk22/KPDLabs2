@@ -111,12 +111,12 @@ export const AdminPage = props => {
                                         {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
-                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
-                                        <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
-                                        <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}}>{item["creation date"]}</div>
-                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index%3)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
+                                        <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
+                                        <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["creation date"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
                                     </>
                                 
                             :""}

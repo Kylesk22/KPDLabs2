@@ -50,7 +50,7 @@ export const AdminPage = props => {
           return 0;
         } 
         if (sortBy === "user id") {
-            console.log(users[a[sortBy]])
+            
           
             const valA = users[a[sortBy]]? users[a[sortBy]].toLowerCase() : users[a[sortBy]]
             const valB = users[b[sortBy]]? users[b[sortBy]].toLowerCase() : users[b[sortBy]]

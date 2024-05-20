@@ -30,6 +30,9 @@ export const AdminSingleCase = props => {
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
     const [type, setType] = useState("")
+    const [caseStatus, setCaseStatus] = useState("")
+    const [shipping, setShipping] = useState("")
+    const [production, setProduction] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -368,6 +371,9 @@ export const AdminSingleCase = props => {
                 setType(patientData.type);
                 setPrice(patientData.price);
                 setDrId(patientData["user id"]);
+                setCaseStatus(patientData.status)
+                setShipping(patientData.shipping)
+                setProduction(patientData.production)
                 let doctorId = patientData["user id"]
                 // Update tooth colors
                 for (const tooth in crownTooth) {
@@ -397,6 +403,83 @@ export const AdminSingleCase = props => {
     
         fetchData();
     }, []);
+
+    const updateCase = () => {
+
+       
+        // uploadObject();
+        // uploadPictures();
+        
+        const url = process.env.BACKEND_URL
+
+       
+
+
+            const updateCase = {
+                
+                
+                "case": caseNum,
+                "name": patientName,
+                "product": product,
+                "teeth": crownTooth,
+                "finish": finish,
+                "shade": shade,
+                "note": note,
+                "status": caseStatus,
+                "type": type,
+                "gum_shade": gumShade,
+                "price": finalPrice,
+                "shipping": shipping,
+                "production": production,
+            }
+            
+            const options = {
+                method:"PUT",
+                headers:{
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                },
+                body: JSON.stringify(updateCase)
+            }
+            fetch(`${url}/${id}/new_case`, options)
+            .then((res)=> {
+                if (res.ok) {
+                    return res.json()
+                    .then((data)=>{
+
+                        alert("Case Uploaded")
+                        setCrownTooth([])
+                        setToothInput("")
+                        setToothInput2("")
+                        setPatientName("")
+                        setStlFile([])
+                        setFileName([])
+                        setPhotos([])
+                        setCaseNum("")
+                        setProduct("")
+                        setFinish("")
+                        setBridge("false")
+                        setBridgeTooth([])
+                        setNote("")
+                        setType("")
+                        setGumShade("")
+                        // props.handleGetPage("home")
+                        // props.generateCase()
+                        props.getCase("")
+                        
+                    })}
+                return(res.json())
+                .then((body)=>{alert(body.message)})
+                
+                })
+        
+            .catch((err)=> {
+                console.log(err);
+        })
+        
+    
+        }
+      ;
     
 
 
@@ -414,6 +497,16 @@ export const AdminSingleCase = props => {
                 <div className="row mt-3">
                     <div className="text-center">
                         <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
+                    </div>
+                </div>
+                <div className="row mt-3">
+                    <div className="text-center">
+                        <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
+                                <option value={caseSatus}></option>
+                                <option value="A1" onClick={()=>setShade("A1")}>A1</option>
+                                <option value="A2" onClick={()=>setShade("A2")}>A2</option>
+                                <option value="A3" onClick={()=>setShade("A3")}>A3</option>
+                            </select>
                     </div>
                 </div>
                 <div className="row form-group justify-content-center">
@@ -591,6 +684,11 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center mt-3">
                     <div className="text-center col-8 col-lg-4 pt-3">
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase()}}>Get Rates</button>
+                    </div>
+                </div>
+                <div className="row form-group justify-content-center mt-3">
+                    <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
                     </div>
                 </div>
@@ -615,7 +713,7 @@ export const AdminSingleCase = props => {
                      :""   }
                 </div>
                 
-               <button onClick={(e)=>{e.preventDefault(); console.log(rates)}}>Test</button>
+               
                 
                 
             

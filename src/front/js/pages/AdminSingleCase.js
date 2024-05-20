@@ -230,6 +230,7 @@ export const AdminSingleCase = props => {
             // require('fs').writeFileSync(localFilePath, data.Body);
     
             console.log(`Successfully downloaded object: case-scans/${caseNum}`);
+            console.log(data)
             return true;
         } catch (err) {
             console.error('Error downloading object:', err);

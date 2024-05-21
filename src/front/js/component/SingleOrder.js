@@ -31,7 +31,7 @@ export const SingleOrder = props => {
 
     function sendEmail() {
         var recipient = "kpdlabs@kpdlabs.com";
-        var subjects = `${caseNum} Remake`;
+        var subjects = `Case ${caseNum} Remake`;
     
         window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subjects);
     }

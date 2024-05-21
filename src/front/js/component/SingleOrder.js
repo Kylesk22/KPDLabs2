@@ -104,10 +104,10 @@ export const SingleOrder = props => {
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
-                    for (let tooth in crownTooth){
+                    for (let tooth in numberArray){
                         const element = document.getElementById(tooth);
                         element.style.fill = "#137ea7"
-                        console.log(tooth)
+                        console.log(`HERE ${tooth}`)
                     }
                     
                     
@@ -134,9 +134,7 @@ export const SingleOrder = props => {
     })
     },[])
 
-    useEffect(()=>{
-        console.log(crownTooth[0])
-    })
+    
     
     return(
         <>

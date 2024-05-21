@@ -362,7 +362,7 @@ export const AdminSingleCase = props => {
     
                 setPatientName(patientData.name);
                 setCaseNum(patientData.id);
-                setCrownTooth(patientData.teeth);
+                
                 setProduct(patientData.product);
                 setFinish(patientData.finish);
                 setNote(patientData.notes);
@@ -376,9 +376,14 @@ export const AdminSingleCase = props => {
                 setProduction(patientData.production)
                 let doctorId = patientData["user id"]
                 // Update tooth colors
-                for (const tooth in crownTooth) {
-                    const element = document.getElementById(tooth);
-                    element.style.fill = "#137ea7";
+                let returnedTeeth = patientData.teeth
+                const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                setCrownTooth(numberArray);
+                for (let tooth in numberArray){
+                    const element = document.getElementById(numberArray[tooth]);
+                    
+                    element.style.fill = "#137ea7"
+                    
                 }
     
                 // Fetch doctor data

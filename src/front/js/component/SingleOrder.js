@@ -154,7 +154,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
                 </div>
                 <div className="text-center p-1">
-                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "170px"}}>Remake</button>
+                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "auto"}}>Remake</button>
                 </div>
             </div>
             <div className="row mt-3">

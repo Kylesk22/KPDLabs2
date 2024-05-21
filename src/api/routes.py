@@ -403,6 +403,11 @@ def new_case(id):
         shipping = request.json.get("shipping", None)
         production = request.json.get("production", None)
         update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+
+        if (request.json.get("reference id", None)):
+            reference_id = request.json.get("reference Id", None)
+        else:
+            reference_id = ""
         
         
         
@@ -420,6 +425,7 @@ def new_case(id):
         update_case.price = price
         update_case.shipping = shipping
         update_case.production = production
+        update_case.reference_id = reference_id
        
         update_case.update_date.append(update_date)
         

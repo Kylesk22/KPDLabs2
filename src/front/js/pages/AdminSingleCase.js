@@ -33,6 +33,7 @@ export const AdminSingleCase = props => {
     const [caseStatus, setCaseStatus] = useState("")
     const [shipping, setShipping] = useState("")
     const [production, setProduction] = useState("")
+    const [refId, setRefId] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -362,7 +363,7 @@ export const AdminSingleCase = props => {
     
                 setPatientName(patientData.name);
                 setCaseNum(patientData.id);
-                
+                setRefId(patientData["reference id"])
                 setProduct(patientData.product);
                 setFinish(patientData.finish);
                 setNote(patientData.notes);
@@ -436,6 +437,7 @@ export const AdminSingleCase = props => {
                 "price": finalPrice,
                 "shipping": shipping,
                 "production": production,
+                "reference id": refId,
             }
             
             const options = {
@@ -503,6 +505,18 @@ export const AdminSingleCase = props => {
                     <div className="text-center">
                         <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
                     </div>
+                </div>
+                <div className="row mt-3">
+                    {(refId)?
+                    <div>
+                        <label  htmlFor="type"><h5>Reference Id</h5></label>
+                        <input className="form-control" required id="refId" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} ></input>
+                    </div>
+                    :
+                    <div>
+                        <label  htmlFor="type"><h5>Reference Id</h5></label>
+                        <input className="form-control" required id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>setRefId(e.target.value)}></input>
+                    </div>}
                 </div>
                 <div className="row form-group justify-content-center">
                     <div className="text-center col-4 pt-3">
@@ -676,7 +690,7 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault();downloadObject()}}>Download</button>
+                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault();downloadObject()}}>Download Scans/Photos</button>
                     </div>
                 </div>
     

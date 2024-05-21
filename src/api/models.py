@@ -93,6 +93,7 @@ class Case(db.Model):
     shipping = db.Column(db.String(20))
     production = db.Column(db.String(20))
     price = db.Column(db.String(50))
+    reference_id = db.Column(db.String(50), nullable=True)
     update_date = db.Column(MutableList.as_mutable(PickleType), default=[])
     case_scans = db.relationship('Scans', backref='case')
 
@@ -117,6 +118,7 @@ class Case(db.Model):
             "production": self.production,
             "creation date": self.creation_date,
             "update date": self.update_date,
+            "reference id": self.reference_id,
             "case scans":[scan.serialize() for scan in self.case_scans]
 
             # "scans": self.scans,

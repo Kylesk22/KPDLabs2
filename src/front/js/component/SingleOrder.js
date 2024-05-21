@@ -132,6 +132,9 @@ export const SingleOrder = props => {
     })
     },[])
 
+    useEffect(()=>{
+        console.log(crownTooth[0])
+    })
     
     return(
         <>

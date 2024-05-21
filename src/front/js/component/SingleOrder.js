@@ -27,6 +27,15 @@ export const SingleOrder = props => {
     let stl_urls = []
     let photo_urls = []
 
+
+
+    function sendEmail() {
+        var recipient = "kpdlabs@kpdlabs.com";
+        var subjects = `${caseNum} Remake`;
+    
+        window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subjects);
+    }
+
     useEffect(()=>{
         
         props.handleGetPage(page);
@@ -143,6 +152,9 @@ export const SingleOrder = props => {
             <div className="row mt-4"> 
                 <div className="text-center">
                     <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
+                </div>
+                <div className="text-center">
+                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "170px"}}>Request Remake</button>
                 </div>
             </div>
             <div className="row mt-3">

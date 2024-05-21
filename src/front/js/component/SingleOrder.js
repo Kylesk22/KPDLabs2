@@ -150,11 +150,11 @@ export const SingleOrder = props => {
         <>
         <form className="form form-container" data-toggle="validator" role="form">
             <div className="row mt-4"> 
-                <div className="text-center">
+                <div className="text-center p-1 ">
                     <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
                 </div>
-                <div className="text-center">
-                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "170px"}}>Request Remake</button>
+                <div className="text-center p-1">
+                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "170px"}}>Remake</button>
                 </div>
             </div>
             <div className="row mt-3">

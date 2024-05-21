@@ -101,7 +101,9 @@ export const SingleOrder = props => {
                     console.log(data)
                     setPatientName(data.name);
                     setCaseNum(data.id);
-                    setCrownTooth(data.teeth);
+                    returnedTeeth = data.teeth
+                    const numberArray = JSON.parse("[" + returnedTeeth.replace(/"/g, "") + "]");
+                    setCrownTooth(numberArray);
                     for (let tooth in crownTooth){
                         const element = document.getElementById(tooth);
                         element.style.fill = "#137ea7"

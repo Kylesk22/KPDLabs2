@@ -470,6 +470,7 @@ export const AdminSingleCase = props => {
                         setNote("")
                         setType("")
                         setGumShade("")
+                        setRefId("")
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")
@@ -507,16 +508,11 @@ export const AdminSingleCase = props => {
                     </div>
                 </div>
                 <div className="row mt-3">
-                    {(refId)?
-                    <div>
-                        <label  htmlFor="type"><h5>Reference Id</h5></label>
-                        <input className="form-control" required id="refId" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} ></input>
-                    </div>
-                    :
-                    <div>
+                    
+                    <div className= "text-center col-4 pt-3">
                         <label  htmlFor="type"><h5>Reference Id</h5></label>
                         <input className="form-control" required id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>setRefId(e.target.value)}></input>
-                    </div>}
+                    </div>
                 </div>
                 <div className="row form-group justify-content-center">
                     <div className="text-center col-4 pt-3">

@@ -102,7 +102,7 @@ export const SingleOrder = props => {
                     setPatientName(data.name);
                     setCaseNum(data.id);
                     let returnedTeeth = data.teeth
-                    const numberArray = JSON.parse("[" + returnedTeeth.replace(/"/g, "") + "]");
+                    const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
                     for (let tooth in crownTooth){
                         const element = document.getElementById(tooth);

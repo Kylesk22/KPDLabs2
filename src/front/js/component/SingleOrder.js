@@ -106,6 +106,7 @@ export const SingleOrder = props => {
                     setCrownTooth(numberArray);
                     for (let tooth in numberArray){
                         const element = document.getElementById(tooth);
+                        console.log(`HERE ${tooth}`)
                         element.style.fill = "#137ea7"
                         console.log(`HERE ${tooth}`)
                     }

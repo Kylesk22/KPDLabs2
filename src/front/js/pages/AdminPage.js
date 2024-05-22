@@ -16,6 +16,7 @@ export const AdminPage = props => {
     const [pageMax, setPageMax]=useState(20)
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState("")
+    const [search, setSearch] = useState("")
 
     const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('asc');
@@ -30,6 +31,27 @@ export const AdminPage = props => {
         setSortOrder('asc');
         }
     };
+
+
+    const filterCases = (val) =>{
+        let filteredCases = []
+
+        const nameFilter = cases.filter(item =>{
+            item.name.toLowerCase().includes(val.toLowerCase())
+        })
+        const idFilter = cases.filter(item =>{
+            item.id.toString().includes(val);
+        })
+        const drFilter = cases.filter(item =>{
+            users[`${item["user id"]}`].toLowerCase().includes(val.toLowerCase())
+        })
+        
+        filteredCases = [...nameFilter, ...idFilter, ...drFilter];
+
+        setCases(filteredCases)
+        
+        return filteredCases
+    }
 
     const sortedCases = cases.sort((a, b) => {
         // Perform sorting based on the selected column and sort order
@@ -151,6 +173,12 @@ export const AdminPage = props => {
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
         <div className="container">
             <div  >
+                <input 
+                type="text" 
+                placeholder="Search..." 
+                value={search} 
+                onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} 
+                 />
                 <div >
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>

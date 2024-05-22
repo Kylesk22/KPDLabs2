@@ -110,7 +110,7 @@ export const AdminPage = props => {
                 .then((data)=>{
                     if (data.message === "You are not an admin, please log in at kpdlabs.com"){
                         alert(data.message);
-                        window.location.href = `/home`
+                        window.location.href = `/account/${id}`
                     }
                     console.log(data)
                     setCases([...cases, ...data.cases])

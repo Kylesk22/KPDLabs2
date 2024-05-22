@@ -37,8 +37,8 @@ export const AdminPage = props => {
         let filteredCases = []
         
         const nameFilter = cases.filter(item =>{
-            console.log(`item=${item.name}`)
-            item.name.toLowerCase().includes(val.toLowerCase())
+            console.log(`item=${item}`)
+            return item.name.toLowerCase().includes(val.toLowerCase())
         })
         const idFilter = cases.filter(item =>{
             item.id.toString().includes(val);

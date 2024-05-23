@@ -23,7 +23,7 @@ export const UserCases = props => {
 
     },[singlePage])
     
-    
+
 
     useEffect(()=>{
         const options = {
@@ -70,7 +70,7 @@ export const UserCases = props => {
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
                 
-                {cases.map((item, index) => {
+                {cases.slice().reverse().map((item, index) => {
                         return (
                             <div key={index} className="row" onClick={()=>{setSinglePage("singleCase"), props.setSingleCaseID(item["id"])}}>
                                 {(index <= pageMax && index >= pageMin)?

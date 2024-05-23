@@ -38,7 +38,7 @@ export const AdminPage = props => {
         
         const nameFilter = cases.filter(item =>{
 
-            if (item.name !== null || item.name !== undefined) {
+            if (item.name !== null || item.name !== "undefined") {
                 console.log(`item.name=${item.name}`);
                 return item.name.toLowerCase().includes(val.toLowerCase());
             }

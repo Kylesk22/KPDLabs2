@@ -35,6 +35,7 @@ export const AdminSingleCase = props => {
     const [production, setProduction] = useState("")
     const [refId, setRefId] = useState("")
     const [showClone, setShowClone] = useState(false)
+    const [clonedCaseId, setClonedCaseId] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -489,9 +490,119 @@ export const AdminSingleCase = props => {
     
         }
       ;
+        
+        ////cloning remake cases 
+
+        let generateCase = () => {
+            const url = process.env.BACKEND_URL
+
+            const options = {
+                method:"POST",
+                headers:{
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                },
     
+            }
+            fetch(`${url}/${drId}/new_case`, options)
+            .then((res)=> {
+                if (res.ok) {
+                    return res.json()
+                    .then((data)=>{
+    
+                        setClonedCaseId(data.id)
+    
+                        
+                    })}
+                return(res.json())
+                .then((body)=>{alert(body.message)})
+                
+                })
+           
+            .catch((err)=> {
+                console.log(err);
+        })
+        }
+
+        const uploadCase = () => {
+
+       
+            
+            const url = process.env.BACKEND_URL
+    
+           
+    
+    
+                const updateCase = {
+                    "stl_urls" : "",
+                    "photos": "",
+                    "case": caseNum,
+                    "name": patientName,
+                    "product": product,
+                    "teeth": crownTooth,
+                    "finish": finish,
+                    "shade": shade,
+                    "note": note,
+                    "status": "Created",
+                    "type": type,
+                    "gum_shade": gumShade,
+                    "price": finalPrice,
+                    "shipping": shipping,
+                    "production": production,
+                }
+                
+                const options = {
+                    method:"PUT",
+                    headers:{
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                    },
+                    body: JSON.stringify(updateCase)
+                }
+                fetch(`${url}/${id}/new_case`, options)
+                .then((res)=> {
+                    if (res.ok) {
+                        return res.json()
+                        .then((data)=>{
+    
+                            alert("Case Uploaded")
+                            setCrownTooth([])
+                            setToothInput("")
+                            setToothInput2("")
+                            setPatientName("")
+                            setStlFile([])
+                            setFileName([])
+                            setPhotos([])
+                            setCaseNum("")
+                            setProduct("")
+                            setFinish("")
+                            setBridge("false")
+                            setBridgeTooth([])
+                            setNote("")
+                            setType("")
+                            setGumShade("")
+                            // props.handleGetPage("home")
+                            // props.generateCase()
+                            props.getCase("")
+                            props.handleGetPage("home")
+                            
+                        })}
+                    return(res.json())
+                    .then((body)=>{alert(body.message)})
+                    
+                    })
+            
+                .catch((err)=> {
+                    console.log(err);
+            })
+            
+        
+            }
+    
+
         const cloneCase = () => {
-            return
+            generateCase()
+            updateCase()
         }
 
   

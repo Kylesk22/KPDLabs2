@@ -182,7 +182,7 @@ export const Navbar = (props) => {
 			  <h6 className="title">863-438-2109</h6>
 			  </a>
 			  {/* <div className="search-btn"> <a href="#" className="search"><i className="fas fa-search"></i></a> </div> */}
-			  <div className="btn"> <a href="/contactus" className="theme-btn">get solution</a> </div>
+			  <div className="btn"> <a href="/signup" className="theme-btn">get solution</a> </div>
 			  <div className="mobile-nav-toggler"  onClick={()=>setMobileActive(true)}> <i className="fa-solid fa-bars mobile-menu-visible"></i> </div>
 			</div>
 		 </div>

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 
 
 export const SideBar = props => {
-    const [currentPage, setCurrentPage] = useState(props.page)
+    const [currentPage, setCurrentPage] = useState("home")
     const [cases, setCases] = useState([{}])
     const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");
   
     
     
-
+    useEffect(()=>setCurrentPage(props.page))
     useEffect(()=>{
         
         props.handleGetPage(currentPage);

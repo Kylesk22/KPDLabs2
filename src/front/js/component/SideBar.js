@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 
 export const SideBar = props => {
-    const [currentPage, setCurrentPage] = useState("home")
+    const [currentPage, setCurrentPage] = useState(props.page)
     const [cases, setCases] = useState([{}])
     const url = process.env.BACKEND_URL
     let id = sessionStorage.getItem("id");

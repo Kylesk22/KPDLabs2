@@ -198,7 +198,7 @@ export const UserPage = props => {
                 {(page === "home")?
                 <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "create")?
-                <CreateOrder handleGetPage={getPage} getCase = {generateCase} caseId = {caseId}/>:
+                <CreateOrder handleGetPage={getPage} setPage={setPage} getCase = {generateCase} caseId = {caseId}/>:
                 // (page === "userCases")?
                 // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?

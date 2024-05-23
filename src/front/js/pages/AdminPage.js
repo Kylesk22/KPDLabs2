@@ -20,7 +20,7 @@ export const AdminPage = props => {
     const [originalCases, setOriginalCases] = useState("")
 
     const [sortBy, setSortBy] = useState("id");
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [sortOrder, setSortOrder] = useState('desc');
 
     const handleSort = (columnName) => {
         if (sortBy === columnName) {

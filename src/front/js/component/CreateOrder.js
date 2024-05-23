@@ -313,7 +313,7 @@ AWS.config.update({
         }
       ;
 
-    
+    useEffect(()=>{console.log(stlFile)})
 
     // useEffect(()=> console.log(crownTooth),[crownTooth])
     // useEffect(()=> {

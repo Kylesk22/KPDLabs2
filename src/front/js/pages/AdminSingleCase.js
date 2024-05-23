@@ -34,6 +34,7 @@ export const AdminSingleCase = props => {
     const [shipping, setShipping] = useState("")
     const [production, setProduction] = useState("")
     const [refId, setRefId] = useState("")
+    const [showClone, setShowClone] = useState(false)
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -489,7 +490,9 @@ export const AdminSingleCase = props => {
         }
       ;
     
-
+        const cloneCase = () => {
+            return
+        }
 
   
         return (
@@ -511,7 +514,12 @@ export const AdminSingleCase = props => {
                     
                     <div className= "text-center col-4 pt-3">
                         <label  htmlFor="type"><h5>Reference Id</h5></label>
-                        <input className="form-control" required id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>setRefId(e.target.value)}></input>
+                        <input className="form-control" required id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>{setRefId(e.target.value), setShowClone(True)}}></input>
+                        {(showClone)?
+                            <div>
+                                <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); cloneCase()}}>Clone Case</button>
+                            </div>
+                            :""}
                     </div>
                 </div>
                 <div className="row form-group justify-content-center">

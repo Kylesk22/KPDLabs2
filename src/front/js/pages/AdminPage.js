@@ -226,6 +226,8 @@ export const AdminPage = props => {
                 placeholder="Search..." 
                 value={search} 
                 onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} 
+                className="p-2"
+                style={{border: "1px solid black"}}
                  />
                 <div >
                     <div className="row" >

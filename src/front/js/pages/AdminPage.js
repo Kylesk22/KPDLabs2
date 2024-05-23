@@ -39,14 +39,14 @@ export const AdminPage = props => {
         const nameFilter = cases.filter(item =>{
 
             if (item.name) {
-                console.log(`item.name=${item.name}`);
+                
                 return item.name.toLowerCase().includes(val.toLowerCase());
             }
             return false; // Return false for items with null name
         });
         const idFilter = cases.filter(item =>{
             if (item.id) {
-                console.log(item.id)
+                
                 return item.id.toString().includes(val);
             }
             return false
@@ -58,6 +58,8 @@ export const AdminPage = props => {
             }
             return false
         })
+
+        console.log(nameFilter)
         
         filteredCases = [...nameFilter, ...idFilter, ...drFilter];
 

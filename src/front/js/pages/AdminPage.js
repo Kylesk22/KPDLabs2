@@ -33,41 +33,73 @@ export const AdminPage = props => {
     };
 
 
-    const filterCases = (val) =>{
-        let filteredCases = []
-        
-        const nameFilter = cases.filter(item =>{
 
-            if (item.name) {
-                
-                return item.name.toLowerCase().includes(val.toLowerCase());
-            }
-            return false; // Return false for items with null name
+    const filterCases = (val) => {
+        let filteredCases = new Map();
+      
+        // Filter by name
+        cases.forEach(item => {
+          if (item.name && item.name.toLowerCase().includes(val.toLowerCase())) {
+            filteredCases.set(item.id, item);
+          }
         });
-        const idFilter = cases.filter(item =>{
-            if (item.id) {
+      
+        // Filter by id
+        cases.forEach(item => {
+          if (item.id && item.id.toString().includes(val)) {
+            filteredCases.set(item.id, item);
+          }
+        });
+      
+        // Filter by user id
+        cases.forEach(item => {
+          if (item["user id"] && users[item["user id"]].toLowerCase().includes(val.toLowerCase())) {
+            filteredCases.set(item.id, item);
+          }
+        });
+      
+        // Convert Map values back to an array
+        filteredCases = Array.from(filteredCases.values());
+      
+        return filteredCases;
+      };
+    // const filterCases = (val) =>{
+    //     let filteredCases = []
+        
+    //     const nameFilter = cases.filter(item =>{
+
+    //         if (item.name) {
                 
-                return item.id.toString().includes(val);
-            }
-            return false
-         })
+    //             return item.name.toLowerCase().includes(val.toLowerCase());
+    //         }
+    //         return false; // Return false for items with null name
+    //     });
+    //     const idFilter = cases.filter(item =>{
+    //         if (item.id) {
+                
+    //             return item.id.toString().includes(val);
+    //         }
+    //         return false
+    //      })
         
-        const drFilter = cases.filter(item =>{
-            if (users[`${item["user id"]}`]) {
-                return users[`${item["user id"]}`].toLowerCase().includes(val.toLowerCase())
-            }
-            return false
-        })
+    //     const drFilter = cases.filter(item =>{
+    //         if (users[`${item["user id"]}`]) {
+    //             return users[`${item["user id"]}`].toLowerCase().includes(val.toLowerCase())
+    //         }
+    //         return false
+    //     })
 
-        console.log(nameFilter)
         
-        filteredCases = [...nameFilter, ...idFilter, ...drFilter];
 
-        setCases(filteredCases)
-        console.log(filteredCases)
+    //     console.log(nameFilter)
         
-        return filteredCases
-    }
+    //     filteredCases = [...nameFilter, ...idFilter, ...drFilter];
+
+    //     setCases(filteredCases)
+    //     console.log(filteredCases)
+        
+    //     return filteredCases
+    // }
 
     const sortedCases = cases.sort((a, b) => {
         // Perform sorting based on the selected column and sort order

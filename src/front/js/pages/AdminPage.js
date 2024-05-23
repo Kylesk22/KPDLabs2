@@ -60,7 +60,7 @@ export const AdminPage = props => {
       
         // Convert Map values back to an array
         filteredCases = Array.from(filteredCases.values());
-      
+      console.log(filteredCases)
         return filteredCases;
       };
     // const filterCases = (val) =>{

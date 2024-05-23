@@ -44,13 +44,19 @@ export const AdminPage = props => {
             }
             return false; // Return false for items with null name
         });
-            const idFilter = cases.filter(item =>{
-            item.id.toString().includes(val);
-        })
+        const idFilter = cases.filter(item =>{
+            if (item.id) {
+                console.log(item.id)
+                return item.id.toString().includes(val);
+            }
+            return false
+         })
         
         const drFilter = cases.filter(item =>{
-            
-            users[`${item["user id"]}`].toLowerCase().includes(val.toLowerCase())
+            if (users[`${item["user id"]}`]) {
+                return users[`${item["user id"]}`].toLowerCase().includes(val.toLowerCase())
+            }
+            return false
         })
         
         filteredCases = [...nameFilter, ...idFilter, ...drFilter];

@@ -298,7 +298,7 @@ AWS.config.update({
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")
-                        props.setPage("home")
+                        props.handleGetPage("home")
                         
                     })}
                 return(res.json())

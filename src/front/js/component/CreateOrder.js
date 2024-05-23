@@ -298,6 +298,7 @@ AWS.config.update({
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")
+                        setPage("home")
                         
                     })}
                 return(res.json())
@@ -313,35 +314,7 @@ AWS.config.update({
         }
       ;
 
-      let generateCase = () => {
-        const url = process.env.BACKEND_URL
-        const options = {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
-            },
-
-        }
-        fetch(`${url}/${id}/new_case`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-
-                    setCaseId(data.id)
-
-                    
-                })}
-            return(res.json())
-            .then((body)=>{alert(body.message)})
-            
-            })
-       
-        .catch((err)=> {
-            console.log(err);
-    })
-    }
+      
 
     useEffect(()=>{console.log(stlFile)})
 
@@ -408,7 +381,7 @@ AWS.config.update({
                 <div className="row "> 
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div className="inner-box" onClick={()=>{generateCase();setType("crown")}}>
+                    <div className="inner-box" onClick={()=>setType("crown")}>
                         <div className="image-box" >
                         <figure className="image overlay-animr">
                             
@@ -424,7 +397,7 @@ AWS.config.update({
                 </div>
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-                <div className="inner-box" onClick={()=>{generateCase();setType("veneer")}}>
+                <div className="inner-box" onClick={()=>setType("veneer")}>
                     <div className="image-box">
                     <figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
                     {/* <i className="flaticon-monitor-1"></i> */}
@@ -436,7 +409,7 @@ AWS.config.update({
                 </div>
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-                <div className="inner-box" onClick={()=>{generateCase();setType("partial")}}>
+                <div className="inner-box" onClick={()=>setType("partial")}>
                     <div className="image-box">
                     <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
                     {/* <i className="flaticon-cog-1"></i> */}
@@ -447,7 +420,7 @@ AWS.config.update({
                 </div>
                 </div>
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-                <div className="inner-box" onClick={()=>{generateCase();setType("denture")}}>
+                <div className="inner-box" onClick={()=>setType("denture")}>
                     <div className="image-box">
                     <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
                     {/* <i className="flaticon-cog-1"></i> */}

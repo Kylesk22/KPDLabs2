@@ -52,10 +52,10 @@ export const UserPage = props => {
     },[props.userPage])
     
     useEffect(()=>{
-        // if (caseId === ""){
-        //     generateCase();
+        if (caseId === ""){
+            generateCase();
             
-        // }
+        }
         console.log(page)
 
         // 

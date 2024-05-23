@@ -10,7 +10,7 @@ export const SideBar = props => {
   
     
     
-    useEffect(()=>setCurrentPage(props.page))
+    useEffect(()=>setCurrentPage(props.page),[props.page])
     useEffect(()=>{
         
         props.handleGetPage(currentPage);

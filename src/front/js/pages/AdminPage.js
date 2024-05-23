@@ -17,6 +17,7 @@ export const AdminPage = props => {
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState("")
     const [search, setSearch] = useState("")
+    const [originalCases, setOriginalCases] = useState("")
 
     const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('asc');
@@ -38,21 +39,21 @@ export const AdminPage = props => {
         let filteredCases = new Map();
       
         // Filter by name
-        cases.forEach(item => {
+        originalCases.forEach(item => {
           if (item.name && item.name.toLowerCase().includes(val.toLowerCase())) {
             filteredCases.set(item.id, item);
           }
         });
       
         // Filter by id
-        cases.forEach(item => {
+        originalCases.forEach(item => {
           if (item.id && item.id.toString().includes(val)) {
             filteredCases.set(item.id, item);
           }
         });
       
         // Filter by user id
-        cases.forEach(item => {
+        originalCases.forEach(item => {
           if (item["user id"] && users[item["user id"]].toLowerCase().includes(val.toLowerCase())) {
             filteredCases.set(item.id, item);
           }
@@ -189,6 +190,7 @@ export const AdminPage = props => {
                     }
                     console.log(data)
                     setCases([...cases, ...data.cases])
+                    setOriginalCases([...originalCases, ...data.cases])
 
                     const newUsers = {};
                     for (let i = 0; i < data.users.length; i++) {

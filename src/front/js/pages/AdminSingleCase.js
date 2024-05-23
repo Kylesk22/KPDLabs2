@@ -507,7 +507,7 @@ export const AdminSingleCase = props => {
                         <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
                     </div>
                 </div>
-                <div className="row form-group justify-content-cente">
+                <div className="row form-group justify-content-center">
                     
                     <div className= "text-center col-4 pt-3">
                         <label  htmlFor="type"><h5>Reference Id</h5></label>

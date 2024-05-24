@@ -236,11 +236,11 @@ AWS.config.update({
     
 
 
-    const uploadCase = () => {
+    const uploadCase = async () => {
 
        
-        uploadObject();
-        uploadPictures();
+        await uploadObject();
+        await uploadPictures();
         
         const url = process.env.BACKEND_URL
 

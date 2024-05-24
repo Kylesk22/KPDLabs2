@@ -384,7 +384,7 @@ AWS.config.update({
                         <h3>
                             Please Wait While We Send Your Case
                         </h3>
-                        <div className="spinner text-center">
+                        <div className="spinner text-center mx-auto">
                             
                         </div>
                     </div>

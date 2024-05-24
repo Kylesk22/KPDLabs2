@@ -379,12 +379,14 @@ AWS.config.update({
     return(
         <>
              {loading ? (
-                <div className="mx auto mt-4 text-center justify-content-center">
-                    <h1>
-                        Please Wait While We Send Your Case
-                    </h1>
-                    <div className="spinner">
-                        
+                <div className="row">
+                    <div className="mx auto mt-4 text-center justify-content-center col-6 sm-col-4">
+                        <h1>
+                            Please Wait While We Send Your Case
+                        </h1>
+                        <div className="spinner text-center">
+                            
+                        </div>
                     </div>
                 </div>
         ) :

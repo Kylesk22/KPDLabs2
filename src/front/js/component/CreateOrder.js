@@ -379,9 +379,14 @@ AWS.config.update({
     return(
         <>
              {loading ? (
-            <div className="progress-bar">
-                <div className="progress"></div>
-          </div>
+                <div className="mx auto mt-4 text-center justify-content-center">
+                    <h1>
+                        Please Wait While We Send Your Case
+                    </h1>
+                    <div className="spinner">
+                        
+                    </div>
+                </div>
         ) :
             <>
             

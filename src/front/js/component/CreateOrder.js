@@ -41,6 +41,7 @@ export const CreateOrder = props => {
     const [finalPrice, setFinalPrice] = useState(0)
     const [shipping, setShipping] = useState("Standard")
     const [production, setProduction] = useState("Standard")
+    const [loading, setLoading] = useState(false);
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -238,9 +239,10 @@ AWS.config.update({
 
     const uploadCase = async () => {
 
-       
+        setLoading(true);
         await uploadObject();
         await uploadPictures();
+        setLoading(false);
         
         const url = process.env.BACKEND_URL
 
@@ -376,6 +378,15 @@ AWS.config.update({
    
     return(
         <>
+             {loading ? (
+            <div className="loading-screen">
+                <p>Loading...</p>
+                {/* You can add a spinner or progress indicator here */}
+            </div>
+        ) :
+            <>
+            
+        
             {(type==="")?
             <div className="col-8 create-order-type" style={{margin:"auto", paddingLeft:"100px"}}>
                 <div className="row "> 
@@ -2038,6 +2049,7 @@ AWS.config.update({
         </form>
 
             :""}
+            </>}
         </>
     )
 }

@@ -379,10 +379,9 @@ AWS.config.update({
     return(
         <>
              {loading ? (
-            <div className="loading-screen">
-                <p>Loading...</p>
-                {/* You can add a spinner or progress indicator here */}
-            </div>
+            <div className="progress-bar">
+                <div className="progress"></div>
+          </div>
         ) :
             <>
             

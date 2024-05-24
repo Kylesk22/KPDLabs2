@@ -91,10 +91,9 @@ return (
 				</li>
 			  </ul>
 			  <ul className="social-icons justify-content-center">
-				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i className="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i className="fab fa-google"></i></a></li>
+				<li><a href="https://www.facebook.com/profile.php?id=61559674932411&mibextid=LQQJ4d"><i className="fab fa-facebook-f"></i></a></li>
+				<li><a href="https://www.instagram.com/kpd_labs?igsh=MzRlODBiNWFlZA=="><i className="fab fa-instagram"></i></a></li>
+
 			  </ul>
 			</div>
 		  </div>

@@ -240,6 +240,10 @@ AWS.config.update({
     const uploadCase = async () => {
 
         setLoading(true);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });
         await uploadObject();
         await uploadPictures();
         setLoading(false);

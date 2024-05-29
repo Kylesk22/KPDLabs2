@@ -436,7 +436,7 @@ export const AdminSingleCase = props => {
                 "status": caseStatus,
                 "type": type,
                 "gum_shade": gumShade,
-                "price": finalPrice,
+                "price": price,
                 "shipping": shipping,
                 "production": production,
                 "reference id": refId,

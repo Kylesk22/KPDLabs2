@@ -235,7 +235,7 @@ export const AdminPage = props => {
                     <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
                     <div className = "col-3 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
                     <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
-                    <div className = "col-2 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Creation Date</div>
+                    <div className = "col-2 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
                 </div>
                 <div className = "row justinfy-content-end">
@@ -257,7 +257,7 @@ export const AdminPage = props => {
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["creation date"]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"]}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
                                     </>
                                 

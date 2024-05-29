@@ -94,7 +94,7 @@ class Case(db.Model):
     production = db.Column(db.String(50))
     price = db.Column(db.String(50))
     reference_id = db.Column(db.String(50), nullable=True)
-    update_date = db.Column(MutableList.as_mutable(PickleType), default=[])
+    update_date =  db.Column(db.String(255))
     case_scans = db.relationship('Scans', backref='case')
 
     def __repr__(self):

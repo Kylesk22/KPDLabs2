@@ -419,7 +419,7 @@ def new_case(id):
         update_case.shade = shade
         update_case.notes = notes
         update_case.finish = finish
-        update_case.status = "Created"
+        update_case.status = "Submitted"
         update_case.type = type
         update_case.gum_shade = gum_shade
         update_case.price = price
@@ -427,8 +427,7 @@ def new_case(id):
         update_case.production = production
         update_case.reference_id = reference_id
        
-        update_case.update_date.append(update_date)
-        
+        update_case.update_date = update_date
         db.session.commit()
 
         for scan in blob_scans:
@@ -488,7 +487,8 @@ def new_case(id):
                 
                     new_case = Case(
                         user_id = user_id,
-                        creation_date = dt_string
+                        creation_date = dt_string,
+                        status= "Created"
                     
                     )
 
@@ -509,7 +509,8 @@ def new_case(id):
             
                 new_case = Case(
                     user_id = user_id,
-                    creation_date = dt_string
+                    creation_date = dt_string,
+                    status= "Created"
                 )
 
                 db.session.add(new_case)

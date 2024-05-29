@@ -263,7 +263,7 @@ AWS.config.update({
                 "finish": finish,
                 "shade": shade,
                 "note": note,
-                "status": "Created",
+                "status": "Submitted",
                 "type": type,
                 "gum_shade": gumShade,
                 "price": finalPrice,

@@ -459,13 +459,13 @@ return(
           <div className="inner-box">
             <div className="image-box">
               <figure className="image"><a href=""><img src={Laurie} alt=""/></a></figure>
-              <div className="social-links">
+              {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>
                 <a href="#"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-youtube"></i></a>
-              </div>
-              <span className="share-icon fa fa-share"></span>
+              </div> */}
+              {/* <span className="share-icon fa fa-share"></span> */}
             </div>
             <div className="info-box">
               <h4 className="name"><a href="">Laurie Troulis</a></h4>
@@ -478,13 +478,13 @@ return(
           <div className="inner-box">
             <div className="image-box">
               <figure className="image"><a href=""><img src={Casey} alt=""/></a></figure>
-              <div className="social-links">
+              {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>
                 <a href="#"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-youtube"></i></a>
-              </div>
-              <span className="share-icon fa fa-share"></span>
+              </div> */}
+              {/* <span className="share-icon fa fa-share"></span> */}
             </div>
             <div className="info-box">
               <h4 className="name"><a href="">Casey Kronemeyer</a></h4>
@@ -497,13 +497,13 @@ return(
           <div className="inner-box">
             <div className="image-box">
               <figure className="image"><a href=""><img src={Kyle} alt=""/></a></figure>
-              <div className="social-links">
+              {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>
                 <a href="#"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-youtube"></i></a>
-              </div>
-              <span className="share-icon fa fa-share"></span>
+              </div> */}
+              {/* <span className="share-icon fa fa-share"></span> */}
             </div>
             <div className="info-box">
               <h4 className="name"><a>Kyle Kronemeyer</a></h4>

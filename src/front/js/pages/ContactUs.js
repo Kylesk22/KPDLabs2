@@ -100,7 +100,7 @@ return(
 						<div className="mb-5">
 							<input name="form_botcheck" className="form-control" type="hidden" value="" />
 							<button type="submit" className="theme-btn btn-style-one" data-loading-text="Please wait..."><span className="btn-title">Send message</span></button>
-							<button type="reset" className="theme-btn btn-style-one bg-theme-color5"><span className="btn-title">Reset</span></button>
+							{/* <button type="reset" className="theme-btn btn-style-one bg-theme-color5"><span className="btn-title">Reset</span></button> */}
 						</div>
 					</form>
 					

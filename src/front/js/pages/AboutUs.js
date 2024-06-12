@@ -469,7 +469,7 @@ return(
             </div>
             <div className="info-box">
               <h4 className="name"><a href="">Laurie Troulis</a></h4>
-              <span className="designation">Chief Financial Officer</span>
+              <span className="designation">Chief Executive Officer</span>
             </div>
           </div>
         </div>

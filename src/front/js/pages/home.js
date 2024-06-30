@@ -934,12 +934,22 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	  <div className="image-column col-lg-6" style={{backgroundImage: `url(${Layer11})`}} >
 		{/* <img src={Layer11}></img> */}
-		<div className="inner-column">
-		  <div className="image-box">
-			{/* <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<div className="exp-box bounce-y"> <i className="flaticon-chat"></i>
-			  <h6 className="title">Top Quality Marketing Solution</h6> */}
-			{/* </div> */}
+		<div className="inner-column" style={{paddingTop: "20px"}}>
+		  <div className="image-box text-center">
+			<h2 style={{color: "white"}}>
+				Check out our latest blog post
+			</h2>
+			<h4 style={{color: "white"}}>
+			The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
+
+			</h4>
+			<span style={{color: "white"}}>
+				6/26/2024
+			</span>
+			<div style={{paddingTop: "20px", paddingBottom: "20px"}} className="btn-box"> 
+				<a href="/signup" className="theme-btn">Send Us A Case</a>
+			</div>
+			
 		  </div>
 		</div>
 		

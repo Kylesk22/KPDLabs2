@@ -66,7 +66,7 @@ return(
       <div className="sec-title text-center"> <span className="sub-title">::::::  All Blogs  ::::::</span>
         <h2>Blogs</h2>
       </div>
-      <div className="row"> 
+      <div className="row" style={{paddingTop: "400px"}}> 
   
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
           <div className="inner-box">

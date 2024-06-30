@@ -947,7 +947,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				6/26/2024
 			</span>
 			<div style={{paddingTop: "20px", paddingBottom: "20px"}} className="btn-box"> 
-				<a href="/signup" className="theme-btn">All Blog Posts</a>
+				<a href="/blogs" className="theme-btn">All Blog Posts</a>
 			</div>
 			
 		  </div>

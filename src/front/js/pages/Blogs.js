@@ -20,6 +20,8 @@ import AboutBKG from "../../img/testi-bg.jpg"
 import CustomVideoPlayer from "../component/CustomVideoPlayer"
 import MillingClip from "../../img/MillingClip1080p.mp4"
 import Lines from "../../img/lines.jpg"
+import Crown from "../../img/Crown.png"
+import Denture from "../../img/Denture.jpg"
 
 
 export const Blogs = props => {
@@ -71,7 +73,7 @@ return(
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
           <div className="inner-box">
             <div className="image-box">
-              <figure className="image"><a href=""><img src={""} alt=""/></a></figure>
+              <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
               {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>
@@ -91,7 +93,7 @@ return(
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
           <div className="inner-box">
             <div className="image-box">
-              <figure className="image"><a href=""><img src={""} alt=""/></a></figure>
+              <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
               {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>
@@ -111,7 +113,7 @@ return(
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms">
           <div className="inner-box">
             <div className="image-box">
-              <figure className="image"><a href=""><img src={""} alt=""/></a></figure>
+              <figure className="image"><a href=""><img src={Denture} alt=""/></a></figure>
               {/* <div className="social-links">
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-google"></i></a>

@@ -63,7 +63,7 @@ return(
 
   
 
-  <section className="terms-section" style={{paddingLeft: "100px", paddingRight: "100px"}}>
+  <section className="terms-section" style={{paddingLeft: "100px", paddingRight: "100px", paddingTop: "40px", paddingBottom: "40px"}}>
   Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Kronemeyer Precision Dental Laboratories, LLC relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
 The term Kronemeyer Precisions Dental Laboratories, LLC or ‘KPD Labs’ or ‘KPD or ‘us’ or ‘our’ or ‘we’ refers to Kronemeyer Precision Dental Laboratories, LLC whose company certificate number is L24000137239. The term ‘you’ or ‘client’ refers to the user or viewer of this website.
 <br></br>

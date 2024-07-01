@@ -67,6 +67,7 @@ return(
   Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Kronemeyer Precision Dental Laboratories, LLC relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
 The term Kronemeyer Precisions Dental Laboratories, LLC or ‘KPD Labs’ or ‘KPD or ‘us’ or ‘our’ or ‘we’ refers to Kronemeyer Precision Dental Laboratories, LLC whose company certificate number is L24000137239. The term ‘you’ or ‘client’ refers to the user or viewer of this website.
 <br></br>
+<br></br>
 The use of this website is subject to the following terms of use:
 <br></br>
 •	The content of the pages of this website is for your information and use only. It is subject to change without notice.
@@ -83,51 +84,86 @@ The use of this website is subject to the following terms of use:
 <br></br>
 •	Your use of this website and any dispute arising out of such use of the website is subject to the laws of the United States.
 <br></br>
-Terms and Conditions
+<br></br>
+<strong>Terms and Conditions</strong>
 <br></br>
 All orders placed with Kronemeyer Precision Dental Laboratories, LLC (“KPD”) by the Client are subject to the following:
+<br></br>
 1.	Credit Policy.
+<br></br>
 a.	The initial credit is limited to $2,500 until the credit is established or 15 days whichever comes first.
+<br></br>
 i.	When your account reaches the $2,500 threshold or 15 days your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be charged.
+<br></br>
 b.	Credit can be established at KPD Labs sole discretion through the use of KPD Labs Account Form or the Client’s history with KPD Labs. Any established credit may be revoked if the Client is past due.
+<br></br>
 i.	Once credit is established your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be automatically charged once per month.
+<br></br>
 2.	Payment Terms. 
+<br></br>
 a.	The client will receive an emailed invoice as every case is shipped detailing the products and associated fees incurred. 
+<br></br>
 b.	Payment is due in full upon receipt.
+<br></br>
 i.	In addition, the Client will receive a monthly statement listing all outstanding invoices. 
+<br></br>
 ii.	A finance charge will be assessed to any past due account of 1.5% per month, or maximum amount permitted by law. 
+<br></br>
 3.	KPD Labs may refuse to accept new or complete existing orders on accounts with past due balances.
+<br></br>
 4.	Accounts more than (60) days past due will be subject to COD including any COD surcharge until the account is current. KPD Labs may require a delinquent account holder to pay a deposit for existing or continuing orders.
+<br></br>
 5.	KPD Labs reserves the right to refuse to accept orders and/or terminate the agreement without notice. Following any termination, client agrees to pay all outstanding balances, plus any reasonable attorney’s fees and costs associated with collecting the balance or monies owed.
+<br></br>
 6.	Any credit must be applied to appliances and services within (60) days of issuance.
+<br></br>
 7.	Returned payments (ACH, Check, Declined Card) will be assessed $35 fee or the maximum fee permitted by law plus any associated bank costs/fees. 
+<br></br>
 8.	Customer must examine all goods and appliances for fitness and condition. Please see Limited Warranty/Limitation of Liability.
+<br></br>
 9.	Any use, sale, alternation or modification to the appliance or failure to timely notify and return the appliance to KPD Labs within (30) days of receipt of the item stall constitute acceptance of the appliance.
+<br></br>
 10.	KPD Labs reserves the right to correct any defect before issuance of any credit or refund.
+<br></br>
 11.	KPD Labs must receive written notice of any disputed charges from client within (30) days after the invoice date or client shall be deemed to have waived its right to dispute the charges. Client will be deemed to have accepted all invoices and/or statements for which KPD Labs does not receive such timely notification of dispute and shall pay all undisputed amounts due under such invoices within the period set forth herein.
+<br></br>
 12.	Notwithstanding anything contained in any pricing schedule or other document to the contrary, KPD Labs reserves the right to adjust pricing at any time upon two week prior notice.
+<br></br>
 13.	Each laboratory authorization procedure (prescription) constitutes a complete and separate transaction billed and collected.
-
-Remake Policy.
+<br></br><br></br>
+<strong>Remake Policy.</strong>
+<br></br>
 Remake charges of 50-100% will apply under the following conditions:
+<br></br>
 1.	If a remake is requested after the lab deemed the provided case materials incomplete and/or unsatisfactory and customer elects to proceed with the completion of the case without making any adjustment, refuses a try-in, or does not supply requested materials.
+<br></br>
 2.	If a remake is requested because the customer requests a tooth shade or mold different from the original request. 
+<br></br>
 3.	Shade must be submitted as Vita Classical 16 Shade Guide, not providing intraoral photo of natural dentition with equivalent Vita Classical Shade tab for anterior crowns and veneers voids 50% remake charge and is subject to 100% remake fee. 
+<br></br>
 4.	If a remake is requested due to treatment plan or material change from the original request.
+<br></br>
 5.	If a remake is requested greater than 30 days from invoice date.
+<br></br>
 6.	If a remake is requested for immediate/surgical partials or dentures or treatments with healing extractions.
+<br></br>
 7.	If a remake is requested because the appliance fits the model but does not fit in the mouth.
+<br></br>
 KPD Labs Remake Policy will not apply to any account past due. KPD Labs reserves the right in its sole discretion to refuse accepting any new cases and processing remake cases until the balance is paid in full and the account is current. 
 A non-refundable charge will apply if the original appliance is not returned at the time of remake request. 
 KPD Labs can amend the remake policy at its sole discretion and without prior notice.
 Shipping
-
+<br></br>
 1.	Standard shipping is a flat $10 rate.
+<br></br>
 a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
+<br></br>
 2.	Expedited shipping is a flat $35 rate.
+<br></br>
 a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
-
-Limited Warranty / Limitation of Liability
+<br></br>
+<strong>Limited Warranty / Limitation of Liability</strong>
+<br></br>
 KPD Labs accepts no liability for damages to customer, any provider, or any patient(s) for any cause arising under or related to the products or services provided. In no event will KPD Labs be liable for any indirect, special, incidental, or consequential damages, or for any claim against customer by any other party. 
 KPD Labs warrants that all crown and bridge restorations and removable prosthetics, and other devices will be constructed according to the prescribing dentist’s specifications. 
 KPD Labs will repair or replace any product that fails due to defects in materials or workmanship, such as chipped or cracked porcelain, broken acrylic and/or a tooth falling out of removable appliance, within a period of one year from date of invoice.

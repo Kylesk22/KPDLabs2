@@ -95,19 +95,19 @@ All orders placed with Kronemeyer Precision Dental Laboratories, LLC (“KPD”)
 <br></br>
         i.	When your account reaches the $2,500 threshold or 15 days your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be charged.
 <br></br>
-b.	Credit can be established at KPD Labs sole discretion through the use of KPD Labs Account Form or the Client’s history with KPD Labs. Any established credit may be revoked if the Client is past due.
+	b.	Credit can be established at KPD Labs sole discretion through the use of KPD Labs Account Form or the Client’s history with KPD Labs. Any established credit may be revoked if the Client is past due.
 <br></br>
-i.	Once credit is established your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be automatically charged once per month.
+		i.	Once credit is established your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be automatically charged once per month.
 <br></br>
 2.	Payment Terms. 
 <br></br>
-a.	The client will receive an emailed invoice as every case is shipped detailing the products and associated fees incurred. 
+	a.	The client will receive an emailed invoice as every case is shipped detailing the products and associated fees incurred. 
 <br></br>
-b.	Payment is due in full upon receipt.
+	b.	Payment is due in full upon receipt.
 <br></br>
-i.	In addition, the Client will receive a monthly statement listing all outstanding invoices. 
+		i.	In addition, the Client will receive a monthly statement listing all outstanding invoices. 
 <br></br>
-ii.	A finance charge will be assessed to any past due account of 1.5% per month, or maximum amount permitted by law. 
+		ii.	A finance charge will be assessed to any past due account of 1.5% per month, or maximum amount permitted by law. 
 <br></br>
 3.	KPD Labs may refuse to accept new or complete existing orders on accounts with past due balances.
 <br></br>
@@ -156,11 +156,12 @@ Shipping
 <br></br>
 1.	Standard shipping is a flat $10 rate.
 <br></br>
-a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
+	a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
 <br></br>
 2.	Expedited shipping is a flat $35 rate.
 <br></br>
-a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
+	a.	Multiple cases MAY be grouped into one shipment based on submitted case volume and frequency.
+<br></br>
 <br></br>
 <strong>Limited Warranty / Limitation of Liability</strong>
 <br></br>

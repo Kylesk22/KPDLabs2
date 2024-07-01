@@ -63,18 +63,28 @@ return(
 
   
 
-  <section className="terms-section" style={{paddingLeft: "50px", paddingRight: "50px"}}>
+  <section className="terms-section" style={{paddingLeft: "100px", paddingRight: "100px"}}>
   Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Kronemeyer Precision Dental Laboratories, LLC relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
 The term Kronemeyer Precisions Dental Laboratories, LLC or ‘KPD Labs’ or ‘KPD or ‘us’ or ‘our’ or ‘we’ refers to Kronemeyer Precision Dental Laboratories, LLC whose company certificate number is L24000137239. The term ‘you’ or ‘client’ refers to the user or viewer of this website.
+<br></br>
 The use of this website is subject to the following terms of use:
+<br></br>
 •	The content of the pages of this website is for your information and use only. It is subject to change without notice.
+<br></br>
 •	Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness, or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
+<br></br>
 •	Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services, or information available through this website meet your specific requirements.
+<br></br>
 •	Reproduction of any material on this website is prohibited unless you have the prior written consent of Kronemeyer Precision Dental Laboratories, LLC.
+<br></br>
 •	All trademarks reproduced in this website, which are not the property of, or licensed to the operator, are acknowledged on the website.
+<br></br>
 •	Unauthorized use of this website may give rise to a claim for damages and/or be a criminal offense.
+<br></br>
 •	Your use of this website and any dispute arising out of such use of the website is subject to the laws of the United States.
+<br></br>
 Terms and Conditions
+<br></br>
 All orders placed with Kronemeyer Precision Dental Laboratories, LLC (“KPD”) by the Client are subject to the following:
 1.	Credit Policy.
 a.	The initial credit is limited to $2,500 until the credit is established or 15 days whichever comes first.

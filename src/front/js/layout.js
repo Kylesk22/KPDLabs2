@@ -24,6 +24,7 @@ import{Veneer} from "./pages/Veneer";
 import{Partial} from "./pages/Partial";
 import{Denture} from "./pages/Denture";
 import {Blogs} from "./pages/Blogs";
+import {Terms} from "./pages/Terms";
 
 
 import Orb from "../../front/img/image.png";
@@ -73,6 +74,7 @@ const Layout = () => {
                         <Route element={<AdminPage /> } path = "/admin/:user_id"/>
                         <Route element={<AdminSingleCase /> } path = "/admin/:user_id/:case_id"/>
                         <Route element={<Blogs /> } path = "/blogs"/>
+                        <Route element={<Terms /> } path = "/terms"/>
                         
                         
                         <Route element={<h1>Not found!</h1>} />

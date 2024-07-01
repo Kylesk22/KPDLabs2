@@ -91,9 +91,9 @@ All orders placed with Kronemeyer Precision Dental Laboratories, LLC (“KPD”)
 <br></br>
 1.	Credit Policy.
 <br></br>
-    {"	a.	The initial credit is limited to $2,500 until the credit is established or 15 days whichever comes first."}
+&nbsp;&nbsp;&nbsp;&nbsp;a.	The initial credit is limited to $2,500 until the credit is established or 15 days whichever comes first."
 <br></br>
-        i.	When your account reaches the $2,500 threshold or 15 days your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be charged.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.	When your account reaches the $2,500 threshold or 15 days your preferred method of payment (credit card add 3% merchant fee or ACH with no fee) will be charged.
 <br></br>
 	b.	Credit can be established at KPD Labs sole discretion through the use of KPD Labs Account Form or the Client’s history with KPD Labs. Any established credit may be revoked if the Client is past due.
 <br></br>

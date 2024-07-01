@@ -638,16 +638,16 @@ export const AdminSingleCase = props => {
                     <label  htmlFor="status"><h5>Status</h5></label>
                         <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
                                 <option value={caseStatus}>{caseStatus}</option>
-                                <option value="A1" onClick={()=>setCaseStatus("Scanning")}>Scanning</option>
-                                <option value="A1" onClick={()=>setCaseStatus("Design")}>Design</option>
-                                <option value="A2" onClick={()=>setCaseStatus("Manufacturing")}>Manufacturing</option>
-                                <option value="A2" onClick={()=>setCaseStatus("Pre-Finish")}>Pre-Finish</option>
-                                <option value="A2" onClick={()=>setCaseStatus("Finish")}>Finish</option>
-                                <option value="A2" onClick={()=>setCaseStatus("Ready to Ship")}>Ready to Ship</option>
-                                <option value="A3" onClick={()=>setCaseStatus("Shipped")}>Shipped</option>
-                                <option value="A3" onClick={()=>setCaseStatus("Billed")}>Billed</option>
-                                <option value="A3" onClick={()=>setCaseStatus("Closed")}>Closed</option>
-                                <option value="A3" onClick={()=>setCaseStatus("Void")}>Void</option>
+                                <option value="Scanning" onClick={()=>setCaseStatus("Scanning")}>Scanning</option>
+                                <option value="Design" onClick={()=>setCaseStatus("Design")}>Design</option>
+                                <option value="Manufacturing" onClick={()=>setCaseStatus("Manufacturing")}>Manufacturing</option>
+                                <option value="Pre-Finish" onClick={()=>setCaseStatus("Pre-Finish")}>Pre-Finish</option>
+                                <option value="Finish" onClick={()=>setCaseStatus("Finish")}>Finish</option>
+                                <option value="Ready to Ship" onClick={()=>setCaseStatus("Ready to Ship")}>Ready to Ship</option>
+                                <option value="Shipped" onClick={()=>setCaseStatus("Shipped")}>Shipped</option>
+                                <option value="Billed" onClick={()=>setCaseStatus("Billed")}>Billed</option>
+                                <option value="Closed" onClick={()=>setCaseStatus("Closed")}>Closed</option>
+                                <option value="Void" onClick={()=>setCaseStatus("Void")}>Void</option>
                             </select>
                     </div>
                 </div>

@@ -429,30 +429,32 @@ def new_case(id):
        
         update_case.update_date = update_date
         db.session.commit()
+        
+        if blob_scans:
+            for scan in blob_scans:
+                
 
-        for scan in blob_scans:
             
-
+                new_scan = Scans(
+                    scan = scan,
+                    scan_name = scan,
+                    user_id = id,
+                    case_id = case
+                )
+                db.session.add(new_scan)
+                db.session.commit()
         
-            new_scan = Scans(
-                scan = scan,
-                scan_name = scan,
-                user_id = id,
-                case_id = case
-            )
-            db.session.add(new_scan)
-            db.session.commit()
-        
-        for photo in photos:
-              
-            new_photo = Scans(
-                scan = photo,
-                scan_name = photo,
-                user_id = id,
-                case_id = case
-            )
-            db.session.add(new_photo)
-            db.session.commit()
+        if photos:
+            for photo in photos:
+                
+                new_photo = Scans(
+                    scan = photo,
+                    scan_name = photo,
+                    user_id = id,
+                    case_id = case
+                )
+                db.session.add(new_photo)
+                db.session.commit()
 
         res = make_response("updated")
         res.headers['Content-Type'] = 'application/json'

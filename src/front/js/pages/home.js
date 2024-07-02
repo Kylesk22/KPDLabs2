@@ -578,7 +578,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/crownandbridge">Crown and Bridge</a></h4>
-			<h5 className="">Rates Starting at $60</h5>
+
 			<div className="text">Zirconia/PMMA Temporary</div>
 			<a href="/crownandbridge" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
@@ -593,7 +593,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/veneer">Veneer</a></h4>
-			<h5 className="">Rates Starting at $95</h5>
+
 			<div className="text">Zirconia/PMMA Temporary</div>
 			<a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
@@ -608,7 +608,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/partial">Partial</a></h4>
-			<h5 className="">Rates Starting at $250</h5>
+	
 			<div className="text">Milled TCS Unbreakable</div>
 			<a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
@@ -622,7 +622,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="content-box">
 			<h4 className="title"><a href="/denture">Denture</a></h4>
-			<h5 className="">Rates Starting at $250</h5>
+
 			<div className="text">Milled Multilayer PMMA</div>
 			<a href="/denture" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>

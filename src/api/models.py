@@ -22,9 +22,9 @@ class User(db.Model):
     user_scans = db.relationship('Scans', backref='user')
     case_number = db.relationship('Case', backref='user')
     security_question_1 = db.Column(db.String(100), unique=False, nullable=False)
-    security_answer_1 = db.Column(db.String(50), unique=False, nullable=False)
+    security_answer_1 = db.Column(db.String(100), unique=False, nullable=False)
     security_question_2 = db.Column(db.String(100), unique=False, nullable=False)
-    security_answer_2 = db.Column(db.String(50), unique=False, nullable=False)
+    security_answer_2 = db.Column(db.String(100), unique=False, nullable=False)
     #scans = db.Column(db.)
     
 

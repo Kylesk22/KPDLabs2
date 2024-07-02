@@ -79,8 +79,8 @@ def signup():
     user_info = request.get_json()
 
     unsaltPass = user_info['password'].encode('utf-8')
-    unsaltAnswer1 = user_info['security1Answer']
-    unsaltAnswer2 = user_info['security2Answer']
+    unsaltAnswer1 = user_info['security1Answer'].encode('utf-8')
+    unsaltAnswer2 = user_info['security2Answer'].encode('utf-8')
 
     salt = bcrypt.gensalt()
 

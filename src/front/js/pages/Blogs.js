@@ -70,7 +70,7 @@ return(
       </div>
       <div className="row" style={{paddingTop: "50px"}}> 
   
-        <div className="blog-post col-lg-4 col-md-6 col-sm-12 " style={{padding: "20px"}}>
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12 " >
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
@@ -84,7 +84,7 @@ return(
           </div>
         </div>
      
-        <div className="blog-post col-lg-4 col-md-6 col-sm-12" style={{padding: "20px"}}>
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12" >
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
@@ -98,7 +98,7 @@ return(
           </div>
         </div>
       
-        <div className="blog-post col-lg-4 col-md-6 col-sm-12 wow fadeInUp" style={{padding: "20px"}}>
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12" >
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Denture} alt=""/></a></figure>

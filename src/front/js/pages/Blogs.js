@@ -68,9 +68,9 @@ return(
       <div className="sec-title text-center"> <span className="sub-title">::::::  All Blogs  ::::::</span>
         <h2>Blogs</h2>
       </div>
-      <div className="row" style={{paddingTop: "400px"}}> 
+      <div className="row" style={{paddingTop: "50px"}}> 
   
-        <div className="col-lg-4 col-md-6 col-sm-12 ">
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12 ">
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
@@ -84,7 +84,7 @@ return(
           </div>
         </div>
      
-        <div className="team-block col-lg-4 col-md-6 col-sm-12" >
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12" >
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
@@ -98,7 +98,7 @@ return(
           </div>
         </div>
       
-        <div className="col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+        <div className="blog-post col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
           <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Denture} alt=""/></a></figure>

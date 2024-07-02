@@ -72,16 +72,10 @@ return(
   
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
           <div className="inner-box">
-            <div className="image-box">
+            {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
-              {/* <div className="social-links">
-                <a href="#"><i className="fab fa-twitter"></i></a>
-                <a href="#"><i className="fab fa-google"></i></a>
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
-              </div> */}
-              {/* <span className="share-icon fa fa-share"></span> */}
-            </div>
+              
+            </div> */}
             <div className="info-box">
               <h4 className="name" style={{color: "black"}}><a href="">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
 </a></h4>
@@ -92,16 +86,10 @@ return(
      
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
           <div className="inner-box">
-            <div className="image-box">
+            {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
-              {/* <div className="social-links">
-                <a href="#"><i className="fab fa-twitter"></i></a>
-                <a href="#"><i className="fab fa-google"></i></a>
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
-              </div> */}
-              {/* <span className="share-icon fa fa-share"></span> */}
-            </div>
+              
+            </div> */}
             <div className="info-box">
               <h4 className="name"><a href="" style={{color: "black"}}>The Clinical Hygiene Benefits of Highly Polished Zirconia Crowns for Posterior Restorations
 </a></h4>
@@ -112,16 +100,10 @@ return(
       
         <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms">
           <div className="inner-box">
-            <div className="image-box">
+            {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Denture} alt=""/></a></figure>
-              {/* <div className="social-links">
-                <a href="#"><i className="fab fa-twitter"></i></a>
-                <a href="#"><i className="fab fa-google"></i></a>
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
-              </div> */}
-              {/* <span className="share-icon fa fa-share"></span> */}
-            </div>
+              
+            </div> */}
             <div className="info-box">
               <h4 className="name" style={{color: "black"}}><a>The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
 </a></h4>

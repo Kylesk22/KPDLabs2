@@ -63,11 +63,12 @@ return(
 
   
 
-  <section className="team-section" >
-    <div className="auto-container">
+  <section className="" >
+    <div className="">
       <div className="sec-title text-center"> <span className="sub-title">::::::  All Blogs  ::::::</span>
         <h2>Blogs</h2>
       </div>
+      
       <div className="row" style={{paddingTop: "50px"}}> 
   
         <div className="blog-post col-lg-4 col-md-6 col-sm-12 " >

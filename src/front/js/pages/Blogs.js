@@ -70,44 +70,44 @@ return(
       </div>
       <div className="row" style={{paddingTop: "400px"}}> 
   
-        <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-          <div className="inner-box">
+        <div className="col-lg-4 col-md-6 col-sm-12 ">
+          <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
               
             </div> */}
-            <div className="info-box">
-              <h4 className="name" style={{color: "black"}}><a href="">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
+            <div className="">
+              <h4 className="" style={{color: "black"}}><a href="">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
 </a></h4>
-              <span className="designation" style={{color: "black"}}>6/28/2024</span>
+              <span className="" style={{color: "black"}}>6/28/2024</span>
             </div>
           </div>
         </div>
      
-        <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-          <div className="inner-box">
+        <div className="team-block col-lg-4 col-md-6 col-sm-12" >
+          <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Crown} alt=""/></a></figure>
               
             </div> */}
-            <div className="info-box">
-              <h4 className="name"><a href="" style={{color: "black"}}>The Clinical Hygiene Benefits of Highly Polished Zirconia Crowns for Posterior Restorations
+            <div className="">
+              <h4 className=""><a href="" style={{color: "black"}}>The Clinical Hygiene Benefits of Highly Polished Zirconia Crowns for Posterior Restorations
 </a></h4>
-              <span className="designation" style={{color: "black"}}>6/20/2024</span>
+              <span className="" style={{color: "black"}}>6/20/2024</span>
             </div>
           </div>
         </div>
       
-        <div className="team-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms">
-          <div className="inner-box">
+        <div className="col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+          <div className="">
             {/* <div className="image-box">
               <figure className="image"><a href=""><img src={Denture} alt=""/></a></figure>
               
             </div> */}
-            <div className="info-box">
-              <h4 className="name" style={{color: "black"}}><a>The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
+            <div className="">
+              <h4 className="" style={{color: "black"}}><a>The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
 </a></h4>
-              <span className="designation" style={{color: "black"}}>6/5/2024</span>
+              <span className="" style={{color: "black"}}>6/5/2024</span>
             </div>
           </div>
         </div>

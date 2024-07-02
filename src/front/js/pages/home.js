@@ -454,7 +454,25 @@ className="">Cast Effective Digital Marketing Agency</h1>
 </section>
 {/* <!-- End banner-section -->
 
+
+
+
 <!-- service section --> */}
+
+<section className="contact-banner" style={{backgroundColor: "#F6F6F6"}}>
+  <div className="auto-container">
+	<div className="outer-box" style={{backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat"}}>
+	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> 
+		{/* <span>We’re here for your dental needs. </span> */}
+		<h3 className="title">Contact us for exclusive rates and bulk discounts!</h3>
+	  </div>
+	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="/signup" className="ser-btn theme-btn">Contact</a> </div>
+	</div>
+  </div>
+</section>
+
+
+
 <section className="service-section pt-0 pb-0" style={{backgroundColor: "#f4f5f8"}}>
   <div className="auto-container" >
 	<div className="row g-0"> 

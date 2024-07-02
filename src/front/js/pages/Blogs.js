@@ -63,8 +63,8 @@ return(
 
   
 
-  <section className="" >
-    <div className="">
+  <section className="team-section" >
+    <div className="auto-container">
       <div className="sec-title text-center"> <span className="sub-title">::::::  All Blogs  ::::::</span>
         <h2>Blogs</h2>
       </div>

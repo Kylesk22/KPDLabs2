@@ -68,6 +68,8 @@ return(
       <div className="sec-title text-center"> <span className="sub-title">::::::  All Blogs  ::::::</span>
         <h2>Blogs</h2>
       </div>
+      </div>
+  </section>
       
       <div className="row" style={{paddingTop: "50px"}}> 
   
@@ -113,8 +115,7 @@ return(
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    
 
   
 

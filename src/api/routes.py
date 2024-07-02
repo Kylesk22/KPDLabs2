@@ -79,8 +79,16 @@ def signup():
     user_info = request.get_json()
 
     unsaltPass = user_info['password'].encode('utf-8')
+    unsaltAnswer1 = user_info['security1Answer']
+    unsaltAnswer2 = user_info['security2Answer']
+
     salt = bcrypt.gensalt()
+
     hashed = bcrypt.hashpw(unsaltPass, salt)
+    hashedA1 = bcrypt.hashpw(unsaltAnswer1, salt)
+    hashedA2 = bcrypt.hashpw(unsaltAnswer2, salt)
+
+
     exists = User.query.filter(User.email == user_info['email']).first()
 
     response_body = {
@@ -101,8 +109,8 @@ def signup():
         pricing_package = "Intro",
         security_question_1 = user_info["security1"],
         security_question_2 = user_info["security2"],
-        security_answer_1 = user_info["security1Answer"],
-        security_answer_2 = user_info["security2Answer"],
+        security_answer_1 = hashedA1.decode("utf-8", "ignore"),
+        security_answer_2 = hashedA2.decode("utf-8", "ignore"),
         
     )
 
@@ -257,14 +265,16 @@ def forgot_pw():
 def validate_answers():
     email = request.json.get("email", None)
     security1 = request.json.get("securityAnswer1", None)
+    unSaltSecurity1 = security1.encode('utf-8')
     security2 = request.json.get("securityAnswer2", None)
+    unSaltSecurity2 = security2.encode('utf-8')
     user_info = User.query.filter_by(email=email).first()
     saved_answer_1 = user_info.security_answer_1
     saved_answer_2 = user_info.security_answer_2
 
     
 
-    if security1 == saved_answer_1 and security2 == saved_answer_2:
+    if bcrypt.checkpw(unSaltSecurity1, saved_answer_1.encode('utf-8')) and bcrypt.checkpw(unSaltSecurity2, saved_answer_2.encode('utf-8')):
         res = make_response(
             jsonify(
                 {"message": "Success"},

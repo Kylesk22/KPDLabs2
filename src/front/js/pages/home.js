@@ -466,7 +466,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		{/* <span>We’re here for your dental needs. </span> */}
 		<h3 className="title">Contact us for exclusive rates and bulk discounts!</h3>
 	  </div>
-	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="/signup" className="ser-btn theme-btn">Contact</a> </div>
+	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="mailto:kpdlabs@kpdlabs.com" className="ser-btn theme-btn">Contact</a> </div>
 	</div>
   </div>
 </section>

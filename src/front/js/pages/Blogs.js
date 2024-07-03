@@ -80,7 +80,7 @@ return(
             <div className="">
               <h4 className="" style={{color: "black"}}><a href="">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
 </a></h4>
-              <span className="" style={{color: "black"}}>6/28/2024</span>
+              <span className="blog-date" style={{color: "black"}}>6/28/2024</span>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ return(
             <div className="">
               <h4 className=""><a href="" style={{color: "black"}}>The Clinical Hygiene Benefits of Highly Polished Zirconia Crowns for Posterior Restorations
 </a></h4>
-              <span className="" style={{color: "black"}}>6/20/2024</span>
+              <span className="blog-date" style={{color: "black"}}>6/20/2024</span>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ return(
             <div className="">
               <h4 className="" style={{color: "black"}}><a>The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
 </a></h4>
-              <span className="" style={{color: "black"}}>6/5/2024</span>
+              <span className="blog-date" style={{color: "black"}}>6/5/2024</span>
             </div>
           </div>
         </div>

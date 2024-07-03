@@ -332,8 +332,11 @@
   padding: 10px;
   height: 280px;
 }
+.blog-text{
+  height: 227px;
+}
 .blog-date{
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   margin: 5px; /* Optional margin for spacing */

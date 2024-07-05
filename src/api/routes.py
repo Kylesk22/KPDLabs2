@@ -758,3 +758,7 @@ def add_blog():
         db.session.add(new_blog)
         db.session.commit()
         
+        return jsonify({"message": "Blog Posted"}), 200
+    
+    else:
+        return jsonify({"message":"You don't have authorization to do that."})

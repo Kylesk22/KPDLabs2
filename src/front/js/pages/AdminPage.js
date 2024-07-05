@@ -171,7 +171,7 @@ export const AdminPage = props => {
 
         let newBlog = {
             "title": title,
-            "desctiption": description,
+            "description": description,
             "date": date,
             "info": info
         }

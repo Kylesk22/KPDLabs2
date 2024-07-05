@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file, redirect, render_template
 from functools import wraps
-from api.models import db, User, Scans, Case
+from api.models import db, User, Scans, Case, Blog
 from api.utils import generate_sitemap, APIException
 from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
@@ -723,3 +723,38 @@ def get_label():
     else:
         print(transaction.messages)
         return(transaction.messages)
+    
+@api.route('/blogs', methods=['GET'])
+@jwt_required()
+def get_blogs():
+    all_blogs = Blog.query.all()
+    all_blogs_list = list(map(lambda x: x.serialize(), all_blogs))
+    return jsonify({all_blogs_list})
+
+
+
+@api.route('/blogs/add', methods=['POST'])
+@jwt_required()
+def add_blog():
+    current_user_email = get_jwt_identity()
+    
+    current_user = User.query.filter_by(email=current_user_email).first()
+    
+    if current_user.role == "Admin":
+        title = request.json.get("title", None)
+        description = request.json.get("description", None)
+        date = request.json.get("date", None)
+        info = request.json.get("info", None)
+
+        new_blog = Blog(
+                    
+                    title = title,
+                    description = description,
+                    date = date,
+                    info = info,
+
+                )
+
+        db.session.add(new_blog)
+        db.session.commit()
+        

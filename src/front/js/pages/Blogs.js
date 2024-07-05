@@ -35,6 +35,27 @@ export const Blogs = props => {
 
 
 
+      useEffect(()=>{
+        
+        const options = {
+            method:"GET"
+
+        }
+        fetch(`${url}/blogs`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                })}
+            
+            })
+       
+        .catch((err)=> {
+            console.log(err);
+            alert("Error displaying blogs")
+    })
+  }, [])
 
 return(
 <>

@@ -19,6 +19,13 @@ export const AdminPage = props => {
     const [search, setSearch] = useState("")
     const [originalCases, setOriginalCases] = useState("")
 
+    //blog variables
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [date, setDate] = useState("")
+    const [info, setInfo] = useState("")
+    const [blogModal, setBlogModal] = useState(false)
+
     const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('desc');
 
@@ -160,7 +167,42 @@ export const AdminPage = props => {
 
    
     
+    function addBlog() {
 
+        newBlog = {
+            "title": title,
+            "desctiption": description,
+            "date": date,
+            "info": info
+        }
+        const options = {
+            method:"POST",
+            credentials: 'include',
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(newUser)
+            
+        }
+        fetch(`${url}/blogs/add`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    alert(data.message)
+                
+                    
+                })}
+            return(res.json())
+            .then((body)=>{alert(body.message)})
+            
+            })
+       
+        .catch((err)=> {
+            console.log(err);
+    })
+    }
    
     
 
@@ -220,6 +262,19 @@ export const AdminPage = props => {
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
         <div className="container">
+            <div>
+                <button className="btn btn-primary" onClick={()=>setBlogModal(true)}>Add blog</button>
+                {(blogModal)?
+                <div>
+                    <input type="text" required className="form-control" id="title" placeholder="Blog Title" value={title} onChange={(e)=>setTitle(e.target.value)} />
+                    <input type="text" required className="form-control" id="firstName" placeholder="Blog Description (under 500 characters)" value={description} onChange={(e)=>setDescription(e.target.value)} />
+                    <input type="text" required className="form-control" id="firstName" placeholder="Date m/d/FullYear" value={date} onChange={(e)=>setDate(e.target.value)} />
+                    <input type="text" required className="form-control" id="firstName" placeholder="Full Blog 2500 characters" value={info} onChange={(e)=>setInfo(e.target.value)} />
+                    <button className="btn btn-primary" onClick={()=>{addBlog(); setBlogModal(false)}}>Submit Blog</button>
+                </div>
+                    :""
+                }
+            </div>
             <div  >
                 <input 
                 type="text" 

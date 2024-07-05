@@ -489,10 +489,14 @@ def new_case(id):
         
         print(user)
         if user is not None:
+            cases = user.case_number
+            sorted_cases = sorted(cases, key=lambda case: case.case_number)
            
             if user.case_number:  # Check if case_number is not empty or None
                 
-                user_case = user.case_number[-1]
+                
+                # user_case = user.case_number[-1]
+                user_case = sorted_cases[-1]
                 if user_case.name is None:
                     
                     return user_case.serialize(), 200

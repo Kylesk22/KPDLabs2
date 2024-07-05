@@ -124,3 +124,26 @@ class Case(db.Model):
             # "scans": self.scans,
             # do not serialize the password, its a security breach
         }
+
+class Blog(db.Model):
+    __tablename__ = "blog"
+    id = db.Column(db.Integer, primary_key=True)
+   
+    title = db.Column(db.String(250), nullable = False)
+    description = db.Column(db.String(500), nullable = False)
+    date = db.Column(db.String(50), unique=False, nullable=False)
+    info = db.Column(db.String(2500), unique=False, nullable=True)
+   
+
+    def __repr__(self):
+        return f'<Blog {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description":self.description,
+            "date": self.date,
+            "info":self.info,
+            
+        }

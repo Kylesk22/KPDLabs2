@@ -33,6 +33,7 @@ export const Blogs = props => {
     //     window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject);
     // }
 
+    const url = process.env.BACKEND_URL
 
 
       useEffect(()=>{

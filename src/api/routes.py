@@ -496,6 +496,7 @@ def new_case(id):
                 
                 
                 # user_case = user.case_number[-1]
+                
                 user_case = sorted_cases[-1]
                 if user_case.name is None:
                     

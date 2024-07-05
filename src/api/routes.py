@@ -729,7 +729,7 @@ def get_label():
 def get_blogs():
     all_blogs = Blog.query.all()
     all_blogs_list = list(map(lambda x: x.serialize(), all_blogs))
-    return jsonify({all_blogs_list})
+    return jsonify(all_blogs_list)
 
 
 

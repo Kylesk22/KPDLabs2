@@ -398,84 +398,92 @@ def new_case(id):
     now_utc = datetime.now(utc)
     now_eastern = now_utc.astimezone(eastern)
     if request.method == 'PUT':
-        case = request.json.get("case", None)
-        name = request.json.get("name", None)
-        teeth = request.json.get("teeth", None)
-        product = request.json.get("product", None)
-        shade = request.json.get("shade", None)
-        notes = request.json.get("note", None)
-        finish = request.json.get("finish", None)
-        blob_scans = request.json.get("stl_urls", None)
-        photos = request.json.get("photos", None)
-        type = request.json.get("type", None)
-        gum_shade = request.json.get("gum_shade", None)
-        price = request.json.get("price", None)
-        shipping = request.json.get("shipping", None)
-        production = request.json.get("production", None)
-        update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
-        status = request.json.get("status", None)
 
-        if (request.json.get("reference id", None)):
-            reference_id = request.json.get("reference Id", None)
-        else:
-            reference_id = ""
-        
-        
-        
-        update_case = Case.query.filter_by(id=case).first()
-        
-        update_case.name = name
-        update_case.teeth = teeth
-        update_case.product = product
-        update_case.shade = shade
-        update_case.notes = notes
-        update_case.finish = finish
+        caseCheck = request.json.get("case", None)
+        checking_case = Case.query.filter_by(id=caseCheck).first()
 
-        if update_case.status == "Created":
-            update_case.status = "Submitted"
-        else: 
-            update_case.status = status
-        update_case.type = type
-        update_case.gum_shade = gum_shade
-        update_case.price = price
-        update_case.shipping = shipping
-        update_case.production = production
-        update_case.reference_id = reference_id
-       
-        update_case.update_date = update_date
-        db.session.commit()
-        
-        if blob_scans:
-            for scan in blob_scans:
-                
 
+        if checking_case.name is None:
+            case = request.json.get("case", None)
+            name = request.json.get("name", None)
+            teeth = request.json.get("teeth", None)
+            product = request.json.get("product", None)
+            shade = request.json.get("shade", None)
+            notes = request.json.get("note", None)
+            finish = request.json.get("finish", None)
+            blob_scans = request.json.get("stl_urls", None)
+            photos = request.json.get("photos", None)
+            type = request.json.get("type", None)
+            gum_shade = request.json.get("gum_shade", None)
+            price = request.json.get("price", None)
+            shipping = request.json.get("shipping", None)
+            production = request.json.get("production", None)
+            update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+            status = request.json.get("status", None)
+
+            if (request.json.get("reference id", None)):
+                reference_id = request.json.get("reference Id", None)
+            else:
+                reference_id = ""
             
-                new_scan = Scans(
-                    scan = scan,
-                    scan_name = scan,
-                    user_id = id,
-                    case_id = case
-                )
-                db.session.add(new_scan)
-                db.session.commit()
+            
+            
+            update_case = Case.query.filter_by(id=case).first()
+            
+            update_case.name = name
+            update_case.teeth = teeth
+            update_case.product = product
+            update_case.shade = shade
+            update_case.notes = notes
+            update_case.finish = finish
+
+            if update_case.status == "Created":
+                update_case.status = "Submitted"
+            else: 
+                update_case.status = status
+            update_case.type = type
+            update_case.gum_shade = gum_shade
+            update_case.price = price
+            update_case.shipping = shipping
+            update_case.production = production
+            update_case.reference_id = reference_id
         
-        if photos:
-            for photo in photos:
+            update_case.update_date = update_date
+            db.session.commit()
+            
+            if blob_scans:
+                for scan in blob_scans:
+                    
+
                 
-                new_photo = Scans(
-                    scan = photo,
-                    scan_name = photo,
-                    user_id = id,
-                    case_id = case
-                )
-                db.session.add(new_photo)
-                db.session.commit()
+                    new_scan = Scans(
+                        scan = scan,
+                        scan_name = scan,
+                        user_id = id,
+                        case_id = case
+                    )
+                    db.session.add(new_scan)
+                    db.session.commit()
+            
+            if photos:
+                for photo in photos:
+                    
+                    new_photo = Scans(
+                        scan = photo,
+                        scan_name = photo,
+                        user_id = id,
+                        case_id = case
+                    )
+                    db.session.add(new_photo)
+                    db.session.commit()
 
-        res = make_response("updated")
-        res.headers['Content-Type'] = 'application/json'
-        print(f"response:{res}")
+            res = make_response("updated")
+            res.headers['Content-Type'] = 'application/json'
+            print(f"response:{res}")
 
-        return jsonify({"msg": "Updated"}), 200    
+            return jsonify({"msg": "Updated"}), 200  
+        else:
+            return jsonify({"msg": "Case Number Already in Use, Please refresh and Resubmit"}), 500  
     
     if request.method == 'POST':
         

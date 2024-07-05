@@ -169,7 +169,7 @@ export const AdminPage = props => {
     
     function addBlog() {
 
-        newBlog = {
+        let newBlog = {
             "title": title,
             "desctiption": description,
             "date": date,
@@ -182,7 +182,7 @@ export const AdminPage = props => {
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
-            body: JSON.stringify(newUser)
+            body: JSON.stringify(newBlog)
             
         }
         fetch(`${url}/blogs/add`, options)

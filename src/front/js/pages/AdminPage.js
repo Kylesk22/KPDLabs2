@@ -303,6 +303,7 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black"}}
                  />
+                 <button className="btn btn-primary" onClick={()=>statusFilter("Created")}>All Created</button>
                 <div >
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>

@@ -49,6 +49,8 @@ export const AdminPage = props => {
                 filteredCases.set(item.id, item);
             }
         })
+        setCases(filteredCases)
+        return filteredCases;
     }
     const filterCases = (val) => {
         let filteredCases = new Map();

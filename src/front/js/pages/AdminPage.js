@@ -41,7 +41,15 @@ export const AdminPage = props => {
     };
 
 
+    const statusFilter = (val) => {
+        let filteredCases = new Map();
 
+        originalCases.forEach(item => {
+            if (item.status && item.status.toLowerCase().includes(val.toLowerCase())) {
+                filteredCases.set(item.id, item);
+            }
+        })
+    }
     const filterCases = (val) => {
         let filteredCases = new Map();
       
@@ -205,7 +213,7 @@ export const AdminPage = props => {
     })
     }
    
-    
+
     
 
     useEffect(()=>{
@@ -276,6 +284,12 @@ export const AdminPage = props => {
                 </div>
                     :""
                 }
+            </div>
+            <div>
+                <button className="btn btn-primary" onClick={()=>statusFilter("Created")}>All Created</button>
+            </div>
+            <div>
+                <button className="btn btn-primary" onClick={()=>statusFilter("Submitted")}>All Submitted</button>
             </div>
             <div  >
                 <input 

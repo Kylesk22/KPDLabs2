@@ -639,6 +639,7 @@ export const AdminSingleCase = props => {
                     <label  htmlFor="status"><h5>Status</h5></label>
                         <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
                                 <option value={caseStatus}>{caseStatus}</option>
+                                <option value="Created" onClick={()=>setCaseStatus("Created")}>Created</option>
                                 <option value="Scanning" onClick={()=>setCaseStatus("Scanning")}>Scanning</option>
                                 <option value="Design" onClick={()=>setCaseStatus("Design")}>Design</option>
                                 <option value="Manufacturing" onClick={()=>setCaseStatus("Manufacturing")}>Manufacturing</option>

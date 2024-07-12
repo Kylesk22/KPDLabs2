@@ -298,8 +298,17 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black"}}
                  />
-                 <button className="btn btn-primary" style ={{marginLeft: "10px"}} onClick={()=>statusFilter("Created")}>All Created</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "10px"}} onClick={()=>statusFilter("Submitted")}>All Submitted</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Manufacturing")}>Manufacturing</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Pre-Finish")}>PreFinish</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Finish</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Ready Ship</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
                 <div >
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>

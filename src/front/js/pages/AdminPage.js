@@ -298,8 +298,8 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black"}}
                  />
-                 <button className="btn btn-primary" style ={{paddingLeft: "10px"}} onClick={()=>statusFilter("Created")}>All Created</button>
-                 <button className="btn btn-primary" style ={{paddingLeft: "10px"}} onClick={()=>statusFilter("Submitted")}>All Submitted</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "10px"}} onClick={()=>statusFilter("Created")}>All Created</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "10px"}} onClick={()=>statusFilter("Submitted")}>All Submitted</button>
                 <div >
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>

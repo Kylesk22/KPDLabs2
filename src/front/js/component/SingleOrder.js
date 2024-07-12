@@ -294,11 +294,11 @@ export const SingleOrder = props => {
                 </div>
                 
             </div> */}
-            <div className="row form-group justify-content-center mt-5">
+            {/* <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" onClick={()=>{console.log(stlFile); downloadSTLFromBlob(stlFile)}}>Upload</button>
                 </div>
-            </div>
+            </div> */}
 
             <div className="row form-group justify-content-center mt-3">
                 <div className="text-center col-8 col-lg-4 pt-3">

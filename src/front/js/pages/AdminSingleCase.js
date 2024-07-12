@@ -425,7 +425,7 @@ export const AdminSingleCase = props => {
 
             const updateCase = {
                 
-                
+                "admin": true,
                 "case": caseNum,
                 "name": patientName,
                 "product": product,
@@ -534,6 +534,7 @@ export const AdminSingleCase = props => {
     
     
                 const updateCase = {
+                    
                     "stl_urls" : "",
                     "photos": "",
                     "case": caseNum,

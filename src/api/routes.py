@@ -531,6 +531,8 @@ def new_case(id):
             update_case.update_date = update_date
             db.session.commit()
 
+            return jsonify({"msg": "Updated"}), 200 
+
         else:
             return jsonify({"msg": "Case Number Already in Use, Please refresh and Resubmit"}), 500  
     

@@ -304,7 +304,7 @@ export const AdminPage = props => {
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Manufacturing")}>Manufact</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Pre-Finish")}>PreFin</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Fin</button>
+                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Finish</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Rdy Ship</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>

@@ -714,8 +714,8 @@ def get_rates():
         zip="33844",
         country="US",
         email="kpdlabs@kpdlabs.com",
-        phone="8634382109",
-        test="true"
+        phone="8634382109"
+        
     )
 
     address_to = components.AddressCreateRequest(

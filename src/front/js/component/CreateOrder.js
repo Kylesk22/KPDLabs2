@@ -1204,7 +1204,7 @@ AWS.config.update({
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
                                 
                             </select>
-                            <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                            {/* <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
                             {
                                 
                                 
@@ -1213,7 +1213,7 @@ AWS.config.update({
                                 
                                 : ""
                                 }
-                                   </strong> </small>
+                                   </strong> </small> */}
                         </div>
                     </div>
                     <div className="row form-group justify-content-center mt-5">

@@ -1354,7 +1354,17 @@ AWS.config.update({
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Shipping</h5></label>
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
+                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
+                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping from KPD</h5></label>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1363,7 +1373,7 @@ AWS.config.update({
                             checked={shipping === 'Standard'}
                             onChange={(e)=>{setShipping(e.target.value)}}
                         />
-                          Standard 
+                         Standard 
                         </label>
                         <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
@@ -1705,7 +1715,17 @@ AWS.config.update({
 
             <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Shipping</h5></label>
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
+                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
+                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping from KPD</h5></label>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -2083,7 +2103,17 @@ AWS.config.update({
 
             <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Shipping</h5></label>
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
+                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
+                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping from KPD</h5></label>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input

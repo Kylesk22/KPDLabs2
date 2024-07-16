@@ -310,9 +310,31 @@ return(
         <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "product")?
             <Fade>
-                <h2>1250 MPA  43% Translucency</h2>
+                <h2>Zirconia Information</h2>
                 <br></br>
-                <div>Our white zirconia is crafted from biocompatible zirconium dioxide, tailored for applications in single unit crowns and bridges up to 14 units. The inclusion of yttrium oxide stabilizer fortifies the material, enhancing resistance against cracks while bolstering tensile and compressive strength. Furthermore, a meticulous grain size distribution within the material, coupled with the infusion of aluminum oxide, ensures heightened strength during milling and subsequent clinical application. These exceptional mechanical properties, alongside excellent chemical resilience and unparalleled biocompatibility, position our zirconia as the premier material choice for fixed dental restorations.</div>
+                <div className="row">
+                  <div className="col-4">
+                    <h2>HT Polished Zirconia Crown</h2>
+                    <br></br>
+                    <div>High Strength High Translucent Polished Zirconia. Best for Posterior Crowns due to its High Strength and Polished. Surface Finish for Best in Class Hygiene</div>
+                  </div>
+                  <div className="col-4">
+                    <h2>SHT Polished Zirconia Crown</h2>
+                    <br></br>
+                    <div>
+                    Super High Translucent Polished Zirconia. Best for Pre-Molar and Molar Restorations combining High Polished Hygienic Surface Finish with Super High Translucent Aesthetics
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <h2>SHT Liquid Ceramics Zirconia Crown (Stain and Glaze)</h2>
+                    <br></br>
+                    <div>
+                    Super High Translucent Zirconia For Anterior and Posterior Restorations Micro Layered with MiYO Liquid Ceramics for a Highly Aesthetic Surface Finish and Precision Shade Matching
+                    </div>
+                  </div>
+                </div>
+                  <div>Our white zirconia is crafted from biocompatible zirconium dioxide, tailored for applications in single unit crowns and bridges up to 14 units. The inclusion of yttrium oxide stabilizer fortifies the material, enhancing resistance against cracks while bolstering tensile and compressive strength. Furthermore, a meticulous grain size distribution within the material, coupled with the infusion of aluminum oxide, ensures heightened strength during milling and subsequent clinical application. These exceptional mechanical properties, alongside excellent chemical resilience and unparalleled biocompatibility, position our zirconia as the premier material choice for fixed dental restorations.</div>
+                
             </Fade>:
             (currentPage === "indications")?
             <div>

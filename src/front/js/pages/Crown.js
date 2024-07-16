@@ -314,22 +314,22 @@ return(
                 <br></br>
                 <div className="row">
                   <div className="col-4">
-                    <h2>HT Polished Zirconia Crown</h2>
-                    <h3>1400 Mpa | Translucent 35% </h3>
+                    <h3>HT Polished Zirconia Crown</h3>
+                    <h4>1400 Mpa | Translucent 35% </h4>
                     <br></br>
                     <div>High Strength High Translucent Polished Zirconia. Best for Posterior Crowns due to its High Strength and Polished. Surface Finish for Best in Class Hygiene</div>
                   </div>
                   <div className="col-4">
-                    <h2>SHT Polished Zirconia Crown</h2>
-                    <h3>1370 Mpa | Translucent 43% </h3>
+                    <h3>SHT Polished Zirconia Crown</h3>
+                    <h4>1370 Mpa | Translucent 43% </h4>
                     <br></br>
                     <div>
                     Super High Translucent Polished Zirconia. Best for Pre-Molar and Molar Restorations combining High Polished Hygienic Surface Finish with Super High Translucent Aesthetics
                     </div>
                   </div>
                   <div className="col-4">
-                    <h2>SHT Liquid Ceramics Zirconia Crown</h2>
-                    <h3>1370 Mpa | Translucent 43% </h3>
+                    <h3>SHT Liquid Ceramics Zirconia Crown</h3>
+                    <h4>1370 Mpa | Translucent 43% </h4>
                     <br></br>
                     <div>
                     Super High Translucent Zirconia For Anterior and Posterior Restorations Micro Layered with MiYO Liquid Ceramics for a Highly Aesthetic Surface Finish and Precision Shade Matching

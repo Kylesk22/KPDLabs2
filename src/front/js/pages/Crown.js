@@ -328,7 +328,7 @@ return(
                     </div>
                   </div>
                   <div className="col-4">
-                    <h2>SHT Liquid Ceramics Zirconia Crown (Stain and Glaze)</h2>
+                    <h2>SHT Liquid Ceramics Zirconia Crown</h2>
                     <h3>1370 Mpa | Translucent 43% </h3>
                     <br></br>
                     <div>
@@ -336,6 +336,7 @@ return(
                     </div>
                   </div>
                 </div>
+                <br></br>
                   <div>Our white zirconia is crafted from biocompatible zirconium dioxide, tailored for applications in single unit crowns and bridges up to 14 units. The inclusion of yttrium oxide stabilizer fortifies the material, enhancing resistance against cracks while bolstering tensile and compressive strength. Furthermore, a meticulous grain size distribution within the material, coupled with the infusion of aluminum oxide, ensures heightened strength during milling and subsequent clinical application. These exceptional mechanical properties, alongside excellent chemical resilience and unparalleled biocompatibility, position our zirconia as the premier material choice for fixed dental restorations.</div>
                 
             </Fade>:

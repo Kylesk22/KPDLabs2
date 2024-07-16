@@ -1178,13 +1178,13 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Zirconia" onClick={()=>{setProduct("Zirconia")}}>Zirconia</option>
+                                <option value="UHT Zirconia" onClick={()=>{setProduct("UHT Zirconia")}}>UHT Zirconia</option>
 
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "Zirconia")?
-                                        `$${(price += 75)*crownTooth.length}`
+                                    {(product === "UHT Zirconia")?
+                                        `$${(price += 95)*crownTooth.length}`
                                     
                                     
                                     
@@ -1209,7 +1209,7 @@ AWS.config.update({
                                 
                                 
                                 (finish==="Stain and Glaze")?
-                                `$${(price2 += 20)*crownTooth.length}`
+                                `$${(price2 += 0)*crownTooth.length}`
                                 
                                 : ""
                                 }

@@ -57,7 +57,7 @@ export const UserCases = props => {
     },[])
 
     
-            
+        useEffect(()=>{console.log(cases)})
         return (
         <div className="container">
             <div className = "row justify-content-end" >

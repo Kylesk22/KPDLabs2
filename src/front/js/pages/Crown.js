@@ -343,8 +343,8 @@ return(
             </Fade>:
             (currentPage === "indications")?
             <div>
-                <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 units</h3>
-                <h3>Inlays and Onlays</h3>
+                {/* <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 units</h3>
+                <h3>Inlays and Onlays</h3> */}
                 <div className="row">
                   <div className="col-4">
                     <h3>HT Polished Zirconia Crown</h3>

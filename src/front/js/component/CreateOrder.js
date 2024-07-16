@@ -715,29 +715,16 @@ AWS.config.update({
                         </div>
                     </div>
                     
+
+                    {(product === "SHT Zirconia")?
+                    
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
                             <label  htmlFor="finish"><h5>Finish</h5></label>
                             <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
-                                <option value="Select One">Select One</option>
-                                
-                                {(product === "HT Zirconia")?
-                                <>
-                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
-                                </>
-                                :(product === "SHT Zirconia")?
-                                <>
+                                <option value="Select One">Select One</option>       
                                 <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
-                                </>
-                                :(product === "SHT Zirconia")?
-                                <>
-                                    <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
-                                </>
-                                :""
-                                
-                            }
-
                                 
                             </select>
                             <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
@@ -752,6 +739,46 @@ AWS.config.update({
                                    </strong> </small>
                         </div>
                     </div>
+                    :(product === "HT Zirconia")?
+                    <div className="row form-group text-center justify-content-center mt-5">
+                        <div className= "col-8 col-lg-4">
+                            <label  htmlFor="finish"><h5>Finish</h5></label>
+                            <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
+                                <option value="Select One">Select One</option>       
+                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
+                                <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
+                                
+                            </select>
+                            <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {(finish === "Polished")?
+                                `$${(price2 += 0)*crownTooth.length}`
+                                
+                                : ""
+                                }
+                                   </strong> </small>
+                        </div>
+                    </div>
+                    :(product === "PMMA Temporary")?
+                    <div className="row form-group text-center justify-content-center mt-5">
+                        <div className= "col-8 col-lg-4">
+                            <label  htmlFor="finish"><h5>Finish</h5></label>
+                            <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
+                                <option value="Select One">Select One</option>       
+                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
+                                <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
+                                
+                            </select>
+                            <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {(finish === "Polished")?
+                                `$${(price2 += 0)*crownTooth.length}`
+                                
+                                : ""
+                                }
+                                   </strong> </small>
+                        </div>
+                    </div>:""
+
+                    }
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4 pt-3">
                         <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>

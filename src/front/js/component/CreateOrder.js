@@ -693,12 +693,16 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Zirconia" onClick={()=>{setProduct("Zirconia")}}>Zirconia</option>
+                                <option value="Zirconia" onClick={()=>{setProduct("HT Zirconia")}}>HT Zirconia</option>
+                                <option value="Zirconia" onClick={()=>{setProduct("SHT Zirconia")}}>SHT Zirconia</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "Zirconia")?
+                                    {(product === "HT Zirconia")?
+                                        `$${(price += 40)*crownTooth.length}`
+                                    
+                                    :(product === "SHT Zirconia")?
                                         `$${(price += 60)*crownTooth.length}`
                                     
                                     :(product==="PMMA Temporary")?
@@ -716,8 +720,24 @@ AWS.config.update({
                             <label  htmlFor="finish"><h5>Finish</h5></label>
                             <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
                                 <option value="Select One">Select One</option>
+                                
+                                {(product === "HT Zirconia")?
+                                <>
+                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
+                                </>
+                                :(product === "SHT Zirconia")?
+                                <>
                                 <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
+                                </>
+                                :(product === "SHT Zirconia")?
+                                <>
+                                    <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
+                                </>
+                                :""
+                                
+                            }
+
                                 
                             </select>
                             <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>

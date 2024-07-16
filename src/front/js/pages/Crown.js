@@ -345,6 +345,27 @@ return(
             <div>
                 <h3>Crowns: Anterior and Posterior | Bridges: Up to 14 units</h3>
                 <h3>Inlays and Onlays</h3>
+                <div className="row">
+                  <div className="col-4">
+                    <h3>HT Polished Zirconia Crown</h3>
+                    <div>
+                      Full contour first and second molar single unit crowns, copings, long span bridge substructure.
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <h3>SHT Polished Zirconia Crown</h3>
+                    <div>
+                      Full contour premolar and molar single unit crowns, copings, long span bridge substructure, posterior full contour bridges up to 4 units.
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <h3>SHT Liquid Ceramics Zirconia Crown</h3>
+                    <div>
+                      Full contour anterior and posterior single unit crowns, full contour bridges up to 14 units.
+                    </div>
+                  </div>
+
+                </div>
             </div>:
             (currentPage === "contraindications")?
             <div>

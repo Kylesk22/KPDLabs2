@@ -380,6 +380,46 @@ AWS.config.update({
     }, [crownTooth])
 
    
+
+    //Shippo Label 
+    function getLabelToKpd(selectedRate){
+        const userInfo = {
+            "rate": selectedRate
+        };
+
+        const options = {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(userInfo)
+        };
+    
+        fetch(`${url}/shippo/get_label`, options)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .then((data) => {
+                // Update rates state
+                // setRates(prevRates => [...prevRates, ...data.rates]);
+                console.log(data)
+                setLabelUrl(data)
+                
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching rates. Please try again later.');
+            });
+    }
+
+
+
     return(
         <>
              {loading ? (
@@ -865,14 +905,15 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    {/* <div  className="row form-group justify-content-center mt-5">
+                    <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        <button className="btn btn-primary"></button>
-                        <button className="btn btn-primary"></button>
+                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
+                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
+                        Please Contact kpdlabs@kpdlabs.com for shipping label.
                         </div>
-                    </div> */}
+                    </div>
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">

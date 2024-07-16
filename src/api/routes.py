@@ -714,8 +714,8 @@ def get_rates():
         zip="33844",
         country="US",
         email="kpdlabs@kpdlabs.com",
-        phone="8634382109"
-        
+        phone="8634382109",
+        test="true"
     )
 
     address_to = components.AddressCreateRequest(
@@ -728,11 +728,11 @@ def get_rates():
     )
 
     parcel = components.ParcelCreateRequest(
-        length="5",
-        width="5",
-        height="5",
+        length="6",
+        width="4",
+        height="4",
         distance_unit=components.DistanceUnitEnum.IN,
-        weight="2",
+        weight="1",
         mass_unit=components.WeightUnitEnum.LB
     )
 
@@ -747,6 +747,74 @@ def get_rates():
 
     # Return Shippo's response as JSON to the frontend
     return jsonify(shipment)
+
+
+@api.route('/shippo/get_rates/<int:id>', methods=['POST'])
+@jwt_required()
+def get_rates_to_kpd(id):
+
+    user_info = User.query.filter_by(id=id).first()
+
+    address_string = user_info.address
+
+    # Split the address string by commas
+    parts = address_string.split(',')
+
+    # Trim any leading or trailing whitespace from each part
+    parts = [part.strip() for part in parts]
+
+    # Assign each part to a separate variable
+    street_address = parts[0]
+    city = parts[1]
+    state = parts[2]
+    zip_code = parts[3]
+    
+
+    # Assuming shippo.Shippo() returns the SDK instance
+    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+
+    address_from = components.AddressCreateRequest(
+        name= f"{user_info.lname}, {user_info.fname}" ,
+        street1= street_address,
+        city= city,
+        state= state,
+        zip= zip_code,
+        country="US",
+        email= user_info.email,
+        # phone="8634382109",
+        test="true"
+    )
+
+    address_to = components.AddressCreateRequest(
+        name="KPD Labs",
+        street1="3393 Us Highway 17 92 W",
+        city="Haines City",
+        state="FL",
+        zip="33844",
+        country="US",
+    )
+
+    parcel = components.ParcelCreateRequest(
+        length="6",
+        width="4",
+        height="4",
+        distance_unit=components.DistanceUnitEnum.IN,
+        weight="1",
+        mass_unit=components.WeightUnitEnum.LB
+    )
+
+    shipment = shippo_sdk.shipments.create(
+        components.ShipmentCreateRequest(
+            address_from=address_from,
+            address_to=address_to,
+            parcels=[parcel],
+            async_=False
+        )
+    )
+
+    # Return Shippo's response as JSON to the frontend
+    return jsonify(shipment)
+
 
 @api.route('/shippo/get_label', methods=['POST'])
 @jwt_required()

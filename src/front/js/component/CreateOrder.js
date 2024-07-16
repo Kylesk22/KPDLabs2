@@ -865,10 +865,39 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Shipping</h5></label>
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Standard"
+                            checked={shipping === 'Standard'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Standard 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Express"
+                            checked={shipping === 'Express'}
+                            onChange={(e)=>{setShipping(e.target.value)}}
+                        />
+                         Express 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Express Shipping $35 Fee</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping from KPD</h5></label>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input

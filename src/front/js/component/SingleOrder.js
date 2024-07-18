@@ -309,7 +309,7 @@ export const SingleOrder = props => {
            
                 </div>
             </div>
-            <div>
+            <div style={{textAlign: "center"}}>
                 <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${price} *Not including Rush Production and/or Shipping</strong></small>
             </div>
             {/* <div className="row form-group justify-content-center mt-5">

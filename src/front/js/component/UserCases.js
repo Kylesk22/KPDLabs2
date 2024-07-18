@@ -17,6 +17,47 @@ export const UserCases = props => {
     const [singlePage, setSinglePage] = useState(props.page)
     // const [singleCaseId, setSingleCaseID] = useState("")
 
+    const sortedCases = cases.sort((a, b) => {
+        // Perform sorting based on the selected column and sort order
+        
+
+        
+        
+        if (sortBy && sortBy !== "user id") {
+          const valA = typeof a[sortBy] === 'string' ? a[sortBy].toLowerCase() : a[sortBy];
+          const valB = typeof b[sortBy] === 'string' ? b[sortBy].toLowerCase() : b[sortBy];
+    
+          if (valA < valB) {
+            return sortOrder === 'asc' ? -1 : 1;
+          }
+          if (valA > valB) {
+            return sortOrder === 'asc' ? 1 : -1;
+          }
+          return 0;
+        } 
+        if (sortBy === "user id") {
+            
+          
+            const valA = users[a[sortBy]]? users[a[sortBy]].toLowerCase() : users[a[sortBy]]
+            const valB = users[b[sortBy]]? users[b[sortBy]].toLowerCase() : users[b[sortBy]]
+            if (valA < valB) {
+                return sortOrder === 'asc' ? -1 : 1;
+              }
+              if (valA > valB) {
+                return sortOrder === 'asc' ? 1 : -1;
+              }
+              return 0;
+            } 
+            
+          
+        
+        else {
+          // If no column is selected for sorting, maintain the original order
+          return 0;
+        }
+      
+    });
+
     useEffect(()=>{
         
         props.handleGetPage(singlePage);
@@ -71,7 +112,8 @@ export const UserCases = props => {
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
                 
-                {cases.slice().reverse().map((item, index) => {
+                {/* {cases.slice().reverse().map((item, index) => { */}
+                {sortedCases.map((item, index) => {
                         return (
                             <div key={index} className="row" onClick={()=>{setSinglePage("singleCase"), props.setSingleCaseID(item["id"])}}>
                                 {(index <= pageMax && index >= pageMin)?

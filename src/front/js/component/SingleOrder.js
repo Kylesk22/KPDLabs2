@@ -266,22 +266,22 @@ export const SingleOrder = props => {
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Select Product</h5></label>
-                    <select className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Product" value = {product}>
+                    <input className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Product" value = {product}>
    
                         {/* <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
                         <option value="PMMA Temporary" onClick={()=>setProduct("PMMA Temporary")}>PMMA Temporary</option> */}
-                    </select>
+                    </input>
                 </div>
             </div>
             
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
-                    <select className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+                    <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
                         
                         {/* <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
                         <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option> */}
-                    </select>
+                    </input>
                 </div>
             </div>
             {/* <div className="row form-group justify-content-center mt-5">

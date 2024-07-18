@@ -309,6 +309,7 @@ export const SingleOrder = props => {
            
                 </div>
             </div>
+            <br></br>
             <div style={{textAlign: "center"}}>
                 <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${price} *Not including Rush Production and/or Shipping</strong></small>
             </div>

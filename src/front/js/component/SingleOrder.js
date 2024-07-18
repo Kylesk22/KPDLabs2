@@ -11,6 +11,7 @@ export const SingleOrder = props => {
     const [toothInput, setToothInput] = useState("")
     const [toothInput2, setToothInput2] = useState("")
     const [patientName, setPatientName] = useState("")
+    const [price, setPrice] = useState("")
     const [stlFile, setStlFile] = useState([])
     const [fileName, setFileName] = useState([])
     const [photos, setPhotos] = useState([])
@@ -110,6 +111,7 @@ export const SingleOrder = props => {
                     console.log(data)
                     setPatientName(data.name);
                     setCaseNum(data.id);
+                    setPrice(data.price);
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -307,7 +309,9 @@ export const SingleOrder = props => {
            
                 </div>
             </div>
-           
+            <div>
+                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${price} *Not including Rush Production and/or Shipping</strong></small>
+            </div>
             {/* <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>

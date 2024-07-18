@@ -482,6 +482,7 @@ export const AdminSingleCase = props => {
                 .then((body)=>{alert(body.message)})
                 
                 })
+                .then(()=> window.location.href = `/admin/${data.id}`)
         
             .catch((err)=> {
                 console.log(err);

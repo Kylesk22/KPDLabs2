@@ -56,7 +56,7 @@ export const UserCases = props => {
     })
     },[])
 
-    
+    useEffect(()=>console.log(cases))
         
         return (
         <div className="container">

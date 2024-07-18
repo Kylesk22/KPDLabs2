@@ -17,6 +17,63 @@ export const UserCases = props => {
     const [singlePage, setSinglePage] = useState(props.page)
     // const [singleCaseId, setSingleCaseID] = useState("")
 
+    const [sortBy, setSortBy] = useState("id");
+    const [sortOrder, setSortOrder] = useState('desc');
+
+    const handleSort = (columnName) => {
+        if (sortBy === columnName) {
+        // If already sorting by this column, toggle the sort order
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+        // If sorting by a new column, set the column and default to ascending order
+        setSortBy(columnName);
+        setSortOrder('asc');
+        }
+    };
+
+
+    const statusFilter = (val) => {
+        let filteredCases = new Map();
+
+        originalCases.forEach(item => {
+            if (item.status && item.status.toLowerCase().includes(val.toLowerCase())) {
+                filteredCases.set(item.id, item);
+            }
+        })
+        filteredCases = Array.from(filteredCases.values());
+        setCases(filteredCases)
+        return filteredCases;
+    }
+    const filterCases = (val) => {
+        let filteredCases = new Map();
+      
+        // Filter by name
+        originalCases.forEach(item => {
+          if (item.name && item.name.toLowerCase().includes(val.toLowerCase())) {
+            filteredCases.set(item.id, item);
+          }
+        });
+      
+        // Filter by id
+        originalCases.forEach(item => {
+          if (item.id && item.id.toString().includes(val)) {
+            filteredCases.set(item.id, item);
+          }
+        });
+      
+        // Filter by user id
+        originalCases.forEach(item => {
+          if (item["user id"] && users[item["user id"]].toLowerCase().includes(val.toLowerCase())) {
+            filteredCases.set(item.id, item);
+          }
+        });
+      
+        // Convert Map values back to an array
+        filteredCases = Array.from(filteredCases.values());
+        setCases(filteredCases)
+        return filteredCases;
+      };
+
     const sortedCases = cases.sort((a, b) => {
         // Perform sorting based on the selected column and sort order
         

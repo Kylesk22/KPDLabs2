@@ -479,10 +479,13 @@ export const AdminSingleCase = props => {
                         
                     })}
                 return(res.json())
-                .then((body)=>{alert(body.message)})
+                .then((body)=>{
+                    alert(body.message)
+                    window.location.href = `/admin/${data.id}`
+                })
                 
                 })
-                .then(()=> window.location.href = `/admin/${data.id}`)
+              
         
             .catch((err)=> {
                 console.log(err);

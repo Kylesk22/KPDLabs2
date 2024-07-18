@@ -66,6 +66,7 @@ export const UserCases = props => {
                     <div className = "col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}   onClick={()=>{console.log(cases)}} ><strong>Case #</strong></div>
                     <div className = "col-md-5 col-6 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
                     <div className = "col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Status</strong></div>
+                    <div className = "col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Submitted</strong></div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
@@ -80,6 +81,7 @@ export const UserCases = props => {
                                     <div className = "col-md-2 col-3  text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}} >{item["id"]}</div>
                                     <div className = "col-md-5 col-6 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}>{item["name"]}</div>
                                     <div className = "col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}>{item["status"]}</div>
+                                    <div className = "col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}>{item["update_date"]}</div>
                                 </>
                                 :""}    
                                 </>

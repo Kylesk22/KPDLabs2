@@ -528,7 +528,7 @@ def new_case(id):
             update_case.production = production
             update_case.reference_id = reference_id
         
-            update_case.update_date = update_date
+            # update_case.update_date = update_date
             db.session.commit()
 
             return jsonify({"msg": "Updated"}), 200 

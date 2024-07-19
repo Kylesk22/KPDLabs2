@@ -95,32 +95,32 @@ return(
         At KPD Labs, we are committed to advancing dental restoration technology with materials that excel in both aesthetics and functionality. Our Super High Translucent Zirconia finished with MiYO Liquid Ceramics offers unparalleled benefits for anterior and posterior restorations, setting a new standard in dental care.
         <br></br>
         <br></br>
-<strong>Enhanced Aesthetics</strong>
+<h4>Enhanced Aesthetics</h4>
         <br></br>
 Super High Translucent Zirconia from KPD Labs mimics the natural translucency of teeth, providing a lifelike appearance that is essential for anterior restorations. When finished with MiYO Liquid Ceramics, these crowns achieve an even higher level of aesthetic appeal. MiYO Liquid Ceramics enhance the color depth and surface texture, resulting in restorations that blend seamlessly with natural dentition.
         <br></br>
         <br></br>
-<strong>Superior Strength and Durability</strong>
+<h4>Superior Strength and Durability</h4>
 <br></br>
 While aesthetics are crucial, strength cannot be compromised, especially for posterior restorations. Our zirconia crowns are engineered to withstand the forces of chewing, ensuring long-lasting durability. This makes them ideal for both anterior and posterior applications, providing a robust solution without sacrificing appearance.
 <br></br>
 <br></br>
-<strong>Optimal Functionality</strong>
+<h4>Optimal Functionality</h4>
 <br></br>
 The combination of Super High Translucent Zirconia and MiYO Liquid Ceramics at KPD Labs ensures that our restorations are not only beautiful but also functional. The smooth surface finish reduces plaque buildup, promoting better oral hygiene and reducing the risk of periodontal issues.
 <br></br>
 <br></br>
-<strong>Biocompatibility and Patient Comfort</strong>
+<h4>Biocompatibility and Patient Comfort</h4>
 <br></br>
 Biocompatibility is a key consideration in dental restorations. Our zirconia crowns are designed to be gentle on the surrounding tissues, reducing the risk of irritation or allergic reactions. This enhances patient comfort and contributes to overall oral health.
 <br></br>
 <br></br>
-<strong>Versatility in Application</strong>
+<h4>Versatility in Application</h4>
 <br></br>
 The versatility of Super High Translucent Zirconia finished with MiYO Liquid Ceramics makes it suitable for a wide range of applications. Whether for anterior or posterior restorations, these crowns provide consistent results that meet both aesthetic and functional demands.
 <br></br>
 <br></br>
-<strong>Conclusion</strong>
+<h4>Conclusion</h4>
 <br></br>
 KPD Labs is proud to offer Super High Translucent Zirconia finished with MiYO Liquid Ceramics, a solution that combines stunning aesthetics with exceptional functionality. Ideal for both anterior and posterior restorations, these crowns support a natural appearance while ensuring durability and patient comfort. Trust KPD Labs for advanced dental solutions that prioritize excellence in every aspect.
 

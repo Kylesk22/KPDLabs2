@@ -25,6 +25,7 @@ import{Partial} from "./pages/Partial";
 import{Denture} from "./pages/Denture";
 import {Blogs} from "./pages/Blogs";
 import {Blog1} from "./pages/Blog1";
+import {Blog2} from "./pages/Blog2";
 import {Terms} from "./pages/Terms";
 
 
@@ -76,6 +77,7 @@ const Layout = () => {
                         <Route element={<AdminSingleCase /> } path = "/admin/:user_id/:case_id"/>
                         <Route element={<Blogs /> } path = "/blogs"/>
                         <Route element={<Blog1 />  } path = "/blogs/blog1"/>
+                        <Route element={<Blog2 />  } path = "/blogs/blog2"/>
                         <Route element={<Terms /> } path = "/terms"/>
                         
                         

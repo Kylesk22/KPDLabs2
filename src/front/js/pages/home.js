@@ -950,7 +950,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </ul>
 		</div>
 	  </div>
-	  <div className="image-column col-lg-6" style={{backgroundImage: `url(${Layer11})`, paddingRight: "5px"}} >
+	  <div className="image-column col-lg-6" style={{backgroundImage: `url(${Layer11})`, paddingRight: "20px"}} >
 		{/* <img src={Layer11}></img> */}
 		<div className="inner-column" style={{paddingTop: "20px"}}>
 		  <div className="image-box text-center">

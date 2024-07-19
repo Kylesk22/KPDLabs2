@@ -128,7 +128,7 @@ return(
               
             </div> */}
             <div className="">
-              <h4 className="blog-text" style={{color: "black"}}><a>The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
+              <h4 className="blog-text" style={{color: "black"}}><a href="/blogs/blog3">The Increased Dimensional Accuracy of Milled PMMA Dentures Compared to Resin 3D Printed and Conventional Processed Acrylic Dentures
 </a></h4>
               <span className="blog-date" style={{color: "black"}}>6/5/2024</span>
             </div>

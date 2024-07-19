@@ -75,7 +75,7 @@ const Layout = () => {
                         <Route element={<AdminPage /> } path = "/admin/:user_id"/>
                         <Route element={<AdminSingleCase /> } path = "/admin/:user_id/:case_id"/>
                         <Route element={<Blogs /> } path = "/blogs"/>
-                        <Route element={<Blog1 /> } path = "/blogs/blog1"/>
+                        <Route element={<Blog1 />  } path = "/blogs/blog1"/>
                         <Route element={<Terms /> } path = "/terms"/>
                         
                         

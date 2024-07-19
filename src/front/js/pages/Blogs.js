@@ -100,7 +100,7 @@ return(
               
             </div> */}
             <div className="">
-              <h4 className="blog-text" style={{color: "black"}}><a href="">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
+              <h4 className="blog-text" style={{color: "black"}}><a href="/blogs/blog1">The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
 </a></h4>
               <span className="blog-date" style={{color: "black"}}>6/28/2024</span>
             </div>

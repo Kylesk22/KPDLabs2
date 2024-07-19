@@ -2790,7 +2790,7 @@ AWS.config.update({
     </div>
 </div>
 
-<div className="row form-group text-center justify-content-center mt-5">
+{/* <div className="row form-group text-center justify-content-center mt-5">
     <div className= "col-8 col-lg-4">
         <label  htmlFor="finish"><h5>Finish</h5></label>
         <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
@@ -2812,7 +2812,7 @@ AWS.config.update({
                     }
                        </strong> </small>
     </div>
-</div>
+</div> */}
 
 <div className="row form-group justify-content-center mt-5">
     <div className="text-center col-8 col-lg-4 pt-3">

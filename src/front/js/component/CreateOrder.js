@@ -2383,7 +2383,7 @@ AWS.config.update({
         <label  htmlFor="product"><h5>Product</h5></label>
         <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
             <option value="Select One">Select One</option>
-            <option value="Custom Tray" onClick={()=>setProduct("Copy Denture")}>Copy Denture</option>
+            <option value="Copy Denture" onClick={()=>setProduct("Copy Denture")}>Copy Denture</option>
 
         </select>
         <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>

@@ -24,7 +24,7 @@ import{Veneer} from "./pages/Veneer";
 import{Partial} from "./pages/Partial";
 import{Denture} from "./pages/Denture";
 import {Blogs} from "./pages/Blogs";
-import {Blogs} from "./pages/Blog1";
+import {Blog1} from "./pages/Blog1";
 import {Terms} from "./pages/Terms";
 
 

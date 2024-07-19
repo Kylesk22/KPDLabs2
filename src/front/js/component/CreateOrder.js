@@ -1798,7 +1798,55 @@ AWS.config.update({
 
             :
             (type==="denture")?
+
+            <div className="col-8 create-order-type" style={{margin:"auto", paddingLeft:"100px"}}>
+                <div className="row "> 
+                {/* <!-- service-block-two --> */}
+                <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div className="inner-box" onClick={()=>setType("newDenture")}>
+                        <div className="image-box" >
+                        <figure className="image overlay-animr">
+                            
+                                <img src={Denture} alt="" className="product-pic" />
+                            
+                        </figure>
+                        {/* <i className="flaticon-clock-1"></i> */}
+                        </div>
+                        <div className="content-box">
+                        <h4 className="title"><a >New Denture</a></h4>                 
+                        </div>
+                    </div>
+                </div>
+                {/* <!-- service-block-two --> */}
+                <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+                <div className="inner-box" onClick={()=>setType("dentureRepair")}>
+                    <div className="image-box">
+                    <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
+                    {/* <i className="flaticon-monitor-1"></i> */}
+                    </div>
+                    <div className="content-box">
+                    <h4 className="title"><a >Denture Repair</a></h4>
+                    </div>
+                </div>
+                </div>
+                {/* <!-- service-block-two --> */}
+                <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                <div className="inner-box" onClick={()=>setType("copyDenture")}>
+                    <div className="image-box">
+                    <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
+                    {/* <i className="flaticon-cog-1"></i> */}
+                    </div>
+                    <div className="content-box">
+                    <h4 className="title"><a >Copy Denture</a></h4>
+                    </div>
+                </div>
+                </div>
+               
+            </div>
+            </div>
             
+            :
+            (type==="newDenture" || type==="copyDenture" || type ==="dentureRepair")?
             <form className="form form-container" data-toggle="validator" role="form" onSubmit={(e)=>{e.preventDefault(); uploadCase()}}>
             <div className="row form-group justify-content-center">
                 <div className="text-center col-4">

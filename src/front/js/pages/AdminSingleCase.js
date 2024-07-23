@@ -768,7 +768,7 @@ export const AdminSingleCase = props => {
                     </div>
                 </div>
                 {(gumShade)?
-                <div>
+                <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
                     <label  htmlFor="gum shade"><h5>Gum Shade</h5></label>
                         <input className="form-select" id="gum shade"  style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">

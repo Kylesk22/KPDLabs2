@@ -19,6 +19,7 @@ export const SingleOrder = props => {
     const [caseNum, setCaseNum ] = useState(props.caseId)
     const [product, setProduct] = useState("")
     const [finish, setFinish] = useState("")
+    const [type, setType] = useState("")
     const [page, setPage] = useState(props.page)
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
@@ -114,6 +115,7 @@ export const SingleOrder = props => {
                     setPrice(data.price);
                     setProduct(data.product);
                     setFinish(data.finish);
+                    setType(data.type);
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -276,7 +278,11 @@ export const SingleOrder = props => {
             
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
+                    {(type === "implantHybridDenture")?
+                    <label  htmlFor="finish"><h5>MUA Connection</h5></label>
+                    :
                     <label  htmlFor="finish"><h5>Finish</h5></label>
+                    }
                     <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
                         
                         {/* <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>

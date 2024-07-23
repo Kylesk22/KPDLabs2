@@ -511,9 +511,9 @@ export const SingleOrder = props => {
                     <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>
                 </div>
             </div> */}
-
-            <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
-            
+            <div style={{textAlign: "center"}}>
+             <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
+             </div>
         
         </form>
             

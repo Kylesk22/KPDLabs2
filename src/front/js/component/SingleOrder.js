@@ -192,9 +192,9 @@ export const SingleOrder = props => {
                     setProduct(data.product);
                     setFinish(data.finish);
                     setType(data.type);
-                    setNote(patientData.notes);
-                    setShade(patientData.shade);
-                    setGumShade(patientData["gum shade"]);
+                    setNote(data.notes);
+                    setShade(data.shade);
+                    setGumShade(data["gum shade"]);
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);

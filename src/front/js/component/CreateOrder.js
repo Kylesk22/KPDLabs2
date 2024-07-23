@@ -452,7 +452,7 @@ AWS.config.update({
                         </figure>
                         {/* <i className="flaticon-clock-1"></i> */}
                         </div>
-                        <div className="content-box">
+                        <div className="content-box text-center">
                         <h4 className="title"><a >Crown and Bridge</a></h4>                 
                         </div>
                     </div>
@@ -464,7 +464,7 @@ AWS.config.update({
                     <figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
                     {/* <i className="flaticon-monitor-1"></i> */}
                     </div>
-                    <div className="content-box">
+                    <div className="content-box text-center">
                     <h4 className="title"><a >Veneer</a></h4>
                     </div>
                 </div>
@@ -476,7 +476,7 @@ AWS.config.update({
                     <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
                     {/* <i className="flaticon-cog-1"></i> */}
                     </div>
-                    <div className="content-box">
+                    <div className="content-box text-center">
                     <h4 className="title"><a >Partial</a></h4>
                     </div>
                 </div>
@@ -498,7 +498,7 @@ AWS.config.update({
                     <figure className="image overlay-anim"><img src={Implant} alt="" className="product-pic" /></figure>
                     
                     </div>
-                    <div className="content-box">
+                    <div className="content-box text-center">
                     <h4 className="title"><a >Implant</a></h4>
                     </div>
                 </div>

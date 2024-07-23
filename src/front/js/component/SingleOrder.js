@@ -26,6 +26,7 @@ export const SingleOrder = props => {
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
+    const [loading, setLoading] = useState(false);
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -232,6 +233,19 @@ export const SingleOrder = props => {
     
     
     return(
+        <>
+        {loading ? (
+                <div className="row justify-content-center">
+                    <div className="mx auto mt-4 text-center justify-content-center col-6 sm-col-4">
+                        <h3>
+                            Please Wait While We Send Your Case
+                        </h3>
+                        <div className="spinner text-center mx-auto">
+                            
+                        </div>
+                    </div>
+                </div>
+        ) :
         <>
         <form className="form form-container" data-toggle="validator" role="form">
             <div className="row mt-4"> 
@@ -519,6 +533,7 @@ export const SingleOrder = props => {
         
         </form>
             
+        </>}
         </>
     )
 }

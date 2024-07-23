@@ -90,6 +90,80 @@ export const SingleOrder = props => {
             });
     }
     
+    const uploadObject = async () => {
+        try {
+            console.log(stlFile.length);
+            const uploadedFiles = [];
+    
+            for (let i = 0; i < stlFile.length; i++) {
+                const params = {
+                    Bucket: "case-scans",
+                    Key: `${caseNum}/${stlFile[i].name}`,
+                    Body: stlFile[i],
+                    ACL: "private",
+                    Metadata: {
+                        "x-amz-meta-my-key": `${caseNum}`
+                    },
+                    ContentType: "text/plain"
+                };
+    
+                
+    
+                const data = await s3Client.send(new PutObjectCommand(params));
+                console.log("Successfully uploaded object: " + params.Bucket + "/" + params.Key);
+                uploadedFiles.push(data);
+            }
+    
+            return uploadedFiles;
+        } catch (err) {
+            console.log("Error", err);
+            return [];
+        }
+    };
+    
+    const uploadPictures = async () => {
+        try {
+            console.log(photos.length);
+            const uploadedPhotos = [];
+    
+            for (let i = 0; i < photos.length; i++) {
+                const params = {
+                    Bucket: "case-scans",
+                    Key: `${caseNum}/${photos[i].name}`,
+                    Body: photos[i],
+                    ACL: "private",
+                    Metadata: {
+                        "x-amz-meta-my-key": `${caseNum}`
+                    },
+                    ContentType: "text/plain"
+                };
+    
+                
+    
+                const data = await s3Client.send(new PutObjectCommand(params));
+                console.log("Successfully uploaded photo: " + params.Bucket + "/" + params.Key);
+                uploadedPhotos.push(data);
+            }
+    
+            return uploadedPhotos;
+        } catch (err) {
+            console.log("Error", err);
+            return [];
+        }
+    };
+
+    const uploadCase = async () => {
+
+        setLoading(true);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });
+        await uploadObject();
+        await uploadPictures();
+        setLoading(false);
+        alert("Photos/Scans Uploaded")
+    }
 
     useEffect(()=>{
 
@@ -289,7 +363,7 @@ export const SingleOrder = props => {
                     </div>
                 </div>
                 :""}
-                
+
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Product</h5></label>
@@ -342,6 +416,92 @@ export const SingleOrder = props => {
            
                 </div>
             </div>
+            <div className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4 pt-3">
+                        <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>
+                        <br></br>
+                        {/* <input className="form-control" required id="scanUpload" type="file" multiple style={{borderRadius: "1rem", minHeight:"40px"}}  value={fileName} onChange={(e)=>{[...fileName, setFileName(e.target.value)]; setStlFile([...stlFile, e.target.files[0]]); console.log(stlFile)}}></input> */}
+                        <input 
+                            className="form-control" 
+                            
+                            id="picUpload" 
+                            type="file" 
+                            multiple 
+                            style={{ display: 'none' }} // Hide the file input
+                            onChange={(e) => {
+                                const pics = e.target.files; // Get all selected files
+                                const newPics = [...photos]; // Copy the current files in state
+                                const newPicName = [...photoName];
+
+                                // Loop through each selected file and add it to the new arrays
+                                for (let i = 0; i < pics.length; i++) {
+                                    newPics.push(pics[i]);
+                                    newPicName.push(pics[i].name);
+                                }
+
+                                // Update state with the new arrays of files and file names
+                                setPhotos(newPics);
+                                setPhotoName(newPicName);
+                            }}
+                        />
+                        <button 
+                            className="btn btn-primary"
+                            onClick={(e) => {e.preventDefault(); document.getElementById('picUpload').click()}} // Trigger file input click
+                        >
+                            Select Files
+                        </button>
+                        
+                        <div style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
+                            {photoName.join(', ')} {/* Display selected file names */}
+                        </div>
+                        </div>
+                        {/* <div className="text-center col-8 col-lg-4 pt-3">
+                        
+                        </div> */}
+                    </div>
+                    <div className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4 pt-3">
+                        <label  htmlFor="scanUpload"><h5>Upload Scans</h5></label>
+                        <br></br>
+                        {/* <input className="form-control" required id="scanUpload" type="file" multiple style={{borderRadius: "1rem", minHeight:"40px"}}  value={fileName} onChange={(e)=>{[...fileName, setFileName(e.target.value)]; setStlFile([...stlFile, e.target.files[0]]); console.log(stlFile)}}></input> */}
+                        <input 
+                            className="form-control" 
+                            
+                            id="scanUpload" 
+                            type="file" 
+                            multiple 
+                            style={{ display: 'none' }} // Hide the file input
+                            onChange={(e) => {
+                                const files = e.target.files; // Get all selected files
+                                const newFiles = [...stlFile]; // Copy the current files in state
+                                const newFileName = [...fileName];
+
+                                // Loop through each selected file and add it to the new arrays
+                                for (let i = 0; i < files.length; i++) {
+                                    newFiles.push(files[i]);
+                                    newFileName.push(files[i].name);
+                                }
+
+                                // Update state with the new arrays of files and file names
+                                setStlFile(newFiles);
+                                setFileName(newFileName);
+                            }}
+                        />
+                        <button 
+                            className="btn btn-primary"
+                            onClick={(e) =>{ e.preventDefault(); document.getElementById('scanUpload').click()}} // Trigger file input click
+                        >
+                            Select Files
+                        </button>
+                        
+                        <div style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
+                            {fileName.join(', ')} {/* Display selected file names */}
+                        </div>
+                        </div>
+                        {/* <div className="text-center col-8 col-lg-4 pt-3">
+                        
+                        </div> */}
+                    </div>
             <br></br>
             <div style={{textAlign: "center"}}>
                 <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${price} *Not including Rush Production and/or Shipping</strong></small>
@@ -351,6 +511,8 @@ export const SingleOrder = props => {
                     <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>
                 </div>
             </div> */}
+
+            <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
             
         
         </form>

@@ -9,6 +9,7 @@ import Zirc from "../../img/Crown.png"
 import ZircV from "../../img/Veneer.png"
 import Partial from "../../img/TCS Unbreakable Partial Denture.png"
 import Denture from "../../img/Denture.png"
+import Implant from "../../img/Implant.png"
 
 import "../../styles/createOrder.css"
 
@@ -488,6 +489,17 @@ AWS.config.update({
                     </div>
                     <div className="content-box">
                     <h4 className="title"><a >Denture</a></h4>
+                    </div>
+                </div>
+                </div>
+                <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                <div className="inner-box" onClick={()=>setType("implant")}>
+                    <div className="image-box">
+                    <figure className="image overlay-anim"><img src={Implant} alt="" className="product-pic" /></figure>
+                    {/* <i className="flaticon-cog-1"></i> */}
+                    </div>
+                    <div className="content-box">
+                    <h4 className="title"><a >Implant</a></h4>
                     </div>
                 </div>
                 </div>

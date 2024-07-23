@@ -788,13 +788,19 @@ export const AdminSingleCase = props => {
                 </div>
                 
                 <div className="row form-group text-center justify-content-center mt-5">
-                    <div className= "col-8 col-lg-4">
-                        <label  htmlFor="finish"><h5>Finish</h5></label>
-                        <input className="form-select" id="finish"   style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
-
-                        </input>
-                    </div>
+                <div className= "col-8 col-lg-4">
+                    {(type === "implantHybridDenture")?
+                    <label  htmlFor="finish"><h5>MUA Connection</h5></label>
+                    :
+                    <label  htmlFor="finish"><h5>Finish</h5></label>
+                    }
+                    <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+                        
+                        {/* <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
+                        <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option> */}
+                    </input>
                 </div>
+            </div>
                 {/* <div className="row form-group justify-content-center mt-5">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <label  htmlFor="photoUpload"><h5>Upload Photos</h5></label>

@@ -278,6 +278,20 @@ export const SingleOrder = props => {
                 <input className="form-control" required id="patientName" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={patientName} onChange={(e)=>setPatientName(e.target.value)}></input>
                 </div>
             </div>
+            <div className="row form-group justify-content-center">
+                <div className="text-center col-4 pt-3">
+                <label  htmlFor="productType"><h5>Product Type</h5></label>
+                <input className="form-control" required id="productType" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={
+                    (type === "crown")? 'Crown and Bridge':
+                    (type === "veneer")?'Veneer':
+                    (type === "partial")? 'Partial':
+                    (type === "newDenture")? 'Denture':
+                    (type === "copyDenture")? 'Copy Denture':
+                    (type === "dentureRepair")? 'Denture Repair':
+                    (type === "implantHybridDenture")? 'Implant Hybrid Denture':""}
+                     ></input>
+                </div>
+            </div>
             <div className="d-flex row pt-4 justify-content-center" >
                 <div className="col-4 form-group text-center pb-4 ">
                     <label  htmlFor="toothInput"><h5>Selected Teeth</h5></label>

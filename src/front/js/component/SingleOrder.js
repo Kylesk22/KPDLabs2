@@ -90,6 +90,16 @@ export const SingleOrder = props => {
                 console.error('Error downloading STL:', error);
             });
     }
+
+    const s3Client = new S3Client({
+        endpoint: "https://nyc3.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
+        forcePathStyle: false, // Configures to use subdomain/virtual calling format.
+        region: "nyc3", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (for example, nyc3).
+        credentials: {
+            accessKeyId: process.env.SPACES_KEY, // Access key pair. You can create access key pairs using the control panel or API.
+            secretAccessKey: process.env.SPACES_SECRET_KEY // Secret access key defined through an environment variable.
+        }
+    });
     
     const uploadObject = async () => {
         try {

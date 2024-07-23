@@ -502,6 +502,10 @@ export const SingleOrder = props => {
                         
                         </div> */}
                     </div>
+                    <br></br>
+                    <div style={{textAlign: "center"}}>
+                        <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
+                    </div>
             <br></br>
             <div style={{textAlign: "center"}}>
                 <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${price} *Not including Rush Production and/or Shipping</strong></small>
@@ -511,9 +515,7 @@ export const SingleOrder = props => {
                     <button className="btn btn-primary" type = "submit"  onClick={()=>uploadCase()}>Upload</button>
                 </div>
             </div> */}
-            <div style={{textAlign: "center"}}>
-             <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
-             </div>
+            
         
         </form>
             

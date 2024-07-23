@@ -249,7 +249,7 @@ export const SingleOrder = props => {
                 <div className="row justify-content-center">
                     <div className="mx auto mt-4 text-center justify-content-center col-6 sm-col-4">
                         <h3>
-                            Please Wait While We Send Your Case
+                            Please Wait While We Add Your Additional Scans and Photos
                         </h3>
                         <div className="spinner text-center mx-auto">
                             

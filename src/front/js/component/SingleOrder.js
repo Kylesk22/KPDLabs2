@@ -20,6 +20,7 @@ export const SingleOrder = props => {
     const [product, setProduct] = useState("")
     const [finish, setFinish] = useState("")
     const [type, setType] = useState("")
+    const [shade, setShade] = useState("")
     const [page, setPage] = useState(props.page)
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
@@ -116,6 +117,8 @@ export const SingleOrder = props => {
                     setProduct(data.product);
                     setFinish(data.finish);
                     setType(data.type);
+                    setNote(patientData.notes);
+                    setShade(patientData.shade);
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -266,8 +269,16 @@ export const SingleOrder = props => {
             </div>
            
             <div className="row form-group text-center justify-content-center mt-5">
+                    <div className= "col-8 col-lg-4">
+                        <label  htmlFor="shade"><h5>Shade</h5></label>
+                        <input className="form-select" id="shade"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={shade} aria-label="Shade">
+
+                        </input>
+                    </div>
+             </div>
+            <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
-                    <label  htmlFor="product"><h5>Select Product</h5></label>
+                    <label  htmlFor="product"><h5>Product</h5></label>
                     <input className="form-select" id="product"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Product" value = {product}>
    
                         {/* <option value="Zirconia" onClick={()=>setProduct("Zirconia")}>Zirconia</option>
@@ -313,7 +324,7 @@ export const SingleOrder = props => {
             <div className="row form-group justify-content-center mt-3">
                 <div className="text-center col-8 col-lg-4 pt-3">
                 <label htmlFor="Notes" className="form-label" ><h5>Prescription Information</h5></label>
-                <textarea className="form-control" id="Notes" rows="3"  readOnly value={note} onChange={(e)=>setNote(e.target.value)}></textarea>
+                <textarea className="form-control" id="Notes" rows="3"  readOnly value={note} ></textarea>
            
                 </div>
             </div>

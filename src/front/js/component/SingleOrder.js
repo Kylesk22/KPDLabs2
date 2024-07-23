@@ -21,6 +21,7 @@ export const SingleOrder = props => {
     const [finish, setFinish] = useState("")
     const [type, setType] = useState("")
     const [shade, setShade] = useState("")
+    const [gumShade, setGumShade] = useState("")
     const [page, setPage] = useState(props.page)
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
@@ -119,6 +120,7 @@ export const SingleOrder = props => {
                     setType(data.type);
                     setNote(patientData.notes);
                     setShade(patientData.shade);
+                    setGumShade(patientData["gum shade"]);
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -276,6 +278,18 @@ export const SingleOrder = props => {
                         </input>
                     </div>
              </div>
+
+             {(gumShade)?
+                <div className="row form-group text-center justify-content-center mt-5">
+                    <div className= "col-8 col-lg-4">
+                    <label  htmlFor="gum shade"><h5>Gum Shade</h5></label>
+                        <input className="form-select" id="gum shade"  style={{borderRadius: "1rem", minHeight:"40px"}} value={gumShade} aria-label="Gum Shade">
+
+                    </input>
+                    </div>
+                </div>
+                :""}
+                
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Product</h5></label>

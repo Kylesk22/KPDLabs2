@@ -3231,7 +3231,7 @@ AWS.config.update({
                     <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="Direct to MUA" onClick={()=>setFinish("Direct to MUA")}>Direct to MUA</option>
-                        <option value="Dr Provides Copings" onClick={()=>setFinish("Dr Provides Copings")}>Dr Provides titanium Copings</option>
+                        <option value="Dr Provides Copings" onClick={()=>setFinish("Dr Provides Copings")}>Dr Provides Titanium Copings</option>
                     </select>
                     {/* <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(finish === "Standard")?

@@ -1386,7 +1386,7 @@ AWS.config.update({
                     {(labelUrl)?
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
-                        Label
+                        Open Label
                     </button>
                     </div>
                      :""   }

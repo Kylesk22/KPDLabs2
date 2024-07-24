@@ -31,6 +31,7 @@ eastern = timezone(timedelta(hours=-4))
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 db_url = os.getenv("DATABASE_URL")
+shippo_token = os.getenv("SHIPPO_TOKEN")
 
 jwt = JWTManager(app) 
 
@@ -676,7 +677,7 @@ def update_account(id):
 @jwt_required()
 def create_shippo_user():
     # Assuming shippo.Shippo() returns the SDK instance
-    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
 
     # Assuming addresses.create() returns Shippo's response
     shippo_response = shippo_sdk.addresses.create(
@@ -704,7 +705,7 @@ def get_rates():
     
 
     # Assuming shippo.Shippo() returns the SDK instance
-    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
 
     address_from = components.AddressCreateRequest(
         name="KPD Labs",
@@ -771,7 +772,7 @@ def get_rates_to_kpd(id):
     
 
     # Assuming shippo.Shippo() returns the SDK instance
-    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
 
     address_from = components.AddressCreateRequest(
         name= f"{user_info.lname}, {user_info.fname}" ,
@@ -823,7 +824,7 @@ def get_label():
     # Customize this based on your business logic.
     rates = request.json.get("rate", None)
     print(rates)
-    shippo_sdk = shippo.Shippo(api_key_header="shippo_test_c24938ad794dbdca99e449ae0bf74293c33c39f7")
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
 
     # Purchase the desired rate. 
     transaction = shippo_sdk.transactions.create(

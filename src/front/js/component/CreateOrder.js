@@ -385,9 +385,9 @@ AWS.config.update({
 
     //Shippo Label 
     function getLabelToKpd(selectedRate){
-        const userInfo = {
-            "rate": selectedRate
-        };
+        // const userInfo = {
+        //     "rate": selectedRate
+        // };
 
         const options = {
             method: "POST",
@@ -396,7 +396,7 @@ AWS.config.update({
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
-            body: JSON.stringify(userInfo)
+            // body: JSON.stringify(userInfo)
         };
     
         fetch(`${url}/shippo/get_label`, options)
@@ -1380,8 +1380,8 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
+                        <button className="btn btn-primary" onClick={()=> getLabelToKpd()}>Print Standard Shipping Label</button>
+                        {/* <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
                         Please Contact kpdlabs@kpdlabs.com for shipping label.
                         </div>
                     </div>

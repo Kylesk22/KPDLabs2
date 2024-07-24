@@ -32,6 +32,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 db_url = os.getenv("DATABASE_URL")
 shippo_token = os.getenv("SHIPPO_TOKEN")
+shippo_test = os.getenv("SHIPPO_TEST")
 
 jwt = JWTManager(app) 
 
@@ -772,7 +773,7 @@ def get_rates_to_kpd(id):
     
 
     # Assuming shippo.Shippo() returns the SDK instance
-    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_test)
 
     address_from = components.AddressCreateRequest(
         name= f"{user_info.lname}, {user_info.fname}" ,
@@ -783,7 +784,7 @@ def get_rates_to_kpd(id):
         country="US",
         email= user_info.email,
         # phone="8634382109",
-        test="true"
+        
     )
 
     address_to = components.AddressCreateRequest(
@@ -813,8 +814,16 @@ def get_rates_to_kpd(id):
         )
     )
 
+    transaction = shippo_sdk.transactions.create(
+    components.InstantTransactionCreateRequest(
+        shipment=shipment,
+        carrier_account="b741b99f95e841639b54272834bc478c",
+        servicelevel_token="usps_priority"
+    )
+    )
+
     # Return Shippo's response as JSON to the frontend
-    return jsonify(shipment)
+    return jsonify(transaction.label_url)
 
 
 @api.route('/shippo/get_label', methods=['POST'])

@@ -1382,8 +1382,16 @@ AWS.config.update({
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
                         <button className="btn btn-primary" onClick={()=> getLabelToKpd()}>Print Standard Shipping Label</button>
-                        {/* <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        <div className="row form-group justify-content-center mt-3">
+                    {(labelUrl)?
+                    <div className="text-center col-8 col-lg-4 pt-3">
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
+                        Label
+                    </button>
+                    </div>
+                     :""   }
+                </div>
+                       
                         </div>
                     </div>
 

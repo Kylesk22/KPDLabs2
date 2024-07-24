@@ -51,6 +51,7 @@ export const CreateOrder = props => {
     let id = sessionStorage.getItem("id");
     let stl_urls = []
     let photo_urls = []
+    const url = process.env.BACKEND_URL
 
     const pricePackage1 = {
         Zirconia : 60,

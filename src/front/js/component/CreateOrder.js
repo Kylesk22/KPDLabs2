@@ -400,7 +400,7 @@ AWS.config.update({
             // body: JSON.stringify(userInfo)
         };
     
-        fetch(`${url}/shippo/get_label`, options)
+        fetch(`shippo/get_rates/${id}`, options)
             .then((res) => {
                 if (res.ok) {
                     return res.json();

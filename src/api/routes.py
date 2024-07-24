@@ -773,7 +773,7 @@ def get_rates_to_kpd(id):
     
 
     # Assuming shippo.Shippo() returns the SDK instance
-    shippo_sdk = shippo.Shippo(api_key_header=shippo_test)
+    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
 
     address_from = components.AddressCreateRequest(
         name= f"{user_info.lname}, {user_info.fname}" ,

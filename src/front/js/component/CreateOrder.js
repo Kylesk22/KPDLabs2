@@ -423,6 +423,10 @@ AWS.config.update({
     }
 
 
+    useEffect(()=>{
+        window.open(labelUrl, '_blank')
+    }, labelUrl)
+
 
     return(
         <>
@@ -1384,13 +1388,13 @@ AWS.config.update({
                         <br></br>
                         <button className="btn btn-primary" onClick={()=> {e.preventDefault(); getLabelToKpd()}}>Print Standard Shipping Label</button>
                         <div className="row form-group justify-content-center mt-3">
-                    {(labelUrl)?
+                    {/* {(labelUrl)?
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
                         Open Label
                     </button>
                     </div>
-                     :""   }
+                     :""   } */}
                 </div>
                        
                         </div>

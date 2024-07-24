@@ -3449,7 +3449,7 @@ AWS.config.update({
                     </figure>
                     {/* <i className="flaticon-clock-1"></i> */}
                     </div>
-                    <div className="content-box">
+                    <div className="content-box text-center">
                     <h4 className="title"><a >Night Guard</a></h4>                 
                     </div>
                 </div>

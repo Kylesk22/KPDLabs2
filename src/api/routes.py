@@ -823,7 +823,7 @@ def get_rates_to_kpd(id):
     )
 
     # Return Shippo's response as JSON to the frontend
-    return jsonify(transaction.label_url)
+    return jsonify(transaction.label_url, transaction)
 
 
 @api.route('/shippo/get_label', methods=['POST'])

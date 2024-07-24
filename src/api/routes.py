@@ -783,7 +783,7 @@ def get_rates_to_kpd(id):
         zip= zip_code,
         country="US",
         email= user_info.email,
-        # phone="8634382109",
+        phone="8634382109",
         
     )
 

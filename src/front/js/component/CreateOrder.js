@@ -44,6 +44,7 @@ export const CreateOrder = props => {
     const [shipping, setShipping] = useState("Standard")
     const [production, setProduction] = useState("Standard")
     const [loading, setLoading] = useState(false);
+    const [labelUrl, setLabelUrl] = useState("");
     let price = 0;
     let price2 = 0;
     let total = price + price2

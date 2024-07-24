@@ -817,7 +817,7 @@ def get_rates_to_kpd(id):
     transaction = shippo_sdk.transactions.create(
     components.InstantTransactionCreateRequest(
         shipment=shipment,
-        # carrier_account="b741b99f95e841639b54272834bc478c",
+        carrier_account="b741b99f95e841639b54272834bc478c",
         servicelevel_token="usps_priority"
     )
     )

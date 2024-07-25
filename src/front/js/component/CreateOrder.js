@@ -45,7 +45,7 @@ export const CreateOrder = props => {
     const [production, setProduction] = useState("Standard")
     const [loading, setLoading] = useState(false);
     const [labelUrl, setLabelUrl] = useState("");
-    const [waiting, setWaiting] = useState("")
+    const [waiting, setWaiting] = useState(false)
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -327,7 +327,7 @@ AWS.config.update({
 
       
 
-    useEffect(()=>{console.log(stlFile)})
+    // useEffect(()=>{console.log(stlFile)})
 
     // useEffect(()=> console.log(crownTooth),[crownTooth])
     // useEffect(()=> {

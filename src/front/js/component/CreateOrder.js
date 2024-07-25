@@ -1412,7 +1412,10 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true)}}>Print Standard Shipping Label</button>
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
                         <div className="row form-group justify-content-center mt-3">
                     {/* {(labelUrl)?
                     <div className="text-center col-8 col-lg-4 pt-3">

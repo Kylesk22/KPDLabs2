@@ -621,6 +621,9 @@ export const AdminSingleCase = props => {
                             <button className="theme-btn" style={{width: "170px"}}>Back</button>
                         </Link>
                     </div>
+                    <div className="text-center">
+                    <button onClick={()=> window.print()}>Print Screen</button>
+                    </div>
                     
                 </div>
                 <div className="row mt-3 ">

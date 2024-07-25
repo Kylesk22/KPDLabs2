@@ -6,7 +6,7 @@ import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AboutBKG from "../../img/testi-bg.jpg"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
-import PrintScreenButton from "../component/PrintScreen";
+
 
 
 
@@ -621,9 +621,7 @@ export const AdminSingleCase = props => {
                             <button className="theme-btn" style={{width: "170px"}}>Back</button>
                         </Link>
                     </div>
-                    <div classNamer="text-center">
-                        <PrintScreenButton></PrintScreenButton>
-                    </div>
+                    
                 </div>
                 <div className="row mt-3 ">
                     <div className="text-center">

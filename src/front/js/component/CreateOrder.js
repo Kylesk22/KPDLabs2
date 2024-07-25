@@ -965,9 +965,14 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
                         </div>
                     </div>
 
@@ -1417,13 +1422,7 @@ AWS.config.update({
             behavior: 'smooth', // Smooth scrolling behavior
           });}}>Print Standard Shipping Label</button>
                         <div className="row form-group justify-content-center mt-3">
-                    {/* {(labelUrl)?
-                    <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
-                        Open Label
-                    </button>
-                    </div>
-                     :""   } */}
+                    
                 </div>
                        
                         </div>
@@ -1784,9 +1783,14 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
                         </div>
                     </div>
 
@@ -2220,9 +2224,14 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
                         </div>
                     </div>
 
@@ -2600,14 +2609,19 @@ AWS.config.update({
 
 
 <div  className="row form-group justify-content-center mt-5">
-            <div className="text-center col-8 col-lg-4">
-            <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
-            <br></br>
-            {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-            <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-            Please Contact kpdlabs@kpdlabs.com for shipping label.
-            </div>
-        </div>
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
+                        </div>
+                    </div>
 
         <div  className="row form-group justify-content-center mt-5">
             <div className="text-center col-8 col-lg-4">
@@ -2970,14 +2984,19 @@ AWS.config.update({
 
 
 <div  className="row form-group justify-content-center mt-5">
-            <div className="text-center col-8 col-lg-4">
-            <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
-            <br></br>
-            {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-            <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-            Please Contact kpdlabs@kpdlabs.com for shipping label.
-            </div>
-        </div>
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
+                        </div>
+                    </div>
 
         <div  className="row form-group justify-content-center mt-5">
             <div className="text-center col-8 col-lg-4">
@@ -3398,9 +3417,14 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
-                        {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                        <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                        Please Contact kpdlabs@kpdlabs.com for shipping label.
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
                         </div>
                     </div>
 
@@ -3814,14 +3838,19 @@ AWS.config.update({
 
 
         <div  className="row form-group justify-content-center mt-5">
-                    <div className="text-center col-8 col-lg-4">
-                    <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
-                    <br></br>
-                    {/* <button className="btn btn-primary">Print Standard Shipping Label</button>
-                    <button className="btn btn-primary">Print Express Shipping Label ($35)</button> */}
-                    Please Contact kpdlabs@kpdlabs.com for shipping label.
-                    </div>
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
                 </div>
+                       
+                        </div>
+                    </div>
 
                 <div  className="row form-group justify-content-center mt-5">
                     <div className="text-center col-8 col-lg-4">

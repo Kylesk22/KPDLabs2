@@ -45,6 +45,7 @@ export const CreateOrder = props => {
     const [production, setProduction] = useState("Standard")
     const [loading, setLoading] = useState(false);
     const [labelUrl, setLabelUrl] = useState("");
+    cosnt [waiting, setWaiting] = useState("")
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -414,6 +415,9 @@ AWS.config.update({
                 // setRates(prevRates => [...prevRates, ...data.rates]);
                 console.log(data)
                 setLabelUrl(data)
+                setLoading(true)
+                setWaiting(true)
+
                 
             })
             .catch((error) => {
@@ -426,7 +430,9 @@ AWS.config.update({
     useEffect(()=>{
         if (labelUrl) {
         
-        window.open(labelUrl, '_blank')
+        window.open(labelUrl, '_blank');
+        setWaiting(false);
+        setLoading(false)
         }
     }, [labelUrl])
 
@@ -436,15 +442,21 @@ AWS.config.update({
              {loading ? (
                 <div className="row justify-content-center">
                     <div className="mx auto mt-4 text-center justify-content-center col-6 sm-col-4">
+                        { (waiting)?
+                        <h3>
+                        Please Wait While We Create Your Label
+                        </h3>:
                         <h3>
                             Please Wait While We Send Your Case
                         </h3>
+                        }
                         <div className="spinner text-center mx-auto">
                             
                         </div>
                     </div>
                 </div>
         ) :
+            
             <>
             
         

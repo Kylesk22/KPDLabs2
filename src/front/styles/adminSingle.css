@@ -1,0 +1,21 @@
+/* Add this to your CSS file or a <style> tag in your HTML */
+@media print {
+    /* Hide SVG and other elements you don't want to print */
+    svg, .no-print {
+      display: none;
+    }
+  
+    /* Ensure content fits on one page */
+    @page {
+      size: auto; /* Adjust page size to content */
+      margin: 0; /* Remove default margins */
+    }
+  
+    /* Adjust layout if needed */
+    body {
+      width: 100%; /* Ensure body content uses full page width */
+      height: 100%; /* Ensure body content uses full page height */
+      overflow: visible; /* Make sure no content is clipped */
+    }
+  }
+  

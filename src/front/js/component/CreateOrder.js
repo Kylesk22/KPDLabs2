@@ -423,9 +423,9 @@ AWS.config.update({
     }
 
 
-    useEffect(()=>{
-        window.open(labelUrl, '_blank')
-    }, [labelUrl])
+    // useEffect(()=>{
+    //     window.open(labelUrl, '_blank')
+    // }, [labelUrl])
 
 
     return(

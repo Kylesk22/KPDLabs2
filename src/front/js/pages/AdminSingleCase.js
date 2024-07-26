@@ -622,7 +622,7 @@ export const AdminSingleCase = props => {
                             <button className="theme-btn" style={{width: "170px"}}>Back</button>
                         </Link>
                     </div>
-                    <div className="text-center">
+                    <div className="text-center pt-2">
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Screen</button>
                     </div>
                     

@@ -17,5 +17,16 @@
       height: 100%; /* Ensure body content uses full page height */
       overflow: visible; /* Make sure no content is clipped */
     }
+
+    .printable {
+        width: 100%;
+        height: auto;
+        page-break-inside: avoid; /* Prevent breaks inside content */
+      }
+    
+      /* Optionally adjust specific elements */
+      h1, h2, h3, p {
+        page-break-after: avoid; /* Avoid breaks after headings and paragraphs */
+      }
   }
   

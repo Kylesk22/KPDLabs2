@@ -615,7 +615,7 @@ export const AdminSingleCase = props => {
   
         return (
             <>
-            <form className="form form-container" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
+            <form className="form form-container printable" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
                 <div className="row mt-4"> 
                     <div className="text-center">
                         <Link to = {`/admin/${id}`}>

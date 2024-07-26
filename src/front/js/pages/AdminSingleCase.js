@@ -616,7 +616,7 @@ export const AdminSingleCase = props => {
         return (
             <>
             <form className="form form-container printable" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
-                <div className="row mt-4"> 
+                <div className="row mt-4 no-print"> 
                     <div className="text-center">
                         <Link to = {`/admin/${id}`}>
                             <button className="theme-btn" style={{width: "170px"}}>Back</button>
@@ -821,7 +821,7 @@ export const AdminSingleCase = props => {
                     </div>
                     
                 </div> */}
-                <div className="row form-group justify-content-center mt-5">
+                <div className="row form-group justify-content-center mt-5 no-print">
                     <div className="text-center col-8 col-lg-4">
                         <button className="btn btn-primary" onClick={(e)=>{e.preventDefault();downloadObject()}}>Download Scans/Photos</button>
                     </div>
@@ -842,12 +842,12 @@ export const AdminSingleCase = props => {
                
                     </div>
                 </div>
-                <div className="row form-group justify-content-center mt-3">
+                <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
                     </div>
                 </div>
-                <div className="row form-group justify-content-center mt-3">
+                <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
                     </div>
@@ -863,7 +863,7 @@ export const AdminSingleCase = props => {
                             
                     )})}
                 </div>
-                <div className="row form-group justify-content-center mt-3">
+                <div className="row form-group justify-content-center mt-3 no-print">
                     {(labelUrl)?
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>

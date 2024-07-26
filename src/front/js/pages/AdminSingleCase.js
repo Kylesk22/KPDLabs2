@@ -837,6 +837,14 @@ export const AdminSingleCase = props => {
 
                 <div className="row form-group justify-content-center mt-3">
                     <div className="text-center col-8 col-lg-4 pt-3">
+                    <label htmlFor="Production" className="form-label" ><h5>Production</h5></label>
+                    <input className="form-control" id="Production" rows="2"  readOnly value={production} ></input>
+               
+                    </div>
+                </div>
+
+                <div className="row form-group justify-content-center mt-3">
+                    <div className="text-center col-8 col-lg-4 pt-3">
                     <label htmlFor="Price" className="form-label" ><h5>Price</h5></label>
                     <input className="form-control" id="Price" rows="3"  readOnly value={price} ></input>
                

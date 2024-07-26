@@ -9,6 +9,7 @@ import "../../styles/slick-theme.css"
 import "../../styles/slick.css"
 import "../../styles/style.css"
 import "../../styles/animate.css"
+import "../../styles/adminSingle.css";
 
 export const Footer = () => {
 	// Create a new Date object
@@ -22,7 +23,7 @@ const currentYear = currentDate.getFullYear();
 
 
 return (
-	<footer className="main-footer" style={{backgroundImage: `url(${FootBKG})`}}>
+	<footer className="main-footer no-print" style={{backgroundImage: `url(${FootBKG})`}}>
   <div className="bg-image"  ></div>
   {/* <!--Widgets Section--> */}
   <div className="widgets-section">

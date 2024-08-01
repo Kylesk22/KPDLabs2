@@ -380,7 +380,7 @@ export const AdminSingleCase = props => {
                 setCaseStatus(patientData.status)
                 setShipping(patientData.shipping)
                 setProduction(patientData.production)
-                setSubmissionDate(patientData.update_date)
+                setSubmissionDate(patientData["update date"])
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
@@ -478,6 +478,8 @@ export const AdminSingleCase = props => {
                         setType("")
                         setGumShade("")
                         setRefId("")
+                        setDrName("")
+                        setSubmissionDate("")
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")

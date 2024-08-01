@@ -671,6 +671,12 @@ export const AdminSingleCase = props => {
                 </div>
                 <div className="row form-group justify-content-center">
                     <div className="text-center col-4 pt-3">
+                    <label  htmlFor="drName"><h5>Dr. Name</h5></label>
+                    <input className="form-control" required id="drName" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={drName} onChange={(e)=>setDrName(e.target.value)}></input>
+                    </div>
+                </div>
+                <div className="row form-group justify-content-center">
+                    <div className="text-center col-4 pt-3">
                     <label  htmlFor="patientName"><h5>Patient Name</h5></label>
                     <input className="form-control" required id="patientName" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={patientName} onChange={(e)=>setPatientName(e.target.value)}></input>
                     </div>

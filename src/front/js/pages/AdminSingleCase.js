@@ -38,6 +38,7 @@ export const AdminSingleCase = props => {
     const [refId, setRefId] = useState("")
     const [showClone, setShowClone] = useState(false)
     const [clonedCaseId, setClonedCaseId] = useState("")
+    const [submissionDate, setSubmissionDate] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -379,6 +380,8 @@ export const AdminSingleCase = props => {
                 setCaseStatus(patientData.status)
                 setShipping(patientData.shipping)
                 setProduction(patientData.production)
+                setSubmissionDate(patientData.update_date)
+                
                 let doctorId = patientData["user id"]
                 // Update tooth colors
                 let returnedTeeth = patientData.teeth
@@ -661,6 +664,12 @@ export const AdminSingleCase = props => {
                                 <option value="Closed" onClick={()=>setCaseStatus("Closed")}>Closed</option>
                                 <option value="Void" onClick={()=>setCaseStatus("Void")}>Void</option>
                             </select>
+                    </div>
+                </div>
+                <div className="row form-group justify-content-center">
+                    <div className="text-center col-4 pt-3">
+                    <label  htmlFor="submittedDate"><h5>Submitted Date</h5></label>
+                    <input className="form-control" required id="submittedDate" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={submissionDate} ></input>
                     </div>
                 </div>
                 <div className="row form-group justify-content-center">

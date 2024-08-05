@@ -50,6 +50,10 @@ export const CreateOrder = props => {
     let price = 0;
     let price2 = 0;
     let price3 = 0;
+    if (model3D === "Yes"){
+        
+    }
+
     let total = price + price2
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -438,7 +442,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D)})
+    useEffect(()=> {console.log(price3); console.log(model3D); (lowerArch && upperArch)? price3 += 20: price3 += 10})
 
     return(
         <>

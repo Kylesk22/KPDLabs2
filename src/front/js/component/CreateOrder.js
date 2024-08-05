@@ -774,9 +774,9 @@ AWS.config.update({
                         />
                         No
                         </label>
-                        {/* <br></br> */}
+                        
                         <small  className="form-text text-muted"  style={{color:"white"}}></small>
-                        {/* <br></br> */}
+                        
                         <label style={{color:"black", paddingLeft: "10px"}}>
                         <input style={{paddingLeft: "10px"}}
                             type="radio"

@@ -438,6 +438,8 @@ AWS.config.update({
     }, [labelUrl])
 
 
+    useEffect(()=> {console.log(price3)})
+
     return(
         <>
              {loading ? (

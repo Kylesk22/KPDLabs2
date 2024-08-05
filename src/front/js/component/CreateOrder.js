@@ -772,13 +772,13 @@ AWS.config.update({
                             checked={model3D === 'No'}
                             onChange={(e)=>{setModel3D(e.target.value)}}
                         />
-                        {`No     `} 
+                        No
                         </label>
                         {/* <br></br> */}
                         <small  className="form-text text-muted"  style={{color:"white"}}></small>
                         {/* <br></br> */}
                         <label style={{color:"black"}}>
-                        <input
+                        <input style={{paddingLeft: "10px"}}
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}

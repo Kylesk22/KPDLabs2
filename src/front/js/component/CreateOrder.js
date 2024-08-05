@@ -438,7 +438,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3)})
+    useEffect(()=> {console.log(price3); console.log(model3D)})
 
     return(
         <>

@@ -47,9 +47,10 @@ export const CreateOrder = props => {
     const [labelUrl, setLabelUrl] = useState("");
     const [waiting, setWaiting] = useState(false);
     const [model3D, setModel3D] = useState("No")
+    const [price3, setPrice3] = useState(0)
     let price = 0;
     let price2 = 0;
-    let price3 = 0;
+    
     if (model3D === "Yes"){
         
     }
@@ -442,7 +443,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D); if (model3D === "Yes"){price3+=10}})
+    useEffect(()=> {console.log(price3); console.log(model3D)})
 
     return(
         <>
@@ -789,7 +790,7 @@ AWS.config.update({
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}
-                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(10)}}
                             
                         />
                          Yes 

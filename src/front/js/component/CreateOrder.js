@@ -772,7 +772,7 @@ AWS.config.update({
                             checked={model3D === 'No'}
                             onChange={(e)=>{setModel3D(e.target.value)}}
                         />
-                        No 
+                        {`No     `} 
                         </label>
                         {/* <br></br> */}
                         <small  className="form-text text-muted"  style={{color:"white"}}></small>
@@ -786,7 +786,7 @@ AWS.config.update({
                         />
                          Yes 
                         </label>
-                        {/* <br></br> */}
+                        <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                         </div>
                     </div>

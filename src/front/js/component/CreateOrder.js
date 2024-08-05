@@ -1302,6 +1302,40 @@ AWS.config.update({
                 
                         </div>
                     </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
+
+
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
                             <label  htmlFor="product"><h5>Shade</h5></label>
@@ -1536,7 +1570,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice((price+price2)*crownTooth.length)}} >Upload</button>
                             <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length} *Not including Rush Production and/or Shipping</strong></small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length+price3} *Not including Rush Production and/or Shipping</strong></small>
                         </div>
                         
                     </div>
@@ -1657,6 +1691,40 @@ AWS.config.update({
         
                 </div>
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
+
+
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Shade</h5></label>
@@ -1904,7 +1972,7 @@ AWS.config.update({
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price))}}>Upload</button>
                     <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price)} *Not including Rush Production and/or Shipping</strong></small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
             </div>
             
@@ -2072,6 +2140,38 @@ AWS.config.update({
         
                 </div>
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="shade"><h5>Shade</h5></label>
@@ -2344,7 +2444,7 @@ AWS.config.update({
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
                     <br></br>
-                    <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)} *Not including Rush Production and/or Shipping</strong></small>
+                    <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
             </div>
             
@@ -2462,6 +2562,39 @@ AWS.config.update({
 
     </div>
 </div>
+
+<div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
+
 <div className="row form-group text-center justify-content-center mt-5">
     <div className= "col-8 col-lg-4">
         <label  htmlFor="shade"><h5>Shade</h5></label>
@@ -2732,7 +2865,7 @@ AWS.config.update({
     <div className="text-center col-8 col-lg-4">
         <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
         <br></br>
-        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)} *Not including Rush Production and/or Shipping</strong></small>
+        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
     </div>
 </div>
 
@@ -2852,6 +2985,39 @@ AWS.config.update({
 
     </div>
 </div>
+
+<div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
+
 <div className="row form-group text-center justify-content-center mt-5">
     <div className= "col-8 col-lg-4">
         <label  htmlFor="shade"><h5>Shade</h5></label>
@@ -3107,7 +3273,7 @@ AWS.config.update({
     <div className="text-center col-8 col-lg-4">
         <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
         <br></br>
-        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)} *Not including Rush Production and/or Shipping</strong></small>
+        <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
     </div>
 </div>
 
@@ -3275,6 +3441,39 @@ AWS.config.update({
         
                 </div>
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+
+
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="shade"><h5>Shade</h5></label>
@@ -3537,7 +3736,7 @@ AWS.config.update({
                 <div className="text-center col-8 col-lg-4">
                     <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
                     <br></br>
-                    <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)} *Not including Rush Production and/or Shipping</strong></small>
+                    <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
             </div>
             
@@ -3705,6 +3904,37 @@ AWS.config.update({
 
             </div>
         </div>
+
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value); setPrice3(0)}}
+                        />
+                        No
+                        </label>
+                        
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        
+                        <label style={{color:"black", paddingLeft: "10px"}}>
+                        <input style={{paddingLeft: "10px"}}
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
         {/* <div className="row form-group text-center justify-content-center mt-5">
             <div className= "col-8 col-lg-4">
                 <label  htmlFor="shade"><h5>Shade</h5></label>
@@ -3961,7 +4191,7 @@ AWS.config.update({
             <div className="text-center col-8 col-lg-4">
                 <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
                 <br></br>
-                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2)} *Not including Rush Production and/or Shipping</strong></small>
+                <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
             </div>
         </div>
 

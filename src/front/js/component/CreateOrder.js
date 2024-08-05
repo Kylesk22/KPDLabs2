@@ -442,7 +442,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D); price3+=10)
+    useEffect(()=> {console.log(price3); console.log(model3D); price3+=10})
 
     return(
         <>

@@ -49,6 +49,7 @@ export const CreateOrder = props => {
     const [model3D, setModel3D] = useState("No")
     let price = 0;
     let price2 = 0;
+    let price3 = 0;
     let total = price + price2
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -761,7 +762,7 @@ AWS.config.update({
                         </div>
                     </div>
                     
-                    {/* <div  className="row form-group justify-content-center mt-5">
+                    <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>3D Printed Model</h5></label>
                         <br></br>
@@ -770,7 +771,7 @@ AWS.config.update({
                             type="radio"
                             value="No"
                             checked={model3D === 'No'}
-                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            onChange={(e)=>{setModel3D(e.target.value); price3 = 0}}
                         />
                         No
                         </label>
@@ -782,14 +783,14 @@ AWS.config.update({
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}
-                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? price3 = 20: price3 = 10}}
                         />
                          Yes 
                         </label>
                         <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                         </div>
-                    </div> */}
+                    </div>
                     
 
                     <div className="row form-group text-center justify-content-center mt-5">
@@ -1074,7 +1075,7 @@ AWS.config.update({
                         <div className="text-center col-8 col-lg-4">
                             <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price2)*crownTooth.length)}}>Upload</button>
                             <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length} *Not including Rush Production and/or Shipping</strong></small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length+price3} *Not including Rush Production and/or Shipping</strong></small>
                         </div>
                         
                     </div>

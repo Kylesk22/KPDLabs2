@@ -45,7 +45,8 @@ export const CreateOrder = props => {
     const [production, setProduction] = useState("Standard")
     const [loading, setLoading] = useState(false);
     const [labelUrl, setLabelUrl] = useState("");
-    const [waiting, setWaiting] = useState(false)
+    const [waiting, setWaiting] = useState(false);
+    const [model3D, setModel3D] = useState("No")
     let price = 0;
     let price2 = 0;
     let total = price + price2
@@ -759,6 +760,38 @@ AWS.config.update({
                 
                         </div>
                     </div>
+                    
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>3D Printed Model</h5></label>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="No"
+                            checked={model3D === 'No'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                        />
+                        No 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}></small>
+                        <br></br>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Yes"
+                            checked={model3D === 'Yes'}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                        />
+                         Yes 
+                        </label>
+                        <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        </div>
+                    </div>
+                    
+
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
                             <label  htmlFor="product"><h5>Shade</h5></label>

@@ -443,8 +443,10 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D)})
-
+    useEffect(()=> {console.log(price3); console.log(model3D); 
+        if (model3D === "Yes"){
+        (lowerArch && upperArch)? setPrice3(20): setPrice3(10)}})
+        
     return(
         <>
              {loading ? (
@@ -790,7 +792,7 @@ AWS.config.update({
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}
-                            onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? setPrice3(20): setPrice3(10)}}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
                             
                         />
                          Yes 

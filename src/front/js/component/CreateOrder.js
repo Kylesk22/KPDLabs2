@@ -443,7 +443,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D); 
+    useEffect(()=> { 
         if (model3D === "Yes"){
         (lowerArch && upperArch)? setPrice3(20): setPrice3(10)}})
         

@@ -786,7 +786,7 @@ AWS.config.update({
                             value="Yes"
                             checked={model3D === 'Yes'}
                             onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? price3 += 20: price3 += 10}}
-                            onClick={()=>{(lowerArch && upperArch)? price3 += 20: price3 += 10}}
+                            onClick={()=>{price3 += 10}}
                         />
                          Yes 
                         </label>

@@ -442,7 +442,7 @@ AWS.config.update({
     }, [labelUrl])
 
 
-    useEffect(()=> {console.log(price3); console.log(model3D); price3+=10})
+    useEffect(()=> {console.log(price3); console.log(model3D); if (model3D === "Yes"){price3=10}})
 
     return(
         <>
@@ -789,8 +789,8 @@ AWS.config.update({
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}
-                            onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? price3 += 20: price3 += 10}}
-                            onClick={()=>{price3 += 10}}
+                            onChange={(e)=>{setModel3D(e.target.value)}}
+                            
                         />
                          Yes 
                         </label>

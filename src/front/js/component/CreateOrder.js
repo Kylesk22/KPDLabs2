@@ -785,7 +785,7 @@ AWS.config.update({
                             type="radio"
                             value="Yes"
                             checked={model3D === 'Yes'}
-                            onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? price3 = 20: price3 = 10}}
+                            onChange={(e)=>{setModel3D(e.target.value); (lowerArch && upperArch)? price3 += 20: price3 += 10}}
                         />
                          Yes 
                         </label>

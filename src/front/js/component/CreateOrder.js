@@ -761,7 +761,7 @@ AWS.config.update({
                         </div>
                     </div>
                     
-                    {/* <div  className="row form-group justify-content-center mt-5">
+                    <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>3D Printed Model</h5></label>
                         <br></br>
@@ -774,9 +774,9 @@ AWS.config.update({
                         />
                         No 
                         </label>
-                        <br></br>
+                        {/* <br></br> */}
                         <small  className="form-text text-muted"  style={{color:"white"}}></small>
-                        <br></br>
+                        {/* <br></br> */}
                         <label style={{color:"black"}}>
                         <input
                             type="radio"
@@ -786,10 +786,10 @@ AWS.config.update({
                         />
                          Yes 
                         </label>
-                        <br></br>
+                        {/* <br></br> */}
                         <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                         </div>
-                    </div> */}
+                    </div>
                     
 
                     <div className="row form-group text-center justify-content-center mt-5">

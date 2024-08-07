@@ -51,9 +51,7 @@ export const CreateOrder = props => {
     let price = 0;
     let price2 = 0;
     
-    if (model3D === "Yes"){
-        
-    }
+    
 
     let total = price + price2
     const reader = new FileReader();
@@ -281,6 +279,7 @@ AWS.config.update({
                 "price": finalPrice,
                 "shipping": shipping,
                 "production": production,
+                "model3D": model3D,
             }
             
             const options = {

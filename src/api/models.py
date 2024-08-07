@@ -95,6 +95,7 @@ class Case(db.Model):
     price = db.Column(db.String(50))
     reference_id = db.Column(db.String(50), nullable=True)
     update_date =  db.Column(db.String(255))
+    model3D = db.Column(db.String(20), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
 
     def __repr__(self):
@@ -113,6 +114,7 @@ class Case(db.Model):
             "finish": self.finish,
             "notes": self.notes,
             "status": self.status,
+            "3DModel": self.model3D,
             "price": self.price,
             "shipping": self.shipping,
             "production": self.production,

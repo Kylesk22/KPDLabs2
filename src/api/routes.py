@@ -422,6 +422,7 @@ def new_case(id):
             production = request.json.get("production", None)
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             status = request.json.get("status", None)
+            model3D = request.json.get("model3D", None)
 
             if (request.json.get("reference id", None)):
                 reference_id = request.json.get("reference Id", None)
@@ -438,6 +439,7 @@ def new_case(id):
             update_case.shade = shade
             update_case.notes = notes
             update_case.finish = finish
+            update_case.model3D = model3D
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"
@@ -502,6 +504,7 @@ def new_case(id):
             production = request.json.get("production", None)
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             status = request.json.get("status", None)
+            model3D = request.json.get("model3D", None)
 
             if (request.json.get("reference id", None)):
                 reference_id = request.json.get("reference Id", None)
@@ -518,6 +521,7 @@ def new_case(id):
             update_case.shade = shade
             update_case.notes = notes
             update_case.finish = finish
+            update_case.model3D = model3D
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"

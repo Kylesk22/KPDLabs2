@@ -127,6 +127,7 @@ class Case(db.Model):
             # do not serialize the password, its a security breach
         }
 
+
 class Blog(db.Model):
     __tablename__ = "blog"
     id = db.Column(db.Integer, primary_key=True)

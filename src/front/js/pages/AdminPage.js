@@ -275,7 +275,7 @@ export const AdminPage = props => {
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
         <div className="container">
-            <div>
+            {/* <div>
                 <button className="btn btn-primary" onClick={()=>setBlogModal(true)}>Add blog</button>
                 {(blogModal)?
                 <div>
@@ -287,6 +287,9 @@ export const AdminPage = props => {
                 </div>
                     :""
                 }
+            </div> */}
+            <div>
+                Legend: <i className="fa-solid fa-square" style={{color:"red"}}></i>
             </div>
             
             <div  >

@@ -345,6 +345,7 @@ export const AdminPage = props => {
                             </div>
                             </Link>
                             
+                            
                         );
                     })}
                     <div className="col-10 ">

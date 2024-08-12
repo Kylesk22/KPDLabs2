@@ -333,7 +333,7 @@ export const AdminPage = props => {
                                         {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
-                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush")? "red" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush")? "red" : "white"}} >{item["id"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush")? "red" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush")? "red" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush")? "red" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
@@ -345,7 +345,7 @@ export const AdminPage = props => {
                             </div>
                             </Link>
                             
-                            
+
                         );
                     })}
                     <div className="col-10 ">

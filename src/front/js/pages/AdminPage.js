@@ -289,7 +289,7 @@ export const AdminPage = props => {
                 }
             </div> */}
             <div>
-                Legend: <i className="fa-solid fa-square" style={{color:"red"}}></i>
+                Legend: <i className="fa-solid fa-square" style={{color:"orange"}}></i> Rush Production | <i className="fa-solid fa-square" style={{color:"yellow"}}></i> Rush Shipping |<i className="fa-solid fa-square" style={{color:"red"}}></i> Rush Production and Shipping
             </div>
             
             <div  >

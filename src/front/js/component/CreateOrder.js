@@ -32,7 +32,7 @@ export const CreateOrder = props => {
     const [product, setProduct] = useState("")
     const [shade, setShade] = useState("")
     const [gumShade, setGumShade] = useState("")
-    const [finish, setFinish] = useState("")
+    const [finish, setFinish] = useState("N/A")
     const [page, setPage] = useState(props.page)
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
@@ -832,17 +832,21 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="HT Zirconia" onClick={()=>{setProduct("HT Zirconia")}}>HT Zirconia</option>
-                                <option value="SHT Zirconia" onClick={()=>{setProduct("SHT Zirconia")}}>SHT Zirconia</option>
+                                <option value="HT Zirconia" onClick={()=>{setProduct("HT Zirconia Polished")}}>Economy HT Zirconia Polished (Molars)</option>
+                                <option value="SHT Zirconia" onClick={()=>{setProduct("SHT Zirconia Polished")}}>Standard SHT Zirconia Polished (All Posterior)</option>
+                                <option value="SHT Zirconia" onClick={()=>{setProduct("SHT Zirconia Stain and Glaze")}}>Premium SHT Zirconia Stain and Glaze (Anterior and Posterior)</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "HT Zirconia")?
+                                    {(product === "HT Zirconia Polished")?
                                         `$${(price += 40)*crownTooth.length}`
                                     
-                                    :(product === "SHT Zirconia")?
+                                    :(product === "SHT Zirconia Polished")?
                                         `$${(price += 60)*crownTooth.length}`
+
+                                    :(product === "SHT Zirconia Stain and Glaze")?
+                                        `$${(price += 80)*crownTooth.length}`
                                     
                                     :(product==="PMMA Temporary")?
                                     `$${(price += 35)*crownTooth.length}`
@@ -855,7 +859,7 @@ AWS.config.update({
                     </div>
                     
 
-                    {(product === "SHT Zirconia")?
+                    {/* {(product === "SHT Zirconia")?
                     
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
@@ -916,7 +920,7 @@ AWS.config.update({
                         </div>
                     </div>:""
 
-                    }
+                    } */}
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4 pt-3">
                         <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>
@@ -1365,12 +1369,12 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="UHT Zirconia" onClick={()=>{setProduct("UHT Zirconia")}}>UHT Zirconia</option>
+                                <option value="UHT Zirconia" onClick={()=>{setProduct("UHT Zirconia Stain and Glaze")}}>Super Premium UHT Zirconia Stain and Glaze</option>
 
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "UHT Zirconia")?
+                                    {(product === "UHT Zirconia Stain and Glaze")?
                                         `$${(price += 95)*crownTooth.length}`
                                     
                                     
@@ -1382,7 +1386,7 @@ AWS.config.update({
                         </div>
                     </div>
                     
-                    <div className="row form-group text-center justify-content-center mt-5">
+                    {/* <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
                             <label  htmlFor="finish"><h5>Finish</h5></label>
                             <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
@@ -1391,18 +1395,9 @@ AWS.config.update({
                                 <option value="Stain and Glaze" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
                                 
                             </select>
-                            {/* <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
-                            {
-                                
-                                
-                                (finish==="Stain and Glaze")?
-                                `$${(price2 += 0)*crownTooth.length}`
-                                
-                                : ""
-                                }
-                                   </strong> </small> */}
+                           
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4 pt-3">
                         <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>

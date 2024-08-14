@@ -2219,7 +2219,8 @@ AWS.config.update({
                         <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
                         <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
-                        <option value="Final Denture" onClick={()=>setProduct("Final Denture")}>Final Denture</option>
+                        <option value="Standard Final Denture" onClick={()=>setProduct("Standard Final Denture")}>Standard Final Denture</option>
+                        <option value="Premium Final Denture" onClick={()=>setProduct("Premium Final Denture")}>Premium Final Denture</option>
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -2242,11 +2243,17 @@ AWS.config.update({
                                 : (product === "Try In" && lowerArch && upperArch)?    
                                     `$${(price += 100)}`
 
-                                :(product==="Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                :(product==="Standard Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`
 
-                                : (product === "Final Denture" && lowerArch && upperArch)?    
+                                : (product === "Standard Final Denture" && lowerArch && upperArch)?    
                                     `$${(price += 500)}`
+
+                                :(product==="Premium Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                    `$${(price += 350)}`
+    
+                                : (product === "Premium Final Denture" && lowerArch && upperArch)?    
+                                        `$${(price += 700)}`
                                 
                                 :""
                                 }
@@ -2254,7 +2261,7 @@ AWS.config.update({
                                 </strong></small>
                 </div>
             </div>
-            {(product === "Final Denture")?
+            {/* {(product === "Final Denture")?
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="finish"><h5>Finish</h5></label>
@@ -2278,7 +2285,7 @@ AWS.config.update({
                                    </strong> </small>
                 </div>
             </div>
-            :""}
+            :""} */}
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4 pt-3">
                 <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>
@@ -2639,7 +2646,8 @@ AWS.config.update({
         <label  htmlFor="product"><h5>Product</h5></label>
         <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
             <option value="Select One">Select One</option>
-            <option value="Copy Denture" onClick={()=>setProduct("Copy Denture")}>Copy Denture</option>
+            <option value="Standard Copy Denture" onClick={()=>setProduct("Standard Copy Denture")}>Standard Copy Denture</option>
+            <option value="Premium Copy Denture" onClick={()=>setProduct("Premium Copy Denture")}>Premium Copy Denture</option>
 
         </select>
         <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
@@ -2663,11 +2671,17 @@ AWS.config.update({
                     : (product === "Try In" && lowerArch && upperArch)?    
                         `$${(price += 100)}`
 
-                    :(product==="Copy Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                    :(product==="Standard Copy Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                     `$${(price += 200)}`
 
-                    : (product === "Copy Denture" && lowerArch && upperArch)?    
+                    : (product === "Standard Copy Denture" && lowerArch && upperArch)?    
                         `$${(price += 400)}`
+
+                    :(product==="Premium Copy Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                        `$${(price += 300)}`
+
+                    : (product === "Premium Copy Denture" && lowerArch && upperArch)?    
+                            `$${(price += 600)}`
                     
                     :""
                     }
@@ -2676,7 +2690,7 @@ AWS.config.update({
     </div>
 </div>
 
-<div className="row form-group text-center justify-content-center mt-5">
+{/* <div className="row form-group text-center justify-content-center mt-5">
     <div className= "col-8 col-lg-4">
         <label  htmlFor="finish"><h5>Finish</h5></label>
         <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
@@ -2698,7 +2712,7 @@ AWS.config.update({
                     }
                        </strong> </small>
     </div>
-</div>
+</div> */}
 
 <div className="row form-group justify-content-center mt-5">
     <div className="text-center col-8 col-lg-4 pt-3">

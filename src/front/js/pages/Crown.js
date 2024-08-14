@@ -337,6 +337,10 @@ return(
                   </div>
                 </div>
                 <br></br>
+                <h3>More Zirconia Information</h3>
+                <h4>1050 MPA | 47% Translucency</h4>
+                  <div>Ultra High Translucency Zirconia for Anterior Restorations, The inclusion of yttrium oxide stabilizer enhances the material's resistance against cracks, significantly increasing both tensile and compressive strength. A precise grain size distribution within the material, along with the addition of aluminum oxide, further contributes to exceptional strength during milling and subsequent clinical applications.The outstanding mechanical characteristics, excellent chemical durability, and unparalleled biocompatibility, coupled with its translucent color, make our zirconia the optimal choice for dental milling systems catering to veneers and restorative dentistry.</div>
+                <br></br>
                   <h3>More Zirconia Information</h3>
                   <div>Our white zirconia is crafted from biocompatible zirconium dioxide, tailored for applications in single unit crowns and bridges up to 14 units. The inclusion of yttrium oxide stabilizer fortifies the material, enhancing resistance against cracks while bolstering tensile and compressive strength. Furthermore, a meticulous grain size distribution within the material, coupled with the infusion of aluminum oxide, ensures heightened strength during milling and subsequent clinical application. These exceptional mechanical properties, alongside excellent chemical resilience and unparalleled biocompatibility, position our zirconia as the premier material choice for fixed dental restorations.</div>
                 

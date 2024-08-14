@@ -342,7 +342,7 @@ return(
                 <br></br>
                 <h3>Ultra Premium</h3>
                 <h3>UHT Liquid Ceramics Zirconia Crown</h3>
-                <h4>1050 MPA | Translucency 47% </h4>
+                <h4>1050 MPA | Translucent 47% </h4>
                   <div>Ultra High Translucency Zirconia for Anterior Restorations, The inclusion of yttrium oxide stabilizer enhances the material's resistance against cracks, significantly increasing both tensile and compressive strength. A precise grain size distribution within the material, along with the addition of aluminum oxide, further contributes to exceptional strength during milling and subsequent clinical applications.The outstanding mechanical characteristics, excellent chemical durability, and unparalleled biocompatibility, coupled with its translucent color, make our zirconia the optimal choice for dental milling systems catering to veneers and restorative dentistry.</div>
                 <br></br>
                   <h3>More Zirconia Information</h3>

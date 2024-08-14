@@ -382,13 +382,13 @@ AWS.config.update({
     }
 
 
-    // useEffect(()=>{
-    //     if (crownTooth){
-    //     calculateArches(); 
-    //     console.log(lowerArch); 
-    //     console.log(upperArch)
-    //     }
-    // }, [crownTooth])
+    useEffect(()=>{
+        if (crownTooth){
+        calculateArches(); 
+        // console.log(lowerArch); 
+        // console.log(upperArch)
+        }
+    }, [crownTooth])
 
     useEffect(()=>{
         console.log(product)

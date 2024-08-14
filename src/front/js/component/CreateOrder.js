@@ -840,6 +840,7 @@ AWS.config.update({
                                 <option value="HT Zirconia Polished" onClick={()=>{setProduct("HT Zirconia Polished")}}>Economy HT Zirconia Polished (Molars)</option>
                                 <option value="SHT Zirconia Polished" onClick={()=>{setProduct("SHT Zirconia Polished")}}>Standard SHT Zirconia Polished (All Posterior)</option>
                                 <option value="SHT Zirconia Stain and Glaze" onClick={()=>{setProduct("SHT Zirconia Stain and Glaze")}}>Premium SHT Zirconia Stain and Glaze (Anterior and Posterior)</option>
+                                <option value="UHT Zirconia Stain and Glaze" onClick={()=>{setProduct("UHT Zirconia Stain and Glaze")}}>Ultra Premium UHT Zirconia Stain and Glaze (All Anterior)</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
@@ -852,6 +853,9 @@ AWS.config.update({
 
                                     :(product === "SHT Zirconia Stain and Glaze")?
                                         `$${(price += 80)*crownTooth.length}`
+                                        
+                                    :(product === "UHT Zirconia Stain and Glaze")?
+                                        `$${(price += 100)*crownTooth.length}`
                                     
                                     :(product==="PMMA Temporary")?
                                     `$${(price += 35)*crownTooth.length}`
@@ -1374,7 +1378,7 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="UHT Zirconia Stain and Glaze" onClick={()=>{setProduct("UHT Zirconia Stain and Glaze")}}>Super Premium UHT Zirconia Stain and Glaze</option>
+                                <option value="UHT Zirconia Stain and Glaze" onClick={()=>{setProduct("UHT Zirconia Stain and Glaze")}}>Ultra Premium UHT Zirconia Stain and Glaze</option>
 
                             </select>
                             <small id="productPrice" className="form-text text-muted" >

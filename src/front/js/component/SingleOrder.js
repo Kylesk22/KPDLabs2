@@ -4,6 +4,7 @@ import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import "../../styles/adminSingle.css";
 
 
 
@@ -259,14 +260,17 @@ export const SingleOrder = props => {
                 </div>
         ) :
         <>
-        <form className="form form-container" data-toggle="validator" role="form">
-            <div className="row mt-4"> 
+        <form className="form form-container printable" data-toggle="validator" role="form">
+            <div className="row mt-4 no-print"> 
                 <div className="text-center p-1 ">
                     <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
                 </div>
                 <div className="text-center p-1">
                     <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "auto"}}>Remake</button>
                 </div>
+                <div className="text-center p-1">
+                    <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
+                    </div>
             </div>
             <div className="row mt-3">
                 <div className="text-center">
@@ -456,7 +460,7 @@ export const SingleOrder = props => {
            
                 </div>
             </div>
-            <div className="row form-group justify-content-center mt-5">
+            <div className="row form-group justify-content-center mt-5 no-print">
                         <div className="text-center col-8 col-lg-4 pt-3">
                         <label  htmlFor="picUpload"><h5>Upload Photos</h5></label>
                         <br></br>
@@ -485,13 +489,13 @@ export const SingleOrder = props => {
                             }}
                         />
                         <button 
-                            className="btn btn-primary"
+                            className="btn btn-primary no-print"
                             onClick={(e) => {e.preventDefault(); document.getElementById('picUpload').click()}} // Trigger file input click
                         >
                             Select Files
                         </button>
                         
-                        <div style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
+                        <div className="no-print" style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
                             {photoName.join(', ')} {/* Display selected file names */}
                         </div>
                         </div>
@@ -499,7 +503,7 @@ export const SingleOrder = props => {
                         
                         </div> */}
                     </div>
-                    <div className="row form-group justify-content-center mt-5">
+                    <div className="row form-group justify-content-center mt-5 no-print">
                         <div className="text-center col-8 col-lg-4 pt-3">
                         <label  htmlFor="scanUpload"><h5>Upload Scans</h5></label>
                         <br></br>
@@ -543,7 +547,7 @@ export const SingleOrder = props => {
                         </div> */}
                     </div>
                     <br></br>
-                    <div style={{textAlign: "center"}}>
+                    <div className="no-print" style={{textAlign: "center"}}>
                         <button className="btn btn-primary" onClick={()=>uploadCase()}>Upload Additional Photos/Scans</button>
                     </div>
             <br></br>

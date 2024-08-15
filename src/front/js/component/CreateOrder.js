@@ -52,7 +52,7 @@ export const CreateOrder = props => {
     let price2 = 0;
     
     const [rates, setRates] = useState([])
-    const [selectedRate2, setSelectedRate2] = useState([])
+    const [selectedRate2, setSelectedRate2] = useState()
     
 
     let total = price + price2

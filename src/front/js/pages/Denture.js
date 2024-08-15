@@ -110,7 +110,7 @@ return(
         <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "product")?
             <Fade>
-                <h2>Removeable Full Denture</h2>
+                <h2>Removable Full Denture</h2>
                 <br></br>
                 <div>Introducing our precision-engineered Removable Full Denture, meticulously crafted to deliver exceptional durability, lifelike aesthetics, and precise accuracy for a comfortable fit and natural appearance.
 This full denture is CNC machined from the most fracture-resistant pink PMMA base material, ensuring longevity and resilience in daily wear. The combination of this robust base with highly esthetic multi-layer PMMA denture teeth results in a stunningly lifelike smile that matches the unique contours and shades of natural teeth.

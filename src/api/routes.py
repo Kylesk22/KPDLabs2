@@ -787,7 +787,7 @@ def get_rates_kpd_ups(id):
         country="US",
         email= user_info.email,
         phone="8634382109",
-        test="true"
+        
         
     )
 

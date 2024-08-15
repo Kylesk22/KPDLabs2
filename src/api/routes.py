@@ -821,10 +821,10 @@ def get_rates_to_kpd(id):
     transaction = shippo_sdk.transactions.create(
     components.InstantTransactionCreateRequest(
         shipment=shipment,
-        # carrier_account="863887430eed4630aa037fd689c741bc",
-        # servicelevel_token="usps_priority"
-        carrier_account="ddd71fa28c8a4b4d965aab3225119e3f",
-        servicelevel_token="ups_ground_saver"
+        carrier_account="863887430eed4630aa037fd689c741bc",
+        servicelevel_token="usps_priority"
+        # carrier_account="ddd71fa28c8a4b4d965aab3225119e3f",
+        # servicelevel_token="ups_ground_saver"
     )
     )
 

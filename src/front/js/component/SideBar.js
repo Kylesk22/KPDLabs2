@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../styles/adminSingle.css";
 
 
 
@@ -50,7 +51,7 @@ export const SideBar = props => {
 
     // }
     return (
-        <div className="container pt-4 user-sidebar" style={{width: "20%", position: "absolute"}}>
+        <div className="container pt-4 user-sidebar no-print" style={{width: "20%", position: "absolute"}}>
             <nav id="sidebarMenu" className="d-lg-block sidebar bg-white text-break text-nowrap overflow-hidden " >
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">

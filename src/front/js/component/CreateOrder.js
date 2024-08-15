@@ -1586,7 +1586,7 @@ AWS.config.update({
             behavior: 'smooth', // Smooth scrolling behavior
           });}}>Print USPS Label</button>
           
-          <button className="btn btn-primary" style={{paddingLeft: "5px"}}  onClick={(e)=> {e.preventDefault(); UPSLabel(); setWaiting(true); window.scrollTo({
+          <button className="btn btn-primary" style={{marginLeft: "5px"}}  onClick={(e)=> {e.preventDefault(); UPSLabel(); setWaiting(true); window.scrollTo({
             top: 0,
             behavior: 'smooth', // Smooth scrolling behavior
           });}}>Print UPS Label</button>
@@ -1596,10 +1596,7 @@ AWS.config.update({
                     </div>
 
                     
-                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); UPSLabel(); setWaiting(true); window.scrollTo({
-            top: 0,
-            behavior: 'smooth', // Smooth scrolling behavior
-          });}}>Print UPS Label</button>
+                        
                         
                        
                         

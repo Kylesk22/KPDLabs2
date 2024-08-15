@@ -1,4 +1,5 @@
 import React from 'react';
+import KPDWIZ from '../../img/KPDWIZ.jpg'
 
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {
@@ -18,7 +19,7 @@ export const PrintPDFButton = (props) => {
                 </style>
             </head>
             <body>
-                <h1>This is the content to print</h1>
+                <img src={KPDWIZ}></img>
                 <p>More content here...</p>
                 <!-- Optionally add more content or load it dynamically -->
             </body>

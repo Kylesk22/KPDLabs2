@@ -52,6 +52,7 @@ export const CreateOrder = props => {
     let price2 = 0;
     
     const [rates, setRates] = useState([])
+    const [selectedRate2, setSelectedRate2] = useState([])
     
 
     let total = price + price2
@@ -108,12 +109,12 @@ export const CreateOrder = props => {
     }
     
     async function getUPSLabel() {
-        let selectedRate = rates.filter(rate => rate.servicelevel.token === "ups_ground")
-        console.log(selectedRate)
+        setSelectedRate2(rates.filter(rate => rate.servicelevel.token === "ups_ground"))
+        console.log(selectedRate2)
 
 
         const userInfo = {
-            "rate": selectedRate
+            "rate": selectedRate2
         };
     
         const options = {
@@ -480,9 +481,9 @@ AWS.config.update({
 
     //Shippo Label 
     function getLabelToKpd(selectedRate){
-        // const userInfo = {
-        //     "rate": selectedRate
-        // };
+        const userInfo = {
+            "rate": selectedRate
+        };
 
         const options = {
             method: "POST",
@@ -491,7 +492,7 @@ AWS.config.update({
                 "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCookie("csrf_access_token"),
             },
-            // body: JSON.stringify(userInfo)
+            body: JSON.stringify(userInfo)
         };
     
         fetch(`${url}/shippo/get_rates/${id}`, options)

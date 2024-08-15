@@ -108,13 +108,13 @@ export const CreateOrder = props => {
         }
     }
     
-    async function getUPSLabel() {
+    async function getUPSLabel(rates2) {
         // setSelectedRate2(rates.filter(rate => rate.servicelevel.token === "ups_ground"))
         // console.log(selectedRate2)
 
 
         const userInfo = {
-            "rate": rates.filter(rate => rate.servicelevel.token === "ups_ground")
+            "rate": rates2.filter(rate => rate.servicelevel.token === "ups_ground")
         };
     
         const options = {
@@ -144,10 +144,11 @@ export const CreateOrder = props => {
     
     async function UPSLabel() {
         const rates2 = await getUPSRate();  // Ensure this completes before proceeding
+        console.log(rates)
         if (rates2.length > 0) { // Only proceed if rates were successfully fetched
             // Assuming you need to select a rate from the rates array
             // const selectedRate = rates[0]; // Example: selecting the first rate
-            await getUPSLabel();  // Fetch the label based on the selected rate
+            await getUPSLabel(rates2);  // Fetch the label based on the selected rate
         }
         setWaiting(false)
     }

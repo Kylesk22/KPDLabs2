@@ -23,7 +23,7 @@ export const PrintPDFButton = (props) => {
             </head>
             <body>
                 <img src="${imageUrl}" alt="Dynamic Image"/>
-                <img src="${imageBase64}" alt="Dynamic Image"/>
+                <img src="${props.KPDWIZ}" alt="Dynamic Image"/>
                 <p>More content here...</p>
                 <!-- Optionally add more content or load it dynamically -->
             </body>

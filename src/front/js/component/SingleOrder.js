@@ -274,8 +274,8 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div>
                 <div>
-                    <PrintPDFButton />
-                    <img src={KPDWIZ}></img>
+                    <PrintPDFButton KPDWIZ={KPDWIZ}/>
+                    
                 </div>
             </div>
             <div className="row mt-3">

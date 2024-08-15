@@ -150,7 +150,7 @@ export const CreateOrder = props => {
             // const selectedRate = rates[0]; // Example: selecting the first rate
             await getUPSLabel(rates2);  // Fetch the label based on the selected rate
         }
-        setWaiting(false)
+       
     }
     
     // Call executeTasks to start the process

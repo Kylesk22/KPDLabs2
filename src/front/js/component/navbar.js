@@ -112,7 +112,7 @@ export const Navbar = (props) => {
 			</Modal> */}
 			  <li><a href="/signup">Sign up</a></li>
 			</ul>
-			<ul className="social-icons">
+			<ul className="social-icons no-print">
 			  <li><a href="https://www.instagram.com/kpd_labs?igsh=MzRlODBiNWFlZA=="><i className="fa-brands fa-instagram"></i></a></li>
 			  {/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
 			  <li><a href="https://www.facebook.com/profile.php?id=61559674932411&mibextid=LQQJ4d"><i className="fa-brands fa-facebook-f"></i></a></li>
@@ -237,7 +237,7 @@ export const Navbar = (props) => {
 	  </li>
 			  {/* <li><a href="" onClick={()=>sendEmail()}><i className="icon fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li> */}
 			</ul>
-			<ul className="social-links">
+			<ul className="social-links no-print">
 			<li><a href="https://www.facebook.com/profile.php?id=61559674932411&mibextid=LQQJ4d"><i className="fab fa-facebook-f"></i></a></li>
 			<li><a href="https://www.instagram.com/kpd_labs?igsh=MzRlODBiNWFlZA=="><i className="fab fa-instagram"></i></a></li>
 			</ul>
@@ -322,9 +322,9 @@ export const Navbar = (props) => {
 			  {/* <li><a href="/signup">Sign up</a></li> */}
 			</ul>
 			<ul className="social-icons no-print">
-			  <li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
+			  <li className="no-print"><a href="https://www.facebook.com/profile.php?id=61559674932411&mibextid=LQQJ4d"><i className="fa-brands fa-twitter"></i></a></li>
 			  {/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
-			  <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+			  <li className="no-print"><a href="https://www.instagram.com/kpd_labs?igsh=MzRlODBiNWFlZA=="><i className="fa-brands fa-facebook-f"></i></a></li>
 			  {/* <li><a href="#"><i className="fa-brands fa-youtube"></i></a></li> */}
 			</ul>
 		  </div>

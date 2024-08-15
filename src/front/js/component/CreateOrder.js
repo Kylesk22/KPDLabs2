@@ -1017,7 +1017,7 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    <div  className="row form-group justify-content-center mt-5">
+                    {/* <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
@@ -1030,7 +1030,7 @@ AWS.config.update({
                 </div>
                        
                         </div>
-                    </div>
+                    </div> */}
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -1494,7 +1494,7 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    <div  className="row form-group justify-content-center mt-5">
+                    {/* <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
@@ -1507,7 +1507,7 @@ AWS.config.update({
                 </div>
                        
                         </div>
-                    </div>
+                    </div> */}
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">

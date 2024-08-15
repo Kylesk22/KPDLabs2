@@ -77,6 +77,15 @@ export const CreateOrder = props => {
 
 
     async function getUPSRate() {
+        const options = {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(userInfo)
+        };
         try {
             const response = await fetch(`${url}/shippo/get_rates_kpd_ups/${id}`, options);
             if (!response.ok) {

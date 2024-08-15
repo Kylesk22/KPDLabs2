@@ -272,9 +272,9 @@ export const SingleOrder = props => {
                 <div className="text-center p-1">
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div>
-                <div>
+                {/* <div>
                     <PrintPDFButton />
-                </div>
+                </div> */}
             </div>
             <div className="row mt-3">
                 <div className="text-center">

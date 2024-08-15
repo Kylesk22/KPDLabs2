@@ -51,6 +51,7 @@ export const CreateOrder = props => {
     let price = 0;
     let price2 = 0;
     
+    const [rates, setRates] = useState([])
     
 
     let total = price + price2
@@ -73,6 +74,76 @@ export const CreateOrder = props => {
         PremiumDenture: 100
 
     }
+
+
+    async function getUPSRate() {
+        try {
+            const response = await fetch(`${url}/shippo/get_rates_kpd_ups/${id}`, options);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            
+            // Process and update rates state
+            const newRates = data.rates.map(rate => rate); // Simplified array copy
+            setRates(newRates);
+            
+            // Return the rates data to use it later
+            return data.rates;
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while fetching rates. Please try again later.');
+            // Return an empty array or handle as needed if there is an error
+            return [];
+        }
+    }
+    
+    async function getUPSLabel() {
+        let selectedRate = rates.filter(rate => rate.servicelevel.token === "ups_ground")
+
+
+        const userInfo = {
+            "rate": selectedRate
+        };
+    
+        const options = {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(userInfo)
+        };
+    
+        try {
+            const response = await fetch(`${url}/shippo/get_label`, options);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            
+            // Update label state
+            setLabelUrl(data);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while fetching the label. Please try again later.');
+        }
+    }
+    
+    async function UPSLabel() {
+        const rates2 = await getUPSRate();  // Ensure this completes before proceeding
+        if (rates2.length > 0) { // Only proceed if rates were successfully fetched
+            // Assuming you need to select a rate from the rates array
+            // const selectedRate = rates[0]; // Example: selecting the first rate
+            await getUPSLabel();  // Fetch the label based on the selected rate
+        }
+        setWaiting(false)
+    }
+    
+    // Call executeTasks to start the process
+    // executeTasks();
+    
 
     function calculateArches(){
         setUpperArch(false)
@@ -1508,6 +1579,22 @@ AWS.config.update({
                        
                         </div>
                     </div> */}
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>UPS Label To KPD (Physical Impressions)</h5></label>
+                        <br></br>
+                        <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getUPSLabel(); setWaiting(true); window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });}}>Print Standard Shipping Label</button>
+                        <div className="row form-group justify-content-center mt-3">
+                    
+                </div>
+                       
+                        </div>
+                    </div>
+
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">

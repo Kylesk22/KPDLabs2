@@ -19,12 +19,14 @@ export const PrintPDFButton = (props) => {
                         }
                         /* Add any specific styles for print here */
                     }
+                        .text-center {
+                        text-align: center;}
                 </style>
             </head>
             <body>
-            
-                <img src="${imageUrl}" alt="Dynamic Image" style="text-center" />
-            
+                <div class="text-center">
+                    <img src="${imageUrl}" alt="Dynamic Image"  />
+                <div>
                 <p>More content here...</p>
                 <!-- Optionally add more content or load it dynamically -->
             </body>

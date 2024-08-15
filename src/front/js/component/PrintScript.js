@@ -32,7 +32,7 @@ const PrintPDFButton = (props) => {
     };
 
     return (
-        <button onClick={handlePrint}>Print PDF</button>
+        <button className="theme-btn" onClick={handlePrint}>Print PDF</button>
     );
 };
 

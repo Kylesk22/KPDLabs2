@@ -114,7 +114,7 @@ export const CreateOrder = props => {
 
 
         const userInfo = {
-            "rate": rates2.filter(rate => rate.servicelevel.token === "ups_ground")
+            "rate": rates2.find(rate => rate.servicelevel.token === "ups_ground")
         };
     
         const options = {

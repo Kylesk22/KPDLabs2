@@ -21,13 +21,15 @@ export const PrintPDFButton = (props) => {
                     }
                         .text-center {
                         text-align: center;}
+                        .text-left {
+                        text-align: left}
                 </style>
             </head>
             <body>
                 <div class="text-center">
                     <img src="${imageUrl}" alt="Dynamic Image"  />
                 <div>
-                <p>More content here...</p>
+                <div class = "text-left">Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
                 <!-- Optionally add more content or load it dynamically -->
             </body>
             </html>

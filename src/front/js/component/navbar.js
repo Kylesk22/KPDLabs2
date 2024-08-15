@@ -100,7 +100,7 @@ export const Navbar = (props) => {
 			</ul>
 		  </div>
 		  <div className="top-right no-print">
-			<ul className="login-btn">
+			<ul className="login-btn no-print">
 			  <li className="active"><a href="/login" ><i className="fa-solid fa-user"></i>Login</a></li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
@@ -309,8 +309,8 @@ export const Navbar = (props) => {
 			</ul>
 		  </div>
 		  <div className="top-right no-print">
-			<ul className="login-btn">
-			  <li className="active" onClick={()=>logout()} style={{color: "white"}}><i className="fa-solid fa-user" style={{color: "#ffaa17"}}></i> Logout</li>
+			<ul className="login-btn no-print">
+			  <li className="active no-print" onClick={()=>logout()} style={{color: "white"}}><i className="fa-solid fa-user" style={{color: "#ffaa17"}}></i> Logout</li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>
 			  <Modal.Header closeButton>
 				<Modal.Title>Login</Modal.Title>
@@ -321,7 +321,7 @@ export const Navbar = (props) => {
 			</Modal> */}
 			  {/* <li><a href="/signup">Sign up</a></li> */}
 			</ul>
-			<ul className="social-icons">
+			<ul className="social-icons no-print">
 			  <li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
 			  {/* <li><a href="#"><i className="fa-brands fa-google"></i></a></li> */}
 			  <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>

@@ -1,5 +1,5 @@
 import React from 'react';
-import KPDWIZ from '/KPDWIZ.jpg'
+import KPDWIZ from '../../img/KPDWIZ.jpg'
 
 const imageUrl = '/KPDWIZ.jpg';
 

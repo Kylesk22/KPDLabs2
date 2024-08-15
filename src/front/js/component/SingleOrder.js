@@ -5,6 +5,7 @@ import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { PrintPDFButton } from "./PrintScript";
+import KPDWIZ from '../../img/KPDWIZ.jpg'
 import "../../styles/adminSingle.css";
 
 
@@ -274,6 +275,7 @@ export const SingleOrder = props => {
                 </div>
                 <div>
                     <PrintPDFButton />
+                    <img src={KPDWIZ}></img>
                 </div>
             </div>
             <div className="row mt-3">

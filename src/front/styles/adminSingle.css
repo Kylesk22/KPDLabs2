@@ -10,6 +10,7 @@
     @page {
         size: A4; /* Set to your desired page size, e.g., A4, Letter */
         margin: 0; /* Remove default margins */
+        padding: 0;
     }
 
     /* Adjust layout for printing */

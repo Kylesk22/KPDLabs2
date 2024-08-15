@@ -1,7 +1,7 @@
 import React from 'react';
 import KPDWIZ from '../../img/KPDWIZ.jpg'
 
-const imageUrl = '../../../../public/KPDWIZ.jpg';
+const imageUrl = '/react-flask-hello/public/KPDWIZ.jpg';
 
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {

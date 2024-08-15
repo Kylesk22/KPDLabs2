@@ -17,6 +17,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 import Wizards from "../../img/kpd_wizards-justletters.png"
 
 import Painter from "../../fonts/SignPainter-HouseScript-Regular.ttf"
+import "../../styles/adminSingle.css";
 
 
 
@@ -307,7 +308,7 @@ export const Navbar = (props) => {
 			  <li><a href="" onClick={()=>sendEmail()}><i className="fas fa-envelope"></i>kpdlabs@kpdlabs.com</a></li>
 			</ul>
 		  </div>
-		  <div className="top-right">
+		  <div className="top-right no-print">
 			<ul className="login-btn">
 			  <li className="active" onClick={()=>logout()} style={{color: "white"}}><i className="fa-solid fa-user" style={{color: "#ffaa17"}}></i> Logout</li>
 			  {/* <Modal show={showModal} onHide={handleToggleModal}>

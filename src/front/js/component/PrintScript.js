@@ -1,5 +1,5 @@
 import React from 'react';
-import KPDWIZ from '../../../../public/KPDWIZ.jpg'
+import KPDWIZ from '../../img/KPDWIZ.jpg'
 
 const imageUrl = '/KPDWIZ.jpg';
 
@@ -21,6 +21,7 @@ export const PrintPDFButton = (props) => {
                 </style>
             </head>
             <body>
+                <img src="${imageUrl}" alt="Dynamic Image"/>
                 <img src="${KPDWIZ}" alt="Dynamic Image"/>
                 <p>More content here...</p>
                 <!-- Optionally add more content or load it dynamically -->

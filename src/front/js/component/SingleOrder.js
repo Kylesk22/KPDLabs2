@@ -4,7 +4,7 @@ import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
-import PrintPDFButton from "./PrintScript";
+import { PrintPDFButton } from "./PrintScript";
 import "../../styles/adminSingle.css";
 
 
@@ -273,7 +273,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div>
                 <div>
-                    <printPDFButton></printPDFButton>
+                    <PrintPDFButton />
                 </div>
             </div>
             <div className="row mt-3">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PrintPDFButton = (props) => {
+export const PrintPDFButton = (props) => {
     const handlePrint = () => {
         const printWindow = window.open('', '_blank');
         const printContent = `
@@ -36,4 +36,3 @@ const PrintPDFButton = (props) => {
     );
 };
 
-export default PrintPDFButton;

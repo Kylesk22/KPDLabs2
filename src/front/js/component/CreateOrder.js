@@ -109,12 +109,12 @@ export const CreateOrder = props => {
     }
     
     async function getUPSLabel() {
-        setSelectedRate2(rates.filter(rate => rate.servicelevel.token === "ups_ground"))
-        console.log(selectedRate2)
+        // setSelectedRate2(rates.filter(rate => rate.servicelevel.token === "ups_ground"))
+        // console.log(selectedRate2)
 
 
         const userInfo = {
-            "rate": selectedRate2
+            "rate": rates.filter(rate => rate.servicelevel.token === "ups_ground")
         };
     
         const options = {

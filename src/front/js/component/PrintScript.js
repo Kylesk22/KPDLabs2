@@ -171,11 +171,7 @@ export const PrintPDFButton = (props) => {
             </body>
             </html>
         `;
-        let pathElement = document.getElementById('5');
-        pathElement.classList.add('select');
-        pathElement.classList.remove('replace');
-        console.log(getElementById('5'))
-
+        
         printWindow.document.open();
         printWindow.document.write(printContent);
         printWindow.document.close();

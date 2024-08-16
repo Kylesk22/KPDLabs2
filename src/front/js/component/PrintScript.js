@@ -1,5 +1,6 @@
 import React from 'react';
 import KPDWIZ from '../../img/KPDWIZ.jpg'
+import { UploadPartOutputFilterSensitiveLog } from '@aws-sdk/client-s3';
 
 const imageUrl = KPDWIZ; // Use the imported image URL
 
@@ -7,6 +8,7 @@ export const PrintPDFButton = (props) => {
     const handlePrint = () => {
         const printWindow = window.open('', '_blank');
         const printContent = `
+
             <html>
             <head>
                 
@@ -48,6 +50,12 @@ export const PrintPDFButton = (props) => {
                         stroke: #212529;
                         stroke-width: 2px;
                         fill: white;
+                    }
+
+                    .select {
+                        stroke: #212529;
+                        stroke-width: 2px;
+                        fill: blue;
                     }
                     .svg-image {
                     margin-top: 30px}
@@ -154,6 +162,7 @@ export const PrintPDFButton = (props) => {
                     <div class="text-right">
                         <div class="info-data">Patient Name: ${props.patientName}</div>
                         <div class="info-data">Product: ${props.product}</div>
+                        <div class="info-data">Selected Teeth: ${props.crownTooth}</div>
                     </div>
                 </div>
                 <!-- Optionally add more content or load it dynamically -->
@@ -165,6 +174,11 @@ export const PrintPDFButton = (props) => {
         printWindow.document.close();
         printWindow.focus(); // Required for IE
         // printWindow.print();
+        for (tooth in props.crownTooth) {
+                let pathElement = document.getElementById(tooth);
+                pathElement.classList.add('select');
+                 pathElement.classList.remove('replace');
+        }
     };
 
     return (

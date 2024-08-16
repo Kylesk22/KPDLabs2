@@ -19,17 +19,28 @@ export const PrintPDFButton = (props) => {
                         }
                         /* Add any specific styles for print here */
                     }
+                        .case {
+                        text-size: 20px;
+                        }
+                    
                         .text-center {
                         text-align: center;}
+
                         .text-left {
                         text-align: left}
+
+                        .text-right{
+                        text-align: right}
+
+                        .info-data{
+                        margin-top: 10px}
                 </style>
             </head>
             <body>
                 <div class="text-center">
                     <img src="${imageUrl}" alt="Dynamic Image"  />
                 <div>
-                <div class= "text-center">Case # ${props.caseNumber}</div>
+                <div class= "text-center case info-data"><strong>Case # ${props.caseNumber}</strong></div>
                 <div class = "text-left">
                     <div>
                         Doctor Name: ${props.doctorFirst} ${props.doctorLast}

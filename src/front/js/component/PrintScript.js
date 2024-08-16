@@ -40,6 +40,9 @@ export const PrintPDFButton = (props) => {
                         justify-content: space-between; /* Distributes space between items */
                         margin-top: 10px; /* Adjust as needed */
                     }
+                    .svg {
+                        width: 100px;
+                        height: 100px}
                 </style>
             </head>
             <body>

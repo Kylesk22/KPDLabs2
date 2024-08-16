@@ -9,7 +9,7 @@ export const PrintPDFButton = (props) => {
         const printContent = `
             <html>
             <head>
-                <title>Print</title>
+                
                 <style>
                     @media print {
                         body {
@@ -18,16 +18,19 @@ export const PrintPDFButton = (props) => {
                         }
                     }
                     .case {
-                        font-size: 20px; /* Use 'font-size' instead of 'text-size' */
+                        font-size: 25px; 
                     }
                     .text-center {
                         text-align: center;
+                        
                     }
                     .text-left {
                         text-align: left;
+                        font-size: 20px;
                     }
                     .text-right {
                         text-align: right;
+                        font-size: 20px;
                     }
                     .info-data {
                         margin-top: 10px;
@@ -48,12 +51,12 @@ export const PrintPDFButton = (props) => {
                 </div>
                 <div class="inline-container">
                     <div class="text-left">
-                        <div>Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
-                        <div>Product Type: ${props.type}</div>
+                        <div class="info-data">Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
+                        <div class="info-data">Product Type: ${props.type}</div>
                     </div>
                     <div class="text-right">
-                        <div>Patient Name: ${props.patientName}</div>
-                        <div>Product: ${props.product}</div>
+                        <div class="info-data">Patient Name: ${props.patientName}</div>
+                        <div class="info-data">Product: ${props.product}</div>
                     </div>
                 </div>
                 <!-- Optionally add more content or load it dynamically -->

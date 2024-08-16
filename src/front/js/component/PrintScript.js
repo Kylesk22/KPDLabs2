@@ -180,6 +180,16 @@ export const PrintPDFButton = (props) => {
                 pathElement.classList.remove('replace');
                 console.log(getElementById('5'))
         // }
+        document.addEventListener("DOMContentLoaded", function() {
+            let pathElement = document.getElementById('5');
+            if (pathElement) {
+                pathElement.classList.add('select');
+                pathElement.classList.remove('replace');
+                console.log('Path element:', pathElement);
+            } else {
+                console.error('Element with ID 5 not found');
+            }
+        });
     };
 
     return (

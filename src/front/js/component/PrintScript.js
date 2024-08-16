@@ -41,8 +41,8 @@ export const PrintPDFButton = (props) => {
                         margin-top: 10px; /* Adjust as needed */
                     }
                     .tooth-svg {
-                        width: 100px;
-                        height: 100px}
+                        width: 200px;
+                        height: 200px}
                 </style>
             </head>
             <body>

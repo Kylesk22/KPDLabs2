@@ -171,27 +171,19 @@ export const PrintPDFButton = (props) => {
             </body>
             </html>
         `;
+        let pathElement = document.getElementById('5');
+        pathElement.classList.add('select');
+        pathElement.classList.remove('replace');
+        console.log(getElementById('5'))
+
         printWindow.document.open();
         printWindow.document.write(printContent);
         printWindow.document.close();
         printWindow.focus(); // Required for IE
-        // printWindow.print();
-        // for (tooth in props.crownTooth) {
-                let pathElement = document.getElementById('5');
-                pathElement.classList.add('select');
-                pathElement.classList.remove('replace');
-                console.log(getElementById('5'))
+       
+                
         // }
-        document.addEventListener("DOMContentLoaded", function() {
-            let pathElement = document.getElementById('5');
-            if (pathElement) {
-                pathElement.classList.add('select');
-                pathElement.classList.remove('replace');
-                console.log('Path element:', pathElement);
-            } else {
-                console.error('Element with ID 5 not found');
-            }
-        });
+      
     };
 
     return (

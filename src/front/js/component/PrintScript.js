@@ -170,6 +170,7 @@ export const PrintPDFButton = (props) => {
                 <!-- Optionally add more content or load it dynamically -->
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
+                    console.log(props.crownTooth)
                         for (let tooth in props.crownTooth){
                         
                             let pathElement = document.getElementById(props.crownTooth[tooth]);

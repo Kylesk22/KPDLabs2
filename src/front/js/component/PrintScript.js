@@ -175,9 +175,9 @@ export const PrintPDFButton = (props) => {
         printWindow.focus(); // Required for IE
         // printWindow.print();
         // for (tooth in props.crownTooth) {
-                let pathElement = document.getElementById(tooth);
+                let pathElement = document.getElementById(5);
                 pathElement.classList.add('select');
-                 pathElement.classList.remove('replace');
+                pathElement.classList.remove('replace');
         // }
     };
 

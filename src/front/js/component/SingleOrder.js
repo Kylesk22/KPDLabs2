@@ -274,7 +274,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div>
                 <div>
-                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName}/>
+                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade}/>
                     
                 </div>
             </div>

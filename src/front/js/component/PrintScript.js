@@ -29,7 +29,23 @@ export const PrintPDFButton = (props) => {
                 <div class="text-center">
                     <img src="${imageUrl}" alt="Dynamic Image"  />
                 <div>
-                <div class = "text-left">Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
+                <div class= "text-center">Case # ${props.caseNumber}</div>
+                <div class = "text-left">
+                    <div>
+                        Doctor Name: ${props.doctorFirst} ${props.doctorLast}
+                    </div>
+                    <div>
+                        Product Type: ${props.type}
+                    </div>
+                </div>
+                <div class = "text-right">
+                    <div>
+                        Patient Name: ${props.patientName}
+                    </div>
+                    <div>
+                        Product: ${props.product}
+                    </div>
+                </div>
                 <!-- Optionally add more content or load it dynamically -->
             </body>
             </html>

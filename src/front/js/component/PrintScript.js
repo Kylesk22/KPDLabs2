@@ -42,7 +42,10 @@ export const PrintPDFButton = (props) => {
                     }
                     .tooth-svg {
                         width: 400px;
-                        height: 400px}
+                        height: 400px;}
+
+                    .tooth-replace {
+                    fill: white}
                 </style>
             </head>
             <body>

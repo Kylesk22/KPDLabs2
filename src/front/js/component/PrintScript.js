@@ -168,6 +168,20 @@ export const PrintPDFButton = (props) => {
                     </div>
                 </div>
                 <!-- Optionally add more content or load it dynamically -->
+                <script>
+        
+                    let props = { type: 2 }; // Example prop
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (props.type === 2) {
+                            let pathElement = document.getElementById('5');
+                            if (pathElement) {
+                                pathElement.classList.add('select');
+                                pathElement.classList.remove('replace');
+                            }
+                        }
+                    });
+                </script>
             </body>
             </html>
         `;

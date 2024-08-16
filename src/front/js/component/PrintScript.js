@@ -44,8 +44,12 @@ export const PrintPDFButton = (props) => {
                         width: 400px;
                         height: 400px;}
 
-                    .tooth-replace {
-                    fill: white}
+                    .replace {
+                        stroke: #212529;
+                        stroke-width: 2px;
+                        fill: white;
+                    }
+
                 </style>
             </head>
             <body>

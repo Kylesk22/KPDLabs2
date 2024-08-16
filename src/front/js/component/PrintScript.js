@@ -7,7 +7,12 @@ const imageUrl = KPDWIZ; // Use the imported image URL
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {
         const printWindow = window.open('', '_blank');
+        pathElement = document.getElementById('5');
+        pathElement.classList.add('select');
+        pathElement.classList.remove('replace');
+        console.log(getElementById('5'))
         const printContent = `
+        
 
             <html>
             <head>

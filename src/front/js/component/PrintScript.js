@@ -173,7 +173,8 @@ export const PrintPDFButton = (props) => {
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
                     
-                    if (props.crownTooth.length > 1) {
+                    let teeth = ${props.crownTooth}
+                    if (teeth.length > 1) {
                         console.log("worked")
                     }
                         

@@ -173,15 +173,14 @@ export const PrintPDFButton = (props) => {
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
 
+                    toothArray = ${props.crownTooth}.split(" ").map();
+
                     
-                        for (let tooth in [${props.crownTooth}]){
-                           
-                            console.log(tooth)
-                            let pathElement = document.getElementById(${props.crownTooth}[tooth]);
-                            console.log(pathElement)
-                            if (pathElement) {
-                                pathElement.classList.add('select');
-                                pathElement.classList.remove('replace');
+                    toothArray.forEach(num => {
+                        console.log(num);
+                                        
+                                // pathElement.classList.add('select');
+                                // pathElement.classList.remove('replace');
     }}
                         
                     });
@@ -206,3 +205,11 @@ export const PrintPDFButton = (props) => {
     );
 };
 
+// for (let tooth in [${props.crownTooth}]){
+                           
+//     console.log(tooth)
+//     let pathElement = document.getElementById(${props.crownTooth}[tooth]);
+//     console.log(pathElement)
+//     if (pathElement) {
+//         pathElement.classList.add('select');
+//         pathElement.classList.remove('replace');

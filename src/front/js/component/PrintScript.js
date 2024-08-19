@@ -175,13 +175,8 @@ export const PrintPDFButton = (props) => {
 
                     toothArray = ${props.crownTooth}.split(" ").map();
 
+                    console.log(toothArray)
                     
-                    toothArray.forEach(num => {
-                        console.log(num);
-                                        
-                                // pathElement.classList.add('select');
-                                // pathElement.classList.remove('replace');
-    }}
                         
                     });
                 </script>

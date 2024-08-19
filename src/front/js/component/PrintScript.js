@@ -173,8 +173,7 @@ export const PrintPDFButton = (props) => {
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
 
-                    let numberArray = ${props.crownTooth}.split(" ");
-                    console.log(numberArray)
+                    
                         
                     });
                 </script>

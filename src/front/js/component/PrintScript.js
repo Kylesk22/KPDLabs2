@@ -65,6 +65,9 @@ export const PrintPDFButton = (props) => {
                 </style>
             </head>
             <body>
+                <div class="text-center info-data">
+                    <img src=${KPDWIZ}></img>
+                </div>
                 
                 <div class="text-center case info-data">
                     <strong>Case # ${props.caseNumber}</strong>

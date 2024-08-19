@@ -174,8 +174,7 @@ export const PrintPDFButton = (props) => {
                     console.log(${props.crownTooth})
                     
                     if (${props.crownTooth}.length > 1) {
-                        ${props.crownTooth}.map((item, index)=>{
-                            console.log(item)})
+                        console.log("worked")
                     }
                         
                     });

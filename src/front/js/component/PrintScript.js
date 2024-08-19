@@ -170,21 +170,8 @@ export const PrintPDFButton = (props) => {
                 </div>
                 <!-- Optionally add more content or load it dynamically -->
                 <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                    console.log(${props.crownTooth})
-
-                    
-                        for (let tooth in [${props.crownTooth}]){
-                            console.log(${tooth})
-                            console.log(tooth)
-                            let pathElement = document.getElementById(${props.crownTooth}[tooth]);
-                            console.log(pathElement)
-                            if (pathElement) {
-                                pathElement.classList.add('select');
-                                pathElement.classList.remove('replace');
-    }}
-                        
-                    });
+                   
+                
                 </script>
             </body>
             </html>

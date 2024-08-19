@@ -172,8 +172,11 @@ export const PrintPDFButton = (props) => {
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
-
                     
+                    if (${props.crownTooth}.length > 1) {
+                        ${props.crownTooth}.map((item, index)=>{
+                            console.log(item)})
+                    }
                         
                     });
                 </script>

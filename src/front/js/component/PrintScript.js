@@ -24,7 +24,8 @@ export const PrintPDFButton = (props) => {
                     }
                     .case {
                         font-size: 25px; 
-                        border-bottom: 1px solid black
+                        border-bottom: 1px solid black;
+                        margin-top: 10px;
                     }
                     .text-center {
                         text-align: center;
@@ -40,6 +41,7 @@ export const PrintPDFButton = (props) => {
                     }
                     .info-data {
                         margin-top: 10px;
+                        border-bottom: 1px solid black;
                     }
                     .info-selected-teeth {
                         margin-top: 100px;
@@ -80,7 +82,7 @@ export const PrintPDFButton = (props) => {
                     <img src=${KPDWIZ}></img>
                 </div>
                 
-                <div class="text-center case info-data">
+                <div class="text-center case">
                     <strong>Case # ${props.caseNumber} | Patient Name:  ${props.patientName} </strong>
                 </div>
                 

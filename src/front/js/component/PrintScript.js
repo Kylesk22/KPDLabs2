@@ -126,7 +126,7 @@ export const PrintPDFButton = (props) => {
                             <div class="text-right">Product: ${props.product}</div>
                         </div>
                         <div class="info-data inline-container">
-                            <div>Ship to Address: ${props.street}<br></br>${props.city}<br></br>${props.state}<br></br>${props.zip}</div>
+                            <div>Ship to Address:</div><div> ${props.street}<br></br>${props.city}<br></br>${props.state}<br></br>${props.zip}</div>
                             <div class="text-center"> ${props.submittedDate}</div>
                             <div class="text-right"></div>
                         </div>

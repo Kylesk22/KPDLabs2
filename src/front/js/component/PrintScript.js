@@ -174,9 +174,7 @@ export const PrintPDFButton = (props) => {
                     console.log(${props.crownTooth})
                     
                     let teeth = ${props.crownTooth}
-                    if (teeth.length > 1) {
-                        console.log("worked")
-                    }
+                    console.log(teeth)
                         
                     });
                 </script>

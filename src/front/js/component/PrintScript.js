@@ -200,6 +200,7 @@ export const PrintPDFButton = (props) => {
                     document.addEventListener('DOMContentLoaded', function() {
                         if (${props.gumShade} !== ""){
                             let gum = document.getElementById("gum")
+                            console.log(gum)
                             
                             gum.classList.remove('hide')
                         }

@@ -99,13 +99,7 @@ export const PrintPDFButton = (props) => {
                     .hide {
                     display: none}
 
-                    .left-border {
-                    border-left: 1px solid black;
-                    font-size: 20px}
-
-                    .right-border {
-                    border-right: 1px solid black;
-                    font-size: 20px}
+                    
 
 
                     

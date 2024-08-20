@@ -41,7 +41,9 @@ export const PrintPDFButton = (props) => {
                     }
                     .info-data {
                         margin-top: 10px;
-                        border: 1px solid black;
+                        border-left: 1px solid black;
+                        border-right: 1px solid black;
+                        border-top: 1px solid black;
                     }
                     .info-selected-teeth {
                         margin-top: 100px;
@@ -89,7 +91,12 @@ export const PrintPDFButton = (props) => {
                 <div class="row">
                     
                     <div class="col-6">
-                        <div class="info-data">Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
+                        <div class="info-data">
+                            <div>
+                                Doctor Name: ${props.doctorFirst} ${props.doctorLast}
+                            </div>
+                            
+                        </div>
                         <div class="info-data">Product Type: ${props.type}</div>
                         <div class="svg-image">
                         <svg class="tooth-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >

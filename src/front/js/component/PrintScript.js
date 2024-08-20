@@ -78,6 +78,8 @@ export const PrintPDFButton = (props) => {
                         justify-content: space-between; /* Distributes space between items */
                         margin-top: 10px; /* Adjust as needed */
                     }
+                    .address {
+                    justify-content: none}
                     .tooth-svg {
                         width: 300px;
                         height: 300px;}
@@ -126,7 +128,7 @@ export const PrintPDFButton = (props) => {
                             <div class="text-right">Product: ${props.product}</div>
                         </div>
                         <div class="info-data inline-container">
-                            <div>Ship to Address:</div><div> ${props.street}<br></br>${props.city}<br></br>${props.state}<br></br>${props.zip}</div>
+                            <div class="address">Ship to Address:</div><div> ${props.street}<br></br>${props.city}<br></br>${props.state}<br></br>${props.zip}</div>
                             <div class="text-center"> ${props.submittedDate}</div>
                             <div class="text-right"></div>
                         </div>

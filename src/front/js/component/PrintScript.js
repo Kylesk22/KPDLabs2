@@ -99,6 +99,15 @@ export const PrintPDFButton = (props) => {
                     .hide {
                     display: none}
 
+                    .left-border {
+                    border-left: 1px solid black;
+                    font-size: 20px}
+
+                    .right-border {
+                    border-right: 1px solid black;
+                    font-size: 20px}
+
+
                     
 
                 </style>
@@ -122,8 +131,8 @@ export const PrintPDFButton = (props) => {
                             
                         </div>
                         <div class="info-data-3 inline-container">
-                            <div >Product Type: ${props.type}</div>
-                            <div class="text-right">Product: ${props.product}</div>
+                            <div class="left-border>Product Type: ${props.type}</div>
+                            <div class="text-right right-border">Product: ${props.product}</div>
                         </div>
                         <div class="info-data inline-container">
                             <div>

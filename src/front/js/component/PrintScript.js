@@ -42,6 +42,7 @@ export const PrintPDFButton = (props) => {
                     .info-data {
                         margin-top: 10px;
                         padding: 10px;
+                        font-size: 20px;
                         border-left: 1px solid black;
                         border-right: 1px solid black;
                         border-top: 1px solid black;
@@ -99,6 +100,7 @@ export const PrintPDFButton = (props) => {
                             
                         </div>
                         <div class="info-data">Product Type: ${props.type}</div>
+                        <div class="info-data text-right">Product: ${props.product}</div>
                         <div class="svg-image">
                         <svg class="tooth-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >
                             <path d="M271.46,332.92a21.1,21.1,0,0,0,2.77,6.6c1,1.58,3,2.4,4.77,3.12.45.18.88.36,1.28.54a122.07,122.07,0,0,0,15.65,5.92,51.48,51.48,0,0,0,11.86,2.37c.47,0,.94,0,1.41,0a23.07,23.07,0,0,0,10.54-2.2,19.36,19.36,0,0,0,10.18-13.17,14.66,14.66,0,0,0,.25-1.95,11,11,0,0,1,.31-2.13c.09-.34.2-.68.3-1a27.53,27.53,0,0,0,.78-3.07,81.22,81.22,0,0,0,1.17-10.88c.07-1.47.09-3,.09-4.47.27-6.32-1.74-10.77-6-13.21-12.39-6.22-23.45-10.08-33.83-11.8a11.36,11.36,0,0,0-1.47-.12,19.52,19.52,0,0,0-10,3.33,18.44,18.44,0,0,0-7.59,10.06,23.44,23.44,0,0,0-.34,7.41,29.4,29.4,0,0,1,0,5.47c-.05.41-.08.82-.12,1.22a11.6,11.6,0,0,1-.37,2.43c-.44,1.52-.95,3.29-1.33,5.09A24.07,24.07,0,0,0,271.46,332.92Z" transform="translate(-270.52 -59.04)" class="tooth replace" id="2" 
@@ -186,7 +188,7 @@ export const PrintPDFButton = (props) => {
                     </div>
                     <div class="col-6">
                         
-                        <div class="info-data">Product: ${props.product}</div>
+                        
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
                         <div class="info-data">Selected Tooth Shade: ${props.shade}</div>
                         

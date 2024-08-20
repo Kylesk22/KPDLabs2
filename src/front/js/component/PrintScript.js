@@ -6,6 +6,7 @@ const imageUrl = KPDWIZ; // Use the imported image URL
 
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {
+        const allTeeth = props.crownTooth
         const printWindow = window.open('', '_blank');
         
         const printContent = `
@@ -173,7 +174,7 @@ export const PrintPDFButton = (props) => {
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
                     
-                    let teeth = props.crownTooth
+                    let teeth = allTeeth
                     console.log(teeth)
                         
                     });

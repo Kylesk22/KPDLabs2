@@ -198,7 +198,7 @@ export const PrintPDFButton = (props) => {
                 </script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        if (${props.gumShade} !== ""){
+                        if ("${props.gumShade}" !== ""){
                             let gum = document.getElementById("gum")
                             console.log(gum)
                             

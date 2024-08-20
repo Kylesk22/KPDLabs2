@@ -53,8 +53,8 @@ export const PrintPDFButton = (props) => {
                         margin-top: 10px; /* Adjust as needed */
                     }
                     .tooth-svg {
-                        width: 400px;
-                        height: 400px;}
+                        width: 300px;
+                        height: 300px;}
 
                     .replace {
                         stroke: #212529;

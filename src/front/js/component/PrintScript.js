@@ -41,7 +41,7 @@ export const PrintPDFButton = (props) => {
                     }
                     .info-data {
                         margin-top: 10px;
-                        border-bottom: 1px solid black;
+                        border: 1px solid black;
                     }
                     .info-selected-teeth {
                         margin-top: 100px;

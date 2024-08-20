@@ -32,13 +32,21 @@ export const SingleOrder = props => {
     const [note, setNote] = useState("")
     const [submittedDate, setSubmittedDate] = useState("")
     const [loading, setLoading] = useState(false);
+    const [address, setAddress] = useState(props.address.split(","))
+    const [drStreet, setDrStreet] = useState(address[0])
+    const [drCity, setDrCity] = useState(address[1])
+    const [drState, setDrState] = useState(address[2])
+    const [drZip, setDrZip] = useState(address[3])
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
     let photo_urls = []
     
 
-
+    useEffect(()=>{
+        console.log(drCity);
+        console.log(drState)
+    },[])
 
     function sendEmail() {
         var recipient = "kpdlabs@kpdlabs.com";
@@ -246,6 +254,8 @@ export const SingleOrder = props => {
             console.log(err);
     })
     },[])
+
+   
 
     
     

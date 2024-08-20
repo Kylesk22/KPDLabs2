@@ -202,7 +202,7 @@ export const UserPage = props => {
                 // (page === "userCases")?
                 // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?
-                <SingleOrder firstName={firstNameLower} lastName={lastName} singleCaseId = {singleCaseId} handleGetPage={getPage} page={page}/>:
+                <SingleOrder firstName={firstNameLower} lastName={lastName} address={address} singleCaseId = {singleCaseId} handleGetPage={getPage} page={page}/>:
                 (page === "updateAccountInfo")?
                 <UpdateAccountInfo firstName={firstNameLower} lastName ={lastName} address = {address} email={email} />:
                 (page === "contactUs")?

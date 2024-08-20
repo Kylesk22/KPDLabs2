@@ -39,6 +39,10 @@ export const PrintPDFButton = (props) => {
                         text-align: right;
                         font-size: 20px;
                     }
+                    .text-center {
+                        text-align: center;
+                        font-size: 20px;
+                    }
                     .info-data {
                         margin-top: 10px;
                         padding: 10px;
@@ -52,9 +56,19 @@ export const PrintPDFButton = (props) => {
                         margin-top: 10px;
                         padding: 10px;
                         font-size: 20px;
-                        border: 1px solid black;
+                        border-left: 1px solid black;
+                        border-right: 1px solid black;
+                        border-top: 1px solid black;
+                    }
+
+                     .info-data-2 {
+                        margin-top: 10px;
+                        padding: 10px;
+                        font-size: 20px;
+                        border-bottom: 1px solid black;
                         
                     }
+
                     .info-selected-teeth {
                         margin-top: 100px;
                         margin-bottom: 100px;
@@ -107,9 +121,14 @@ export const PrintPDFButton = (props) => {
                             </div>
                             
                         </div>
-                        <div class="info-data-2 inline-container">
-                        <div >Product Type: ${props.type}</div>
-                        <div class="text-right">Product: ${props.product}</div>
+                        <div class="info-data-3 inline-container">
+                            <div >Product Type: ${props.type}</div>
+                            <div class="text-right">Product: ${props.product}</div>
+                        </div>
+                        <div class="info-data inline-container">
+                            <div>Ship to Address: ${props.address}</div>
+                            <div class="text-center"> ${props.submittedDate}</div>
+                            <div class="text-right"></div>
                         </div>
                         <div class="svg-image">
                         <svg class="tooth-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >

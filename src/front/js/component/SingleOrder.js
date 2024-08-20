@@ -30,6 +30,7 @@ export const SingleOrder = props => {
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
+    const [submittedDate, setSubmittedDate] = useState("")
     const [loading, setLoading] = useState(false);
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -211,6 +212,7 @@ export const SingleOrder = props => {
                     setNote(data.notes);
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
+                    setSubmittedDate(data["update date"])
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -274,7 +276,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div> */}
                 <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} address={props.address} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     
                 </div>
             </div>

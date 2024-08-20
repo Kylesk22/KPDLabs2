@@ -86,7 +86,7 @@ export const PrintPDFButton = (props) => {
                     <strong>Case # ${props.caseNumber} | Patient Name:  ${props.patientName} </strong>
                 </div>
                 
-                <div class="inline-container">
+                <div class="inline-container row">
                     <div class="row">
                         <div class="col-6">
                         </div>

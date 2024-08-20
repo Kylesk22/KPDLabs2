@@ -67,6 +67,11 @@ export const PrintPDFButton = (props) => {
                     .svg-image {
                     margin-top: 30px}
 
+                    .hide {
+                    display: none}
+
+                    
+
                 </style>
             </head>
             <body>
@@ -172,8 +177,8 @@ export const PrintPDFButton = (props) => {
                         <div class="info-data">Product: ${props.product}</div>
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
                         <div class="info-data">Product: Selected Tooth Shade: ${props.shade}</div>
-                        {if (${props.type}==="denture"{
-                        <div class="info-data">Product: Selected Gum Shade: ${props.shade}</div>})}
+                        
+                        <div id = "gum" class="info-data hide">Product: Selected Gum Shade: ${props.gumShade}</div>
                         
                         <div class="info-data">Case Notes:${props.note}</div>
                     </div>
@@ -190,6 +195,15 @@ export const PrintPDFButton = (props) => {
                     
                         
                     });
+                </script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (${props.gumShade} !== ""){
+                            let gum = document.getElementById("gum")
+                            
+                            gum.classList.remove('hide')
+                        }
+                    }
                 </script>
             </body>
             </html>

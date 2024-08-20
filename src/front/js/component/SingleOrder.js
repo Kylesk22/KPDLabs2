@@ -217,7 +217,9 @@ export const SingleOrder = props => {
                     setNote(data.notes);
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
-                    setSubmittedDate(data["update date"])
+                    date = data["update date"].split(" ")
+
+                    setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);

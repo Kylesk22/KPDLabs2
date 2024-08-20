@@ -217,7 +217,7 @@ export const SingleOrder = props => {
                     setNote(data.notes);
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
-                    date = data["update date"].split(" ")
+                    let date = data["update date"].split(" ")
 
                     setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth

@@ -41,8 +41,8 @@ export const PrintPDFButton = (props) => {
                         margin-top: 10px;
                     }
                     .info-selected-teeth {
-                        margin-top: 50px;
-                        margin-bottom: 50px;
+                        margin-top: 100px;
+                        margin-bottom: 100px;
                     }
                     .inline-container {
                         display: flex;
@@ -171,7 +171,7 @@ export const PrintPDFButton = (props) => {
                         <div class="info-data">Patient Name: ${props.patientName}</div>
                         <div class="info-data">Product: ${props.product}</div>
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
-                        <div class="info-data">${props.note}</div>
+                        <div class="info-data">Case Notes:${props.note}</div>
                     </div>
                 </div>
                 <!-- Optionally add more content or load it dynamically -->

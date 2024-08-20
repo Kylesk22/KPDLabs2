@@ -24,6 +24,7 @@ export const PrintPDFButton = (props) => {
                     }
                     .case {
                         font-size: 25px; 
+                        border-bottom: 1px solid black
                     }
                     .text-center {
                         text-align: center;

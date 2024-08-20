@@ -175,7 +175,9 @@ export const PrintPDFButton = (props) => {
                     console.log(${props.crownTooth})
                     const teeth = [${props.crownTooth}]
                     for (let tooth in teeth){
-                    console.log(tooth)}
+                        let pathElement = document.getElementById(teeth[tooth]);
+                        pathElement.classList.add('select');
+                        pathElement.classList.remove('replace');}
                     
                         
                     });

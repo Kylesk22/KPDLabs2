@@ -58,7 +58,7 @@ export const PrintPDFButton = (props) => {
                     .select {
                         stroke: #212529;
                         stroke-width: 2px;
-                        fill: blue;
+                        fill: #137ea7;
                     }
                     .svg-image {
                     margin-top: 30px}

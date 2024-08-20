@@ -173,7 +173,7 @@ export const PrintPDFButton = (props) => {
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                     console.log(${props.crownTooth})
-                    const teeth = ${props.crownTooth}
+                    const teeth = [${props.crownTooth}]
                     console.log(teeth)
                     
                         

@@ -178,7 +178,7 @@ export const PrintPDFButton = (props) => {
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
                         <div class="info-data">Product: Selected Tooth Shade: ${props.shade}</div>
                         
-                        <div id = "gum" class="info-data hide">Product: Selected Gum Shade: ${props.gumShade}</div>
+                        <div id = "gum" class="info-data hide">Selected Gum Shade: ${props.gumShade}</div>
                         
                         <div class="info-data">Case Notes:${props.note}</div>
                     </div>
@@ -203,7 +203,7 @@ export const PrintPDFButton = (props) => {
                             
                             gum.classList.remove('hide')
                         }
-                    }
+    });
                 </script>
             </body>
             </html>

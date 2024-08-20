@@ -43,10 +43,7 @@ export const SingleOrder = props => {
     let photo_urls = []
     
 
-    useEffect(()=>{
-        console.log(drCity);
-        console.log(drState)
-    },[])
+   
 
     function sendEmail() {
         var recipient = "kpdlabs@kpdlabs.com";
@@ -286,7 +283,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div> */}
                 <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} address={props.address} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     
                 </div>
             </div>

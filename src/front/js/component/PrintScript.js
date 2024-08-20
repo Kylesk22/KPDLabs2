@@ -47,6 +47,14 @@ export const PrintPDFButton = (props) => {
                         border-right: 1px solid black;
                         border-top: 1px solid black;
                     }
+
+                    .info-data-2 {
+                        margin-top: 10px;
+                        padding: 10px;
+                        font-size: 20px;
+                        border: 1px solid black;
+                        
+                    }
                     .info-selected-teeth {
                         margin-top: 100px;
                         margin-bottom: 100px;
@@ -99,7 +107,7 @@ export const PrintPDFButton = (props) => {
                             </div>
                             
                         </div>
-                        <div class="info-data inline-container">
+                        <div class="info-data-2 inline-container">
                         <div >Product Type: ${props.type}</div>
                         <div class="text-right">Product: ${props.product}</div>
                         </div>

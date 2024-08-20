@@ -86,14 +86,9 @@ export const PrintPDFButton = (props) => {
                     <strong>Case # ${props.caseNumber} | Patient Name:  ${props.patientName} </strong>
                 </div>
                 
-                <div class="inline-container row">
-                    <div class="row">
-                        <div class="col-6">
-                        </div>
-                        <div class="col-6">
-                        </div>
-                    </div>
-                    <div class="text-left">
+                <div class="row">
+                    
+                    <div class="col-6">
                         <div class="info-data">Doctor Name: ${props.doctorFirst} ${props.doctorLast}</div>
                         <div class="info-data">Product Type: ${props.type}</div>
                         <div class="svg-image">
@@ -181,7 +176,7 @@ export const PrintPDFButton = (props) => {
                         </svg>
                     </div>
                     </div>
-                    <div class="text-right">
+                    <div class="col-6">
                         
                         <div class="info-data">Product: ${props.product}</div>
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>

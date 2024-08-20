@@ -80,7 +80,7 @@ export const PrintPDFButton = (props) => {
                 </div>
                 
                 <div class="text-center case info-data">
-                    <strong>Case # ${props.caseNumber}</strong>
+                    <strong>Case # ${props.caseNumber} | Patient Name:  ${props.patientName} </strong>
                 </div>
                 
                 <div class="inline-container">
@@ -173,7 +173,7 @@ export const PrintPDFButton = (props) => {
                 </div>
                     </div>
                     <div class="text-right">
-                        <div class="info-data">Patient Name: ${props.patientName}</div>
+                        
                         <div class="info-data">Product: ${props.product}</div>
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
                         <div class="info-data">Selected Tooth Shade: ${props.shade}</div>

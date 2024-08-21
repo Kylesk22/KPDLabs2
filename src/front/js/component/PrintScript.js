@@ -78,7 +78,7 @@ export const PrintPDFButton = (props) => {
                     }
 
                     .info-selected-teeth {
-                        margin-top: 20px;
+                        margin-top: 40px;
                         text-align: left;
                         
                     }
@@ -155,7 +155,7 @@ export const PrintPDFButton = (props) => {
                             <div class="left-border">Product Type: ${props.type}</div>
                             <div class="text-right right-border">Product: ${props.product}</div>
                         </div>
-                        
+
                         <div class="inline-container-2 info-data">
                             <div class="svg-image">
                                 <svg class="tooth-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >
@@ -248,7 +248,7 @@ export const PrintPDFButton = (props) => {
                                 <div class="info-data-3">Selected Tooth Shade: ${props.shade}</div>
                                 <div id = "gum" class="info-data-3 hide">Selected Gum Shade: ${props.gumShade}</div>
                         
-                                <div class="info-data-3">Case Notes:${props.note}</div>
+                                <div class="info-data-3">Case Notes: ${props.note}</div>
                              </div>
                         </div>
                     </div>

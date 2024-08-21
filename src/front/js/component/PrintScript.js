@@ -221,7 +221,7 @@ export const PrintPDFButton = (props) => {
                                         <path d="M504.82,614.72a33.06,33.06,0,0,0,12.86,2.87,23.64,23.64,0,0,0,11.45-2.9A49.27,49.27,0,0,1,504.82,614.72Z" transform="translate(-270.52 -59.04)"></path>
                                     </svg>
                                 </div>
-                            </div>
+                            
                     
                             <div class="text-right">                                             
                                 <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import KPDWIZ from '../../img/KPDWIZ.png'
 import { UploadPartOutputFilterSensitiveLog } from '@aws-sdk/client-s3';
 
@@ -6,7 +6,11 @@ const imageUrl = KPDWIZ; // Use the imported image URL
 
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {
-        
+        const [newType, setNewType] = useState("")
+        if (props.type === "crown"){
+            setNewType("Crown")
+            console.log(newType)
+        }
         
         const printWindow = window.open('', '_blank');
         

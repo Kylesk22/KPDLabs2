@@ -258,7 +258,7 @@ export const PrintPDFButton = (props) => {
                                 <div id = "gum" class="info-data-3 hide">Selected Gum Shade: ${props.gumShade}</div>
                         
                                 <div class="info-data-3">Case Notes: ${props.note}</div>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -293,7 +293,7 @@ export const PrintPDFButton = (props) => {
         printWindow.document.write(printContent);
         printWindow.document.close();
         printWindow.focus(); // Required for IE
-        printWindow.print()
+        // printWindow.print()
        
                 
        

@@ -28,9 +28,14 @@ export const PrintPDFButton = (props) => {
                     .title{
                         font-size: 40px;
                     }
+
                     .subtitle{
                         font-size: 30px}
 
+                    
+                    .border {
+                    border: 1px solid black}
+                    
                     .case {
                         font-size: 25px; 
                         
@@ -268,7 +273,7 @@ export const PrintPDFButton = (props) => {
                                 
                             </div>
                         </div>
-                        <div class="inline-container">
+                        <div class="inline-container border">
                             <div class="text-center info-data-3">Case Notes: ${props.note}</div>
                         </div>
                     </div>

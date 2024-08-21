@@ -69,6 +69,13 @@ export const PrintPDFButton = (props) => {
                         
                     }
 
+                    .info-data-3 {
+                        margin-top: 10px;
+                        font-size: 20px;
+                        border-bottom: 1px solid black;
+                        
+                    }
+
                     .info-selected-teeth {
                         margin-top: 100px;
                         margin-bottom: 100px;
@@ -233,10 +240,10 @@ export const PrintPDFButton = (props) => {
                     
                             <div class="text-right">                                             
                                 <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
-                                <div class="info-data">Selected Tooth Shade: ${props.shade}</div>
-                                <div id = "gum" class="info-data hide">Selected Gum Shade: ${props.gumShade}</div>
+                                <div class="info-data-3">Selected Tooth Shade: ${props.shade}</div>
+                                <div id = "gum" class="info-data-3 hide">Selected Gum Shade: ${props.gumShade}</div>
                         
-                                <div class="info-data">Case Notes:${props.note}</div>
+                                <div class="info-data-3">Case Notes:${props.note}</div>
                              </div>
                         </div>
                     </div>

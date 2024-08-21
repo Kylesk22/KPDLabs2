@@ -275,7 +275,7 @@ export const PrintPDFButton = (props) => {
                                 
                             </div>
                         </div>
-                        <div class="inline-container border">
+                        <div class="inline-container info-data border">
                             <div class="text-center info-data-3">Case Notes: ${props.note}</div>
                         </div>
                     </div>

@@ -135,7 +135,7 @@ export const PrintPDFButton = (props) => {
             <body>
                 <div class="text-center">
                     
-                    <div class="title">KPD Labs</div>
+                    <div class="title"><strong>KPD Labs</strong></div>
                     <div class="subtitle">Kronemeyer Precision Dental Laboratories</div>
                     
                 </div>
@@ -265,8 +265,11 @@ export const PrintPDFButton = (props) => {
                                 <div class="info-data-3">Selected Tooth Shade: ${props.shade}</div>
                                 <div id = "gum" class="info-data-3 hide">Selected Gum Shade: ${props.gumShade}</div>
                         
-                                <div class="info-data-3">Case Notes: ${props.note}</div>
+                                
                             </div>
+                        </div>
+                        <div class="text-center>
+                            <div class="info-data-3">Case Notes: ${props.note}</div>
                         </div>
                     </div>
                 </div>

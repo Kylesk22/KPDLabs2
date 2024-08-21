@@ -342,7 +342,19 @@ AWS.config.update({
         setLoading(false);
         
         const url = process.env.BACKEND_URL
-
+            // (type === "crown")?
+            // setType("Crown"):
+            // (type === "veneer")?
+            // setType("Veneer"):
+            // (type === "partial")?
+            // setType("Partial"):
+            // (type === "denture")?
+            // setType("Denture"):
+            // (type === "implant")?
+            // setType("Implant"):
+            // (type === "removeableAppliances")?
+            // setType("Removeable Appliances"):
+            // (type === )
        
 
 

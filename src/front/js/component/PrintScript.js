@@ -109,6 +109,7 @@ export const PrintPDFButton = (props) => {
             <body>
                 <div class="text-center">
                     <img src=${KPDWIZ}></img>
+                    
                 </div>
                 
                 <div class="text-center case">

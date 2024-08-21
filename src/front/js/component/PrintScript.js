@@ -5,11 +5,15 @@ import { UploadPartOutputFilterSensitiveLog } from '@aws-sdk/client-s3';
 const imageUrl = KPDWIZ; // Use the imported image URL
 
 export const PrintPDFButton = (props) => {
+
+    let newType = props.type
+    if (props.type === "crown"){
+        newType = "Crown"
+    }
+
     const handlePrint = () => {
-        const newType = props.type
-        if (newType === "crown"){
-            newType = "Crown"
-        }
+        
+        
         
         
         const printWindow = window.open('', '_blank');

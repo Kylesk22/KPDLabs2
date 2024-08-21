@@ -70,7 +70,7 @@ export const PrintPDFButton = (props) => {
                     }
 
                     .info-data-3 {
-                        margin-top: 10px;
+                        margin-top: 20px;
                         font-size: 20px;
                         width: 33%;
                         
@@ -78,8 +78,8 @@ export const PrintPDFButton = (props) => {
                     }
 
                     .info-selected-teeth {
-                        margin-top: 100px;
-                        margin-bottom: 100px;
+                        margin-top: 20px;
+                        
                     }
                     .inline-container {
                         display: flex;

@@ -22,6 +22,9 @@ export const PrintPDFButton = (props) => {
                             padding: 0;
                         }
                     }
+                    .padding-top {
+                    padding-top: 10px}
+
                     .case {
                         font-size: 25px; 
                         
@@ -153,8 +156,8 @@ export const PrintPDFButton = (props) => {
 
                         <div class="info-data inline-container">
                             <div class="left-border text-left">
-                                <div>Product Type: ${props.type}</div>
-                                <div >Production: ${props.production}</div>
+                                <div >Product Type: ${props.type}</div>
+                                <div class="padding-top">Production: ${props.production}</div>
                             </div>
                             <div class="text-right right-border">Product: ${props.product}</div>
                         </div>

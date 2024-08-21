@@ -25,6 +25,12 @@ export const PrintPDFButton = (props) => {
                     .padding-top {
                     padding-top: 10px}
 
+                    .title{
+                        font-size: 40px;
+                    }
+                    .subtitle{
+                        font-size: 30px}
+
                     .case {
                         font-size: 25px; 
                         
@@ -129,8 +135,8 @@ export const PrintPDFButton = (props) => {
             <body>
                 <div class="text-center">
                     
-                    <div>KPD Labs</div>
-                    <div>Kronemeyer Precision Dental Laboratories</div>
+                    <div class="title">KPD Labs</div>
+                    <div class="subtitle">Kronemeyer Precision Dental Laboratories</div>
                     
                 </div>
                 

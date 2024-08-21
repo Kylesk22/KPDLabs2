@@ -142,10 +142,7 @@ export const PrintPDFButton = (props) => {
                             </div>
                             
                         </div>
-                        <div class="info-data inline-container">
-                            <div class="left-border">Product Type: ${props.type}</div>
-                            <div class="text-right right-border">Product: ${props.product}</div>
-                        </div>
+                        
                         <div class="info-data inline-container">
                             <div>
                                 <div>Ship to Address:</div><div> ${props.street}</br>${props.city}</br>${props.state},${props.zip}</div>
@@ -153,6 +150,12 @@ export const PrintPDFButton = (props) => {
                             <div class="text-center"> Submitted: ${props.submittedDate}</div>
                             <div class="text-right">License: ${props.license}</div>
                         </div>
+
+                        <div class="info-data inline-container">
+                            <div class="left-border">Product Type: ${props.type}</div>
+                            <div class="text-right right-border">Product: ${props.product}</div>
+                        </div>
+                        
                         <div class="inline-container-2 info-data">
                             <div class="svg-image">
                                 <svg class="tooth-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >

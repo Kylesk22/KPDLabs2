@@ -268,11 +268,10 @@ export const PrintPDFButton = (props) => {
                                 
                             </div>
                         </div>
-                        
-                    </div>
-                    <div class="text-center>
+                        <div class="text-center">
                             <div class="info-data-3">Case Notes: ${props.note}</div>
                         </div>
+                    </div>
                 </div>
                 <!-- Optionally add more content or load it dynamically -->
                 <script>

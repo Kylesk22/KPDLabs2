@@ -311,7 +311,7 @@ export const PrintPDFButton = (props) => {
                 printWindow.print();
             }, 500); // Adjust the delay as necessary
         }
-    };
+    
         
         
        

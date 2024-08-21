@@ -311,6 +311,8 @@ export const PrintPDFButton = (props) => {
                 printWindow.print();
             }
         };
+
+        printWindow.onload()
        
                 
        

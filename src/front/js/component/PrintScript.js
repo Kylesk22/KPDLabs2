@@ -10,6 +10,7 @@ export const PrintPDFButton = (props) => {
         const [type, setType] = useState("")
         if (props.type === "crown"){
             setType("Crown")
+            console.log(type)
         }
         const printWindow = window.open('', '_blank');
         
@@ -175,7 +176,7 @@ export const PrintPDFButton = (props) => {
 
                         <div class="info-data inline-container">
                             <div class="left-border text-left">
-                                <div >Product Type: ${type}</div>
+                                <div >Product Type: </div>
                                 <div class="padding-top">Production: ${props.production}</div>
                             </div>
                             <div class="text-right right-border">

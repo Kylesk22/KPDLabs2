@@ -128,7 +128,7 @@ export const PrintPDFButton = (props) => {
             </head>
             <body>
                 <div class="text-center">
-                    <img src=${KPDWIZ}></img>
+                    <img id="print-image" src=${KPDWIZ}></img>
                     
                 </div>
                 
@@ -294,7 +294,23 @@ export const PrintPDFButton = (props) => {
         printWindow.document.close();
         printWindow.focus(); // Required for IE
         
-        printWindow.print()
+        printWindow.onload = function() {
+            const image = printWindow.document.getElementById('print-image');
+            
+            if (image) {
+                image.onload = function() {
+                    printWindow.print();
+                };
+                
+                // If the image is already cached and loaded
+                if (image.complete) {
+                    printWindow.print();
+                }
+            } else {
+                // If no image is present, directly print
+                printWindow.print();
+            }
+        };
        
                 
        

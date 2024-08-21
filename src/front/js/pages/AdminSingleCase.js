@@ -7,6 +7,7 @@ import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STL
 import AboutBKG from "../../img/testi-bg.jpg"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import "../../styles/adminSingle.css";
+import { PrintPDFButton } from "../component/PrintScript";
 
 
 
@@ -47,6 +48,7 @@ export const AdminSingleCase = props => {
     const [drState, setDrState] = useState("")
     const [drZip, setDrZip] = useState("")
     const [rates, setRates] = useState([])
+    const [license, setLicense] = useState([])
 
     const [labelUrl, setLabelUrl] = useState("")
 
@@ -403,6 +405,7 @@ export const AdminSingleCase = props => {
                 const doctorData = await doctorResponse.json();
     
                 setDrName(`${doctorData.fname} ${doctorData.lname}`);
+                setLicense(doctorData.license);
                 const addressParts = doctorData.address.split(",");
                 setDrStreet(addressParts[0]);
                 setDrCity(addressParts[1]);
@@ -628,7 +631,7 @@ export const AdminSingleCase = props => {
                         </Link>
                     </div>
                     <div className="text-center pt-2">
-                    <button className="theme-btn" onClick={()=> {window.print()}}>Print Screen</button>
+                    <PrintPDFButton doctorFirst={drName} shipping={shipping} production={production} license={license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     </div>
                     
                 </div>

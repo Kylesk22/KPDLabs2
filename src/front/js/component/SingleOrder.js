@@ -32,6 +32,7 @@ export const SingleOrder = props => {
     const [note, setNote] = useState("")
     const [production, setProduction] = useState("")
     const [submittedDate, setSubmittedDate] = useState("")
+    const [shipping, setShipping] = useState("")
     const [loading, setLoading] = useState(false);
     const [address, setAddress] = useState(props.address.split(","))
     const [drStreet, setDrStreet] = useState(address[0])
@@ -218,6 +219,7 @@ export const SingleOrder = props => {
                     setNote(data.notes);
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
+                    setShipping(data.shipping)
                     let date = data["update date"].split(" ")
                     setProduction(data.production)
                     setSubmittedDate(date[0])
@@ -286,7 +288,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div> */}
                 <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     
                 </div>
             </div>

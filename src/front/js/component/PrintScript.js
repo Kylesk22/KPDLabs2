@@ -294,25 +294,9 @@ export const PrintPDFButton = (props) => {
         printWindow.document.close();
         printWindow.focus(); // Required for IE
         
-        printWindow.onload = function() {
-            const image = printWindow.document.getElementById('print-image');
-            
-            if (image) {
-                image.onload = function() {
-                    printWindow.print();
-                };
-                
-                // If the image is already cached and loaded
-                if (image.complete) {
-                    printWindow.print();
-                }
-            } else {
-                // If no image is present, directly print
-                printWindow.print();
-            }
-        };
-
-        printWindow.onload()
+        setTimeout(() => {
+            printWindow.print();
+        }, 500);
        
                 
        

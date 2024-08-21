@@ -294,29 +294,19 @@ export const PrintPDFButton = (props) => {
         printWindow.document.close();
         printWindow.focus(); // Required for IE
         
-        const handlePrint = () => {
-            printWindow.print();
-        };
-        
-        // Ensure all resources are loaded before printing
-        const waitForImageLoad = () => {
-            const image = printWindow.document.getElementById('print-image');
-            if (image) {
-                // Check if image is already loaded
-                if (image.complete) {
-                    setTimeout(handlePrint, 500); // Short delay to ensure rendering
-                } else {
-                    // Wait for the image to load
-                    image.onload = () => setTimeout(handlePrint, 500);
-                }
+        const image = printWindow.document.getElementById('print-image');
+        if (image) {
+            // Check if image is already loaded
+            if (image.complete) {
+                printWindow.print()
             } else {
-                // If no image, just print
-                setTimeout(handlePrint, 500);
+                // Wait for the image to load
+                image.onload = () => printWindow.print();
             }
-        };
+       
         
-        // Check if document is fully loaded
-        printWindow.onload = waitForImageLoad;
+       
+    
        
                 
        

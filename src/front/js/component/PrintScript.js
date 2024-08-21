@@ -10,6 +10,21 @@ export const PrintPDFButton = (props) => {
     if (props.type === "crown"){
         newType = "Crown"
     }
+    if (props.type === "veneer"){
+        newType = "Veneer"
+    }
+    if (props.type === "partial"){
+        newType = "Partial"
+    }
+    if (props.type === "denture"){
+        newType = "Denture"
+    }
+    if (props.type === "implant"){
+        newType = "Implant"
+    }
+    if (props.type === "removeableAppliances"){
+        newType = "Removeable Appliances"
+    }
 
     const handlePrint = () => {
         

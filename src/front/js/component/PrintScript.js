@@ -35,7 +35,7 @@ export const PrintPDFButton = (props) => {
                     
                     .border {
                     border: 1px solid black;
-                    padding-bottom: 100px;
+                    height: 100px;
                     }
                     
                     .case {

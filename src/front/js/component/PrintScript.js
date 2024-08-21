@@ -128,7 +128,9 @@ export const PrintPDFButton = (props) => {
             </head>
             <body>
                 <div class="text-center">
-                    <img id="print-image" src=${KPDWIZ}></img>
+                    
+                    <div>KPD Labs</div>
+                    <div>Kronemeyer Precision Dental Laboratories</div>
                     
                 </div>
                 
@@ -318,3 +320,5 @@ export const PrintPDFButton = (props) => {
 //     if (pathElement) {
 //         pathElement.classList.add('select');
 //         pathElement.classList.remove('replace');
+
+{/* <img id="print-image" src=${KPDWIZ}></img> */}

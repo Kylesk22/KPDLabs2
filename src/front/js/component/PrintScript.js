@@ -293,17 +293,8 @@ export const PrintPDFButton = (props) => {
         printWindow.document.write(printContent);
         printWindow.document.close();
         printWindow.focus(); // Required for IE
+        printWindow.print()
         
-        const image = printWindow.document.getElementById('print-image');
-        if (image) {
-            // Check if image is already loaded
-            if (image.complete) {
-                printWindow.print()
-            } else {
-                // Wait for the image to load
-                image.onload = () => printWindow.print();
-            }
-        }
         
        
     

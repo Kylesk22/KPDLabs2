@@ -293,10 +293,10 @@ export const PrintPDFButton = (props) => {
         printWindow.document.write(printContent);
         printWindow.document.close();
         printWindow.focus(); // Required for IE
-        printWindow.print()
-        // setTimeout(() => {
-        //         printWindow.print();
-        //     }, 500);
+        
+        setTimeout(() => {
+                printWindow.print();
+            }, 500);
        
                 
        

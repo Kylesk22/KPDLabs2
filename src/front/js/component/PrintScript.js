@@ -1,5 +1,5 @@
 import React from 'react';
-import KPDWIZ from '../../img/KPDWIZ.jpg'
+import KPDWIZ from '../../img/KPDWIZ.png'
 import { UploadPartOutputFilterSensitiveLog } from '@aws-sdk/client-s3';
 
 const imageUrl = KPDWIZ; // Use the imported image URL

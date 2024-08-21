@@ -72,7 +72,7 @@ export const PrintPDFButton = (props) => {
                     .info-data-3 {
                         margin-top: 10px;
                         font-size: 20px;
-                        border-bottom: 1px solid black;
+                        
                         
                     }
 

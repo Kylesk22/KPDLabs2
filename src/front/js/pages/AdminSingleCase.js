@@ -631,7 +631,7 @@ export const AdminSingleCase = props => {
                         </Link>
                     </div>
                     <div className="text-center pt-2">
-                    <PrintPDFButton doctorFirst={drName} shipping={shipping} production={production} license={license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={drName} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     </div>
                     
                 </div>

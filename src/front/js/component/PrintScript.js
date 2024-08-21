@@ -8,7 +8,7 @@ export const PrintPDFButton = (props) => {
     const handlePrint = () => {
         
         const [type, setType] = useState(props.type)
-        if (type === "crown"){
+        if (props.type === "crown"){
             setType("Crown")
         }
         const printWindow = window.open('', '_blank');

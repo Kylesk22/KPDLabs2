@@ -79,6 +79,7 @@ export const PrintPDFButton = (props) => {
 
                     .info-selected-teeth {
                         margin-top: 20px;
+                        text-align: left;
                         
                     }
                     .inline-container {

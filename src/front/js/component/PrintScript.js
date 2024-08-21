@@ -19,11 +19,23 @@ export const PrintPDFButton = (props) => {
     if (props.type === "denture"){
         newType = "Denture"
     }
+    if (props.type === "newDenture"){
+        newType = "New Denture"
+    }
+    if (props.type === "copyDenture"){
+        newType = "Copy Denture"
+    }
+    if (props.type === "dentureRepair"){
+        newType = "Denture Repair"
+    }
     if (props.type === "implant"){
         newType = "Implant"
     }
     if (props.type === "removeableAppliances"){
         newType = "Removeable Appliances"
+    }
+    if (props.type === "implantHybridDenture"){
+        newType = "Implant Hybrid Denture"
     }
 
     const handlePrint = () => {

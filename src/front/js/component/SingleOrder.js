@@ -30,6 +30,7 @@ export const SingleOrder = props => {
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
+    const [production, setProduction] = useState("")
     const [submittedDate, setSubmittedDate] = useState("")
     const [loading, setLoading] = useState(false);
     const [address, setAddress] = useState(props.address.split(","))
@@ -218,7 +219,7 @@ export const SingleOrder = props => {
                     setShade(data.shade);
                     setGumShade(data["gum shade"]);
                     let date = data["update date"].split(" ")
-
+                    setProduction(data.production)
                     setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
@@ -285,7 +286,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div> */}
                 <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={props.firstName} doctorLast={props.lastName} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     
                 </div>
             </div>

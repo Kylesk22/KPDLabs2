@@ -72,7 +72,7 @@ export const PrintPDFButton = (props) => {
                     .info-data-3 {
                         margin-top: 20px;
                         font-size: 20px;
-                        width: 33%;
+                        text-align: left;
                         
                         
                     }

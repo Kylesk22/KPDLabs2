@@ -303,7 +303,7 @@ export const PrintPDFButton = (props) => {
                 // Wait for the image to load
                 image.onload = () => printWindow.print();
             }
-       
+        }
         
        
     

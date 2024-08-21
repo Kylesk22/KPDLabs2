@@ -221,7 +221,7 @@ export const PrintPDFButton = (props) => {
                         </svg>
                     </div>
                     </div>
-                    <div class="col-6">
+                    <div class="text-right">
                         
                         
                         <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>

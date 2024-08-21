@@ -7,7 +7,9 @@ const imageUrl = KPDWIZ; // Use the imported image URL
 export const PrintPDFButton = (props) => {
     const handlePrint = () => {
         const newType = props.type
-        console.log(newType)
+        if (newType === "crown"){
+            newType = "Crown"
+        }
         
         
         const printWindow = window.open('', '_blank');

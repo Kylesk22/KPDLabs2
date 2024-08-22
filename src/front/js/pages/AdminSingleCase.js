@@ -85,7 +85,7 @@ export const AdminSingleCase = props => {
             }),
             
         }
-        fetch(`https://hooks.slack.com/services/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`, options)
+        fetch(process.env.SLACK_WEBHOOK, options)
         .then(response => response.json())
         .then(data => console.log('Success:', data))
         .catch(error => console.error('Error:', error));

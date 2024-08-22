@@ -69,6 +69,28 @@ export const AdminSingleCase = props => {
         return null; // Return null if cookie not found
     }
 
+
+    function testHandler(){
+        const options = {
+            method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify({
+                text: 'Hello, Slack!',
+            }),
+            
+        }
+        fetch(`https://hooks.slack.com/services/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`, options)
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
+
+    }
   
     function shippoTest(){
         
@@ -632,6 +654,9 @@ export const AdminSingleCase = props => {
                     </div>
                     <div className="text-center pt-2">
                     <PrintPDFButton doctorFirst={drName} doctorLast={""} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    </div>
+                    <div className="text-center pt-2">
+                        <button className="theme-btn" style={{width: "170px"}} onClick={()=>testHandler()}>TEST DO NOT USE</button>
                     </div>
                     
                 </div>

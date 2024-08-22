@@ -76,11 +76,12 @@ CORS(app, supports_credentials=True)
 
 @api.route('/slack', methods=['POST'])
 def slackMessage():
+    msg = request.json.get("msg", None)
     slack_webhook_url = os.getenv('SLACK_WEBHOOK')
 
     # Define the payload
     payload = {
-        'text': 'Hello, Slack!'
+        'text': msg
     }
 
     # Define the headers

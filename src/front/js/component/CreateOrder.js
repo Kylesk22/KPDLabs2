@@ -76,6 +76,49 @@ export const CreateOrder = props => {
 
     }
 
+    function sentToSlack(){
+
+        message = {
+            "msg": `New Case Uploaded #${caseNum}!`,
+        }
+
+        const options = {
+            method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(message)
+            
+            
+        }
+        fetch(`${url}/slack`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
+        .catch((err)=> {
+            console.log(err);
+            
+        });
+        
+       
+
+    }
+
 
     async function getUPSRate() {
         const options = {
@@ -422,7 +465,7 @@ AWS.config.update({
                 console.log(err);
         })
         
-    
+        sentToSlack()
         }
       ;
 

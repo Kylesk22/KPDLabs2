@@ -74,9 +74,12 @@ CORS(app, supports_credentials=True)
 
 
 
-@api.route('/slack', methods=['POST'])
+@app.route('/slack', methods=['POST'])
 def slackMessage():
     slack_webhook_url = os.getenv('SLACK_WEBHOOK')
+    
+    if not slack_webhook_url:
+        return jsonify({'message': 'Webhook URL is not set'}), 500
 
     # Define the payload
     payload = {
@@ -94,14 +97,24 @@ def slackMessage():
         
         # Check if the request was successful
         response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
-        
-        # Print the response JSON data
-        print('Success:', response.json())
-        return jsonify({'message': 'Success'}), 200
+
+        # Attempt to parse JSON from the response
+        try:
+            if response.headers.get('Content-Type') == 'application/json':
+                response_json = response.json()
+                print('Success:', response_json)
+                return jsonify({'message': 'Success', 'response': response_json}), 200
+            else:
+                print('Response text:', response.text)
+                return jsonify({'message': 'Success, but no JSON response'}), 200
+        except ValueError:
+            print('Error parsing JSON response:', response.text)
+            return jsonify({'message': 'Error parsing JSON response', 'response_text': response.text}), 500
+
     except requests.exceptions.RequestException as e:
         # Print the error if something went wrong
         print('Error:', e)
-        return jsonify({'message': 'Contact Admin'}), 401
+        return jsonify({'message': 'Contact Admin', 'error': str(e)}), 401
 
 
 

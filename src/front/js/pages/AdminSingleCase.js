@@ -96,7 +96,7 @@ export const AdminSingleCase = props => {
           }
           
           // Find conversation with a specified channel `name`
-          findConversation("all-employees");
+          findConversation("tester-channel");
 
         // const options = {
         //     method:"POST",

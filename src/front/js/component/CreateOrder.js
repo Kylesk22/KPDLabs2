@@ -78,7 +78,7 @@ export const CreateOrder = props => {
 
     function sentToSlack(){
 
-        message = {
+        let message = {
             "msg": `New Case Uploaded #${caseNum}!`,
         }
 

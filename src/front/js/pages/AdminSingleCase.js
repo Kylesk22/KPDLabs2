@@ -71,52 +71,25 @@ export const AdminSingleCase = props => {
 
 
     function testHandler(){
-        async function findConversation(name) {
-            try {
-              // Call the conversations.list method using the built-in WebClient
-              const result = await app.client.conversations.list({
-                // The token you used to initialize your app
-                token: process.env.SLACK_BOT_AUTH_TOKEN
-              });
+        
 
-              console.log(result.channels)
-          
-              for (const channel of result.channels) {
-                if (channel.name === name) {
-                  conversationId = channel.id;
-          
-                  // Print result
-                  console.log("Found conversation ID: " + conversationId);
-                  // Break from for loop
-                  break;
-                }
-              }
-            }
-            catch (error) {
-              console.error(error);
-            }
-          }
-          
-          // Find conversation with a specified channel `name`
-          findConversation("all-employees");
-
-        // const options = {
-        //     method:"POST",
+        const options = {
+            method:"POST",
             
             
-        //     headers:{
+            headers:{
                 
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         text: 'Hello, Slack!',
-        //     }),
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                text: 'Hello, Slack!',
+            }),
             
-        // }
-        // fetch(process.env.SLACK_WEBHOOK, options)
-        // .then(response => response.json())
-        // .then(data => console.log('Success:', data))
-        // .catch(error => console.error('Error:', error));
+        }
+        fetch(process.env.SLACK_WEBHOOK, options)
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
 
     }
   

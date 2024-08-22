@@ -78,6 +78,8 @@ export const AdminSingleCase = props => {
                 // The token you used to initialize your app
                 token: process.env.SLACK_BOT_AUTH_TOKEN
               });
+
+              console.log(result.channels)
           
               for (const channel of result.channels) {
                 if (channel.name === name) {

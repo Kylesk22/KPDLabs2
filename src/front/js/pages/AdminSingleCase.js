@@ -73,12 +73,11 @@ export const AdminSingleCase = props => {
     function testHandler(){
         const options = {
             method:"POST",
-            withCredntials: true,
-            credentials: 'include',
+            
             
             headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 text: 'Hello, Slack!',

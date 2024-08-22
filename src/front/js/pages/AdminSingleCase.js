@@ -77,10 +77,10 @@ export const AdminSingleCase = props => {
             method:"POST",
             
             
-            headers:{
+            // headers:{
                 
-                'Content-Type': 'application/json',
-            },
+            //     'Content-Type': 'application/json',
+            // },
             body: JSON.stringify({
                 text: 'Hello, Slack!',
             }),

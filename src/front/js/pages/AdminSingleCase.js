@@ -669,7 +669,7 @@ export const AdminSingleCase = props => {
                     
                     <div className= "text-center col-4 pt-3">
                         <label  htmlFor="type"><h5>Reference Id</h5></label>
-                        <input className="form-control" required id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>{setRefId(e.target.value), setShowClone(True)}}></input>
+                        <input className="form-control" id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>{setRefId(e.target.value), setShowClone(True)}}></input>
                         {(showClone)?
                             <div>
                                 <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); cloneCase()}}>Clone Case</button>

@@ -71,25 +71,53 @@ export const AdminSingleCase = props => {
 
 
     function testHandler(){
-        
 
         const options = {
             method:"POST",
+            withCredntials: true,
+            credentials: 'include',
             
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
             
-            // headers:{
-                
-            //     'Content-Type': 'application/json',
-            // },
-            body: JSON.stringify({
-                text: 'Hello, Slack!',
-            }),
             
         }
-        fetch(process.env.SLACK_WEBHOOK, options)
-        .then(response => response.json())
-        .then(data => console.log('Success:', data))
-        .catch(error => console.error('Error:', error));
+        fetch(`${url}/slack`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
+        .catch((err)=> {
+            console.log(err);
+            alert(err); // Or display a more user-friendly message
+        });
+        
+        //WORKING!!!!
+        // const options = {
+        //     method:"POST",
+            
+          
+        //     body: JSON.stringify({
+        //         text: 'Hello, Slack!',
+        //     }),
+            
+        // }
+        // fetch(process.env.SLACK_WEBHOOK, options)
+        // .then(response => response.json())
+        // .then(data => console.log('Success:', data))
+        // .catch(error => console.error('Error:', error));
 
     }
   

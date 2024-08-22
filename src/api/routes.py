@@ -13,6 +13,7 @@ from flask_jwt_extended import verify_jwt_in_request
 from flask_jwt_extended import get_jwt
 
 from datetime import datetime, timezone, timedelta
+import requests
 import os
 import bcrypt
 import base64
@@ -70,6 +71,35 @@ def assign_access_refresh_tokens(email, url):
 
 api = Blueprint('api', __name__)
 CORS(app, supports_credentials=True)
+
+
+
+@api.route('/slack', methods=['POST'])
+def slackMessage():
+    slack_webhook_url = os.getenv('SLACK_WEBHOOK')
+
+    # Define the payload
+    payload = {
+        'text': 'Hello, Slack!'
+    }
+
+    # Define the headers
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    try:
+        # Make the POST request
+        response = requests.post(slack_webhook_url, json=payload, headers=headers)
+        
+        # Check if the request was successful
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+        
+        # Print the response JSON data
+        print('Success:', response.json())
+    except requests.exceptions.RequestException as e:
+        # Print the error if something went wrong
+        print('Error:', e)
 
 
 

@@ -656,7 +656,7 @@ export const AdminSingleCase = props => {
                     <PrintPDFButton doctorFirst={drName} doctorLast={""} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     </div>
                     <div className="text-center pt-2">
-                        <button className="theme-btn" style={{width: "170px"}} onClick={()=>testHandler()}>TEST DO NOT USE</button>
+                        <button className="theme-btn" style={{width: "170px"}} onClick={()=>{testHandler(); preventDefault()}}>TEST DO NOT USE</button>
                     </div>
                     
                 </div>

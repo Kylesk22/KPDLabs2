@@ -97,9 +97,11 @@ def slackMessage():
         
         # Print the response JSON data
         print('Success:', response.json())
+        return jsonify({'message': 'Success'}), 200
     except requests.exceptions.RequestException as e:
         # Print the error if something went wrong
         print('Error:', e)
+        return jsonify({'message': 'Contact Admin'}), 401
 
 
 

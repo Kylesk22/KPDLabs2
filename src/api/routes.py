@@ -102,7 +102,7 @@ def slackMessage():
     except requests.exceptions.RequestException as e:
         # Print the error if something went wrong
         print('Error:', e)
-        return jsonify({'message': 'Contact Admin'}), 401
+        return jsonify({'message': 'Contact Admin'})
 
 
 

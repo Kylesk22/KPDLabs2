@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { Signup } from "../pages/Signup";
 import CaseyWork from "../../img/CaseyWork.jpg"
 import bgbg from "../../img/bgbg.png"
+import bgbgprice from "../../img/bg-price-2.png"
 import Intro from "../../img/footer-flip.jpg"
 
 
@@ -137,7 +138,7 @@ export const PricingInfo = props => {
                 {/* <img src={CaseyWork}></img> */}
                <img src={bgbg}></img>
             </div>
-            <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>
+            <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px", backgroundImage: `url(${bgbgprice})`}}>
             <div style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>

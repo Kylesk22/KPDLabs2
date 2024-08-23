@@ -134,13 +134,13 @@ export const PricingInfo = props => {
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row" style={{padding: "80px"}}>
-            <div className="col-8-lg col-6-md" style={{paddingTop: "30px"}}>
+            <div className="col-lg-8 col-md-6" style={{paddingTop: "30px"}}>
                 <h3 style={{color: "white"}}>Please fill out our form to recieve your price list from KPD</h3>
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <img src={CaseyWork} style={{width: "50%"}}></img>
                {/* <img src={bgbg}></img> */}
             </div>
-            <div className="form container form col-4-lg col-6-md" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>
+            <div className="form container form col-lg-4 col-md-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>
             <div style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>

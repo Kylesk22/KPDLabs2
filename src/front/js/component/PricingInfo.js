@@ -135,6 +135,8 @@ export const PricingInfo = props => {
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row" style={{padding: "80px"}}>
             <div className="col-6">
+                <h3>Please fill out our form to recieve your price list from KPD</h3>
+                <h4>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <img src={CaseyWork} style={{width: "50%"}}></img>
                {/* <img src={bgbg}></img> */}
             </div>

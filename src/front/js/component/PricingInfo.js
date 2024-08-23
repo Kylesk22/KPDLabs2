@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Signup } from "../pages/Signup";
-
+import CaseyWork from "../../img/CaseyWork.jpg"
 import Intro from "../../img/footer-flip.jpg"
 
 
@@ -131,7 +131,10 @@ export const PricingInfo = props => {
             
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
-            <div className="form container form container-fluid" onSubmit={submitHandler} style={{width: "300px"}}>
+            <div className="col-6">
+                <img src={CaseyWork}></img>
+            </div>
+            <div className="form container form col-6" onSubmit={submitHandler} style={{width: "300px"}}>
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>

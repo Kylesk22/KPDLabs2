@@ -11,7 +11,7 @@
     .pricingform{
         margin: auto;
         text-align: center;
-        width: auto;
+        width: auto !important;
     }
  
   }

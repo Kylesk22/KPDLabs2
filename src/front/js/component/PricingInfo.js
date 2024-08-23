@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Signup } from "../pages/Signup";
 import CaseyWork from "../../img/CaseyWork.jpg"
+import bgbg from "../../img/bgbg.png"
 import Intro from "../../img/footer-flip.jpg"
 
 
@@ -134,6 +135,7 @@ export const PricingInfo = props => {
             <div className="row">
             <div className="col-6">
                 {/* <img src={CaseyWork}></img> */}
+               <img src={bgbg}></img>
             </div>
             <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid"}}>
             <div style ={{width: "300px", margin: "auto"}}> 

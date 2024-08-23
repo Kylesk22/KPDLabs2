@@ -5,7 +5,8 @@
     }
     .pricing2{
         width: 100%;
-        border: none !important
+        border: none !important;
+        margin: auto
     }
  
   }

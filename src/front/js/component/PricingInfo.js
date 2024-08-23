@@ -105,6 +105,7 @@ export const PricingInfo = props => {
                 .then((data)=>{
                    alert(data.message)
                 });
+                
             } else {
                 return res.json()
                 .then((body)=>{
@@ -112,13 +113,16 @@ export const PricingInfo = props => {
                     alert("Error: Please contact KPD");
                 });
             }
+            
         })
+        .then(()=>{window.location.href = "/"})
         .catch((err)=> {
             console.log(err);
             
         });
 
         sentToSlack()
+
     }
 
 

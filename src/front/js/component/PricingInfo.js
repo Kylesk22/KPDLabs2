@@ -32,6 +32,49 @@ export const PricingInfo = props => {
         
     // });
 
+    function sentToSlack(){
+
+        let message = {
+            "msg": `Pricing info requested! Email: ${email}, Name: ${firstName} ${lastName}, Practice: ${practiceName}, Office: ${officeNumber}, Mobile: ${mobileNumber}, Position: ${position}, Found Us:${findUs}`,
+        }
+
+        const options = {
+            method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(message)
+            
+            
+        }
+        fetch(`${url}/slack`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
+        .catch((err)=> {
+            console.log(err);
+            
+        });
+        
+       
+
+    }
+
     function submitHandler(e){
         e.preventDefault();
         user = {
@@ -74,6 +117,8 @@ export const PricingInfo = props => {
             console.log(err);
             
         });
+
+        sentToSlack()
     }
 
 

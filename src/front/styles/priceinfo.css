@@ -8,5 +8,9 @@
         border: none !important;
         margin: auto
     }
+    .pricingform{
+        margin: auto;
+        text-align: center;
+    }
  
   }

@@ -166,10 +166,10 @@ export const PricingInfo = props => {
                         <label  htmlFor="findUs"><h5>Professional Position?</h5></label>
                         <select className="form-select" id="position"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setPosition(e.target.value)}}>
                             <option value="Select One">Select One</option>
-                            <option value="A1" onClick={()=>setPosition("Dentist")}>Dentist</option>
-                            <option value="A2" onClick={()=>setPosition("Dental Office Manager")}>Dental Office Manager</option>
-                            <option value="A3.5" onClick={()=>setPosition("Dental Assistant")}>Dental Assistant</option>
-                            <option value="A3" onClick={()=>setPosition("Dental Office Team Member")}>Dental Office Team Member</option>
+                            <option value="Dentist" onClick={()=>setPosition("Dentist")}>Dentist</option>
+                            <option value="Dental Office Manager" onClick={()=>setPosition("Dental Office Manager")}>Dental Office Manager</option>
+                            <option value="Dental Assistant" onClick={()=>setPosition("Dental Assistant")}>Dental Assistant</option>
+                            <option value="Dental Office Team Member" onClick={()=>setPosition("Dental Office Team Member")}>Dental Office Team Member</option>
 
                         
                         </select>
@@ -181,13 +181,13 @@ export const PricingInfo = props => {
                         <label  htmlFor="findUs"><h5>How did you hear about us?</h5></label>
                         <select className="form-select" id="findUs"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setFindUs(e.target.value)}}>
                             <option value="Select One">Select One</option>
-                            <option value="A1" onClick={()=>setFindUs("Google")}>Google</option>
-                            <option value="A2" onClick={()=>setFindUs("Mailer")}>Mailer/Flyer</option>
-                            <option value="A3" onClick={()=>setFindUs("Email")}>Email</option>
-                            <option value="A3.5" onClick={()=>setFindUs("Facebook")}>Facebook</option>
-                            <option value="A4" onClick={()=>setFindUs("Instagram")}>Instagram</option>
-                            <option value="B1" onClick={()=>setFindUs("LinkedIn")}>LinkedIn</option>
-                            <option value="B2" onClick={()=>setFindUs("Referral")}>Referral</option>
+                            <option value="Google" onClick={()=>setFindUs("Google")}>Google</option>
+                            <option value="Mailer" onClick={()=>setFindUs("Mailer")}>Mailer/Flyer</option>
+                            <option value="Email" onClick={()=>setFindUs("Email")}>Email</option>
+                            <option value="Facebook" onClick={()=>setFindUs("Facebook")}>Facebook</option>
+                            <option value="Instagram" onClick={()=>setFindUs("Instagram")}>Instagram</option>
+                            <option value="LinkedIn" onClick={()=>setFindUs("LinkedIn")}>LinkedIn</option>
+                            <option value="Referral" onClick={()=>setFindUs("Referral")}>Referral</option>
                         
                         </select>
                     </div>

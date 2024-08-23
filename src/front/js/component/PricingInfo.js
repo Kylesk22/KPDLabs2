@@ -103,12 +103,12 @@ export const PricingInfo = props => {
                 
                 <div className="form-group mx-3">
                     <label htmlFor="officeNumber" className="form-label mt-4 " style={{color: "white"}}>Office Number</label>
-                    <input  type="text" className="form-control" id="officeNumber" aria-describedby="phoneHelp" placeholder="Enter office number" value={phone} onChange={(e)=>setOfficeNumber(e.target.value)}/>
+                    <input  type="text" className="form-control" id="officeNumber" aria-describedby="phoneHelp" placeholder="Enter office number" value={officeNumber} onChange={(e)=>setOfficeNumber(e.target.value)}/>
                     {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
                 </div>
                 <div className="form-group mx-3">
                     <label htmlFor="mobileNumber" className="form-label mt-4 " style={{color: "white"}}>Mobile Number</label>
-                    <input  type="text" className="form-control" id="mobileNumber" aria-describedby="phoneHelp" placeholder="Enter mobile number" value={phone} onChange={(e)=>setMobileNumber(e.target.value)}/>
+                    <input  type="text" className="form-control" id="mobileNumber" aria-describedby="phoneHelp" placeholder="Enter mobile number" value={mobileNumber} onChange={(e)=>setMobileNumber(e.target.value)}/>
                     {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
                 </div>
 

@@ -132,7 +132,7 @@ export const PricingInfo = props => {
             
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
-            <div className="row">
+            <div className="row" style={{padding: "80px"}}>
             <div className="col-6">
                 {/* <img src={CaseyWork}></img> */}
                <img src={bgbg}></img>

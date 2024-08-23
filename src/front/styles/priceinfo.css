@@ -23,3 +23,11 @@
         border: none !important
     }
   }
+
+  @media only screen and (min-width:1400px) {
+    .pricing{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+  }

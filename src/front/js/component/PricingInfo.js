@@ -5,6 +5,7 @@ import CaseyWork from "../../img/CaseyWork.jpg"
 import bgbg from "../../img/bgbg.png"
 import bgbgprice from "../../img/lines2-1.png"
 import Intro from "../../img/footer-flip.jpg"
+import "../../styles/priceinfo.css";
 
 
 

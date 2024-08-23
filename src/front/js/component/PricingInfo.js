@@ -133,10 +133,10 @@ export const PricingInfo = props => {
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row">
             <div className="col-6">
-                <img src={CaseyWork}></img>
+                {/* <img src={CaseyWork}></img> */}
             </div>
             <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid"}}>
-            <div style ={{width: "300px"}}> 
+            <div style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>

@@ -174,6 +174,7 @@ export const Navbar = (props) => {
 					  <li><a href="news-details.html">News Details</a></li>
 					</ul>
 				  </li> */}
+				  <li><a href="/pricing">Pricing</a></li>
 				  <li><a href="/contactus">Contact</a></li>
 				</ul>
 			  </nav>

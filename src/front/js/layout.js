@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import { Signup } from "./pages/Signup";
 import { UserPage } from "./pages/UserPage";
 import { Login } from "./component/Login";
+import { PricingInfo } from "./component/PricingInfo";
 import { Forgot } from "./pages/Forgot";
 import{AboutUs} from "./pages/AboutUs";
 import{ContactUs} from "./pages/ContactUs";
@@ -67,6 +68,7 @@ const Layout = () => {
                         <Route element={<Signup logState ={loggedIn} updateLogState={setLoggedIn}/>} path="/signup" />
                         <Route element={<AboutUs/>} path = "/aboutus"/>
                         <Route element={<ContactUs/>} path = "/contactus"/>
+                        <Route element={<PricingInfo/>} path = "/pricing"/>
                         <Route element={<Crown/>} path = "/crownandbridge"/>
                         <Route element={<Veneer/>} path = "/veneer"/>
                         <Route element={<Partial/>} path = "/partial"/>

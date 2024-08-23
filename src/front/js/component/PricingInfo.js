@@ -11,9 +11,14 @@ export const PricingInfo = props => {
     const [loggedIn, setLoggedIn] = useState(props.logState);
     const [id, setId] = useState("");
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [practiceName, setPracticeName] = useState("");
+    const [officeNumber, setOfficeNumber] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
     const [password, setPassword] = useState("");
     const [findUs, setFindUs] = useState("")
+    const [position, setPosition] = useState("")
 
 
     const url = process.env.BACKEND_URL
@@ -30,8 +35,14 @@ export const PricingInfo = props => {
     function submitHandler(e){
         e.preventDefault();
         user = {
+            firstName,
+            lastName,
             email,
-            password,
+            practiceName,
+            officeNumber,
+            mobileNumber,
+            findUs,
+            position
         }
         const options = {
             method:"POST",
@@ -44,27 +55,24 @@ export const PricingInfo = props => {
             },
             body: JSON.stringify(user)
         }
-        fetch(`${url}/login`, options)
+        fetch(`${url}/pricing`, options)
         .then((res)=> {
             if (res.ok) {
                 return res.json()
                 .then((data)=>{
-                    sessionStorage.setItem("id", data.id)
-                    setId(data.id)
-                    setLoggedIn(true);
-                    props.updateLogState(true)
+                   alert(data.message)
                 });
             } else {
                 return res.json()
                 .then((body)=>{
-                    console.log(body)
-                    alert(body.message);
+                    
+                    alert("Error: Please contact KPD");
                 });
             }
         })
         .catch((err)=> {
             console.log(err);
-            alert(err); // Or display a more user-friendly message
+            
         });
     }
 
@@ -89,15 +97,36 @@ export const PricingInfo = props => {
                         <input type="text" required className="form-control" id="lastName" placeholder="Last Name" value={lastName} onChange={(e)=>setLastName(e.target.value)} />
                 </div>
                 <div className="form-group mx-3">
-                        <label htmlFor="lastName" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Practice Name</label>
-                        <input type="text" required className="form-control" id="lastName" placeholder="Last Name" value={lastName} onChange={(e)=>setLastName(e.target.value)} />
+                        <label htmlFor="practiceName" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Practice Name</label>
+                        <input type="text" required className="form-control" id="practiceName" placeholder="Practice Name" value={practiceName} onChange={(e)=>setPracticeName(e.target.value)} />
                 </div>
                 
                 <div className="form-group mx-3">
-                    <label htmlFor="userPhone" className="form-label mt-4 " style={{color: "white"}}>Phone Number</label>
-                    <input  type="phone" className="form-control" id="userPhone" aria-describedby="phoneHelp" placeholder="Enter phone number" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
+                    <label htmlFor="officeNumber" className="form-label mt-4 " style={{color: "white"}}>Office Number</label>
+                    <input  type="text" className="form-control" id="officeNumber" aria-describedby="phoneHelp" placeholder="Enter office number" value={phone} onChange={(e)=>setOfficeNumber(e.target.value)}/>
                     {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
                 </div>
+                <div className="form-group mx-3">
+                    <label htmlFor="mobileNumber" className="form-label mt-4 " style={{color: "white"}}>Mobile Number</label>
+                    <input  type="text" className="form-control" id="mobileNumber" aria-describedby="phoneHelp" placeholder="Enter mobile number" value={phone} onChange={(e)=>setMobileNumber(e.target.value)}/>
+                    {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
+                </div>
+
+                <div className="form-group mx-3">
+                    
+                        <label  htmlFor="findUs"><h5>Professional Position?</h5></label>
+                        <select className="form-select" id="position"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setPosition(e.target.value)}}>
+                            <option value="Select One">Select One</option>
+                            <option value="A1" onClick={()=>setPosition("Dentist")}>Dentist</option>
+                            <option value="A2" onClick={()=>setPosition("Dental Office Manager")}>Dental Office Manager</option>
+                            <option value="A3.5" onClick={()=>setPosition("Dental Assistant")}>Dental Assistant</option>
+                            <option value="A3" onClick={()=>setPosition("Dental Office Team Member")}>Dental Office Team Member</option>
+
+                        
+                        </select>
+                </div>
+
+
                 <div className="form-group mx-3">
                     
                         <label  htmlFor="findUs"><h5>How did you hear about us?</h5></label>

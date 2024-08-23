@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file, redirect, render_template
 from functools import wraps
-from api.models import db, User, Scans, Case, Blog
+from api.models import db, User, Scans, Case, Blog, Price_Request
 from api.utils import generate_sitemap, APIException
 from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
@@ -105,6 +105,31 @@ def slackMessage():
         print('Error:', e)
         return jsonify({'message': 'Contact Admin'})
 
+
+@api.route('/pricing', methods=['POST'])
+def get_pricing():
+    
+
+    user_info = request.get_json()
+
+    
+    price_request = Price_Request(
+        email = user_info["email"],
+        first_name = user_info["firstName"],
+        last_name = user_info["lastName"],
+        practice_name = user_info["practiceName"],
+        office_phone = user_info["officePhone"],
+        mobile_phone = user_info["mobilePhone"],
+        position = user_info["position"],
+        find_us = user_info["findUs"],
+        
+    )
+
+    db.session.add(price_request)
+    db.session.commit()
+
+    
+    return jsonify({'message': 'Success'}), 200
 
 
 @api.route('/signup', methods=['POST'])

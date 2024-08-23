@@ -150,3 +150,34 @@ class Blog(db.Model):
             "info":self.info,
             
         }
+    
+class Price_Request(db.Model):
+    __tablename__ = "price_request"
+    id = db.Column(db.Integer, primary_key=True)
+   
+    first_name = db.Column(db.String(30), unique=False, nullable=False)
+    last_name = db.Column(db.String(50), unique=False, nullable=False)
+    practice_name = db.Column(db.String(150), unique=False, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    office_phone = db.Column(db.String(25), unique=False, nullable=False)
+    mobile_phone = db.Column(db.String(25), unique=False, nullable=False)
+    position = db.Column(db.String(50), unique=False, nullable=False)
+    find_us = db.Column(db.String(50), unique=False, nullable=False)
+   
+
+    def __repr__(self):
+        return f'<Price_Request {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "first name": self.first_name,
+            "last name":self.last_name,
+            "practice name": self.practice_name,
+            "email":self.email,
+            "office phone":self.office_phone,
+            "mobile phone":self.mobile_phone,
+            "position":self.position,
+            "find us":self.find_us,
+            
+        }

@@ -131,14 +131,14 @@ export const PricingInfo = props => {
     return(
         <div className="">
             
-            <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`,  backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+            <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row" style={{padding: "80px"}}>
             <div className="col-6">
                 {/* <img src={CaseyWork}></img> */}
                <img src={bgbg}></img>
             </div>
-            <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px", backgroundImage: `url(${bgbgprice})`}}>
+            <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px", backgroundImage: `url(${bgbgprice})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
             <div style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>

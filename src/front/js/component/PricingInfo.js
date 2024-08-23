@@ -131,7 +131,7 @@ export const PricingInfo = props => {
     return(
         <div className="">
             
-            <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
+            <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`,  backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row" style={{padding: "80px"}}>
             <div className="col-6">

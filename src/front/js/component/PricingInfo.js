@@ -135,10 +135,10 @@ export const PricingInfo = props => {
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
             <div className="row" style={{padding: "80px"}}>
-            <div className="col-8 pricing1" style={{padding: "30px"}}>
+            <div className="col-8 pricing" style={{padding: "30px"}}>
                 <h3 style={{color: "white"}}>Please fill out our form to recieve your price list from KPD</h3>
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
-                <img src={CaseyWork} style={{width: "50%"}}></img>
+                <img className="pricing1" src={CaseyWork} style={{width: "50%"}}></img>
                {/* <img src={bgbg}></img> */}
             </div>
             <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>

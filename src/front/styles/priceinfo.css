@@ -1,5 +1,7 @@
 @media only screen and (max-width:480px) {
-    
+    .pricing{
+        width: 100% !important
+    }
     .pricing1{
         display: none
     }

@@ -136,7 +136,7 @@ export const PricingInfo = props => {
             <div className="row" style={{padding: "80px"}}>
             <div className="col-6">
                 <img src={CaseyWork} style={{width: "50%"}}></img>
-               <img src={bgbg}></img>
+               {/* <img src={bgbg}></img> */}
             </div>
             <div className="form container form col-6" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>
             <div style ={{width: "300px", margin: "auto"}}> 

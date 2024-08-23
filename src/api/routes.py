@@ -118,8 +118,8 @@ def get_pricing():
         first_name = user_info["firstName"],
         last_name = user_info["lastName"],
         practice_name = user_info["practiceName"],
-        office_phone = user_info["officePhone"],
-        mobile_phone = user_info["mobilePhone"],
+        office_phone = user_info["officeNumber"],
+        mobile_phone = user_info["mobileNumber"],
         position = user_info["position"],
         find_us = user_info["findUs"],
         
@@ -129,7 +129,7 @@ def get_pricing():
     db.session.commit()
 
     
-    return jsonify({'message': 'Success'}), 200
+    return jsonify({'message': 'We will send you a price list shortly! Thank you!'}), 200
 
 
 @api.route('/signup', methods=['POST'])

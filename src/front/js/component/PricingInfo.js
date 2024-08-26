@@ -169,7 +169,12 @@ export const PricingInfo = props => {
                             {/* <i className="flaticon-clock-1"></i> */}
                             </div>
                             <div className="content-box text-center">
-                            <h4 className="title"><a style={{color: "white"}}>Crowns Starting at $40</a></h4>                 
+                            <h4 className="title"><a style={{color: "white",textShadow: `
+      1px 1px 0 black, 
+      -1px -1px 0 black, 
+      1px -1px 0 black, 
+      -1px 1px 0 black
+    `}}>Crowns Starting at $40</a></h4>                 
                             </div>
                         </div>
                     </div>

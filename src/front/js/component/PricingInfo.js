@@ -7,6 +7,13 @@ import bgbgprice from "../../img/lines2-1.png"
 import Intro from "../../img/footer-flip.jpg"
 import "../../styles/priceinfo.css";
 
+import Zirc from "../../img/Crown.png"
+import ZircV from "../../img/Veneer.png"
+import Partial from "../../img/TCS Unbreakable Partial Denture.png"
+import Denture from "../../img/Denture.png"
+import Implant from "../../img/Implant.png"
+import NightGuard from "../../img/NightGuard.png"
+
 
 
 
@@ -22,6 +29,7 @@ export const PricingInfo = props => {
     const [password, setPassword] = useState("");
     const [findUs, setFindUs] = useState("")
     const [position, setPosition] = useState("")
+    const [type, setType] = useState("")
 
 
     const url = process.env.BACKEND_URL
@@ -138,7 +146,82 @@ export const PricingInfo = props => {
             <div className="col-8 pricing" style={{padding: "30px"}}>
                 <h3 style={{color: "white"}}>Please fill out our form to recieve your price list from KPD</h3>
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
-                <img className="pricing1" src={CaseyWork} style={{width: "50%"}}></img>
+                <div className="row "> 
+                    {/* <!-- service-block-two --> */}
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div className="inner-box" onClick={()=>setType("crown")}>
+                            <div className="image-box" >
+                            <figure className="image overlay-animr">
+                                
+                                    <img src={Zirc} alt="" className="product-pic" />
+                                
+                            </figure>
+                            {/* <i className="flaticon-clock-1"></i> */}
+                            </div>
+                            <div className="content-box text-center">
+                            <h4 className="title"><a >Crown and Bridge</a></h4>                 
+                            </div>
+                        </div>
+                    </div>
+                    {/* <!-- service-block-two --> */}
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+                    <div className="inner-box" onClick={()=>setType("veneer")}>
+                        <div className="image-box">
+                        <figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
+                        {/* <i className="flaticon-monitor-1"></i> */}
+                        </div>
+                        <div className="content-box text-center">
+                        <h4 className="title"><a >Veneer</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                    {/* <!-- service-block-two --> */}
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="inner-box" onClick={()=>setType("partial")}>
+                        <div className="image-box">
+                        <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
+                        {/* <i className="flaticon-cog-1"></i> */}
+                        </div>
+                        <div className="content-box text-center">
+                        <h4 className="title"><a >Partial</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="inner-box" onClick={()=>setType("denture")}>
+                        <div className="image-box">
+                        <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
+                        {/* <i className="flaticon-cog-1"></i> */}
+                        </div>
+                        <div className="content-box text-center">
+                        <h4 className="title"><a >Denture</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="inner-box" onClick={()=>setType("implant")}>
+                        <div className="image-box">
+                        <figure className="image overlay-anim"><img src={Implant} alt="" className="product-pic" /></figure>
+                        
+                        </div>
+                        <div className="content-box text-center">
+                        <h4 className="title"><a >Implant</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="inner-box" onClick={()=>setType("removeableAppliances")}>
+                        <div className="image-box">
+                        <figure className="image overlay-anim"><img src={NightGuard} alt="" className="product-pic" /></figure>
+                        
+                        </div>
+                        <div className="content-box text-center">
+                        <h4 className="title"><a >Removeable Appliances</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {/* <img className="pricing1" src={CaseyWork} style={{width: "50%"}}></img> */}
                {/* <img src={bgbg}></img> */}
             </div>
             <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "white 2px solid", borderRadius: "5px"}}>

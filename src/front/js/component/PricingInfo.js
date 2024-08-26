@@ -205,7 +205,7 @@ export const PricingInfo = props => {
 
                 
 
-                <div className="form-group mx-auto w-100 text-center" >
+                <div className="form-group mx-auto w-100 text-center pt-3" >
                         <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={submitHandler}>Submit
                         </button>
                     </div>

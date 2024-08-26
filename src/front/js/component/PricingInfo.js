@@ -174,7 +174,7 @@ export const PricingInfo = props => {
       -1px -1px 0 black, 
       1px -1px 0 black, 
       -1px 1px 0 black
-    `}}>Crowns Starting at <h3>$40</h3></a></h4>                 
+    `}}>Crowns Starting at <h2 style={{color: "white"}}>$40</h2></a></h4>                 
                             </div>
                         </div>
                     </div>

@@ -148,7 +148,7 @@ export const PricingInfo = props => {
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <div className="row "> 
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms" style={{border: "white 1px solid"}}>
                         <div className="inner-box" onClick={()=>setType("crown")}>
                             <div className="image-box" >
                             <figure className="image overlay-animr">
@@ -164,7 +164,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms" style={{border: "white 1px solid"}}>
                     <div className="inner-box" onClick={()=>setType("veneer")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">

@@ -153,7 +153,7 @@ export const PricingInfo = props => {
                             <div className="image-box" >
                             <figure className="image overlay-animr">
                                 
-                                    <img src={Zirc} alt="" className="product-pic" />
+                                    {/* <img src={Zirc} alt="" className="product-pic" /> */}
                                 
                             </figure>
                             {/* <i className="flaticon-clock-1"></i> */}
@@ -167,7 +167,9 @@ export const PricingInfo = props => {
                     <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
                     <div className="inner-box" onClick={()=>setType("veneer")}>
                         <div className="image-box">
-                        <figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
+                        <figure className="image overlay-anim">
+                            {/* <img src={ZircV} alt="" className="product-pic" /> */}
+                            </figure>
                         {/* <i className="flaticon-monitor-1"></i> */}
                         </div>
                         <div className="content-box text-center">
@@ -179,7 +181,9 @@ export const PricingInfo = props => {
                     <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("partial")}>
                         <div className="image-box">
-                        <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
+                        <figure className="image overlay-anim">
+                            {/* <img src={Partial} alt="" className="product-pic" /> */}
+                            </figure>
                         {/* <i className="flaticon-cog-1"></i> */}
                         </div>
                         <div className="content-box text-center">
@@ -190,7 +194,9 @@ export const PricingInfo = props => {
                     <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("denture")}>
                         <div className="image-box">
-                        <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
+                        <figure className="image overlay-anim">
+                            {/* <img src={Denture} alt="" className="product-pic" /> */}
+                            </figure>
                         {/* <i className="flaticon-cog-1"></i> */}
                         </div>
                         <div className="content-box text-center">
@@ -201,7 +207,9 @@ export const PricingInfo = props => {
                     <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("implant")}>
                         <div className="image-box">
-                        <figure className="image overlay-anim"><img src={Implant} alt="" className="product-pic" /></figure>
+                        <figure className="image overlay-anim">
+                            {/* <img src={Implant} alt="" className="product-pic" /> */}
+                            </figure>
                         
                         </div>
                         <div className="content-box text-center">
@@ -212,7 +220,9 @@ export const PricingInfo = props => {
                     <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("removeableAppliances")}>
                         <div className="image-box">
-                        <figure className="image overlay-anim"><img src={NightGuard} alt="" className="product-pic" /></figure>
+                        <figure className="image overlay-anim">
+                            {/* <img src={NightGuard} alt="" className="product-pic" /> */}
+                            </figure>
                         
                         </div>
                         <div className="content-box text-center">

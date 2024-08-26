@@ -244,41 +244,41 @@ export const PricingInfo = props => {
                 {/* <img className="pricing1" src={CaseyWork} style={{width: "50%"}}></img> */}
                {/* <img src={bgbg}></img> */}
             </div>
-            <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "#ffaa17 2px solid", borderRadius: "5px", backgroundImage: `url(${bgbg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+            <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "#ffaa17 2px solid", borderRadius: "5px", backgroundImage: `url(${bgbg})`, backgroundRepeat: "space", backgroundSize: "contain"}}>
             <div className="pricingform" style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white"}}>Email address</label>
-                        <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input style={{border: "black 1px solid"}} type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <small id="emailHelp" className="form-text text-muted">abc@abc.com.</small>
                 </div>
                 <div className="form-group mx-3">
                         <label htmlFor="firstName" className="form-label mt-4" style={{textAlign: "center", color:"white"}} >First Name</label>
-                        <input type="text" required className="form-control" id="firstName" placeholder="First Name" value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
+                        <input style={{border: "black 1px solid"}} type="text" required className="form-control" id="firstName" placeholder="First Name" value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
                 </div>
                 <div className="form-group mx-3">
                         <label htmlFor="lastName" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Last Name</label>
-                        <input type="text" required className="form-control" id="lastName" placeholder="Last Name" value={lastName} onChange={(e)=>setLastName(e.target.value)} />
+                        <input style={{border: "black 1px solid"}} type="text" required className="form-control" id="lastName" placeholder="Last Name" value={lastName} onChange={(e)=>setLastName(e.target.value)} />
                 </div>
                 <div className="form-group mx-3">
                         <label htmlFor="practiceName" className="form-label mt-4 " style={{textAlign: "center", color:"white"}} >Practice Name</label>
-                        <input type="text" required className="form-control" id="practiceName" placeholder="Practice Name" value={practiceName} onChange={(e)=>setPracticeName(e.target.value)} />
+                        <input style={{border: "black 1px solid"}}  type="text" required className="form-control" id="practiceName" placeholder="Practice Name" value={practiceName} onChange={(e)=>setPracticeName(e.target.value)} />
                 </div>
                 
                 <div className="form-group mx-3">
                     <label htmlFor="officeNumber" className="form-label mt-4 " style={{color: "white"}}>Office Number</label>
-                    <input  type="text" className="form-control" id="officeNumber" aria-describedby="phoneHelp" placeholder="Enter office number" value={officeNumber} onChange={(e)=>setOfficeNumber(e.target.value)}/>
+                    <input  style={{border: "black 1px solid"}} type="text" className="form-control" id="officeNumber" aria-describedby="phoneHelp" placeholder="Enter office number" value={officeNumber} onChange={(e)=>setOfficeNumber(e.target.value)}/>
                     {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
                 </div>
                 <div className="form-group mx-3">
                     <label htmlFor="mobileNumber" className="form-label mt-4 " style={{color: "white"}}>Mobile Number</label>
-                    <input  type="text" className="form-control" id="mobileNumber" aria-describedby="phoneHelp" placeholder="Enter mobile number" value={mobileNumber} onChange={(e)=>setMobileNumber(e.target.value)}/>
+                    <input  style={{border: "black 1px solid"}} type="text" className="form-control" id="mobileNumber" aria-describedby="phoneHelp" placeholder="Enter mobile number" value={mobileNumber} onChange={(e)=>setMobileNumber(e.target.value)}/>
                     {/* <small id="phoneHelp" className="form-text text-muted">abc@abc.com.</small> */}
                 </div>
 
                 <div className="form-group mx-3">
                     
                         <label  htmlFor="findUs"><h5>Professional Position?</h5></label>
-                        <select className="form-select" id="position"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setPosition(e.target.value)}}>
+                        <select style={{border: "black 1px solid"}} className="form-select" id="position"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setPosition(e.target.value)}}>
                             <option value="Select One">Select One</option>
                             <option value="Dentist" onClick={()=>setPosition("Dentist")}>Dentist</option>
                             <option value="Dental Office Manager" onClick={()=>setPosition("Dental Office Manager")}>Dental Office Manager</option>
@@ -293,7 +293,7 @@ export const PricingInfo = props => {
                 <div className="form-group mx-3">
                     
                         <label  htmlFor="findUs"><h5>How did you hear about us?</h5></label>
-                        <select className="form-select" id="findUs"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setFindUs(e.target.value)}}>
+                        <select style={{border: "black 1px solid"}} className="form-select" id="findUs"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setFindUs(e.target.value)}}>
                             <option value="Select One">Select One</option>
                             <option value="Google" onClick={()=>setFindUs("Google")}>Google</option>
                             <option value="Mailer" onClick={()=>setFindUs("Mailer")}>Mailer/Flyer</option>
@@ -309,7 +309,7 @@ export const PricingInfo = props => {
                 
 
                 <div className="form-group mx-auto w-100 text-center pt-3" >
-                        <button className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={submitHandler}>Submit
+                        <button style={{border: "black 1px solid"}} className="btn btn-primary mb-4 mx-auto" type="button" value="Submit" onClick={submitHandler}>Submit
                         </button>
                     </div>
                 

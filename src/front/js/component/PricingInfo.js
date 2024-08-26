@@ -148,7 +148,7 @@ export const PricingInfo = props => {
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <div className="row pricing1" style={{justifyContent: "center"}}> 
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-5" data-wow-delay="400ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px", boxShadow: `8px 8px 8px 8px #ffaa17`}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-5" data-wow-delay="400ms" style={{border: "#ffaa17 1px solid", borderRadius: "5px", width: "200px", height: "200px", boxShadow: `8px 8px 8px 8px #ffaa17`}}>
                         <div className="inner-box" onClick={()=>setType("crown")}>
                             <div className="image-box" >
                             <figure className="image overlay-animr">

@@ -146,7 +146,7 @@ export const PricingInfo = props => {
             <div className="col-8 pricing" style={{padding: "30px"}}>
                 <h3 style={{color: "white"}}>Please fill out our form to recieve your price list from KPD</h3>
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
-                <div className="row "> 
+                <div className="row " style={{justifyContent: "center"}}> 
                     {/* <!-- service-block-two --> */}
                     <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-5" data-wow-delay="400ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                         <div className="inner-box" onClick={()=>setType("crown")}>

@@ -140,7 +140,7 @@ export const PricingInfo = props => {
         width: '100%',
         height: '4px', // Adjust the height as needed
         backgroundColor: '#ffaa17',
-        position: 'fixed', // Optional: keeps the bar fixed at the top
+        
  
         left: '0', // Aligns the bar to the left edge of the viewport
         zIndex: '1000' // Optional: makes sure the bar is on top of other content

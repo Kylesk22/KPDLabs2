@@ -148,7 +148,7 @@ export const PricingInfo = props => {
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <div className="row "> 
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="400ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="400ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                         <div className="inner-box" onClick={()=>setType("crown")}>
                             <div className="image-box" >
                             <figure className="image overlay-animr">
@@ -164,7 +164,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="600ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="600ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                     <div className="inner-box" onClick={()=>setType("veneer")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">
@@ -178,7 +178,7 @@ export const PricingInfo = props => {
                     </div>
                     </div>
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                     <div className="inner-box" onClick={()=>setType("partial")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">
@@ -191,7 +191,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                     <div className="inner-box" onClick={()=>setType("denture")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">
@@ -204,7 +204,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                     <div className="inner-box" onClick={()=>setType("implant")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">
@@ -217,7 +217,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px"}}>
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp m-2" data-wow-delay="800ms" style={{border: "white 1px solid", borderRadius: "5px", width: "200px", height: "200px"}}>
                     <div className="inner-box" onClick={()=>setType("removeableAppliances")}>
                         <div className="image-box">
                         <figure className="image overlay-anim">

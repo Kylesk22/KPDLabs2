@@ -141,7 +141,7 @@ export const PricingInfo = props => {
         height: '4px', // Adjust the height as needed
         backgroundColor: '#ffaa17',
         position: 'fixed', // Optional: keeps the bar fixed at the top
-        top: '0', // Optional: positions the bar at the top of the viewport
+ 
         left: '0', // Aligns the bar to the left edge of the viewport
         zIndex: '1000' // Optional: makes sure the bar is on top of other content
       };
@@ -150,7 +150,7 @@ export const PricingInfo = props => {
             
             <div style={{paddingTop: "200px", textAlign: "center", justifyContent: "center", backgroundImage: `url(${Intro})`}}>
             <h2 style={{color: "white"}}>Request Price List</h2> 
-            <div style={barStyle}> a</div>
+            <div style={barStyle}></div>
             <div className="row" style={{padding: "80px"}}>
             <div className="col-8 pricing" style={{padding: "30px"}}>
            

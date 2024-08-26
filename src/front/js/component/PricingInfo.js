@@ -174,7 +174,7 @@ export const PricingInfo = props => {
       -1px -1px 0 black, 
       1px -1px 0 black, 
       -1px 1px 0 black
-    `}}>Crowns Starting at $40</a></h4>                 
+    `}}>Crowns Starting at <h3>$40</h3></a></h4>                 
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@ export const PricingInfo = props => {
                 {/* <img className="pricing1" src={CaseyWork} style={{width: "50%"}}></img> */}
                {/* <img src={bgbg}></img> */}
             </div>
-            <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "#ffaa17 2px solid", borderRadius: "5px"}}>
+            <div className="form container form col-4 pricing2" onSubmit={submitHandler} style={{border: "#ffaa17 2px solid", borderRadius: "8px"}}>
             <div className="pricingform" style ={{width: "300px", margin: "auto"}}> 
                 <div className="form-group">
                 <label htmlFor="userEmail" className="form-label mt-4 " style={{color: "white",textShadow: `

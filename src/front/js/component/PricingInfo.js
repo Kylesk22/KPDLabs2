@@ -148,7 +148,7 @@ export const PricingInfo = props => {
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <div className="row "> 
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
                         <div className="inner-box" onClick={()=>setType("crown")}>
                             <div className="image-box" >
                             <figure className="image overlay-animr">
@@ -164,7 +164,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
                     <div className="inner-box" onClick={()=>setType("veneer")}>
                         <div className="image-box">
                         <figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
@@ -176,7 +176,7 @@ export const PricingInfo = props => {
                     </div>
                     </div>
                     {/* <!-- service-block-two --> */}
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("partial")}>
                         <div className="image-box">
                         <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
@@ -187,7 +187,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("denture")}>
                         <div className="image-box">
                         <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
@@ -198,7 +198,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("implant")}>
                         <div className="image-box">
                         <figure className="image overlay-anim"><img src={Implant} alt="" className="product-pic" /></figure>
@@ -209,7 +209,7 @@ export const PricingInfo = props => {
                         </div>
                     </div>
                     </div>
-                    <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
+                    <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                     <div className="inner-box" onClick={()=>setType("removeableAppliances")}>
                         <div className="image-box">
                         <figure className="image overlay-anim"><img src={NightGuard} alt="" className="product-pic" /></figure>

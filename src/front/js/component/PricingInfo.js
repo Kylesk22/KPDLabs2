@@ -153,6 +153,7 @@ export const PricingInfo = props => {
             <div style={barStyle}></div>
             <div className="row" style={{padding: "80px"}}>
             <div className="col-8 pricing" style={{padding: "30px"}}>
+            <div style={barStyle}></div>
                 <h3 style={{color: "white"}}>Please fill out our form to recieve your price list from KPD</h3>
                 <h4 style={{color: "white"}}>Questions? Please contact us at 863-438-2109 or kpdlabs@kpdlabs.com</h4>
                 <div className="row pricing1" style={{justifyContent: "center"}}> 

@@ -226,7 +226,7 @@ export const PricingInfo = props => {
                         
                         </div>
                         <div className="content-box text-center">
-                        <h4 className="title"><a style={{color: "white"}}>Removeable Appliances starting at $50</a></h4>
+                        <h4 className="title"><a style={{color: "white"}}>Removable Appliances starting at $50</a></h4>
                         </div>
                     </div>
                     </div>

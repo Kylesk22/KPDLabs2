@@ -327,7 +327,7 @@ export const PrintPDFButton = (props) => {
                             <div class="text-center info-data-4">Case Notes: ${props.note}</div>
                         </div>
                         <div class="inline-container info-data border">
-                            <div class="text-center info-data-4">Case Total = ${props.price} *Not including Rush Production and/or Shipping</div>
+                            <div class="text-center info-data-4">Case Total = $${props.price} *Not including Rush Production and/or Shipping</div>
                         </div>
                     </div>
                 </div>

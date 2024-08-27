@@ -73,7 +73,7 @@ export const PrintPDFButton = (props) => {
                     border-left: 1px solid black;
                     border-right: 1px solid black;
                     border-top: 1px solid black;
-                    height: 130px;
+                    height: 150px;
                     }
                     .border {
                     border: 1px solid black}
@@ -127,6 +127,14 @@ export const PrintPDFButton = (props) => {
 
                     .info-data-3 {
                         margin-top: 20px;
+                        font-size: 20px;
+                        text-align: left;
+                        
+                        
+                    }
+
+                    .info-data-4 {
+                        
                         font-size: 20px;
                         text-align: left;
                         
@@ -315,11 +323,11 @@ export const PrintPDFButton = (props) => {
                                 
                             </div>
                         </div>
-                        <div class="inline-container info-data border">
-                            <div class="text-center info-data-3">Case Notes: ${props.note}</div>
+                        <div class="inline-container info-data border3">
+                            <div class="text-center info-data-4">Case Notes: ${props.note}</div>
                         </div>
                         <div class="inline-container info-data border">
-                            <div class="text-center info-data-3">Case Total = ${props.price} *Not including Rush Production and/or Shipping</div>
+                            <div class="text-center info-data-4">Case Total = ${props.price} *Not including Rush Production and/or Shipping</div>
                         </div>
                     </div>
                 </div>

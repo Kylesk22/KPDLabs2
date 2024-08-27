@@ -126,13 +126,23 @@ export const Navbar = (props) => {
 		
 	})
 
-	// useEffect(()=>{
-	// 	if (getCookie('csrf_access_token') !== null){
-	// 		(isTokenExpired(getCookie('csrf_access_token')))?
-	// 			logout(): ""
-				
-	// 	}
-	// })
+	function clearCookies(domain, path = '/') {
+		const cookies = document.cookie.split(';');
+	  
+		cookies.forEach(cookie => {
+		  const [name] = cookie.split('=');
+		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain};`;
+		});
+	  }
+
+	useEffect(()=>{
+		if (getCookie('csrf_access_token') !== null){
+			if (isTokenExpired(getCookie('csrf_access_token')) === true){
+				clearCookies('.kpdlabs.com');
+				logout()
+			}
+		}
+	})
 	
 	return (
 		(!loggedIn) ? 	

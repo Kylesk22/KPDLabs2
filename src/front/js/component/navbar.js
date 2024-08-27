@@ -136,6 +136,7 @@ export const Navbar = (props) => {
 	useEffect(()=>{
 		let token = getCookie('csrf_access_token')
 		console.log(`token: ${token}`)
+		console.log(`test: ${isTokenExpired(token)}`)
 		if (token !== null){
 			if (isTokenExpired(token) === true){
 				clearCookies('.kpdlabs.com');
@@ -143,6 +144,7 @@ export const Navbar = (props) => {
 			}
 			else{console.log("token fresh")}
 		}
+
 	})
 	
 	return (

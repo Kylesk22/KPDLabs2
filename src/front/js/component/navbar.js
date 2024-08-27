@@ -52,7 +52,7 @@ export const Navbar = (props) => {
 	  // Convert Base64 URL to Base64 standard
 	  const base64Url = token.split('.')[1];
 	  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Replace URL-safe characters
-	  const decodedBase64 = buf.toString('base64');
+	  const decodedBase64 = buf.toString(base64);
 	  const jsonPayload = decodeURIComponent(
 		Array.prototype.map.call(decodedBase64, (c) =>
 		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)

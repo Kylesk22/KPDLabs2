@@ -1236,7 +1236,7 @@ AWS.config.update({
                 
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                            <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price2)*crownTooth.length)}}>Upload</button>
+                            <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price2)*crownTooth.length+price3)}}>Upload</button>
                             <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length+price3} *Not including Rush Production and/or Shipping</strong></small>
                         </div>
@@ -1722,7 +1722,7 @@ AWS.config.update({
                 
                     <div className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
-                            <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice((price+price2)*crownTooth.length)}} >Upload</button>
+                            <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice((price+price2)*crownTooth.length+price3)}} >Upload</button>
                             <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price + price2)*crownTooth.length+price3} *Not including Rush Production and/or Shipping</strong></small>
                         </div>
@@ -2127,7 +2127,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price))}}>Upload</button>
+                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price3))}}>Upload</button>
                     <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
@@ -2609,7 +2609,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
+                    <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2+price3)}} >Upload</button>
                     <br></br>
                     <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
@@ -3040,7 +3040,7 @@ AWS.config.update({
 
 <div className="row form-group justify-content-center mt-5">
     <div className="text-center col-8 col-lg-4">
-        <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
+        <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2+price3)}} >Upload</button>
         <br></br>
         <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
     </div>
@@ -3451,7 +3451,7 @@ AWS.config.update({
 
 <div className="row form-group justify-content-center mt-5">
     <div className="text-center col-8 col-lg-4">
-        <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
+        <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2+price3)}} >Upload</button>
         <br></br>
         <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
     </div>
@@ -3917,7 +3917,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
+                    <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2+price3)}} >Upload</button>
                     <br></br>
                     <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
@@ -4375,7 +4375,7 @@ AWS.config.update({
 
         <div className="row form-group justify-content-center mt-5">
             <div className="text-center col-8 col-lg-4">
-                <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2)}} >Upload</button>
+                <button className="btn btn-primary" type = "submit" onClick={()=>{setFinalPrice(price+price2+price3)}} >Upload</button>
                 <br></br>
                 <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
             </div>

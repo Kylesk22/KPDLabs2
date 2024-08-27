@@ -58,6 +58,7 @@ export const Navbar = (props) => {
 		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
 		).join('')
 	  );
+	  console.log(JSON.parse(jsonPayload))
 	  return JSON.parse(jsonPayload);
 	} catch (e) {
 	  console.error('Error parsing token:', e);

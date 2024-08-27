@@ -135,14 +135,14 @@ export const Navbar = (props) => {
 		});
 	  }
 
-	useEffect(()=>{
-		if (getCookie('csrf_access_token') !== null){
-			if (isTokenExpired(getCookie('csrf_access_token')) === true){
-				clearCookies('.kpdlabs.com');
-				logout()
-			}
-		}
-	})
+	// useEffect(()=>{
+	// 	if (getCookie('csrf_access_token') !== null){
+	// 		if (isTokenExpired(getCookie('csrf_access_token')) === true){
+	// 			clearCookies('.kpdlabs.com');
+	// 			logout()
+	// 		}
+	// 	}
+	// })
 	
 	return (
 		(!loggedIn) ? 	

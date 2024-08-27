@@ -49,8 +49,8 @@ export const Navbar = (props) => {
 
   
   
-  const isTokenExpired = (tokenName) => {
-	const expirationCookie = getCookie(`${tokenName}-expires`);
+  const isTokenExpired = (token) => {
+	const expirationCookie = getCookie(`${token}-expires`);
 	if (!expirationCookie) return true; // No expiration date means expired or missing
   
 	const expirationDate = new Date(expirationCookie);

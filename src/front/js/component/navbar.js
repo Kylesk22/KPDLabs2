@@ -131,7 +131,7 @@ export const Navbar = (props) => {
 		console.log(`test: ${isTokenExpired(token)}`)
 		if (token !== null){
 			if (isTokenExpired(token) === true){
-				clearCookies('.kpdlabs.com');
+				// clearCookies('.kpdlabs.com');
 				
 			}
 			else{console.log("token fresh")}

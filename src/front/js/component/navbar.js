@@ -132,17 +132,19 @@ export const Navbar = (props) => {
 		cookies.forEach(cookie => {
 		  const [name] = cookie.split('=');
 		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain};`;
+		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain.replace(/^./, '')};`;
+		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=;`;
 		});
 	  }
 
-	// useEffect(()=>{
-	// 	if (getCookie('csrf_access_token') !== null){
-	// 		if (isTokenExpired(getCookie('csrf_access_token')) === true){
-	// 			clearCookies('.kpdlabs.com');
-	// 			logout()
-	// 		}
-	// 	}
-	// })
+	useEffect(()=>{
+		if (getCookie('csrf_access_token') !== null){
+			if (isTokenExpired(getCookie('csrf_access_token')) === true){
+				clearCookies('.kpdlabs.com');
+				
+			}
+		}
+	})
 	
 	return (
 		(!loggedIn) ? 	

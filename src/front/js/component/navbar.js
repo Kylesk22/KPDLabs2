@@ -58,6 +58,7 @@ export const Navbar = (props) => {
   };
 
   function getCookie(name) {
+	console.log(`full cookie: ${document.cookie}`)
 	const cookies = document.cookie.split('; ');
 	for (let cookie of cookies) {
 		const [cookieName, cookieValue] = cookie.split('=');

@@ -73,7 +73,7 @@ export const PrintPDFButton = (props) => {
                     border-left: 1px solid black;
                     border-right: 1px solid black;
                     border-top: 1px solid black;
-                    height: 150px;
+                    height: 130px;
                     }
                     .border {
                     border: 1px solid black}

@@ -81,10 +81,10 @@ export const Navbar = (props) => {
 		
 	})
 
-	useEffect(()=>{
-		!loggedIn?
-		logout():""
-	},[loggedIn])
+	// useEffect(()=>{
+	// 	!loggedIn?
+	// 	logout():""
+	// },[loggedIn])
 	
 	return (
 		(!loggedIn) ? 	

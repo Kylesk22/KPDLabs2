@@ -134,7 +134,7 @@ export const Navbar = (props) => {
 	  };
 
 	useEffect(()=>{
-		token = getCookie('csrf_access_token')
+		let token = getCookie('csrf_access_token')
 		console.log(token)
 		if (token !== null){
 			if (isTokenExpired(token) === true){

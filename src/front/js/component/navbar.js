@@ -47,40 +47,14 @@ export const Navbar = (props) => {
 
 
 
-  const parseJwt = (token) => {
-	try {
-	  // Split the token into parts (header, payload, signature)
-	  const parts = token.split('.');
-	  if (parts.length !== 3) {
-		throw new Error('JWT token is not in the correct format');
-	  }
-	  const base64Url = parts[1]; // Payload part of JWT
-	  if (!base64Url) {
-		throw new Error('Base64 URL part is missing');
-	  }
-	  
-	  // Convert Base64 URL to Base64 standard
-	  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); 
-	  const decodedBase64 = atob(base64);
-	  const jsonPayload = decodeURIComponent(
-		Array.prototype.map.call(decodedBase64, (c) =>
-		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-		).join('')
-	  );
-	  return JSON.parse(jsonPayload);
-	} catch (e) {
-	  console.error('Error parsing token:', e);
-	  return null;
-	}
-  };
   
-  const isTokenExpired = (token) => {
-	const decodedToken = parseJwt(token);
-	if (!decodedToken || !decodedToken.exp) {
-	  return true; // Invalid token
-	}
-	const currentTime = Date.now() / 1000; // Current time in seconds
-	return decodedToken.exp < currentTime; // Check if the token has expired
+  
+  const isTokenExpired = (tokenName) => {
+	const expirationCookie = getCookie(`${tokenName}-expires`);
+	if (!expirationCookie) return true; // No expiration date means expired or missing
+  
+	const expirationDate = new Date(expirationCookie);
+	return new Date() > expirationDate; // Check if current date is past the expiration date
   };
 
   function getCookie(name) {

@@ -43,6 +43,50 @@ export const Navbar = (props) => {
     }
   `;
 
+
+
+
+
+  const parseJwt = (token) => {
+	try {
+	  const base64Url = token.split('.')[1];
+	  const base64 = decodeURIComponent(
+		atob(base64Url).split('').map(c => 
+		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+		).join('')
+	  );
+	  return JSON.parse(base64);
+	} catch (e) {
+	  console.error('Error parsing token:', e);
+	  return null;
+	}
+  };
+  
+  const isTokenExpired = (token) => {
+	const decodedToken = parseJwt(token);
+	if (!decodedToken || !decodedToken.exp) {
+	  return true; // Invalid token
+	}
+	const currentTime = Date.now() / 1000; // Current time in seconds
+	return decodedToken.exp < currentTime; // Check if the token has expired
+  };
+
+  function getCookie(name) {
+	const cookies = document.cookie.split('; ');
+	for (let cookie of cookies) {
+		const [cookieName, cookieValue] = cookie.split('=');
+		if (cookieName === name) {
+			return cookieValue;
+		}
+	}
+	return null; // Return null if cookie not found
+}
+
+
+
+
+
+
 	const handleToggleModal = () => {
 		setShowModal(!showModal);
 	  };
@@ -78,13 +122,17 @@ export const Navbar = (props) => {
 		setLoggedIn(false)
 		
 
+
 		
 	})
 
-	// useEffect(()=>{
-	// 	!loggedIn?
-	// 	logout():""
-	// },[loggedIn])
+	useEffect(()=>{
+		if (getCookie('csrf_access_token') !== null){
+			(isTokenExpired(getCookie('csrf_access_token')))?
+				logout(): ""
+				
+		}
+	})
 	
 	return (
 		(!loggedIn) ? 	

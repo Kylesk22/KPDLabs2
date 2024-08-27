@@ -50,11 +50,7 @@ export const Navbar = (props) => {
   const parseJwt = (token) => {
 	try {
 	  const base64Url = token.split('.')[1];
-	  const base64 = decodeURIComponent(
-		atob(base64Url).split('').map(c => 
-		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-		).join('')
-	  );
+	  const base64 = Buffer.from(base64Url, 'base64').toString('utf-8');
 	  return JSON.parse(base64);
 	} catch (e) {
 	  console.error('Error parsing token:', e);
@@ -126,23 +122,25 @@ export const Navbar = (props) => {
 		
 	})
 
-	function clearCookies(domain, path = '/') {
+	const clearCookies = () => {
 		const cookies = document.cookie.split(';');
 	  
 		cookies.forEach(cookie => {
 		  const [name] = cookie.split('=');
-		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain};`;
-		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain.replace(/^./, '')};`;
-		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=;`;
+		  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;`;
 		});
-	  }
+	  
+		console.log('All cookies cleared');
+	  };
 
 	useEffect(()=>{
-		if (getCookie('csrf_access_token') !== null){
-			if (isTokenExpired(getCookie('csrf_access_token')) === true){
+		token = getCookie('csrf_access_token')
+		if (token !== null){
+			if (isTokenExpired(token) === true){
 				clearCookies('.kpdlabs.com');
 				
 			}
+			else{console.log("token fresh")}
 		}
 	})
 	

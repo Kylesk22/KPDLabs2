@@ -125,7 +125,7 @@ export const Navbar = (props) => {
 
 	useEffect(()=>{
 		let token = getCookie('csrf_access_token')
-		const expirationCookie = getCookie(`${tokenName}-expires`);
+		const expirationCookie = getCookie(`${token}-expires`);
 		console.log(`expired: ${expirationCookie}`)
 		console.log(`token: ${token}`)
 		console.log(`test: ${isTokenExpired(token)}`)

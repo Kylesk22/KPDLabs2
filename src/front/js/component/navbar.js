@@ -126,13 +126,13 @@ export const Navbar = (props) => {
 		
 	})
 
-	useEffect(()=>{
-		if (getCookie('csrf_access_token') !== null){
-			(isTokenExpired(getCookie('csrf_access_token')))?
-				logout(): ""
+	// useEffect(()=>{
+	// 	if (getCookie('csrf_access_token') !== null){
+	// 		(isTokenExpired(getCookie('csrf_access_token')))?
+	// 			logout(): ""
 				
-		}
-	})
+	// 	}
+	// })
 	
 	return (
 		(!loggedIn) ? 	

@@ -49,9 +49,16 @@ export const Navbar = (props) => {
 
   const parseJwt = (token) => {
 	try {
+	  // Convert Base64 URL to Base64 standard
 	  const base64Url = token.split('.')[1];
-	  const base64 = Buffer.from(base64Url, 'base64').toString('utf-8');
-	  return JSON.parse(base64);
+	  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Replace URL-safe characters
+	  const decodedBase64 = atob(base64);
+	  const jsonPayload = decodeURIComponent(
+		Array.prototype.map.call(decodedBase64, (c) =>
+		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+		).join('')
+	  );
+	  return JSON.parse(jsonPayload);
 	} catch (e) {
 	  console.error('Error parsing token:', e);
 	  return null;

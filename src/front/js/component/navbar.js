@@ -124,21 +124,21 @@ export const Navbar = (props) => {
 		console.log('All cookies cleared');
 	  };
 
-	useEffect(()=>{
-		let token = getCookie('csrf_access_token')
-		const expirationCookie = getCookie(`${token}-expires`);
-		console.log(`expired: ${expirationCookie}`)
-		console.log(`token: ${token}`)
-		console.log(`test: ${isTokenExpired(token)}`)
-		if (token !== null){
-			if (isTokenExpired(token) === true){
-				// clearCookies('.kpdlabs.com');
+	// useEffect(()=>{
+	// 	let token = getCookie('csrf_access_token')
+	// 	const expirationCookie = getCookie(`${token}-expires`);
+	// 	console.log(`expired: ${expirationCookie}`)
+	// 	console.log(`token: ${token}`)
+	// 	console.log(`test: ${isTokenExpired(token)}`)
+	// 	if (token !== null){
+	// 		if (isTokenExpired(token) === true){
+	// 			// clearCookies('.kpdlabs.com');
 				
-			}
-			else{console.log("token fresh")}
-		}
+	// 		}
+	// 		else{console.log("token fresh")}
+	// 	}
 
-	})
+	// })
 	
 	return (
 		(!loggedIn) ? 	

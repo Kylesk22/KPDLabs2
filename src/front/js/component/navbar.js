@@ -77,7 +77,14 @@ export const Navbar = (props) => {
 		setLoggedIn(true):
 		setLoggedIn(false)
 		
+
+		
 	})
+
+	useEffect(()=>{
+		!loggedIn?
+		logout():""
+	},[loggedIn])
 	
 	return (
 		(!loggedIn) ? 	

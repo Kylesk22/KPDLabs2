@@ -94,17 +94,19 @@ return(
       <div className="row" style={{paddingTop: "50px"}}> 
   
         <div className="col-6 text-center">
-            <h2>The Difference Between Polished and Glazed Crowns and the Benefits of Polishing</h2>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/23328193/" target="_blank">
+            <a style={{border: "1px solid #ffaa17"}} href="https://pubmed.ncbi.nlm.nih.gov/23328193/" target="_blank">
+                <h3>The Difference Between Polished and Glazed Crowns and the Benefits of Polishing</h3>
+                
                 <h4>The wear of polished and glazed zirconia against enamel - PubMed</h4>
             </a>
                         
         </div>
         <div className="col-6 text-center">
-            <h2>Natural teeth wear opposite to glazed and polished ceramic crowns: A systematic review</h2>
-                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9807933/" target="_blank">
-                    <h4>The wear of polished and glazed zirconia against enamel - PubMed</h4>
-                </a>
+             <a style={{border: "1px solid #ffaa17"}} href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9807933/" target="_blank">
+                <h3>Natural teeth wear opposite to glazed and polished ceramic crowns: A systematic review</h3>
+                
+                <h4>The wear of polished and glazed zirconia against enamel - PubMed</h4>
+            </a>
 
         </div>
       </div>

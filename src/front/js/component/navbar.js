@@ -276,6 +276,8 @@ export const Navbar = (props) => {
 					</ul>
 					<div className="dropdown-btn"><i className="fas fa-angle-down"></i></div>
 				</li>
+				<li><a href="/resources">Resources</a></li>
+				<li><a href="/pricing">Pricing</a></li>
 				<li><a href="/contactus">Contact</a></li>
 			
 			</ul>

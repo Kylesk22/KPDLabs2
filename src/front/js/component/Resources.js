@@ -93,7 +93,7 @@ return(
       
       <div className="row" style={{paddingTop: "50px"}}> 
   
-        <div style={{border: "4px solid #ffaa17"}} className="col-6 text-center mx-2">
+        <div style={{border: "4px solid #ffaa17", marginRight: "2px"}} className="col-6 text-center">
             <a href="https://pubmed.ncbi.nlm.nih.gov/23328193/" target="_blank">
                 <h3>The Difference Between Polished and Glazed Crowns and the Benefits of Polishing</h3>
                 
@@ -101,7 +101,7 @@ return(
             </a>
                         
         </div>
-        <div style={{border: "4px solid #ffaa17"}} className="col-6 text-center mx-2">
+        <div style={{border: "4px solid #ffaa17", marginLeft: "2px"}} className="col-6 text-center">
              <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9807933/" target="_blank">
                 <h3>Natural teeth wear opposite to glazed and polished ceramic crowns: A systematic review</h3>
                 

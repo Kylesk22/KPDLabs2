@@ -29,6 +29,7 @@ import {Blog1} from "./pages/Blog1";
 import {Blog2} from "./pages/Blog2";
 import {Blog3} from "./pages/Blog3";
 import {Terms} from "./pages/Terms";
+import {Resources} from "./component/Resources";
 
 
 import Orb from "../../front/img/image.png";
@@ -82,6 +83,7 @@ const Layout = () => {
                         <Route element={<Blog1 />  } path = "/blogs/blog1"/>
                         <Route element={<Blog2 />  } path = "/blogs/blog2"/>
                         <Route element={<Blog3 />  } path = "/blogs/blog3"/>
+                        <Route element={<Resources />  } path = "/resources"/>
                         <Route element={<Terms /> } path = "/terms"/>
                         
                         

@@ -663,16 +663,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
-{/* <section className="project-section">
+<section className="project-section">
   <div className="auto-container">
 	<div className="sec-title"> <span className="sub-title">RECENTLY COMPLETED WORK  ::::::</span>
 	  <h2>Improve and Enhance the <br/>Best Tech Projects</h2>
 	  <a href="page-projects.html" className="ser-btn theme-btn">Discover More</a>
 	</div>
 	<div className="outer-box">
-	  <div className="row">  */}
-		{/* <!-- project-block --> */}
-		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
+	  <div className="row"> 
+		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -682,9 +682,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div> */}
-		{/* <!-- project-block --> */}
-		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
+		</div>
+		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -694,9 +694,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div> */}
-		{/* <!-- project-block --> */}
-		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
+		</div>
+		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -706,9 +706,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
-		</div> */}
-		{/* <!-- project-block --> */}
-		{/* <div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
+		</div>
+		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
@@ -722,7 +722,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section> */}
+</section>
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}

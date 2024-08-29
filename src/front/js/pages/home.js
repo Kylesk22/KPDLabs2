@@ -673,7 +673,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <h2>Connect with KPD <br/>With Your Digital Provider</h2>
 	  
 	</div>
-	<div className="outer-box">
+	<div style={{marginRight: "0px"}} className="outer-box">
 	  <div className="row"> 
 		
 		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">

@@ -664,7 +664,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
-<section className="project-section">
+{/* <section className="project-section">
   <div className="auto-container">
 	<div className="sec-title"> <span className="sub-title">CONNECT  ::::::</span>
 	  <h2>Connect with KPD <br/>With Your Digital Provider</h2>
@@ -723,7 +723,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}

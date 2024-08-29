@@ -715,7 +715,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-down"></i>
+			<i className="fa-solid fa-angle-down" onClick={(e)=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
+			{(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
@@ -727,6 +728,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 					<li style={{listStyle: "initial"}}>Your scans are ready to be sent right away – just choose KPD Labs from your drop down menu.</li>
 				</ul>
 		  </div>
+			:""}
 		  </div>
 		</div>
 		
@@ -740,7 +742,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-down"></i>
+			<i className="fa-solid fa-angle-down" onClick={(e)=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
+			{(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
@@ -751,6 +754,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 					<li style={{listStyle: "initial"}}>KPD Labs will be shown. Click “Connect”</li>
 				</ul>
 		  </div>
+			: ""}
 		  </div>
 		</div>
 		
@@ -764,7 +768,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-down"></i>
+			<i className="fa-solid fa-angle-down" onClick={(e)=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
+			{(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
@@ -775,6 +780,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 					
 				</ul>
 		  </div>
+			:""}
 		  </div>
 		</div>
 	  </div>

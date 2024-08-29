@@ -686,12 +686,13 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="">iTero</a></h4> */}
 			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-		  </div>
-		  <div style={{paddingTop: "10px"}}>
+			<div style={{paddingTop: "10px"}}>
 		 	<li> Login to your iTero/Align Tech Doctor’s portal</li>
 			<li>Navigate to “Add Preferred Lab” and input our lab’s Company ID (420339) to connect your practice with KPD Labs directly.</li>
 			<li>If any issues appear, please call iTero’s support line directly to set up KPD Labs as your “Preferred Lab” – simply give them our Company ID (420339) and they will connect your practice with our lab directly.</li>
 		  </div>
+		  </div>
+		  
 		</div>
 		
 		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">

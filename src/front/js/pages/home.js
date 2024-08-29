@@ -663,7 +663,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
-<section className="project-section">
+{/* <section className="project-section">
   <div className="auto-container">
 	<div className="sec-title"> <span className="sub-title">RECENTLY COMPLETED WORK  ::::::</span>
 	  <h2>Improve and Enhance the <br/>Best Tech Projects</h2>
@@ -722,7 +722,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section>
+</section> */}
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}

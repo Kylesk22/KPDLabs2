@@ -707,6 +707,17 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<div style={{paddingTop: "10px"}}>
+				<ul style={{listStyle: "initial"}}>
+					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
+					<li style={{listStyle: "initial"}}>Now under “My Account,” click on “My Favorite Laboratories”</li>
+					<li style={{listStyle: "initial"}}>Click on “Search Labs”</li>
+					<li style={{listStyle: "initial"}}>Enter KPD Labs in the Company Name field</li>
+					<li style={{listStyle: "initial"}}>If you can’t find us you may also search by location – select “United States” and then enter KPD Labs’s Florida zip code: “33844” </li>
+					<li style={{listStyle: "initial"}}>Find KPD Labs and click on the plus sign in the “Add” column all the way to the right</li>
+					<li style={{listStyle: "initial"}}>Your scans are ready to be sent right away – just choose KPD Labs from your drop down menu.</li>
+				</ul>
+		  </div>
 		  </div>
 		</div>
 		
@@ -720,6 +731,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<div style={{paddingTop: "10px"}}>
+				<ul style={{listStyle: "initial"}}>
+					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
+					<li style={{listStyle: "initial"}}>Navigate to “More” and then select “Settings”</li>
+					<li style={{listStyle: "initial"}}>In the menu, select “Connections” then “Labs” and then “Add”</li>
+					<li style={{listStyle: "initial"}}>Click on “Add Connections”</li>
+					<li style={{listStyle: "initial"}}>Type in our email address: kpdlabs@kpdlabs.com</li>
+					<li style={{listStyle: "initial"}}>KPD Labs will be shown. Click “Connect”</li>
+				</ul>
+		  </div>
 		  </div>
 		</div>
 		
@@ -733,6 +754,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<div style={{paddingTop: "10px"}}>
+				<ul style={{listStyle: "initial"}}>
+					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
+					<li style={{listStyle: "initial"}}>Click on “Partners” in the left-hand column</li>
+					<li style={{listStyle: "initial"}}>Select “Search for Partners” at the top</li>
+					<li style={{listStyle: "initial"}}>Click in the search bar and type in our email address: kpdlabs@kpdlabs.com</li>
+					<li style={{listStyle: "initial"}}>KPD Labs will populate. Select our lab to add us as a partner</li>
+					
+				</ul>
+		  </div>
 		  </div>
 		</div>
 	  </div>

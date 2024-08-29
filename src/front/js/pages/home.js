@@ -684,7 +684,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="content-box"> 
 				{/* <span>Technology</span>
 			  <h4 className="title"><a href="">iTero</a></h4> */}
-			  <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
 		  </div>
 		</div>
@@ -697,7 +697,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="content-box"> 
 				{/* <span>IDEA</span>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
-			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
 		  </div>
 		</div>
@@ -710,7 +710,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="content-box"> 
 				{/* <span>Security</span>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
-			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
 		  </div>
 		</div>
@@ -723,7 +723,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="content-box"> 
 				{/* <span>Development</span>
 			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
-			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
 		  </div>
 		</div>

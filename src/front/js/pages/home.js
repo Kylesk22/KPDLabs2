@@ -676,7 +676,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	<div className="outer-box">
 	  <div className="row"> 
 		
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
+		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
@@ -689,7 +689,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		</div>
 		
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
+		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
@@ -702,7 +702,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		</div>
 		
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
+		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
@@ -715,7 +715,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		</div>
 		
-		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
+		<div style={{display: "flex", alignItems: "center"}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
 		  <div className="inner-box">
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>

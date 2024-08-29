@@ -86,7 +86,7 @@ class Case(db.Model):
     shade = db.Column(db.String(50), unique=False, nullable=True)
     gum_shade = db.Column(db.String(50), unique=False, nullable=True)
     finish = db.Column(db.String(50), unique=False, nullable=True)
-    notes = db.Column(db.String(255), nullable= True)
+    notes = db.Column(db.String(2000), nullable= True)
     status = db.Column(db.String(50), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     creation_date = db.Column(db.String(50))

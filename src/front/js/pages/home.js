@@ -80,6 +80,7 @@ import Lines21 from "../../img/lines2-1.png"
 import FootBKG from "../../img/footer-bg.jpg"
 import Layer11 from "../../img/layer1-1.jpg"
 import MillingClip from "../../img/MillingClip1080p2.mp4"
+import Itero from "../../img/itero-logo-2-300x103.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -663,11 +664,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
-{/* <section className="project-section">
+<section className="project-section">
   <div className="auto-container">
-	<div className="sec-title"> <span className="sub-title">RECENTLY COMPLETED WORK  ::::::</span>
-	  <h2>Improve and Enhance the <br/>Best Tech Projects</h2>
-	  <a href="page-projects.html" className="ser-btn theme-btn">Discover More</a>
+	<div className="sec-title"> <span className="sub-title">CONNECT  ::::::</span>
+	  <h2>Connect with KPD <br/>With Your Digital Provider</h2>
+	  
 	</div>
 	<div className="outer-box">
 	  <div className="row"> 
@@ -675,11 +676,11 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
 		  <div className="inner-box">
 			<div className="image-box">
-			  <figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
+			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
 			<div className="content-box"> <span>Technology</span>
-			  <h4 className="title"><a href="page-project-details.html">Technology Traning</a></h4>
-			  <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
+			  <h4 className="title"><a href="">iTero</a></h4>
+			  <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a>
 			</div>
 		  </div>
 		</div>
@@ -722,7 +723,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  </div>
 	</div>
   </div>
-</section> */}
+</section>
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}

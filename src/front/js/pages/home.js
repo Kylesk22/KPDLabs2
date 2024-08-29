@@ -117,6 +117,11 @@ export const Home = (props) => {
 	const [faq3, setFaq3] = useState(false)
 	const [faq4, setFaq4] = useState(false)
 
+	const [iteroShow, setIteroShow] = useState(false)
+	const [cerecShow, setCerecShow] = useState(false)
+	const [shapeShow, setShapeShow] = useState(false)
+	const [meditShow, setMeditShow] = useState(false)
+
 	const handleToggleModal = () => {
 	  setShowModal(!showModal);
 	};
@@ -686,6 +691,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="">iTero</a></h4> */}
 			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<i className="fa-solid fa-angle-down" onClick={(e)=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}></i>
+			{(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
@@ -693,6 +700,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 					<li style={{listStyle: "initial"}}>If any issues appear, please call iTero’s support line directly to set up KPD Labs as your “Preferred Lab” – simply give them our Company ID (420339) and they will connect your practice with our lab directly.</li>
 				</ul>
 		  </div>
+			:""}
 		  </div>
 		  
 		</div>
@@ -707,6 +715,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<i className="fa-solid fa-angle-down"></i>
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
@@ -731,6 +740,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
+			<i className="fa-solid fa-angle-down"></i>
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>

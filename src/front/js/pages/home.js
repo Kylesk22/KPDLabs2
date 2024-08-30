@@ -706,7 +706,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  
 		</div>
 		{(iteroShow)?
-			<div style={{paddingTop: "10px"}}>
+			<div style={{paddingTop: "30px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
 					<li style={{listStyle: "initial"}}>Navigate to “Add Preferred Lab” and input our lab’s Company ID (420339) to connect your practice with KPD Labs directly.</li>
@@ -741,7 +741,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		 
 		</div>
 		{(cerecShow)?
-			<div style={{paddingTop: "10px"}}>
+			<div style={{paddingTop: "30px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
 					<li style={{listStyle: "initial"}}>Now under “My Account,” click on “My Favorite Laboratories”</li>
@@ -779,7 +779,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		 
 		</div>
 		{(shapeShow)?
-			<div style={{paddingTop: "10px"}}>
+			<div style={{paddingTop: "30px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
 					<li style={{listStyle: "initial"}}>Navigate to “More” and then select “Settings”</li>
@@ -817,7 +817,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  
 		</div>
 		{(meditShow)?
-			<div style={{paddingTop: "10px"}}>
+			<div style={{paddingTop: "30px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
 					<li style={{listStyle: "initial"}}>Click on “Partners” in the left-hand column</li>

@@ -720,6 +720,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			:""}
 		</div>
 		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">
 		  <div className="inner-box">
 			<div className="image-box" style={{height: "100px"}}>
@@ -745,7 +746,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  {(cerecShow)?
+		 
+		</div>
+		{(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
@@ -760,6 +763,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			:""}
 		</div>
 		
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="800ms">
 		  <div className="inner-box">
 			<div className="image-box" style={{height: "100px"}}>
@@ -784,7 +788,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			: ""} */}
 		  </div>
-		  {(shapeShow)?
+		 
+		</div>
+		{(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
@@ -798,6 +804,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			: ""}
 		</div>
 		
+
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="1000ms">
 		  <div className="inner-box">
 			<div className="image-box" style={{height: "100px"}}>
@@ -822,7 +830,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  {(meditShow)?
+		  
+		</div>
+		{(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
@@ -835,6 +845,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""}
 		</div>
+
+
+
 	  </div>
 	</div>
   </div>

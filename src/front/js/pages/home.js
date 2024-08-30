@@ -695,7 +695,17 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			style={{position: "absolute"}}
 			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
 			></i>
-			{(iteroShow)?
+			{/* {(iteroShow)?
+			<div style={{paddingTop: "10px"}}>
+				<ul style={{listStyle: "initial"}}>
+					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
+					<li style={{listStyle: "initial"}}>Navigate to “Add Preferred Lab” and input our lab’s Company ID (420339) to connect your practice with KPD Labs directly.</li>
+					<li style={{listStyle: "initial"}}>If any issues appear, please call iTero’s support line directly to set up KPD Labs as your “Preferred Lab” – simply give them our Company ID (420339) and they will connect your practice with our lab directly.</li>
+				</ul>
+		  </div>
+			:""} */}
+		  </div>
+		  {(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
@@ -704,8 +714,6 @@ className="">Cast Effective Digital Marketing Agency</h1>
 				</ul>
 		  </div>
 			:""}
-		  </div>
-		  
 		</div>
 		
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="600ms">

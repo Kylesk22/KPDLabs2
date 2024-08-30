@@ -287,7 +287,7 @@ export const PricingInfo = props => {
 
                 <div className="form-group mx-3">
                     
-                        <label  htmlFor="findUs"style={{color: "white"}}>Professional Position?</label>
+                        <label className="form-label mt-4 " htmlFor="findUs"style={{color: "white"}}>Professional Position?</label>
                         <select  className="form-select" id="position"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setPosition(e.target.value)}}>
                             <option value="Select One">Select One</option>
                             <option value="Dentist" onClick={()=>setPosition("Dentist")}>Dentist</option>
@@ -302,7 +302,7 @@ export const PricingInfo = props => {
 
                 <div className="form-group mx-3">
                     
-                        <label  htmlFor="findUs"style={{color: "white"}}>How did you hear about us?</label>
+                        <label className="form-label mt-4 " htmlFor="findUs"style={{color: "white"}}>How did you hear about us?</label>
                         <select className="form-select" id="findUs"  style={{minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="" onChange={(e)=>{setFindUs(e.target.value)}}>
                             <option value="Select One">Select One</option>
                             <option value="Google" onClick={()=>setFindUs("Google")}>Google</option>

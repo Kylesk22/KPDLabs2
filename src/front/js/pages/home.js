@@ -680,7 +680,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
 	<div style={{marginRight: "0px"}} className="outer-box">
 	  <div className="row"> 
-		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight">
+		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight ">
 		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}} 
 		// className="project-block col-lg-3 col-sm-6 wow fadeInRight" 
 		data-wow-delay="400ms">
@@ -688,11 +688,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
-			<div className="content-box" > 
-				{/* <span>Technology</span>
-			  <h4 className="title"><a href="">iTero</a></h4> */}
-			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
-			</div>
+			
 			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
 			style={{position: "absolute"}}
 			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
@@ -726,11 +722,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
 			</div>
-			<div className="content-box" > 
-				{/* <span>IDEA</span>
-			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
-			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
-			</div>
+			
 			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
 			{/* {(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -769,11 +761,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
 			</div>
-			<div className="content-box" > 
-				{/* <span>Security</span>
-			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
-			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
-			</div>
+			
 			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
 			{/* {(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -811,11 +799,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
 			</div>
-			<div className="content-box" > 
-				{/* <span>Development</span>
-			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
-			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
-			</div>
+			
 			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
 			{/* {(meditShow)?
 			<div style={{paddingTop: "10px"}}>

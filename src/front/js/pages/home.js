@@ -689,10 +689,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
 			
-			{/* <i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
+			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
 			style={{position: "absolute"}}
 			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
-			></i> */}
+			></i>
 			{/* {(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -703,10 +703,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  <i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
-			style={{position: "absolute"}}
-			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
-			></i>
+		  
 		</div>
 		{(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -726,7 +723,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
 			</div>
 			
-			{/* <i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i> */}
+			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
 			{/* {(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -741,7 +738,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  <i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
+		 
 		</div>
 		{(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -765,7 +762,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
 			</div>
 			
-			{/* <i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i> */}
+			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
 			{/* {(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -779,7 +776,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			: ""} */}
 		  </div>
-		  <i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
+		 
 		</div>
 		{(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -803,7 +800,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
 			</div>
 			
-			{/* <i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i> */}
+			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
 			{/* {(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -817,7 +814,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  <i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
+		  
 		</div>
 		{(meditShow)?
 			<div style={{paddingTop: "10px"}}>

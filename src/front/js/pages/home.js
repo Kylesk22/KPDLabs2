@@ -680,8 +680,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
 	<div style={{marginRight: "0px"}} className="outer-box">
 	  <div className="row"> 
-		
-		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}} className="project-block col-lg-3 col-sm-6 wow fadeInRight" data-wow-delay="400ms">
+		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
+		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}} 
+		// className="project-block col-lg-3 col-sm-6 wow fadeInRight" 
+		data-wow-delay="400ms">
 		  <div className="inner-box" onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}>
 			<div className="image-box" style={{height: "100px"}}>
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
@@ -705,7 +707,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 			:""} */}
 		  </div>
-		  {(iteroShow)?
+		  
+		</div>
+		{(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
 					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>

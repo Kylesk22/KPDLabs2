@@ -685,7 +685,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		// className="project-block col-lg-3 col-sm-6 wow fadeInRight" 
 		data-wow-delay="400ms">
 		  <div className="inner-box" onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}>
-			<div className="image-box" style={{height: "100px"}}>
+			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
 			<div className="content-box" > 
@@ -723,7 +723,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}} data-wow-delay="600ms">
 		  <div className="inner-box">
-			<div className="image-box" style={{height: "100px"}}>
+			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
 			</div>
 			<div className="content-box" > 
@@ -766,7 +766,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}} data-wow-delay="800ms">
 		  <div className="inner-box">
-			<div className="image-box" style={{height: "100px"}}>
+			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
 			</div>
 			<div className="content-box" > 
@@ -808,7 +808,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div className="project-block col-lg-3 col-sm-6 wow fadeInRight">
 		<div style={{display: "flex", alignItems: "center"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}} data-wow-delay="1000ms">
 		  <div className="inner-box">
-			<div className="image-box" style={{height: "100px"}}>
+			<div className="image-box" style={{height: "100px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
 			</div>
 			<div className="content-box" > 

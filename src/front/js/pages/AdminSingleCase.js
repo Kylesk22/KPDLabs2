@@ -687,6 +687,11 @@ export const AdminSingleCase = props => {
                     {/* <div className="text-center pt-2">
                         <button className="theme-btn" style={{width: "170px"}} onClick={(e)=>{testHandler(); e.preventDefault()}}>TEST DO NOT USE</button>
                     </div> */}
+                    <div className="row form-group justify-content-center mt-3 no-print">
+                    <div className="text-center col-8 col-lg-4 pt-3">
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
+                    </div>
+                </div>
                     
                 </div>
                 <div className="row mt-3 ">
@@ -924,11 +929,11 @@ export const AdminSingleCase = props => {
                
                     </div>
                 </div>
-                <div className="row form-group justify-content-center mt-3 no-print">
+                {/* <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
                     </div>
-                </div>
+                </div> */}
                 <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>

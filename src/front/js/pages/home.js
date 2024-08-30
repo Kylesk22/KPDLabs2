@@ -693,7 +693,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</div>
 			<i className="fa-solid fa-angle-right" 
 			style={{position: "absolute"}}
-			onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}
+			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
 			></i>
 			{(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -713,12 +713,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
 			</div>
-			<div className="content-box"> 
+			<div className="content-box" onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}> 
 				{/* <span>IDEA</span>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
+			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
 			{(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -740,12 +740,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
 			</div>
-			<div className="content-box"> 
+			<div className="content-box" onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}> 
 				{/* <span>Security</span>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
+			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
 			{(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -766,12 +766,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
 			</div>
-			<div className="content-box"> 
+			<div className="content-box" onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}> 
 				{/* <span>Development</span>
 			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
+			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
 			{(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>

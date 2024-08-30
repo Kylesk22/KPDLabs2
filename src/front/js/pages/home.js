@@ -686,14 +686,13 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<div className="image-box">
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
-			<div className="content-box"> 
+			<div className="content-box" onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}> 
 				{/* <span>Technology</span>
 			  <h4 className="title"><a href="">iTero</a></h4> */}
 			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
 			<i className="fa-solid fa-angle-down" 
-			// onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
-			onClick={()=> console.log(iteroShow)}
+			
 			></i>
 			{(iteroShow)?
 			<div style={{paddingTop: "10px"}}>

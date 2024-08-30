@@ -691,7 +691,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="">iTero</a></h4> */}
 			  {/* <a href="" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" 
+			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
 			style={{position: "absolute"}}
 			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
 			></i>
@@ -718,7 +718,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Design & Projects</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
+			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
 			{(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -745,7 +745,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Network Security</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
+			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
 			{(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -771,7 +771,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <h4 className="title"><a href="page-project-details.html">Tech Solution</a></h4> */}
 			  {/* <a href="page-project-details.html" className="angel-btn"><i className="fa-solid fa-angle-right"></i></a> */}
 			</div>
-			<i className="fa-solid fa-angle-right" style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
+			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
 			{(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>

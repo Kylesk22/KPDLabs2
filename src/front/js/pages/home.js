@@ -83,7 +83,7 @@ import MillingClip from "../../img/MillingClip1080p2.mp4"
 import Itero from "../../img/itero-logo-2-300x103.png"
 import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png"
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
-import Medit from "../../img/medit-logo.png"
+import Medit from "../../img/medit-logo-300.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"

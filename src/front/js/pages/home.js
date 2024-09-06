@@ -666,7 +666,23 @@ className="">Cast Effective Digital Marketing Agency</h1>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "#ffaa17"}} data-wow-delay="400ms">
 	  <h2 style={{color: "black"}}>KPD Removable Program </h2>
-	  <h4></h4>
+	  <div className="col-6">
+	  	<h4>30 Day Warranty</h4>
+			<p>After  the  device  is  approved  by  both  the
+				Dentist  and  the  customer,  all  removable
+				products  from  KPD  come  with  a  30-day
+				breakage warranty, no questions asked.
+			</p>
+	  </div>
+	  <div className="col-6">
+	  	<h4>Forever Replacement</h4>
+		<p>
+		After the 30 day warranty period, we will replace any
+		removable at a discounted rate of $100 off! No need for
+		realigns and wasted chair time, let your patient keep
+		their device while we create them a brand new one.
+		</p>
+	  </div>
 	  {/* <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> */}
 	</div>
   </div>

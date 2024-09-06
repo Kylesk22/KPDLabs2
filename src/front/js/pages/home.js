@@ -679,7 +679,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</h5>
 	  </div>
 	  <div className="col-6">
-	  <i className="fa-solid fa-star" style={{color: "#ffaa17", fontSize: "40px"}}></i>
+	  <i className="fa-solid fa-star" style={{color: "#ffaa17", fontSize: "40px", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000,-1px  1px 0 #000, 1px  1px 0 #000"}}></i>
 	  	<h3>Forever Replacement</h3>
 		<h5>
 		After the 30 day warranty period, we will replace any

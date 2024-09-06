@@ -85,7 +85,7 @@ import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png"
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
 import Medit from "../../img/medit-logo-300.png"
 import Program from "../../img/1.png"
-import KPD from "../../img/kpd_logo_pos2 (1).png"
+import KPD from "../../img/kpd_logo_pos2(1).png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"

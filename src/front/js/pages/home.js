@@ -670,6 +670,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <h2 style={{color: "black"}}>Removable Program </h2>
 	  <div className="row"> 
 	  <div className="col-6">
+	  <i className="fa-solid fa-hundred-points"></i>
 	  	<h3>30 Day Warranty</h3>
 			<h5>After  the  device  is  approved  by  both  the
 				Dentist  and  the  customer,  all  removable

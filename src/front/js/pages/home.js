@@ -663,10 +663,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- service-banner --> */}
-{/* <section className="service-banner" style={{backgroundColor: "rgb(246, 246, 246"}}>
+<section className="service-banner" style={{backgroundColor: "rgb(246, 246, 246"}}>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "#ffaa17"}} data-wow-delay="400ms">
-		<img src={{Logo}}></img>
+		<img src={{Logo}} style={{height: "100px"}}></img>
 	  <h2 style={{color: "black"}}>Removable Program </h2>
 	  <div className="row"> 
 	  <div className="col-6">
@@ -690,7 +690,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  
 	</div>
   </div>
-</section> */}
+</section>
 
 
 {/* <section> */}

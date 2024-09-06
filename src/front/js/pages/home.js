@@ -668,7 +668,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	  <h2 style={{color: "black"}}>KPD Removable Program </h2>
 	  <div className="row"> 
 	  <div className="col-6">
-	  	<h4>30 Day Warranty</h4>
+	  	<h3>30 Day Warranty</h3>
 			<h5>After  the  device  is  approved  by  both  the
 				Dentist  and  the  customer,  all  removable
 				products  from  KPD  come  with  a  30-day
@@ -676,7 +676,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</h5>
 	  </div>
 	  <div className="col-6">
-	  	<h4>Forever Replacement</h4>
+	  	<h3>Forever Replacement</h3>
 		<h5>
 		After the 30 day warranty period, we will replace any
 		removable at a discounted rate of $100 off! No need for

@@ -86,6 +86,7 @@ import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
 import Medit from "../../img/medit-logo-300.png"
 import Program from "../../img/1.png"
 import KPD from "../../img/kpd_logo_pos2(1).png"
+import Layer from "../../img/layer.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -663,7 +664,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- service-banner --> */}
-<section className="service-banner" style={{backgroundColor: "#ffaa17"}}>
+<section className="service-banner" style={{backgroundColor: "#ffaa17", backgroundImage: {Layer}}}>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "white"}} data-wow-delay="400ms">
 		<img src={KPD}></img>

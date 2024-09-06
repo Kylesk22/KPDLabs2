@@ -662,20 +662,20 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- service-banner --> */}
-{/* <section className="service-banner">
+<section className="service-banner">
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" data-wow-delay="400ms">
 	  <h2>IT Solutions And Services <br/>at Your Fingertips</h2>
 	  <a href="page-about.html" className="ser-btn theme-btn">Discover More</a>
 	</div>
   </div>
-</section> */}
+</section>
 
 
-<section>
+{/* <section> */}
 	{/* <img src={Program}>
 	</img> */}
-</section>
+{/* </section> */}
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}

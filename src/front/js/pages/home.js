@@ -666,7 +666,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <section className="service-banner" style={{backgroundColor: "rgb(246, 246, 246"}}>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "#ffaa17"}} data-wow-delay="400ms">
-		<img src={{KPD}}></img>
+		<img src={{Logo}}></img>
 	  <h2 style={{color: "black"}}>Removable Program </h2>
 	  <div className="row"> 
 	  <div className="col-6">

@@ -85,6 +85,7 @@ import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png"
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
 import Medit from "../../img/medit-logo-300.png"
 import Program from "../../img/1.png"
+import KPD from "../../img/kpd_logo_pos2 (1).png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -665,7 +666,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <section className="service-banner" style={{backgroundColor: "rgb(246, 246, 246"}}>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "#ffaa17"}} data-wow-delay="400ms">
-	  <h2 style={{color: "black"}}>KPD Removable Program </h2>
+		<img src={{KPD}}></img>
+	  <h2 style={{color: "black"}}>Removable Program </h2>
 	  <div className="row"> 
 	  <div className="col-6">
 	  	<h3>30 Day Warranty</h3>

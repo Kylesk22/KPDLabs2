@@ -664,9 +664,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 <!-- service-banner --> */}
 <section className="service-banner" style={{backgroundColor: "#505050"}}>
   <div className="auto-container">
-	<div className="outer-box wow fadeInUp" data-wow-delay="400ms">
-	  <h2>IT Solutions And Services <br/>at Your Fingertips</h2>
-	  <a href="page-about.html" className="ser-btn theme-btn">Discover More</a>
+	<div className="outer-box wow fadeInUp" style={{backgroundColor: "#ffaa17"}} data-wow-delay="400ms">
+	  <h2 style={{color: "black"}}>KPD Removable Program </h2>
+	  <h4></h4>
+	  {/* <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> */}
 	</div>
   </div>
 </section>

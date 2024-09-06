@@ -84,6 +84,7 @@ import Itero from "../../img/itero-logo-2-300x103.png"
 import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png"
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
 import Medit from "../../img/medit-logo-300.png"
+import Program from "../../img/1.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -1006,9 +1007,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
   </div>
 </section> */}
-{/* <!-- End testimonial-section --> 
+{/* <!-- End testimonial-section -->*/}
 
-<!-- FAQ Section --> */}
+
+<section>
+	<img src={Program}>
+	</img>
+</section>
+
+
+{/*<!-- FAQ Section --> */}
 <section className="faqs-section" style={{backgroundColor: "#F6F6F6"}}>
   <div className="auto-container">
 	<div className="row"> 

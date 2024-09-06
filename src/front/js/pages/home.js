@@ -664,7 +664,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End service-section -->
 
 <!-- service-banner --> */}
-<section className="service-banner" style={{backgroundColor: "#ffaa17", backgroundImage: {Layer}}}>
+<section className="service-banner" style={{backgroundColor: "#ffaa17", backgroundImage: `url(${Layer})`}}>
   <div className="auto-container">
 	<div className="outer-box wow fadeInUp" style={{backgroundColor: "white"}} data-wow-delay="400ms">
 		<img src={KPD}></img>

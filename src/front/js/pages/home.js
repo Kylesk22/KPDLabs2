@@ -670,6 +670,12 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
   </div>
 </section> */}
+
+
+<section>
+	<img src={Program}>
+	</img>
+</section>
 {/* <!-- end service section --> 
 
 <!-- project-section --> */}
@@ -1010,10 +1016,10 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End testimonial-section -->*/}
 
 
-<section>
-	{/* <img src={Program}>
-	</img> */}
-</section>
+{/* <section>
+	<img src={Program}>
+	</img>
+</section> */}
 
 
 {/*<!-- FAQ Section --> */}

@@ -673,8 +673,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 
 
 <section>
-	<img src={Program}>
-	</img>
+	{/* <img src={Program}>
+	</img> */}
 </section>
 {/* <!-- end service section --> 
 

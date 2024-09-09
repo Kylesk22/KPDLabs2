@@ -137,6 +137,7 @@ export const UserPage = props => {
     
     
     let generateCase = () => {
+        
         const options = {
             method:"POST",
             headers:{
@@ -185,6 +186,15 @@ export const UserPage = props => {
         
     }
 
+
+
+    useEffect(()=>{
+        if (getCookie("csrf_access_token")){
+        alert("Logged out due to inactivity and security purposes");
+        logout()
+        }
+        
+    })
     return(
         <div >
             {(sessionStorage.getItem("id"))?

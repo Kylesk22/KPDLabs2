@@ -17,6 +17,17 @@ export const UserCases = props => {
     const [singlePage, setSinglePage] = useState(props.page)
     // const [singleCaseId, setSingleCaseID] = useState("")
 
+    function getCookie(name) {
+      const cookies = document.cookie.split('; ');
+      for (let cookie of cookies) {
+          const [cookieName, cookieValue] = cookie.split('=');
+          if (cookieName === name) {
+              return cookieValue;
+          }
+      }
+      return null; // Return null if cookie not found
+  }
+
     const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('desc');
 
@@ -124,6 +135,7 @@ export const UserCases = props => {
 
 
     useEffect(()=>{
+        
         const options = {
             method:"GET",
             credentials: 'include',

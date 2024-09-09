@@ -193,7 +193,14 @@ export const UserPage = props => {
         // alert("Logged out due to inactivity and security purposes");
         // logout()
         // }
-        console.log(getCookie("csrf_access_token"))
+       
+        if (loggedIn)
+            if (getCookie("csrf_access_token")=== null){
+                alert("Logged out due to inactivity and security purposes")
+                logout()
+            }
+            
+            
         
     })
     return(

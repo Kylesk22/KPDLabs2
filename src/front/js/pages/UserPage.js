@@ -189,10 +189,11 @@ export const UserPage = props => {
 
 
     useEffect(()=>{
-        if (!getCookie("csrf_access_token")){
-        alert("Logged out due to inactivity and security purposes");
-        logout()
-        }
+        // if (!getCookie("csrf_access_token")){
+        // alert("Logged out due to inactivity and security purposes");
+        // logout()
+        // }
+        console.log(getCookie("csrf_access_token"))
         
     })
     return(

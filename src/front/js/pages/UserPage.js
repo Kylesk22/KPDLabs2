@@ -81,10 +81,12 @@ export const UserPage = props => {
                 })}
             return(res.json())
             .then((body)=>{
-                if (body.msg=== "Token has expired"){
-                    logout()
+                if (body.message !== "undefined"){
+                alert(body.message)
                 }
-                alert(body.message)})
+                else console.log(body.message)
+            
+            })
             
             })
        

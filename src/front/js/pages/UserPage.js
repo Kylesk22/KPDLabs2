@@ -126,7 +126,12 @@ export const UserPage = props => {
                     
                 })}
             return(res.json())
-            .then((body)=>{alert(body.message)})
+            .then((body)=>{
+                if(body.message !== "undefined"){
+                alert(body.message)}
+                else console.log(body.message)
+            
+            })
             
             })
        

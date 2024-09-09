@@ -160,6 +160,7 @@ export const UserPage = props => {
             .then((body)=>{
                 if (body.message !== "undefined"){
                 alert(body.message)}
+                else (console.log(body.message))
             
             })
             

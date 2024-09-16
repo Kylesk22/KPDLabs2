@@ -40,6 +40,7 @@ export const AdminSingleCase = props => {
     const [showClone, setShowClone] = useState(false)
     const [clonedCaseId, setClonedCaseId] = useState("")
     const [submissionDate, setSubmissionDate] = useState("")
+    const [model3D, setModel3D] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -434,6 +435,7 @@ export const AdminSingleCase = props => {
                 setShipping(patientData.shipping)
                 setProduction(patientData.production)
                 setSubmissionDate(patientData["update date"])
+                setModel3D(patientData["3DModel"])
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
@@ -499,6 +501,7 @@ export const AdminSingleCase = props => {
                 "shipping": shipping,
                 "production": production,
                 "reference id": refId,
+                "model3D": model3D,
             }
             
             const options = {
@@ -842,6 +845,14 @@ export const AdminSingleCase = props => {
                                 <path d="M696.47,391.76c-1.53-3-1.84-6.67-.94-11.31l1.08.21c-.85,4.39-.57,7.85.84,10.59Z" transform="translate(-270.52 -59.04)"></path>
                                 <path d="M504.82,614.72a33.06,33.06,0,0,0,12.86,2.87,23.64,23.64,0,0,0,11.45-2.9A49.27,49.27,0,0,1,504.82,614.72Z" transform="translate(-270.52 -59.04)"></path>
                             </svg>
+                    </div>
+                </div>
+                <div className="row form-group text-center justify-content-center mt-5">
+                    <div className= "col-8 col-lg-4">
+                        <label  htmlFor="model"><h5>3D Model</h5></label>
+                        <input className="form-select" id="model"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={model3D} aria-label="model">
+
+                        </input>
                     </div>
                 </div>
                 <div className="row form-group text-center justify-content-center mt-5">

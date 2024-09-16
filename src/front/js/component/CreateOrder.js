@@ -692,13 +692,13 @@ AWS.config.update({
                 </div>
                 </div>
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-                <div className="inner-box" onClick={()=>setType("removeableAppliances")}>
+                <div className="inner-box" onClick={()=>setType("removableAppliances")}>
                     <div className="image-box">
                     <figure className="image overlay-anim"><img src={NightGuard} alt="" className="product-pic" /></figure>
                     
                     </div>
                     <div className="content-box text-center">
-                    <h4 className="title"><a >Removeable Appliances</a></h4>
+                    <h4 className="title"><a >Removable Appliances</a></h4>
                     </div>
                 </div>
                 </div>
@@ -3951,7 +3951,7 @@ AWS.config.update({
         </form>
 
         :
-        (type==="removeableAppliances")?
+        (type==="removableAppliances")?
 
         <div className="col-8 create-order-type" style={{margin:"auto", paddingLeft:"100px"}}>
             <div className="row "> 

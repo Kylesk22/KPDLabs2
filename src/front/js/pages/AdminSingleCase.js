@@ -618,6 +618,7 @@ export const AdminSingleCase = props => {
                     "price": finalPrice,
                     "shipping": shipping,
                     "production": production,
+                    "model3D": model3D,
                 }
                 
                 const options = {
@@ -674,6 +675,7 @@ export const AdminSingleCase = props => {
             updateCase()
         }
 
+        
   
         return (
             <>

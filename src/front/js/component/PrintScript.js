@@ -319,6 +319,7 @@ export const PrintPDFButton = (props) => {
                                 <div class="info-selected-teeth">Selected Teeth: ${props.crownTooth}</div>
                                 <div class="info-data-3">Selected Tooth Shade: ${props.shade}</div>
                                 <div id = "gum" class="info-data-3 hide">Selected Gum Shade: ${props.gumShade}</div>
+                                <div id = "model3D" class="info-data-3 hide">3D Model Requested: ${props.model3D}</div>
                         
                                 
                             </div>
@@ -351,6 +352,16 @@ export const PrintPDFButton = (props) => {
                             console.log(gum)
                             
                             gum.classList.remove('hide')
+                        }
+    });
+                </script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if ("${props.model3D}" !== ""){
+                            let model3D = document.getElementById("model3D")
+                            console.log(model3D)
+                            
+                            model3D.classList.remove('hide')
                         }
     });
                 </script>

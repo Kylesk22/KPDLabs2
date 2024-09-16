@@ -685,7 +685,7 @@ export const AdminSingleCase = props => {
                         </Link>
                     </div>
                     <div className="text-center pt-2">
-                    <PrintPDFButton doctorFirst={drName} doctorLast={""} model3d={model3D} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     </div>
                     {/* <div className="text-center pt-2">
                         <button className="theme-btn" style={{width: "170px"}} onClick={(e)=>{testHandler(); e.preventDefault()}}>TEST DO NOT USE</button>

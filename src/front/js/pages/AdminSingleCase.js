@@ -709,7 +709,7 @@ export const AdminSingleCase = props => {
             //     console.log(result)
             //   setResultDate(result.toDateString());
             //   console.log(resultDate)
-                console.log(submissionDate)
+                console.log(calculateBusinessDays(submissionDate, 6))
             },[submissionDate])
               
             

@@ -678,8 +678,13 @@ export const AdminSingleCase = props => {
 
 
         // calculating due date
-        const calculateBusinessDays = (startDate, numberOfDays) => {
-            let currentDate = new Date(startDate);
+        const calculateBusinessDays = (submissionDate, numberOfDays) => {
+
+            const [datePart, timePart] = submissionDate.split(' ');
+            const [month, day, year] = datePart.split('/');
+            const [hours, minutes, seconds] = timePart.split(':')
+
+            let currentDate = new Date(year, month - 1, day, hours, minutes, seconds);
             let daysAdded = 0;
           
             while (daysAdded < numberOfDays) {
@@ -692,6 +697,8 @@ export const AdminSingleCase = props => {
           
             return currentDate;
           };
+
+         
           
          
             

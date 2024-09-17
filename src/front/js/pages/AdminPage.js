@@ -273,6 +273,40 @@ export const AdminPage = props => {
 
 
 
+
+    const calculateBusinessDays = (submissionDate, numberOfDays) => {
+
+        const split = submissionDate.split(" ")
+        const datePart = split[0];
+        const datePartSplit = datePart.split("/")
+        const month = datePartSplit[0]
+        const day = datePartSplit[1]
+        const year = datePartSplit[2]
+        
+        // const [hours, minutes, seconds] = timePart.split(':')
+
+        let currentDate = new Date(year, month - 1, day);
+        let daysAdded = 0;
+      
+        while (daysAdded < numberOfDays) {
+          currentDate.setDate(currentDate.getDate() + 1);
+          // Check if the current date is a weekday
+          if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+            daysAdded++;
+          }
+        }
+      
+        return currentDate;
+      };
+
+     
+      
+     
+        
+        const [resultDate, setResultDate] = useState(null);
+      
+        
+
   
 
 
@@ -326,18 +360,31 @@ export const AdminPage = props => {
                     <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
                     <div className = "col-3 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
                     <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
-                    <div className = "col-2 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('due date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Due Date</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
                 
                 {sortedCases.map((item, index) => {
+
+                    const result = calculateBusinessDays(item["update date"], 6)
+                    console.log(result)
+                    const resultString = result.toString()
+
+                    const resultSplit = resultString.split(" ")
+                    const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
+                    setResultDate(finalResult)
+                    console.log(`result HERE ${finalResult}`)
+
                         return (
                             <Link to = {`/admin/${id}/${item["id"]}`}>
                             <div key={index} className="row" >
+                                
                             
                                 {(index <= pageMax && index >= pageMin)?
+                                    
                                 
                                     <>
                                     
@@ -348,7 +395,8 @@ export const AdminPage = props => {
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
                                     </>
                                 

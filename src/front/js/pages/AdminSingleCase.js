@@ -678,9 +678,9 @@ export const AdminSingleCase = props => {
 
 
         // calculating due date
-        const calculateBusinessDays = (submissionDate, numberOfDays) => {
+        const calculateBusinessDays = (startDate, numberOfDays) => {
 
-            const [datePart, timePart] = submissionDate.split(' ');
+            const [datePart, timePart] = startDate.split(' ');
             const [month, day, year] = datePart.split('/');
             const [hours, minutes, seconds] = timePart.split(':')
 

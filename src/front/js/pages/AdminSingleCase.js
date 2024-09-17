@@ -721,7 +721,7 @@ export const AdminSingleCase = props => {
                 const resultString = result.toString()
                 
                 const resultSplit = resultString.split(" ")
-                const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}}`
+                const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
                 setResultDate(finalResult)
                 console.log(`result HERE ${finalResult}`)}
             },[submissionDate])

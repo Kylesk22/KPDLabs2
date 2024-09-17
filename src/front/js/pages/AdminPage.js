@@ -369,16 +369,16 @@ export const AdminPage = props => {
                 
                 {sortedCases.map((item, index) => {
                     
-                    if (item["update date"] && item["update date"] !== "undefined" && item["update date"] !== "Invalid Date"){
-                        const result = calculateBusinessDays(item["update date"], 6)
-                        console.log(result)
-                        const resultString = result.toString()
+                    // if (item["update date"] && item["update date"] !== "undefined" && item["update date"] !== "Invalid Date"){
+                    //     const result = calculateBusinessDays(item["update date"], 6)
+                    //     console.log(result)
+                    //     const resultString = result.toString()
 
-                        const resultSplit = resultString.split(" ")
-                        const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
-                        setResultDate(finalResult)
-                        console.log(`result HERE ${finalResult}`)
-                    }
+                    //     const resultSplit = resultString.split(" ")
+                    //     const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
+                    //     setResultDate(finalResult)
+                    //     console.log(`result HERE ${finalResult}`)
+                    // }
                     
 
                         return (

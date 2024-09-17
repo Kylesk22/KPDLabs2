@@ -699,7 +699,9 @@ export const AdminSingleCase = props => {
           
             useEffect(()=>{
                 const result = calculateBusinessDays(submissionDate, 6);
+                console.log(result)
               setResultDate(result.toDateString());
+              console.log(resultDate)
 
             },[])
               

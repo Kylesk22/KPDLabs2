@@ -368,15 +368,18 @@ export const AdminPage = props => {
                 <div className="col=10">
                 
                 {sortedCases.map((item, index) => {
-                    console.log(item["update date"])
-                    // const result = calculateBusinessDays(item["update date"], 6)
-                    // console.log(result)
-                    // const resultString = result.toString()
+                    
+                    if (item["update date"]){
+                        const result = calculateBusinessDays(item["update date"], 6)
+                        console.log(result)
+                        const resultString = result.toString()
 
-                    // const resultSplit = resultString.split(" ")
-                    // const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
-                    // setResultDate(finalResult)
-                    // console.log(`result HERE ${finalResult}`)
+                        const resultSplit = resultString.split(" ")
+                        const finalResult = `${resultSplit[0]} ${resultSplit[1]} ${resultSplit[2]} ${resultSplit[3]}`
+                        setResultDate(finalResult)
+                        console.log(`result HERE ${finalResult}`)
+                    }
+                    
 
                         return (
                             <Link to = {`/admin/${id}/${item["id"]}`}>

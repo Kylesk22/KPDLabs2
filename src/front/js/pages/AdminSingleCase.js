@@ -675,6 +675,41 @@ export const AdminSingleCase = props => {
             updateCase()
         }
 
+
+
+        // calculating due date
+        const calculateBusinessDays = (startDate, numberOfDays) => {
+            let currentDate = new Date(startDate);
+            let daysAdded = 0;
+          
+            while (daysAdded < numberOfDays) {
+              currentDate.setDate(currentDate.getDate() + 1);
+              // Check if the current date is a weekday
+              if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+                daysAdded++;
+              }
+            }
+          
+            return currentDate;
+          };
+          
+         
+            
+            const [resultDate, setResultDate] = useState(null);
+          
+            useEffect(()=>{
+                const result = calculateBusinessDays(submissionDate, 6);
+              setResultDate(result.toDateString());
+
+            },[])
+              
+            
+
+
+
+
+
+
         
   
         return (
@@ -687,7 +722,7 @@ export const AdminSingleCase = props => {
                         </Link>
                     </div>
                     <div className="text-center pt-2">
-                    <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} dueDate={resultDate} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     </div>
                     {/* <div className="text-center pt-2">
                         <button className="theme-btn" style={{width: "170px"}} onClick={(e)=>{testHandler(); e.preventDefault()}}>TEST DO NOT USE</button>

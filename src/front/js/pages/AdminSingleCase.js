@@ -705,9 +705,9 @@ export const AdminSingleCase = props => {
             const [resultDate, setResultDate] = useState(null);
           
             useEffect(()=>{
-                const result = calculateBusinessDays(submissionDate, 6);
+                // const result = calculateBusinessDays(submissionDate, 6);
                 console.log(result)
-              setResultDate(result.toDateString());
+            //   setResultDate(result.toDateString());
               console.log(resultDate)
 
             },[])

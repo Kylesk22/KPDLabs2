@@ -367,7 +367,7 @@ export const PrintPDFButton = (props) => {
                 </script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        if ('${props.dueDate}' !== "" && '${props.dueDate}'){
+                        if ('${props.dueDate}' !== "" && '${props.dueDate}' && '${props.dueDate}' !== "undefined"){
                             let dueDate = document.getElementById("dueDate")
                             console.log(dueDate)
                             

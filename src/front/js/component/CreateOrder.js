@@ -4549,7 +4549,7 @@ AWS.config.update({
             </div>
         </div>
 
-        <div  className="row form-group justify-content-center mt-5">
+        {/* <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>3D Printed Model</h5></label>
                         <br></br>
@@ -4578,7 +4578,7 @@ AWS.config.update({
                         <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                         </div>
-                    </div>
+                    </div> */}
         
         
         <div className="row form-group text-center justify-content-center mt-5">
@@ -4586,17 +4586,17 @@ AWS.config.update({
                 <label  htmlFor="product"><h5>Product</h5></label>
                 <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                     <option value="Select One">Select One</option>
-                    <option value="Composite" onClick={()=>setProduct("Composite")}>Composite</option>
+                    <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
                     
                     
                 </select>
                 <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                            {(product === "Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                            {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                             
                                 `$${(price += 35)}`
                             
 
-                            : (product === "Composite" && lowerArch && upperArch)?    
+                            : (product === "Custom Tray" && lowerArch && upperArch)?    
                                 `$${(price += 70)}`
 
                                              
@@ -4906,7 +4906,7 @@ AWS.config.update({
             </div>
         </div>
 
-        <div  className="row form-group justify-content-center mt-5">
+        {/* <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>3D Printed Model</h5></label>
                         <br></br>
@@ -4935,7 +4935,7 @@ AWS.config.update({
                         <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                         </div>
-                    </div>
+                    </div> */}
         
         
         <div className="row form-group text-center justify-content-center mt-5">
@@ -4943,17 +4943,17 @@ AWS.config.update({
                 <label  htmlFor="product"><h5>Product</h5></label>
                 <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                     <option value="Select One">Select One</option>
-                    <option value="Wax" onClick={()=>setProduct("Wax")}>Wax</option>
+                    <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
                     
                     
                 </select>
                 <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                            {(product === "Wax" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                            {(product === "Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                             
                                 `$${(price += 50)}`
                             
 
-                            : (product === "Wax" && lowerArch && upperArch)?    
+                            : (product === "Wax Rim" && lowerArch && upperArch)?    
                                 `$${(price += 100)}`
 
                                              

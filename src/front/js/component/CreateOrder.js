@@ -1937,6 +1937,7 @@ AWS.config.update({
                         <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
+                        <option value="Acetal" onClick={()=>setProduct("Acetal")}>Acetal</option>
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -1965,12 +1966,33 @@ AWS.config.update({
                                 : (product === "TCS Unbreakable" && lowerArch && upperArch)?    
                                     `$${(price += 500)}`
                                 
+                                :(product==="Acetal" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                    `$${(price += 200)}`
+    
+                                : (product === "Acetal" && lowerArch && upperArch)?    
+                                        `$${(price += 400)}`
+                                    
                                 :""
+                                
+                                    
                                 }
                                 
                                 </strong></small>
                 </div>
             </div>
+            {(product === "Acetal")?                 
+            <div className="row form-group text-center justify-content-center mt-5">
+                <div className= "col-8 col-lg-4">
+                    <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
+                    <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
+                        <option value="Select One">Select One</option>
+                        <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
+                        <option value="Pink Facial Tissue Composite" onClick={()=>setGumShade("Pink Facial Tissue Composite")}>Pink Facial Tissue Composite</option>
+                        
+                    </select>
+                </div>
+            </div>
+            :""}
             
             {/* <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">

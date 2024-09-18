@@ -1933,8 +1933,8 @@ AWS.config.update({
                     <label  htmlFor="product"><h5>Product</h5></label>
                     <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
-                        <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
+                        {/* <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
+                        <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option> */}
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option>
                         <option value="Acetal" onClick={()=>setProduct("Acetal")}>Acetal</option>
@@ -2416,8 +2416,8 @@ AWS.config.update({
                     <label  htmlFor="product"><h5>Product</h5></label>
                     <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
-                        <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
+                        {/* <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
+                        <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option> */}
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         <option value="Standard Final Denture" onClick={()=>setProduct("Standard Final Denture")}>Standard Final Denture</option>
                         <option value="Premium Final Denture" onClick={()=>setProduct("Premium Final Denture")}>Premium Final Denture</option>

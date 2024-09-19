@@ -597,6 +597,9 @@ AWS.config.update({
             setFinish("Stain and Glaze")
         :(product === "Ultra Premium UHT Zirconia")?
             setFinish("Stain and Glaze")
+        :(product === "PMMA Temporary")?
+            setFinish("Polished")
+            
         :""
          
         }, [product]);   
@@ -1064,6 +1067,10 @@ AWS.config.update({
                                 :(product === "Ultra Premium UHT Zirconia")?
                                 <>
                                 <option value="Stain and Glaze">Stain and Glaze</option>
+                                </>
+                                :(product === "PMMA Temporary")?
+                                <>
+                                <option value="Polished">Polished</option>
                                 </>
                                 :
                                 ""}

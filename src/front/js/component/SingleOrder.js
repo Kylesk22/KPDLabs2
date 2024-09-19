@@ -290,7 +290,7 @@ export const SingleOrder = props => {
                     <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                 </div> */}
                 <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} finish={finish} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                     
                 </div>
             </div>
@@ -452,9 +452,16 @@ export const SingleOrder = props => {
                         <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option> */}
                     </input>
                     </>
-                    :
-                    // <label  htmlFor="finish"><h5>Finish</h5></label>
-                    ""
+                    :(finish)?
+                    <>
+                    <label  htmlFor="finish"><h5>Finish</h5></label>
+                    <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+                        
+                        {/* <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
+                        <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option> */}
+                    </input>
+                    </>
+                    :""
                     }
                     
                 </div>

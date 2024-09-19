@@ -81,7 +81,7 @@ export const CreateOrder = props => {
     function sentToSlack(){
 
         let message = {
-            "msg": `New Case Uploaded #${caseNum}!`,
+            "msg": `New Case Uploaded #${caseNum} from ${props.practice}!`,
         }
 
         const options = {

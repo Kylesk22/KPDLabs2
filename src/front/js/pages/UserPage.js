@@ -23,6 +23,7 @@ export const UserPage = props => {
     const [singleCaseId, setSingleCaseId] = useState("")
     const [address, setAddress] = useState("")
     const [license, setLicense] = useState("")
+    const [practice, setPractice] = useState("")
     
 
     let id = sessionStorage.getItem("id");
@@ -119,6 +120,7 @@ export const UserPage = props => {
                     setLoggedIn(true);
                     setAddress(data.address)
                     setLicense(data.license)
+                    setPractice(data.practice)
 
                     if (data.msg=== "Token has expired"){
                         logout()
@@ -231,7 +233,7 @@ export const UserPage = props => {
                 {(page === "home")?
                 <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "create")?
-                <CreateOrder handleGetPage={getPage}  getCase = {generateCase} caseId = {caseId}/>:
+                <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId}/>:
                 // (page === "userCases")?
                 // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?

@@ -65,7 +65,16 @@ def assign_access_refresh_tokens(email, url):
     set_refresh_cookies(resp, refresh_token)
     return resp
 
-
+def calculate_business_days(start_date, number_of_days):
+    current_date = start_date
+    days_added = 0
+    
+    while days_added < number_of_days:
+        current_date += timedelta(days=1)
+        if current_date.weekday() < 5:  # Monday to Friday are 0 to 4
+            days_added += 1
+            
+    return current_date
 
 
 
@@ -480,6 +489,7 @@ def new_case(id):
             shipping = request.json.get("shipping", None)
             production = request.json.get("production", None)
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+            due_date = calculate_business_days(update_date, 6)
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
 
@@ -512,6 +522,7 @@ def new_case(id):
             update_case.reference_id = reference_id
         
             update_case.update_date = update_date
+            update_case.due_date = due_date.strftime("%m/%d/%Y %H:%M:%S")
             db.session.commit()
             
             if blob_scans:

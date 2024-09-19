@@ -97,6 +97,7 @@ class Case(db.Model):
     price = db.Column(db.String(50))
     reference_id = db.Column(db.String(50), nullable=True)
     update_date =  db.Column(db.String(255))
+    due_date =  db.Column(db.String(255))
     model3D = db.Column(db.String(20), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
 
@@ -122,6 +123,7 @@ class Case(db.Model):
             "production": self.production,
             "creation date": self.creation_date,
             "update date": self.update_date,
+            "due date": self.due_date,
             "reference id": self.reference_id,
             "case scans":[scan.serialize() for scan in self.case_scans]
 

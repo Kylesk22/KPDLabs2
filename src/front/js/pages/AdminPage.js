@@ -295,7 +295,7 @@ export const AdminPage = props => {
           currentDate.setDate(currentDate.getDate() + 1);
           // Check if the current date is a weekday
           if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
-            setDaysAdded(daysAdded++);
+            setDaysAdded(daysAdded+1);
           }
         }
       

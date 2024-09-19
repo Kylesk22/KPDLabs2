@@ -275,18 +275,19 @@ export const AdminPage = props => {
 
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
-        console.log(submissionDate.split(" "))
+        // console.log(submissionDate.split(" "))
         
-        // let split = submissionDate.split(" ")
-        // let datePart = split[0];
-        // let datePartSplit = datePart.split("/")
-        // let month = datePartSplit[0]
-        // let day = datePartSplit[1]
-        // let year = datePartSplit[2]
+        let split = submissionDate.split(" ")
+        let datePart = split[0];
+        let datePartSplit = datePart.split("/")
+        let month = datePartSplit[0]
+        let day = datePartSplit[1]
+        let year = datePartSplit[2]
         
         // // const [hours, minutes, seconds] = timePart.split(':')
 
-        // let currentDate = new Date(year, month - 1, day);
+        let currentDate = new Date(year, month - 1, day);
+        console.log(currentDate)
         // let daysAdded = 0;
       
         // while (daysAdded < numberOfDays) {

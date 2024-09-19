@@ -288,13 +288,14 @@ export const AdminPage = props => {
 
         let currentDate = new Date(year, month - 1, day);
         console.log(currentDate)
-        let daysAdded = 0;
+        // let daysAdded = 0;
+        const [daysAdded, setDaysAdded]= useState(0)
       
         while (daysAdded < numberOfDays) {
           currentDate.setDate(currentDate.getDate() + 1);
           // Check if the current date is a weekday
           if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
-            daysAdded++;
+            setDaysAdded(daysAdded++);
           }
         }
       

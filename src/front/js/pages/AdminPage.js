@@ -296,10 +296,10 @@ export const AdminPage = props => {
           // Check if the current date is a weekday
           if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
             daysAdded++
-            console.log(daysAdded)
+            
           }
         }
-      
+        console.log(currentDate)
         return currentDate;
       };
 

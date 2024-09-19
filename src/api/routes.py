@@ -65,16 +65,18 @@ def assign_access_refresh_tokens(email, url):
     set_refresh_cookies(resp, refresh_token)
     return resp
 
-def calculate_business_days(start_date, number_of_days):
-    current_date = start_date
+def calculate_business_days(submission_date_str, number_of_days):
+    # Convert the string date to a datetime object
+    submission_date = datetime.strptime(submission_date_str, "%m/%d/%Y %H:%M:%S")
+    current_date = submission_date
     days_added = 0
 
     while days_added < number_of_days:
         current_date += timedelta(days=1)
-        if current_date.weekday() < 5:  # Monday to Friday are 0 to 4
+        if current_date.weekday() < 5:  # 0-4 are Monday to Friday
             days_added += 1
             
-    return current_date
+    return current_date  # Returns a datetime object
 
 
 

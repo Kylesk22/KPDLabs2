@@ -16,6 +16,7 @@ class User(db.Model):
     address = db.Column(db.String(), unique=False, nullable=False)
     fname = db.Column(db.String(30), unique=False, nullable=False)
     lname = db.Column(db.String(50), unique=False, nullable=False)
+    practice = db.Column(db.String(100), unique=False, nullable=True)
     license_number = db.Column(db.String(50), unique=True, nullable=False)
     creation_date = db.Column(db.String(50))
     pricing_package = db.Column(db.String(50), unique=False)
@@ -38,6 +39,7 @@ class User(db.Model):
             "address":self.address,
             "fname":self.fname,
             "lname":self.lname,
+            "practice":self.practice,
             "license":self.license_number,
             "pricing_package": self.pricing_package,
             "created":self.creation_date,

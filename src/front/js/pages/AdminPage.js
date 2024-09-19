@@ -275,21 +275,28 @@ export const AdminPage = props => {
 
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
-        let split = submissionDate.split(" ");
+        // console.log(submissionDate.split(" "))
+        
+        let split = submissionDate.split(" ")
         let datePart = split[0];
-        let datePartSplit = datePart.split("/");
-        let month = parseInt(datePartSplit[0], 10); // Convert to integer
-        let day = parseInt(datePartSplit[1], 10); // Convert to integer
-        let year = parseInt(datePartSplit[2], 10); // Convert to integer
-      
+        let datePartSplit = datePart.split("/")
+        let month = datePartSplit[0]
+        let day = datePartSplit[1]
+        let year = datePartSplit[2]
+        
+        // // const [hours, minutes, seconds] = timePart.split(':')
+
         let currentDate = new Date(year, month - 1, day);
-        let daysAdded = 0; // Use a regular variable
+        console.log(currentDate)
+        let daysAdded = 0;
+        
       
         while (daysAdded < numberOfDays) {
           currentDate.setDate(currentDate.getDate() + 1);
           // Check if the current date is a weekday
           if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
-            daysAdded++;
+            daysAdded++
+            console.log(daysAdded)
           }
         }
       

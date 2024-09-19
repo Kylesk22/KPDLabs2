@@ -276,7 +276,7 @@ export const AdminPage = props => {
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
 
-        const split = submissionDate.toString().split(" ")
+        const split = submissionDate.split(" ")
         const datePart = split[0];
         const datePartSplit = datePart.split("/")
         const month = datePartSplit[0]

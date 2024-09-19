@@ -276,12 +276,12 @@ export const AdminPage = props => {
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
         if (submissionDate){
-        const split = submissionDate.split(" ")
-        const datePart = split[0];
-        const datePartSplit = datePart.split("/")
-        const month = datePartSplit[0]
-        const day = datePartSplit[1]
-        const year = datePartSplit[2]
+        let split = submissionDate.split(" ")
+        let datePart = split[0];
+        let datePartSplit = datePart.split("/")
+        let month = datePartSplit[0]
+        let day = datePartSplit[1]
+        let year = datePartSplit[2]
         
         // const [hours, minutes, seconds] = timePart.split(':')
 

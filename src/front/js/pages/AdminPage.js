@@ -275,7 +275,7 @@ export const AdminPage = props => {
 
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
-        if (submissionDate){
+        
         let split = submissionDate.split(" ")
         let datePart = split[0];
         let datePartSplit = datePart.split("/")
@@ -296,7 +296,7 @@ export const AdminPage = props => {
           }
         }
       
-        return currentDate;}
+        return currentDate;
       };
 
      

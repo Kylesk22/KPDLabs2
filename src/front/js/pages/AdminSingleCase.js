@@ -52,6 +52,7 @@ export const AdminSingleCase = props => {
     const [license, setLicense] = useState([])
 
     const [labelUrl, setLabelUrl] = useState("")
+    const [files, setFiles] = useState([]);
 
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
@@ -305,6 +306,33 @@ export const AdminSingleCase = props => {
     const bucketName = 'your-bucket-name';
     const objectKey = 'path/to/your/object';
     const localFilePath = '/path/to/save/local/file';
+
+
+    
+
+    const fetchFiles = async () => {
+        try {
+            const response = await fetch(`/list_files/${caseNum}`); // Adjust the endpoint if needed
+            const data = await response.json();
+            setFiles(data);
+        } catch (error) {
+            console.error('Error fetching files:', error);
+        }
+    };
+
+    const downloadAllFiles = () => {
+        files.forEach(file => {
+            const fileUrl = `https://case-scans.nyc3.cdn.digitaloceanspaces.com/${file}`;
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = file.split('/').pop(); // Set the filename for download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    };
+
+
     // useEffect(()=>{
 
     //     let caseId = props.singleCaseId
@@ -973,7 +1001,8 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5 no-print">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault();downloadObject()}}>Download Scans/Photos</button>
+                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); fetchFiles()}}>Fetch</button>
+                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); downloadAllFiles()}}>Download</button>
                     </div>
                 </div>
     

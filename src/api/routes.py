@@ -21,6 +21,7 @@ import io
 import os
 from pydo import Client
 from flask_cors import CORS, cross_origin
+import boto3
 
 import shippo
 from shippo.models import components
@@ -82,8 +83,29 @@ def calculate_business_days(submission_date_str, number_of_days):
 
 
 
+SPACE_NAME = 'case-scans'
+REGION = 'nyc3'
+ACCESS_KEY = os.getenv('SPACES_KEY')
+SECRET_KEY = os.getenv('SPACES_SECRET_KEY')
+
+s3 = boto3.client('s3', 
+                  region_name=REGION, 
+                  endpoint_url=f'https://{REGION}.digitaloceanspaces.com',
+                  aws_access_key_id=ACCESS_KEY,
+                  aws_secret_access_key=SECRET_KEY)
+
+
+
 api = Blueprint('api', __name__)
 CORS(app, supports_credentials=True)
+
+
+@app.route('/list_files/<folder>', methods=['GET'])
+def list_files(folder):
+    response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
+    files = [obj['Key'] for obj in response.get('Contents', [])]
+    return jsonify(files)
+
 
 
 

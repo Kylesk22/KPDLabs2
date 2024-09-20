@@ -102,27 +102,29 @@ CORS(app, supports_credentials=True)
 
 @api.route('/list_files/<folder>', methods=['GET'])
 def list_files(folder):
-    # print(folder)
-    # # print(folder)
     
-    # response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
-    # files = [obj['Key'] for obj in response.get('Contents', [])]
-    # print(files)
-    # return jsonify(files)
-    try:
-        response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
+    # try:
+    #     response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
         
-        if 'Contents' not in response or len(response['Contents']) == 0:
-            return jsonify([])  # Return an empty list if no files found
-
-        # Construct the full URLs for each file
-        files = [
-            f"https://case-scans.nyc3.cdn.digitaloceanspaces.com/{obj['Key']}"
-            for obj in response['Contents']
-        ]
-        return jsonify(files)
+    #     if 'Contents' not in response or len(response['Contents']) == 0:
+    #         return jsonify([])  
+    #     files = [
+    #         f"https://case-scans.nyc3.cdn.digitaloceanspaces.com/{obj['Key']}"
+    #         for obj in response['Contents']
+    #     ]
+    #     return jsonify(files)
+    # except Exception as e:
+    #     return jsonify({'error': str(e)}), 500  
+    try:
+        # Fetch the file from the space
+        response = s3_client.get_object(Bucket='YOUR_SPACE_NAME', Key=f'{folder}/{filename}')
+        file_stream = BytesIO(response['Body'].read())
+        file_stream.seek(0)
+        
+        return send_file(file_stream, as_attachment=True, download_name=filename)
     except Exception as e:
-        return jsonify({'error': str(e)}), 500  # Return error details
+        print("Error:", str(e))  # Log error for debugging
+        return abort(404)
 
 
 

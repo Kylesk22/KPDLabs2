@@ -100,9 +100,11 @@ api = Blueprint('api', __name__)
 CORS(app, supports_credentials=True)
 
 
-@app.route('/list_files/<str:folder>', methods=['GET'])
+@app.route('/list_files/<int:folder>', methods=['GET'])
 def list_files(folder):
+    
     print(folder)
+    
     response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
     files = [obj['Key'] for obj in response.get('Contents', [])]
     print(files)
@@ -259,6 +261,8 @@ def admin_login():
 @jwt_required()
 def getAllInfo(id):
     current_user_email = get_jwt_identity()
+
+    
     
     current_user = User.query.filter_by(email=current_user_email).first()
     
@@ -421,6 +425,7 @@ def validate_answers():
 @api.route('/<int:id>', methods=['GET'])
 @jwt_required()
 def getInfo(id):
+    
     username = get_jwt_identity()
     print(username)
     print(id)

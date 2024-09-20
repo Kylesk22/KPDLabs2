@@ -308,9 +308,36 @@ export const AdminSingleCase = props => {
     const localFilePath = '/path/to/save/local/file';
 
 
-    
+    function fetchFiles() {
+        
 
-    const fetchFiles = async () => {
+        const options = {
+            method: "GET",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            
+        };
+    
+        fetch(`${url}/list_files/${caseNum}`, options)
+            .then((res) => {
+                if (res.ok) {
+                    console.log("good")
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching rates. Please try again later.');
+            });
+
+    }
+
+    const fetchFiles1 = async () => {
         try {
             const response = await fetch(`${url}/list_files/${caseNum}`); // Adjust the endpoint if needed
             const data = await response.json();

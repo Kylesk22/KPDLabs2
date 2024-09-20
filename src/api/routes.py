@@ -116,15 +116,31 @@ def list_files(folder):
     # except Exception as e:
     #     return jsonify({'error': str(e)}), 500  
     try:
-        # Fetch the file from the space
-        response = s3_client.get_object(Bucket='YOUR_SPACE_NAME', Key=f'{folder}/{filename}')
-        file_stream = BytesIO(response['Body'].read())
-        file_stream.seek(0)
+        # List objects in the specified folder
+        response = s3_client.list_objects_v2(Bucket='SPACE_NAME', Prefix=f'{folder}/')
         
-        return send_file(file_stream, as_attachment=True, download_name=filename)
+        if 'Contents' not in response or len(response['Contents']) == 0:
+            return jsonify([])  # Return an empty list if no files found
+
+        files_data = []
+        for obj in response['Contents']:
+            file_key = obj['Key']
+            filename = file_key.split('/')[-1]  # Extract the filename
+
+            # Fetch the file contents
+            file_response = s3_client.get_object(Bucket='SPACE_NAME', Key=file_key)
+            file_content = file_response['Body'].read()
+
+            # Add both filename and content to the list
+            files_data.append({
+                'filename': filename,
+                'content': file_content.decode('utf-8')  # Assuming the files are text files
+            })
+        
+        return jsonify(files_data)
+
     except Exception as e:
-        print("Error:", str(e))  # Log error for debugging
-        return (404)
+        return jsonify({'error': str(e)}), 500
 
 
 

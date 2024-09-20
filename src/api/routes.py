@@ -88,6 +88,14 @@ REGION = 'nyc3'
 ACCESS_KEY = os.getenv('SPACES_KEY')
 SECRET_KEY = os.getenv('SPACES_SECRET_KEY')
 
+s3_client = boto3.client(
+    's3',
+    region_name='nyc3',
+    endpoint_url='https://nyc3.digitaloceanspaces.com',
+    aws_access_key_id=ACCESS_KEY,
+    aws_secret_access_key=SECRET_KEYY
+)
+
 s3 = boto3.client('s3', 
                   region_name=REGION, 
                   endpoint_url=f'https://{REGION}.digitaloceanspaces.com',

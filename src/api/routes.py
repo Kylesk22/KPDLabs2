@@ -125,7 +125,7 @@ def list_files(folder):
     #     return jsonify({'error': str(e)}), 500  
     try:
         # List objects in the specified folder
-        response = s3_client.list_objects_v2(Bucket='SPACE_NAME', Prefix=f'{folder}/')
+        response = s3_client.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
         
         if 'Contents' not in response or len(response['Contents']) == 0:
             return jsonify([])  # Return an empty list if no files found

@@ -312,7 +312,7 @@ export const AdminSingleCase = props => {
 
     const fetchFiles = async () => {
         try {
-            const response = await fetch(`/list_files/${caseNum}`); // Adjust the endpoint if needed
+            const response = await fetch(`${url}/list_files/${caseNum}`); // Adjust the endpoint if needed
             const data = await response.json();
             setFiles(data);
         } catch (error) {

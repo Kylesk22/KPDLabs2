@@ -108,7 +108,7 @@ def list_files(folder):
     # response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
     # files = [obj['Key'] for obj in response.get('Contents', [])]
     # print(files)
-    return jsonify('Working')
+    return jsonify({'message': 'Success'}), 200
 
 
 

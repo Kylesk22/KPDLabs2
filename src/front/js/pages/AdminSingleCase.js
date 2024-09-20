@@ -325,6 +325,7 @@ export const AdminSingleCase = props => {
             .then((res) => {
                 if (res.ok) {
                     console.log("good")
+                    console.log(res.message)
                 } else {
                     throw new Error('Network response was not ok');
                 }

@@ -310,7 +310,7 @@ export const AdminSingleCase = props => {
 
     function fetchFiles() {
         
-
+        const url = process.env.BACKEND_URL;
         const options = {
             method: "GET",
             credentials: 'include',

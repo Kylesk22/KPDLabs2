@@ -124,7 +124,7 @@ def list_files(folder):
         return send_file(file_stream, as_attachment=True, download_name=filename)
     except Exception as e:
         print("Error:", str(e))  # Log error for debugging
-        return abort(404)
+        return (404)
 
 
 

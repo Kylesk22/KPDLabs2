@@ -136,7 +136,7 @@ def list_files(folder):
             filename = file_key.split('/')[-1]  # Extract the filename
 
             # Fetch the file contents
-            file_response = s3_client.get_object(Bucket='SPACE_NAME', Key=file_key)
+            file_response = s3_client.get_object(Bucket=SPACE_NAME, Key=file_key)
             file_content = file_response['Body'].read()
 
             # Add both filename and content to the list

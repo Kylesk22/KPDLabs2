@@ -93,7 +93,7 @@ s3_client = boto3.client(
     region_name='nyc3',
     endpoint_url='https://nyc3.digitaloceanspaces.com',
     aws_access_key_id=ACCESS_KEY,
-    aws_secret_access_key=SECRET_KEYY
+    aws_secret_access_key=SECRET_KEY
 )
 
 s3 = boto3.client('s3', 

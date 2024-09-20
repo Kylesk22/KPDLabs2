@@ -100,14 +100,14 @@ api = Blueprint('api', __name__)
 CORS(app, supports_credentials=True)
 
 
-@api.route('/list_files/<int:folder>', methods=['GET'])
+@api.route('/list_files/<folder>', methods=['GET'])
 def list_files(folder):
     print(folder)
     # print(folder)
     
-    # response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
-    # files = [obj['Key'] for obj in response.get('Contents', [])]
-    # print(files)
+    response = s3.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
+    files = [obj['Key'] for obj in response.get('Contents', [])]
+    print(files)
     return jsonify({'message': 'Success'}), 200
 
 

@@ -374,7 +374,7 @@ export const AdminSingleCase = props => {
     //     a.click();
     //     document.body.removeChild(a); // Clean up
     // };
-    
+
     // const autoDownload = (url, filename) => {
     //     const a = document.createElement('a');
     //     a.href = url;
@@ -1074,8 +1074,8 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5 no-print">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); fetchFiles()}}>Fetch</button>
-                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); downloadAllFiles()}}>Download</button>
+                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); fetchFiles()}}>Download Scans/Photos</button>
+                        
                     </div>
                 </div>
     

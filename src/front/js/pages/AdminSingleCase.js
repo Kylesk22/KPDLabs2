@@ -343,16 +343,16 @@ export const AdminSingleCase = props => {
             const response = await fetch(`${url}/list_files/${caseNum}`); // Adjust the endpoint if needed
             const data = await response.json();
             setFiles(data);
-            files.map((file, index) => {
-                key={index}
-                autoDownload(file.url, file.filename)
-                        
-                    
-        })
+            
+            // Loop through the files and trigger auto download
+            data.forEach((file) => {
+                autoDownload(file.url, file.filename);
+            });
         } catch (error) {
             console.error('Error fetching files:', error);
         }
     };
+    
 
     const downloadAllFiles = () => {
         files.forEach(file => {

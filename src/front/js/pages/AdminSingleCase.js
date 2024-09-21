@@ -374,20 +374,35 @@ export const AdminSingleCase = props => {
     //     a.click();
     //     document.body.removeChild(a); // Clean up
     // };
-    const autoDownload = (url, filename) => {
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename; // Set the filename for the download
-        a.target = '_blank'; // Open in a new tab (optional)
     
-        // Append the anchor to the body
-        document.body.appendChild(a);
+    // const autoDownload = (url, filename) => {
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = filename; // Set the filename for the download
+    //     a.target = '_blank'; // Open in a new tab (optional)
+    
+    //     // Append the anchor to the body
+    //     document.body.appendChild(a);
         
-        // Use setTimeout to ensure the download is triggered correctly
-        setTimeout(() => {
-            a.click();
-            document.body.removeChild(a); // Clean up after the click
-        }, 0);
+    //     // Use setTimeout to ensure the download is triggered correctly
+    //     setTimeout(() => {
+    //         a.click();
+    //         document.body.removeChild(a); // Clean up after the click
+    //     }, 0);
+    // };
+
+    const autoDownload = async (url, filename) => {
+        const response = await fetch(url);
+        const blob = await response.blob(); // Fetch as Blob
+        const blobUrl = URL.createObjectURL(blob); // Create a URL for the Blob
+    
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename; // Set the filename for the download
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a); // Clean up
+        URL.revokeObjectURL(blobUrl); // Free up memory
     };
 
 

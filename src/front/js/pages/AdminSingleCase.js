@@ -343,6 +343,12 @@ export const AdminSingleCase = props => {
             const response = await fetch(`${url}/list_files/${caseNum}`); // Adjust the endpoint if needed
             const data = await response.json();
             setFiles(data);
+            files.map((file, index) => {
+                key={index}
+                autoDownload(file.url, file.filename)
+                        
+                    
+        })
         } catch (error) {
             console.error('Error fetching files:', error);
         }
@@ -358,6 +364,15 @@ export const AdminSingleCase = props => {
             link.click();
             document.body.removeChild(link);
         });
+    };
+
+    const autoDownload = (url, filename) => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename; // Set the filename for the download
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a); // Clean up
     };
 
 

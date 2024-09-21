@@ -345,7 +345,7 @@ export const AdminPage = props => {
                 value={search} 
                 onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} 
                 className="p-2"
-                style={{border: "1px solid black"}}
+                style={{border: "1px solid black", marginBottom: "5px"}}
                  />
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
                  <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>

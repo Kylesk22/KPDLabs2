@@ -521,7 +521,7 @@ export const AdminSingleCase = props => {
                 }
                 const patientData = await patientResponse.json();
 
-                if (patientData.name){
+                
     
                 setPatientName(patientData.name);
                 setCaseNum(patientData.id);
@@ -542,16 +542,17 @@ export const AdminSingleCase = props => {
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
-                let returnedTeeth = patientData.teeth
-                const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
-                setCrownTooth(numberArray);
-                for (let tooth in numberArray){
-                    const element = document.getElementById(numberArray[tooth]);
-                    
-                    element.style.fill = "#137ea7"
-                    
+                if (patientData.teeth){
+                    let returnedTeeth = patientData.teeth
+                    const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                    setCrownTooth(numberArray);
+                    for (let tooth in numberArray){
+                        const element = document.getElementById(numberArray[tooth]);
+                        
+                        element.style.fill = "#137ea7"
+                        
+                    }
                 }
-    
                 // Fetch doctor data
                 const doctorResponse = await fetch(`${url}/${doctorId}`, options);
                 if (!doctorResponse.ok) {
@@ -562,12 +563,13 @@ export const AdminSingleCase = props => {
     
                 setDrName(`${doctorData.fname} ${doctorData.lname}`);
                 setLicense(doctorData.license);
-                const addressParts = doctorData.address.split(",");
-                setDrStreet(addressParts[0]);
-                setDrCity(addressParts[1]);
-                setDrState(addressParts[2]);
-                setDrZip(addressParts[3]);
-            }
+
+                if (doctorData.address){
+                    const addressParts = doctorData.address.split(",");
+                    setDrStreet(addressParts[0]);
+                    setDrCity(addressParts[1]);
+                    setDrState(addressParts[2]);
+                    setDrZip(addressParts[3]);}
             } catch (error) {
                 console.error(error);
                 alert("An error occurred while fetching data. Please try again later.");

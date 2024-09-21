@@ -366,13 +366,28 @@ export const AdminSingleCase = props => {
         });
     };
 
+    // const autoDownload = (url, filename) => {
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = filename; // Set the filename for the download
+    //     document.body.appendChild(a);
+    //     a.click();
+    //     document.body.removeChild(a); // Clean up
+    // };
     const autoDownload = (url, filename) => {
         const a = document.createElement('a');
         a.href = url;
         a.download = filename; // Set the filename for the download
+        a.target = '_blank'; // Open in a new tab (optional)
+    
+        // Append the anchor to the body
         document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a); // Clean up
+        
+        // Use setTimeout to ensure the download is triggered correctly
+        setTimeout(() => {
+            a.click();
+            document.body.removeChild(a); // Clean up after the click
+        }, 0);
     };
 
 

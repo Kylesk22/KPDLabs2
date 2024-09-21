@@ -543,17 +543,17 @@ export const AdminSingleCase = props => {
                 let doctorId = patientData["user id"]
                 // Update tooth colors
                 console.log(patientData.teeth)
-                if (patientData.teeth && patientData.teeth !== null){
-                    let returnedTeeth = patientData.teeth
-                    const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
-                    setCrownTooth(numberArray);
-                    for (let tooth in numberArray){
-                        const element = document.getElementById(numberArray[tooth]);
+                // if (patientData.teeth && patientData.teeth !== null){
+                //     let returnedTeeth = patientData.teeth
+                //     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                //     setCrownTooth(numberArray);
+                //     for (let tooth in numberArray){
+                //         const element = document.getElementById(numberArray[tooth]);
                         
-                        element.style.fill = "#137ea7"
+                //         element.style.fill = "#137ea7"
                         
-                    }
-                }
+                //     }
+                // }
                 // Fetch doctor data
                 const doctorResponse = await fetch(`${url}/${doctorId}`, options);
                 if (!doctorResponse.ok) {

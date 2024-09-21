@@ -4,6 +4,7 @@ import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AboutBKG from "../../img/testi-bg.jpg"
+import "../../styles/adminPage.css";
 
 
 
@@ -347,17 +348,17 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black", marginBottom: "5px"}}
                  />
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Manufacturing")}>Manufact</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Pre-Finish")}>PreFin</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Fin</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Rdy Ship</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
-                 <button className="btn btn-primary" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Manufacturing")}>Manufact</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Pre-Finish")}>PreFin</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Fin</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Rdy Ship</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
                 <div >
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>

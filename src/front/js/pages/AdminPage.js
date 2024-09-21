@@ -320,7 +320,7 @@ export const AdminPage = props => {
     
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
-        <div className="container">
+        <div className="container" style={{maxWidth: "90%"}}>
             {/* <div>
                 <button className="btn btn-primary" onClick={()=>setBlogModal(true)}>Add blog</button>
                 {(blogModal)?

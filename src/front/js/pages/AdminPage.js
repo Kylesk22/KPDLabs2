@@ -387,7 +387,10 @@ export const AdminPage = props => {
                     
 
                         return (
-                            <Link to = {`/admin/${id}/${item["id"]}`}>
+                            
+                            <Link to = {(item.status !== "Created")? `/admin/${id}/${item["id"]}` :""}>
+                            
+
                             <div key={index} className="row" >
                                 
                             

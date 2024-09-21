@@ -520,6 +520,8 @@ export const AdminSingleCase = props => {
                     throw new Error(message);
                 }
                 const patientData = await patientResponse.json();
+
+                if (patientData.name){
     
                 setPatientName(patientData.name);
                 setCaseNum(patientData.id);
@@ -565,6 +567,7 @@ export const AdminSingleCase = props => {
                 setDrCity(addressParts[1]);
                 setDrState(addressParts[2]);
                 setDrZip(addressParts[3]);
+            }
             } catch (error) {
                 console.error(error);
                 alert("An error occurred while fetching data. Please try again later.");

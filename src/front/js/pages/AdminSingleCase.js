@@ -565,12 +565,12 @@ export const AdminSingleCase = props => {
                 setDrName(`${doctorData.fname} ${doctorData.lname}`);
                 setLicense(doctorData.license);
 
-                if (doctorData.address && doctorData.address !== null){
-                    const addressParts = doctorData.address.split(",");
-                    setDrStreet(addressParts[0]);
-                    setDrCity(addressParts[1]);
-                    setDrState(addressParts[2]);
-                    setDrZip(addressParts[3]);}
+                // if (doctorData.address && doctorData.address !== null){
+                //     const addressParts = doctorData.address.split(",");
+                //     setDrStreet(addressParts[0]);
+                //     setDrCity(addressParts[1]);
+                //     setDrState(addressParts[2]);
+                //     setDrZip(addressParts[3]);}
             } catch (error) {
                 console.error(error);
                 alert("An error occurred while fetching data. Please try again later.");

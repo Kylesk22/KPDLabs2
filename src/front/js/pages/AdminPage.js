@@ -41,6 +41,21 @@ export const AdminPage = props => {
         }
     };
 
+    const productionFilter = () => {
+        let filteredCases = new Map();
+        let val = ["Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship", "Shipped"]
+        val.forEach (vals => {
+            originalCases.forEach(item => {
+                if (item.status && item.status.toLowerCase().includes(vals.toLowerCase())) {
+                    filteredCases.set(item.id, item);
+                }
+            })
+            filteredCases = Array.from(filteredCases.values());
+            setCases(...cases, ...filteredCases)
+            return filteredCases;
+        })
+
+    }
 
     const statusFilter = (val) => {
         let filteredCases = new Map();
@@ -348,6 +363,7 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black", marginBottom: "5px"}}
                  />
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>

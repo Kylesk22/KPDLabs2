@@ -126,7 +126,7 @@ def list_files(folder):
     try:
         # List objects in the specified folder
         response = s3_client.list_objects_v2(Bucket=SPACE_NAME, Prefix=f'{folder}/')
-        
+
         if 'Contents' not in response or len(response['Contents']) == 0:
             return jsonify([])  # Return an empty list if no files found
 
@@ -135,17 +135,24 @@ def list_files(folder):
             file_key = obj['Key']
             filename = file_key.split('/')[-1]  # Extract the filename
 
-            # Fetch the file contents
-            file_response = s3_client.get_object(Bucket=SPACE_NAME, Key=file_key)
-            file_content = file_response['Body'].read()
+            # Generate a signed URL for the file
+            signed_url = s3_client.generate_presigned_url(
+                'get_object',
+                Params={'Bucket': SPACE_NAME, 'Key': file_key},
+                ExpiresIn=3600  # URL expires in 1 hour
+            )
 
-            # Add both filename and content to the list
             files_data.append({
                 'filename': filename,
-                'content': file_content.decode('utf-8')  # Assuming the files are text files
+                'url': signed_url  # The signed URL
             })
-        
+
         return jsonify(files_data)
+
+    except NoCredentialsError:
+        return jsonify({'error': 'Credentials not available'}), 403
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500

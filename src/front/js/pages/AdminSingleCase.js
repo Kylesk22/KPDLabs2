@@ -542,7 +542,7 @@ export const AdminSingleCase = props => {
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
-                if (patientData.teeth){
+                if (patientData.teeth && patientData.teeth !== null){
                     let returnedTeeth = patientData.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     setCrownTooth(numberArray);
@@ -564,7 +564,7 @@ export const AdminSingleCase = props => {
                 setDrName(`${doctorData.fname} ${doctorData.lname}`);
                 setLicense(doctorData.license);
 
-                if (doctorData.address){
+                if (doctorData.address && doctorData.address !== null){
                     const addressParts = doctorData.address.split(",");
                     setDrStreet(addressParts[0]);
                     setDrCity(addressParts[1]);

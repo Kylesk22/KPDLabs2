@@ -52,8 +52,11 @@ export const AdminPage = props => {
             })
             filteredCases = Array.from(filteredCases.values());
             setCases(...cases, ...filteredCases)
-            return filteredCases;
+            console.log(cases)
+            // return filteredCases;
         })
+        console.log(filteredCases)
+        return filteredCases;
 
     }
 

@@ -542,6 +542,7 @@ export const AdminSingleCase = props => {
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
+                console.log(patientData.teeth)
                 if (patientData.teeth && patientData.teeth !== null){
                     let returnedTeeth = patientData.teeth
                     const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;

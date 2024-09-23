@@ -44,7 +44,7 @@ export const AdminPage = props => {
     const productionFilter = () => {
         const filteredCases = new Map();
         const statuses = ["Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship", "Shipped"];
-        
+    
         originalCases.forEach(item => {
             if (item.status) {
                 statuses.forEach(status => {
@@ -54,19 +54,15 @@ export const AdminPage = props => {
                 });
             }
         });
-        
-        const matchedCasesArray = Array.from(filteredCases.values());
-        return matchedCasesArray; // Return the map of filtered cases
+    
+        // Convert the filtered cases from Map to an array
+        const casesArray = Array.from(filteredCases.values());
+        setCases(casesArray); // Assuming setCases is defined in your context
+        console.log(casesArray); // Log the array of filtered cases
+        console.log(filteredCases); // Log the Map of filtered cases
+    
+        return casesArray; // Return the array of filtered cases
     };
-
-
-        filteredCases = Array.from(filteredCases.values());
-            setCases(filteredCases)
-            console.log(cases)
-        console.log(filteredCases)
-        return filteredCases;
-
-    }
 
     const statusFilter = (val) => {
         let filteredCases = new Map();

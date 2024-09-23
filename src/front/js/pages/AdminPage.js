@@ -42,17 +42,24 @@ export const AdminPage = props => {
     };
 
     const productionFilter = () => {
-        let filteredCases = new Map();
-        let val = ["Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship", "Shipped"]
-        val.forEach (vals => {
-            originalCases.forEach(item => {
-                if (item.status && item.status.toLowerCase().includes(vals.toLowerCase())) {
-                    filteredCases.set(item.id, item);
-                }
-            })
-            
-            // return filteredCases;
-        })
+        const filteredCases = new Map();
+        const statuses = ["Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship", "Shipped"];
+        
+        originalCases.forEach(item => {
+            if (item.status) {
+                statuses.forEach(status => {
+                    if (item.status.toLowerCase().includes(status.toLowerCase())) {
+                        filteredCases.set(item.id, item);
+                    }
+                });
+            }
+        });
+        
+        const matchedCasesArray = Array.from(filteredCases.values());
+        return matchedCasesArray; // Return the map of filtered cases
+    };
+
+
         filteredCases = Array.from(filteredCases.values());
             setCases(filteredCases)
             console.log(cases)

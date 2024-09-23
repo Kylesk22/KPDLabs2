@@ -52,11 +52,12 @@ export const AdminPage = props => {
     
         // Perform the sorting based on the current sort criteria
         const sortedCases = [...cases].sort((a, b) => {
+            console.log(a)
+                console.log(b)
             if (columnName === 'creation date' || columnName === 'due date') {
                 const dateA = new Date(a.date);
                 const dateB = new Date(b.date);
-                console.log(a)
-                console.log(b)
+                
                 return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
             } else {
                 // Handle sorting for other columns (e.g., status)

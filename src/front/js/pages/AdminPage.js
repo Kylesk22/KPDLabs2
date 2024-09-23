@@ -52,11 +52,11 @@ export const AdminPage = props => {
     
         // Perform the sorting based on the current sort criteria
         const sortedCases = [...cases].sort((a, b) => {
-            console.log(a['creation date'])
-                console.log(b['creation date'])
+           
             if (columnName === 'creation date') {
                 const dateA = new Date(a['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
                 const dateB = new Date(b['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
+                console.log(dateA)
                 
                 return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
             }

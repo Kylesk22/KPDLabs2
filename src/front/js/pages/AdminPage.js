@@ -52,8 +52,8 @@ export const AdminPage = props => {
     
         // Perform the sorting based on the current sort criteria
         const sortedCases = [...cases].sort((a, b) => {
-            console.log(a)
-                console.log(b)
+            console.log(a['creation date'])
+                console.log(b['creation date'])
             if (columnName === 'creation date') {
                 const dateA = new Date(a['creation date']);
                 const dateB = new Date(b['creation date']);

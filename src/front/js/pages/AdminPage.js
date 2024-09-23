@@ -55,8 +55,8 @@ export const AdminPage = props => {
             if (columnName === 'creation date' || columnName === 'due date') {
                 const dateA = new Date(a.date);
                 const dateB = new Date(b.date);
-                console.log(dateA)
-                console.log(dateB)
+                console.log(a)
+                console.log(b)
                 return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
             } else {
                 // Handle sorting for other columns (e.g., status)

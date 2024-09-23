@@ -55,8 +55,8 @@ export const AdminPage = props => {
             console.log(a['creation date'])
                 console.log(b['creation date'])
             if (columnName === 'creation date') {
-                const dateA = new Date(a['creation date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
-                const dateB = new Date(b['creation date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
+                const dateA = new Date(a['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
+                const dateB = new Date(b['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
                 
                 return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
             }

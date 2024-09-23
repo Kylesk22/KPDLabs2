@@ -30,15 +30,43 @@ export const AdminPage = props => {
     const [sortBy, setSortBy] = useState("id");
     const [sortOrder, setSortOrder] = useState('desc');
 
+    // const handleSort = (columnName) => {
+    //     if (sortBy === columnName) {
+    //     // If already sorting by this column, toggle the sort order
+    //     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    //     } else {
+    //     // If sorting by a new column, set the column and default to ascending order
+    //     setSortBy(columnName);
+    //     setSortOrder('asc');
+    //     }
+    // };
     const handleSort = (columnName) => {
         if (sortBy === columnName) {
-        // If already sorting by this column, toggle the sort order
-        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            // If already sorting by this column, toggle the sort order
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
         } else {
-        // If sorting by a new column, set the column and default to ascending order
-        setSortBy(columnName);
-        setSortOrder('asc');
+            // If sorting by a new column, set the column and default to ascending order
+            setSortBy(columnName);
+            setSortOrder('asc');
         }
+    
+        // Perform the sorting based on the current sort criteria
+        const sortedCases = [...cases].sort((a, b) => {
+            if (columnName === 'creation date' || columnName === 'due date') {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+            } else {
+                // Handle sorting for other columns (e.g., status)
+                if (sortOrder === 'asc') {
+                    return a[columnName] > b[columnName] ? 1 : -1;
+                } else {
+                    return a[columnName] < b[columnName] ? 1 : -1;
+                }
+            }
+        });
+    
+        setCases(sortedCases); // Update the state with the sorted cases
     };
 
     const productionFilter = () => {

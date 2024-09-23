@@ -54,12 +54,20 @@ export const AdminPage = props => {
         const sortedCases = [...cases].sort((a, b) => {
             console.log(a)
                 console.log(b)
-            if (columnName === 'creation date' || columnName === 'due date') {
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
+            if (columnName === 'creation date') {
+                const dateA = new Date(a['creation date']);
+                const dateB = new Date(b['creation date']);
                 
                 return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-            } else {
+            }
+            if (columnName === 'due date') {
+                const dateA = new Date(a['due date']);
+                const dateB = new Date(b['due date']);
+                
+                return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+            }
+            
+            else {
                 // Handle sorting for other columns (e.g., status)
                 if (sortOrder === 'asc') {
                     return a[columnName] > b[columnName] ? 1 : -1;

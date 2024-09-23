@@ -68,7 +68,25 @@ export const AdminPage = props => {
                 // console.log(parsedDateA)
     
                 return sortOrder === 'asc' ? parsedDateA - parsedDateB : parsedDateB - parsedDateA;
-            } else {
+            }
+            if (columnName === 'due date') {
+                // Split the date string into components
+                const [dateA, timeA] = a['due date'].split(' ');
+                const [dateB, timeB] = b['due date'].split(' ');
+                
+    
+                // Rearrange to YYYY-MM-DD format for Date constructor
+                const formattedDateA = `${dateA.split('/')[2]}-${dateA.split('/')[0]}-${dateA.split('/')[1]}T${timeA}`;
+                const formattedDateB = `${dateB.split('/')[2]}-${dateB.split('/')[0]}-${dateB.split('/')[1]}T${timeB}`;
+    
+                const parsedDateA = new Date(formattedDateA);
+                const parsedDateB = new Date(formattedDateB);
+
+                // console.log(parsedDateA)
+    
+                return sortOrder === 'asc' ? parsedDateA - parsedDateB : parsedDateB - parsedDateA;
+            }
+            else {
                 // Handle sorting for other columns (e.g., status)
                 if (sortOrder === 'asc') {
                     return a[columnName] > b[columnName] ? 1 : -1;

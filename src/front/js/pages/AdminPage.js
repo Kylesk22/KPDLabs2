@@ -52,7 +52,7 @@ export const AdminPage = props => {
     
         // Perform the sorting based on the current sort criteria
         const sortedCases = [...cases].sort((a, b) => {
-            if (columnName === 'creation date') {
+            if (columnName === 'update date') {
                 // Split the date string into components
                 const [dateA, timeA] = a['update date'].split(' ');
                 const [dateB, timeB] = b['update date'].split(' ');
@@ -428,7 +428,7 @@ export const AdminPage = props => {
                     <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
                     <div className = "col-3 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
                     <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
-                    <div className = "col-1 text-center" onClick={() => handleSort('creation date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('update date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('due date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Due Date</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
                 </div>

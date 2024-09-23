@@ -65,7 +65,7 @@ export const AdminPage = props => {
                 const parsedDateA = new Date(formattedDateA);
                 const parsedDateB = new Date(formattedDateB);
 
-                console.log(parsedDateA)
+                // console.log(parsedDateA)
     
                 return sortOrder === 'asc' ? parsedDateA - parsedDateB : parsedDateB - parsedDateA;
             } else {
@@ -77,7 +77,7 @@ export const AdminPage = props => {
                 }
             }
         });
-    
+        console.log(sortedCases)
         setCases(sortedCases); // Update the state with the sorted cases
     };
 

@@ -52,22 +52,23 @@ export const AdminPage = props => {
     
         // Perform the sorting based on the current sort criteria
         const sortedCases = [...cases].sort((a, b) => {
-           
             if (columnName === 'creation date') {
-                const dateA = new Date(a['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
-                const dateB = new Date(b['update date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
-                console.log(dateA)
+                // Split the date string into components
+                const [dateA, timeA] = a['update date'].split(' ');
+                const [dateB, timeB] = b['update date'].split(' ');
                 
-                return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-            }
-            if (columnName === 'due date') {
-                const dateA = new Date(a['due date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
-                const dateB = new Date(b['due date'].replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$2/$1/$3'));
-                
-                return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-            }
-            
-            else {
+    
+                // Rearrange to YYYY-MM-DD format for Date constructor
+                const formattedDateA = `${dateA.split('/')[2]}-${dateA.split('/')[0]}-${dateA.split('/')[1]}T${timeA}`;
+                const formattedDateB = `${dateB.split('/')[2]}-${dateB.split('/')[0]}-${dateB.split('/')[1]}T${timeB}`;
+    
+                const parsedDateA = new Date(formattedDateA);
+                const parsedDateB = new Date(formattedDateB);
+
+                console.log(parsedDateA)
+    
+                return sortOrder === 'asc' ? parsedDateA - parsedDateB : parsedDateB - parsedDateA;
+            } else {
                 // Handle sorting for other columns (e.g., status)
                 if (sortOrder === 'asc') {
                     return a[columnName] > b[columnName] ? 1 : -1;

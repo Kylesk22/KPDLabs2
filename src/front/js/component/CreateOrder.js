@@ -4999,31 +4999,18 @@ AWS.config.update({
                             <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
                             </div>
                         </div>
-            {/* <div className="row form-group text-center justify-content-center mt-5">
+            <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="shade"><h5>Shade</h5></label>
                     <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="A1" onClick={()=>setShade("A1")}>A1</option>
-                        <option value="A2" onClick={()=>setShade("A2")}>A2</option>
-                        <option value="A3" onClick={()=>setShade("A3")}>A3</option>
-                        <option value="A3.5" onClick={()=>setShade("A3.5")}>A3.5</option>
-                        <option value="A4" onClick={()=>setShade("A4")}>A4</option>
-                        <option value="B1" onClick={()=>setShade("B1")}>B1</option>
-                        <option value="B2" onClick={()=>setShade("B2")}>B2</option>
-                        <option value="B3" onClick={()=>setShade("B3")}>B3</option>
-                        <option value="B4" onClick={()=>setShade("B4")}>B4</option>
-                        <option value="C1" onClick={()=>setShade("C1")}>C1</option>
-                        <option value="C2" onClick={()=>setShade("C2")}>C2</option>
-                        <option value="C3" onClick={()=>setShade("C3")}>C3</option>
-                        <option value="C4" onClick={()=>setShade("C4")}>C4</option>
-                        <option value="D2" onClick={()=>setShade("D2")}>D2</option>
-                        <option value="D3" onClick={()=>setShade("D3")}>D3</option>
-                        <option value="D4" onClick={()=>setShade("D4")}>D4</option>
-                        <option value="Bleach" onClick={()=>setShade("Bleach")}>Bleach</option>
+                        <option value="Hollywood White" onClick={()=>setShade("Hollywood White")}>Hollywood White</option>
+                        <option value="Natural White" onClick={()=>setShade("Natural White")}>Natural White</option>
+                        <option value="Natural Yellow/Brown" onClick={()=>setShade("Natural Yellow/Brown")}>Natural Yellow/Brown</option>
+                       
                     </select>
                 </div>
-            </div> */}
+            </div>
             {/* <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
@@ -5040,18 +5027,18 @@ AWS.config.update({
                     <label  htmlFor="product"><h5>Product</h5></label>
                     <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="Clear PMMA" onClick={()=>setProduct("Clear PMMA")}>Clear PMMA</option>
+                        <option value="Smile in a Snap" onClick={()=>setProduct("Smile in a Snap")}>Smile in a Snap</option>
                         {/* <option value="Final Zirconia" onClick={()=>setProduct("Final Zirconia")}>Final Zirconia</option> */}
                         
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                                {(product === "Clear PMMA" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                {(product === "Smile in a SNap" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
-                                    `$${(price += 50)}`
+                                    `$${(price += 200)}`
                                 
     
-                                : (product === "Clear PMMA" && lowerArch && upperArch)?    
-                                    `$${(price += 100)}`
+                                : (product === "Smile in a Snap" && lowerArch && upperArch)?    
+                                    `$${(price += 350)}`
     
                                                  
                                 :""

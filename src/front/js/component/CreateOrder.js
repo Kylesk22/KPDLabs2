@@ -5032,7 +5032,7 @@ AWS.config.update({
                         
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                                {(product === "Smile in a SNap" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                {(product === "Smile in a Snap" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
                                     `$${(price += 200)}`
                                 

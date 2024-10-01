@@ -87,6 +87,7 @@ import Medit from "../../img/medit-logo-300.png"
 import Program from "../../img/1.png"
 import KPD from "../../img/kpd_logo_pos2(1).png"
 import Layer from "../../img/layer.png"
+import SIAS from "../../img/SIAS1.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"
@@ -659,6 +660,47 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		</div>
 	  </div>
 	</div>
+
+
+	{/* <div className="row "> 
+	 
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
+		<div className="inner-box">
+		  <div className="image-box" >
+			<figure className="image overlay-animr">
+				
+					<img src={SIAS} alt="" className="product-pic" />
+				
+			</figure>
+			
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="/smileinasnap">Smile in a Snap</a></h4>
+
+			<div className="text">Zirconia</div>
+			<a href="/smileinasnap" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  
+	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+		<div className="inner-box">
+		  <div className="image-box">
+			<figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
+			
+		  </div>
+		  <div className="content-box">
+			<h4 className="title"><a href="/veneer">Veneer</a></h4>
+
+			<div className="text">Zirconia/PMMA Temporary</div>
+			<a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
+		  </div>
+		</div>
+	  </div>
+	  
+	</div> */}
+
+
   </div>
 </section>
 {/* <!-- End service-section -->

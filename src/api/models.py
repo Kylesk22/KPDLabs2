@@ -99,7 +99,9 @@ class Case(db.Model):
     update_date =  db.Column(db.String(255))
     due_date =  db.Column(db.String(255))
     model3D = db.Column(db.String(20), nullable=True)
+    log = db.Column(db.String(2000), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
+    
 
     def __repr__(self):
         return f'<Case {self.id}>'
@@ -125,6 +127,7 @@ class Case(db.Model):
             "update date": self.update_date,
             "due date": self.due_date,
             "reference id": self.reference_id,
+            "log": self.log,
             "case scans":[scan.serialize() for scan in self.case_scans]
 
             # "scans": self.scans,

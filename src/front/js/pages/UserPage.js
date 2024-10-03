@@ -24,6 +24,7 @@ export const UserPage = props => {
     const [address, setAddress] = useState("")
     const [license, setLicense] = useState("")
     const [practice, setPractice] = useState("")
+    const [accessCookie, setAccessCookie] = useState("")
     
 
     let id = sessionStorage.getItem("id");
@@ -232,7 +233,7 @@ export const UserPage = props => {
                 if (res.ok) {
                     return res.json()
                     .then((data)=>{
-                        
+                        setAccessCookie(data)
                         console.log(data)
                         
                         
@@ -240,7 +241,11 @@ export const UserPage = props => {
                         
                     })}
                 return(res.json())
-                .then((body)=>{alert(body.message)})
+                .then((body)=>{
+                    if (body.message){
+                    alert(body.message)
+                }
+                })
                 
                 })
            
@@ -248,6 +253,15 @@ export const UserPage = props => {
                 console.log(err);
         })
         
+
+        if (loggedIn)
+                if (getCookie("csrf_access_token")=== null || !accessCookie){
+                    alert("Logged out due to inactivity and security purposes")
+                    logout()
+                }
+
+
+
     })
     return(
         <div >

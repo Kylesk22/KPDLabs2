@@ -101,6 +101,16 @@ class Case(db.Model):
     model3D = db.Column(db.String(20), nullable=True)
     log = db.Column(db.String(2000), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
+
+    def add_log(self, log_entry):
+        existing_logs = self.get_logs()
+        existing_logs.append(log_entry)
+        self.log = json.dumps(existing_logs)
+
+    def get_logs(self):
+        if self.log:
+            return json.loads(self.log)
+        return []
     
 
     def __repr__(self):
@@ -127,7 +137,7 @@ class Case(db.Model):
             "update date": self.update_date,
             "due date": self.due_date,
             "reference id": self.reference_id,
-            "log": self.log,
+            "log": self.get_logs(),
             "case scans":[scan.serialize() for scan in self.case_scans]
 
             # "scans": self.scans,

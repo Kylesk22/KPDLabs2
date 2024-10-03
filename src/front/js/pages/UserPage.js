@@ -103,6 +103,7 @@ export const UserPage = props => {
                 console.log(err);
         })
         
+        console.log(`access ${accessCookie}`)
 
         if (loggedIn)
                 if (getCookie("csrf_access_token")=== null || accessCookie===null){

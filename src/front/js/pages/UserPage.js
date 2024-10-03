@@ -210,7 +210,7 @@ export const UserPage = props => {
         // }
        
         if (loggedIn)
-            if (getCookie("csrf_access_token")=== null){
+            if (getCookie("csrf_access_token")=== null || !getCookie("access_token_cookie")){
                 alert("Logged out due to inactivity and security purposes")
                 logout()
             }

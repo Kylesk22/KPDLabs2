@@ -218,6 +218,35 @@ export const UserPage = props => {
             console.log(getCookie("csrf_access_token"))
             console.log(getCookie("access_token_cookie"))
             console.log(document.cookie.split('; '))
+
+            const options = {
+                method:"GET",
+                credentials: 'include',
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                
+            }
+            fetch(`${url}/get_cookies`, options)
+            .then((res)=> {
+                if (res.ok) {
+                    return res.json()
+                    .then((data)=>{
+                        
+                        console.log(data)
+                        
+                        
+    
+                        
+                    })}
+                return(res.json())
+                .then((body)=>{alert(body.message)})
+                
+                })
+           
+            .catch((err)=> {
+                console.log(err);
+        })
         
     })
     return(

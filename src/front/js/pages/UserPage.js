@@ -67,7 +67,7 @@ export const UserPage = props => {
         //     }
             
             console.log(getCookie("csrf_access_token"))
-            console.log(getCookie("access_token_cookie"))
+            
             console.log(document.cookie.split('; '))
 
             const options = {
@@ -299,7 +299,7 @@ export const UserPage = props => {
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?
-                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
+                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}  updateLogState={setLoggedIn}/>:
                 (page === "create")?
                 <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId}/>:
                 // (page === "userCases")?

@@ -12,6 +12,7 @@ export const Login = props => {
     const [id, setId] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
 
     const url = process.env.BACKEND_URL
@@ -78,9 +79,28 @@ export const Login = props => {
                         <input  type="email" className="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <small id="emailHelp" className="form-text text-muted">abc@abc.com.</small>
                 </div>
+
                 <div className="form-group">
                     <label htmlFor="userPassword" className="form-label mt-4" style={{color: "white"}}>Password</label>
-                    <input type="password" className="form-control" id="userPasswrod" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/> 
+                     <div className="input-group">
+                                <input 
+                                    type={showPassword ? 'text' : 'password'} 
+                                    className="form-control" 
+                                    id="userPassword" 
+                                    placeholder="Password" 
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} 
+                                />
+                                <div className="input-group-append">
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-outline-secondary" 
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? 'Hide' : 'Show'}
+                                    </button>
+                                </div>
+                            </div>
                     <Link to="/forgot">
                         <span style={{color: "white"}}>Forgot Password?</span>
                         

@@ -49,6 +49,86 @@ export const UserPage = props => {
         }
         return null; // Return null if cookie not found
     }
+
+
+
+
+
+    useEffect(()=>{
+        // if (!getCookie("csrf_access_token")){
+        // alert("Logged out due to inactivity and security purposes");
+        // logout()
+        // }
+       
+        // if (loggedIn)
+        //     if (getCookie("csrf_access_token")=== null || !getCookie("access_token_cookie")){
+        //         alert("Logged out due to inactivity and security purposes")
+        //         logout()
+        //     }
+            
+            console.log(getCookie("csrf_access_token"))
+            console.log(getCookie("access_token_cookie"))
+            console.log(document.cookie.split('; '))
+
+            const options = {
+                method:"GET",
+                credentials: 'include',
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                
+            }
+            fetch(`${url}/get_cookies`, options)
+            .then((res)=> {
+                if (res.ok) {
+                    return res.json()
+                    .then((data)=>{
+                        setAccessCookie(data)
+                        console.log(data)
+                        
+                        
+    
+                        
+                    })}
+                return(res.json())
+                .then((body)=>{
+                    if (body.message){
+                    alert(body.message)
+                }
+                })
+                
+                })
+           
+            .catch((err)=> {
+                console.log(err);
+        })
+        
+
+        if (loggedIn)
+                if (getCookie("csrf_access_token")=== null || accessCookie===null){
+                    alert("Logged out due to inactivity and security purposes")
+                    logout()
+                }
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     useEffect(()=>{
         setPage(props.userPage)
@@ -204,65 +284,7 @@ export const UserPage = props => {
 
 
 
-    useEffect(()=>{
-        // if (!getCookie("csrf_access_token")){
-        // alert("Logged out due to inactivity and security purposes");
-        // logout()
-        // }
-       
-        // if (loggedIn)
-        //     if (getCookie("csrf_access_token")=== null || !getCookie("access_token_cookie")){
-        //         alert("Logged out due to inactivity and security purposes")
-        //         logout()
-        //     }
-            
-            console.log(getCookie("csrf_access_token"))
-            console.log(getCookie("access_token_cookie"))
-            console.log(document.cookie.split('; '))
-
-            const options = {
-                method:"GET",
-                credentials: 'include',
-                headers:{
-                    "Content-Type": "application/json",
-                },
-                
-            }
-            fetch(`${url}/get_cookies`, options)
-            .then((res)=> {
-                if (res.ok) {
-                    return res.json()
-                    .then((data)=>{
-                        setAccessCookie(data)
-                        console.log(data)
-                        
-                        
     
-                        
-                    })}
-                return(res.json())
-                .then((body)=>{
-                    if (body.message){
-                    alert(body.message)
-                }
-                })
-                
-                })
-           
-            .catch((err)=> {
-                console.log(err);
-        })
-        
-
-        if (loggedIn)
-                if (getCookie("csrf_access_token")=== null || accessCookie===null){
-                    alert("Logged out due to inactivity and security purposes")
-                    logout()
-                }
-
-
-
-    })
     return(
         <div >
             {(sessionStorage.getItem("id"))?

@@ -217,6 +217,7 @@ export const UserPage = props => {
             
             console.log(getCookie("csrf_access_token"))
             console.log(getCookie("access_token_cookie"))
+            console.log(document.cookie.split('; ');)
         
     })
     return(

@@ -162,7 +162,7 @@ def list_files(folder):
 def your_route():
     access_token = request.cookies.get('access_token_cookie')
     print(access_token)  # Access the cookie here
-    return (access_token)
+    return jsonify(access_token)
 
 
 @api.route('/slack', methods=['POST'])

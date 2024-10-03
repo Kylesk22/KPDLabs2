@@ -233,7 +233,7 @@ export const UserPage = props => {
                     return res.json()
                     .then((data)=>{
                         
-                        console.log(data.json())
+                        console.log(data)
                         
                         
     

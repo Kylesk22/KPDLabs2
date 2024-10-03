@@ -255,7 +255,7 @@ export const UserPage = props => {
         
 
         if (loggedIn)
-                if (getCookie("csrf_access_token")=== null || !accessCookie){
+                if (getCookie("csrf_access_token")=== null || accessCookie===null){
                     alert("Logged out due to inactivity and security purposes")
                     logout()
                 }

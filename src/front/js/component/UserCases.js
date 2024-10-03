@@ -132,7 +132,14 @@ export const UserCases = props => {
 
     },[singlePage])
     
-
+    const logout = () => {
+      sessionStorage.clear();
+      setLoggedIn(false);
+      props.updateLogState(false)
+      window.location.href = "/";
+  
+  
+    }
 
     useEffect(()=>{
         
@@ -157,7 +164,15 @@ export const UserCases = props => {
                     
                 })}
             return(res.json())
-            .then((body)=>{alert(body.message)})
+            .then((body)=>{
+
+              if(body.msg === "Missing cookie \"access_token_cookie\""){
+                logout()
+              }
+            
+            }
+            
+            )
             
             })
        

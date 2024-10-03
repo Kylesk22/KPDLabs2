@@ -167,6 +167,7 @@ export const UserCases = props => {
             .then((body)=>{
 
               if(body.msg === "Missing cookie \"access_token_cookie\""){
+                alert("logged out due to security and inactivity")
                 logout()
               }
             

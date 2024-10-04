@@ -42,6 +42,7 @@ export const AdminSingleCase = props => {
     const [submissionDate, setSubmissionDate] = useState("")
     const [model3D, setModel3D] = useState("")
     const [log, setLog] = useState([])
+    const [logNote, setLogNote] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -839,6 +840,19 @@ export const AdminSingleCase = props => {
 
             useEffect(()=>console.log(log))
 
+            const handleAddLogNote = () => {
+                // Add logNote to the log array
+                setLog(prevLog => {
+                    const newLog = [...prevLog, logNote];
+        
+                    // Call updateCase with the new log
+                    updateCase();
+                    return newLog; // Return the updated log for state
+                });
+        
+                // Clear the log note input if necessary
+                setLogNote('');
+            };
 
 
 
@@ -877,6 +891,8 @@ export const AdminSingleCase = props => {
                                 </ul>
                             </div>
                         </div>
+                        <input className="form-control"  id="logNote" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
+                        <button className="btn btn-primary" onClick={()=>{handleAddLogNote()}}>Add Note</button>
                     </div>
                     
                 </div>

@@ -686,7 +686,7 @@ def new_case(id):
             else: 
                 update_case.status = status
             if (request.json.get("logNote", None)):
-                 update_case.add_log(f"KPD: {request.json.get("logNote", None)}")
+                update_case.add_log(f"KPD: {request.json.get('logNote', None)}")
             else:
                 update_case.add_log(f"{update_case.status}: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
             update_case.type = type

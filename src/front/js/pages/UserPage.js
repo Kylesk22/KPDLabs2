@@ -299,7 +299,7 @@ export const UserPage = props => {
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?
-                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}  updateLogState={setLoggedIn}/>:
+                <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}  updateLogState={setLoggedIn} logouts={logout} />:
                 (page === "create")?
                 <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId}/>:
                 // (page === "userCases")?

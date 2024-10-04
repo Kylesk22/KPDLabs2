@@ -41,7 +41,7 @@ export const AdminSingleCase = props => {
     const [clonedCaseId, setClonedCaseId] = useState("")
     const [submissionDate, setSubmissionDate] = useState("")
     const [model3D, setModel3D] = useState("")
-    const [log, setLog] = useState("")
+    const [log, setLog] = useState([])
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")

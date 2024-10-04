@@ -884,7 +884,7 @@ export const AdminSingleCase = props => {
                     <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
-                            <div style={{ width: "400px", height: "500px", border: "1px solid black", overflowY: "scroll" }}>
+                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
                                 <ul>
                                     {Array.isArray(log) && log.map((item, index) => (
                                         <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>

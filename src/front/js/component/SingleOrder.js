@@ -271,7 +271,7 @@ export const SingleOrder = props => {
         let caseId = props.singleCaseId
         
         const url = process.env.BACKEND_URL
-        console.log(`${url}/${id}/${caseId}`)
+        // console.log(`${url}/${id}/${caseId}`)
         const options = {
             method:"GET",
             credentials: 'include',

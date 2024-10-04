@@ -612,7 +612,7 @@ export const AdminSingleCase = props => {
                 "production": production,
                 "reference id": refId,
                 "model3D": model3D,
-                "log": log,
+                ...(logNote ? { logNote } : {})
             }
             
             const options = {

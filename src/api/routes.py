@@ -685,7 +685,10 @@ def new_case(id):
                 update_case.status = "Submitted"
             else: 
                 update_case.status = status
-            update_case.add_log(f"{update_case.status}: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
+            if (request.json.get("logNote", None)):
+                 update_case.add_log(request.json.get("logNote", None))
+            else:
+                update_case.add_log(f"{update_case.status}: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
             update_case.type = type
             update_case.gum_shade = gum_shade
             update_case.price = price

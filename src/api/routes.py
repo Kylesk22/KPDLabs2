@@ -606,7 +606,7 @@ def new_case(id):
             update_case.shipping = shipping
             update_case.production = production
             update_case.reference_id = reference_id
-            update_case.add_log(f"Submitted: {datetime.now(pytz.timezone('US/Eastern')).strftime('%m/%d/%Y %H:%M:%S')}")
+            update_case.add_log(f"Submitted: {now_eastern.strftime("%m/%d/%Y %H:%M:%S")}")
         
             update_case.update_date = update_date
             update_case.due_date = due_date.strftime("%m/%d/%Y %H:%M:%S")

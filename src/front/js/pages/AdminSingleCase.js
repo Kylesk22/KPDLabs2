@@ -887,7 +887,7 @@ export const AdminSingleCase = props => {
                             <div style={{ width: "400px", height: "500px", border: "1px solid black", overflowY: "scroll" }}>
                                 <ul>
                                     {Array.isArray(log) && log.map((item, index) => (
-                                        <li key={index} style={{padding: "10px", textAlign: "left"}}>{item}</li>
+                                        <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
                                     ))}
                                 </ul>
                             </div>

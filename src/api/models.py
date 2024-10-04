@@ -3,6 +3,7 @@ from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.dialects.postgresql import BYTEA
 from sqlalchemy import PickleType, LargeBinary
 from datetime import datetime
+import json
 
 db = SQLAlchemy()
 

@@ -41,6 +41,7 @@ export const AdminSingleCase = props => {
     const [clonedCaseId, setClonedCaseId] = useState("")
     const [submissionDate, setSubmissionDate] = useState("")
     const [model3D, setModel3D] = useState("")
+    const [log, setLog] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -539,6 +540,7 @@ export const AdminSingleCase = props => {
                 setProduction(patientData.production)
                 setSubmissionDate(patientData["update date"])
                 setModel3D(patientData["3DModel"])
+                setLog(patientData.log)
                 
                 let doctorId = patientData["user id"]
                 // Update tooth colors
@@ -846,24 +848,35 @@ export const AdminSingleCase = props => {
             <>
             <form className="form form-container printable" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
                 <div className="row mt-4 no-print"> 
-                    <div className="text-center">
-                        <Link to = {`/admin/${id}`}>
-                            <button className="theme-btn" style={{width: "170px"}}>Back</button>
-                        </Link>
+                    <div className="col-6">
+                        <div className="text-center">
+                            <Link to = {`/admin/${id}`}>
+                                <button className="theme-btn" style={{width: "170px"}}>Back</button>
+                            </Link>
+                        </div>
+                        <div className="text-center pt-2">
+                        <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} finish={finish} dueDate={resultDate} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                        </div>
+                        {/* <div className="text-center pt-2">
+                            <button className="theme-btn" style={{width: "170px"}} onClick={(e)=>{testHandler(); e.preventDefault()}}>TEST DO NOT USE</button>
+                        </div> */}
+                        <div className="row form-group justify-content-center mt-3 no-print">
+                            <div className="text-center col-8 col-lg-4 pt-3">
+                            <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="text-center pt-2">
-                    <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} finish={finish} dueDate={resultDate} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                    <div className="col-6">
+                        <div className="text-center">
+                            <div>Log</div>
+                            <div style ={{width: "200px", height: "500px", border: "1px solid black"}}>
+
+                            </div>
+                        </div>
                     </div>
-                    {/* <div className="text-center pt-2">
-                        <button className="theme-btn" style={{width: "170px"}} onClick={(e)=>{testHandler(); e.preventDefault()}}>TEST DO NOT USE</button>
-                    </div> */}
-                    <div className="row form-group justify-content-center mt-3 no-print">
-                    <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
-                    </div>
-                </div>
                     
                 </div>
+
                 <div className="row mt-3 ">
                     <div className="text-center">
                         <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>

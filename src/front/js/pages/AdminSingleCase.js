@@ -848,7 +848,7 @@ export const AdminSingleCase = props => {
             <>
             <form className="form form-container printable" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
                 <div className="row mt-4 no-print"> 
-                    <div className="col-6">
+                    <div className="col-8">
                         <div className="text-center">
                             <Link to = {`/admin/${id}`}>
                                 <button className="theme-btn" style={{width: "170px"}}>Back</button>
@@ -866,10 +866,10 @@ export const AdminSingleCase = props => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6">
-                        <div className="text-center">
+                    <div className="col-4 text-center">
+                        <div>
                             <div>Log</div>
-                            <div style={{ width: "200px", height: "500px", border: "1px solid black", overflowY: "auto" }}>
+                            <div style={{ width: "400px", height: "500px", border: "1px solid black", overflowY: "scroll" }}>
                                 <ul>
                                     {Array.isArray(log) && log.map((item, index) => (
                                         <li key={index}>{item}</li>

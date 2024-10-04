@@ -373,7 +373,7 @@ export const SingleOrder = props => {
                         
                     </div>
                 </div>
-                <div className="text-right">
+                <div className="text-right" style={{float: "right"}}>
                 <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>

@@ -848,7 +848,7 @@ export const AdminSingleCase = props => {
             <>
             <form className="form form-container printable" data-toggle="validator" role="form" style={{paddingTop: "150px", paddingBottom: "30px"}}>
                 <div className="row mt-4 no-print"> 
-                    <div className="col-8">
+                    <div className="col-8" style={{alignContent: "space-around"}}>
                         <div className="text-center">
                             <Link to = {`/admin/${id}`}>
                                 <button className="theme-btn" style={{width: "170px"}}>Back</button>

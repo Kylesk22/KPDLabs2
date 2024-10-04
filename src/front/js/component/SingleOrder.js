@@ -357,7 +357,7 @@ export const SingleOrder = props => {
         ) :
         <>
         <form className="form form-container printable" data-toggle="validator" role="form">
-            <div className="row mt-4 no-print"> 
+            <div className="row mt-4 no-print" style={{display:"block"}}> 
                 <div className="text-center p-1">
                     <div className="text-center p-1 ">
                         <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
@@ -373,7 +373,7 @@ export const SingleOrder = props => {
                         
                     </div>
                 </div>
-                <div className="text-right" style={{float: "right"}}>
+                <div className="text-right" style={{float: "right", padding: "10px"}}>
                 <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>

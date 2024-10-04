@@ -892,8 +892,8 @@ export const AdminSingleCase = props => {
                                 </ul>
                             </div>
                         </div>
-                        <input className="form-control"  id="logNote" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
-                        <button className="btn btn-primary" onClick={()=>{handleAddLogNote()}}>Add Note</button>
+                        <input className="form-control"  id="logNote" type="text" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
+                        <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
                     </div>
                     
                 </div>

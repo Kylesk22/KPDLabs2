@@ -133,6 +133,7 @@ export const UserCases = props => {
     },[singlePage])
     
     const logout = () => {
+      props.logouts()
       sessionStorage.clear();
       setLoggedIn(false);
       props.updateLogState(false)

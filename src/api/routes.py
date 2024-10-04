@@ -556,6 +556,8 @@ def new_case(id):
 
         caseCheck = request.json.get("case", None)
         checking_case = Case.query.filter_by(id=caseCheck).first()
+        users_id = checking_case.user_id 
+        userobj = User.query.filter_by(id=users_id).first()
 
 
         if checking_case.name is None:
@@ -578,6 +580,9 @@ def new_case(id):
             
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
+
+            # if (request.json.get("logNote", None)):
+            #     update_case.add_log(f"{}: {request.json.get('logNote', None)}")
 
             if (request.json.get("reference id", None)):
                 reference_id = request.json.get("reference Id", None)
@@ -644,6 +649,9 @@ def new_case(id):
             print(f"response:{res}")
 
             return jsonify({"msg": "Updated"}), 200 
+
+        elif request.json.get("user", None) and request.json.get("logNote", None):
+            update_case.add_log(f"Dr. {userobj.lname}: {request.json.get('logNote', None)}")
         
         elif request.json.get("admin", None):
             case = request.json.get("case", None)

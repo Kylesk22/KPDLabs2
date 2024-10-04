@@ -30,6 +30,8 @@ export const SingleOrder = props => {
     const [bridge, setBridge] = useState('false')
     const[bridgeTooth, setBridgeTooth] = useState([])
     const [note, setNote] = useState("")
+    const [log, setLog] = useState([])
+    const [logNote, setLogNote] = useState("")
     const [production, setProduction] = useState("")
     const [submittedDate, setSubmittedDate] = useState("")
     const [shipping, setShipping] = useState("")
@@ -190,6 +192,70 @@ export const SingleOrder = props => {
         alert("Photos/Scans Uploaded")
     }
 
+    const uploadNote = () => {
+        const url = process.env.BACKEND_URL
+
+       
+
+
+        const updateNote = {
+            
+            
+            ...(logNote ? { logNote } : {})
+        }
+        
+        const options = {
+            method:"PUT",
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(updateNote)
+        }
+        fetch(`${url}/${id}/new_case`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+
+                    setLog(data.log)
+                    
+                    
+                })}
+            return(res.json())
+            .then((body)=>{
+                alert(body.message)
+                
+            })
+            
+            })
+          
+    
+        .catch((err)=> {
+            console.log(err);
+    })
+    
+
+    }
+  ;
+
+  const handleAddLogNote = () => {
+    // Add logNote to the log array
+    setLog(prevLog => {
+        const newLog = [...prevLog, logNote];
+
+        // Call updateCase with the new log
+        updateCase();
+        return newLog; // Return the updated log for state
+    });
+
+    // Clear the log note input if necessary
+    setLogNote('');
+    uploadNote()
+};
+        
+    
+
     useEffect(()=>{
 
         let caseId = props.singleCaseId
@@ -219,6 +285,8 @@ export const SingleOrder = props => {
                     setType(data.type);
                     setNote(data.notes);
                     setShade(data.shade);
+                    setLogNote(data.log);
+
                     setGumShade(data["gum shade"]);
                     setModel3D(data["3DModel"]);
                     setShipping(data.shipping)
@@ -280,18 +348,36 @@ export const SingleOrder = props => {
         <>
         <form className="form form-container printable" data-toggle="validator" role="form">
             <div className="row mt-4 no-print"> 
-                <div className="text-center p-1 ">
-                    <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
-                </div>
                 <div className="text-center p-1">
-                    <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "auto"}}>Remake</button>
+                    <div className="text-center p-1 ">
+                        <button className="theme-btn" onClick={()=>setPage("home")} style={{width: "170px"}}>Back</button>
+                    </div>
+                    <div className="text-center p-1">
+                        <button className="theme-btn" onClick={()=>sendEmail()} style={{width: "auto"}}>Remake</button>
+                    </div>
+                    {/* <div className="text-center p-1">
+                        <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
+                    </div> */}
+                    <div className="text-center p-1">
+                        <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} finish={finish} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                        
+                    </div>
                 </div>
-                {/* <div className="text-center p-1">
-                    <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
-                </div> */}
-                <div className="text-center p-1">
-                    <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} finish={finish} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
-                    
+                <div className="text-right">
+                <div className="col-4 text-center" style={{width: "400px"}}>
+                        <div>
+                            <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
+                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
+                                <ul>
+                                    {Array.isArray(log) && log.map((item, index) => (
+                                        <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <input className="form-control"  id="logNote" type="text" placeholder="Type Message Here" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
+                        <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
+                    </div>
                 </div>
             </div>
             <div className="row mt-3">

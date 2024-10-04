@@ -295,7 +295,7 @@ export const SingleOrder = props => {
                     setType(data.type);
                     setNote(data.notes);
                     setShade(data.shade);
-                    setLogNote(data.log);
+                    setLog(data.log);
 
                     setGumShade(data["gum shade"]);
                     setModel3D(data["3DModel"]);

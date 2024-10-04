@@ -837,7 +837,7 @@ export const AdminSingleCase = props => {
               
             
 
-
+            useEffect(()=>console.log(log))
 
 
 
@@ -870,7 +870,7 @@ export const AdminSingleCase = props => {
                         <div className="text-center">
                             <div>Log</div>
                             <div style ={{width: "200px", height: "500px", border: "1px solid black"}}>
-                                {log.map((item, index) => {
+                                {/* {log.map((item, index) => {
                                     console.log(item)
                                     return (
                                         <div key={index} >
@@ -878,7 +878,7 @@ export const AdminSingleCase = props => {
                                         
                                         </div>
                                         
-                                )})}
+                                )})} */}
 
                             </div>
                         </div>

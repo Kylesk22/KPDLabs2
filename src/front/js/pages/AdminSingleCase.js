@@ -881,7 +881,7 @@ export const AdminSingleCase = props => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4 text-center">
+                    <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
                             <div style={{ width: "400px", height: "500px", border: "1px solid black", overflowY: "scroll" }}>

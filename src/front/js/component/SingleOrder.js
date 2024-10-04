@@ -245,13 +245,13 @@ export const SingleOrder = props => {
         const newLog = [...prevLog, logNote];
 
         // Call updateCase with the new log
-        updateCase();
+        uploadNote();
         return newLog; // Return the updated log for state
     });
 
     // Clear the log note input if necessary
     setLogNote('');
-    uploadNote()
+    
 };
         
     

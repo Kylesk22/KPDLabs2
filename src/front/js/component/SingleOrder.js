@@ -191,6 +191,16 @@ export const SingleOrder = props => {
         setLoading(false);
         alert("Photos/Scans Uploaded")
     }
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+        return null; // Return null if cookie not found
+    }
 
     const uploadNote = () => {
         const url = process.env.BACKEND_URL

@@ -653,6 +653,7 @@ def new_case(id):
         elif request.json.get("user", None) and request.json.get("logNote", None):
             print("hit this line")
             update_case.add_log(f"Dr. {userobj.lname}: {request.json.get('logNote', None)}")
+            return jsonify({"msg": "Updated"}), 200
         
         elif request.json.get("admin", None):
             case = request.json.get("case", None)

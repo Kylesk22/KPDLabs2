@@ -870,6 +870,14 @@ export const AdminSingleCase = props => {
                         <div className="text-center">
                             <div>Log</div>
                             <div style ={{width: "200px", height: "500px", border: "1px solid black"}}>
+                            {rates.map((item, index) => {
+                        return (
+                            <div key={index} >
+                                <li>{item}</li>
+                               
+                            </div>
+                            
+                    )})}
 
                             </div>
                         </div>

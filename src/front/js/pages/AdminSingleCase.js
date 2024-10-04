@@ -869,13 +869,13 @@ export const AdminSingleCase = props => {
                     <div className="col-6">
                         <div className="text-center">
                             <div>Log</div>
-                            <div style={{ width: "200px", height: "500px", border: "1px solid black", overflowY: "auto" }}>
+                            {/* <div style={{ width: "200px", height: "500px", border: "1px solid black", overflowY: "auto" }}>
                                 <ul>
                                     {log.map((item, index) => (
                                         <li key={index}>{item}</li>
                                     ))}
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     

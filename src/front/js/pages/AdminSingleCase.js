@@ -887,12 +887,12 @@ export const AdminSingleCase = props => {
                             <div style={{ width: "400px", height: "500px", border: "1px solid black", overflowY: "scroll" }}>
                                 <ul>
                                     {Array.isArray(log) && log.map((item, index) => (
-                                        <li key={index}>{item}</li>
+                                        <li key={index} style={{padding: "10px", textAlign: "left"}}>{item}</li>
                                     ))}
                                 </ul>
                             </div>
                         </div>
-                        <input className="form-control"  id="logNote" type="text" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
+                        <input className="form-control"  id="logNote" type="text" placeholder="Type Message Here" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
                         <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
                     </div>
                     

@@ -377,7 +377,7 @@ export const SingleOrder = props => {
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
                             <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
-                                <ul>
+                                <ul style={{backgroundColor: "white", color:"black"}}>
                                     {Array.isArray(log) && log.map((item, index) => (
                                         <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
                                     ))}

@@ -556,9 +556,9 @@ def new_case(id):
 
         caseCheck = request.json.get("case", None)
         checking_case = Case.query.filter_by(id=caseCheck).first()
-        print(f"CASE {checking_case}")
-        users_id = checking_case.user_id 
-        userobj = User.query.filter_by(id=users_id).first()
+        
+       
+        userobj = User.query.filter_by(id=id).first()
 
 
         if checking_case.name is None:

@@ -372,8 +372,7 @@ export const SingleOrder = props => {
                         <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} finish={finish} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                         
                     </div>
-                </div>
-                <div className="text-right" style={{float: "right", padding: "10px"}}>
+                    <div className="text-right" style={{float: "right", padding: "10px"}}>
                 <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
@@ -389,6 +388,23 @@ export const SingleOrder = props => {
                         <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
                     </div>
                 </div>
+                </div>
+                {/* <div className="text-right" style={{float: "right", padding: "10px"}}>
+                <div className="col-4 text-center" style={{width: "400px"}}>
+                        <div>
+                            <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
+                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
+                                <ul>
+                                    {Array.isArray(log) && log.map((item, index) => (
+                                        <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <input className="form-control"  id="logNote" type="text" placeholder="Type Message Here" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
+                        <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
+                    </div>
+                </div> */}
             </div>
             <div className="row mt-3">
                 <div className="text-center">

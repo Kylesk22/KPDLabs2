@@ -209,7 +209,7 @@ export const SingleOrder = props => {
 
 
         const updateNote = {
-            
+            "case": caseNum,
             "user": true,
             ...(logNote ? { logNote } : {})
         }

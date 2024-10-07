@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from 'react-router-dom';
 import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
@@ -52,6 +52,7 @@ export const AdminSingleCase = props => {
     const [drZip, setDrZip] = useState("")
     const [rates, setRates] = useState([])
     const [license, setLicense] = useState([])
+    const logRef = useRef(null);
 
     const [labelUrl, setLabelUrl] = useState("")
     const [files, setFiles] = useState([]);
@@ -857,7 +858,11 @@ export const AdminSingleCase = props => {
 
 
 
-        
+            useEffect(() => {
+                if (logRef.current) {
+                    logRef.current.scrollTop = logRef.current.scrollHeight;
+                }
+            }, [log]);
   
         return (
             <>
@@ -884,8 +889,8 @@ export const AdminSingleCase = props => {
                     <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
-                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
-                                <ul>
+                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }} ref={logRef}>
+                                <ul style={{backgroundColor: "white", color:"black"}}>
                                     {Array.isArray(log) && log.map((item, index) => (
                                         <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
                                     ))}

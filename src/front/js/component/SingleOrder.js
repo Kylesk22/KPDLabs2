@@ -210,7 +210,7 @@ export const SingleOrder = props => {
 
         const updateNote = {
             
-            
+            "user": true,
             ...(logNote ? { logNote } : {})
         }
         

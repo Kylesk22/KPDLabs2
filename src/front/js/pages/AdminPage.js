@@ -101,7 +101,7 @@ export const AdminPage = props => {
 
     const productionFilter = () => {
         const filteredCases = new Map();
-        const statuses = ["Submitted","Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship", "Shipped"];
+        const statuses = ["Submitted","Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship"];
     
         originalCases.forEach(item => {
             if (item.status) {

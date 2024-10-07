@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef  } from "react";
 import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
@@ -46,6 +46,8 @@ export const SingleOrder = props => {
     let id = sessionStorage.getItem("id");
     let stl_urls = []
     let photo_urls = []
+
+    const logRef = useRef(null);
     
 
    
@@ -337,6 +339,12 @@ export const SingleOrder = props => {
     })
     },[])
 
+    useEffect(() => {
+        if (logRef.current) {
+            logRef.current.scrollTop = logRef.current.scrollHeight;
+        }
+    }, [log]);
+
    
 
     
@@ -376,7 +384,7 @@ export const SingleOrder = props => {
                 <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
-                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }}>
+                            <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }} ref={logRef}>
                                 <ul style={{backgroundColor: "white", color:"black"}}>
                                     {Array.isArray(log) && log.map((item, index) => (
                                         <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>

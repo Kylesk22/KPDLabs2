@@ -1062,7 +1062,7 @@ export const AdminSingleCase = props => {
 
 
                             <svg
-   className="no-print"
+   className="col-9 col-lg-3 px-5 no-print"
    viewBox="0 0 475.64771 678.46268"
    id="replace"
 

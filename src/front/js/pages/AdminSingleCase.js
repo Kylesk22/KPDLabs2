@@ -1065,9 +1065,8 @@ export const AdminSingleCase = props => {
    className="no-print"
    viewBox="0 0 475.64771 678.46268"
    id="replace"
-   version="1.1"
-   width="475.64771"
-   height="678.46271"
+
+ 
    xmlns="http://www.w3.org/2000/svg"
   >
   

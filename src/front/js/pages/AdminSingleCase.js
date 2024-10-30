@@ -43,7 +43,7 @@ export const AdminSingleCase = props => {
     const [model3D, setModel3D] = useState("")
     const [log, setLog] = useState([])
     const [logNote, setLogNote] = useState("")
-    const [hold, setHold] = useState("")
+    const [hold, setHold] = useState("remove")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -891,8 +891,8 @@ export const AdminSingleCase = props => {
                         <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
                             {(!hold)?
-                                <button className="btn btn-primary" onClick={(e)=>{setHold(true); e.preventDefault(); updateCase()}}>Hold</button>
-                            : <button className="btn btn-primary" onClick={(e)=>{setHold(""); e.preventDefault(); updateCase()}}>Remove Hold</button>
+                                <button className="btn btn-primary" onClick={(e)=>{setHold("add"); e.preventDefault(); updateCase()}}>Hold</button>
+                            : <button className="btn btn-primary" onClick={(e)=>{setHold("remove"); e.preventDefault(); updateCase()}}>Remove Hold</button>
                             }
                             </div>
                         </div>

@@ -43,6 +43,7 @@ export const AdminSingleCase = props => {
     const [model3D, setModel3D] = useState("")
     const [log, setLog] = useState([])
     const [logNote, setLogNote] = useState("")
+    const [hold, setHold] = useState("")
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -541,6 +542,7 @@ export const AdminSingleCase = props => {
                 setShipping(patientData.shipping)
                 setProduction(patientData.production)
                 setSubmissionDate(patientData["update date"])
+                setHold(patientData.hold)
                 setModel3D(patientData["3DModel"])
                 setLog(patientData.log)
                 
@@ -612,6 +614,7 @@ export const AdminSingleCase = props => {
                 "shipping": shipping,
                 "production": production,
                 "reference id": refId,
+                "hold": hold,
                 "model3D": model3D,
                 ...(logNote ? { logNote } : {})
             }
@@ -883,6 +886,14 @@ export const AdminSingleCase = props => {
                         <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
                             <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
+                            </div>
+                        </div>
+                        <div className="row form-group justify-content-center mt-3 no-print">
+                            <div className="text-center col-8 col-lg-4 pt-3">
+                            {(!hold)?
+                                <button className="btn btn-primary" onClick={(e)=>{setHold(true); e.preventDefault(); updateCase()}}>Hold</button>
+                            : <button className="btn btn-primary" onClick={(e)=>{setHold(""); e.preventDefault(); updateCase()}}>Remove Hold</button>
+                            }
                             </div>
                         </div>
                     </div>

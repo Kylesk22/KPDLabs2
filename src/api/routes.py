@@ -701,10 +701,10 @@ def new_case(id):
                 update_case.status = status
             if (request.json.get("logNote", None)):
                 update_case.add_log(f"KPD: {request.json.get('logNote', None)}")
-            elif (request.json.get("hold", None) == "add"):
-                update_case.hold = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
-            elif (request.json.get("hold", None) == "remove"):
-                update_case.hold = None
+            # elif (request.json.get("hold", None) == "add"):
+            #     update_case.hold = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
+            # elif (request.json.get("hold", None) == "remove"):
+            #     update_case.hold = None
             else:
                 update_case.add_log(f"{update_case.status}: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
                 

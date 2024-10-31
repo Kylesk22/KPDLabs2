@@ -44,6 +44,7 @@ export const AdminSingleCase = props => {
     const [log, setLog] = useState([])
     const [logNote, setLogNote] = useState("")
     const [hold, setHold] = useState("remove")
+    const [userHoldTrigger, setUserHoldTrigger] = useState(false)
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -866,6 +867,8 @@ export const AdminSingleCase = props => {
                 setLog(prevLog => [...prevLog, holdMessage])
 
                setHold("add");  
+
+               setUserHoldTrigger(true)
             };
 
             const handleRemoveHold = () => {
@@ -874,11 +877,13 @@ export const AdminSingleCase = props => {
                 setLog(prevLog => [...prevLog, holdMessage])
 
                setHold("remove"); 
+
+               setUserHoldTrigger(true)
             }
 
             useEffect(()=>{
                 updateCase()
-            },[hold])
+            },[userHoldTrigger])
 
 
 

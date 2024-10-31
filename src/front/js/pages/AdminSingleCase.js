@@ -861,14 +861,24 @@ export const AdminSingleCase = props => {
 
             const handleAddHold = () => {
                 // Add logNote to the log array
-               setHold("add");
-               updateCase()   
+                let holdMessage = "Case placed on hold"
+
+                setLog(prevLog => [...prevLog, holdMessage])
+
+               setHold("add");  
             };
 
             const handleRemoveHold = () => {
-                setHold("remove");
-                updateCase()
+                let holdMessage = "Case removed from hold"
+
+                setLog(prevLog => [...prevLog, holdMessage])
+
+               setHold("remove"); 
             }
+
+            useEffect(()=>{
+                updateCase()
+            },[hold])
 
 
 
@@ -899,14 +909,14 @@ export const AdminSingleCase = props => {
                             <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
                             </div>
                         </div>
-                        {/* <div className="row form-group justify-content-center mt-3 no-print">
+                        <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
-                            {(!hold)?
+                            {(hold === "remove")?
                                 <button className="btn btn-primary" onClick={(e)=>{setHold("add"); e.preventDefault(); handleAddHold()}}>Hold</button>
                             : <button className="btn btn-primary" onClick={(e)=>{setHold("remove"); e.preventDefault(); handleRemoveHold()}}>Remove Hold</button>
                             }
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                     <div className="col-4 text-center" style={{width: "400px"}}>
                         <div>

@@ -865,10 +865,13 @@ export const AdminSingleCase = props => {
                 // Add logNote to the log array
                 let holdMessage = "Case placed on hold"
 
-                setLog(prevLog => {[...prevLog, holdMessage]
-
-                    return newLog
-                })
+                setLog(prevLog => {
+                    const newLog = [...prevLog, holdMessage];
+        
+                    // Call updateCase with the new log
+                    
+                    return newLog; // Return the updated log for state
+                });
 
                setHold("add");  
 
@@ -878,7 +881,13 @@ export const AdminSingleCase = props => {
             const handleRemoveHold = () => {
                 let holdMessage = "Case removed from hold"
 
-                setLog(prevLog => [...prevLog, holdMessage])
+                setLog(prevLog => {
+                    const newLog = [...prevLog, holdMessage];
+        
+                    // Call updateCase with the new log
+                    
+                    return newLog; // Return the updated log for state
+                });
 
                setHold("remove"); 
 

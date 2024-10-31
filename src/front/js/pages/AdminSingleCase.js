@@ -883,6 +883,7 @@ export const AdminSingleCase = props => {
 
             useEffect(()=>{
                 updateCase()
+                
             },[userHoldTrigger])
 
 
@@ -917,8 +918,8 @@ export const AdminSingleCase = props => {
                         <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
                             {(!hold)?
-                                <button className="btn btn-primary" onClick={(e)=>{setHold("add"); e.preventDefault(); handleAddHold()}}>Hold</button>
-                            : <button className="btn btn-primary" onClick={(e)=>{setHold("remove"); e.preventDefault(); handleRemoveHold()}}>Remove Hold</button>
+                                <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); handleAddHold()}}>Hold</button>
+                            : <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); handleRemoveHold()}}>Remove Hold</button>
                             }
                             </div>
                         </div>

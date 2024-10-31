@@ -872,6 +872,7 @@ export const AdminSingleCase = props => {
                     
                     return newLog; // Return the updated log for state
                 });
+                console.log(log)
 
                setHold("add");  
 

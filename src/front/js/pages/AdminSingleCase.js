@@ -45,6 +45,7 @@ export const AdminSingleCase = props => {
     const [logNote, setLogNote] = useState("")
     const [hold, setHold] = useState("")
     const [userHoldTrigger, setUserHoldTrigger] = useState(false)
+    const hasMounted = useRef(false)
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -882,8 +883,10 @@ export const AdminSingleCase = props => {
             }
 
             useEffect(()=>{
+                if (hasMounted.current){
                 updateCase()
-                
+                }
+                else {hasMounted.current=true}
             },[userHoldTrigger])
 
 

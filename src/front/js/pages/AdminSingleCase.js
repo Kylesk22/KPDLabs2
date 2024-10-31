@@ -865,7 +865,10 @@ export const AdminSingleCase = props => {
                 // Add logNote to the log array
                 let holdMessage = "Case placed on hold"
 
-                setLog(prevLog => [...prevLog, holdMessage])
+                setLog(prevLog => {[...prevLog, holdMessage]
+
+                    return newLog
+                })
 
                setHold("add");  
 

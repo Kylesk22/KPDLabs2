@@ -328,12 +328,15 @@ def getAllInfo(id):
         for case in all_cases:
             # Check if the case has a hold
              if case.hold:  # Assuming 'hold' is a string in 'MM/DD/YYYY HH:MM:SS' format
-                hold_start_date = datetime.strptime(case.hold, '%m/%d/%Y %H:%M:%S')  # Adjusted format
+                hold_start_date = datetime.strptime(case.hold, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
+                hold_start_date = eastern.localize(hold_start_date)  # Localize to Eastern Time
+
                 hold_duration_days = (now_eastern - hold_start_date).days  # Calculate days since hold started
 
                 # Update the due date
                 if case.due_date:  # Check if there's an existing due date
-                    original_due_date = datetime.strptime(case.due_date, '%m/%d/%Y %H:%M:%S')  # Adjusted format
+                    original_due_date = datetime.strptime(case.due_date, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
+                    original_due_date = eastern.localize(original_due_date)  # Localize to Eastern Time
                     new_due_date = original_due_date + timedelta(days=hold_duration_days)  # Add days on hold
                     case.due_date = new_due_date.strftime('%m/%d/%Y %H:%M:%S')  # Update to desired format
 

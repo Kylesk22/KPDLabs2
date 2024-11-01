@@ -100,6 +100,7 @@ class Case(db.Model):
     update_date =  db.Column(db.String(255))
     due_date =  db.Column(db.String(255))
     hold =  db.Column(db.String(255), nullable=True)
+    hold_date_check =  db.Column(db.String(255), nullable=True)
     model3D = db.Column(db.String(20), nullable=True)
     log = db.Column(db.String(2000), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
@@ -139,6 +140,7 @@ class Case(db.Model):
             "update date": self.update_date,
             "due date": self.due_date,
             "hold": self.hold,
+            "hold date check": self.hold_date_check,
             "reference id": self.reference_id,
             "log": self.get_logs(),
             "case scans":[scan.serialize() for scan in self.case_scans]

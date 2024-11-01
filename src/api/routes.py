@@ -318,6 +318,7 @@ def getAllInfo(id):
     now_utc = datetime.now(utc)
     now_eastern = now_utc.astimezone(eastern)
     current_user_email = get_jwt_identity()
+    eastern_offset = timezone(timedelta(hours=-5))
 
     
     

@@ -495,12 +495,35 @@ export const AdminPage = props => {
                                                                                                                                                                                                                                                                                                                                                                         })() 
                                                                                                                                                                                                                                                                                                                                                                         : "N/A"}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["due date"] ? 
-                                                                                                                                                                                                                                                                                                                                                                        (() => {
-                                                                                                                                                                                                                                                                                                                                                                        const [datePart] = item["due date"].split(" ");
-                                                                                                                                                                                                                                                                                                                                                                        const [month, day, year] = datePart.split("/");
-                                                                                                                                                                                                                                                                                                                                                                        return `${parseInt(month)}/${parseInt(day)}/${year.slice(-2)}`; // Convert to M/D/YY
-                                                                                                                                                                                                                                                                                                                                                                        })() 
-                                                                                                                                                                                                                                                                                                                                                                        : "N/A"}</div>
+                                            (() => {
+                                                const [datePart] = item["due date"].split(" ");
+                                                const [month, day, year] = datePart.split("/");
+                                                const dueDate = new Date(year, month - 1, day); // Create a date object
+                                    
+                                                // Calculate additional days to add based on hold duration
+                                                let additionalDays = 0;
+                                                if (hold === true) {
+                                                    // Calculate the number of days it has been on hold
+                                                    const today = new Date();
+                                                    const holdDuration = Math.floor((today - new Date(item["hold start date"])) / (1000 * 60 * 60 * 24));
+                                                    additionalDays = holdDuration; // Add one day for each day on hold
+                                                }
+                                    
+                                                // Add the additional days to the due date
+                                                dueDate.setDate(dueDate.getDate() + additionalDays + 1); // Add one more day for the initial hold
+                                    
+                                                // If the new due date falls on a weekend, move it to Monday
+                                                if (dueDate.getDay() === 0) { // Sunday
+                                                    dueDate.setDate(dueDate.getDate() + 1);
+                                                } else if (dueDate.getDay() === 6) { // Saturday
+                                                    dueDate.setDate(dueDate.getDate() + 2);
+                                                }
+                                    
+                                                // Format the date as M/D/YY
+                                                const formattedDate = `${dueDate.getMonth() + 1}/${dueDate.getDate()}/${dueDate.getFullYear().toString().slice(-2)}`;
+                                                return formattedDate;
+                                            })() 
+                                        : "N/A"}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
                                     </>
                                 

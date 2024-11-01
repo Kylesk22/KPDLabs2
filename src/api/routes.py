@@ -312,6 +312,9 @@ def admin_login():
 @api.route('/admin/<int:id>', methods=['GET'])
 @jwt_required()
 def getAllInfo(id):
+
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
     current_user_email = get_jwt_identity()
 
     
@@ -322,8 +325,24 @@ def getAllInfo(id):
         all_users = User.query.all()
         all_cases = Case.query.all()
 
+        for case in all_cases:
+            # Check if the case has a hold
+            if case.hold:
+                hold_start_date = case.hold  # Assuming 'hold' is a datetime object or string in a recognizable format
+                hold_duration_days = (now_eastern.strftime("%m/%d/%Y %H:%M:%S") - hold_start_date).days  # Calculate days since hold started
+
+                # Update the due date
+                if case.due_date:  # Check if there's an existing due date
+                    original_due_date = case.due_date
+                    new_due_date = original_due_date + timedelta(days=hold_duration_days)  # Add days on hold
+                    case.due_date = new_due_date  # Update the case's due date
+
+                    # Save the updated due date back to the database
+                    db.session.commit()
+
         all_users_list = list(map(lambda x: x.serialize(), all_users))
         all_cases_list = list(map(lambda x: x.serialize(), all_cases))
+
 
         return jsonify({"users": all_users_list, "cases":all_cases_list})
     else:
@@ -710,6 +729,10 @@ def new_case(id):
                 update_case.hold = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
             elif (request.json.get("hold", None) == "remove"):
                 update_case.hold = None
+
+
+            # if (request.json.get("dueDate", None)):
+            #     update_case.due_date = request.json.get("dueDate", None)
 
             update_case.type = type
             update_case.gum_shade = gum_shade

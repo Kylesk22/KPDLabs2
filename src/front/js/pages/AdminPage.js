@@ -328,6 +328,8 @@ export const AdminPage = props => {
                     setCases([...cases, ...data.cases])
                     setOriginalCases([...originalCases, ...data.cases])
 
+                   
+
                     const newUsers = {};
                     for (let i = 0; i < data.users.length; i++) {
                         const userId = data.users[i].id;

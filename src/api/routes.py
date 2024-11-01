@@ -338,7 +338,7 @@ def getAllInfo(id):
 
                 # Update the due date
                 if case.due_date and case.hold_date_check is not now_eastern.strftime('%m/%d/%Y %H:%M:%S'):  # Check if there's an existing due date
-                    case.hold_date_check = now_eastern.strftime('%m/%d/%Y %H:%M:%S'):
+                    case.hold_date_check = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
                     original_due_date = datetime.strptime(case.due_date, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
                     original_due_date = original_due_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
                     new_due_date = original_due_date + timedelta(days=hold_duration_days)  # Add days on hold

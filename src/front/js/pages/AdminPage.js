@@ -502,7 +502,7 @@ export const AdminPage = props => {
                                     
                                                 // Calculate additional days to add based on hold duration
                                                 let additionalDays = 0;
-                                                if (hold === true) {
+                                                if (item["hold"]) {
                                                     // Calculate the number of days it has been on hold
                                                     const today = new Date();
                                                     const holdDuration = Math.floor((today - new Date(item["hold start date"])) / (1000 * 60 * 60 * 24));

@@ -337,6 +337,12 @@ def getAllInfo(id):
                 current_date += timedelta(days=1)
             return weekdays_count
 
+        def add_one_day_if_weekday(start_date, end_date):
+            # Check if the end date is not a weekend (Saturday=5, Sunday=6)
+            if end_date.weekday() < 5:  # 0-4 are weekdays (Mon-Fri)
+                return start_date + timedelta(days=1)  # Add 1 day to the start date
+            return start_date
+
         # for case in all_cases:
         #     # Check if the case has a hold
         #        if case.hold and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Assuming 'hold' is a string in 'MM/DD/YYYY HH:MM:SS' format
@@ -364,7 +370,7 @@ def getAllInfo(id):
                 hold_start_date = hold_start_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
 
                 # Calculate hold duration while skipping weekends
-                hold_duration_weekdays = calculate_weekdays(hold_start_date, now_eastern)
+                hold_duration_weekdays = add_one_day_if_weekday(hold_start_date, now_eastern)
 
                 # Update the due date
                 if case.due_date and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Check if there's an existing due date

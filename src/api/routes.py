@@ -286,6 +286,26 @@ def signup():
 
 
 
+@api.route('/admin/update_due_date', methods=['PUT'])
+@jwt_required()
+def update_due_date():
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
+
+    case_number = request.json.get("caseNumber", None)
+    case_to_update = Case.query.filter_by(id=case).first()
+
+    case_to_update.due_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
+
+    db.session.commit()
+
+    return jsonify({'message': 'Due Date Updated'}), 200
+
+
+    
+
+
+
 @api.route('/admin-login', methods=['POST'])
 def admin_login():
     email = request.json.get("email", None)

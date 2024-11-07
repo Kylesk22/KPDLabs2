@@ -46,6 +46,7 @@ export const AdminSingleCase = props => {
     const [hold, setHold] = useState("")
     const [userHoldTrigger, setUserHoldTrigger] = useState(false)
     const hasMounted = useRef(false)
+    const [newDueDate, setNewDueDate] = useState(false)
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -618,7 +619,8 @@ export const AdminSingleCase = props => {
                 "reference id": refId,
                 "hold": hold,
                 "model3D": model3D,
-                ...(logNote ? { logNote } : {})
+                ...(logNote ? { logNote } : {}),
+                // ...(newDueDate ? { "due_date": newDueDate } : {})
             }
             
             const options = {
@@ -794,6 +796,45 @@ export const AdminSingleCase = props => {
 
 
 
+
+        const updateDueDate = () => {
+            const url = process.env.BACKEND_URL
+            
+
+            let modifiedDueDate = {};
+
+            if (newDueDate) {
+                modifiedDueDate = { 
+                    caseNumber: caseNum,
+                    "due_date": newDueDate };
+
+                const options = {
+                    method:"PUT",
+                    headers:{
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                    },
+                    body: JSON.stringify(modifiedDueDate)
+                }
+                fetch(`${url}/admin/update_due_date`, options)
+                .then((res)=> {
+                    if (res.ok) {
+                        return res.json()
+                        .then((data)=>{
+                        setNewDueDate(false)
+                        alert(data.message)})
+                    }})
+
+            } else {
+                alert("No Due Date Added");
+                return
+            }
+
+
+        }
+
+
+
         // calculating due date
         const calculateBusinessDays = (numberOfDays) => {
 
@@ -937,6 +978,11 @@ export const AdminSingleCase = props => {
                                 <button className="btn btn-primary" onClick={(e)=>{handleAddHold()}}>Hold</button>
                             : <button className="btn btn-primary" onClick={(e)=>{handleRemoveHold()}}>Remove Hold</button>
                             }
+                            </div>
+                        </div>
+                        <div className="row form-group justify-content-center mt-3 no-print">
+                            <div className="text-center col-8 col-lg-4 pt-3">
+                            <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setNewDueDate(true); updateDueDate();}}>Impressions Received</button>
                             </div>
                         </div>
                     </div>

@@ -359,25 +359,25 @@ def getAllInfo(id):
 
         for case in all_cases:
     # Check if the case has a hold
-        if case.hold and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Assuming 'hold' is a string in 'MM/DD/YYYY HH:MM:SS' format
-            hold_start_date = datetime.strptime(case.hold, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
-            hold_start_date = hold_start_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
+            if case.hold and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Assuming 'hold' is a string in 'MM/DD/YYYY HH:MM:SS' format
+                hold_start_date = datetime.strptime(case.hold, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
+                hold_start_date = hold_start_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
 
-            # Calculate hold duration while skipping weekends
-            hold_duration_weekdays = calculate_weekdays(hold_start_date, now_eastern)
+                # Calculate hold duration while skipping weekends
+                hold_duration_weekdays = calculate_weekdays(hold_start_date, now_eastern)
 
-            # Update the due date
-            if case.due_date and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Check if there's an existing due date
-                case.hold_date_check = now_eastern.strftime('%m/%d/%Y')
-                original_due_date = datetime.strptime(case.due_date, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
-                original_due_date = original_due_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
-                
-                # Add only weekdays (Mon-Fri) from the hold period
-                new_due_date = original_due_date + timedelta(days=hold_duration_weekdays)  # Add weekdays to the due date
-                case.due_date = new_due_date.strftime('%m/%d/%Y %H:%M:%S')  # Update to desired format
+                # Update the due date
+                if case.due_date and case.hold_date_check != now_eastern.strftime('%m/%d/%Y'):  # Check if there's an existing due date
+                    case.hold_date_check = now_eastern.strftime('%m/%d/%Y')
+                    original_due_date = datetime.strptime(case.due_date, '%m/%d/%Y %H:%M:%S')  # Convert to naive datetime
+                    original_due_date = original_due_date.replace(tzinfo=eastern_offset)  # Localize to Eastern Time
+                    
+                    # Add only weekdays (Mon-Fri) from the hold period
+                    new_due_date = original_due_date + timedelta(days=hold_duration_weekdays)  # Add weekdays to the due date
+                    case.due_date = new_due_date.strftime('%m/%d/%Y %H:%M:%S')  # Update to desired format
 
-                # Save the updated due date back to the database
-                db.session.commit()
+                    # Save the updated due date back to the database
+                    db.session.commit()
 
         all_users_list = list(map(lambda x: x.serialize(), all_users))
         all_cases_list = list(map(lambda x: x.serialize(), all_cases))

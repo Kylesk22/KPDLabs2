@@ -295,7 +295,7 @@ def update_due_date():
     case_number = request.json.get("caseNumber", None)
     case_to_update = Case.query.filter_by(id=case).first()
 
-    case_to_update.due_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
+    case_to_update.update_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
 
     db.session.commit()
 

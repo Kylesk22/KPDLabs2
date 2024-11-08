@@ -796,7 +796,7 @@ export const AdminSingleCase = props => {
 
 
 
-
+        
         const updateDueDate = () => {
             const url = process.env.BACKEND_URL
             
@@ -826,12 +826,16 @@ export const AdminSingleCase = props => {
                     }})
 
             } else {
-                alert("No Due Date Added");
+                // alert("No Due Date Added");
                 return
             }
 
 
         }
+        useEffect(()=>{
+            if (newDueDate){
+            updateDueDate()}
+    }, [newDueDate])
 
 
 
@@ -982,7 +986,7 @@ export const AdminSingleCase = props => {
                         </div>
                         <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
-                            <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setNewDueDate(true); updateDueDate();}}>Impressions Received</button>
+                            <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setNewDueDate(true)}}>Impressions Received</button>
                             </div>
                         </div>
                     </div>

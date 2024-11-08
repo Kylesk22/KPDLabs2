@@ -293,7 +293,7 @@ def update_due_date():
     now_eastern = now_utc.astimezone(eastern)
 
     case_number = request.json.get("caseNumber", None)
-    case_to_update = Case.query.filter_by(id=case).first()
+    case_to_update = Case.query.filter_by(id=case_number).first()
 
     case_to_update.update_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
 

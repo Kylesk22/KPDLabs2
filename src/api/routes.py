@@ -401,7 +401,7 @@ def getAllInfo(id):
                     # Add only weekdays (Mon-Fri) from the hold period
                     new_due_date = original_due_date + timedelta(days=hold_duration_weekdays)  # Add weekdays to the due date
                     if new_due_date.weekday() == 5:  # Saturday
-                        new_due_date += timedelta(days=1)  # Move to Monday
+                        new_due_date += timedelta(days=2)  # Move to Monday
                     elif new_due_date.weekday() == 6:  # Sunday
                         new_due_date += timedelta(days=1) 
                     case.due_date = new_due_date.strftime('%m/%d/%Y %H:%M:%S')  # Update to desired format

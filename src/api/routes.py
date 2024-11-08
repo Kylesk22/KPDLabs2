@@ -296,10 +296,11 @@ def update_due_date():
     case_to_update = Case.query.filter_by(id=case_number).first()
 
     case_to_update.update_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
+    case_to_update.due_date= calculate_business_days(now_eastern.strftime('%m/%d/%Y %H:%M:%S'), 6)
 
     db.session.commit()
 
-    return jsonify({'message': 'Due Date Updated'}), 200
+    return jsonify({'message': 'Dates Updated'}), 200
 
 
     

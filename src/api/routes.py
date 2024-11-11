@@ -296,7 +296,8 @@ def update_due_date():
     case_to_update = Case.query.filter_by(id=case_number).first()
 
     case_to_update.update_date = now_eastern.strftime('%m/%d/%Y %H:%M:%S')
-    case_to_update.due_date= calculate_business_days(now_eastern.strftime('%m/%d/%Y %H:%M:%S'), 6)
+    calc_val = calculate_business_days(now_eastern.strftime('%m/%d/%Y %H:%M:%S'), 6)
+    case_to_update.due_date= calc_val.strftime("%m/%d/%Y %H:%M:%S")
 
     case_to_update.add_log(f"KPD: Impressions Received {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
 

@@ -660,7 +660,9 @@ export const AdminSingleCase = props => {
                         // props.generateCase()
                         props.getCase("")
 
-                        window.location.href = `/admin/${id}`;
+                        setTimeout(() => {
+                            window.location.href = `/admin/${id}`;
+                        }, 500);
                         
                     })}
                 return(res.json())

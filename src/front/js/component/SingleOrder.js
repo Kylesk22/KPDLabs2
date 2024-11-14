@@ -437,7 +437,7 @@ export const SingleOrder = props => {
                             </div>
                         </div>
                         <input className="form-control"  id="logNote" type="text" placeholder="Type Message Here" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
-                        <button className="btn btn-primary" style={{ width: "400px"}}onClick={(e)=>{e.preventDefault();handleAddLogNote()}}>Add Note</button>
+                        <button className="btn btn-primary" style={{ width: "400px"}}onClick={(e)=>{handleAddLogNote()}}>Add Note</button>
                     </div>
                 </div>
                 </div>

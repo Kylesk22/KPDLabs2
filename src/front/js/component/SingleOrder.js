@@ -63,7 +63,7 @@ export const SingleOrder = props => {
         const url = process.env.BACKEND_URL
 
         let message = {
-            "msg": `New Message For #${caseNum}, Message: ${logNote}!`,
+            "msg": `New Message For #${caseNum}, Message: ${logNote}.`,
         }
 
         const options = {

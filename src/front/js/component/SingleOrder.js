@@ -59,6 +59,49 @@ export const SingleOrder = props => {
         window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subjects);
     }
 
+    function sentToSlack(){
+
+        let message = {
+            "msg": `New Message For #${caseNum}, Message: ${logNote}!`,
+        }
+
+        const options = {
+            method:"POST",
+            withCredntials: true,
+            credentials: 'include',
+            
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify(message)
+            
+            
+        }
+        fetch(`${url}/slack`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    console.log(data)
+                });
+            } else {
+                return res.json()
+                .then((body)=>{
+                    console.log(body)
+                    alert(body.message);
+                });
+            }
+        })
+        .catch((err)=> {
+            console.log(err);
+            
+        });
+        
+       
+
+    }
+
     useEffect(()=>{
         
         props.handleGetPage(page);
@@ -260,6 +303,7 @@ export const SingleOrder = props => {
         uploadNote();
         return newLog; // Return the updated log for state
     });
+    sentToSlack()
 
     // Clear the log note input if necessary
     setLogNote('');

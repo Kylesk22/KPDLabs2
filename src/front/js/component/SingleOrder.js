@@ -60,6 +60,7 @@ export const SingleOrder = props => {
     }
 
     function sentToSlack(){
+        const url = process.env.BACKEND_URL
 
         let message = {
             "msg": `New Message For #${caseNum}, Message: ${logNote}!`,

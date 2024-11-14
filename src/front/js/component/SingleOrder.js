@@ -386,7 +386,7 @@ export const SingleOrder = props => {
                             <div style={{ width: "400px", fontSize: "25px"}}><strong>Log</strong></div>
                             <div style={{ width: "400px", height: "500px", border: "2px solid black", borderRadius: "5px", overflowY: "scroll" }} ref={logRef}>
                                 <ul style={{backgroundColor: "white", color:"black"}}>
-                                    {Array.isArray(log) && log.map((item, index) => (
+                                    {Array.isArray(log) && log.filter(item => !item.toLowerCase().includes("internal")).map((item, index) => (
                                         <li key={index} style={{padding: "10px", textAlign: "left", borderBottom: "1px dotted grey"}}>{item}</li>
                                     ))}
                                 </ul>

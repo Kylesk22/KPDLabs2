@@ -1017,12 +1017,11 @@ export const AdminSingleCase = props => {
                         <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
                         <label style={{color:"black"}}>
                         <input
-                            type="radio"
-                            value="Internal"
+                            type="checkbox"
                             checked={internal}
-                            onChange={(e)=>{setInternal(true)}}
-                        />
-                        Mark as Internal
+                            onChange={() => setInternal(!internal)}  // Toggle between true/false
+                            />
+                            Mark as Internal
                         </label>
                     </div>
                     

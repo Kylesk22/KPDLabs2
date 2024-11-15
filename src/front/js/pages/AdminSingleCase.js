@@ -57,6 +57,7 @@ export const AdminSingleCase = props => {
     const [rates, setRates] = useState([])
     const [license, setLicense] = useState([])
     const logRef = useRef(null);
+    const [internal, setInternal] = useState(false)
 
     const [labelUrl, setLabelUrl] = useState("")
     const [files, setFiles] = useState([]);
@@ -908,6 +909,7 @@ export const AdminSingleCase = props => {
         
                 // Clear the log note input if necessary
                 setLogNote('');
+                setInternal(false)
             };
 
             const handleAddHold = () => {
@@ -958,6 +960,12 @@ export const AdminSingleCase = props => {
                     logRef.current.scrollTop = logRef.current.scrollHeight;
                 }
             }, [log]);
+
+            useEffect(() => {
+                if (internal && !logNote.startsWith('internal ')) {
+                  setLogNote(`internal ${logNote}`);
+                }
+              }, [internal, logNote]);
   
         return (
             <>
@@ -1007,6 +1015,15 @@ export const AdminSingleCase = props => {
                         </div>
                         <input className="form-control"  id="logNote" type="text" placeholder="Type Message Here" style={{borderRadius: "1rem", minHeight:"40px", width: "400px"}}  value={logNote} onChange={(e)=>setLogNote(e.target.value)}></input>
                         <button className="btn btn-primary" style={{ width: "400px"}}onClick={()=>{handleAddLogNote()}}>Add Note</button>
+                        <label style={{color:"black"}}>
+                        <input
+                            type="radio"
+                            value="Internal"
+                            checked={internal}
+                            onChange={(e)=>{setInternal(true)}}
+                        />
+                        Mark as Internal
+                        </label>
                     </div>
                     
                 </div>

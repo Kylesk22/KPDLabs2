@@ -2889,7 +2889,7 @@ AWS.config.update({
             <option value="Select One">Select One</option>
             <option value="Pink" onClick={()=>setGumShade("Pink")}>Pink</option>
             <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
-            <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink Fiber</option>
+            {/* <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink Fiber</option> */}
         </select>
     </div>
 </div>
@@ -3322,7 +3322,7 @@ AWS.config.update({
             <option value="Select One">Select One</option>
             <option value="Pink" onClick={()=>setGumShade("Pink")}>Pink</option>
             <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
-            <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink Fiber</option>
+            {/* <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink Fiber</option> */}
         </select>
     </div>
 </div>
@@ -3781,7 +3781,7 @@ AWS.config.update({
                         <option value="Select One">Select One</option>
                         <option value="Pink" onClick={()=>setGumShade("Pink")}>Pink</option>
                         <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
-                        <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink/Red</option>
+                        {/* <option value="Pink Fiber" onClick={()=>setGumShade("Pink Fiber")}>Pink/Red</option> */}
                     </select>
                 </div>
             </div>

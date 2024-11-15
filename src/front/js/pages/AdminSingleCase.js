@@ -963,7 +963,7 @@ export const AdminSingleCase = props => {
 
             useEffect(() => {
                 if (internal && !logNote.startsWith('internal')) {
-                  setLogNote(`internal ${logNote}`);
+                  setLogNote(`internalkpdnote ${logNote}`);
                 }
               }, [internal, logNote]);
   

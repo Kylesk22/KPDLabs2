@@ -22,6 +22,7 @@ export const AdminPage = props => {
     const [showBulkBox, setShowBulkBox] = useState(false)
     const [bulkCases, setBulkCases] = useState([])
     const [bulkStatus, setBulkStatus] = useState("")
+    const [caseChecked, setCaseChecked] = useState(false)
 
     //blog variables
     const [title, setTitle] = useState("")
@@ -516,7 +517,7 @@ export const AdminPage = props => {
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
                                         {(showBulkBox)?
-                                            <div className = "col-1 text-center" onClick={(e) => setBulkCases(...bulkCases, e.target.value)} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
+                                            <div className = "col-1 text-center" onClick={(e) => {setBulkCases(...bulkCases, e.target.value); (caseChecked)? setcaseChecked(false): setCaseChecked(true)}} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
                                             :
                                             ""
                                         }

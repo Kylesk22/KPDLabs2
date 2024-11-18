@@ -19,6 +19,9 @@ export const AdminPage = props => {
     const [singlePage, setSinglePage] = useState("")
     const [search, setSearch] = useState("")
     const [originalCases, setOriginalCases] = useState("")
+    const [showBulkBox, setShowBulkBox] = useState(false)
+    const [bulkCases, setBulkCases] = useState([])
+    const [bulkStatus, setBulkStatus] = useState("")
 
     //blog variables
     const [title, setTitle] = useState("")
@@ -441,6 +444,9 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
                 <div >
+                    <div className="row">
+                        <button className="btn btn-primary">Select Bulk Status Cases</button>
+                    </div>
                     <div className="row" >
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
                     <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>

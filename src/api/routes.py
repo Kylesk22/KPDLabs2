@@ -746,7 +746,7 @@ def new_case(id):
         elif request.json.get("user", None) and request.json.get("logNote", None):
             case = request.json.get("case", None)
             update_case = Case.query.filter_by(id=case).first()
-            print("hit this line")
+            
             update_case.add_log(f"Dr. {userobj.lname}: {request.json.get('logNote', None)}")
             db.session.commit()
             return jsonify({"msg": "Updated"}), 200
@@ -918,6 +918,35 @@ def new_case(id):
 
     #return 'Img has been uploaded!', 200
     # return print("Hello")
+
+@api.route('/<int:id>/admin/bulk_status', methods=['PUT'])
+@jwt_required()
+def bulk_status(id):
+    selected_cases = request.json.get("cases", [])
+    status = request.json.get("status", None)
+
+    if status is None:
+        return jsonify({"message": "Status is required"}), 400
+    
+    if not selected_cases:
+        return jsonify({"message": "No cases provided"}), 400
+
+    # Loop through selected case IDs and update their status
+    for case_id in selected_cases:
+        user_case = Case.query.filter_by(id=case_id).first()
+        if user_case:
+            user_case.status = status
+        else:
+            # Handle case not found (optional)
+            return jsonify({"message": f"Case with ID {case_id} not found"}), 404
+
+    # Commit all changes to the database
+    db.session.commit()
+    
+    return jsonify({"message": "Status updated for selected cases"}), 200
+
+
+
 
 @api.route('/<int:id>/cases', methods=['GET'])
 @jwt_required()

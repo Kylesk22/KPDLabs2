@@ -446,7 +446,7 @@ export const AdminPage = props => {
                 <div >
                     <div className="row">
                         <div className="col-4">
-                            {(showBulkBox)?
+                            {(!showBulkBox)?
                             <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select Bulk Status Cases</button>
                             :
                             <>
@@ -463,7 +463,7 @@ export const AdminPage = props => {
                                 <option value="Closed" onClick={()=>setBulkStatus("Closed")}>Closed</option>
                                 
                             </select>
-                            <button className="btn btn-primary">Submit</button>
+                            <button className="btn btn-primary" onClick={()=>showBulkBox(false)}>Submit</button>
                             </>
                             }
                             </div>

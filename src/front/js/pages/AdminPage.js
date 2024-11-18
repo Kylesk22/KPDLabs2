@@ -450,20 +450,19 @@ export const AdminPage = props => {
                             <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select Bulk Status Cases</button>
                             :
                             <>
-                            {/* <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
-                                <option value={caseStatus}>{caseStatus}</option>
-                                <option value="Created" onClick={()=>setCaseStatus("Created")}>Created</option>
-                                <option value="Scanning" onClick={()=>setCaseStatus("Scanning")}>Scanning</option>
-                                <option value="Design" onClick={()=>setCaseStatus("Design")}>Design</option>
-                                <option value="Manufacturing" onClick={()=>setCaseStatus("Manufacturing")}>Manufacturing</option>
-                                <option value="Pre-Finish" onClick={()=>setCaseStatus("Pre-Finish")}>Pre-Finish</option>
-                                <option value="Finish" onClick={()=>setCaseStatus("Finish")}>Finish</option>
-                                <option value="Ready to Ship" onClick={()=>setCaseStatus("Ready to Ship")}>Ready to Ship</option>
-                                <option value="Shipped" onClick={()=>setCaseStatus("Shipped")}>Shipped</option>
-                                <option value="Billed" onClick={()=>setCaseStatus("Billed")}>Billed</option>
-                                <option value="Closed" onClick={()=>setCaseStatus("Closed")}>Closed</option>
-                                <option value="Void" onClick={()=>setCaseStatus("Void")}>Void</option>
-                            </select> */}
+                            <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
+                                
+                                <option value="Scanning" onClick={()=>setBulkStatus("Scanning")}>Scanning</option>
+                                <option value="Design" onClick={()=>setBulkStatus("Design")}>Design</option>
+                                <option value="Manufacturing" onClick={()=>setBulkStatus("Manufacturing")}>Manufacturing</option>
+                                <option value="Pre-Finish" onClick={()=>setBulkStatus("Pre-Finish")}>Pre-Finish</option>
+                                <option value="Finish" onClick={()=>setBulkStatus("Finish")}>Finish</option>
+                                <option value="Ready to Ship" onClick={()=>setBulkStatus("Ready to Ship")}>Ready to Ship</option>
+                                <option value="Shipped" onClick={()=>setBulkStatus("Shipped")}>Shipped</option>
+                                <option value="Billed" onClick={()=>setBulkStatus("Billed")}>Billed</option>
+                                <option value="Closed" onClick={()=>setBulkStatus("Closed")}>Closed</option>
+                                
+                            </select>
                             <button className="btn btn-primary">Submit</button>
                             </>
                             }

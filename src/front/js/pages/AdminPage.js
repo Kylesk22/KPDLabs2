@@ -501,18 +501,11 @@ export const AdminPage = props => {
                     
 
                         return (
-                            <div key={index} className="row" >
-                            
-                            {(showBulkBox)?
-                                <div className = "col-1 text-center" onClick={(e) => {setBulkCases(...bulkCases, e.target.value); (caseChecked)? setcaseChecked(false): setCaseChecked(true)}} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
-                                :
-                                ""
-                            }
                             
                             <Link to = {(item.status !== "Created")? `/admin/${id}/${item["id"]}` :""}>
                             
 
-                            
+                            <div key={index} className="row" >
                                 
                             
                                 {(index <= pageMax && index >= pageMin)?
@@ -523,7 +516,11 @@ export const AdminPage = props => {
                                         {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
-                                        
+                                        {(showBulkBox)?
+                                            <div className = "col-1 text-center" onClick={(e) => {setBulkCases(...bulkCases, e.target.value); (caseChecked)? setcaseChecked(false): setCaseChecked(true)}} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
+                                            :
+                                            ""
+                                        }
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" :  (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
@@ -546,9 +543,8 @@ export const AdminPage = props => {
                                     </>
                                 
                             :""}
-                            </Link>
                             </div>
-                            
+                            </Link>
                             
                             
                         );

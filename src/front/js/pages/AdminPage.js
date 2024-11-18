@@ -450,7 +450,7 @@ export const AdminPage = props => {
                             <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select Bulk Status Cases</button>
                             :
                             <>
-                            <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
+                            {/* <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setCaseStatus(e.target.value)}}>
                                 <option value={caseStatus}>{caseStatus}</option>
                                 <option value="Created" onClick={()=>setCaseStatus("Created")}>Created</option>
                                 <option value="Scanning" onClick={()=>setCaseStatus("Scanning")}>Scanning</option>
@@ -463,7 +463,7 @@ export const AdminPage = props => {
                                 <option value="Billed" onClick={()=>setCaseStatus("Billed")}>Billed</option>
                                 <option value="Closed" onClick={()=>setCaseStatus("Closed")}>Closed</option>
                                 <option value="Void" onClick={()=>setCaseStatus("Void")}>Void</option>
-                            </select>
+                            </select> */}
                             <button className="btn btn-primary">Submit</button>
                             </>
                             }

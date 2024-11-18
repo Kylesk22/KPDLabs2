@@ -445,7 +445,7 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
                 <div >
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-3">
                             {(!showBulkBox)?
                             <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select Bulk Status Cases</button>
                             :
@@ -469,8 +469,13 @@ export const AdminPage = props => {
                             </div>
                     </div>
                     <div className="row" >
+                    {(showBulkBox)?
+                    <div className = "col-1 text-center" >Select Cases</div>
+                    :
+                    ""
+                    }
                     <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
-                    <div className = "col-3 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
+                    <div className = "col-2 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
                     <div className = "col-3 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
                     <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('update date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
@@ -510,8 +515,13 @@ export const AdminPage = props => {
                                         {/* <div className = "col-2 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}} >{item["id"]}</div>
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
+                                        {(showBulkBox)?
+                                            <div className = "col-1 text-center" onClick={(e) => setBulkCases(...bulkCases, e.target.value)} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
+                                            :
+                                            ""
+                                        }
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" :  (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
-                                        <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
+                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"] ? 

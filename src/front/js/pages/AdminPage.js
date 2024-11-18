@@ -517,7 +517,7 @@ export const AdminPage = props => {
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
                                         {(showBulkBox)?
-                                            <div className = "col-1 text-center" onClick={(e) => {setBulkCases(...bulkCases, e.target.value); (caseChecked)? setcaseChecked(false): setCaseChecked(true)}} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
+                                            <div className = "col-1 text-center" onClick={(e) => {e.stopPropagation(); setBulkCases(...bulkCases, e.target.value); (caseChecked)? setcaseChecked(false): setCaseChecked(true)}} value= {item["id"]} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
                                             :
                                             ""
                                         }

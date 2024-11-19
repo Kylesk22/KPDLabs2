@@ -400,7 +400,7 @@ export const AdminPage = props => {
 
 
 
-
+      useEffect(()=>{console.log(caseChecked)})
     
     
         return (

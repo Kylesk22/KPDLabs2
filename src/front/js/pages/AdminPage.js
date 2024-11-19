@@ -451,7 +451,7 @@ export const AdminPage = props => {
         useEffect(()=>{
             console.log(bulkStatus);
         
-        }, [filter])
+        }, [statusToFilter])
         
     
         return (

@@ -399,12 +399,25 @@ export const AdminPage = props => {
   
 
 
+        const handleSelectItem = (itemId) => {
+            setBulkCases((prevBulkCases) => {
+              if (prevBulkCases.includes(itemId)) {
+                // If item is already selected, remove it
+                return prevBulkCases.filter(id => id !== itemId);
+              } else {
+                // Otherwise, add it to the selected array
+                return [...prevBulkCases, itemId];
+              }
+            });
+          };
 
-      useEffect(()=>{
-        console.log(caseChecked);
-       
-    })
-    
+          const isItemSelected = (itemId) => bulkCases.includes(itemId);
+
+        useEffect(()=>{
+            console.log(caseChecked);
+        
+        })
+        
     
         return (
             <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
@@ -520,7 +533,7 @@ export const AdminPage = props => {
                                         <div className = "col-5 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}>{item["name"]}</div>
                                         <div className = "col-3 text-center" style={{border: "solid white 1px", color:"white", backgroundColor:"#202020"}}></div> */}
                                         {(showBulkBox)?
-                                            <div className = "col-1 text-center" onClick={(e) => {e.preventDefault(); e.stopPropagation(); setBulkCases(...bulkCases, item["id"]); (!caseChecked)? setCaseChecked(true): setCaseChecked(false)}}  style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(caseChecked)?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
+                                            <div className = "col-1 text-center" onClick={(e) => {e.preventDefault(); e.stopPropagation();  handleSelectItem(item["id"]); }}  style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{(isItemSelected(item["id"]))?<i className="fa-regular fa-square-check"></i>: <i className="fa-regular fa-square"></i>}</div>
                                             :
                                             ""
                                         }

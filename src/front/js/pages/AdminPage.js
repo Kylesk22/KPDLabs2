@@ -402,7 +402,7 @@ export const AdminPage = props => {
                 
             }
             const options = {
-                method:"POST",
+                method:"PUT",
                 credentials: 'include',
                 headers:{
                     "Content-Type": "application/json",

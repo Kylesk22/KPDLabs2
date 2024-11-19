@@ -414,7 +414,7 @@ export const AdminPage = props => {
           const isItemSelected = (itemId) => bulkCases.includes(itemId);
 
         useEffect(()=>{
-            console.log(caseChecked);
+            console.log(bulkCases);
         
         })
         

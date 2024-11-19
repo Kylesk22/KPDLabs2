@@ -23,6 +23,7 @@ export const AdminPage = props => {
     const [bulkCases, setBulkCases] = useState([])
     const [bulkStatus, setBulkStatus] = useState("")
     const [caseChecked, setCaseChecked] = useState(false)
+    const [statusToFilter, setStatusToFilter] = useState("")
 
     //blog variables
     const [title, setTitle] = useState("")
@@ -450,7 +451,7 @@ export const AdminPage = props => {
         useEffect(()=>{
             console.log(bulkStatus);
         
-        })
+        }, [filter])
         
     
         return (

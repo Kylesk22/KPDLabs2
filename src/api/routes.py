@@ -329,7 +329,7 @@ def admin_login():
         
       
         
-        set_access_cookies(response, admin_token, max_age=100000, )
+        set_access_cookies(response, admin_token, max_age=365 * 24 * 60 * 60 )
         
         return response, 200
     else:

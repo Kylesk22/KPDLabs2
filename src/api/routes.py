@@ -919,9 +919,9 @@ def new_case(id):
     #return 'Img has been uploaded!', 200
     # return print("Hello")
 
-@api.route('/<int:id>/admin/bulk_status', methods=['PUT'])
+@api.route('/admin/bulk_status', methods=['PUT'])
 @jwt_required()
-def bulk_status(id):
+def bulk_status():
     selected_cases = request.json.get("cases", [])
     status = request.json.get("status", None)
 

@@ -922,6 +922,8 @@ def new_case(id):
 @api.route('/admin/bulk_status', methods=['PUT'])
 @jwt_required()
 def bulk_status():
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
     selected_cases = request.json.get("cases", [])
     status = request.json.get("status", None)
 
@@ -936,6 +938,7 @@ def bulk_status():
         user_case = Case.query.filter_by(id=case_id).first()
         if user_case:
             user_case.status = status
+            user_case.add_log(f"{status}: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
         else:
             # Handle case not found (optional)
             return jsonify({"message": f"Case with ID {case_id} not found"}), 404

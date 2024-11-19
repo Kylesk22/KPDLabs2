@@ -400,7 +400,12 @@ export const AdminPage = props => {
 
 
 
-      useEffect(()=>{console.log(caseChecked)})
+      useEffect(()=>{
+        console.log(caseChecked);
+        if (!caseChecked) {
+            setBulkCases([])
+        }
+    })
     
     
         return (

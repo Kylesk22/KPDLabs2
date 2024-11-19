@@ -516,6 +516,7 @@ export const AdminPage = props => {
                                 
                             </select>
                             <button className="btn btn-primary" onClick={()=>{handleUpdateCaseStatus()}}>Submit</button>
+                            <button className="btn btn-primary" onClick={()=>setShowBulkBox(false)}>Cancel</button>
                             </>
                             }
                             </div>

@@ -402,9 +402,7 @@ export const AdminPage = props => {
 
       useEffect(()=>{
         console.log(caseChecked);
-        if (!caseChecked) {
-            setBulkCases([])
-        }
+       
     })
     
     

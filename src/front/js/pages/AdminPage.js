@@ -449,9 +449,10 @@ export const AdminPage = props => {
           const isItemSelected = (itemId) => bulkCases.includes(itemId);
 
         useEffect(()=>{
-            if (sessionStorage.getItem('filterType')){
+            if (sessionStorage.getItem('filterType') && originalCases){
             const storedFilterType = sessionStorage.getItem('filterType');
             statusFilter(storedFilterType)}
+            console.log(storedFilterType)
             
         
         }, [statusToFilter])

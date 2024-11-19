@@ -449,7 +449,10 @@ export const AdminPage = props => {
           const isItemSelected = (itemId) => bulkCases.includes(itemId);
 
         useEffect(()=>{
-            console.log(bulkStatus);
+            if (sessionStorage.getItem('filterType')){
+            const storedFilterType = sessionStorage.getItem('filterType');
+            statusFilter(storedFilterType)}
+            
         
         }, [statusToFilter])
         
@@ -483,7 +486,7 @@ export const AdminPage = props => {
                 className="p-2"
                 style={{border: "1px solid black", marginBottom: "5px"}}
                  />
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
+                 {/* <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
@@ -494,7 +497,19 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Rdy Ship</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button> */}
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Created"); setStatusToFilter("Created")}}>Created</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Submitted"); setStatusToFilter("Submitted")}}>Submitted</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Scanning"); setStatusToFilter("Scanning")}}>Scanning</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Design"); setStatusToFilter("Design")}}>Design</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Manufacturing"); setStatusToFilter("Manufacturing")}}>Manufact</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Pre-Finish"); setStatusToFilter("Pre-Finish")}}>PreFin</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Finish"); setStatusToFilter("Finish")}}>Fin</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Ready to Ship"); setStatusToFilter("Ready to Ship")}}>Rdy Ship</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Shipped"); setStatusToFilter("Shipped")}}>Shipped</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Billed"); setStatusToFilter("Billed")}}>Billed</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Closed"); setStatusToFilter("Closed")}}>Closed</button>
                 <div >
                     <div className="row">
                         <div className="col-3">

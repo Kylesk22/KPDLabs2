@@ -408,7 +408,7 @@ export const AdminPage = props => {
                     "Content-Type": "application/json",
                     "X-CSRF-TOKEN": getCookie("csrf_access_token"),
                 },
-                body: JSON.stringify(newBlog)
+                body: JSON.stringify(info)
                 
             }
             fetch(`${url}/admin/bulk_status`, options)

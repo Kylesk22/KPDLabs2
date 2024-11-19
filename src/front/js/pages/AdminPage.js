@@ -417,6 +417,7 @@ export const AdminPage = props => {
                     return res.json()
                     .then((data)=>{
                     setShowBulkBox(false)
+                    window.location.reload();
     
                         
                     })}
@@ -502,6 +503,7 @@ export const AdminPage = props => {
                             <>
                             <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
                                 <option value="Select One" onClick={()=>setBulkStatus("Select One")}>Select One</option>
+                                <option value="Submitted" onClick={()=>setBulkStatus("Submitted")}>Submitted</option>
                                 <option value="Scanning" onClick={()=>setBulkStatus("Scanning")}>Scanning</option>
                                 <option value="Design" onClick={()=>setBulkStatus("Design")}>Design</option>
                                 <option value="Manufacturing" onClick={()=>setBulkStatus("Manufacturing")}>Manufacturing</option>

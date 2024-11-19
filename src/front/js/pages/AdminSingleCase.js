@@ -973,9 +973,9 @@ export const AdminSingleCase = props => {
                 <div className="row mt-4 no-print"> 
                     <div className="col-8" style={{alignContent: "space-around"}}>
                         <div className="text-center">
-                            <Link to = {`/admin/${id}`}>
-                                <button className="theme-btn" style={{width: "170px"}}>Back</button>
-                            </Link>
+                            {/* <Link to = {`/admin/${id}`}> */}
+                                <button className="theme-btn" style={{width: "170px"}} onClick={() => window.history.back()}>Back</button>
+                            {/* </Link> */}
                         </div>
                         <div className="text-center pt-2">
                         <PrintPDFButton doctorFirst={drName} doctorLast={""} model3D={model3D} finish={finish} dueDate={resultDate} price={price} shipping={shipping} production={production} license={license} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submissionDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>

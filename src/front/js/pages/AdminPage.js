@@ -333,9 +333,7 @@ export const AdminPage = props => {
                     setCases([...cases, ...data.cases])
                     setOriginalCases([...originalCases, ...data.cases])
 
-                    if (sessionStorage.getItem('filterType') && originalCases){
-                        const storedFilterType = sessionStorage.getItem('filterType');
-                        statusFilter(storedFilterType)}
+                    
 
                     const newUsers = {};
                     for (let i = 0; i < data.users.length; i++) {
@@ -459,7 +457,7 @@ export const AdminPage = props => {
             
             
         
-        }, [statusToFilter])
+        }, [statusToFilter, originalCases])
         
     
         return (

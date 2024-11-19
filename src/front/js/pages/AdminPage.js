@@ -416,7 +416,7 @@ export const AdminPage = props => {
                 if (res.ok) {
                     return res.json()
                     .then((data)=>{
-                    
+                    setShowBulkBox(false)
     
                         
                     })}
@@ -513,7 +513,7 @@ export const AdminPage = props => {
                                 <option value="Closed" onClick={()=>setBulkStatus("Closed")}>Closed</option>
                                 
                             </select>
-                            <button className="btn btn-primary" onClick={()=>showBulkBox(false)}>Submit</button>
+                            <button className="btn btn-primary" onClick={()=>{handleUpdateCaseStatus()}}>Submit</button>
                             </>
                             }
                             </div>

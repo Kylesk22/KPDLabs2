@@ -395,7 +395,40 @@ export const AdminPage = props => {
         const [resultDate, setResultDate] = useState(null);
       
         
-
+        const handleUpdateCaseStatus = () => {
+            let info = {
+                "status": bulkStatus,
+                "cases": bulkCases,
+                
+            }
+            const options = {
+                method:"POST",
+                credentials: 'include',
+                headers:{
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                },
+                body: JSON.stringify(newBlog)
+                
+            }
+            fetch(`${url}/admin/bulk_status`, options)
+            .then((res)=> {
+                if (res.ok) {
+                    return res.json()
+                    .then((data)=>{
+                    
+    
+                        
+                    })}
+                return(res.json())
+                .then((body)=>{alert(body.message)})
+                
+                })
+           
+            .catch((err)=> {
+                console.log(err);
+        })
+        }
   
 
 
@@ -414,7 +447,7 @@ export const AdminPage = props => {
           const isItemSelected = (itemId) => bulkCases.includes(itemId);
 
         useEffect(()=>{
-            console.log(bulkCases);
+            console.log(bulkStatus);
         
         })
         
@@ -468,7 +501,7 @@ export const AdminPage = props => {
                             :
                             <>
                             <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
-                                
+                                <option value="Select One" onClick={()=>setBulkStatus("Select One")}>Select One</option>
                                 <option value="Scanning" onClick={()=>setBulkStatus("Scanning")}>Scanning</option>
                                 <option value="Design" onClick={()=>setBulkStatus("Design")}>Design</option>
                                 <option value="Manufacturing" onClick={()=>setBulkStatus("Manufacturing")}>Manufacturing</option>

@@ -452,7 +452,7 @@ export const AdminPage = props => {
             if (sessionStorage.getItem('filterType') && originalCases){
             const storedFilterType = sessionStorage.getItem('filterType');
             statusFilter(storedFilterType)}
-            console.log(storedFilterType)
+            
             
         
         }, [statusToFilter])

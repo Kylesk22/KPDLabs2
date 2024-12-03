@@ -1059,7 +1059,7 @@ export const AdminSingleCase = props => {
                 // Toggle color for the clicked item (can be any color logic you want)
                 setColorMap(prevMap => ({
                   ...prevMap,
-                  [id]: prevMap[id] === "blue" ? "lightcoral" : "blue", // Toggle between blue and lightcoral
+                  [id]: prevMap[id] === "blue" ? "grey" : "blue", // Toggle between blue and lightcoral
                 }));
             
                 // Update the casesIncludedShipment state
@@ -1701,7 +1701,7 @@ export const AdminSingleCase = props => {
                 <div>
                     Select All Cases Being Shipped
                     {cases.map((item, index) => {
-                        const backgroundColor = colorMap[item["id"]] || 'lightblue';
+                        const backgroundColor = colorMap[item["id"]] || 'grey';
                         return (
                             <div key={index} className="row" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
                             </div>

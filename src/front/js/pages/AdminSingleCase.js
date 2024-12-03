@@ -1704,7 +1704,7 @@ export const AdminSingleCase = props => {
                     {cases.map((item, index) => {
                         const backgroundColor = colorMap[item["id"]] || 'light-grey';
                         return (
-                            <div key={index} className="row form-group justify-content-centerno-print" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
+                            <div key={index} className="row form-group justify-content-center no-print" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
                             </div>
                     )})}
                     <button className="btn btn-primary no-print">

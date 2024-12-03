@@ -47,6 +47,11 @@ export const AdminSingleCase = props => {
     const [userHoldTrigger, setUserHoldTrigger] = useState(false)
     const hasMounted = useRef(false)
     const [newDueDate, setNewDueDate] = useState(false)
+    const [shippingStart, setShippingStart] = useState(false)
+    const [cases, setCases] = useState([])
+    const [casesIncludedShipment, setCasesIncludedShipment] = useState([])
+    const [selectedColor, setSelectedColor] = useState("white")
+    const [colorMap, setColorMap] = useState({});
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -966,6 +971,100 @@ export const AdminSingleCase = props => {
                   setLogNote(`internal_kpd_note ${logNote}`);
                 }
               }, [internal, logNote]);
+
+
+
+
+
+            useEffect(()=>{
+                
+               
+        
+                const options = {
+                    method:"GET",
+                    credentials: 'include',
+                    headers:{
+                        "Content-Type": "application/json",
+                    },
+                    
+                }
+                fetch(`${url}/${drId}/cases`, options)
+                .then((res)=> {
+                    if (res.ok) {
+                        return res.json()
+                        .then((data)=>{
+                            
+                            // setCases([...cases, ...data])
+                            const filteredCases = new Map();
+                            const statuses = ["Submitted","Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship"];
+                            data.forEach(item => {
+                                if (item.status) {
+                                    statuses.forEach(status => {
+                                        if (item.status.toLowerCase().includes(status.toLowerCase())) {
+                                            filteredCases.set(item.id, item);
+                                        }
+                                    });
+                                }
+                            });
+                        
+                            // Convert the filtered cases from Map to an array
+                            const casesArray = Array.from(filteredCases.values());
+                            setCases(casesArray); // Assuming setCases is defined in your context
+                            
+                            
+        
+                            
+                        })}
+                    return(res.json())
+                    .then((body)=>{
+        
+                    //   productionFilter()
+                    
+                    }
+                    
+                    )
+                    
+                    })
+               
+                .catch((err)=> {
+                    console.log(err);
+            })
+            },[shippingStart])
+
+            const productionFilter = () => {
+                const filteredCases = new Map();
+                const statuses = ["Submitted","Manufacturing", "Scanning", "Design", "Pre-Finish", "Finish", "Ready to Ship"];
+            
+                cases.forEach(item => {
+                    if (item.status) {
+                        statuses.forEach(status => {
+                            if (item.status.toLowerCase().includes(status.toLowerCase())) {
+                                filteredCases.set(item.id, item);
+                            }
+                        });
+                    }
+                });
+            
+                // Convert the filtered cases from Map to an array
+                const casesArray = Array.from(filteredCases.values());
+                setCases(casesArray); // Assuming setCases is defined in your context
+                
+            
+                return casesArray; // Return the array of filtered cases
+            };
+
+
+
+            const handleSelectedCasesColor = (id) => {
+                // Toggle color for the clicked item (can be any color logic you want)
+                setColorMap(prevMap => ({
+                  ...prevMap,
+                  [id]: prevMap[id] === "blue" ? "lightcoral" : "blue", // Toggle between blue and lightcoral
+                }));
+            
+                // Update the casesIncludedShipment state
+                setCasesIncludedShipment(prev => [...prev, id]);
+              };
   
         return (
             <>
@@ -1593,6 +1692,25 @@ export const AdminSingleCase = props => {
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
                     </div>
                 </div> */}
+                <div className="row form-group justify-content-center mt-3 no-print">
+                    <div className="text-center col-8 col-lg-4 pt-3">
+                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setShippingStart(true)}}>Shipping Label</button>
+                    </div>
+                </div>
+                {(shippingStart && cases)?
+                <div>
+                    Select All Cases Being Shipped
+                    {cases.map((item, index) => {
+                        const backgroundColor = colorMap[item["id"]] || 'lightblue';
+                        return (
+                            <div key={index} className="row" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
+                            </div>
+                    )})}
+                    <button className="btn btn-primary">
+                        Submit
+                    </button>
+                </div>
+                :""}
                 <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>

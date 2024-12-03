@@ -52,6 +52,7 @@ export const AdminSingleCase = props => {
     const [casesIncludedShipment, setCasesIncludedShipment] = useState([])
     const [selectedColor, setSelectedColor] = useState("white")
     const [colorMap, setColorMap] = useState({});
+    const [shippingRates, setShippingRates] = useState(false)
 
     const [drId, setDrId] = useState("")
     const [drName, setDrName] = useState("")
@@ -1719,12 +1720,14 @@ export const AdminSingleCase = props => {
                             <div key={index} className="row form-group justify-content-center no-print" style={{backgroundColor, margin: "auto", width: "100px"}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
                             </div>
                     )})}
-                    <button className="btn btn-primary no-print">
+                    <button className="btn btn-primary no-print" onClick={(e)=>{e.preventDefault(); setShippingStart(false); setShippingRates(true)}}>
                         Submit
                     </button>
                     </div>
                 </div>
                 :""}
+                {(shippingRates)?
+                <>
                 <div className="row form-group justify-content-center mt-3 no-print">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
@@ -1733,7 +1736,7 @@ export const AdminSingleCase = props => {
                 <div className="row justify-content-center mt-3">
                     {rates.map((item, index) => {
                         return (
-                            <div className="col-2" style={{border: "black 1px solid"}}key={index} onClick={()=> {console.log(item); getLabel(item)}}>
+                            <div className="col-2" style={{border: "black 1px solid"}}key={index} onClick={()=> {console.log(item); getLabel(item); setShippingRates(false)}}>
                                 <div>{item.amount}</div>
                                 <div>{item.provider}</div>
                                 <div>{item.servicelevel.name}</div>
@@ -1741,6 +1744,8 @@ export const AdminSingleCase = props => {
                             
                     )})}
                 </div>
+                </>
+                :""}
                 <div className="row form-group justify-content-center mt-3 no-print">
                     {(labelUrl)?
                     <div className="text-center col-8 col-lg-4 pt-3">

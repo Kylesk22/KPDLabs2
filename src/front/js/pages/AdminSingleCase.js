@@ -1056,14 +1056,26 @@ export const AdminSingleCase = props => {
 
 
             const handleSelectedCasesColor = (id) => {
-                // Toggle color for the clicked item (can be any color logic you want)
-                setColorMap(prevMap => ({
-                  ...prevMap,
-                  [id]: prevMap[id] === "blue" ? "lightgray" : "blue", // Toggle between blue and lightcoral
-                }));
+                // Toggle color for the clicked item (toggle between lightgray and blue)
+                setColorMap(prevMap => {
+                  const newColor = prevMap[id] === 'blue' ? 'lightgray' : 'blue'; // Toggle between lightgray and blue
             
-                // Update the casesIncludedShipment state
-                setCasesIncludedShipment(prev => [...prev, id]);
+                  // Update the colorMap for the clicked item
+                  return {
+                    ...prevMap,
+                    [id]: newColor,
+                  };
+                });
+            
+                // Update the casesIncludedShipment state (add or remove id based on the color)
+                setCasesIncludedShipment(prev => {
+                  // If the color is blue, add the id, if it's lightgray, remove the id
+                  if (colorMap[id] === 'blue') {
+                    return prev.filter(item => item !== id); // Remove the id
+                  } else {
+                    return [...prev, id]; // Add the id
+                  }
+                });
               };
   
         return (
@@ -1702,7 +1714,7 @@ export const AdminSingleCase = props => {
                     <div className="col-4 text-center justify-content-center no-print">
                     Select All Cases Being Shipped
                     {cases.map((item, index) => {
-                        const backgroundColor = colorMap[item["id"]] || 'light-grey';
+                        const backgroundColor = colorMap[item["id"]] || 'lightgray';
                         return (
                             <div key={index} className="row form-group justify-content-center no-print" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
                             </div>

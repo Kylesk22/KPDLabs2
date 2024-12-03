@@ -1216,7 +1216,7 @@ def get_rates_to_kpd(id):
 @api.route('/shippo/get_label', methods=['POST'])
 @jwt_required()
 def get_label():
-    
+    cases_included = request.json.get("cases", [])
 
     # Get the first rate in the rates results.
     # Customize this based on your business logic.
@@ -1237,7 +1237,7 @@ def get_label():
     if transaction.status == "SUCCESS":
         print(transaction.label_url)
         print(transaction.tracking_number)
-        cases_included = request.json.get("cases", None)
+        
 
         for case in cases_included:           
             update_case = Case.query.filter_by(id=case).first()

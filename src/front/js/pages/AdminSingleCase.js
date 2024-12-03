@@ -1059,7 +1059,7 @@ export const AdminSingleCase = props => {
                 // Toggle color for the clicked item (can be any color logic you want)
                 setColorMap(prevMap => ({
                   ...prevMap,
-                  [id]: prevMap[id] === "blue" ? "light-grey" : "blue", // Toggle between blue and lightcoral
+                  [id]: prevMap[id] === "blue" ? "lightgray" : "blue", // Toggle between blue and lightcoral
                 }));
             
                 // Update the casesIncludedShipment state

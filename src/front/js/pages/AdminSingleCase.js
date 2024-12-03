@@ -238,7 +238,7 @@ export const AdminSingleCase = props => {
     function getLabel(selectedRate){
         const userInfo = {
             "rate": selectedRate,
-            "cases": cases
+            "cases": casesIncludedShipment
         };
 
         const options = {
@@ -1079,6 +1079,11 @@ export const AdminSingleCase = props => {
                   }
                 });
               };
+
+
+              useEffect(()=>{
+                console.log(casesIncludedShipment) 
+              })
   
         return (
             <>

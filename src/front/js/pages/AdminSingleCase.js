@@ -1698,17 +1698,19 @@ export const AdminSingleCase = props => {
                     </div>
                 </div>
                 {(shippingStart && cases)?
-                <div className="row form-group justify-content-center mt-3 no-print">
+                <div className="row form-group justify-content-center no-print">
+                    <div className="col-4">
                     Select All Cases Being Shipped
                     {cases.map((item, index) => {
                         const backgroundColor = colorMap[item["id"]] || 'light-grey';
                         return (
-                            <div key={index} className="col-4 np-print" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
+                            <div key={index} className="row form-group justify-content-center mt-3 no-print" style={{backgroundColor}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
                             </div>
                     )})}
                     <button className="btn btn-primary no-print">
                         Submit
                     </button>
+                    </div>
                 </div>
                 :""}
                 <div className="row form-group justify-content-center mt-3 no-print">

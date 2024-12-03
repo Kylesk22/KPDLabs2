@@ -1242,6 +1242,7 @@ def get_label():
         for case in cases_included:           
             update_case = Case.query.filter_by(id=case).first()
             update_case.add_log(f"Tracking Number: {transaction.tracking_number}")
+            db.session.commit()
         return jsonify(transaction.label_url)
     else:
         print(transaction.messages)

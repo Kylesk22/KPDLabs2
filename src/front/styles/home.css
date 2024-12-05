@@ -19,6 +19,12 @@
 }
 }
 
+@media (max-width: 1264px){
+  .resources-hide {
+    display: none;
+  }
+  }
+
 #companyName{
     font-family: "Great Vibes", cursive;
     font-weight: 400;

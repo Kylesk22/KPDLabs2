@@ -1,16 +1,22 @@
 
 /* For screens 1200px and smaller */
-@media (max-width: 1200px) {
+@media (max-width: 1210px) {
   .header-style-one .header-lower .main-box .nav-outer {
       display: none !important;
   }
 }
 
 /* For screens 1400px and larger */
-@media (min-width: 1201px) {
+@media (min-width: 1211px) {
   .header-style-one .header-lower .main-box .nav-outer {
       display: block !important;
   }
+}
+
+@media (max-width: 1332px){
+.nav-contact-us-hide {
+  display: none;
+}
 }
 
 #companyName{

@@ -991,7 +991,7 @@ Main Header
         }
         .main-box .nav-outer{
             margin-right: auto;
-            @include media-breakpoint-down(xxl) {
+            @include media-breakpoint-down(xl) {
                 display: none;
             }
         }

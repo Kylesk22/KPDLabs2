@@ -1,4 +1,17 @@
 
+/* For screens 1200px and smaller */
+@media (max-width: 1200px) {
+  .header-style-one .header-lower .main-box .nav-outer {
+      display: none !important;
+  }
+}
+
+/* For screens 1400px and larger */
+@media (min-width: 1201px) {
+  .header-style-one .header-lower .main-box .nav-outer {
+      display: block !important;
+  }
+}
 
 #companyName{
     font-family: "Great Vibes", cursive;

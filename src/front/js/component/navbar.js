@@ -237,7 +237,7 @@ export const Navbar = (props) => {
 				  </li> */}
 				  <li><a href="/resources">Resources</a></li>
 				  <li><a href="/pricing">Pricing</a></li>
-				  <li><a href="/contactus">Contact</a></li>
+				  <li className="nav-contact-us-hide"><a href="/contactus">Contact</a></li>
 				</ul>
 			  </nav>
 			  {/* <!-- Main Menu End-->  */}

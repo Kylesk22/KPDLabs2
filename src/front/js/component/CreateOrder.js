@@ -2039,6 +2039,23 @@ AWS.config.update({
                         <option value="Pink Facial Tissue Composite" onClick={()=>setGumShade("Pink Facial Tissue Composite")}>Pink Facial Tissue Composite</option>
                         
                     </select>
+                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {(gumShade === "Pink Facial Tissue Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                
+                                    `$${(price3 += 50)}`
+                                
+
+                               
+                                    
+                                : (product === "Pink Facial Tissue Composite" && lowerArch && upperArch)?    
+                                `$${(price3 += 100)}`
+                            
+                                :""
+                                
+                                    
+                                }
+                                
+                                </strong></small>
                 </div>
             </div>
             :""}

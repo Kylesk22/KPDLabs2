@@ -2045,6 +2045,7 @@ AWS.config.update({
                                     `$${(price3 += 50)}`
                                 
 
+                                    
                                
                                     
                                 : (product === "Pink Facial Tissue Composite" && lowerArch && upperArch)?    

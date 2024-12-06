@@ -2042,14 +2042,14 @@ AWS.config.update({
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(gumShade === "Pink Facial Tissue Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
-                                    `$${(price3 += 50)}`
+                                    `$${(price2 += 50)}`
                                 
 
-                                    
+
                                
                                     
                                 : (product === "Pink Facial Tissue Composite" && lowerArch && upperArch)?    
-                                `$${(price3 += 100)}`
+                                `$${(price2 += 100)}`
                             
                                 :""
                                 
@@ -2240,7 +2240,7 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price3))}}>Upload</button>
+                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price2+price3))}}>Upload</button>
                     <br></br>
                             <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price3)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>

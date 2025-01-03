@@ -957,7 +957,7 @@ def clone_case():
             production = request.json.get("production", None)
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             due_date = calculate_business_days(update_date, 6)
-            
+            reference_id = request.json.get("reference Id", None)
             
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
@@ -965,10 +965,10 @@ def clone_case():
             # if (request.json.get("logNote", None)):
             #     update_case.add_log(f"{}: {request.json.get('logNote', None)}")
 
-            if (request.json.get("reference id", None)):
-                reference_id = request.json.get("reference Id", None)
-            else:
-                reference_id = ""
+            # if (request.json.get("reference id", None)):
+            #     reference_id = request.json.get("reference Id", None)
+            # else:
+            #     reference_id = ""
             
             
             

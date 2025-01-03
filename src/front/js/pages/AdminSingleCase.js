@@ -1105,6 +1105,7 @@ export const AdminSingleCase = props => {
                     "shipping": shipping,
                     "production": production,
                     "model3D": model3D,
+                    "drId": drId,
                     
                 }
                 

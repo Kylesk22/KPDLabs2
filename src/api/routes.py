@@ -926,11 +926,13 @@ def clone_case():
     now_eastern = now_utc.astimezone(eastern)
     if request.method == 'PUT':
 
+        drId = request.json.get("drId", None)
+
         caseCheck = request.json.get("case", None)
         checking_case = Case.query.filter_by(id=caseCheck).first()
         
 
-        user = User.query.filter_by(id=id).first()
+        user = User.query.filter_by(id=drId).first()
 
         cases = user.case_number
         sorted_cases = sorted(cases, key=lambda case: case.id)

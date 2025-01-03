@@ -919,6 +919,117 @@ def new_case(id):
     #return 'Img has been uploaded!', 200
     # return print("Hello")
 
+@api.route('/admin/clone_case', methods=['PUT'])
+@jwt_required()
+def clone_case():
+    now_utc = datetime.now(utc)
+    now_eastern = now_utc.astimezone(eastern)
+    if request.method == 'PUT':
+
+        caseCheck = request.json.get("case", None)
+        checking_case = Case.query.filter_by(id=caseCheck).first()
+        
+
+        user = User.query.filter_by(id=id).first()
+
+        cases = user.case_number
+        sorted_cases = sorted(cases, key=lambda case: case.id)
+
+        newest_case = sorted_cases[-1]
+
+
+        if newest_case.name is None:
+            case = newest_case
+            name = request.json.get("name", None)
+            teeth = request.json.get("teeth", None)
+            product = request.json.get("product", None)
+            shade = request.json.get("shade", None)
+            notes = request.json.get("note", None)
+            finish = request.json.get("finish", None)
+            blob_scans = request.json.get("stl_urls", None)
+            photos = request.json.get("photos", None)
+            type = request.json.get("type", None)
+            gum_shade = request.json.get("gum_shade", None)
+            price = request.json.get("price", None)
+            shipping = request.json.get("shipping", None)
+            production = request.json.get("production", None)
+            update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+            due_date = calculate_business_days(update_date, 6)
+            
+            status = request.json.get("status", None)
+            model3D = request.json.get("model3D", None)
+
+            # if (request.json.get("logNote", None)):
+            #     update_case.add_log(f"{}: {request.json.get('logNote', None)}")
+
+            if (request.json.get("reference id", None)):
+                reference_id = request.json.get("reference Id", None)
+            else:
+                reference_id = ""
+            
+            
+            
+            update_case = Case.query.filter_by(id=case).first()
+            
+            update_case.name = name
+            update_case.teeth = teeth
+            update_case.product = product
+            update_case.shade = shade
+            update_case.notes = notes
+            update_case.finish = finish
+            update_case.model3D = model3D
+
+            if update_case.status == "Created":
+                update_case.status = "Submitted"
+            else: 
+                update_case.status = status
+            update_case.type = type
+            update_case.gum_shade = gum_shade
+            update_case.price = price
+            update_case.shipping = shipping
+            update_case.production = production
+            update_case.reference_id = reference_id
+            update_case.add_log(f"Submitted: {now_eastern.strftime('%m/%d/%Y %H:%M:%S')}")
+            
+        
+            update_case.update_date = update_date
+            update_case.due_date = due_date.strftime("%m/%d/%Y %H:%M:%S")
+            db.session.commit()
+            
+            if blob_scans:
+                for scan in blob_scans:
+                    
+
+                
+                    new_scan = Scans(
+                        scan = scan,
+                        scan_name = scan,
+                        user_id = id,
+                        case_id = case
+                    )
+                    db.session.add(new_scan)
+                    db.session.commit()
+            
+            if photos:
+                for photo in photos:
+                    
+                    new_photo = Scans(
+                        scan = photo,
+                        scan_name = photo,
+                        user_id = id,
+                        case_id = case
+                    )
+                    db.session.add(new_photo)
+                    db.session.commit()
+
+            res = make_response("updated")
+            res.headers['Content-Type'] = 'application/json'
+            print(f"response:{res}")
+
+            return jsonify({"msg": "Updated"}), 200 
+
+    
+
 @api.route('/admin/bulk_status', methods=['PUT'])
 @jwt_required()
 def bulk_status():

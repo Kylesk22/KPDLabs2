@@ -1029,7 +1029,7 @@ def clone_case():
             res.headers['Content-Type'] = 'application/json'
             print(f"response:{res}")
 
-            return jsonify({"msg": "Updated"}), 200 
+    return jsonify({"msg": "Updated"}), 200 
 
     
 

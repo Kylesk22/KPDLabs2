@@ -746,7 +746,7 @@ export const AdminSingleCase = props => {
                     "status": "Created",
                     "type": type,
                     "gum_shade": gumShade,
-                    "price": finalPrice,
+                    "price": price,
                     "shipping": shipping,
                     "production": production,
                     "model3D": model3D,

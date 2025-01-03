@@ -939,7 +939,7 @@ def clone_case():
 
 
         if newest_case.name is None:
-            case = newest_case
+            
             name = request.json.get("name", None)
             teeth = request.json.get("teeth", None)
             product = request.json.get("product", None)
@@ -969,7 +969,7 @@ def clone_case():
             
             
             
-            update_case = Case.query.filter_by(id=case).first()
+            update_case = newest_case
             
             update_case.name = name
             update_case.teeth = teeth

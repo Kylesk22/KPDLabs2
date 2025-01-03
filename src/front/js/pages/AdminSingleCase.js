@@ -1081,6 +1081,71 @@ export const AdminSingleCase = props => {
               };
 
 
+            const remakeCase = () => {
+                const url = process.env.BACKEND_URL
+    
+           
+    
+    
+                const updateCase = {
+                    
+                    "stl_urls" : "",
+                    "photos": "",
+                    "reference id": caseNum,
+                    "name": patientName,
+                    "product": product,
+                    "teeth": crownTooth,
+                    "finish": finish,
+                    "shade": shade,
+                    "note": note,
+                    "status": "Created",
+                    "type": type,
+                    "gum_shade": gumShade,
+                    "price": finalPrice,
+                    "shipping": shipping,
+                    "production": production,
+                    "model3D": model3D,
+                    
+                }
+                
+                const options = {
+                    method:"PUT",
+                    headers:{
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+                    },
+                    body: JSON.stringify(updateCase)
+                }
+                fetch(`${url}/admin/clone_case`, options)
+                .then((res)=> {
+                    if (res.ok) {
+                        return res.json()
+                        .then((data)=>{
+    
+                            alert("Case Remake Successful")
+                            
+                            // props.handleGetPage("home")
+                            // props.generateCase()
+                            props.getCase("")
+                            props.handleGetPage("home")
+                            
+                        })}
+                    return(res.json())
+                    .then((body)=>{alert(body.message)})
+                    
+                    })
+            
+                .catch((err)=> {
+                    console.log(err);
+            })
+            
+        
+            }
+
+
+              
+
+
               useEffect(()=>{
                 console.log(casesIncludedShipment) 
               })
@@ -1117,6 +1182,11 @@ export const AdminSingleCase = props => {
                         <div className="row form-group justify-content-center mt-3 no-print">
                             <div className="text-center col-8 col-lg-4 pt-3">
                             <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setNewDueDate(true)}}>Impressions Received</button>
+                            </div>
+                        </div>
+                        <div className="row form-group justify-content-center mt-3 no-print">
+                            <div className="text-center col-8 col-lg-4 pt-3">
+                            <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); remakeCase()}}>Remake Case</button>
                             </div>
                         </div>
                     </div>

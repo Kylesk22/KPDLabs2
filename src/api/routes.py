@@ -958,6 +958,7 @@ def clone_case():
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             due_date = calculate_business_days(update_date, 6)
             
+            
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
 

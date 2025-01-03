@@ -1091,7 +1091,7 @@ export const AdminSingleCase = props => {
                     
                     "stl_urls" : "",
                     "photos": "",
-                    "reference id": caseNum,
+                    "reference Id": caseNum,
                     "name": patientName,
                     "product": product,
                     "teeth": crownTooth,

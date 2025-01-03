@@ -998,6 +998,18 @@ def clone_case():
             update_case.update_date = update_date
             update_case.due_date = due_date.strftime("%m/%d/%Y %H:%M:%S")
             db.session.commit()
+
+            dt_string = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+                
+            new_case = Case(
+                user_id = drId,
+                creation_date = dt_string,
+                status= "Created"
+            
+            )
+
+            db.session.add(new_case)
+            db.session.commit()
             
             if blob_scans:
                 for scan in blob_scans:

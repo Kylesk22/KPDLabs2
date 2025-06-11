@@ -2036,9 +2036,9 @@ AWS.config.update({
                     <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
-                        <option value="100% Clear" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink</option>
-                        <option value="100% Clear" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
-                        <option value="100% Clear" onClick={()=>setGumShade("Meharry")}>Meharry</option>
+                        <option value="Opaque Pink" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink</option>
+                        <option value="Translucent Pink" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
+                        <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
                         <option value="Clear with Pink Facial Tissue Composite" onClick={()=>setGumShade("Clear with Pink Facial Tissue Composite")}>Clear with Pink Facial Tissue Composite</option>
                         
                     </select>

@@ -2236,6 +2236,7 @@ AWS.config.update({
                         </label>
                         <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>*For 1-2 Day Production Times Please Call*</small>
                         </div>
                     </div>
 

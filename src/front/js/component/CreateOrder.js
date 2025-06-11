@@ -2016,10 +2016,10 @@ AWS.config.update({
                                     `$${(price += 500)}`
                                 
                                 :(product==="Acetal" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                    `$${(price += 200)}`
+                                    `$${(price += 250)}`
     
                                 : (product === "Acetal" && lowerArch && upperArch)?    
-                                        `$${(price += 400)}`
+                                        `$${(price += 500)}`
                                     
                                 :""
                                 
@@ -2036,11 +2036,14 @@ AWS.config.update({
                     <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
-                        <option value="Pink Facial Tissue Composite" onClick={()=>setGumShade("Pink Facial Tissue Composite")}>Pink Facial Tissue Composite</option>
+                        <option value="100% Clear" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink</option>
+                        <option value="100% Clear" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
+                        <option value="100% Clear" onClick={()=>setGumShade("Meharry")}>Meharry</option>
+                        <option value="Clear with Pink Facial Tissue Composite" onClick={()=>setGumShade("Clear with Pink Facial Tissue Composite")}>Clear with Pink Facial Tissue Composite</option>
                         
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                                {(gumShade === "Pink Facial Tissue Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                {(gumShade === "Clear with Pink Facial Tissue Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
                                     `$${(price2 += 50)}`
                                 
@@ -2048,7 +2051,7 @@ AWS.config.update({
 
                                
                                     
-                                : (product === "Pink Facial Tissue Composite" && lowerArch && upperArch)?    
+                                : (product === "Clear with Pink Facial Tissue Composite" && lowerArch && upperArch)?    
                                 `$${(price2 += 100)}`
                             
                                 :""

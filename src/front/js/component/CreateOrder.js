@@ -1014,7 +1014,7 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option>
+                                {/* <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option> */}
                                 <option value="Standard SHT Zirconia" onClick={()=>{setProduct("Standard SHT Zirconia")}}>Standard SHT Zirconia Polished/Glazed(All Posterior)</option>
                                 <option value="Premium SHT Zirconia" onClick={()=>{setProduct("Premium SHT Zirconia")}}>Premium SHT Zirconia Stain and Glaze(Anterior and Posterior)</option>
                                 <option value="Ultra Premium UHT Zirconia" onClick={()=>{setProduct("Ultra Premium UHT Zirconia")}}>Ultra Premium UHT Zirconia Stain and Glaze(All Anterior)</option>

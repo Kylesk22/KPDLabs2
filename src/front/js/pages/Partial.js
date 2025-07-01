@@ -110,9 +110,9 @@ return(
         <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "product")?
             <Fade>
-                <h2>TCS Unbreakable</h2>
+                <h2>Acetal</h2>
                 <br></br>
-                <div>TCS Unbreakable™ is an extremely resilient, high performance nylon thermoplastic popular for its unbeatable strength and exceptional memory. A guaranteed unbreakable material that allows for a highly durable, lightweight, and aesthetic removable flexible partial.</div>
+                <div>Acetal is an extremely resilient, high performance thermoplastic resin, popular for its superior aesthetics, strength and retentive resiliency. Providing comfort, flexibility, strength and aesthetics.</div>
             </Fade>:
             (currentPage === "indications")?
             <div>

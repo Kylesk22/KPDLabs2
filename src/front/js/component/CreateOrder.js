@@ -3888,14 +3888,17 @@ AWS.config.update({
                                 
                                 
                                 </strong></small>
-                                <strong><small>
+                                <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                {/* <strong><small>
                                 {(crownTooth.length > 5)?
                                 
                                 `${(crownTooth.length - 5) * 160} for ${crownTooth.length - 5} additional implants`
                                    
                                 :""
                             }
-                                </small></strong>
+                                </small></strong> */}
+                                {"test"}
+                                </strong></small>
                 </div>
             </div>
             

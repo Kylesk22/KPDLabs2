@@ -3888,7 +3888,14 @@ AWS.config.update({
 
                                 </strong></small>
                                 
+                                <strong><small>
+                                {(crownTooth.length > 5)?
                                 
+                                `${(crownTooth.length - 5) * 160} for ${crownTooth.length - 5} additional implants`
+                                   
+                                :""
+                            }
+                                </small></strong>
                                 
                 </div>
             </div>

@@ -3887,8 +3887,9 @@ AWS.config.update({
                                 }
                                 
                                 
+                                
                                 </strong></small>
-                                <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
+                                
                                 {/* <strong><small>
                                 {(crownTooth.length > 5)?
                                 
@@ -3897,8 +3898,7 @@ AWS.config.update({
                                 :""
                             }
                                 </small></strong> */}
-                                {"test"}
-                                </strong></small>
+                                
                 </div>
             </div>
             

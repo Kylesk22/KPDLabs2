@@ -350,7 +350,8 @@ def getAllInfo(id):
     
     if current_user.role == "Admin":
         all_users = User.query.all()
-        all_cases = Case.query.all()
+        # all_cases = Case.query.all()
+        all_cases = Case.query.filter(Case.status != 'Closed').all()
 
         def calculate_weekdays(start_date, end_date):
             weekdays_count = 0

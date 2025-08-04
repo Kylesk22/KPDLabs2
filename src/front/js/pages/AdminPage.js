@@ -360,7 +360,59 @@ export const AdminPage = props => {
 
 
 
+    const getClosedCases = () => {
+        const options = {
+            method:"GET",
+            credentials: 'include',
+            headers:{
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            
+        }
+        fetch(`${url}/admin/${id}/closed`, options)
+        .then((res)=> {
+            if (res.ok) {
+                return res.json()
+                .then((data)=>{
+                    if (data.message === "You are not an admin, please log in at kpdlabs.com"){
+                        if (id){
+                        alert(data.message);
+                        window.location.href = `/account/${id}`}
+                        else{
+                            alert(data.message);
+                            window.location.href = '/login'
+                        }
+                    }
+                    console.log(data)
+                    setCases([...cases, ...data.cases])
+                    setOriginalCases([...originalCases, ...data.cases])
 
+                    
+
+                    const newUsers = {};
+                    for (let i = 0; i < data.users.length; i++) {
+                        const userId = data.users[i].id;
+                        const fullName = `${data.users[i].fname} ${data.users[i].lname}`;
+                        newUsers[userId] = fullName;
+                    }
+                    setUsers(newUsers);
+                    
+                    
+                    
+
+                    
+                })}
+            return(res.json())
+            .then((body)=>{alert(body.message)})
+            
+            })
+       
+        .catch((err)=> {
+            console.log(err);
+    })
+
+    }
 
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
         // console.log(submissionDate.split(" "))
@@ -512,7 +564,7 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Ready to Ship"); setStatusToFilter("Ready to Ship")}}>Rdy Ship</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Shipped"); setStatusToFilter("Shipped")}}>Shipped</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Billed"); setStatusToFilter("Billed")}}>Billed</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Closed"); setStatusToFilter("Closed")}}>Closed</button>
+                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{getClosedCases(); sessionStorage.setItem('filterType', "Closed"); setStatusToFilter("Closed")}}>Closed</button>
                 <div >
                     <div className="row">
                         <div className="col-3">

@@ -422,6 +422,25 @@ def getAllInfo(id):
     else:
         return jsonify({"message": "You are not an admin, please log in at kpdlabs.com"})
 
+
+@api.route('/admin/<int:id>/closed', methods=['GET'])
+@jwt_required()
+def getAllClosedCases(id):
+    current_user_email = get_jwt_identity()
+    current_user = User.query.filter_by(email=current_user_email).first()
+    
+    if current_user.role == "Admin":
+        all_closed_cases = Case.query.filter(Case.status == 'Closed').all()
+        all_closed_cases_list = list(map(lambda x: x.serialize(), all_closed_cases))
+
+        all_users = User.query.all()
+        all_users_list = list(map(lambda x: x.serialize(), all_users))
+
+        return jsonify({"users": all_users_list, "cases":all_closed_cases_list})
+    else:
+        return jsonify({"message": "You are not an admin, please log in at kpdlabs.com"})
+
+
 @api.route('/login', methods=['POST'])
 def login():
     email = request.json.get("email", None)

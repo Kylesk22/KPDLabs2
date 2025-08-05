@@ -12,7 +12,7 @@ import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Link, Navigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 import Bridge1 from "../../img/Bridge 1.jpg";
-import Bridge2 from "../../img/Bridge2.jpg";
+import Bridge2 from "../../img/Bridge 2.jpg";
 import Crown1 from "../../img/Crown 1.jpg";
 import Crown2 from "../../img/Crown 2.jpg";
 import Denture1 from "../../img/Denture 1.jpg";

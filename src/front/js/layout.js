@@ -30,6 +30,7 @@ import {Blog2} from "./pages/Blog2";
 import {Blog3} from "./pages/Blog3";
 import {Terms} from "./pages/Terms";
 import {Resources} from "./component/Resources";
+import {Portfolio} from "./pages/Portfolio";
 
 
 import Orb from "../../front/img/image.png";
@@ -85,6 +86,7 @@ const Layout = () => {
                         <Route element={<Blog3 />  } path = "/blogs/blog3"/>
                         <Route element={<Resources />  } path = "/resources"/>
                         <Route element={<Terms /> } path = "/terms"/>
+                        <Route element={<Portfolio /> } path = "/portfolio"/>
                         
                         
                         <Route element={<h1>Not found!</h1>} />

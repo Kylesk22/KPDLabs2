@@ -47,7 +47,7 @@ return(
 <div className="page-wrapper">
 
 
-	<section className="banner-slide products-page" style={{backgroundImage: `url(${Intro})`, position: "relative", backgroundRepeat: "no-repeat", marginTop: "125px", padding: "110px, 0, 110px", minHeight: "350px"}}>
+	<section className="banner-slide products-page" style={{backgroundImage: `url(${Intro})`, position: "relative", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginTop: "125px", padding: "110px, 0, 110px", minHeight: "350px"}}>
 		<div className="auto-container">
 			<div className="title-outer text-center">
 				<h1 className="title" style={{color: "white", fontSize: "64px", marginBottom: "17px", paddingTop: "100px", fontWeight: "700"}}>Denture</h1>

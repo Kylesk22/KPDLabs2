@@ -138,12 +138,23 @@ return(
                 </div>
 
             </Fade>:
-            (currentPage === "indications")?
-            <div>
-                <h3>Unilateral (Nesbit) or Bilateral Removable Partial Dentures</h3>
-                <img src={PartialIndications}></img>
-                
-            </div>:
+            (currentPage === "dentures")?
+            <Fade>
+                <div className="gallery">
+                    <div className="image-card"><img src={Denture1}></img></div>
+                    <div className="image-card"><img src={Denture2}></img></div>
+                    <div className="image-card"><img src={Denture3}></img></div>
+                    <div className="image-card"><img src={Denture4}></img></div>
+                    <div className="image-card"><img src={Denture5}></img></div>
+                    <div className="image-card"><img src={Denture6}></img></div>
+                    <div className="image-card"><img src={Denture7}></img></div>
+                    <div className="image-card"><img src={Denture8}></img></div>
+                    <div className="image-card"><img src={Denture9}></img></div>
+                    <div className="image-card"><img src={Denture10}></img></div>
+                    <div className="image-card"><img src={Denture11}></img></div>
+                </div>
+
+            </Fade>:
             (currentPage === "contraindications")?
             <div>
                 Contraindications

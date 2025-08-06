@@ -56,6 +56,15 @@ import { Slide, Fade } from "react-awesome-reveal";
 export const Portfolio = props => {
 
     const [currentPage, setCurrentPage] = useState("crowns")
+    const [lightboxImage, setLightboxImage] = useState(null);
+
+    const openLightbox = (image) => {
+        setLightboxImage(image);
+    };
+
+    const closeLightbox = () => {
+        setLightboxImage(null);
+    };
 
     
 
@@ -130,10 +139,8 @@ return(
         <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "crowns")?
             <Fade>
-                <div className="gallery">
-                    <a href="#img1">
-                        <div className="image-card"><img src={Crown1}></img></div>
-                    </a>
+                <div className="gallery">                   
+                    <div className="image-card" onClick={()=> openLightbox(Crown1)}><img src={Crown1} alt=""></img></div>                  
                     <div className="image-card"><img src={Crown2}></img></div>
                     <div className="image-card"><img src={Bridge1}></img></div>
                     <div className="image-card"><img src={Bridge2}></img></div>
@@ -142,6 +149,12 @@ return(
                     <a href="#" class="close-btn">&times;</a>
                     <img src={Crown1} alt=""></img>
                 </div>
+                {lightboxImage && (
+                    <div className="lightbox" onClick={closeLightbox}>
+                        <span className="close-btn" onClick={closeLightbox}>&times;</span>
+                        <img src={lightboxImage} alt="Full view" />
+                    </div>
+      )}
 
 
             </Fade>:

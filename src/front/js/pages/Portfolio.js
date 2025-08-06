@@ -138,12 +138,12 @@ return(
 
         <div className="col-8 text-center mt-3 me-4 product-display-info" >
             {(currentPage === "crowns")?
-            <Fade>
+            <Fade key={currentPage} triggerOnce={false}>
                 <div className="gallery">                   
                     <div className="image-card" onClick={()=> openLightbox(Crown1)}><img src={Crown1} alt=""></img></div>                  
-                    <div className="image-card"><img src={Crown2}></img></div>
-                    <div className="image-card"><img src={Bridge1}></img></div>
-                    <div className="image-card"><img src={Bridge2}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Crown2)}><img src={Crown2}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Bridge1)}><img src={Bridge1}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Bridge2)}><img src={Bridge2}></img></div>
                 </div>
                 
                 {lightboxImage && (
@@ -156,20 +156,26 @@ return(
 
             </Fade>:
             (currentPage === "dentures")?
-            <Fade>
+            <Fade key={currentPage} triggerOnce={false}>
                 <div className="gallery">
-                    <div className="image-card"><img src={Denture1}></img></div>
-                    <div className="image-card"><img src={Denture2}></img></div>
-                    <div className="image-card"><img src={Denture3}></img></div>
-                    <div className="image-card"><img src={Denture4}></img></div>
-                    <div className="image-card"><img src={Denture5}></img></div>
-                    <div className="image-card"><img src={Denture6}></img></div>
-                    <div className="image-card"><img src={Denture7}></img></div>
-                    <div className="image-card"><img src={Denture8}></img></div>
-                    <div className="image-card"><img src={Denture9}></img></div>
-                    <div className="image-card"><img src={Denture10}></img></div>
-                    <div className="image-card"><img src={Denture11}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture1)}><img src={Denture1}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture2)}><img src={Denture2}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture3)}><img src={Denture3}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture4)}><img src={Denture4}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture5)}><img src={Denture5}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture6)}><img src={Denture6}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture7)}><img src={Denture7}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture8)}><img src={Denture8}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture9)}><img src={Denture9}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture10)}><img src={Denture10}></img></div>
+                    <div className="image-card" onClick={()=> openLightbox(Denture11)}><img src={Denture11}></img></div>
                 </div>
+                {lightboxImage && (
+                    <div className="lightbox" onClick={closeLightbox}>
+                        <span className="close-btn" onClick={closeLightbox}>&times;</span>
+                        <img src={lightboxImage} alt="Full view" />
+                    </div>
+      )}
 
             </Fade>:
             (currentPage === "contraindications")?

@@ -145,10 +145,7 @@ return(
                     <div className="image-card"><img src={Bridge1}></img></div>
                     <div className="image-card"><img src={Bridge2}></img></div>
                 </div>
-                <div id="img1" class="lightbox">
-                    <a href="#" class="close-btn">&times;</a>
-                    <img src={Crown1} alt=""></img>
-                </div>
+                
                 {lightboxImage && (
                     <div className="lightbox" onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>

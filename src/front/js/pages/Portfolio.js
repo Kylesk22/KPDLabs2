@@ -131,11 +131,18 @@ return(
             {(currentPage === "crowns")?
             <Fade>
                 <div className="gallery">
-                    <div className="image-card"><img src={Crown1}></img></div>
+                    <a href="#img1">
+                        <div className="image-card"><img src={Crown1}></img></div>
+                    </a>
                     <div className="image-card"><img src={Crown2}></img></div>
                     <div className="image-card"><img src={Bridge1}></img></div>
                     <div className="image-card"><img src={Bridge2}></img></div>
                 </div>
+                <div id="img1" class="lightbox">
+                    <a href="#" class="close-btn">&times;</a>
+                    <img src={Crown1} alt=""></img>
+                </div>
+
 
             </Fade>:
             (currentPage === "dentures")?

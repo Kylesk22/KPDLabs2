@@ -223,10 +223,12 @@ return(
             </div>: ""
 }
 {lightboxImage && (
+                <Fade>
                     <div className="lightbox" onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>
                         <img src={lightboxImage} alt="Full view" />
                     </div>
+                    </Fade>
       )}
         </div>
       </div>

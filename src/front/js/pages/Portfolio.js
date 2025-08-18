@@ -178,10 +178,7 @@ return(
       )} */}
 
             </Fade>:
-            (currentPage === "contraindications")?
-            <div>
-                Contraindications
-            </div>:
+          
             (currentPage === "preparation")?
             <div>
                 <div className="row">
@@ -192,34 +189,6 @@ return(
                 </div>
                 
                 
-            </div>:
-            (currentPage === "margins")?
-            <div>
-                Margins
-            </div>:
-            (currentPage === "cementation")?
-            <div>
-                Cementation
-            </div>:
-            (currentPage === "technical")?
-            <div>
-                Technical
-            </div>:
-            (currentPage === "ada")?
-            <div>
-                <h2>ADA Codes</h2>
-                <div className="row">
-                    <div className="col-6">
-                        <ol><h4>Maxillary</h4>                   
-                                <li>D5225 </li>
-                        </ol>
-                    </div>
-                    <div className="col-6">
-                        <ol><h4>Mandibular</h4> 
-                            <li>D5526</li>
-                        </ol>
-                    </div>
-                </div>
             </div>: ""
 }
 {lightboxImage && (

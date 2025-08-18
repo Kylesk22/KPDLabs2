@@ -57,15 +57,17 @@ export const Portfolio = props => {
 
     const [currentPage, setCurrentPage] = useState("crowns")
     const [lightboxImage, setLightboxImage] = useState(null);
-    const [lightboxVisible, setLightboxVisible] = useState(false);
+    const [isLightboxVisible, setIsLightboxVisible] = useState(false);
 
     const openLightbox = (image) => {
         setLightboxImage(image);
-        setTimeout(() => setLightboxVisible(true), 10);
+        setIsLightboxVisible(false);
+        setTimeout(() => setIsLightboxVisible(true), 10);
     };
 
     const closeLightbox = () => {
-        setLightboxImage(null);
+        
+        setIsLightboxVisible(false);
         setTimeout(() => setLightboxImage(null), 300);
     };
 

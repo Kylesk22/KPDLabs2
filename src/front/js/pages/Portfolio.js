@@ -198,7 +198,7 @@ return(
 }
 {lightboxImage && (
                 
-                    <div className={`lightbox ${lightboxVisible ? 'visible' : ''}`} onClick={closeLightbox}>
+                    <div className={`lightbox ${isLightboxVisible ? 'visible' : ''}`} onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>
                         <img src={lightboxImage} alt="Full view" />
                     </div>

@@ -57,13 +57,16 @@ export const Portfolio = props => {
 
     const [currentPage, setCurrentPage] = useState("crowns")
     const [lightboxImage, setLightboxImage] = useState(null);
+    const [lightboxVisible, setLightboxVisible] = useState(false);
 
     const openLightbox = (image) => {
         setLightboxImage(image);
+        setTimeout(() => setLightboxVisible(true), 10);
     };
 
     const closeLightbox = () => {
         setLightboxImage(null);
+        setTimeout(() => setLightboxImage(null), 300);
     };
 
     
@@ -192,12 +195,12 @@ return(
             </div>: ""
 }
 {lightboxImage && (
-                <Fade>
-                    <div className="lightbox" onClick={closeLightbox}>
+                
+                    <div className={`lightbox ${lightboxVisible ? 'visible' : ''}`} onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>
                         <img src={lightboxImage} alt="Full view" />
                     </div>
-                    </Fade>
+                    
       )}
         </div>
       </div>

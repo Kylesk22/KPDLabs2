@@ -146,12 +146,12 @@ return(
                     <div className="image-card" onClick={()=> openLightbox(Bridge2)}><img src={Bridge2}></img></div>
                 </div>
                 
-                {lightboxImage && (
+                {/* {lightboxImage && (
                     <div className="lightbox" onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>
                         <img src={lightboxImage} alt="Full view" />
                     </div>
-      )}
+      )} */}
 
 
             </Fade>:
@@ -170,12 +170,12 @@ return(
                     <div className="image-card" onClick={()=> openLightbox(Denture10)}><img src={Denture10}></img></div>
                     <div className="image-card" onClick={()=> openLightbox(Denture11)}><img src={Denture11}></img></div>
                 </div>
-                {lightboxImage && (
+                {/* {lightboxImage && (
                     <div className="lightbox" onClick={closeLightbox}>
                         <span className="close-btn" onClick={closeLightbox}>&times;</span>
                         <img src={lightboxImage} alt="Full view" />
                     </div>
-      )}
+      )} */}
 
             </Fade>:
             (currentPage === "contraindications")?
@@ -222,6 +222,12 @@ return(
                 </div>
             </div>: ""
 }
+{lightboxImage && (
+                    <div className="lightbox" onClick={closeLightbox}>
+                        <span className="close-btn" onClick={closeLightbox}>&times;</span>
+                        <img src={lightboxImage} alt="Full view" />
+                    </div>
+      )}
         </div>
       </div>
     </div>

@@ -55,7 +55,7 @@ import { Slide, Fade } from "react-awesome-reveal";
 
 export const Shop = props => {
 
-    const [currentPage, setCurrentPage] = useState("crowns")
+    const [currentPage, setCurrentPage] = useState("zirconia")
     const [lightboxImage, setLightboxImage] = useState(null);
     const [isLightboxVisible, setIsLightboxVisible] = useState(false);
 

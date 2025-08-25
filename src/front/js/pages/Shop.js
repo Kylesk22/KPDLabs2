@@ -53,7 +53,7 @@ import { Slide, Fade } from "react-awesome-reveal";
 
 
 
-export const Portfolio = props => {
+export const Shop = props => {
 
     const [currentPage, setCurrentPage] = useState("crowns")
     const [lightboxImage, setLightboxImage] = useState(null);

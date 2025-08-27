@@ -1432,3 +1432,20 @@ def add_blog():
     
     else:
         return jsonify({"message":"You don't have authorization to do that."})
+    
+@api.route('/api/session-check', methods=['GET'])
+def session_check():
+    token = request.cookies.get("access_token")  # or whatever you called it
+    if not token:
+        return jsonify({"error": "Not logged in"}), 401
+
+    try:
+        payload = jwt.decode(token, "your-secret-key", algorithms=["HS256"])
+        exp = payload.get("exp")
+        if exp and datetime.utcfromtimestamp(exp) < datetime.utcnow():
+            return jsonify({"error": "Token expired"}), 401
+        return jsonify({"message": "Session valid"}), 200
+    except jwt.ExpiredSignatureError:
+        return jsonify({"error": "Token expired"}), 401
+    except Exception:
+        return jsonify({"error": "Invalid token"}), 401

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useCallback } from "react";
-import { useSessionChecker } from "../useSessionChecker";
+import { useSessionChecker } from "../component/useSesssionChecker";
 
 export const AuthContext = createContext();
 

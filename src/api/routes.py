@@ -327,9 +327,10 @@ def admin_login():
         res = make_response(jsonify({'email': email}))
         response = make_response(checkEmail.serialize())
         
-      
+        max_age_seconds = 365 *24 * 60 * 60
+        expires = datetime.utcnow() + timedelta(seconds=max_age_seconds)
         
-        set_access_cookies(response, admin_token, max_age=365 * 24 * 60 * 60 )
+        set_access_cookies(response, admin_token, max_age=max_age_seconds, expires=expires )
         
         return response, 200
     else:

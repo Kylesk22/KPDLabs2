@@ -464,8 +464,9 @@ def login():
         # res.headers['Set-Cookie'] = f'access_token_cookie={access_token}; SameSite=None; Secure'
 
         # res.headers['Set-Cookie'] = f'refresh_token_cookie={refresh_token}; SameSite=None; Secure'
-    
-        set_access_cookies(res, access_token, max_age=3600)
+        max_age_seconds = 365 *24 * 60 * 60
+        expires = datetime.utcnow() + timedelta(seconds=max_age_seconds)
+        set_access_cookies(res, access_token, max_age=max_age_seconds, expires=expires)
         # set_refresh_cookies(res, refresh_token, max_age=3600)
         
         return res, 200

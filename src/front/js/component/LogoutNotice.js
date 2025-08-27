@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../store/AuthProvider";
+import { AuthContext } from "../component/AuthProvider";
 
 export function LogoutNotice() {
   const { logoutReason } = useContext(AuthContext);

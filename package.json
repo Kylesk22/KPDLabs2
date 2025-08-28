@@ -80,6 +80,7 @@
 		"axios": "^0.24.0",
 		"bootstrap": "^5.3.3",
 		"jquery": "^3.7.1",
+		"jwt-decode": "^4.0.0",
 		"node-sass": "^9.0.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",

@@ -46,6 +46,14 @@ app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config['JWT_CSRF_CHECK_FORM'] = True
 jwt = JWTManager(app)
 
+@jwt.expired_token_loader
+def expired_callback(jwt_header, jwt_payload):
+    return jsonify({"msg": "Token has expired"}), 401
+
+@jwt.unauthorized_loader
+def unauthorized_callback(err_str):
+    return jsonify({"msg": "Missing or invalid token"}), 401
+
 
 
 @app.after_request

@@ -328,9 +328,9 @@ def admin_login():
         response = make_response(checkEmail.serialize())
         
         max_age_seconds = 365 *24 * 60 * 60
-        expires = datetime.utcnow() + timedelta(seconds=max_age_seconds)
         
-        set_access_cookies(response, admin_token, max_age=max_age_seconds, expires=expires )
+        
+        set_access_cookies(response, admin_token, max_age=max_age_seconds )
         
         return response, 200
     else:

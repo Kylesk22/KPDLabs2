@@ -1,18 +1,23 @@
 import React, { createContext, useState, useCallback, useEffect } from "react";
 import jwtDecode from "jwt-decode";
-import { useSessionChecker } from "../component/useSesssionChecker"; // keep your server polling
+import { useSessionChecker } from "../component/useSesssionChecker";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [logoutReason, setLogoutReason] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false); // 👈 add back your old prop
 
   const logout = useCallback((reason = "manual") => {
     setUser(null);
+    setLoggedIn(false); // 👈 make sure your UI reacts
     setLogoutReason(reason);
+
     console.log("Logging out due to:", reason);
-    // Optional: clear localStorage, redirect to login, etc.
+
+    // Optional: force redirect to home
+    window.location.href = "/";
   }, []);
 
   // ----- Client-side JWT expiration check -----
@@ -33,7 +38,7 @@ export function AuthProvider({ children }) {
         console.error("Failed to decode JWT", err);
         logout("invalid");
       }
-    }, 10000); // check every 10 seconds
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [logout]);
@@ -42,7 +47,9 @@ export function AuthProvider({ children }) {
   useSessionChecker(logout);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, logout, logoutReason }}>
+    <AuthContext.Provider
+      value={{ user, setUser, loggedIn, setLoggedIn, logout, logoutReason }}
+    >
       {children}
     </AuthContext.Provider>
   );

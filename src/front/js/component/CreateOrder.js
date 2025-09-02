@@ -485,7 +485,38 @@ AWS.config.update({
     // })
     
     function toothHandler(e){
-        
+
+        if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture"){
+
+            const clickedId = parseInt(e.target.id); // string → number
+            const idsToToggle = Array.from({ length: 16 - clickedId }, (_, i) => clickedId + i);
+
+            setCrownTooth((oldValue) => {
+                const newValue = [...oldValue]; // copy current selection
+
+                idsToToggle.forEach((id) => {
+                    const toothStr = ` ${id}`;
+                    const toothElement = document.getElementById(id.toString());
+                    if (!toothElement) return;
+
+                    if (newValue.includes(toothStr)) {
+                        // Remove selection
+                        toothElement.style.fill = "white";
+                        const index = newValue.indexOf(toothStr);
+                        newValue.splice(index, 1);
+                    } else {
+                        // Add selection
+                        toothElement.style.fill = "#137ea7";
+                        newValue.push(toothStr);
+                    }
+                });
+
+                // Keep sorted
+                newValue.sort((a, b) => parseInt(a) - parseInt(b));
+                return newValue;
+            });
+        }
+        else {
         let toothId = e.target.id;
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`);
@@ -501,7 +532,7 @@ AWS.config.update({
                 setCrownTooth(toothArray)
                 
                 toothFill.style.fill = "#137ea7"
-            }
+            }}
     }
     function bridgeHandler(e){
         let toothId = e.target.id;

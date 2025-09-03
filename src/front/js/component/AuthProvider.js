@@ -7,10 +7,14 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [logoutReason, setLogoutReason] = useState(null);
+  
   const [loggedIn, setLoggedIn] = useState(false); // 👈 add back your old prop
 
   const logout = useCallback((reason = "manual") => {
     setUser(null);
+    sessionStorage.clear();
+    
+   
     setLoggedIn(false); // 👈 make sure your UI reacts
     setLogoutReason(reason);
 

@@ -62,7 +62,7 @@ const Layout = () => {
         //     backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}
             >
          {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
-         {/* <AuthProvider> */}
+         <AuthProvider>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar setUserPage = {setUserPage} movbileActive={mobileActive} setMobileActive={setMobileActive} logState ={loggedIn} updateLogState={setLoggedIn}/>
@@ -100,7 +100,7 @@ const Layout = () => {
                     <LogoutNotice />
                 </ScrollToTop>
             </BrowserRouter>
-            {/* </AuthProvider> */}
+            </AuthProvider>
         </div>
     );
 };

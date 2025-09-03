@@ -7,20 +7,16 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [logoutReason, setLogoutReason] = useState(null);
-  
-  const [loggedIn, setLoggedIn] = useState(false); // 👈 add back your old prop
 
   const logout = useCallback((reason = "manual") => {
-    setUser(null);
     sessionStorage.clear();
-    
-   
-    setLoggedIn(false); // 👈 make sure your UI reacts
+    localStorage.clear();
+    setUser(null);
     setLogoutReason(reason);
 
     console.log("Logging out due to:", reason);
 
-    // Optional: force redirect to home
+    // Redirect user to home
     window.location.href = "/";
   }, []);
 
@@ -42,7 +38,7 @@ export function AuthProvider({ children }) {
         console.error("Failed to decode JWT", err);
         logout("invalid");
       }
-    }, 10000);
+    }, 10000); // check every 10s
 
     return () => clearInterval(interval);
   }, [logout]);
@@ -52,7 +48,13 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, loggedIn, setLoggedIn, logout, logoutReason }}
+      value={{
+        user,
+        setUser,
+        loggedIn: !!user, // 👈 always derived from user
+        logout,
+        logoutReason,
+      }}
     >
       {children}
     </AuthContext.Provider>

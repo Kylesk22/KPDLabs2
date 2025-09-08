@@ -100,7 +100,8 @@ export const UserPage = props => {
                 })
            
             .catch((err)=> {
-                console.log(err, "this error here");
+                console.log(err);
+                console.log("ERROR")
         })
         
         // console.log(`access ${accessCookie}`)

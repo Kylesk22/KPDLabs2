@@ -1436,8 +1436,16 @@ def add_blog():
         return jsonify({"message":"You don't have authorization to do that."})
     
 
+# @app.route("/api/session-check", methods=["GET"])
+# @jwt_required()   # 👈 This enforces expiration & validity
+# def session_check():
+#     user_id = get_jwt_identity()
+#     return jsonify({"message": "Session valid", "user": user_id}), 200
 @app.route("/api/session-check", methods=["GET"])
-@jwt_required()   # 👈 This enforces expiration & validity
+@jwt_required(optional=True)
 def session_check():
     user_id = get_jwt_identity()
+    if not user_id:
+        return jsonify({"message": "No valid token"}), 401
     return jsonify({"message": "Session valid", "user": user_id}), 200
+

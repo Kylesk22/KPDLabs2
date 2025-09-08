@@ -4,7 +4,7 @@ export async function apiClient(url, options = {}, logout) {
         ...options,
         credentials: "include",
       });
-  
+      console.log(res.status, 'apiClient logout')
       if (res.status === 401) {
         logout("expired");
         throw new Error("Session expired");

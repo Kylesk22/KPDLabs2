@@ -1441,11 +1441,19 @@ def add_blog():
 # def session_check():
 #     user_id = get_jwt_identity()
 #     return jsonify({"message": "Session valid", "user": user_id}), 200
+
+
 @app.route("/api/session-check", methods=["GET"])
-@jwt_required(optional=True)
+@jwt_required(optional=True)  # allow request but don’t fail yet
 def session_check():
+    token = request.cookies.get("access_token_cookie")
+    if not token:
+        return jsonify({"msg": "No valid access token"}), 401
+    
     user_id = get_jwt_identity()
     if not user_id:
-        return jsonify({"message": "No valid token"}), 401
+        return jsonify({"msg": "Invalid or expired token"}), 401
+
     return jsonify({"message": "Session valid", "user": user_id}), 200
+
 

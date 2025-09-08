@@ -35,6 +35,8 @@ import Hybrid6 from "../../img/Hybrid 6.jpg";
 import Hybrid7 from "../../img/Hybrid 7.jpg";
 import Hybrid8 from "../../img/Hybrid 8.jpg";
 
+import { LabcellIntegration } from "../component/LabcellIntegration"
+
 
 import PartialIndications from "../../img/PartialIndications.png"
 
@@ -93,6 +95,8 @@ return(
             </div>
         </div>
     </section>
+
+    <LabcellIntegration/>
 
   <section className="" style={{minHeight:"350px", paddingTop: "50px", paddingBottom: "50px", backgroundImage: `url(${AboutBKG}`}}>
     <div className="ps-3">

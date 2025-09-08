@@ -100,10 +100,10 @@ export const UserPage = props => {
                 })
            
             .catch((err)=> {
-                console.log(err);
+                console.log(err, "this error here");
         })
         
-        console.log(`access ${accessCookie}`)
+        // console.log(`access ${accessCookie}`)
 
         if (loggedIn)
                 if (getCookie("csrf_access_token")=== null || accessCookie===null){

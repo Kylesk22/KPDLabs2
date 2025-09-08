@@ -35,7 +35,7 @@ import Hybrid6 from "../../img/Hybrid 6.jpg";
 import Hybrid7 from "../../img/Hybrid 7.jpg";
 import Hybrid8 from "../../img/Hybrid 8.jpg";
 
-import { LabCellIntegration } from "../component/LabCellIntegration"
+import { LabCellIntegration} from "../component/LabCellIntegration"
 
 
 import PartialIndications from "../../img/PartialIndications.png"

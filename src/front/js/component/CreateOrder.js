@@ -378,6 +378,19 @@ AWS.config.update({
 
     const uploadCase = async () => {
 
+        if (!patientName) {
+            alert("Please enter patient name");
+            return;
+        }
+        if (!product) {
+            alert("Please select a product");
+            return;
+        }
+        if (!crownTooth) {
+            alert("Please select at least one tooth");
+            return;
+        }
+
         setLoading(true);
         window.scrollTo({
             top: 0,

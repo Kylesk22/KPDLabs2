@@ -386,7 +386,7 @@ AWS.config.update({
             alert("Please select a product");
             return;
         }
-        if (!crownTooth) {
+        if (!crownTooth.length) {
             alert("Please select at least one tooth");
             return;
         }

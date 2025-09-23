@@ -488,8 +488,8 @@ AWS.config.update({
 
         if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture"){
 
-            const upperArch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"];
-            const lowerArch = ["17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
+            const upperArch = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+            const lowerArch = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
 
 
             let toothId = e.target.id;
@@ -2112,8 +2112,8 @@ AWS.config.update({
                     <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
                     <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
-                        <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
                         <option value="Opaque Pink" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink (Standard)</option>
+                        <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
                         <option value="Translucent Pink" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
                         <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
                         <option value="Clear with Pink Facial Tissue Composite" onClick={()=>setGumShade("Clear with Pink Facial Tissue Composite")}>Clear with Pink Facial Tissue Composite</option>

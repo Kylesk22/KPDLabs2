@@ -486,7 +486,53 @@ AWS.config.update({
     
     function toothHandler(e){
 
-        // if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture"){
+        if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture"){
+
+            const upperArch = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"];
+            const lowerArch = ["17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
+
+
+            let toothId = e.target.id;
+            let archArray = upperArch.includes(toothId) ? upperArch : lowerArch;
+            let toothFill = e.target
+            // let toothIndex = crownTooth.indexOf(` ${toothId}`);
+            // if (toothIndex !== -1){
+            //     toothFill.style.fill="white"
+            //     setCrownTooth((oldValue)=>{
+            //         return oldValue.filter(tooth => tooth !== ` ${toothId}`)
+            //     })}
+                
+            // else {
+            //     let toothArray = [...crownTooth, ` ${toothId}`]
+            //     toothArray.sort(function(a, b){return a-b})
+            //     setCrownTooth(toothArray)
+                
+            //     toothFill.style.fill = "#137ea7"
+            // }
+
+            // Check if arch is already selected (all teeth in arch are in crownTooth)
+            let isArchSelected = archArray.every(tooth => crownTooth.includes(` ${tooth}`));
+
+            if (isArchSelected) {
+                // Deselect whole arch
+                setCrownTooth(oldValue =>
+                    oldValue.filter(tooth => !archArray.includes(tooth.trim()))
+                );
+                archArray.forEach(tooth => {
+                    let toothEl = document.getElementById(tooth);
+                    if (toothEl) toothEl.style.fill = "white";
+                });
+            } else {
+                // Select whole arch
+                let updated = [...new Set([...crownTooth, ...archArray.map(t => ` ${t}`)])];
+                updated.sort((a, b) => parseInt(a) - parseInt(b));
+                setCrownTooth(updated);
+
+                archArray.forEach(tooth => {
+                    let toothEl = document.getElementById(tooth);
+                    if (toothEl) toothEl.style.fill = "#137ea7";
+                });
+            }
 
         //     const clickedId = parseInt(e.target.id); // string → number
         //     const idsToToggle = Array.from({ length: 16 - clickedId }, (_, i) => clickedId + i);
@@ -515,8 +561,8 @@ AWS.config.update({
         //         newValue.sort((a, b) => parseInt(a) - parseInt(b));
         //         return newValue;
         //     });
-        // }
-        // else {
+        }
+        else {
         let toothId = e.target.id;
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`);
@@ -533,7 +579,7 @@ AWS.config.update({
                 
                 toothFill.style.fill = "#137ea7"
             }}
-    // }
+    }
     function bridgeHandler(e){
         let toothId = e.target.id;
             let toothFill = e.target
@@ -2067,7 +2113,7 @@ AWS.config.update({
                     <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
                         <option value="Select One">Select One</option>
                         <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
-                        <option value="Opaque Pink" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink</option>
+                        <option value="Opaque Pink" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink (Standard)</option>
                         <option value="Translucent Pink" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
                         <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
                         <option value="Clear with Pink Facial Tissue Composite" onClick={()=>setGumShade("Clear with Pink Facial Tissue Composite")}>Clear with Pink Facial Tissue Composite</option>

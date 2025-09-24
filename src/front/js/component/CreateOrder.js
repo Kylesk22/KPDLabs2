@@ -505,75 +505,57 @@ AWS.config.update({
             const lowerArch = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
 
 
-            let toothId = e.target.id;
-            let archArray = upperArch.includes(toothId) ? upperArch : lowerArch;
-            let toothFill = e.target
-            // let toothIndex = crownTooth.indexOf(` ${toothId}`);
-            // if (toothIndex !== -1){
-            //     toothFill.style.fill="white"
-            //     setCrownTooth((oldValue)=>{
-            //         return oldValue.filter(tooth => tooth !== ` ${toothId}`)
-            //     })}
-                
-            // else {
-            //     let toothArray = [...crownTooth, ` ${toothId}`]
-            //     toothArray.sort(function(a, b){return a-b})
-            //     setCrownTooth(toothArray)
-                
-            //     toothFill.style.fill = "#137ea7"
+            // let toothId = e.target.id;
+            // let archArray = upperArch.includes(toothId) ? upperArch : lowerArch;
+            // let toothFill = e.target
+           
+            // let isArchSelected = archArray.every(tooth => crownTooth.includes(` ${tooth}`));
+
+            // if (isArchSelected) {
+            //     // Deselect whole arch
+            //     setCrownTooth(oldValue =>
+            //         oldValue.filter(tooth => !archArray.includes(tooth.trim()))
+            //     );
+            //     archArray.forEach(tooth => {
+            //         let toothEl = document.getElementById(tooth);
+            //         if (toothEl) toothEl.style.fill = "white";
+            //     });
+            // } else {
+            //     // Select whole arch
+            //     let updated = [...new Set([...crownTooth, ...archArray.map(t => ` ${t}`)])];
+            //     updated.sort((a, b) => parseInt(a) - parseInt(b));
+            //     setCrownTooth(updated);
+
+            //     archArray.forEach(tooth => {
+            //         let toothEl = document.getElementById(tooth);
+            //         if (toothEl) toothEl.style.fill = "#137ea7";
+            //     });
             // }
 
-            // Check if arch is already selected (all teeth in arch are in crownTooth)
-            let isArchSelected = archArray.every(tooth => crownTooth.includes(` ${tooth}`));
+            let toothId = e.target.id;
+            let archName = upperArch.includes(toothId) ? "Upper Arch" : "Lower Arch";
+            let archArray = archName === "Upper Arch" ? upperArch : lowerArch;
+
+            // Check if this arch is already selected
+            let isArchSelected = crownTooth === archName;
 
             if (isArchSelected) {
-                // Deselect whole arch
-                setCrownTooth(oldValue =>
-                    oldValue.filter(tooth => !archArray.includes(tooth.trim()))
-                );
+                // Deselect arch
+                setCrownTooth(null);
                 archArray.forEach(tooth => {
                     let toothEl = document.getElementById(tooth);
                     if (toothEl) toothEl.style.fill = "white";
                 });
             } else {
-                // Select whole arch
-                let updated = [...new Set([...crownTooth, ...archArray.map(t => ` ${t}`)])];
-                updated.sort((a, b) => parseInt(a) - parseInt(b));
-                setCrownTooth(updated);
-
+                // Select arch
+                setCrownTooth(archName);
                 archArray.forEach(tooth => {
                     let toothEl = document.getElementById(tooth);
                     if (toothEl) toothEl.style.fill = "#137ea7";
                 });
             }
 
-        //     const clickedId = parseInt(e.target.id); // string → number
-        //     const idsToToggle = Array.from({ length: 16 - clickedId }, (_, i) => clickedId + i);
-
-        //     setCrownTooth((oldValue) => {
-        //         const newValue = [...oldValue]; // copy current selection
-
-        //         idsToToggle.forEach((id) => {
-        //             const toothStr = ` ${id}`;
-        //             const toothElement = document.getElementById(id.toString());
-        //             if (!toothElement) return;
-
-        //             if (newValue.includes(toothStr)) {
-        //                 // Remove selection
-        //                 toothElement.style.fill = "white";
-        //                 const index = newValue.indexOf(toothStr);
-        //                 newValue.splice(index, 1);
-        //             } else {
-        //                 // Add selection
-        //                 toothElement.style.fill = "#137ea7";
-        //                 newValue.push(toothStr);
-        //             }
-        //         });
-
-        //         // Keep sorted
-        //         newValue.sort((a, b) => parseInt(a) - parseInt(b));
-        //         return newValue;
-        //     });
+        
         }
         else {
         let toothId = e.target.id;

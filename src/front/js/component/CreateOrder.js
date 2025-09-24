@@ -499,10 +499,60 @@ AWS.config.update({
     
     function toothHandler(e){
 
-        if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture" || type == "Night Guard"){
+        if (type === "denture" || type === "newDenture" || type === "dentureRepair" || type === "copyDenture" || type === "Night Guard") {
 
-            const upperArch = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
-            const lowerArch = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+            const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+            const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+          
+            const ARCH_UPPER = "Upper Arch";
+            const ARCH_LOWER = "Lower Arch";
+            const ARCH_BOTH  = "Upper and Lower Arch";
+          
+            const archMap = {
+              [ARCH_UPPER]: upperArch,
+              [ARCH_LOWER]: lowerArch,
+              [ARCH_BOTH]:  [...upperArch, ...lowerArch]
+            };
+          
+            const toothId = e.target.id;
+            const clickedArch = upperArch.includes(toothId) ? ARCH_UPPER : ARCH_LOWER;
+          
+            // Use functional update to avoid stale state
+            setCrownTooth(prev => {
+              let next;
+          
+              if (prev === clickedArch) {
+                // clicked the same arch -> deselect it
+                next = null;
+              } else if (prev === ARCH_BOTH) {
+                // both selected -> clicking one removes that arch (leaves the other)
+                next = clickedArch === ARCH_UPPER ? ARCH_LOWER : ARCH_UPPER;
+              } else if (prev && prev !== clickedArch) {
+                // another single arch is selected -> clicking the other makes BOTH
+                next = ARCH_BOTH;
+              } else {
+                // none selected -> select clicked arch
+                next = clickedArch;
+              }
+          
+              // First clear all teeth to white (safe reset)
+              archMap[ARCH_BOTH].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.fill = "white";
+              });
+          
+              // Then color the currently selected arch(s) if any
+              if (next) {
+                archMap[next].forEach(id => {
+                  const el = document.getElementById(id);
+                  if (el) el.style.fill = "#137ea7";
+                });
+              }
+          
+              return next;
+            });
+          }
+          
 
 
             // let toothId = e.target.id;
@@ -532,31 +582,7 @@ AWS.config.update({
             //     });
             // }
 
-            let toothId = e.target.id;
-            let archName = upperArch.includes(toothId) ? "Upper Arch" : "Lower Arch";
-            let archArray = archName === "Upper Arch" ? upperArch : lowerArch;
-
-            // Check if this arch is already selected
-            let isArchSelected = crownTooth === archName;
-
-            if (isArchSelected) {
-                // Deselect arch
-                setCrownTooth(null);
-                archArray.forEach(tooth => {
-                    let toothEl = document.getElementById(tooth);
-                    if (toothEl) toothEl.style.fill = "white";
-                });
-            } else {
-                // Select arch
-                setCrownTooth(archName);
-                archArray.forEach(tooth => {
-                    let toothEl = document.getElementById(tooth);
-                    if (toothEl) toothEl.style.fill = "#137ea7";
-                });
-            }
-
-        
-        }
+            
         else {
         let toothId = e.target.id;
             let toothFill = e.target

@@ -561,32 +561,38 @@ export const AdminSingleCase = props => {
                 // Update tooth colors
                 console.log(patientData.teeth)
                 
-                let returnedTeeth = data.teeth;
+                let returnedTeeth = patientData.teeth;
 
                 const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
                 const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-                
-                // Keep original split logic
+
+                // Keep your original split logic
                 const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                 setCrownTooth(numberArray);
-                
-                // Collect all teeth to highlight
+
+                const hasUpper = numberArray.includes("Upper Arch");
+                const hasLower = numberArray.includes("Lower Arch");
+
+                // Highlight teeth
                 let teethToHighlight = new Set();
-                
+
                 numberArray.forEach(tooth => {
                     const toothStr = tooth.toLowerCase();
-                
+
+                    // Highlight arches
                     if (toothStr.includes("upper")) {
                         upperArch.forEach(t => teethToHighlight.add(t));
-                    } 
+                    }
                     if (toothStr.includes("lower")) {
                         lowerArch.forEach(t => teethToHighlight.add(t));
-                    } 
+                    }
+
+                    // Highlight individual teeth (trimmed)
                     if (!toothStr.includes("upper") && !toothStr.includes("lower")) {
-                        teethToHighlight.add(tooth.trim()); // <- trim here before using
+                        teethToHighlight.add(tooth.trim());
                     }
                 });
-                
+
                 // Apply highlight
                 teethToHighlight.forEach(t => {
                     const element = document.getElementById(t);
@@ -594,6 +600,7 @@ export const AdminSingleCase = props => {
                         element.style.fill = "#137ea7";
                     }
                 });
+
                 // for (let tooth in numberArray){
                 //     const element = document.getElementById(numberArray[tooth]);
                     

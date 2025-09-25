@@ -209,11 +209,12 @@ export const CreateOrder = props => {
         for (let i = 0; i < crownTooth.length; i++){
             let tooth = crownTooth[i]
             
-            if (tooth < 16){
+            
+            if (tooth < 16 || tooth.includes("Upper Arch")){
                 setUpperArch(true)
             }
             
-            if (tooth> 17){
+            if (tooth> 17 || tooth.includes("Lower Arch")){
                 setLowerArch(true)
             }
            

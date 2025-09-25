@@ -336,16 +336,44 @@ export const PrintPDFButton = (props) => {
                 <!-- Optionally add more content or load it dynamically -->
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                    console.log(${props.crownTooth})
-                    const teeth = [${props.crownTooth}]
-                    for (let tooth in teeth){
-                        let pathElement = document.getElementById(teeth[tooth]);
-                        pathElement.classList.add('select');
-                        pathElement.classList.remove('replace');}
-                    
-                        
+                        // Define arches
+                        const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+                        const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+
+                        // Make sure crownTooth is an array
+                        const teethArray = [${props.crownTooth}];
+
+                        // Set of teeth to highlight
+                        let teethToHighlight = new Set();
+
+                        teethArray.forEach(tooth => {
+                            const toothStr = tooth.toString().toLowerCase();
+
+                            if (toothStr.includes("upper")) {
+                                upperArch.forEach(t => teethToHighlight.add(t));
+                            }
+
+                            if (toothStr.includes("lower")) {
+                                lowerArch.forEach(t => teethToHighlight.add(t));
+                            }
+
+                            // Individual teeth
+                            if (!toothStr.includes("upper") && !toothStr.includes("lower")) {
+                                teethToHighlight.add(tooth.toString().trim());
+                            }
+                        });
+
+                        // Apply classes
+                        teethToHighlight.forEach(t => {
+                            const pathElement = document.getElementById(t);
+                            if (pathElement) {
+                                pathElement.classList.add('select');
+                                pathElement.classList.remove('replace');
+                            }
+                        });
                     });
-                </script>
+                    </script>
+
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         if ("${props.gumShade}" !== ""){

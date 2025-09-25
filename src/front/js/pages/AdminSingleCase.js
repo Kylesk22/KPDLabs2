@@ -569,17 +569,23 @@ export const AdminSingleCase = props => {
                 const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                 setCrownTooth(numberArray);
 
+                const hasUpper = numberArray.includes("Upper Arch");
+                const hasLower = numberArray.includes("Lower Arch");
+
+                // Highlight teeth
                 numberArray.forEach(tooth => {
                     let teethToHighlight = [];
-                
-                    if (tooth === "Upper Arch") {
+
+                    if (tooth === "Upper Arch" || (hasUpper && hasLower && tooth === "Upper Arch")) {
                         teethToHighlight = upperArch;
-                    } else if (tooth === "Lower Arch") {
+                    } 
+                    if (tooth === "Lower Arch" || (hasUpper && hasLower && tooth === "Lower Arch")) {
                         teethToHighlight = lowerArch;
-                    } else {
+                    } 
+                    if (tooth !== "Upper Arch" && tooth !== "Lower Arch") {
                         teethToHighlight = [tooth]; // single tooth
                     }
-                
+
                     teethToHighlight.forEach(t => {
                         const element = document.getElementById(t);
                         if (element) {

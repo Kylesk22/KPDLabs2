@@ -358,8 +358,7 @@ export const SingleOrder = props => {
                     const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                     setCrownTooth(numberArray);
 
-                    const hasUpper = numberArray.includes("Upper Arch");
-                    const hasLower = numberArray.includes("Lower Arch");
+                  
 
                     // Highlight teeth
                     let teethToHighlight = new Set();
@@ -384,6 +383,10 @@ export const SingleOrder = props => {
                             element.style.fill = "#137ea7";
                         }
     });
+                    if (!toothLower.includes("upper") && !toothLower.includes("lower")) {
+                        const element = document.getElementById(tooth);
+                        if (element) element.style.fill = "#137ea7";
+                    }
                     
                     
                     

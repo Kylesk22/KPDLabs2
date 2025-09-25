@@ -573,25 +573,24 @@ export const AdminSingleCase = props => {
                 const hasLower = numberArray.includes("Lower Arch");
 
                 // Highlight teeth
+                let teethToHighlight = new Set();
+
                 numberArray.forEach(tooth => {
-                    let teethToHighlight = [];
-
-                    if (tooth === "Upper Arch" || (hasUpper && hasLower && tooth === "Upper Arch")) {
-                        teethToHighlight = upperArch;
-                    } 
-                    if (tooth === "Lower Arch" || (hasUpper && hasLower && tooth === "Lower Arch")) {
-                        teethToHighlight = lowerArch;
-                    } 
-                    if (tooth !== "Upper Arch" && tooth !== "Lower Arch") {
-                        teethToHighlight = [tooth]; // single tooth
+                    if (tooth === "Upper Arch") {
+                        upperArch.forEach(t => teethToHighlight.add(t));
+                    } else if (tooth === "Lower Arch") {
+                        lowerArch.forEach(t => teethToHighlight.add(t));
+                    } else {
+                        teethToHighlight.add(tooth); // individual tooth
                     }
+                });
 
-                    teethToHighlight.forEach(t => {
-                        const element = document.getElementById(t);
-                        if (element) {
-                            element.style.fill = "#137ea7";
-                        }
-                    });
+                // Apply highlight
+                teethToHighlight.forEach(t => {
+                    const element = document.getElementById(t);
+                    if (element) {
+                        element.style.fill = "#137ea7";
+                    }
                 });
                 // for (let tooth in numberArray){
                 //     const element = document.getElementById(numberArray[tooth]);

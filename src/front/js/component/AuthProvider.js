@@ -1,63 +1,49 @@
 import React, { createContext, useState, useCallback, useEffect } from "react";
-import jwtDecode from "jwt-decode";
-import { useSessionChecker } from "../component/useSesssionChecker";
 
 export const AuthContext = createContext();
+
+function getCookie(name) {
+  const cookies = document.cookie.split("; ");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=");
+    if (cookieName === name) return cookieValue;
+  }
+  return null;
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [logoutReason, setLogoutReason] = useState(null);
 
   const logout = useCallback((reason = "manual") => {
-    sessionStorage.clear();
-    localStorage.clear();
     setUser(null);
     setLogoutReason(reason);
-
+    sessionStorage.clear();
+    localStorage.clear();
     console.log("Logging out due to:", reason);
 
-    // Redirect user to home
-    window.location.href = "/";
+    if (reason === "expired") window.location.href = "/";
   }, []);
 
-  // ----- Client-side JWT expiration check -----
+  // Poll for token only if a user is logged in
   useEffect(() => {
-    const interval = setInterval(() => {
-      const cookie = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("access_token_cookie="));
-      if (!cookie) return;
+    if (!user) return; // skip polling if no user
 
-      const token = cookie.split("=")[1];
-      try {
-        const decoded = jwtDecode(token);
-        if (Date.now() > decoded.exp * 1000) {
-          logout("expired");
-        }
-      } catch (err) {
-        console.error("Failed to decode JWT", err);
-        logout("invalid");
+    const interval = setInterval(() => {
+      if (!getCookie("access_token_cookie") && logoutReason !== "expired") {
+        logout("expired");
       }
     }, 10000); // check every 10s
 
     return () => clearInterval(interval);
-  }, [logout]);
-
-  // ----- Server-side session check (every 60s) -----
-  useSessionChecker(logout);
+  }, [user, logout, logoutReason]);
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        setUser,
-        loggedIn: !!user, // 👈 always derived from user
-        logout,
-        logoutReason,
-      }}
-    >
+    <AuthContext.Provider value={{ user, setUser, logout, logoutReason, setUser }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
+
 

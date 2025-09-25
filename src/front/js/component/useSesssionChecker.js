@@ -16,7 +16,7 @@ export function useSessionChecker(logout) {
       } catch (err) {
         // If apiClient threw due to 401, logout already handled
         // You could log it for debugging:
-        console.log("Session checker detected expired or missing token");
+        // console.log("Session checker detected expired or missing token");
       }
     }, 60000); // every 60s
 

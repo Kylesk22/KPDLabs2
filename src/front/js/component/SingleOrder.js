@@ -351,7 +351,8 @@ export const SingleOrder = props => {
                     setProduction(data.production)
                     setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth
-                    const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                    // const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                    const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                     setCrownTooth(numberArray);
                     for (let tooth in numberArray){
                         const element = document.getElementById(numberArray[tooth]);

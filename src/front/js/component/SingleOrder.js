@@ -351,28 +351,14 @@ export const SingleOrder = props => {
                     setProduction(data.production)
                     setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth
-                    let numberArray = [];
-                    if (Array.isArray(returnedTeeth)) {
-                    // Already a proper array from backend
-                    numberArray = returnedTeeth.map(String);
-                    } else if (typeof returnedTeeth === "string") {
-                    numberArray = returnedTeeth
-                        .replace(/[{}"]/g, "")  // remove { } "
-                        .split(",")
-                        .map((s) => s.trim())
-                        .filter(Boolean);
+                    const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
+                    setCrownTooth(numberArray);
+                    for (let tooth in numberArray){
+                        const element = document.getElementById(numberArray[tooth]);
+                        
+                        element.style.fill = "#137ea7"
+                       
                     }
-
-                    const displayValue = numberArray.join(", ");
-                    setCrownTooth(displayValue);
-
-                    // Highlight elements only if they look like numbers (to avoid crashing on "Upper Arch")
-                    for (let tooth of numberArray) {
-                    if (/^\d+$/.test(tooth)) {  // only digits
-                        const element = document.getElementById(tooth);
-                        if (element) {
-                        element.style.fill = "#137ea7";
-                        }
                     
                     
                     

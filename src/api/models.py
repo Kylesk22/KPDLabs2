@@ -120,12 +120,25 @@ class Case(db.Model):
         return f'<Case {self.id}>'
 
     def serialize(self):
+        teeth_list = []
+        if self.teeth:
+            try:
+                # try parsing JSON first (safe for arrays)
+                parsed = json.loads(self.teeth)
+                if isinstance(parsed, list):
+                    teeth_list = [str(t) for t in parsed]
+                else:
+                    teeth_list = [str(parsed)]
+            except Exception:
+                # fallback: old string format like "{2, 3, 4}" or "{Upper Arch, Lower Arch}"
+                cleaned = self.teeth.replace("{", "").replace("}", "").replace('"', "")
+                teeth_list = [t.strip() for t in cleaned.split(",") if t.strip()]
         return {
             "id": self.id,
             "name": self.name,
             "user id":self.user_id,
             "type": self.type,
-            "teeth":self.teeth,
+            "teeth":teeth_list,
             "product": self.product,
             "shade": self.shade,
             "gum shade": self.gum_shade,

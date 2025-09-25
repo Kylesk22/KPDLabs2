@@ -66,7 +66,7 @@ export const UserPage = props => {
         //         logout()
         //     }
             
-            console.log("TESTING", getCookie("csrf_access_token"))
+            // console.log("TESTING", getCookie("csrf_access_token"))
             
             // console.log(document.cookie.split('; '))
 

@@ -336,12 +336,16 @@ export const PrintPDFButton = (props) => {
                 <!-- Optionally add more content or load it dynamically -->
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        // Define arches
                         const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
                         const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
 
-                        // Make sure crownTooth is an array
-                        const teethArray = [${props.crownTooth}];
+                        // Make sure crownTooth is always an array of strings
+                        let teethArray = [];
+                        if (Array.isArray(${JSON.stringify(props.crownTooth)})) {
+                            teethArray = ${JSON.stringify(props.crownTooth)};
+                        } else {
+                            teethArray = [${JSON.stringify(props.crownTooth)}];
+                        }
 
                         // Set of teeth to highlight
                         let teethToHighlight = new Set();
@@ -373,6 +377,7 @@ export const PrintPDFButton = (props) => {
                         });
                     });
                     </script>
+
 
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {

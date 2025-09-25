@@ -66,9 +66,9 @@ export const UserPage = props => {
         //         logout()
         //     }
             
-            console.log(getCookie("csrf_access_token"))
+            console.log("TESTING", getCookie("csrf_access_token"))
             
-            console.log(document.cookie.split('; '))
+            // console.log(document.cookie.split('; '))
 
             const options = {
                 method:"GET",
@@ -84,7 +84,7 @@ export const UserPage = props => {
                     return res.json()
                     .then((data)=>{
                         setAccessCookie(data)
-                        console.log(data)
+                        // console.log(data)
                         
                         
     

@@ -351,15 +351,39 @@ export const SingleOrder = props => {
                     setProduction(data.production)
                     setSubmittedDate(date[0])
                     let returnedTeeth = data.teeth
+
+                    const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+                    const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
                     // const numberArray = returnedTeeth.replace(/[^\d,-]/g, '').split(',');;
                     const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                     setCrownTooth(numberArray);
-                    for (let tooth in numberArray){
-                        const element = document.getElementById(numberArray[tooth]);
-                        
-                        element.style.fill = "#137ea7"
-                       
-                    }
+
+                    const hasUpper = numberArray.includes("Upper Arch");
+                    const hasLower = numberArray.includes("Lower Arch");
+
+                    // Highlight teeth
+                    let teethToHighlight = new Set();
+
+                    numberArray.forEach(tooth => {
+                        const toothStr = tooth.toLowerCase(); // normalize case
+                        if (toothStr.includes("upper")) {
+                            upperArch.forEach(t => teethToHighlight.add(t));
+                        } 
+                        if (toothStr.includes("lower")) {
+                            lowerArch.forEach(t => teethToHighlight.add(t));
+                        } 
+                        if (!toothStr.includes("upper") && !toothStr.includes("lower")) {
+                            teethToHighlight.add(tooth); // individual tooth
+                        }
+                    });
+
+                    // Apply highlight
+                    teethToHighlight.forEach(t => {
+                        const element = document.getElementById(t);
+                        if (element) {
+                            element.style.fill = "#137ea7";
+                        }
+    });
                     
                     
                     

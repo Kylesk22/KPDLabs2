@@ -174,7 +174,7 @@ export const PricingInfo = props => {
       -1px -1px 0 black, 
       1px -1px 0 black, 
       -1px 1px 0 black
-    `}}>Crowns Starting at <h2 style={{color: "white"}}>$40</h2></a></h4>                 
+    `}}>Crowns Starting at <h2 style={{color: "white"}}>$60</h2></a></h4>                 
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@ export const PricingInfo = props => {
                         {/* <i className="flaticon-cog-1"></i> */}
                         </div>
                         <div className="content-box text-center">
-                        <h4 className="title"><a style={{color: "white"}}>Dentures starting at <h2 style={{color: "white"}}>$250</h2></a></h4>
+                        <h4 className="title"><a style={{color: "white"}}>Dentures starting at <h2 style={{color: "white"}}>$350</h2></a></h4>
                         </div>
                     </div>
                     </div>

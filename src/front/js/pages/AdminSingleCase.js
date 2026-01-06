@@ -1731,7 +1731,7 @@ export const AdminSingleCase = props => {
                 <div className="row form-group text-center justify-content-center mt-5">
                     <div className= "col-8 col-lg-4">
                         <label  htmlFor="shade"><h5>Shade</h5></label>
-                        <input className="form-select" id="shade"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} value={shade} aria-label="Shade">
+                        <input className="form-select" id="shade"   style={{borderRadius: "1rem", minHeight:"40px"}} value={shade} aria-label="Shade">
 
                         </input>
                     </div>

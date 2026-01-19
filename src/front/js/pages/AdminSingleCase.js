@@ -1763,7 +1763,7 @@ export const AdminSingleCase = props => {
                     :
                     <label  htmlFor="finish"><h5>Finish</h5></label>
                     }
-                    <input className="form-select" id="finish"  readOnly style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
+                    <input className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px"}} aria-label="Finish" value={finish}>
                         
                         {/* <option value="Polished" onClick={()=>setFinish("Polished")}>Polished</option>
                         <option value="Stain and Glaze" onClick={()=>setFinish("PMMA Temporary")}>Stain and Glaze</option> */}
@@ -1794,7 +1794,7 @@ export const AdminSingleCase = props => {
                 <div className="row form-group justify-content-center mt-3">
                     <div className="text-center col-8 col-lg-4 pt-3">
                     <label htmlFor="Notes" className="form-label" ><h5>Prescription Information</h5></label>
-                    <textarea className="form-control" id="Notes" rows="7"  readOnly value={note} onChange={(e)=>setNote(e.target.value)}></textarea>
+                    <textarea className="form-control" id="Notes" rows="7"  value={note} onChange={(e)=>setNote(e.target.value)}></textarea>
                
                     </div>
                 </div>

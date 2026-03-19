@@ -640,7 +640,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  <div className="content-box">
 			<h4 className="title"><a href="/partial">Partial</a></h4>
 	
-			<div className="text">Milled TCS Unbreakable</div>
+			<div className="text">Milled Acetal</div>
 			<a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
 		  </div>
 		</div>

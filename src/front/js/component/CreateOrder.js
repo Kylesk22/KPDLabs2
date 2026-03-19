@@ -4474,8 +4474,8 @@ AWS.config.update({
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
                                 {/* <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option> */}
-                                <option value="Standard SHT Zirconia" onClick={()=>{setProduct("Premium Zirconia Implant Crown Screw Retained")}}>Premium Zirconia Implant Crown Screw Retained</option>
-                                <option value="Standard SHT Zirconia" onClick={()=>{setProduct("Premium Zirconia Implant Crown Cemented")}}>Premium Zirconia Implant Crown Cemented</option>
+                                <option value="Premium Zirconia Implant Crown Screw Retained" onClick={()=>{setProduct("Premium Zirconia Implant Crown Screw Retained")}}>Premium Zirconia Implant Crown Screw Retained</option>
+                                <option value="Premium Zirconia Implant Crown Cemented" onClick={()=>{setProduct("Premium Zirconia Implant Crown Cemented")}}>Premium Zirconia Implant Crown Cemented</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
@@ -4497,9 +4497,10 @@ AWS.config.update({
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
                             <label  htmlFor="finish"><h5>Finish</h5></label>
-                            <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" value = {"Stain and Glaze"} onChange={(e)=>{setFinish(e.target.value)}}>
+                            <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish"  onChange={(e)=>{setFinish("Stain and Glaze")}}>
                                 {(product === "Premium Zirconia Implant Crown Screw Retained") || (product === "Premium Zirconia Implant Crown Cemented")?
-                                setFinish("Stain and Glaze")
+                                <option value="Premium Zirconia Implant Crown Screw Retained" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
+                                
                                 :
                                 ""}
                             </select>
@@ -4717,9 +4718,9 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 7-10 Business Days</small>
                         <br></br>
-                        <label style={{color:"black"}}>
+                        {/* <label style={{color:"black"}}>
                         <input
                             type="radio"
                             value="Rush"
@@ -4727,9 +4728,9 @@ AWS.config.update({
                             onChange={(e)=>{setProduction(e.target.value)}}
                         />
                          Rush Production 
-                        </label>
-                        <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        </label> */}
+                        {/* <br></br>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 6 or les Business Days</small> */}
                         </div>
                     </div>
 

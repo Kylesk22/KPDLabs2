@@ -268,7 +268,8 @@ export const Home = (props) => {
 			{/* <!-- about-block --> */}
 			
 		  </div>
-		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
+		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">
+		  		<div className="text" style={{textTransform: "none", color: "#333"}}>Discover More</div></a> 
 		  {/* <img src={BKG} alt=""/>  */}
 		  </div>
 		</div>

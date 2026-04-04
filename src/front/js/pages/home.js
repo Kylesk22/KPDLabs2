@@ -8,12 +8,8 @@ import "../../styles/style.css"
 import "../../styles/animate.css"
 import { Fade, Slide } from "react-awesome-reveal";
 
-import { Login } from "../component/Login";
-import Crowns from "../../img/pexels-cottonbro-studio-6502306.jpg"
 import { Link, Navigate } from "react-router-dom";
-import { Modal } from 'react-bootstrap';
 
-import ReactPlayer from 'react-player'
 import CustomVideoPlayer from "../component/CustomVideoPlayer"
 
 import "../../styles/_about.scss"
@@ -54,30 +50,16 @@ import "../../styles/_page-title.scss"
 
 
 
-import * as THREE from "three";
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 import ThreeScene2 from "../component/Scene2";
-import { Scene3 } from "../component/Scene3";
 
 import Zirc from "../../img/Crown.png"
-import Lith from "../../img/LithiumDisilicateCrown.jpg"
 import ZircV from "../../img/Veneer.png"
-import LithV from "../../img/LithiumDisilicateVeneer.jpg"
 import Partial from "../../img/TCS Unbreakable Partial Denture.png"
 import Denture from "../../img/Denture.png"
-import WaxRim from "../../img/WaxRim.jpg"
-import TryIn from "../../img/TryIn.jpg"
-import Ribbon from "../../img/Ribbon.png"
-import Logo from "../../img/KPD-Transparent.png"
-import BKG from "../../img/Background.jpg"
-import Lines from "../../img/lines.jpg" 
 import Intro from "../../img/footer-flip.jpg"
 import AboutBKG from "../../img/testi-bg.jpg"
-import Mill from "../../img/mill.jpg"
 import Lines21 from "../../img/lines2-1.png"
-import FootBKG from "../../img/footer-bg.jpg"
 import Layer11 from "../../img/layer1-1.jpg"
 import MillingClip from "../../img/MillingClip1080p2.mp4"
 import Itero from "../../img/itero-logo-2-300x103.png"
@@ -87,7 +69,6 @@ import Medit from "../../img/medit-logo-300.png"
 import Program from "../../img/1.png"
 import KPD from "../../img/kpd_logo_pos2(1).png"
 import Layer from "../../img/layer.png"
-import SIAS from "../../img/SIAS1.png"
 
 // import "../../styles/jquery"
 // import "../../styles/jquery.fancybox"

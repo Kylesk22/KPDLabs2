@@ -70,20 +70,7 @@ import Program from "../../img/1.png"
 import KPD from "../../img/kpd_logo_pos2(1).png"
 import Layer from "../../img/layer.png"
 
-// import "../../styles/jquery"
-// import "../../styles/jquery.fancybox"
-// import "../../styles/jquery-ui"
-// import "../../styles/jquery.form.min"
-// import "../../styles/jquery.validate.min"
-// import "../../styles/script"
-// import "../../styles/fontawesome.css"
-// import "../../styles/progress-bar"
-// import "../../styles/popper.min"
-// import "../../styles/mixitup"
-// import "../../styles/wow"
-// import "../../styles/slick.min"
-// import "../../styles/slick-animation.min"
-// import "../../styles/appear"
+
 
 
 
@@ -139,138 +126,8 @@ export const Home = (props) => {
 
 	return (
 		
-// 		<> 
-// 		<div >
-// 			{(!sessionStorage.getItem("id"))?
-// 			<div>
-			
-			
-// 			<div className="row text-center ">
-// 				<div className="d-none d-md-block col-lg-8 ms-auto me-auto ps-3">
-					
-// 					<ThreeScene2 />
-					
-// }
-// 					{/* <Scene3/> */}
-// 				</div>
-				
-// 				<div className="col-sm-12 col-lg-3 ms-auto me-auto" >
-				
-									
-// 					<div className="text-center mt-5 ms-auto "  style={{zIndex:"1"}}>
-						
-// 						<h3 className="montserrat" style={{textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>Our Promise</h3>
-// 						<div className="montserrat" style={{color: "white", textShadow: "5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000, 5px 5px 5px #000000"}}>
-// 							As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction.
-// 						</div>
-						
-						
-						
-// 					</div>
-			
-			
-// 				</div>
-				
-// 				<div className="d-none d-md-block col-lg-1">
-					
-// 				</div>
-// 			</div>
-// 			<div className="row ms-auto me-auto mt-5" id="products" >
-// 				<h2 id="products" className="text-center" style={{backgroundImage: "linear-gradient(#996515, #FFD700)", color: "black"}}>
-// 					<strong>Products</strong>
-// 				</h2>
-// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-// 				// style={{border: "solid", borderColor: "#FFD700"}}
-// 				>
-					
-// 					<h4 style={{color: "#d4af37"}} id="products">Crown and Bridge</h4>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={Zirc} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title">Zirconia</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 					{/* <div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={Lith} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title">Lithium Disilicate</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700"}}>More Info</a>
-// 						</div>
-// 					</div> */}
-// 				</div>
-// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-// 				// style={{border: "solid", borderColor: "#FFD700"}}
-// 				>
-					
-// 					<h4 id="products" style={{color: "#d4af37"}}>Veneer</h4>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={ZircV} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title">Zirconia</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 					{/* <div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={LithV} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title">Lithium Disilicate</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "darkgoldenrod"}}>More Info</a>
-// 						</div>
-// 					</div> */}
-// 				</div>
-// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-// 				// style={{border: "solid", borderColor: "#FFD700"}}
-// 				>
-					
-// 					<h4 id="products" style={{color: "#d4af37"}}>Partial</h4>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={Partial} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title"> TCS Unbreakable</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 				</div>
-// 				<div className="col-sm-12 col-lg-3 text-center mt-3 ms-auto " 
-// 				// style={{border: "solid", borderColor: "#FFD700"}}
-// 				>
-// 					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={Denture} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title"> PMMA base with Multilayer PMMA denture teeth</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={WaxRim} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title">Wax rim with PMMA base plate</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 					<h4 id="products" style={{color: "#d4af37"}}>Denture</h4>
-// 					<div className="card mt-3 mb-3" >
-// 						<img className="card-img-top" src={TryIn} height="325px"/>
-// 						<div className="card-body">
-// 							<h5 className="card-title"> Wax try in monolithic PMMA denture</h5>
-// 							<p className="card-text"></p>
-// 							<a href="#" className="btn btn-warning" style={{backgroundColor: "#FFD700", color:"black"}}><strong>More Info</strong></a>
-// 						</div>
-// 					</div>
-// 				</div>
-				
-// 			</div>
-// 			</div>:<Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
-// 		</div>
+
+
 	<>
 	{(!sessionStorage.getItem("id"))?
 		<div className="page-wrapper">
@@ -279,129 +136,12 @@ export const Home = (props) => {
 
 
 
-{/* <section className="banner-section">
-<div className="banner-slider slick-initialized slick-slider"><button className="slick-prev slick-arrow" aria-label="Previous" type="button" >Previous</button>
-	<div className="slick-list draggable"><div className="slick-track" 
-	// style={{opacity: 1, transform: `translate3d(-1470px, 0px, 0px)`}}
-	><div className="banner-slide slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabIndex="-1" 
-	// style={{width: "1470px"}}
-	> 
-	<img src={BKG} alt=""/>
-		<div className="outer-box">
-			<div className="auto-container">
-				<div className="content-box"> <span className="sub-title">Next level Automation System</span>
-				<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" className="fadeInLeft animated" 
-// style={{opacity: 1, animationDelay: "0.2s"}}
->Cast Effective Digital Marketing Agency</h1>
-					<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" >Discover More</a> </div>
-				</div>
-			</div>
-		</div>
-	</div>
-<div className="banner-slide slick-slide " data-slick-index="0" aria-hidden="false" tabIndex="0" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title">Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" className="fadeInLeft animated" 
-// style={{opacity: 1, animationDelay: "0.2s"}}
->Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn fadeInUp animated" tabIndex="0" 
-// style={{opacity: 1, animationDelay: "0.4s"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div><div className="banner-slide slick-slide " data-slick-index="1" aria-hidden="true" tabIndex="-1" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2" 
-// style={{opacity: 0, animationDelay: "0.2s"}}
->Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
-style={{opacity: 0, animationDelay: "0.2s"}} 
-className="">Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
-// style={{opacity: 1, animationDelay: "0.4s"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" tabIndex="-1" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title">Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
-// style={{opacity: 0, animationDelay: "0.2s"}} 
-className="">Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
-// style={{opacity: 1, animationDelay: "0.4s"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="3" id="" aria-hidden="true" tabIndex="-1" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title">Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
-// style={{opacity: 0}}
->Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1"  
-// style={{opacity: 1, animationDelay: "0.4s"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="4" id="" aria-hidden="true" tabIndex="-1" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title" data-animation-in="fadeInUp" data-delay-in="0.2" 
-// style={{opacity: "0"}}
->Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
-// style={{opacity: "0"}}
->Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
-// style={{opacity: "0"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div><div className="banner-slide slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" tabIndex="-1" 
-// style={{width: "1470px"}}
-> <img src={BKG} alt=""/>
-<div className="outer-box">
-<div className="auto-container">
-<div className="content-box"> <span className="sub-title">Next level Automation System</span>
-<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" 
-// style={{opacity: 0}}
->Cast Effective Digital Marketing Agency</h1>
-<div className="btn-box"> <a href="page-about.html" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn" tabIndex="-1" 
-// style={{opacity: "0"}}
->Discover More</a> </div>
-</div>
-</div>
-</div>
-</div></div></div>
 
-
-<button className="slick-next slick-arrow" aria-label="Next" type="button" >Next</button></div>
-</section> */}
 
 <section className="banner-section" >
   <div className="banner-slider slick-initialized slick-slider" >
 	<div className="banner-slide" ><img src={Intro} style={{position: "absolute"}}/> 
-	{/* <img src={BKG} alt=""/> */}
+
 	
 	  <div className="outer-box" style={{zIndex: "2"}} >
 		<div className="auto-container" style={{zIndex: "2"}}>
@@ -516,23 +256,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		  </div>
 		  <div className="row"> 
 			{/* <!-- about-block --> */}
-			{/* <div className="about-block col-sm-6">
-			  <div className="inner-box">
-				<div className="icon-box"> <i className="flaticon-support-2"></i>
-				  <h4 className="title">Internal Networking</h4>
-				</div>
-				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
-			  </div>
-			</div> */}
+			
 			{/* <!-- about-block --> */}
-			{/* <div className="about-block col-sm-6">
-			  <div className="inner-box">
-				<div className="icon-box"> <i className="flaticon-typography"></i>
-				  <h4 className="title">Manage IT Services</h4>
-				</div>
-				<div className="text">Lorem ipsum dolor sited amet consectetur notted </div>
-			  </div>
-			</div> */}
+			
 		  </div>
 		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn">Discover More</a> 
 		  {/* <img src={BKG} alt=""/>  */}
@@ -546,15 +272,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			
 				
 
-			{/* <div className="video-container">
-			<video id="myVideo" width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
-				<source src={MillingClip} type="video/mp4"/>
-			</video>
 			
-			</div> */}
-			{/* <video width="320" height="240" controls muted className="play-now" data-fancybox="gallery" data-caption="">
-				<source src={MillingClip} type="video/mp4"/>
-			</video> */}
 			<CustomVideoPlayer/>
 			
 
@@ -643,43 +361,6 @@ className="">Cast Effective Digital Marketing Agency</h1>
 	</div>
 
 
-	{/* <div className="row "> 
-	 
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
-		<div className="inner-box">
-		  <div className="image-box" >
-			<figure className="image overlay-animr">
-				
-					<img src={SIAS} alt="" className="product-pic" />
-				
-			</figure>
-			
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/smileinasnap">Smile in a Snap</a></h4>
-
-			<div className="text">Zirconia</div>
-			<a href="/smileinasnap" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	  
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
-			
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/veneer">Veneer</a></h4>
-
-			<div className="text">Zirconia/PMMA Temporary</div>
-			<a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	  
-	</div> */}
 
 
   </div>
@@ -747,17 +428,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			
 			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
 			style={{position: "absolute"}}
-			// onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
 			></i>
-			{/* {(iteroShow)?
-			<div style={{paddingTop: "10px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
-					<li style={{listStyle: "initial"}}>Navigate to “Add Preferred Lab” and input our lab’s Company ID (420339) to connect your practice with KPD Labs directly.</li>
-					<li style={{listStyle: "initial"}}>If any issues appear, please call iTero’s support line directly to set up KPD Labs as your “Preferred Lab” – simply give them our Company ID (420339) and they will connect your practice with our lab directly.</li>
-				</ul>
-		  </div>
-			:""} */}
+		
 		  </div>
 		  
 		</div>
@@ -780,21 +452,8 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</div>
 			
 			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			// onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}
 			></i>
-			{/* {(cerecShow)?
-			<div style={{paddingTop: "10px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
-					<li style={{listStyle: "initial"}}>Now under “My Account,” click on “My Favorite Laboratories”</li>
-					<li style={{listStyle: "initial"}}>Click on “Search Labs”</li>
-					<li style={{listStyle: "initial"}}>Enter KPD Labs in the Company Name field</li>
-					<li style={{listStyle: "initial"}}>If you can’t find us you may also search by location – select “United States” and then enter KPD Labs’s Florida zip code: “33844” </li>
-					<li style={{listStyle: "initial"}}>Find KPD Labs and click on the plus sign in the “Add” column all the way to the right</li>
-					<li style={{listStyle: "initial"}}>Your scans are ready to be sent right away – just choose KPD Labs from your drop down menu.</li>
-				</ul>
-		  </div>
-			:""} */}
+		
 		  </div>
 		 
 		</div>
@@ -821,20 +480,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</div>
 			
 			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			// onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}
+			
 			></i>
-			{/* {(shapeShow)?
-			<div style={{paddingTop: "10px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
-					<li style={{listStyle: "initial"}}>Navigate to “More” and then select “Settings”</li>
-					<li style={{listStyle: "initial"}}>In the menu, select “Connections” then “Labs” and then “Add”</li>
-					<li style={{listStyle: "initial"}}>Click on “Add Connections”</li>
-					<li style={{listStyle: "initial"}}>Type in our email address: kpdlabs@kpdlabs.com</li>
-					<li style={{listStyle: "initial"}}>KPD Labs will be shown. Click “Connect”</li>
-				</ul>
-		  </div>
-			: ""} */}
+			
 		  </div>
 		 
 		</div>
@@ -861,20 +509,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			</div>
 			
 			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			// onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}
+			
 			></i>
-			{/* {(meditShow)?
-			<div style={{paddingTop: "10px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
-					<li style={{listStyle: "initial"}}>Click on “Partners” in the left-hand column</li>
-					<li style={{listStyle: "initial"}}>Select “Search for Partners” at the top</li>
-					<li style={{listStyle: "initial"}}>Click in the search bar and type in our email address: kpdlabs@kpdlabs.com</li>
-					<li style={{listStyle: "initial"}}>KPD Labs will populate. Select our lab to add us as a partner</li>
-					
-				</ul>
-		  </div>
-			:""} */}
+			
 		  </div>
 		  
 		</div>
@@ -901,17 +538,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End project-section --> 
 
 <!-- client section --> */}
-{/* <section className="client-section pt-0">
-  <div className="auto-container">
-	<div className="outer-box">
-	  <figure className="image wow fadeInLeft" data-wow-delay="400ms"><a href="#"><img src={Denture} alt=""/></a></figure>
-	  <figure className="image wow fadeInLeft" data-wow-delay="600ms"><a href="#"><img src={Denture} alt=""/></a></figure>
-	  <figure className="image wow fadeInLeft" data-wow-delay="800ms"><a href="#"><img src={Denture} alt=""/></a></figure>
-	  <figure className="image wow fadeInLeft" data-wow-delay="1000ms"><a href="#"><img src={Denture} alt=""/></a></figure>
-	  <figure className="image wow fadeInLeft" data-wow-delay="1100ms"><a href="#"><img src={Denture} alt=""/></a></figure>
-	</div>
-  </div>
-</section> */}
+
 {/* <!-- End client section --> 
 
 <!-- about-section-two --> */}
@@ -1252,93 +879,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 {/* <!-- End contect-banner --> 
 
 <!-- Main Footer --> */}
-{/* <footer className="main-footer" style={{backgroundImage: `url(${FootBKG})`}}>
-  <div className="bg-image"  ></div> */}
-  {/* <!--Widgets Section--> */}
-  {/* <div className="widgets-section">
-	<div className="auto-container">
-	  <div className="row">  */}
-		{/* <!--Footer Column--> */}
-		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft">
-		  <div className="footer-widget about-widget">
-			<div className="logo"><a href="index.html"><img src={Logo} alt="" /></a></div>
-			<div className="text">Wizards of Dental Technology</div>
-			<div className="subscribe-form"> */}
-			  {/* <form method="post" action="#">
-				<div className="form-group">
-				  <input type="email" name="email" className="email"  placeholder="Your Address" required=""/>
-				  <button type="button" className="theme-btn"><i className="fa fa-paper-plane"></i></button>
-				</div>
-			  </form> */}
-			{/* </div>
-		  </div>
-		</div> */}
-		{/* <!--Footer Column--> */}
-		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="400ms">
-		  <div className="footer-widget gallery-widget">
-			<h3 className="widget-title">Our Products</h3>
-			<div className="widget-content">
-			  <div className="outer clearfix">
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure> */}
-				{/* <figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure>
-				<figure className="image"> <a href="#"><img src={Denture} alt=""/></a> </figure> */}
-			  {/* </div>
-			</div>
-		  </div>
-		</div> */}
-		{/* <!--Footer Column--> */}
-		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="600ms">
-		  <div className="footer-widget links-sec">
-			<h3 className="widget-title">Quick Links</h3>
-			<ul className="user-links">
-			  <li><a href="/aboutus">About Us</a></li>
-			  <li><a href="#">Products</a></li> */}
-			  {/* <li><a href="#">News & Media</a></li>
-			  <li><a href="#">Our Projects</a></li>
-			  <li><a href="#">Our Services</a></li> */}
-			  {/* <li><a href="#">Contact Us</a></li>
-			</ul>
-		  </div>
-		</div> */}
-		{/* <!--Footer Column--> */}
-		{/* <div className="footer-column col-lg-3 col-sm-6 wow fadeInLeft" data-wow-delay="800ms">
-		  <div className="footer-widget contact-widget">
-			<h3 className="widget-title">Contact Now</h3>
-			<div className="widget-content">
-			  <div className="text"><i className="fa-solid fa-location-dot"></i>3393 US Hwy 17-92 West Haines City, FL, USA</div>
-			  <ul className="contact-info">
-				<li><i className="fas fa-envelope"></i> <a href="mailto:kpdlabs@kpdlabs.com">kpdlabs@kpdlabs.com</a><br/>
-				</li>
-				<li><i className="fas fa-phone"></i> <a href="tel:+926668880000">+92 666 888 0000</a><br/>
-				</li>
-			  </ul>
-			  <ul className="social-icons">
-				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i className="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i className="fab fa-google"></i></a></li>
-			  </ul>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </div> */}
+
   
-  {/* <!--Footer Bottom--> */}
-  {/* <div className="footer-bottom"/>
-	<div className="auto-container">
-	  <div className="inner-container">
-		<div className="copyright-text text-center">© zitch Copyright reserved by <a href="index.html">kodesolution.com</a>
-		<a href="#" className="footer-btn"></a>
-	  </div>
-	</div>
-  </div>
-</footer> */}
-{/* <!--End Main Footer --> */}
+ 
 
 
 </div>

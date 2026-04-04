@@ -151,7 +151,14 @@ export const Home = (props) => {
 		  <ul>
 			<li>
 				
-		  		<span className="sub-title">DENTAL SOLUTIONS</span>
+		  		<span className="sub-title" style={{
+    border: "1px solid #ffaa17",
+    backgroundColor: "transparent",
+    color: "#ffaa17",
+    padding: "6px 14px",
+    letterSpacing: "2px",
+    fontSize: "12px"
+}}>DENTAL SOLUTIONS</span>
 				  
 			</li>
 		  	<li>

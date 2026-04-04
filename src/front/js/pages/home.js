@@ -757,14 +757,16 @@ className="">Cast Effective Digital Marketing Agency</h1>
 		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}} 
 		// className="project-block col-lg-3 col-sm-6 wow fadeInRight" 
 		data-wow-delay="400ms">
-		  <div className="inner-box" onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}>
+		  <div className="inner-box" 
+		//   onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
+		  >
 			<div className="image-box" style={{height: "200px", display: "flex", alignItems: "center"}}>
 			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
 			</div>
 			
 			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
 			style={{position: "absolute"}}
-			onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
+			// onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
 			></i>
 			{/* {(iteroShow)?
 			<div style={{paddingTop: "10px"}}>
@@ -796,7 +798,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
 			</div>
 			
-			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}></i>
+			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
+			// onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}}
+			></i>
 			{/* {(cerecShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -835,7 +839,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
 			</div>
 			
-			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}></i>
+			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
+			// onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}}
+			></i>
 			{/* {(shapeShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -873,7 +879,9 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
 			</div>
 			
-			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}></i>
+			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
+			// onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}}
+			></i>
 			{/* {(meditShow)?
 			<div style={{paddingTop: "10px"}}>
 				<ul style={{listStyle: "initial"}}>
@@ -1104,7 +1112,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			  <div className={`acc-btn ${faq1 ? 'active' : ''}`} onClick={()=>{
 				!faq1 ? setFaq1(true): setFaq1(false)}}>How do I get started with KPD? <i className="icon fas fa-angle-right" 
 			  ></i> </div>
-			  <div className={`acc-content${faq1 ? 'current' : ''}`}>
+			  <div className={`acc-content ${faq1 ? 'current' : ''}`}>
 				<div className="content">
 				  <div className="text">Click <a href="/signup">signup</a> and make an account with us! Feel free to <a href="/contact">contact</a> us with any questions regarding signing up!</div>
 				</div>
@@ -1114,7 +1122,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<li className={`accordion block ${faq2 ? 'active-block' : ''}`}>
 			  <div className={`acc-btn ${faq2 ? 'active' : ''}`} onClick={()=>{
 				!faq2 ? setFaq2(true): setFaq2(false)}}>What materials do we offer?<i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content${faq2 ? 'current' : ''}`}>
+			  <div className={`acc-content ${faq2 ? 'current' : ''}`}>
 				<div className="content">
 				  <div className="text">We currently offer Zirconia for crown, bridge, and veneer. Milled TCS unbreakable for partials. Milled Multiplayer PMMA With Gingival PMMA Base for Dentures.</div>
 				</div>
@@ -1124,7 +1132,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<li className={`accordion block ${faq3 ? 'active-block' : ''}`}>
 			  <div className={`acc-btn ${faq3 ? 'active' : ''}`} onClick={()=>{
 				!faq3 ? setFaq3(true): setFaq3(false)}}>What are KPD's terms? <i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content${faq3 ? 'current' : ''}`}>
+			  <div className={`acc-content ${faq3 ? 'current' : ''}`}>
 				<div className="content">
 				  <div className="text">Check out our <a href="/terms">terms.</a></div>
 				</div>
@@ -1134,7 +1142,7 @@ className="">Cast Effective Digital Marketing Agency</h1>
 			<li className={`accordion block ${faq4 ? 'active-block' : ''}`}>
 			  <div className={`acc-btn ${faq4 ? 'active' : ''}`} onClick={()=>{
 				!faq4 ? setFaq4(true): setFaq4(false)}}>What is KPD's turnaround time? <i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content${faq4 ? 'current' : ''}`}>
+			  <div className={`acc-content ${faq4 ? 'current' : ''}`}>
 				<div className="content">
 				  <div className="text">4-6 Business days on average with rush options available.</div>
 				</div>

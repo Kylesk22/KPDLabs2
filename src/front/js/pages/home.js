@@ -260,7 +260,7 @@ export const Home = (props) => {
 		<div className="inner-column">
 		  <div className="sec-title"> <span className="sub-title">KPD Labs ::::::</span>
 			<h2>Our Promise</h2>
-			<div className="text">As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction. </div>
+			<div className="text" style={{textTransform: "none"}}>As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction. </div>
 		  </div>
 		  <div className="row"> 
 			{/* <!-- about-block --> */}

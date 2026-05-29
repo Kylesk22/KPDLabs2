@@ -2107,7 +2107,8 @@ AWS.config.update({
                         <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option> */}
                         <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
                         {/* <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option> */}
-                        <option value="Acetal" onClick={()=>setProduct("Acetal")}>Acetal</option>
+                        <option value="Unilateral" onClick={()=>setProduct("Unilateral")}>Unilateral</option>
+                        <option value="Bilateral" onClick={()=>setProduct("Bilateral")}>Bilateral</option>
                     </select>
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -2125,22 +2126,23 @@ AWS.config.update({
                                     `$${(price += 150)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 35)}`
+                                `$${(price += 50)}`
 
                                 : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 70)}`
+                                    `$${(price += 100)}`
 
-                                :(product==="TCS Unbreakable" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 250)}`
-
-                                : (product === "TCS Unbreakable" && lowerArch && upperArch)?    
-                                    `$${(price += 500)}`
                                 
-                                :(product==="Acetal" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                :(product==="Unilateral" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                     `$${(price += 250)}`
     
-                                : (product === "Acetal" && lowerArch && upperArch)?    
+                                : (product === "Unilateral" && lowerArch && upperArch)?    
                                         `$${(price += 500)}`
+
+                                :(product==="Bilateral" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                    `$${(price += 325)}`
+    
+                                : (product === "Bilateral" && lowerArch && upperArch)?    
+                                        `$${(price += 650)}`
                                     
                                 :""
                                 
@@ -2150,7 +2152,7 @@ AWS.config.update({
                                 </strong></small>
                 </div>
             </div>
-            {(product === "Acetal")?                 
+            {(product === "Unilateral") || (product === "Bilateral")?                 
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
@@ -2422,15 +2424,7 @@ AWS.config.update({
                 </div>
                 {/* <!-- service-block-two --> */}
                 <div className="service-block-two col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-                <div className="inner-box" onClick={()=>setType("copyDenture")}>
-                    <div className="image-box">
-                    <figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
-                    {/* <i className="flaticon-cog-1"></i> */}
-                    </div>
-                    <div className="content-box">
-                    <h4 className="title"><a >Copy Denture</a></h4>
-                    </div>
-                </div>
+                
                 </div>
                
             </div>
@@ -2643,10 +2637,10 @@ AWS.config.update({
                                     `$${(price += 150)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 50)}`
+                                `$${(price += 75)}`
 
                                 : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 100)}`
+                                    `$${(price += 150)}`
 
                                 :(product==="Standard Final Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 250)}`
@@ -3088,10 +3082,10 @@ AWS.config.update({
                         `$${(price += 150)}`
                     
                     :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                    `$${(price += 50)}`
+                    `$${(price += 75)}`
 
                     : (product === "Try In" && lowerArch && upperArch)?    
-                        `$${(price += 100)}`
+                        `$${(price += 150)}`
 
                     :(product==="Standard Copy Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                     `$${(price += 200)}`

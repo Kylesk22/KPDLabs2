@@ -437,6 +437,7 @@ AWS.config.update({
                 "shipping": shipping,
                 "production": production,
                 "model3D": model3D,
+                "doctor_due_date": doctorDueDate || null,
             }
             
             const options = {
@@ -469,6 +470,7 @@ AWS.config.update({
                         setNote("")
                         setType("")
                         setGumShade("")
+                        setDoctorDueDate("")
                         // props.handleGetPage("home")
                         // props.generateCase()
                         props.getCase("")
@@ -1829,6 +1831,18 @@ AWS.config.update({
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
                         <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
@@ -2279,6 +2293,18 @@ AWS.config.update({
                 
                 </div> */}
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
             <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -2762,6 +2788,18 @@ AWS.config.update({
                 
                 </div> */}
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
             
 
             <div  className="row form-group justify-content-center mt-5">
@@ -3194,6 +3232,18 @@ AWS.config.update({
     </div> */}
 </div>
 
+<div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
+
 
 <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -3604,6 +3654,18 @@ AWS.config.update({
     
     </div> */}
 </div>
+
+<div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
 <div  className="row form-group justify-content-center mt-5">
@@ -4122,6 +4184,18 @@ AWS.config.update({
                 
                 </div> */}
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
             
 
             <div  className="row form-group justify-content-center mt-5">
@@ -4673,6 +4747,18 @@ AWS.config.update({
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
                         <label ><h5>Shipping To KPD (Physical Impressions)</h5></label>
                         <br></br>
                         <button className="btn btn-primary" onClick={(e)=> {e.preventDefault(); getLabelToKpd(); setWaiting(true); window.scrollTo({
@@ -5144,6 +5230,18 @@ AWS.config.update({
             </div> */}
         </div>
 
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
+
 
         <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -5502,6 +5600,18 @@ AWS.config.update({
             
             </div> */}
         </div>
+
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
         <div  className="row form-group justify-content-center mt-5">
@@ -5901,6 +6011,18 @@ AWS.config.update({
                 
                 </div> */}
             </div>
+
+            <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
     
     
             <div  className="row form-group justify-content-center mt-5">
@@ -6276,6 +6398,18 @@ AWS.config.update({
             
             </div> */}
         </div>
+
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
         <div  className="row form-group justify-content-center mt-5">

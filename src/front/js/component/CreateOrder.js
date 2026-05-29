@@ -702,7 +702,7 @@ AWS.config.update({
 
     useEffect(() => {
         if (product === "Full Contour Zirconia") setFinish("Stain & Glaze");
-        else if (product === "Microlayered PFZ Crown") setFinish("Structure/Stain & Glaze");
+        else if (product === "Microlayered PFZ") setFinish("Structure/Stain & Glaze");
         else if (product === "PMMA Temporary") setFinish("Polished");
         else setFinish("");
 }, [product]);  
@@ -1124,7 +1124,7 @@ AWS.config.update({
                                 <option value="Select One">Select One</option>
                                 {/* <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option> */}
                                 <option value="Full Contour Zirconia" onClick={()=>{setProduct("Full Contour Zirconia")}}>Full Contour Zirconia</option>
-                                <option value="Microlayered PFZ Crown" onClick={()=>{setProduct("Microlayered PFZ Crown")}}>Microlayered PFZ Crown</option>
+                                <option value="Microlayered PFZ" onClick={()=>{setProduct("Microlayered PFZ")}}>Microlayered PFZ</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
@@ -1132,7 +1132,7 @@ AWS.config.update({
                                     {(product === "Full Contour Zirconia")?
                                         `$${(price += 80)*crownTooth.length}`
                                         
-                                    :(product === "Microlayered PFZ Crown")?
+                                    :(product === "Microlayered PFZ")?
                                         `$${(price += 100)*crownTooth.length}`
                                     
                                     :(product==="PMMA Temporary")?
@@ -1156,14 +1156,14 @@ AWS.config.update({
                                 aria-label="Finish"
                                 value={
                                     product === "Full Contour Zirconia" ? "Stain & Glaze" :
-                                    product === "Microlayered PFZ Crown" ? "Structure/Stain & Glaze" :
+                                    product === "Microlayered PFZ" ? "Structure/Stain & Glaze" :
                                     product === "PMMA Temporary" ? "Polished" :
                                     ""
                                 }
                                 onChange={() => {}}
                             >
                                 {product === "Full Contour Zirconia" && <option value="Stain & Glaze">Stain &amp; Glaze</option>}
-                                {product === "Microlayered PFZ Crown" && <option value="Structure/Stain & Glaze">Structure/Stain &amp; Glaze</option>}
+                                {product === "Microlayered PFZ" && <option value="Structure/Stain & Glaze">Structure/Stain &amp; Glaze</option>}
                                 {product === "PMMA Temporary" && <option value="Polished">Polished</option>}
                                 {!product || product === "Select One" ? <option value="">Select a product first</option> : null}
                             </select>
@@ -1699,13 +1699,13 @@ AWS.config.update({
                             <label  htmlFor="product"><h5>Product</h5></label>
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
-                                <option value="UHT Zirconia Stain and Glaze" onClick={()=>{setProduct("UHT Zirconia Stain and Glaze")}}>Ultra Premium UHT Zirconia Stain and Glaze</option>
+                                <option value="Microlayered PFZ" onClick={()=>{setProduct("Microlayered PFZ")}}>Microlayered PFZ</option>
 
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "UHT Zirconia Stain and Glaze")?
-                                        `$${(price += 95)*crownTooth.length}`
+                                    {(product === "Microlayered PFZ")?
+                                        `$${(price += 100)*crownTooth.length}`
                                     
                                     
                                     

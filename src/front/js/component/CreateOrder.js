@@ -4576,16 +4576,16 @@ AWS.config.update({
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
                                 {/* <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option> */}
-                                <option value="Premium Zirconia Implant Crown Screw Retained" onClick={()=>{setProduct("Premium Zirconia Implant Crown Screw Retained")}}>Premium Zirconia Implant Crown Screw Retained</option>
-                                <option value="Premium Zirconia Implant Crown Cemented" onClick={()=>{setProduct("Premium Zirconia Implant Crown Cemented")}}>Premium Zirconia Implant Crown Cemented</option>
+                                <option value="Implant Crown & Ti Base" onClick={()=>{setProduct("Implant Crown & Ti Base")}}>Implant Crown & Ti Base</option>
+                                <option value="Implant Crown & Custom Abutment" onClick={()=>{setProduct("Implant Crown & Custom Abutment")}}>Implant Crown & Custom Abutment</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "Premium Zirconia Implant Crown Screw Retained")?
-                                        `$${(price += 250)*crownTooth.length}`
+                                    {(product === "Implant Crown & Ti Base")?
+                                        `$${(price += 275)*crownTooth.length}`
                                     
-                                    :(product === "Premium Zirconia Implant Crown Cemented")?
-                                        `$${(price += 250)*crownTooth.length}`
+                                    :(product === "Implant Crown & Custom Abutment")?
+                                        `$${(price += 325)*crownTooth.length}`
 
                                     
                                     : ""
@@ -4596,18 +4596,18 @@ AWS.config.update({
                     </div>
                     
 
-                    <div className="row form-group text-center justify-content-center mt-5">
+                    {/* <div className="row form-group text-center justify-content-center mt-5">
                         <div className= "col-8 col-lg-4">
-                            <label  htmlFor="finish"><h5>Finish</h5></label>
+                            <label  htmlFor="finish"><h5>Abutment Type</h5></label>
                             <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish"  onChange={(e)=>{setFinish("Stain and Glaze")}}>
-                                {(product === "Premium Zirconia Implant Crown Screw Retained") || (product === "Premium Zirconia Implant Crown Cemented")?
-                                <option value="Premium Zirconia Implant Crown Screw Retained" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
+                                {(product === "Implant Crown Screw Retained") || (product === "Implant Crown Cemented")?
+                                <option value="Implant Crown Screw Retained" onClick={()=>{setFinish("Stain and Glaze")}}>Stain and Glaze</option>
                                 
                                 :
                                 ""}
                             </select>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* {(product === "SHT Zirconia")?
                     

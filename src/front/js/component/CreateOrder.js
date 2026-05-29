@@ -691,10 +691,10 @@ AWS.config.update({
 
     useEffect(()=> { 
         if (model3D ==="Yes" && type === "implantCrown"){
-            (lowerArch && upperArch)? setPrice3((60*crownTooth.length)+20): setPrice3((60*crownTooth.length)+10)
+            (lowerArch && upperArch)? setPrice3((60*crownTooth.length)+30): setPrice3((60*crownTooth.length)+15)
         }
         else if (model3D === "Yes"){
-        (lowerArch && upperArch)? setPrice3(20): setPrice3(10)
+        (lowerArch && upperArch)? setPrice3(30): setPrice3(15)
         }
     
     })
@@ -1087,7 +1087,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
                     
@@ -1663,7 +1663,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -2067,7 +2067,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -2119,10 +2119,10 @@ AWS.config.update({
                                     `$${(price += 70)}`
 
                                 :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 50)}`
+                                `$${(price += 75)}`
 
                                 : (product === "Occlusal Rim" && lowerArch && upperArch)?    
-                                    `$${(price += 100)}`
+                                    `$${(price += 150)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 35)}`
@@ -2576,7 +2576,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -2637,10 +2637,10 @@ AWS.config.update({
                                     `$${(price += 70)}`
 
                                 :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 50)}`
+                                `$${(price += 75)}`
 
                                 : (product === "Occlusal Rim" && lowerArch && upperArch)?    
-                                    `$${(price += 100)}`
+                                    `$${(price += 150)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
@@ -3022,7 +3022,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -3082,10 +3082,10 @@ AWS.config.update({
                         `$${(price += 70)}`
 
                     :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                    `$${(price += 50)}`
+                    `$${(price += 75)}`
 
                     : (product === "Occlusal Rim" && lowerArch && upperArch)?    
-                        `$${(price += 100)}`
+                        `$${(price += 150)}`
                     
                     :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                     `$${(price += 50)}`
@@ -3469,7 +3469,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -3957,7 +3957,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
 
@@ -4524,7 +4524,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch, Analogs $60/Crown</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch, Analogs $60/Crown</small>
                         </div>
                     </div>
                     
@@ -5050,7 +5050,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
         {/* <div className="row form-group text-center justify-content-center mt-5">
@@ -5478,7 +5478,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
         
@@ -5848,7 +5848,7 @@ AWS.config.update({
                              Yes 
                             </label>
                             <br></br>
-                            <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                            <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                             </div>
                         </div>
             <div className="row form-group text-center justify-content-center mt-5">
@@ -6257,7 +6257,7 @@ AWS.config.update({
                          Yes 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $10/Arch</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>3D Printed Models $15/Arch</small>
                         </div>
                     </div>
         
@@ -6274,11 +6274,11 @@ AWS.config.update({
                 <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                             {(product === "Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                             
-                                `$${(price += 50)}`
+                                `$${(price += 75)}`
                             
 
                             : (product === "Occlusal Rim" && lowerArch && upperArch)?    
-                                `$${(price += 100)}`
+                                `$${(price += 150)}`
 
                                              
                             :""

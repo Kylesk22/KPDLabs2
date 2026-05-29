@@ -836,13 +836,13 @@ AWS.config.update({
                 </div>
                 </div>
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-                <div className="inner-box" onClick={()=>setType("Wax Rim")}>
+                <div className="inner-box" onClick={()=>setType("Occlusal Rim")}>
                     <div className="image-box">
                     <figure className="image overlay-anim"><img src={WaxRim} alt="" className="product-pic" /></figure>
                     
                     </div>
                     <div className="content-box text-center">
-                    <h4 className="title"><a >Wax Rim</a></h4>
+                    <h4 className="title"><a >Occlusal Rim</a></h4>
                     </div>
                 </div>
                 </div>
@@ -2134,10 +2134,10 @@ AWS.config.update({
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
                                     `$${(price += 70)}`
 
-                                :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
-                                : (product === "Wax Rim" && lowerArch && upperArch)?    
+                                : (product === "Occlusal Rim" && lowerArch && upperArch)?    
                                     `$${(price += 100)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -2652,10 +2652,10 @@ AWS.config.update({
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
                                     `$${(price += 70)}`
 
-                                :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 50)}`
 
-                                : (product === "Wax Rim" && lowerArch && upperArch)?    
+                                : (product === "Occlusal Rim" && lowerArch && upperArch)?    
                                     `$${(price += 100)}`
                                 
                                 :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -3097,10 +3097,10 @@ AWS.config.update({
                     : (product === "Custom Tray" && lowerArch && upperArch)?    
                         `$${(price += 70)}`
 
-                    :(product==="Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                    :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                     `$${(price += 50)}`
 
-                    : (product === "Wax Rim" && lowerArch && upperArch)?    
+                    : (product === "Occlusal Rim" && lowerArch && upperArch)?    
                         `$${(price += 100)}`
                     
                     :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
@@ -6134,7 +6134,7 @@ AWS.config.update({
             </form>
             
             :
-            (type==="Wax Rim")?
+            (type==="Occlusal Rim")?
             <form className="form form-container" data-toggle="validator" role="form" onSubmit={(e)=>{e.preventDefault(); uploadCase()}}>
         <div className="row form-group justify-content-center">
             <div className="text-center col-4">
@@ -6283,17 +6283,17 @@ AWS.config.update({
                 <label  htmlFor="product"><h5>Product</h5></label>
                 <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                     <option value="Select One">Select One</option>
-                    <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option>
+                    <option value="Occlusal Rim" onClick={()=>setProduct("Occlusal Rim")}>Occlusal Rim</option>
                     
                     
                 </select>
                 <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                            {(product === "Wax Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                            {(product === "Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                             
                                 `$${(price += 50)}`
                             
 
-                            : (product === "Wax Rim" && lowerArch && upperArch)?    
+                            : (product === "Occlusal Rim" && lowerArch && upperArch)?    
                                 `$${(price += 100)}`
 
                                              

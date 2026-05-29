@@ -2624,11 +2624,11 @@ AWS.config.update({
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
-                                    `$${(price += 35)}`
+                                    `$${(price += 50)}`
                                 
 
                                 : (product === "Custom Tray" && lowerArch && upperArch)?    
-                                    `$${(price += 70)}`
+                                    `$${(price += 100)}`
 
                                 :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 `$${(price += 75)}`
@@ -2649,10 +2649,10 @@ AWS.config.update({
                                     `$${(price += 500)}`
 
                                 :(product==="KPD Premier Denture" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                    `$${(price += 350)}`
+                                    `$${(price += 400)}`
     
                                 : (product === "KPD Premier Denture" && lowerArch && upperArch)?    
-                                        `$${(price += 700)}`
+                                        `$${(price += 800)}`
                                 
                                 :""
                                 }

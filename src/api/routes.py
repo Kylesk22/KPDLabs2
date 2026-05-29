@@ -696,7 +696,13 @@ def new_case(id):
 
             if doctor_due_date_str:
                 doctor_due_date = datetime.strptime(doctor_due_date_str, "%Y-%m-%d")
-                final_due_date = min(lab_due_date, doctor_due_date)
+                
+                if doctor_due_date <= lab_due_date:
+                    final_due_date = doctor_due_date
+                    shipping = "Express"
+                    production = "Rush"
+                else:
+                    final_due_date = lab_due_date
             else:
                 final_due_date = lab_due_date
             

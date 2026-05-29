@@ -1335,17 +1335,7 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+                    
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -1411,7 +1401,7 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1423,7 +1413,19 @@ AWS.config.update({
                          Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
 
@@ -1829,17 +1831,7 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+                    
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -1910,7 +1902,7 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1922,7 +1914,19 @@ AWS.config.update({
                          Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
                 
@@ -2294,17 +2298,7 @@ AWS.config.update({
                 </div> */}
             </div>
 
-            <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+            
 
             <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -2368,7 +2362,7 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -2380,8 +2374,19 @@ AWS.config.update({
                          Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, Please Select Patient Appointment Date Below</small>
                         <small  className="form-text text-muted"  style={{color:"white"}}>*For 1-2 Day Production Times Please Call*</small>
+                        </div>
+                    </div>
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
 
@@ -2789,17 +2794,7 @@ AWS.config.update({
                 </div> */}
             </div>
 
-            <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+            
             
 
             <div  className="row form-group justify-content-center mt-5">
@@ -2864,7 +2859,7 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -2876,7 +2871,19 @@ AWS.config.update({
                          Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
             
@@ -3232,17 +3239,7 @@ AWS.config.update({
     </div> */}
 </div>
 
-<div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+
 
 
 <div  className="row form-group justify-content-center mt-5">
@@ -3307,7 +3304,7 @@ AWS.config.update({
              Standard Production 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
             <br></br>
             <label style={{color:"black"}}>
             <input
@@ -3319,9 +3316,21 @@ AWS.config.update({
              Rush Production 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
             </div>
         </div>
+
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
 <div className="row form-group justify-content-center mt-5">
@@ -3655,17 +3664,7 @@ AWS.config.update({
     </div> */}
 </div>
 
-<div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+
 
 
 <div  className="row form-group justify-content-center mt-5">
@@ -3730,7 +3729,7 @@ AWS.config.update({
              Standard Production 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
             <br></br>
             <label style={{color:"black"}}>
             <input
@@ -3742,9 +3741,21 @@ AWS.config.update({
              Rush Production 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
             </div>
         </div>
+
+        <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
 <div className="row form-group justify-content-center mt-5">
@@ -4185,17 +4196,7 @@ AWS.config.update({
                 </div> */}
             </div>
 
-            <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+            
             
 
             <div  className="row form-group justify-content-center mt-5">
@@ -4260,7 +4261,7 @@ AWS.config.update({
                          Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -4272,7 +4273,19 @@ AWS.config.update({
                          Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
             
@@ -4745,17 +4758,7 @@ AWS.config.update({
                         </div> */}
                     </div>
 
-                    <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+                   
 
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
@@ -4832,6 +4835,17 @@ AWS.config.update({
                         </label> */}
                         {/* <br></br>
                         <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 6 or les Business Days</small> */}
+                        </div>
+                    </div>
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
 
@@ -5230,17 +5244,7 @@ AWS.config.update({
             </div> */}
         </div>
 
-        <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+        
 
 
         <div  className="row form-group justify-content-center mt-5">
@@ -5305,7 +5309,7 @@ AWS.config.update({
                     Standard Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input
@@ -5317,9 +5321,20 @@ AWS.config.update({
                     Rush Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
                     </div>
                 </div>
+                <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
         <div className="row form-group justify-content-center mt-5">
@@ -5601,17 +5616,7 @@ AWS.config.update({
             </div> */}
         </div>
 
-        <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+        
 
 
         <div  className="row form-group justify-content-center mt-5">
@@ -5676,7 +5681,7 @@ AWS.config.update({
                     Standard Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input
@@ -5688,9 +5693,21 @@ AWS.config.update({
                     Rush Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
                     </div>
                 </div>
+
+                <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
         <div className="row form-group justify-content-center mt-5">
@@ -6012,17 +6029,6 @@ AWS.config.update({
                 </div> */}
             </div>
 
-            <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
     
     
             <div  className="row form-group justify-content-center mt-5">
@@ -6087,7 +6093,7 @@ AWS.config.update({
                         Standard Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -6099,7 +6105,19 @@ AWS.config.update({
                         Rush Production 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
+                        </div>
+                    </div>
+
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
     
@@ -6399,17 +6417,7 @@ AWS.config.update({
             </div> */}
         </div>
 
-        <div  className="row form-group justify-content-center mt-5">
-                        <div className="text-center col-8 col-lg-4">
-                        <label ><h5>Patient Appointment Date (optional)</h5></label>
-                        <br></br>
-                        <input
-                            type="date"
-                            value={doctorDueDate}
-                            onChange={(e) => setDoctorDueDate(e.target.value)}
-                        />
-                        </div>
-                    </div>
+   
 
 
         <div  className="row form-group justify-content-center mt-5">
@@ -6474,7 +6482,7 @@ AWS.config.update({
                     Standard Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 4-6 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Production 6 Business Days</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input
@@ -6486,9 +6494,21 @@ AWS.config.update({
                     Rush Production 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production $50 Fee, 3 Business Days</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Rush Production, Please Select Patient Appointment Date Below</small>
                     </div>
                 </div>
+
+                <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date</h5></label>
+                        <br></br>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
+                        </div>
+                    </div>
 
 
         <div className="row form-group justify-content-center mt-5">

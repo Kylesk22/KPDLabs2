@@ -701,16 +701,11 @@ AWS.config.update({
         
 
     useEffect(() => {
-        (product === "Premium SHT Zirconia")? 
-            setFinish("Stain and Glaze")
-        :(product === "Ultra Premium UHT Zirconia")?
-            setFinish("Stain and Glaze")
-        :(product === "PMMA Temporary")?
-            setFinish("Polished")
-            
-        :""
-         
-        }, [product]);   
+        if (product === "Full Contour Zirconia") setFinish("Stain & Glaze");
+        else if (product === "Microlayered PFZ Crown") setFinish("Structure/Stain & Glaze");
+        else if (product === "PMMA Temporary") setFinish("Polished");
+        else setFinish("");
+}, [product]);  
 
     useEffect(() => {
         if (type === "Occlusal Rim") {
@@ -1128,23 +1123,16 @@ AWS.config.update({
                             <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
                                 <option value="Select One">Select One</option>
                                 {/* <option value="Economy HT Zirconia" onClick={()=>{setProduct("Economy HT Zirconia")}}>Economy HT Zirconia Polished/Glazed(Molars)</option> */}
-                                <option value="Standard SHT Zirconia" onClick={()=>{setProduct("Standard SHT Zirconia")}}>Standard SHT Zirconia Polished/Glazed(All Posterior)</option>
-                                <option value="Premium SHT Zirconia" onClick={()=>{setProduct("Premium SHT Zirconia")}}>Premium SHT Zirconia Stain and Glaze(Anterior and Posterior)</option>
-                                <option value="Ultra Premium UHT Zirconia" onClick={()=>{setProduct("Ultra Premium UHT Zirconia")}}>Ultra Premium UHT Zirconia Stain and Glaze(All Anterior)</option>
+                                <option value="Full Contour Zirconia" onClick={()=>{setProduct("Full Contour Zirconia")}}>Full Contour Zirconia</option>
+                                <option value="Microlayered PFZ Crown" onClick={()=>{setProduct("Microlayered PFZ Crown")}}>Microlayered PFZ Crown</option>
                                 <option value="PMMA Temporary" onClick={()=>{setProduct("PMMA Temporary")}}>PMMA Temporary</option>
                             </select>
                             <small id="productPrice" className="form-text text-muted" >
                                 <strong>
-                                    {(product === "Economy HT Zirconia")?
-                                        `$${(price += 40)*crownTooth.length}`
-                                    
-                                    :(product === "Standard SHT Zirconia")?
-                                        `$${(price += 60)*crownTooth.length}`
-
-                                    :(product === "Premium SHT Zirconia")?
+                                    {(product === "Full Contour Zirconia")?
                                         `$${(price += 80)*crownTooth.length}`
                                         
-                                    :(product === "Ultra Premium UHT Zirconia")?
+                                    :(product === "Microlayered PFZ Crown")?
                                         `$${(price += 100)*crownTooth.length}`
                                     
                                     :(product==="PMMA Temporary")?
@@ -1159,35 +1147,25 @@ AWS.config.update({
                     
 
                     <div className="row form-group text-center justify-content-center mt-5">
-                        <div className= "col-8 col-lg-4">
-                            <label  htmlFor="finish"><h5>Finish</h5></label>
-                            <select className="form-select" id="finish"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Finish" onChange={(e)=>{setFinish(e.target.value)}}>
-                                {(product === "Economy HT Zirconia")?
-                                <>
-                                <option value="Select One">Select One</option>       
-                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
-                                <option value="Glazed" onClick={()=>{setFinish("Glazed")}}>Glazed</option>
-                                </>
-                                :(product === "Standard SHT Zirconia")?
-                                <>
-                                <option value="Select One">Select One</option>       
-                                <option value="Polished" onClick={()=>{setFinish("Polished")}}>Polished</option>
-                                <option value="Glazed" onClick={()=>{setFinish("Glazed")}}>Glazed</option>
-                                </>
-                                :(product === "Premium SHT Zirconia")?
-                                <>
-                                <option value="Stain and Glaze">Stain and Glaze</option>                                     
-                                </>
-                                :(product === "Ultra Premium UHT Zirconia")?
-                                <>
-                                <option value="Stain and Glaze">Stain and Glaze</option>
-                                </>
-                                :(product === "PMMA Temporary")?
-                                <>
-                                <option value="Polished">Polished</option>
-                                </>
-                                :
-                                ""}
+                        <div className="col-8 col-lg-4">
+                            <label htmlFor="finish"><h5>Finish</h5></label>
+                            <select
+                                className="form-select"
+                                id="finish"
+                                style={{ borderRadius: "1rem", minHeight: "40px", backgroundColor: "white", border: "black 1px solid" }}
+                                aria-label="Finish"
+                                value={
+                                    product === "Full Contour Zirconia" ? "Stain & Glaze" :
+                                    product === "Microlayered PFZ Crown" ? "Structure/Stain & Glaze" :
+                                    product === "PMMA Temporary" ? "Polished" :
+                                    ""
+                                }
+                                onChange={() => {}}
+                            >
+                                {product === "Full Contour Zirconia" && <option value="Stain & Glaze">Stain &amp; Glaze</option>}
+                                {product === "Microlayered PFZ Crown" && <option value="Structure/Stain & Glaze">Structure/Stain &amp; Glaze</option>}
+                                {product === "PMMA Temporary" && <option value="Polished">Polished</option>}
+                                {!product || product === "Select One" ? <option value="">Select a product first</option> : null}
                             </select>
                         </div>
                     </div>

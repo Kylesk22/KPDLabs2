@@ -429,7 +429,7 @@ AWS.config.update({
                 "teeth": crownTooth,
                 "finish": finish,
                 "shade": shade,
-                "note": note,
+                "note": doctorDueDate ? `${note}\nPatient Appointment Date: ${doctorDueDate}` : note,
                 "status": "Submitted",
                 "type": type,
                 "gum_shade": gumShade,

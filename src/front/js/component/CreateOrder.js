@@ -1354,6 +1354,7 @@ AWS.config.update({
                     <div  className="row form-group justify-content-center mt-5">
                         <div className="text-center col-8 col-lg-4">
                         <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <br></br>
                         <input
                             type="date"
                             value={doctorDueDate}

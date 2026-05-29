@@ -6281,8 +6281,8 @@ AWS.config.update({
         <div className="row form-group text-center justify-content-center mt-5">
             <div className= "col-8 col-lg-4">
                 <label  htmlFor="product"><h5>Product</h5></label>
-                <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
-                    <option value="Select One">Select One</option>
+                <select value="Occlusal Rim" className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
+                    {/* <option value="Select One">Select One</option> */}
                     <option value="Occlusal Rim" onClick={()=>setProduct("Occlusal Rim")}>Occlusal Rim</option>
                     
                     

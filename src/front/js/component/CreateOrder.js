@@ -52,6 +52,7 @@ export const CreateOrder = props => {
     const [waiting, setWaiting] = useState(false);
     const [model3D, setModel3D] = useState("No")
     const [price3, setPrice3] = useState(0)
+    const [doctorDueDate, setDoctorDueDate] = useState("")
     let price = 0;
     let price2 = 0;
     
@@ -1347,6 +1348,17 @@ AWS.config.update({
           });}}>Print UPS Label</button>
                       
                        
+                        </div>
+                    </div>
+                    
+                    <div  className="row form-group justify-content-center mt-5">
+                        <div className="text-center col-8 col-lg-4">
+                        <label ><h5>Patient Appointment Date (optional)</h5></label>
+                        <input
+                            type="date"
+                            value={doctorDueDate}
+                            onChange={(e) => setDoctorDueDate(e.target.value)}
+                        />
                         </div>
                     </div>
 

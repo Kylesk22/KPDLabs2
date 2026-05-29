@@ -690,8 +690,15 @@ def new_case(id):
             price = request.json.get("price", None)
             shipping = request.json.get("shipping", None)
             production = request.json.get("production", None)
-            update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
-            due_date = calculate_business_days(update_date, 6)
+            update_date = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
+            lab_due_date = calculate_business_days(update_date, 6)
+            doctor_due_date_str = request.json.get("doctor_due_date", None)
+
+            if doctor_due_date_str:
+                doctor_due_date = datetime.strptime(doctor_due_date_str, "%Y-%m-%d")
+                final_due_date = min(lab_due_date, doctor_due_date)
+            else:
+                final_due_date = lab_due_date
             
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
@@ -730,7 +737,7 @@ def new_case(id):
             
         
             update_case.update_date = update_date
-            update_case.due_date = due_date.strftime("%m/%d/%Y %H:%M:%S")
+            update_case.due_date = final_due_date.strftime("%m/%d/%Y %H:%M:%S")
             db.session.commit()
             
             if blob_scans:

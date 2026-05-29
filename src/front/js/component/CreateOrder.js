@@ -712,6 +712,12 @@ AWS.config.update({
          
         }, [product]);   
 
+    useEffect(() => {
+        if (type === "Occlusal Rim") {
+            setProduct("Occlusal Rim");
+        }
+    }, [type]);
+
 
     return(
         <>

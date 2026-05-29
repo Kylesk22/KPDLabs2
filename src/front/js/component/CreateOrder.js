@@ -1355,7 +1355,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -1856,7 +1856,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -2318,7 +2318,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -2807,7 +2807,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -3252,7 +3252,7 @@ AWS.config.update({
              Standard 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
             <br></br>
             <label style={{color:"black"}}>
             <input
@@ -3677,7 +3677,7 @@ AWS.config.update({
              Standard 
             </label>
             <br></br>
-            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+            <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
             <br></br>
             <label style={{color:"black"}}>
             <input
@@ -4031,6 +4031,7 @@ AWS.config.update({
                         <option value="Select One">Select One</option>
                         <option value="Direct to MUA" onClick={()=>setFinish("Direct to MUA")}>Direct to MUA (Dess 19.018)</option>
                         <option value="Titanium Bases" onClick={()=>setFinish("Titanium Bases")}>Titanium Bases (Up to 5 included)</option>
+                        <option value="PEEK Bar" onClick={()=>setFinish("PEEK Bar")}>PEEK Bar</option>
                         {/* <option value="Dr Provides Copings" onClick={()=>setFinish("Dr Provides Copings")}>Dr Provides Titanium Copings</option> */}
                     </select>
                     {/* <small id="productPrice2" className="form-text text-muted"  style={{color:"white"}}><strong>
@@ -4049,23 +4050,29 @@ AWS.config.update({
                     <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
                                 {(product === "Temporary PMMA" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
                                 
-                                    `$${(price += 500)}`
+                                    `$${(price += 1000)}`
                                 
 
                                 : (product === "Temporary PMMA" && lowerArch && upperArch)?    
-                                    `$${(price += 1000)}`
+                                    `$${(price += 2000)}`
 
                                 :(product==="Final Zirconia" && finish === "Direct to MUA" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 1500)}`
+                                `$${(price += 2000)}`
 
-                                : (product === "Final Zirconia" && lowerArch && upperArch)?    
-                                    `$${(price += 3000)}`
+                                : (product === "Final Zirconia" && finish === "Direct to MUA" && lowerArch && upperArch)?    
+                                    `$${(price += 4000)}`
 
                                 :(product==="Final Zirconia" && finish === "Titanium Bases" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                    `$${(price += 2500)}`
+                                    `$${(price += 3500)}`
 
                                 : (product === "Final Zirconia" && finish === "Titanium Bases" && lowerArch && upperArch)?    
-                                    `$${(price += 5000)}`
+                                    `$${(price += 7000)}`
+
+                                :(product==="Final Zirconia" && finish === "PEEK Bar" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
+                                    `$${(price += 3500)}`
+
+                                : (product === "Final Zirconia" && finish === "PEEK Bar" && lowerArch && upperArch)?    
+                                    `$${(price += 7000)}`
                                 
                                 
                                 :""
@@ -4209,7 +4216,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -4770,7 +4777,7 @@ AWS.config.update({
                          Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -5257,7 +5264,7 @@ AWS.config.update({
                     Standard 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input
@@ -5629,7 +5636,7 @@ AWS.config.update({
                     Standard 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input
@@ -6041,7 +6048,7 @@ AWS.config.update({
                         Standard 
                         </label>
                         <br></br>
-                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                        <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                         <br></br>
                         <label style={{color:"black"}}>
                         <input
@@ -6430,7 +6437,7 @@ AWS.config.update({
                     Standard 
                     </label>
                     <br></br>
-                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $10/Shipment *Multiple Cases Can be in One Shipment</small>
+                    <small  className="form-text text-muted"  style={{color:"white"}}>Standard Shipping $12/Shipment *Multiple Cases Can be in One Shipment</small>
                     <br></br>
                     <label style={{color:"black"}}>
                     <input

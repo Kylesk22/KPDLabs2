@@ -64,6 +64,7 @@ export const CreateOrder = props => {
     const [uploading, setUploading] = useState(false)
     const [lowConfidenceFields, setLowConfidenceFields] = useState([])
     const [scannerId, setScannerId] = useState("")
+    const [recommendedProduct, setRecommendedProduct] = useState("")
 
     let total = price + price2
     const reader = new FileReader();

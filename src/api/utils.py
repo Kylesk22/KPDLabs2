@@ -251,7 +251,7 @@ def _extract_itero(soup):
                 if shade_text:
                     shade_values = re.findall(r':\s*([A-Z0-9.]+)', shade_text)
                     if shade_values:
-                        shades.append('/'.join(shade_values))
+                        shades.append('/'.join(v.strip() for v in shade_values))
 
     if teeth:
         result['teeth'] = teeth

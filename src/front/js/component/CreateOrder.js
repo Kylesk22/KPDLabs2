@@ -36,7 +36,7 @@ export const CreateOrder = props => {
     const [photoName, setPhotoName] = useState([])
     const [caseNum, setCaseNum ] = useState(props.caseId)
     const [product, setProduct] = useState("")
-    const [shade, setShade] = useState("")
+    const [shade, setShade] = useState(null)
     const [gumShade, setGumShade] = useState("")
     const [finish, setFinish] = useState("N/A")
     const [page, setPage] = useState(props.page)
@@ -1176,7 +1176,7 @@ AWS.config.update({
                     <div className="row form-group text-center justify-content-center mt-5">
                         <div className="col-8 col-lg-4">
                             <label htmlFor="product"><h5>Shade</h5></label>
-                            {shade && !["A1","A2","A3","A3.5","A4","B1","B2","B3","B4","C1","C2","C3","C4","D2","D3","D4","Bleach","Select One",""].includes(shade) ? (
+                            {shade && !["A1","A2","A3","A3.5","A4","B1","B2","B3","B4","C1","C2","C3","C4","D2","D3","D4","Bleach","Select One","", null].includes(shade) ? (
                                 <input
                                     type="text"
                                     className="form-control"

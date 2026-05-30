@@ -589,6 +589,7 @@ AWS.config.update({
                 })
             }
         }
+    }
 
     function designateTooth(designation) {
         const { toothId } = toothPopout
@@ -654,7 +655,7 @@ AWS.config.update({
                 toothFill.style.fill = "#137ea7"
             }
         }
-    }
+    
 
 
     useEffect(()=>{
@@ -817,6 +818,7 @@ AWS.config.update({
 
     setUploading(false)
 }
+
 
 
     return(

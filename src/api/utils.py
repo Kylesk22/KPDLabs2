@@ -50,39 +50,38 @@ def generate_sitemap(app):
 def detect_scanner_type(zip_file):
     names = zip_file.namelist()
     for name in names:
-        filename = name.split('/')[-1].lower()
-        if filename == 'printableorderform.html':
-            return '3shape'
-        if filename.startswith('itero_rx_') and filename.endswith('.html'):
+        filename = name.split('/')[-1]
+        if filename.startswith('Rx_') and filename.endswith('.html'):
             return 'itero'
-    return 'unknown'
+        if 'PrintableOrderForm.html' in name:
+            return '3shape'
+    return None
 
 
 def get_scanner_id(zip_file, scanner_type):
-    names = zip_file.namelist()
-    if scanner_type == '3shape':
-        for name in names:
-            parts = name.split('/')
-            if len(parts) > 1 and parts[0]:
-                return parts[0].split('_')[0]
-    elif scanner_type == 'itero':
-        for name in names:
+    if scanner_type == 'itero':
+        for name in zip_file.namelist():
             filename = name.split('/')[-1]
-            if filename.lower().startswith('itero_rx_') and filename.endswith('.html'):
-                return filename[len('iTero_Rx_'):-5]
+            if filename.startswith('Rx_') and filename.endswith('.html'):
+                return filename.replace('Rx_', '').replace('.html', '')
+    elif scanner_type == '3shape':
+        # existing 3shape logic
+        root = zip_file.namelist()[0].split('/')[0]
+        return root.split('_')[0]
     return None
 
 
 def find_prescription_html(zip_file, scanner_type):
-    names = zip_file.namelist()
-    for name in names:
-        filename = name.split('/')[-1].lower()
-        if scanner_type == '3shape' and filename == 'printableorderform.html':
-            with zip_file.open(name) as f:
-                return f.read().decode('utf-8', errors='ignore')
-        if scanner_type == 'itero' and filename.startswith('itero_rx_') and filename.endswith('.html'):
-            with zip_file.open(name) as f:
-                return f.read().decode('utf-8', errors='ignore')
+    if scanner_type == 'itero':
+        for name in zip_file.namelist():
+            filename = name.split('/')[-1]
+            if filename.startswith('Rx_') and filename.endswith('.html'):
+                return zip_file.read(name).decode('utf-8', errors='ignore')
+    elif scanner_type == '3shape':
+        # existing 3shape logic
+        for name in zip_file.namelist():
+            if 'PrintableOrderForm.html' in name:
+                return zip_file.read(name).decode('utf-8', errors='ignore')
     return None
 
 

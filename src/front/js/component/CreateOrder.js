@@ -805,6 +805,7 @@ AWS.config.update({
         if (extracted.notes) setNote(extracted.notes)
 
         if (extracted.bridges && extracted.bridges.length > 0) {
+            setType("bridge")
             const newDesignations = {}
             extracted.bridges.forEach(bridge => {
                 Object.entries(bridge).forEach(([toothId, role]) => {

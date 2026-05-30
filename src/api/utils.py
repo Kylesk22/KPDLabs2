@@ -258,29 +258,31 @@ def _extract_itero(soup):
         confidence['teeth'] = 'high'
 
     # Bridge detection
-    bridges = []
-    for table in soup.find_all('table', id='Table1'):
-        # Check if previous sibling has Bridge text
-        prev = table.find_previous('table', id='Table3')
-        if prev:
-            bridge_font = prev.find('font', color='#000099')
-            if bridge_font and 'Bridge' in bridge_font.get_text():
-                rows = table.find_all('tr')
+    # Bridge detection - find bridge font then the next table for roles
+    for font in soup.find_all('font', color='#000099'):
+        text = font.get_text(strip=True)
+        if text.startswith('Bridge'):
+            # Find the next table after this font for abutment/pontic roles
+            print(f"DEBUG found bridge text: '{text}'")
+            parent = font.find_parent('table')
+            print(f"DEBUG parent table: {parent}")
+            next_table = parent.find_next_sibling('table') if parent else None
+            print(f"DEBUG next table: {next_table}")
+            if next_table:
                 bridge_teeth = {}
-                for row in rows:
+                for row in next_table.find_all('tr'):
                     cells = row.find_all('td')
                     if len(cells) == 2:
                         tooth_text = cells[0].get_text(strip=True)
-                        role_text = cells[1].get_text(strip=True)
+                        role_text = cells[1].get_text(strip=True).lower()
                         match = re.search(r'ADA\s+(\d+)', tooth_text)
-                        if match:
-                            bridge_teeth[match.group(1)] = role_text.lower()
+                        if match and ('abutment' in role_text or 'pontic' in role_text):
+                            bridge_teeth[match.group(1)] = role_text
                 if bridge_teeth:
-                    bridges.append(bridge_teeth)
-
-    if bridges:
-        result['bridges'] = bridges
-        confidence['bridges'] = 'high'
+                    if 'bridges' not in result:
+                        result['bridges'] = []
+                    result['bridges'].append(bridge_teeth)
+                    confidence['bridges'] = 'high'
 
     if shades:
         unique_shades = list(set(shades))

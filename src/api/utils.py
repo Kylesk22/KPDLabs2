@@ -259,16 +259,24 @@ def _extract_itero(soup):
 
     # Bridge detection
     bridges = []
-    for font in soup.find_all('font', color='#000099'):
-        text = font.get_text(strip=True)
-        if text.startswith('Bridge'):
-            # Extract ADA numbers from "Bridge : ADA 13 - ADA 15 (Traditional)"
-            nums = re.findall(r'ADA\s+(\d+)', text)
-            if nums:
-                bridges.append({
-                    'teeth': nums,
-                    'span': f"#{'-'.join(nums)}"
-                })
+    for table in soup.find_all('table', id='Table1'):
+        # Check if previous sibling has Bridge text
+        prev = table.find_previous('table', id='Table3')
+        if prev:
+            bridge_font = prev.find('font', color='#000099')
+            if bridge_font and 'Bridge' in bridge_font.get_text():
+                rows = table.find_all('tr')
+                bridge_teeth = {}
+                for row in rows:
+                    cells = row.find_all('td')
+                    if len(cells) == 2:
+                        tooth_text = cells[0].get_text(strip=True)
+                        role_text = cells[1].get_text(strip=True)
+                        match = re.search(r'ADA\s+(\d+)', tooth_text)
+                        if match:
+                            bridge_teeth[match.group(1)] = role_text.lower()
+                if bridge_teeth:
+                    bridges.append(bridge_teeth)
 
     if bridges:
         result['bridges'] = bridges

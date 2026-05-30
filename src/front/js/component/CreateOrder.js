@@ -805,11 +805,19 @@ AWS.config.update({
         if (extracted.notes) setNote(extracted.notes)
 
         if (extracted.bridges && extracted.bridges.length > 0) {
+            const newDesignations = {}
             extracted.bridges.forEach(bridge => {
-                const bridgeNote = `Bridge: ${bridge.span}`
-                setNote(prev => prev ? `${prev}\n${bridgeNote}` : bridgeNote)
+                Object.entries(bridge).forEach(([toothId, role]) => {
+                    newDesignations[toothId] = role
+                    const el = document.getElementById(toothId)
+                    if (el) {
+                        if (role === 'abutment') el.style.fill = '#2e7d32'
+                        if (role === 'pontic') el.style.fill = '#e65100'
+                    }
+                })
             })
-}
+            setToothDesignations(newDesignations)
+        }
 
         const needsConfirmation = Object.entries(extracted.confidence || {})
             .filter(([_, level]) => level !== 'high')

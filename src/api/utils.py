@@ -201,8 +201,72 @@ def _extract_3shape(soup):
 
 
 def _extract_itero(soup):
-    # Placeholder — add once you share an iTero HTML sample
-    return {"error": "iTero parsing not yet implemented"}
+    result = {}
+    confidence = {}
+
+    # Helper to extract text after a label
+    def find_field(label):
+        for font in soup.find_all('font'):
+            text = font.get_text(strip=True)
+            if text.startswith(label):
+                return text.replace(label, '').strip()
+        return None
+
+    # Patient name — format is "Last, First"
+    patient_raw = find_field('Patient:')
+    if patient_raw:
+        result['patientName'] = patient_raw
+        confidence['patientName'] = 'high'
+
+    # Dates
+    scanning_date = find_field('Scanning Date:')
+    if scanning_date:
+        result['scanningDate'] = scanning_date
+        confidence['scanningDate'] = 'high'
+
+    due_date = find_field('Due Date:')
+    if due_date:
+        result['dueDate'] = due_date
+        confidence['dueDate'] = 'high'
+
+    # Teeth — look for all "Tooth: ADA XX" entries
+    teeth = []
+    shades = []
+    for font in soup.find_all('font', color='#000099'):
+        text = font.get_text(strip=True)
+        if text.startswith('Tooth: ADA'):
+            # Extract ADA number
+            import re
+            match = re.search(r'ADA\s+(\d+)', text)
+            if match:
+                teeth.append(f" {match.group(1)}")
+
+        # Shade is in the next table after each tooth
+    # Get shade from Tooth Color fields
+    for td in soup.find_all('td'):
+        b = td.find('b')
+        if b and 'Tooth Color' in b.get_text():
+            # Next td sibling has the value
+            sibling = td.find_next_sibling('td')
+            if sibling:
+                shade_text = sibling.get_text(strip=True)
+                # Extract just the shade code e.g. "Body: OM1" -> "OM1"
+                if ':' in shade_text:
+                    shade_code = shade_text.split(':')[-1].strip()
+                    shades.append(shade_code)
+
+    if teeth:
+        result['teeth'] = teeth
+        confidence['teeth'] = 'high'
+
+    if shades:
+        unique_shades = list(set(shades))
+        result['shade'] = unique_shades[0]
+        result['multipleShades'] = len(unique_shades) > 1
+        confidence['shade'] = 'high' if len(unique_shades) == 1 else 'low'
+
+    result['confidence'] = confidence
+    return result
 
 
 def process_zip(zip_bytes):

@@ -55,6 +55,8 @@ export const CreateOrder = props => {
     const [model3D, setModel3D] = useState("No")
     const [price3, setPrice3] = useState(0)
     const [doctorDueDate, setDoctorDueDate] = useState("")
+    const [toothPopout, setToothPopout] = useState(null) // { toothId, x, y }
+    const [toothDesignations, setToothDesignations] = useState({}) // { "13": "abutment", "14": "pontic" }
     let price = 0;
     let price2 = 0;
     
@@ -560,56 +562,80 @@ AWS.config.update({
               return next;
             });
           }
-          
-          
-
-
-            // let toothId = e.target.id;
-            // let archArray = upperArch.includes(toothId) ? upperArch : lowerArch;
-            // let toothFill = e.target
-           
-            // let isArchSelected = archArray.every(tooth => crownTooth.includes(` ${tooth}`));
-
-            // if (isArchSelected) {
-            //     // Deselect whole arch
-            //     setCrownTooth(oldValue =>
-            //         oldValue.filter(tooth => !archArray.includes(tooth.trim()))
-            //     );
-            //     archArray.forEach(tooth => {
-            //         let toothEl = document.getElementById(tooth);
-            //         if (toothEl) toothEl.style.fill = "white";
-            //     });
-            // } else {
-            //     // Select whole arch
-            //     let updated = [...new Set([...crownTooth, ...archArray.map(t => ` ${t}`)])];
-            //     updated.sort((a, b) => parseInt(a) - parseInt(b));
-            //     setCrownTooth(updated);
-
-            //     archArray.forEach(tooth => {
-            //         let toothEl = document.getElementById(tooth);
-            //         if (toothEl) toothEl.style.fill = "#137ea7";
-            //     });
-            // }
 
             
         else {
-        let toothId = e.target.id;
+            let toothId = e.target.id
             let toothFill = e.target
-            let toothIndex = crownTooth.indexOf(` ${toothId}`);
-            if (toothIndex !== -1){
-                toothFill.style.fill="white"
-                setCrownTooth((oldValue)=>{
-                    return oldValue.filter(tooth => tooth !== ` ${toothId}`)
-                })}
-                
-            else {
-                let toothArray = [...crownTooth, ` ${toothId}`]
-                toothArray.sort(function(a, b){return a-b})
-                setCrownTooth(toothArray)
-                
-                toothFill.style.fill = "#137ea7"
-            }}
+            let toothIndex = crownTooth.indexOf(` ${toothId}`)
+            
+            if (toothIndex !== -1) {
+                // Deselect tooth — remove it and clear designation
+                toothFill.style.fill = "white"
+                setCrownTooth((oldValue) => oldValue.filter(tooth => tooth !== ` ${toothId}`))
+                setToothDesignations(prev => {
+                    const updated = { ...prev }
+                    delete updated[toothId]
+                    return updated
+                })
+            } else {
+                // Show popout instead of immediately selecting
+                const rect = e.target.getBoundingClientRect()
+                const svgRect = e.target.closest('svg').getBoundingClientRect()
+                setToothPopout({
+                    toothId,
+                    x: rect.left - svgRect.left + rect.width / 2,
+                    y: rect.top - svgRect.top
+                })
+            }
+        }
+
+    function designateTooth(designation) {
+        const { toothId } = toothPopout
+
+        const newDesignations = { ...toothDesignations, [toothId]: designation }
+        setToothDesignations(newDesignations)
+
+        // Add tooth to selected list
+        let toothArray = [...crownTooth, ` ${toothId}`]
+        toothArray.sort((a, b) => parseInt(a) - parseInt(b))
+        setCrownTooth(toothArray)
+
+        // Color based on designation
+        const el = document.getElementById(toothId)
+        if (el) {
+            if (designation === 'crown') el.style.fill = '#137ea7'
+            if (designation === 'abutment') el.style.fill = '#2e7d32'
+            if (designation === 'pontic') el.style.fill = '#e65100'
+        }
+
+        setToothPopout(null)
+        autoPopulateNotes(newDesignations)
     }
+
+    function autoPopulateNotes(designations) {
+        const abutments = Object.entries(designations)
+            .filter(([, v]) => v === 'abutment')
+            .map(([k]) => k)
+            .sort((a, b) => parseInt(a) - parseInt(b))
+        const pontics = Object.entries(designations)
+            .filter(([, v]) => v === 'pontic')
+            .map(([k]) => k)
+            .sort((a, b) => parseInt(a) - parseInt(b))
+
+        if (abutments.length > 0 && pontics.length > 0) {
+            const allBridgeTeeth = [...abutments, ...pontics].sort((a, b) => parseInt(a) - parseInt(b))
+            const bridgeNote = `Bridge: #${allBridgeTeeth.join('-')} (Abutments: #${abutments.join(', ')}, Pontics: #${pontics.join(', ')})`
+            setNote(prev => {
+                // Replace existing bridge note if present, otherwise append
+                if (prev && prev.includes('Bridge:')) {
+                    return prev.replace(/Bridge:.*$/m, bridgeNote)
+                }
+                return prev ? `${prev}\n${bridgeNote}` : bridgeNote
+            })
+        }
+    }
+
     function bridgeHandler(e){
         let toothId = e.target.id;
             let toothFill = e.target
@@ -627,6 +653,7 @@ AWS.config.update({
                 
                 toothFill.style.fill = "#137ea7"
             }
+        }
     }
 
 
@@ -952,7 +979,28 @@ AWS.config.update({
                             <label  htmlFor="toothInput"><h5>Selected Teeth</h5></label>
                             <input className="form-control" required id="toothInput" type="text" style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} readOnly={true} value={crownTooth} onChange={(e)=>setToothInput(e.target.value)}></input>
                         </div>
-                        <div className="col-9 col-lg-3 px-5" >
+                        <div className="col-9 col-lg-3 px-5" style={{position: 'relative'}}>
+                            {toothPopout && (
+                                <div style={{
+                                    position: 'absolute',
+                                    left: toothPopout.x,
+                                    top: toothPopout.y - 80,
+                                    zIndex: 100,
+                                    background: 'white',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '8px',
+                                    padding: '8px',
+                                    display: 'flex',
+                                    gap: '6px',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                                    transform: 'translateX(-50%)'
+                                }}>
+                                    <button className="btn btn-sm btn-primary" onClick={() => designateTooth('crown')}>Crown</button>
+                                    <button className="btn btn-sm" style={{background:'#2e7d32', color:'white'}} onClick={() => designateTooth('abutment')}>Abutment</button>
+                                    <button className="btn btn-sm" style={{background:'#e65100', color:'white'}} onClick={() => designateTooth('pontic')}>Pontic</button>
+                                    <button className="btn btn-sm btn-secondary" onClick={() => setToothPopout(null)}>✕</button>
+                                </div>
+                            )}
                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >
                                     <path style ={{fill: "white", stroke: "black", strokeWidth:"2px"}} d="M271.46,332.92a21.1,21.1,0,0,0,2.77,6.6c1,1.58,3,2.4,4.77,3.12.45.18.88.36,1.28.54a122.07,122.07,0,0,0,15.65,5.92,51.48,51.48,0,0,0,11.86,2.37c.47,0,.94,0,1.41,0a23.07,23.07,0,0,0,10.54-2.2,19.36,19.36,0,0,0,10.18-13.17,14.66,14.66,0,0,0,.25-1.95,11,11,0,0,1,.31-2.13c.09-.34.2-.68.3-1a27.53,27.53,0,0,0,.78-3.07,81.22,81.22,0,0,0,1.17-10.88c.07-1.47.09-3,.09-4.47.27-6.32-1.74-10.77-6-13.21-12.39-6.22-23.45-10.08-33.83-11.8a11.36,11.36,0,0,0-1.47-.12,19.52,19.52,0,0,0-10,3.33,18.44,18.44,0,0,0-7.59,10.06,23.44,23.44,0,0,0-.34,7.41,29.4,29.4,0,0,1,0,5.47c-.05.41-.08.82-.12,1.22a11.6,11.6,0,0,1-.37,2.43c-.44,1.52-.95,3.29-1.33,5.09A24.07,24.07,0,0,0,271.46,332.92Z" transform="translate(-270.52 -59.04)" className="tooth replace" id="2" 
                                     onClick={(e)=> toothHandler(e)} ></path>

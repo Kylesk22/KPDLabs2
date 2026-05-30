@@ -4,7 +4,6 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint, Response, make_response, send_file, redirect, render_template
 from functools import wraps
 from api.models import db, User, Scans, Case, Blog, Price_Request
-from api.utils import generate_sitemap, APIException
 from werkzeug.utils import secure_filename
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies, unset_jwt_cookies,unset_access_cookies
 from flask_jwt_extended import get_jwt_identity
@@ -25,6 +24,8 @@ import boto3
 
 import shippo
 from shippo.models import components
+from .utils import APIException, generate_sitemap, process_zip
+
 
 
 
@@ -1470,3 +1471,18 @@ def session_check():
     return jsonify({"message": "Session valid", "user": user_id}), 200
 
 
+@api.route('/upload_case', methods=['POST'])
+@jwt_required()
+def upload_case():
+    if 'case_zip' not in request.files:
+        return jsonify({"error": "No zip file provided"}), 400
+    
+    zip_file = request.files['case_zip']
+    
+    if not zip_file.filename.endswith('.zip'):
+        return jsonify({"error": "File must be a .zip"}), 400
+    
+    zip_bytes = zip_file.read()
+    result = process_zip(zip_bytes)
+    
+    return jsonify(result)

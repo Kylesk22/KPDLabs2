@@ -995,10 +995,10 @@ AWS.config.update({
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                                     transform: 'translateX(-50%)'
                                 }}>
-                                    <button className="btn btn-sm btn-primary" onClick={() => designateTooth('crown')}>Crown</button>
-                                    <button className="btn btn-sm" style={{background:'#2e7d32', color:'white'}} onClick={() => designateTooth('abutment')}>Abutment</button>
-                                    <button className="btn btn-sm" style={{background:'#e65100', color:'white'}} onClick={() => designateTooth('pontic')}>Pontic</button>
-                                    <button className="btn btn-sm btn-secondary" onClick={() => setToothPopout(null)}>✕</button>
+                                    <button type="button" className="btn btn-sm btn-primary" onClick={() => designateTooth('crown')}>Crown</button>
+                                    <button type="button" className="btn btn-sm" style={{background:'#2e7d32', color:'white'}} onClick={() => designateTooth('abutment')}>Abutment</button>
+                                    <button type="button" className="btn btn-sm" style={{background:'#e65100', color:'white'}} onClick={() => designateTooth('pontic')}>Pontic</button>
+                                    <button type="button" className="btn btn-sm btn-secondary" onClick={() => setToothPopout(null)}>✕</button>
                                 </div>
                             )}
                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 570.4" id="replace"  >

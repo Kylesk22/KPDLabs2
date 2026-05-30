@@ -769,7 +769,10 @@ AWS.config.update({
             }
         }
         if (extracted.shade) setShade(extracted.shade)
-        if (extracted.dueDate) setDoctorDueDate(extracted.dueDate)
+        if (extracted.dueDate) {
+            const [month, day, year] = extracted.dueDate.split('/')
+            setDoctorDueDate(`${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}`)
+        }
         if (extracted.scannerId) setScannerId(extracted.scannerId)
         if (extracted.notes) setNote(extracted.notes)
 

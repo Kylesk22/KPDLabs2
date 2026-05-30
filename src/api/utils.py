@@ -257,6 +257,23 @@ def _extract_itero(soup):
         result['teeth'] = teeth
         confidence['teeth'] = 'high'
 
+    # Bridge detection
+    bridges = []
+    for font in soup.find_all('font', color='#000099'):
+        text = font.get_text(strip=True)
+        if text.startswith('Bridge'):
+            # Extract ADA numbers from "Bridge : ADA 13 - ADA 15 (Traditional)"
+            nums = re.findall(r'ADA\s+(\d+)', text)
+            if nums:
+                bridges.append({
+                    'teeth': nums,
+                    'span': f"#{'-'.join(nums)}"
+                })
+
+    if bridges:
+        result['bridges'] = bridges
+        confidence['bridges'] = 'high'
+
     if shades:
         unique_shades = list(set(shades))
         # Always pick the most detailed shade (longest string)

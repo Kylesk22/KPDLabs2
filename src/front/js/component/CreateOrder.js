@@ -804,6 +804,13 @@ AWS.config.update({
         if (extracted.scannerId) setScannerId(extracted.scannerId)
         if (extracted.notes) setNote(extracted.notes)
 
+        if (extracted.bridges && extracted.bridges.length > 0) {
+            extracted.bridges.forEach(bridge => {
+                const bridgeNote = `Bridge: ${bridge.span}`
+                setNote(prev => prev ? `${prev}\n${bridgeNote}` : bridgeNote)
+            })
+}
+
         const needsConfirmation = Object.entries(extracted.confidence || {})
             .filter(([_, level]) => level !== 'high')
             .map(([field]) => field)

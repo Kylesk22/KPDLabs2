@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+beautifulsoup4 = "*"
 flask = "*"
 sqlalchemy = "==1.4.46"
 flask-sqlalchemy = "*"
@@ -24,6 +25,7 @@ flask-jwt-extended = "*"
 pydo = "*"
 shippo = "*"
 boto3 = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.10"

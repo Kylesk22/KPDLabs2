@@ -16,6 +16,8 @@ import CustomTray from "../../img/CustomTray.png"
 import WaxRim from "../../img/WaxRim.png"
 import SIAS from "../../img/SIAS1.png"
 
+import { ZipUpload } from "../component/ZipUpload";
+
 import "../../styles/createOrder.css"
 
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
@@ -59,6 +61,9 @@ export const CreateOrder = props => {
     const [rates, setRates] = useState([])
     const [selectedRate2, setSelectedRate2] = useState()
     
+    const [uploading, setUploading] = useState(false)
+    const [lowConfidenceFields, setLowConfidenceFields] = useState([])
+    const [scannerId, setScannerId] = useState("")
 
     let total = price + price2
     const reader = new FileReader();
@@ -713,6 +718,56 @@ AWS.config.update({
         }
     }, [type]);
 
+    const handleZipUpload = async (file) => {
+    setUploading(true)
+    setLowConfidenceFields([])
+    const formData = new FormData()
+    formData.append('case_zip', file)
+
+    try {
+        const response = await fetch(`${url}/upload_case`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { "X-CSRF-TOKEN": getCookie("csrf_access_token") },
+            body: formData
+        })
+
+        if (!response.ok) {
+            alert("Failed to read zip file. Please fill the form manually.")
+            setUploading(false)
+            return
+        }
+
+        const extracted = await response.json()
+
+        if (extracted.error) {
+            alert(`Could not read zip: ${extracted.error}`)
+            setUploading(false)
+            return
+        }
+
+        if (extracted.patientName) setPatientName(extracted.patientName)
+        if (extracted.teeth) setCrownTooth(extracted.teeth)
+        if (extracted.shade) setShade(extracted.shade)
+        if (extracted.dueDate) setDoctorDueDate(extracted.dueDate)
+        if (extracted.scannerId) setScannerId(extracted.scannerId)
+        if (extracted.notes) setNote(extracted.notes)
+
+        const needsConfirmation = Object.entries(extracted.confidence || {})
+            .filter(([_, level]) => level !== 'high')
+            .map(([field]) => field)
+
+        if (extracted.multipleShades) needsConfirmation.push('shade')
+        setLowConfidenceFields(needsConfirmation)
+
+    } catch (err) {
+        console.error(err)
+        alert("Error reading zip file.")
+    }
+
+    setUploading(false)
+}
+
 
     return(
         <>
@@ -857,6 +912,12 @@ AWS.config.update({
                             <h3 style={{textDecoration: "underline"}} value={caseNum}>Case # {(caseNum !== "")? caseNum: ""}</h3>
                         </div>
                     </div>
+                    <ZipUpload
+                        onUpload={handleZipUpload}
+                        uploading={uploading}
+                        lowConfidenceFields={lowConfidenceFields}
+                        scannerId={scannerId}
+                    />
                     <div className="row form-group justify-content-center">
                         <div className="text-center col-4 pt-3">
                         <label  htmlFor="patientName"><h5>Patient Name</h5></label>

@@ -259,7 +259,9 @@ def _extract_itero(soup):
 
     if shades:
         unique_shades = list(set(shades))
-        result['shade'] = unique_shades[0]
+        # Always pick the most detailed shade (longest string)
+        best_shade = max(unique_shades, key=len)
+        result['shade'] = best_shade
         result['multipleShades'] = len(unique_shades) > 1
         confidence['shade'] = 'high' if len(unique_shades) == 1 else 'low'
 

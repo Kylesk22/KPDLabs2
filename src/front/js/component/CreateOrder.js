@@ -747,7 +747,26 @@ AWS.config.update({
         }
 
         if (extracted.patientName) setPatientName(extracted.patientName)
-        if (extracted.teeth) setCrownTooth(extracted.teeth)
+        if (extracted.teeth) {
+            setCrownTooth(extracted.teeth)
+            
+            // highlight teeth on SVG
+            extracted.teeth.forEach(tooth => {
+                const el = document.getElementById(tooth.trim())
+                if (el) el.style.fill = "#137ea7"
+            })
+
+            // recommend product based on tooth position
+            const anteriorTeeth = ["6","7","8","9","10","11","22","23","24","25","26","27"]
+            const isAnterior = extracted.teeth.some(t => anteriorTeeth.includes(t.trim()))
+            if (isAnterior) {
+                setProduct("Microlayered PFZ")
+                setRecommendedProduct("Microlayered PFZ")
+            } else {
+                setProduct("Full Contour Zirconia")
+                setRecommendedProduct("Full Contour Zirconia")
+            }
+        }
         if (extracted.shade) setShade(extracted.shade)
         if (extracted.dueDate) setDoctorDueDate(extracted.dueDate)
         if (extracted.scannerId) setScannerId(extracted.scannerId)
@@ -1154,28 +1173,38 @@ AWS.config.update({
                     
 
                     <div className="row form-group text-center justify-content-center mt-5">
-                        <div className= "col-8 col-lg-4">
-                            <label  htmlFor="product"><h5>Shade</h5></label>
-                            <select className="form-select" id="shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
-                                <option value="Select One">Select One</option>
-                                <option value="A1" onClick={()=>setShade("A1")}>A1</option>
-                                <option value="A2" onClick={()=>setShade("A2")}>A2</option>
-                                <option value="A3" onClick={()=>setShade("A3")}>A3</option>
-                                <option value="A3.5" onClick={()=>setShade("A3.5")}>A3.5</option>
-                                <option value="A4" onClick={()=>setShade("A4")}>A4</option>
-                                <option value="B1" onClick={()=>setShade("B1")}>B1</option>
-                                <option value="B2" onClick={()=>setShade("B2")}>B2</option>
-                                <option value="B3" onClick={()=>setShade("B3")}>B3</option>
-                                <option value="B4" onClick={()=>setShade("B4")}>B4</option>
-                                <option value="C1" onClick={()=>setShade("C1")}>C1</option>
-                                <option value="C2" onClick={()=>setShade("C2")}>C2</option>
-                                <option value="C3" onClick={()=>setShade("C3")}>C3</option>
-                                <option value="C4" onClick={()=>setShade("C4")}>C4</option>
-                                <option value="D2" onClick={()=>setShade("D2")}>D2</option>
-                                <option value="D3" onClick={()=>setShade("D3")}>D3</option>
-                                <option value="D4" onClick={()=>setShade("D4")}>D4</option>
-                                <option value="Bleach" onClick={()=>setShade("Bleach")}>Bleach</option>
-                            </select>
+                        <div className="col-8 col-lg-4">
+                            <label htmlFor="product"><h5>Shade</h5></label>
+                            {shade && !["A1","A2","A3","A3.5","A4","B1","B2","B3","B4","C1","C2","C3","C4","D2","D3","D4","Bleach","Select One",""].includes(shade) ? (
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}}
+                                    value={shade}
+                                    onChange={(e) => setShade(e.target.value)}
+                                />
+                            ) : (
+                                <select className="form-select" id="shade" value={shade} style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Shade" onChange={(e)=>{setShade(e.target.value)}}>
+                                    <option value="Select One">Select One</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="A3">A3</option>
+                                    <option value="A3.5">A3.5</option>
+                                    <option value="A4">A4</option>
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="B3">B3</option>
+                                    <option value="B4">B4</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C2">C2</option>
+                                    <option value="C3">C3</option>
+                                    <option value="C4">C4</option>
+                                    <option value="D2">D2</option>
+                                    <option value="D3">D3</option>
+                                    <option value="D4">D4</option>
+                                    <option value="Bleach">Bleach</option>
+                                </select>
+                            )}
                         </div>
                     </div>
                     <div className="row form-group text-center justify-content-center mt-5">

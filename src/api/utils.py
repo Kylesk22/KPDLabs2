@@ -236,7 +236,6 @@ def _extract_itero(soup):
         text = font.get_text(strip=True)
         if text.startswith('Tooth: ADA'):
             # Extract ADA number
-            import re
             match = re.search(r'ADA\s+(\d+)', text)
             if match:
                 teeth.append(f" {match.group(1)}")
@@ -246,14 +245,14 @@ def _extract_itero(soup):
     for td in soup.find_all('td'):
         b = td.find('b')
         if b and 'Tooth Color' in b.get_text():
-            # Next td sibling has the value
             sibling = td.find_next_sibling('td')
             if sibling:
                 shade_text = sibling.get_text(strip=True)
-                # Extract just the shade code e.g. "Body: OM1" -> "OM1"
-                if ':' in shade_text:
-                    shade_code = shade_text.split(':')[-1].strip()
-                    shades.append(shade_code)
+                if shade_text:
+                    import re
+                    shade_values = re.findall(r':\s*([A-Z0-9.]+)', shade_text)
+                    if shade_values:
+                        shades.append('/'.join(shade_values))
 
     if teeth:
         result['teeth'] = teeth
@@ -264,6 +263,17 @@ def _extract_itero(soup):
         result['shade'] = unique_shades[0]
         result['multipleShades'] = len(unique_shades) > 1
         confidence['shade'] = 'high' if len(unique_shades) == 1 else 'low'
+
+    notes_table = soup.find('table', id='table5')
+    if notes_table:
+        notes_lines = []
+        for font in notes_table.find_all('font', attrs={'color': lambda c: c != '#000099'}):
+            text = font.get_text(strip=True)
+            if text:
+                notes_lines.append(text)
+        if notes_lines:
+            result['notes'] = '\n'.join(notes_lines)
+            confidence['notes'] = 'high'
 
     result['confidence'] = confidence
     return result

@@ -4,6 +4,7 @@ import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
 import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
 import AWS from 'aws-sdk';
+import JSZip from 'jszip';
 
 import Zirc from "../../img/Crown.png"
 import ZircV from "../../img/Veneer.png"
@@ -748,96 +749,223 @@ AWS.config.update({
         }
     }, [type]);
 
-    const handleZipUpload = async (file) => {
-    setUploading(true)
-    setLowConfidenceFields([])
-    const formData = new FormData()
-    formData.append('case_zip', file)
 
-    try {
-        const response = await fetch(`${url}/upload_case`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { "X-CSRF-TOKEN": getCookie("csrf_access_token") },
-            body: formData
+    function parseITeroHTML(htmlString) {
+        const parser = new DOMParser()
+        const doc = parser.parseFromString(htmlString, 'text/html')
+        const result = {}
+        const confidence = {}
+
+        // Helper to find field by label
+        const findField = (label) => {
+            const fonts = doc.querySelectorAll('font')
+            for (const font of fonts) {
+                const text = font.textContent.trim()
+                if (text.startsWith(label)) {
+                    return text.replace(label, '').trim()
+                }
+            }
+            return null
+        }
+
+        // Patient name
+        const patientRaw = findField('Patient:')
+        if (patientRaw) {
+            result.patientName = patientRaw
+            confidence.patientName = 'high'
+        }
+
+        // Dates
+        const scanningDate = findField('Scanning Date:')
+        if (scanningDate) {
+            result.scanningDate = scanningDate
+            confidence.scanningDate = 'high'
+        }
+
+        const dueDate = findField('Due Date:')
+        if (dueDate) {
+            result.dueDate = dueDate
+            confidence.dueDate = 'high'
+        }
+
+        // Teeth and bridges
+        const teeth = []
+        const blueFonts = doc.querySelectorAll('font[color="#000099"]')
+
+        blueFonts.forEach(font => {
+            const text = font.textContent.trim()
+
+            if (text.startsWith('Tooth: ADA')) {
+                const match = text.match(/ADA\s+(\d+)/)
+                if (match) teeth.push(` ${match[1]}`)
+            }
         })
 
-        if (!response.ok) {
-            alert("Failed to read zip file. Please fill the form manually.")
-            setUploading(false)
-            return
+        if (teeth.length) {
+            result.teeth = teeth
+            confidence.teeth = 'high'
         }
 
-        const extracted = await response.json()
+        // Shade
+        const shades = []
+        doc.querySelectorAll('td').forEach(td => {
+            const b = td.querySelector('b')
+            if (b && b.textContent.includes('Tooth Color')) {
+                const sibling = td.nextElementSibling
+                if (sibling) {
+                    const shadeText = sibling.textContent.trim()
+                    if (shadeText) {
+                        const shadeValues = [...shadeText.matchAll(/:\s*([A-Z0-9.]+)/g)].map(m => m[1])
+                        if (shadeValues.length) shades.push(shadeValues.join('/'))
+                    }
+                }
+            }
+        })
 
-        if (extracted.error) {
-            alert(`Could not read zip: ${extracted.error}`)
-            setUploading(false)
-            return
+        if (shades.length) {
+            const uniqueShades = [...new Set(shades)]
+            result.shade = uniqueShades.reduce((a, b) => a.length >= b.length ? a : b)
+            result.multipleShades = uniqueShades.length > 1
+            confidence.shade = uniqueShades.length === 1 ? 'high' : 'low'
         }
 
-        if (extracted.patientName) setPatientName(extracted.patientName)
-        if (extracted.teeth) {
-            setCrownTooth(extracted.teeth)
-            
-            // highlight teeth on SVG
-            extracted.teeth.forEach(tooth => {
-                const el = document.getElementById(tooth.trim())
-                if (el) el.style.fill = "#137ea7"
+        // Bridge detection
+        blueFonts.forEach(font => {
+            const text = font.textContent.trim()
+            if (text.startsWith('Bridge')) {
+                const parentTable = font.closest('table')
+                const nextTable = parentTable?.nextElementSibling
+                if (nextTable) {
+                    const bridgeTeeth = {}
+                    nextTable.querySelectorAll('tr').forEach(row => {
+                        const cells = row.querySelectorAll('td')
+                        if (cells.length === 2) {
+                            const toothText = cells[0].textContent.trim()
+                            const roleText = cells[1].textContent.trim().toLowerCase()
+                            const match = toothText.match(/ADA\s+(\d+)/)
+                            if (match && (roleText.includes('abutment') || roleText.includes('pontic'))) {
+                                bridgeTeeth[match[1]] = roleText
+                            }
+                        }
+                    })
+                    if (Object.keys(bridgeTeeth).length) {
+                        if (!result.bridges) result.bridges = []
+                        result.bridges.push(bridgeTeeth)
+                        confidence.bridges = 'high'
+                    }
+                }
+            }
+        })
+
+        // Notes
+        const notesTable = doc.querySelector('table#table5')
+        if (notesTable) {
+            const notesLines = []
+            notesTable.querySelectorAll('font').forEach(font => {
+                if (font.getAttribute('color') !== '#000099') {
+                    const text = font.textContent.trim()
+                    if (text) notesLines.push(text)
+                }
             })
-
-            // recommend product based on tooth position
-            const anteriorTeeth = ["6","7","8","9","10","11","22","23","24","25","26","27"]
-            const isAnterior = extracted.teeth.some(t => anteriorTeeth.includes(t.trim()))
-            if (isAnterior) {
-                setProduct("Microlayered PFZ")
-                setRecommendedProduct("Microlayered PFZ")
-            } else {
-                setProduct("Full Contour Zirconia")
-                setRecommendedProduct("Full Contour Zirconia")
+            if (notesLines.length) {
+                result.notes = notesLines.join('\n')
+                confidence.notes = 'high'
             }
         }
-        setZipFileName(file.name)
-        setStlFile(prev => [...prev, file])
-        setFileName(prev => [...prev, file.name])
-        if (extracted.shade) setShade(extracted.shade)
-        if (extracted.dueDate) {
-            const [month, day, year] = extracted.dueDate.split('/')
-            setDoctorDueDate(`${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}`)
-        }
-        if (extracted.scannerId) setScannerId(extracted.scannerId)
-        if (extracted.notes) setNote(extracted.notes)
 
-        if (extracted.bridges && extracted.bridges.length > 0) {
-            
-            const newDesignations = {}
-            extracted.bridges.forEach(bridge => {
-                Object.entries(bridge).forEach(([toothId, role]) => {
-                    newDesignations[toothId] = role
-                    const el = document.getElementById(toothId)
-                    if (el) {
-                        if (role === 'abutment') el.style.fill = '#2e7d32'
-                        if (role === 'pontic') el.style.fill = '#e65100'
-                    }
-                })
-            })
-            setToothDesignations(newDesignations)
-        }
-
-        const needsConfirmation = Object.entries(extracted.confidence || {})
-            .filter(([_, level]) => level !== 'high')
-            .map(([field]) => field)
-
-        if (extracted.multipleShades) needsConfirmation.push('shade')
-        setLowConfidenceFields(needsConfirmation)
-
-    } catch (err) {
-        console.error(err)
-        alert("Error reading zip file.")
+        result.confidence = confidence
+        return result
     }
 
-    setUploading(false)
-}
+    const handleZipUpload = async (file) => {
+        setUploading(true)
+        setLowConfidenceFields([])
+
+        try {
+            const zip = await JSZip.loadAsync(file)
+            
+            // Find the Rx_ HTML file
+            const rxFileName = Object.keys(zip.files).find(name => {
+                const base = name.split('/').pop()
+                return base.startsWith('Rx_') && base.endsWith('.html')
+            })
+
+            if (!rxFileName) {
+                alert("Could not find prescription in zip. Please fill the form manually.")
+                setUploading(false)
+                return
+            }
+
+            // Extract scanner ID from filename
+            const base = rxFileName.split('/').pop()
+            const scannerId = base.replace('Rx_', '').replace('.html', '')
+
+            // Get HTML content
+            const htmlContent = await zip.files[rxFileName].async('string')
+
+            // Parse it
+            const extracted = parseITeroHTML(htmlContent)
+            extracted.scannerId = scannerId
+            extracted.scannerType = 'itero'
+
+            // Everything below stays exactly the same as before
+            if (extracted.patientName) setPatientName(extracted.patientName)
+            if (extracted.teeth) {
+                setCrownTooth(extracted.teeth)
+                extracted.teeth.forEach(tooth => {
+                    const el = document.getElementById(tooth.trim())
+                    if (el) el.style.fill = "#137ea7"
+                })
+                const anteriorTeeth = ["6","7","8","9","10","11","22","23","24","25","26","27"]
+                const isAnterior = extracted.teeth.some(t => anteriorTeeth.includes(t.trim()))
+                if (isAnterior) {
+                    setProduct("Microlayered PFZ")
+                    setRecommendedProduct("Microlayered PFZ")
+                } else {
+                    setProduct("Full Contour Zirconia")
+                    setRecommendedProduct("Full Contour Zirconia")
+                }
+            }
+            setZipFileName(file.name)
+            setStlFile(prev => [...prev, file])
+            setFileName(prev => [...prev, file.name])
+            if (extracted.shade) setShade(extracted.shade)
+            if (extracted.dueDate) {
+                const [month, day, year] = extracted.dueDate.split('/')
+                setDoctorDueDate(`${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}`)
+            }
+            if (extracted.scannerId) setScannerId(extracted.scannerId)
+            if (extracted.notes) setNote(extracted.notes)
+
+            if (extracted.bridges && extracted.bridges.length > 0) {
+                const newDesignations = {}
+                extracted.bridges.forEach(bridge => {
+                    Object.entries(bridge).forEach(([toothId, role]) => {
+                        newDesignations[toothId] = role
+                        const el = document.getElementById(toothId)
+                        if (el) {
+                            if (role === 'abutment') el.style.fill = '#2e7d32'
+                            if (role === 'pontic') el.style.fill = '#e65100'
+                        }
+                    })
+                })
+                setToothDesignations(newDesignations)
+            }
+
+            const needsConfirmation = Object.entries(extracted.confidence || {})
+                .filter(([_, level]) => level !== 'high')
+                .map(([field]) => field)
+
+            if (extracted.multipleShades) needsConfirmation.push('shade')
+            setLowConfidenceFields(needsConfirmation)
+
+        } catch (err) {
+            console.error(err)
+            alert("Error reading zip file.")
+        }
+
+        setUploading(false)
+    }
 
 
 

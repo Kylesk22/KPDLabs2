@@ -18,12 +18,13 @@ export const AdminPage = props => {
     const [pageNumber, setPageNumber] = useState(1)
     const [singlePage, setSinglePage] = useState("")
     const [search, setSearch] = useState("")
-    const [originalCases, setOriginalCases] = useState("")
+    const [originalCases, setOriginalCases] = useState([])
     const [showBulkBox, setShowBulkBox] = useState(false)
     const [bulkCases, setBulkCases] = useState([])
     const [bulkStatus, setBulkStatus] = useState("")
     const [caseChecked, setCaseChecked] = useState(false)
     const [statusToFilter, setStatusToFilter] = useState("")
+    
 
     //blog variables
     const [title, setTitle] = useState("")
@@ -647,9 +648,19 @@ export const AdminPage = props => {
                                             ""
                                         }
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" :  (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}} >{item["id"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{users[`${item["user id"]}`]}</div>
+                                        <div className="col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["doctor_name"] || users[`${item["user id"]}`]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
-                                        <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["type"]}</div>
+                                        <div className="col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>
+                                            {item["type"] === "crown" ? "Crown & Bridge" :
+                                            item["type"] === "veneer" ? "Veneer" :
+                                            item["type"] === "partial" ? "Partial" :
+                                            item["type"] === "newDenture" ? "Denture" :
+                                            item["type"] === "copyDenture" ? "Copy Denture" :
+                                            item["type"] === "dentureRepair" ? "Denture Repair" :
+                                            item["type"] === "implantHybridDenture" ? "Implant Hybrid" :
+                                            item["type"] === "Bridge" ? "Bridge" :
+                                            item["type"] || ""}
+                                        </div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"] ? 
                                                                                                                                                                                                                                                                                                                                                                         (() => {
                                                                                                                                                                                                                                                                                                                                                                         const [datePart] = item["update date"].split(" ");

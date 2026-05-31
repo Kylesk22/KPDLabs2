@@ -540,14 +540,22 @@ export const SingleOrder = props => {
                 <div className="text-center col-4 pt-3">
                 <label  htmlFor="productType"><h5>Product Type</h5></label>
                 <input className="form-control" required id="productType" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={
-                    (type === "crown")? 'Crown':
-                    (type === "Bridge")? 'Bridge':
-                    (type === "veneer")?'Veneer':
-                    (type === "partial")? 'Partial':
-                    (type === "newDenture")? 'Denture':
-                    (type === "copyDenture")? 'Copy Denture':
-                    (type === "dentureRepair")? 'Denture Repair':
-                    (type === "implantHybridDenture")? 'Implant Hybrid Denture':""}
+                    type === "crown" ? "Crown & Bridge" :
+                    type === "Bridge" ? "Bridge" :
+                    type === "veneer" ? "Veneer" :
+                    type === "partial" ? `Partial${product ? ` ${product}` : ""}` :
+                    type === "newDenture" ? `Denture${product ? ` ${product}` : ""}` :
+                    type === "copyDenture" ? "Copy Denture" :
+                    type === "dentureRepair" ? "Denture Repair" :
+                    type === "implantHybridDenture" ? "Implant Hybrid" :
+                    type === "implantCrown" ? "Implant Crown" :
+                    type === "Night Guard" ? "Night Guard" :
+                    type === "Smile in a Snap" ? "Smile in a Snap" :
+                    type === "Custom Tray" ? "Custom Tray" :
+                    type === "Occlusal Rim" ? "Occlusal Rim" :
+                    type === "removableAppliances" ? "Removable Appliances" :
+                    type || ""
+                }
                      ></input>
                 </div>
             </div>

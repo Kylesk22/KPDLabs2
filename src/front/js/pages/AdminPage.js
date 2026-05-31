@@ -654,14 +654,20 @@ export const AdminPage = props => {
                                             {(() => {
                                                 const t = item["type"]
                                                 const p = item["product"]
-                                                if (t === "crown") return "Crown & Bridge"
+                                                if (t === "crown") return "Crown"
                                                 if (t === "veneer") return "Veneer"
                                                 if (t === "Bridge") return "Bridge"
                                                 if (t === "implantHybridDenture") return "Implant Hybrid"
+                                                if (t === "implantCrown") return "Implant Crown"
                                                 if (t === "dentureRepair") return "Denture Repair"
                                                 if (t === "copyDenture") return "Copy Denture"
                                                 if (t === "newDenture") return p ? `Denture ${p}` : "Denture"
                                                 if (t === "partial") return p ? `Partial ${p}` : "Partial"
+                                                if (t === "Night Guard") return "Night Guard"
+                                                if (t === "Smile in a Snap") return "Smile in a Snap"
+                                                if (t === "Custom Tray") return "Custom Tray"
+                                                if (t === "Occlusal Rim") return "Occlusal Rim"
+                                                if (t === "removableAppliances") return "Removable Appliances"
                                                 return t || ""
                                             })()}
                                         </div>

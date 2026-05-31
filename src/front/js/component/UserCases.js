@@ -191,7 +191,8 @@ export const UserCases = props => {
                 <div className="col-md-10 col-12">
                     <div className="row" >
                         <div className="col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Case #</strong></div>
-                        <div className="col-md-5 col-6 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
+                        <div className="col-md-3 col-4 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Patient Name</strong></div>
+                        <div className="col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Doctor</strong></div>
                         <div className="col-md-3 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Status</strong></div>
                         <div className="col-md-2 col-3 text-center" style={{border: "solid rgba(0, 0, 0, .125) 1px", color:"black", backgroundColor:"white"}}><strong>Submitted</strong></div>
                     </div>

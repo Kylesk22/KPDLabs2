@@ -651,15 +651,19 @@ export const AdminPage = props => {
                                         <div className="col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["doctor_name"] || users[`${item["user id"]}`]}</div>
                                         <div className = "col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["name"]}</div>
                                         <div className="col-2 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>
-                                            {item["type"] === "crown" ? "Crown & Bridge" :
-                                            item["type"] === "veneer" ? "Veneer" :
-                                            item["type"] === "partial" ? "Partial" :
-                                            item["type"] === "newDenture" ? "Denture" :
-                                            item["type"] === "copyDenture" ? "Copy Denture" :
-                                            item["type"] === "dentureRepair" ? "Denture Repair" :
-                                            item["type"] === "implantHybridDenture" ? "Implant Hybrid" :
-                                            item["type"] === "Bridge" ? "Bridge" :
-                                            item["type"] || ""}
+                                            {(() => {
+                                                const t = item["type"]
+                                                const p = item["product"]
+                                                if (t === "crown") return "Crown & Bridge"
+                                                if (t === "veneer") return "Veneer"
+                                                if (t === "Bridge") return "Bridge"
+                                                if (t === "implantHybridDenture") return "Implant Hybrid"
+                                                if (t === "dentureRepair") return "Denture Repair"
+                                                if (t === "copyDenture") return "Copy Denture"
+                                                if (t === "newDenture") return p ? `Denture ${p}` : "Denture"
+                                                if (t === "partial") return p ? `Partial ${p}` : "Partial"
+                                                return t || ""
+                                            })()}
                                         </div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["update date"] ? 
                                                                                                                                                                                                                                                                                                                                                                         (() => {

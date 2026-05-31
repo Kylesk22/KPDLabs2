@@ -42,6 +42,7 @@ export const SingleOrder = props => {
     const [drCity, setDrCity] = useState(address[1])
     const [drState, setDrState] = useState(address[2])
     const [drZip, setDrZip] = useState(address[3])
+    const [doctorName, setDoctorName] = useState("")
     const reader = new FileReader();
     let id = sessionStorage.getItem("id");
     let stl_urls = []
@@ -343,6 +344,7 @@ export const SingleOrder = props => {
                     setNote(data.notes);
                     setShade(data.shade);
                     setLog(data.log);
+                    setDoctorName(data.doctor_name || `Dr. ${props.firstName} ${props.lastName}`);
 
                     setGumShade(data["gum shade"]);
                     setModel3D(data["3DModel"]);
@@ -416,7 +418,32 @@ export const SingleOrder = props => {
         }
     }, [log]);
 
-   
+    useEffect(() => {
+        if (crownTooth.length > 0) {
+            const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+            const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+            
+            setTimeout(() => {
+                crownTooth.forEach(tooth => {
+                    const toothStr = tooth.toLowerCase()
+                    if (toothStr.includes("upper")) {
+                        upperArch.forEach(t => {
+                            const el = document.getElementById(t)
+                            if (el) el.style.fill = "#137ea7"
+                        })
+                    } else if (toothStr.includes("lower")) {
+                        lowerArch.forEach(t => {
+                            const el = document.getElementById(t)
+                            if (el) el.style.fill = "#137ea7"
+                        })
+                    } else {
+                        const el = document.getElementById(tooth.trim())
+                        if (el) el.style.fill = "#137ea7"
+                    }
+                })
+            }, 100)
+        }
+    }, [crownTooth])
 
     
     
@@ -448,7 +475,7 @@ export const SingleOrder = props => {
                         <button className="theme-btn" onClick={()=> {window.print()}}>Print Prescription</button>
                     </div> */}
                     <div className="text-center p-1">
-                        <PrintPDFButton doctorFirst={props.firstName} model3D={model3D} finish={finish} doctorLast={props.lastName} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
+                        <PrintPDFButton doctorFirst={doctorName} model3D={model3D} finish={finish} doctorLast={""} price={price} shipping={shipping} production={production} license={props.license} address={address} street={drStreet} city={drCity} state={drState} zip={drZip} submittedDate={submittedDate} patientName={patientName} caseNumber={caseNum} product={product} type={type} shade={shade} note={note} gumShade={gumShade} crownTooth={crownTooth}/>
                         
                     </div>
                     <div className="text-right" style={{float: "right", padding: "10px"}}>

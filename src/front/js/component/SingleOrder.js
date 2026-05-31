@@ -360,6 +360,19 @@ export const SingleOrder = props => {
                     // Keep original split logic
                     const numberArray = returnedTeeth.replace(/[^\w\d,-\s]/g, '').split(',');
                     setCrownTooth(numberArray);
+
+                    if (data.tooth_designations && Object.keys(data.tooth_designations).length > 0) {
+                        setTimeout(() => {
+                            Object.entries(data.tooth_designations).forEach(([toothId, role]) => {
+                                const el = document.getElementById(toothId)
+                                if (el) {
+                                    if (role === 'abutment') el.style.fill = '#2e7d32'
+                                    if (role === 'pontic') el.style.fill = '#e65100'
+                                    if (role === 'crown') el.style.fill = '#137ea7'
+                                }
+                            })
+                        }, 150)
+                    }
                     
                     // Collect all teeth to highlight
                     let teethToHighlight = new Set();

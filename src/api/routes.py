@@ -712,6 +712,7 @@ def new_case(id):
             model3D = request.json.get("model3D", None)
             doctor_name = request.json.get("doctor_name", None)
             scanner_id = request.json.get("scanner_id", None)
+            tooth_designations = request.json.get("tooth_designations", None)
 
             # if (request.json.get("logNote", None)):
             #     update_case.add_log(f"{}: {request.json.get('logNote', None)}")
@@ -733,12 +734,14 @@ def new_case(id):
             update_case.finish = finish
             update_case.model3D = model3D
             update_case.scanner_id = scanner_id
+            update_case.tooth_designations = json.dumps(tooth_designations) if tooth_designations else None
             update_case.doctor_name = doctor_name
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"
             else: 
                 update_case.status = status
+                
             update_case.type = type
             update_case.gum_shade = gum_shade
             update_case.price = price

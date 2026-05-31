@@ -108,6 +108,7 @@ class Case(db.Model):
     log = db.Column(db.String(2000), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
     scanner_id = db.Column(db.String(50), nullable=True)
+    tooth_designations = db.Column(db.String(1000), nullable=True)
 
     def add_log(self, log_entry):
         existing_logs = self.get_logs()
@@ -149,7 +150,8 @@ class Case(db.Model):
             "reference id": self.reference_id,
             "log": self.get_logs(),
             "case scans":[scan.serialize() for scan in self.case_scans],
-            "scanner_id": self.scanner_id
+            "scanner_id": self.scanner_id,
+            "tooth_designations": json.loads(self.tooth_designations) if self.tooth_designations else {},
 
             # "scans": self.scans,
             # do not serialize the password, its a security breach

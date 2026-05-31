@@ -450,6 +450,7 @@ AWS.config.update({
                 "doctor_due_date": doctorDueDate || null,
                 "doctor_name": props.selectedDoctor ? `Dr. ${props.selectedDoctor.fname} ${props.selectedDoctor.lname}` : `Dr. ${props.fname} ${props.lname}`,
                 "scanner_id": scannerId || null,
+                "tooth_designations": Object.keys(toothDesignations).length > 0 ? toothDesignations : null,
             }
             
             const options = {

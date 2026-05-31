@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ZipUpload = ({ onUpload, uploading, lowConfidenceFields, scannerId }) => {
+export const ZipUpload = ({ onUpload, uploading, lowConfidenceFields, scannerId, onClear }) => {
     return (
         <div className="row form-group justify-content-center mt-3">
             <div className="text-center col-8 col-lg-4">

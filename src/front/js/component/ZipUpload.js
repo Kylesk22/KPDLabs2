@@ -29,7 +29,7 @@ export const ZipUpload = ({ onUpload, uploading, lowConfidenceFields, scannerId,
                     <p style={{ marginTop: '6px', fontSize: '0.9rem', color: '#333' }}>
                         Scanner ID: <strong>{scannerId}</strong>
                         <span 
-                            onClick={clearZipData}
+                            onClick={onClear}
                             style={{ marginLeft: '10px', color: '#cc0000', cursor: 'pointer', fontSize: '0.85rem' }}
                         >
                             ✕ Clear

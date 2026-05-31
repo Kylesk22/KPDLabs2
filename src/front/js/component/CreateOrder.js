@@ -57,6 +57,7 @@ export const CreateOrder = props => {
     const [doctorDueDate, setDoctorDueDate] = useState("")
     const [toothPopout, setToothPopout] = useState(null) // { toothId, x, y }
     const [toothDesignations, setToothDesignations] = useState({}) // { "13": "abutment", "14": "pontic" }
+    const [zipFileName, setZipFileName] = useState("")
     let price = 0;
     let price2 = 0;
     
@@ -426,7 +427,7 @@ AWS.config.update({
             // setType("Removeable Appliances"):
             // (type === )
        
-
+        const isBridge = Object.values(toothDesignations).some(d => d === 'abutment' || d === 'pontic')
 
             const updateCase = {
                 "stl_urls" : fileName,
@@ -439,7 +440,7 @@ AWS.config.update({
                 "shade": shade,
                 "note": doctorDueDate ? `${note}\nPatient Appointment Date: ${doctorDueDate}` : note,
                 "status": "Submitted",
-                "type": type,
+                "type": isBridge ? "Bridge" : type,
                 "gum_shade": gumShade,
                 "price": finalPrice,
                 "shipping": shipping,
@@ -796,6 +797,9 @@ AWS.config.update({
                 setRecommendedProduct("Full Contour Zirconia")
             }
         }
+        setZipFileName(file.name)
+        setStlFile(prev => [...prev, file])
+        setFileName(prev => [...prev, file.name])
         if (extracted.shade) setShade(extracted.shade)
         if (extracted.dueDate) {
             const [month, day, year] = extracted.dueDate.split('/')
@@ -1473,6 +1477,13 @@ AWS.config.update({
                         <div style={{border:"black 1px solid",borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", marginTop: "10px"}}>
                             {fileName.join(', ')} {/* Display selected file names */}
                         </div>
+
+                        {zipFileName && (
+                            <p style={{marginTop: '6px', fontSize: '0.9rem', color: '#2e7d32'}}>
+                                ✓ Scanner zip included — no need to upload scans manually
+                            </p>
+                        )}
+
                         </div>
                         {/* <div className="text-center col-8 col-lg-4 pt-3">
                         

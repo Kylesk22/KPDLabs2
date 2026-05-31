@@ -435,7 +435,6 @@ AWS.config.update({
                 "photos": photoName,
                 "case": caseNum,
                 "name": patientName,
-                "doctor_name": selectedDoctor ? `Dr. ${selectedDoctor.fname} ${selectedDoctor.lname}` : `Dr. ${props.fname} ${props.lname}`,
                 "product": product,
                 "teeth": crownTooth,
                 "finish": finish,

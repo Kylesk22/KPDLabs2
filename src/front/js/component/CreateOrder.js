@@ -435,6 +435,7 @@ AWS.config.update({
                 "photos": photoName,
                 "case": caseNum,
                 "name": patientName,
+                "doctor_name": selectedDoctor ? `Dr. ${selectedDoctor.fname} ${selectedDoctor.lname}` : `Dr. ${props.fname} ${props.lname}`,
                 "product": product,
                 "teeth": crownTooth,
                 "finish": finish,
@@ -448,6 +449,8 @@ AWS.config.update({
                 "production": production,
                 "model3D": model3D,
                 "doctor_due_date": doctorDueDate || null,
+                "doctor_name": props.selectedDoctor ? `Dr. ${props.selectedDoctor.fname} ${props.selectedDoctor.lname}` : `Dr. ${props.fname} ${props.lname}`,
+                "scanner_id": scannerId || null,
             }
             
             const options = {

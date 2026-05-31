@@ -21,6 +21,7 @@ import os
 from pydo import Client
 from flask_cors import CORS, cross_origin
 import boto3
+import json
 
 import shippo
 from shippo.models import components
@@ -709,6 +710,8 @@ def new_case(id):
             
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
+            doctor_name = request.json.get("doctor_name", None)
+            scanner_id = request.json.get("scanner_id", None)
 
             # if (request.json.get("logNote", None)):
             #     update_case.add_log(f"{}: {request.json.get('logNote', None)}")
@@ -729,6 +732,8 @@ def new_case(id):
             update_case.notes = notes
             update_case.finish = finish
             update_case.model3D = model3D
+            update_case.scanner_id = scanner_id
+            update_case.doctor_name = doctor_name
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"
@@ -805,6 +810,7 @@ def new_case(id):
             update_date  = now_eastern.strftime("%m/%d/%Y %H:%M:%S")
             status = request.json.get("status", None)
             model3D = request.json.get("model3D", None)
+            doctor_name = request.json.get("doctor_name", None)
 
             if (request.json.get("reference id", None)):
                 reference_id = request.json.get("reference Id", None)
@@ -822,6 +828,7 @@ def new_case(id):
             update_case.notes = notes
             update_case.finish = finish
             update_case.model3D = model3D
+            update_case.doctor_name = doctor_name
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"
@@ -1486,3 +1493,14 @@ def upload_case():
     result = process_zip(zip_bytes)
     
     return jsonify(result)
+
+@api.route('/account/<int:user_id>/doctors', methods=['PUT'])
+@jwt_required()
+def update_doctors(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+    doctors = request.json.get('doctors', [])
+    user.doctors = json.dumps(doctors)
+    db.session.commit()
+    return jsonify({"message": "Doctors updated", "doctors": doctors}), 200

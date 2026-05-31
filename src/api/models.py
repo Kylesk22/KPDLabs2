@@ -18,6 +18,7 @@ class User(db.Model):
     fname = db.Column(db.String(30), unique=False, nullable=False)
     lname = db.Column(db.String(50), unique=False, nullable=False)
     practice = db.Column(db.String(100), unique=False, nullable=True)
+    doctors = db.Column(db.String(1000), nullable=True)
     license_number = db.Column(db.String(50), unique=True, nullable=False)
     creation_date = db.Column(db.String(50))
     pricing_package = db.Column(db.String(50), unique=False)
@@ -41,6 +42,7 @@ class User(db.Model):
             "fname":self.fname,
             "lname":self.lname,
             "practice":self.practice,
+            "doctors": json.loads(self.doctors) if self.doctors else [],
             "license":self.license_number,
             "pricing_package": self.pricing_package,
             "created":self.creation_date,
@@ -83,6 +85,7 @@ class Case(db.Model):
     id = db.Column(db.Integer, primary_key=True)
    
     name = db.Column(db.Text, nullable = True)
+    doctor_name = db.Column(db.String(100), nullable=True)
     type = db.Column(db.String(50))
     teeth = db.Column(db.String(250), unique=False, nullable=True)
     product = db.Column(db.String(50), unique=False, nullable=True)
@@ -104,6 +107,7 @@ class Case(db.Model):
     model3D = db.Column(db.String(20), nullable=True)
     log = db.Column(db.String(2000), nullable=True)
     case_scans = db.relationship('Scans', backref='case')
+    scanner_id = db.Column(db.String(50), nullable=True)
 
     def add_log(self, log_entry):
         existing_logs = self.get_logs()
@@ -123,6 +127,7 @@ class Case(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "doctor_name": self.doctor_name,
             "user id":self.user_id,
             "type": self.type,
             "teeth":self.teeth,
@@ -143,7 +148,8 @@ class Case(db.Model):
             "hold date check": self.hold_date_check,
             "reference id": self.reference_id,
             "log": self.get_logs(),
-            "case scans":[scan.serialize() for scan in self.case_scans]
+            "case scans":[scan.serialize() for scan in self.case_scans],
+            "scanner_id": self.scanner_id
 
             # "scans": self.scans,
             # do not serialize the password, its a security breach

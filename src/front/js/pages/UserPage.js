@@ -25,6 +25,9 @@ export const UserPage = props => {
     const [license, setLicense] = useState("")
     const [practice, setPractice] = useState("")
     const [accessCookie, setAccessCookie] = useState("")
+    const [doctors, setDoctors] = useState([])
+    const [selectedDoctor, setSelectedDoctor] = useState(null)
+    
     
 
     let id = sessionStorage.getItem("id");
@@ -195,7 +198,11 @@ export const UserPage = props => {
                 console.log(res)
                 return res.json()
                 .then((data)=>{
-
+                    setDoctors(data.doctors || [])
+                    // Auto-select if only one doctor
+                    if (data.doctors && data.doctors.length === 1) {
+                        setSelectedDoctor(data.doctors[0])
+                    }
                     setEmail(data.email)
                     setFirstName(data.fname.toUpperCase())
                     setFirstNameLower(data.fname)
@@ -293,30 +300,59 @@ export const UserPage = props => {
             <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
                 <div className="col-12 user-header" style={{minHeight: "157px"}}>
-                    <h3 style={{paddingTop: "50px"}}>Welcome Dr. {firstNameLower} {lastName}</h3>
+                    <h3 style={{paddingTop: "50px"}}>
+                        Welcome {selectedDoctor ? `Dr. ${selectedDoctor.fname} ${selectedDoctor.lname}` : `Dr. ${firstNameLower} ${lastName}`}
+                        {doctors.length > 1 && (
+                            <span
+                                onClick={() => setSelectedDoctor(null)}
+                                style={{fontSize: '0.85rem', marginLeft: '15px', cursor: 'pointer', color: '#137ea7'}}
+                            >
+                                Switch Doctor
+                            </span>
+                        )}
+                    </h3>
                 </div>
             </div>
+            
+            {(doctors.length > 1 && !selectedDoctor) ? (
+                <div className="row justify-content-center" style={{paddingTop: "100px"}}>
+                    <div className="col-md-4 text-center">
+                        <h3>Select Doctor</h3>
+                        {doctors.map((doctor, index) => (
+                            <button
+                                key={index}
+                                className="btn btn-primary d-block w-100 mb-3"
+                                onClick={() => setSelectedDoctor(doctor)}
+                            >
+                                Dr. {doctor.fname} {doctor.lname}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            ) : (
+
             <div  style={{paddingBottom: "500px"}}>
                 <SideBar page={page} handleGetPage={getPage} getAllCases={getCaseInfo}/>
 
                 {(page === "home")?
                 <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}  updateLogState={setLoggedIn} logouts={logout} />:
                 (page === "create")?
-                <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId}/>:
+                <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId} selectedDoctor={selectedDoctor} fname={firstNameLower} lname={lastName}/>:
                 // (page === "userCases")?
                 // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?
                 <SingleOrder firstName={firstNameLower} lastName={lastName} license={license} address={address} singleCaseId = {singleCaseId} handleGetPage={getPage} page={page}/>:
                 (page === "updateAccountInfo")?
-                <UpdateAccountInfo firstName={firstNameLower} lastName ={lastName} address = {address} email={email} />:
+                <UpdateAccountInfo firstName={firstNameLower} lastName ={lastName} address = {address} email={email} doctors={doctors}/>:
                 (page === "contactUs")?
                 <ContactUs/>:
                 ""
                 
 
                 }
-            </div>
+            </div>)}
             </div>:<Navigate to= {`/`}> </Navigate>}
         </div>
+            
     )
 }

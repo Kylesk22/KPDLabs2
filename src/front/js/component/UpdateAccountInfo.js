@@ -23,6 +23,9 @@ export const UpdateAccountInfo = props => {
     const [editState, setEditState] = useState(false)
     const [editZip, setEditZip] = useState(false)
     let id = sessionStorage.getItem("id");
+    const [doctors, setDoctors] = useState(props.doctors || [])
+    const [newDoctorFname, setNewDoctorFname] = useState("")
+    const [newDoctorLname, setNewDoctorLname] = useState("")
     
 
     function getCookie(name) {
@@ -75,6 +78,46 @@ export const UpdateAccountInfo = props => {
         console.log(props.address)
         console.log(backendAdd)
     })
+
+    useEffect(() => {
+    if (props.doctors && props.doctors.length > 0) {
+        setDoctors(props.doctors)
+    }
+}, [props.doctors])
+
+    const addDoctor = () => {
+        if (!newDoctorFname || !newDoctorLname) {
+            alert("Please enter both first and last name")
+            return
+        }
+        const updated = [...doctors, { fname: newDoctorFname, lname: newDoctorLname }]
+        setDoctors(updated)
+        setNewDoctorFname("")
+        setNewDoctorLname("")
+        saveDoctors(updated)
+    }
+
+    const removeDoctor = (index) => {
+        const updated = doctors.filter((_, i) => i !== index)
+        setDoctors(updated)
+        saveDoctors(updated)
+    }
+
+    const saveDoctors = (doctorList) => {
+        const options = {
+            method: "PUT",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
+            },
+            body: JSON.stringify({ doctors: doctorList })
+        }
+        fetch(`${url}/account/${id}/doctors`, options)
+            .then(res => res.json())
+            .then(data => alert(data.message))
+            .catch(err => console.log(err))
+    }
     
     return(
         <div className="row">
@@ -122,6 +165,45 @@ export const UpdateAccountInfo = props => {
                         </button>
                     </div> 
                 </form>
+            </div>
+
+
+
+            <div className="form container lg-col-4 update-box mt-4" style={{borderRadius: "5%", maxWidth: "600px"}}>
+                <h5 className="text-center mt-3">Manage Doctors</h5>
+                
+                {doctors.map((doctor, index) => (
+                    <div key={index} className="d-flex justify-content-between align-items-center mx-3 mb-2">
+                        <span>Dr. {doctor.fname} {doctor.lname}</span>
+                        <button 
+                            className="btn btn-sm btn-danger"
+                            onClick={() => removeDoctor(index)}
+                        >
+                            Remove
+                        </button>
+                    </div>
+                ))}
+
+                <div className="form-group mx-3 mt-3">
+                    <label style={{color: "black"}}>Add Doctor</label>
+                    <input
+                        type="text"
+                        className="form-control mb-2"
+                        placeholder="First Name"
+                        value={newDoctorFname}
+                        onChange={(e) => setNewDoctorFname(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        className="form-control mb-2"
+                        placeholder="Last Name"
+                        value={newDoctorLname}
+                        onChange={(e) => setNewDoctorLname(e.target.value)}
+                    />
+                    <button className="btn btn-primary w-100 mb-3" onClick={addDoctor}>
+                        Add Doctor
+                    </button>
+                </div>
             </div>
 
             

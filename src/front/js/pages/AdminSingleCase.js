@@ -1331,7 +1331,26 @@ export const AdminSingleCase = props => {
                 <div className="row form-group justify-content-center">
                     <div className="text-center col-4 pt-3">
                     <label  htmlFor="type"><h5>Device Type</h5></label>
-                    <input className="form-control" required id="type" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={type} ></input>
+                    <input className="form-control" required id="type" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  
+                        value={
+                            type === "crown" ? "Crown" :
+                            type === "Bridge" ? "Bridge" :
+                            type === "veneer" ? "Veneer" :
+                            type === "partial" ? `Partial${product ? ` ${product}` : ""}` :
+                            type === "newDenture" ? `Denture${product ? ` ${product}` : ""}` :
+                            type === "copyDenture" ? "Copy Denture" :
+                            type === "dentureRepair" ? "Denture Repair" :
+                            type === "implantHybridDenture" ? "Implant Hybrid" :
+                            type === "implantCrown" ? "Implant Crown" :
+                            type === "Night Guard" ? "Night Guard" :
+                            type === "Smile in a Snap" ? "Smile in a Snap" :
+                            type === "Custom Tray" ? "Custom Tray" :
+                            type === "Occlusal Rim" ? "Occlusal Rim" :
+                            type === "removableAppliances" ? "Removable Appliances" :
+                            type || ""
+                    } >
+
+                    </input>
                     </div>
                 </div>
                 <div className="row form-group justify-content-center">

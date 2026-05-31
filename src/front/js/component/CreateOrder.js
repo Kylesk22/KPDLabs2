@@ -521,15 +521,53 @@ AWS.config.update({
             type === "newDenture" ||
             type === "dentureRepair" ||
             type === "copyDenture" ||
-            type === "Night Guard"
+            type === "Night Guard" ||
+            type === "Occlusal Rim" ||
+            type === "Custom Tray"
         ) {
-            // ... arch logic (unchanged)
+            const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+            const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+            const allTeeth = [...upperArch, ...lowerArch]
+
+            const ARCH_UPPER = " Upper Arch"
+            const ARCH_LOWER = " Lower Arch"
+
+            const toothId = e.target.id
+            const clickedArch = upperArch.includes(toothId) ? ARCH_UPPER : ARCH_LOWER
+
+            setCrownTooth(prev => {
+                const prevArr = Array.isArray(prev) ? prev : []
+                const isPresent = prevArr.includes(clickedArch)
+                const next = isPresent
+                    ? prevArr.filter(a => a !== clickedArch)
+                    : [...prevArr, clickedArch]
+
+                allTeeth.forEach(id => {
+                    const el = document.getElementById(id)
+                    if (el) el.style.fill = "white"
+                })
+
+                if (next.includes(ARCH_UPPER)) {
+                    upperArch.forEach(id => {
+                        const el = document.getElementById(id)
+                        if (el) el.style.fill = "#137ea7"
+                    })
+                }
+                if (next.includes(ARCH_LOWER)) {
+                    lowerArch.forEach(id => {
+                        const el = document.getElementById(id)
+                        if (el) el.style.fill = "#137ea7"
+                    })
+                }
+
+                return next
+            })
+
         } else if (type === "crown") {
-            // Crown type: show popout for designation
             let toothId = e.target.id
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`)
-            
+
             if (toothIndex !== -1) {
                 toothFill.style.fill = "white"
                 setCrownTooth((oldValue) => oldValue.filter(tooth => tooth !== ` ${toothId}`))
@@ -547,12 +585,12 @@ AWS.config.update({
                     y: rect.top - svgRect.top
                 })
             }
+
         } else {
-            // All other types (partial, veneer, implant, etc.): select directly, no popout
             let toothId = e.target.id
             let toothFill = e.target
             let toothIndex = crownTooth.indexOf(` ${toothId}`)
-            
+
             if (toothIndex !== -1) {
                 toothFill.style.fill = "white"
                 setCrownTooth((oldValue) => oldValue.filter(tooth => tooth !== ` ${toothId}`))

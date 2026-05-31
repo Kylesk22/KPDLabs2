@@ -601,6 +601,19 @@ export const AdminSingleCase = props => {
                     }
                 });
 
+
+                if (patientData.tooth_designations && Object.keys(patientData.tooth_designations).length > 0) {
+                    setTimeout(() => {
+                        Object.entries(patientData.tooth_designations).forEach(([toothId, role]) => {
+                            const el = document.getElementById(toothId)
+                            if (el) {
+                                if (role === 'abutment') el.style.fill = '#2e7d32'
+                                if (role === 'pontic') el.style.fill = '#e65100'
+                                if (role === 'crown') el.style.fill = '#137ea7'
+                            }
+                        })
+                    }, 150)
+                }
                 // for (let tooth in numberArray){
                 //     const element = document.getElementById(numberArray[tooth]);
                     
@@ -616,7 +629,7 @@ export const AdminSingleCase = props => {
                 }
                 const doctorData = await doctorResponse.json();
     
-                setDrName(`${doctorData.fname} ${doctorData.lname}`);
+                setDrName(patientData.doctor_name || `${doctorData.fname} ${doctorData.lname}`);
                 setLicense(doctorData.license);
 
                 
@@ -1187,6 +1200,26 @@ export const AdminSingleCase = props => {
               useEffect(()=>{
                 console.log(casesIncludedShipment) 
               })
+
+              useEffect(() => {
+                if (crownTooth.length > 0) {
+                    const upperArch = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+                    const lowerArch = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+                    setTimeout(() => {
+                        crownTooth.forEach(tooth => {
+                            const toothStr = tooth.toLowerCase()
+                            if (toothStr.includes("upper")) {
+                                upperArch.forEach(t => { const el = document.getElementById(t); if (el) el.style.fill = "#137ea7" })
+                            } else if (toothStr.includes("lower")) {
+                                lowerArch.forEach(t => { const el = document.getElementById(t); if (el) el.style.fill = "#137ea7" })
+                            } else {
+                                const el = document.getElementById(tooth.trim())
+                                if (el) el.style.fill = "#137ea7"
+                            }
+                        })
+                    }, 100)
+                }
+            }, [crownTooth])
   
         return (
             <>
@@ -1262,7 +1295,7 @@ export const AdminSingleCase = props => {
                     
                     <div className= "text-center col-4 pt-3">
                         <label  htmlFor="type"><h5>Reference Id</h5></label>
-                        <input className="form-control" id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>{setRefId(e.target.value), setShowClone(True)}}></input>
+                        <input className="form-control" id="refId" type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={refId} onChange={(e)=>{setRefId(e.target.value), setShowClone(true)}}></input>
                         {(showClone)?
                             <div>
                                 <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); cloneCase()}}>Clone Case</button>

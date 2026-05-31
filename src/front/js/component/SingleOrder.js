@@ -540,7 +540,8 @@ export const SingleOrder = props => {
                 <div className="text-center col-4 pt-3">
                 <label  htmlFor="productType"><h5>Product Type</h5></label>
                 <input className="form-control" required id="productType" readOnly type="text" style={{borderRadius: "1rem", minHeight:"40px"}}  value={
-                    (type === "crown")? 'Crown and Bridge':
+                    (type === "crown")? 'Crown':
+                    (type === "Bridge")? 'Bridge':
                     (type === "veneer")?'Veneer':
                     (type === "partial")? 'Partial':
                     (type === "newDenture")? 'Denture':

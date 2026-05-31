@@ -1142,6 +1142,7 @@ AWS.config.update({
                         uploading={uploading}
                         lowConfidenceFields={lowConfidenceFields}
                         scannerId={scannerId}
+                        onClear={clearZipData}
                     />
                     <div className="row form-group justify-content-center">
                         <div className="text-center col-4 pt-3">

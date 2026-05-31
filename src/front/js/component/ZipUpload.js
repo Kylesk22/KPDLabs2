@@ -4,7 +4,7 @@ export const ZipUpload = ({ onUpload, uploading, lowConfidenceFields, scannerId 
     return (
         <div className="row form-group justify-content-center mt-3">
             <div className="text-center col-8 col-lg-4">
-                <label><h5>Upload Scanner Zip (Optional)</h5></label>
+                <label><h5>Upload Scanner Export <span style={{fontSize: '0.85rem', fontWeight: 'normal', color: '#555'}}>(iTero or 3Shape — auto-fills form)</span></h5></label>
                 <br />
                 <input
                     type="file"

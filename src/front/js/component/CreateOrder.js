@@ -967,6 +967,31 @@ AWS.config.update({
         setUploading(false)
     }
 
+    function clearZipData() {
+        setPatientName("")
+        setCrownTooth([])
+        setShade(null)
+        setDoctorDueDate("")
+        setNote("")
+        setScannerId("")
+        setZipFileName("")
+        setProduct("")
+        setRecommendedProduct("")
+        setToothDesignations({})
+        setLowConfidenceFields([])
+
+        // Reset all SVG tooth colors
+        const allTeeth = ["2","3","4","5","6","7","8","9","10","11","12","13","14","15","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+        allTeeth.forEach(id => {
+            const el = document.getElementById(id)
+            if (el) el.style.fill = "white"
+        })
+
+        // Remove zip from stlFile and fileName
+        setStlFile(prev => prev.filter(f => f.name !== zipFileName))
+        setFileName(prev => prev.filter(n => n !== zipFileName))
+    }
+
 
 
     return(
@@ -1233,10 +1258,10 @@ AWS.config.update({
                                     <path d="M696.47,391.76c-1.53-3-1.84-6.67-.94-11.31l1.08.21c-.85,4.39-.57,7.85.84,10.59Z" transform="translate(-270.52 -59.04)"></path>
                                     <path d="M504.82,614.72a33.06,33.06,0,0,0,12.86,2.87,23.64,23.64,0,0,0,11.45-2.9A49.27,49.27,0,0,1,504.82,614.72Z" transform="translate(-270.52 -59.04)"></path>
                                 </svg>
-                                <div style={{display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '8px', fontSize: '0.8rem'}}>
-                                    <span><span style={{display: 'inline-block', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#137ea7', marginRight: '4px'}}></span>Crown</span>
-                                    <span><span style={{display: 'inline-block', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#2e7d32', marginRight: '4px'}}></span>Abutment</span>
-                                    <span><span style={{display: 'inline-block', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#e65100', marginRight: '4px'}}></span>Pontic</span>
+                                <div style={{display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '8px', fontSize: '1rem'}}>
+                                    <span><span style={{display: 'inline-block', width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#137ea7', marginRight: '6px', verticalAlign: 'middle'}}></span>Crown</span>
+                                    <span><span style={{display: 'inline-block', width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#2e7d32', marginRight: '6px', verticalAlign: 'middle'}}></span>Abutment</span>
+                                    <span><span style={{display: 'inline-block', width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#e65100', marginRight: '6px', verticalAlign: 'middle'}}></span>Pontic</span>
                                 </div>
                         </div>
                     </div>

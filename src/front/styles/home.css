@@ -400,3 +400,15 @@
     align-items: center;
     text-align: center;
 }
+
+.logo-box strong {
+    text-align: center;
+    line-height: 1.4;
+}
+
+@media (max-width: 1200px) {
+    .logo-box img {
+        height: 70px;
+        width: 111px;
+    }
+}

@@ -144,8 +144,11 @@ export const Navbar = (props) => {
 		(!loggedIn) ? 	
 		<header className="main-header header-style-one" >
 			<div className="logo-box ">
-			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "90px", width: "143px"}}/></a></div>
-			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
+			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
+			<strong>
+				<span style={{color: "white", fontSize: "11px", display: "block"}}>Kronemeyer Precision</span>
+				<span style={{color: '#ffaa17', fontSize: "11px", display: "block"}}>Dental Laboratories, LLC</span>
+			</strong>
 			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">
@@ -259,7 +262,7 @@ export const Navbar = (props) => {
 		
 		<nav className="menu-box">
 			<div className="upper-box" style={{backgroundColor: "black"}}>
-			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" style={{height: "90px", width: "143px"}}/></a></div>
+			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
 			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 			</div>
 			<ul className="navigation clearfix">
@@ -357,8 +360,11 @@ export const Navbar = (props) => {
 
 <header className="main-header header-style-one" >
 			<div className="logo-box ">
-			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "90px", width: "143px"}}/></a></div>
-			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
+			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
+			<strong>
+				<span style={{color: "white", fontSize: "11px", display: "block"}}>Kronemeyer Precision</span>
+				<span style={{color: '#ffaa17', fontSize: "11px", display: "block"}}>Dental Laboratories, LLC</span>
+			</strong>
 			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">
@@ -440,7 +446,7 @@ export const Navbar = (props) => {
 		
 		<nav className="menu-box">
 			<div className="upper-box" style={{backgroundColor: "black"}}>
-			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" style={{height: "90px", width: "143px"}}/></a></div>
+			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
 			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 			</div>
 			<ul className="navigation clearfix">

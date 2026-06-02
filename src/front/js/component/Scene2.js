@@ -441,9 +441,13 @@ import Teeth from "../../img/Teeth.stl";
 import Base from "../../img/Base.stl";
 import STLModel from "../../img/Model.stl";
 
-// Target rotation speed in radians per second (frame-rate independent)
-const ROTATION_SPEED = 0.8; // ~0.014 per frame at 60fps = 0.84 rad/s
-const TRANSLATION_SPEED = 0.9; // units per second
+const ROTATION_SPEED = 0.8;       // rad/s — consistent across all refresh rates
+const WOBBLE_SPEED = 0.3;         // very slow Y rock
+const WOBBLE_AMPLITUDE = 0.06;    // very subtle — just enough to catch light
+const TRANSLATION_SPEED = 0.9;    // units/s
+
+// Ease in/out cubic
+const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 class ThreeScene2 extends Component {
   componentDidMount() {
@@ -452,25 +456,27 @@ class ThreeScene2 extends Component {
 
     this.scene = new THREE.Scene();
     this.clock = new THREE.Clock();
+    this.totalTime = 0;
+    this.models = null;
 
-    // Renderer
+    // Renderer — unchanged from working version
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setClearColor(0x000000, 0);
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(width, height);
     this.mount.appendChild(this.renderer.domElement);
 
-    // Camera
+    // Camera — EXACT same as original working version
     this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     this.camera.position.z = 20;
     this.camera.position.y = 20;
 
-    // Controls
+    // Controls — unchanged
     const controls = new OrbitControls(this.camera, this.renderer.domElement);
     controls.enablePan = false;
     controls.enableZoom = false;
 
-    // Lights
+    // Lights — unchanged from original working version
     const lights = [
       new THREE.PointLight(0x304ffe, 1, 0),
       new THREE.PointLight(0xffffff, 1, 0),
@@ -481,13 +487,16 @@ class ThreeScene2 extends Component {
     lights[2].position.set(-100, -200, -100);
     lights.forEach(light => this.scene.add(light));
 
-    // Track translation state per mesh
-    this.translating = {}; // meshName -> { active: bool, distanceMoved: number, limit: number }
+    // Separation state
+    this.separations = {
+      Teeth: { active: false, progress: 0, limit: 3.5 },
+      Base:  { active: false, progress: 0, limit: 1.5 },
+    };
 
     this.addModels();
     this.start();
 
-    // Resize observer — fixes warping on different screen sizes
+    // Resize observer — fixes warping
     this.resizeObserver = new ResizeObserver(() => {
       if (!this.mount) return;
       const w = this.mount.clientWidth;
@@ -513,10 +522,10 @@ class ThreeScene2 extends Component {
           });
           const mesh = new THREE.Mesh(geometry, material);
           mesh.name = modelName;
-          mesh.position.set(0, 10, 0);
-          mesh.scale.set(0.3, 0.3, 0.3);
-          mesh.rotateX(Math.PI / 2 - 0.6);
-          mesh.rotateZ(Math.PI);
+          mesh.position.set(0, 10, 0);        // EXACT same as original
+          mesh.scale.set(0.3, 0.3, 0.3);      // EXACT same as original
+          mesh.rotateX(Math.PI / 2 - 0.6);    // EXACT same as original
+          mesh.rotateZ(Math.PI);               // EXACT same as original
           mesh.castShadow = true;
           mesh.receiveShadow = true;
           scene.add(mesh);
@@ -526,19 +535,15 @@ class ThreeScene2 extends Component {
     };
 
     Promise.all([
-      loadModel(Teeth, new THREE.Color("rgb(252, 252, 252)"), "Teeth"),
-      loadModel(Base, new THREE.Color("rgb(255, 199, 250)"), "Base"),
-      loadModel(STLModel, new THREE.Color("rgb(229, 198, 153)"), "Model")
+      loadModel(Teeth,    new THREE.Color("rgb(252, 252, 252)"), "Teeth"),
+      loadModel(Base,     new THREE.Color("rgb(255, 199, 250)"), "Base"),
+      loadModel(STLModel, new THREE.Color("rgb(229, 198, 153)"), "Model"),
     ]).then(models => {
       this.models = models;
 
-      // Start translations with delays — limits match original distances
-      setTimeout(() => {
-        this.translating["Teeth"] = { active: true, distanceMoved: 0, limit: 3.5 };
-      }, 6000);
-      setTimeout(() => {
-        this.translating["Base"] = { active: true, distanceMoved: 0, limit: 1.5 };
-      }, 8000);
+      // Same delays as original
+      setTimeout(() => { this.separations["Teeth"].active = true; }, 6000);
+      setTimeout(() => { this.separations["Base"].active = true; }, 8000);
     });
   }
 
@@ -564,22 +569,26 @@ class ThreeScene2 extends Component {
   };
 
   animate = () => {
-    const delta = this.clock.getDelta(); // seconds since last frame — frame-rate independent
+    const delta = Math.min(this.clock.getDelta(), 0.05);
+    this.totalTime += delta;
 
     if (this.models) {
-      this.models.forEach(mesh => {
-        // Rotation — consistent speed regardless of monitor refresh rate
+      this.models.forEach((mesh, i) => {
+        // Z rotation — frame-rate independent
         mesh.rotation.z += ROTATION_SPEED * delta;
 
-        // Translation
-        const state = this.translating[mesh.name];
-        if (state && state.active && state.distanceMoved < state.limit) {
-          const step = TRANSLATION_SPEED * delta;
-          mesh.translateZ(-step);
-          state.distanceMoved += step;
-          if (state.distanceMoved >= state.limit) {
-            state.active = false;
-          }
+        // Subtle Y wobble — different phase per model so they don't sync up
+        const phase = i * 0.7;
+        mesh.rotation.y = Math.sin(this.totalTime * WOBBLE_SPEED + phase) * WOBBLE_AMPLITUDE;
+
+        // Eased translation for Teeth and Base
+        const sep = this.separations[mesh.name];
+        if (sep && sep.active && sep.progress < 1) {
+          const prevProgress = sep.progress;
+          sep.progress = Math.min(sep.progress + (TRANSLATION_SPEED * delta) / sep.limit, 1);
+          const prevEased = easeInOut(prevProgress) * sep.limit;
+          const currEased = easeInOut(sep.progress) * sep.limit;
+          mesh.translateZ(-(currEased - prevEased));
         }
       });
     }

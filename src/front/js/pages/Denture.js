@@ -177,12 +177,18 @@
 // )}
 
 import React from "react";
+import { Helmet } from "react-helmet";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
 
 export const Denture = props => {
     return (
         <div style={styles.page}>
+            <Helmet>
+                <title>KPD Premier Denture | KPD Labs Dental Laboratory Florida</title>
+                <meta name="description" content="The KPD Premier Denture — CNC-milled fracture-resistant PMMA base with hand-characterized Vita Akzent gingiva. Lifelike aesthetics for Florida dental practices." />
+                <link rel="canonical" href="https://kpdlabs.com/denture" />
+            </Helmet>
             {/* Hero */}
             <div style={{
                 ...styles.hero,

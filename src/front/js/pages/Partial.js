@@ -175,6 +175,7 @@
 // )}
 
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
 
@@ -190,6 +191,11 @@ export const Partial = props => {
 
     return (
         <div style={styles.page}>
+            <Helmet>
+                <title>KPD Premier Partial | KPD Labs Dental Laboratory Florida</title>
+                <meta name="description" content="The KPD Premier Partial — more precise and stable than nylon, more comfortable than metal. Available in 4 gingival shades. Serving Florida dentists with fast turnaround." />
+                <link rel="canonical" href="https://kpdlabs.com/partial" />
+            </Helmet>
             {/* Hero */}
             <div style={{
                 ...styles.hero,
@@ -265,8 +271,8 @@ export const Partial = props => {
                                     ...(activeShade === i ? styles.shadeCardActive : {})
                                 }}
                             >
-                                <div style={{ ...styles.shadeSwatch, backgroundColor: spec.swatch }}/>
-                                <span style={styles.shadeName}>{spec.name}</span>
+                                <div style={{ ...styles.shadeSwatch, backgroundColor: s.swatch }}/>
+                                <span style={styles.shadeName}>{s.name}</span>
                             </button>
                         ))}
                     </div>

@@ -338,6 +338,7 @@
 
 
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const services = [
     {
@@ -355,13 +356,13 @@ const services = [
     {
         name: "Partial Dentures",
         tagline: "Strength and comfort in every case",
-        detail: "Flexible partials engineered for long-term performance and patient satisfaction.",
+        detail: "TCS Unbreakable partials engineered for long-term performance and patient satisfaction.",
         icon: "◉"
     },
     {
         name: "Complete Dentures",
         tagline: "Restorations that restore confidence",
-        detail: "The KPD Premier Denture — our signature full denture, crafted for fit, function, and a natural aesthetic. Try-in and wax rim services available.",
+        detail: "Premium and economy denture options, including try-in and wax rim services.",
         icon: "⬡"
     },
     {
@@ -419,16 +420,21 @@ export const PricingInfo = props => {
 
     return (
         <div style={styles.page}>
+            <Helmet>
+                <title>Pricing | KPD Labs Dental Laboratory Florida</title>
+                <meta name="description" content="Request KPD Labs custom dental lab pricing for crowns, veneers, partials, and dentures. Serving Florida dentists with premium restorations and fast turnaround." />
+                <link rel="canonical" href="https://kpdlabs.com/pricing" />
+            </Helmet>
 
             {/* Hero */}
-            <div style={styles.hero} className="pricing-hero">
+            <div style={styles.hero}>
                 <div style={styles.heroGlow} />
                 <div style={styles.heroContent}>
                     <p style={styles.heroEyebrow}>Kronemeyer Precision Dental Laboratories</p>
                     <h1 style={styles.heroTitle}>Quality Without<br />Compromise</h1>
                     <div style={styles.heroRule} />
                     <p style={styles.heroSub}>
-                        Every restoration that leaves our lab represents the standard we'd set for our own patients.<br />
+                        We don't compete on price. We compete on results.<br />
                         Request your custom price list and discover what sets KPD apart.
                     </p>
                     <a href="#form" style={styles.heroCta}>Request Pricing →</a>
@@ -932,7 +938,4 @@ const styles = {
         fontFamily: "'Arial', sans-serif",
         lineHeight: "1.7",
     },
-
-    
 };
-

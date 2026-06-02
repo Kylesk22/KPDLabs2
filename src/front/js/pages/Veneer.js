@@ -174,12 +174,18 @@
 
 
 import React from "react";
+import { Helmet } from "react-helmet";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
 
 export const Veneer = props => {
     return (
         <div style={styles.page}>
+            <Helmet>
+                <title>Veneer | KPD Labs Dental Laboratory Florida</title>
+                <meta name="description" content="KPD Labs offers Microlayered PFZ veneers with Structure, Stain &amp; Glaze finish. Precision shade matching for Florida dentists. Natural aesthetics, digital workflow." />
+                <link rel="canonical" href="https://kpdlabs.com/veneer" />
+            </Helmet>
             {/* Hero */}
             <div style={{
                 ...styles.hero,

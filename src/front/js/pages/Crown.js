@@ -673,6 +673,7 @@
 // )}
 
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import Intro from "../../img/footer-flip.jpg";
 import AboutBKG from "../../img/testi-bg.jpg";
 import { Fade } from "react-awesome-reveal";
@@ -727,6 +728,11 @@ export const Crown = props => {
 
     return (
         <div style={styles.page}>
+            <Helmet>
+                <title>Crown &amp; Bridge | KPD Labs Dental Laboratory Florida</title>
+                <meta name="description" content="KPD Labs offers Full Contour Zirconia, Microlayered PFZ, and PMMA Temporary crowns and bridges. Precision CAD/CAM milling for Florida dentists. Fast turnaround." />
+                <link rel="canonical" href="https://kpdlabs.com/crownandbridge" />
+            </Helmet>
             {/* Hero */}
             <div style={{
                 ...styles.hero,

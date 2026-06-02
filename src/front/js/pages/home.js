@@ -1,13 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Helmet } from "react-helmet";
 import Sparkle from 'react-sparkle';
 import "../../styles/home.css";
 import "../../styles/slick-theme.css";
 import "../../styles/slick.css";
 import "../../styles/style.css";
 import "../../styles/animate.css";
-import { Fade, Slide } from "react-awesome-reveal";
-import { Link, Navigate } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
+import { Navigate } from "react-router-dom";
 import CustomVideoPlayer from "../component/CustomVideoPlayer";
 import ThreeScene2 from "../component/Scene2";
 
@@ -19,7 +20,6 @@ import Intro from "../../img/footer-flip.jpg";
 import AboutBKG from "../../img/testi-bg.jpg";
 import Lines21 from "../../img/lines2-1.png";
 import Layer11 from "../../img/layer1-1.jpg";
-import MillingClip from "../../img/MillingClip1080p2.mp4";
 import Itero from "../../img/itero-logo-2-300x103.png";
 import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png";
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png";
@@ -29,7 +29,6 @@ import Layer from "../../img/layer.png";
 
 export const Home = (props) => {
     const { store, actions } = useContext(Context);
-    const [loggedIn, setLoggedIn] = useState(props.logState);
     const [faq1, setFaq1] = useState(false);
     const [faq2, setFaq2] = useState(false);
     const [faq3, setFaq3] = useState(false);
@@ -38,10 +37,6 @@ export const Home = (props) => {
     const [cerecShow, setCerecShow] = useState(false);
     const [shapeShow, setShapeShow] = useState(false);
     const [meditShow, setMeditShow] = useState(false);
-
-    function sendEmail() {
-        window.location.href = "mailto:kpdlabs@kpdlabs.com?subject=Feedback";
-    }
 
     const products = [
         { img: Zirc, title: "Crown & Bridge", desc: "Full Contour Zirconia, Microlayered PFZ, PMMA Temporary", link: "/crownandbridge" },
@@ -90,6 +85,17 @@ export const Home = (props) => {
 
     return (
         <>
+        <Helmet>
+            <title>KPD Labs | Dental Laboratory — Haines City, Florida</title>
+            <meta name="description" content="KPD Labs is a full-service dental laboratory in Haines City, Florida offering zirconia crowns, microlayered veneers, PMMA temporaries, and premium removable prosthetics. Fast turnaround, digital workflow, family-run." />
+            <meta name="keywords" content="dental lab Florida, dental laboratory Haines City, zirconia crowns Florida, dental lab Polk County, microlayered PFZ veneer, PMMA temporary crown, removable partial denture lab Florida" />
+            <meta property="og:title" content="KPD Labs | Dental Laboratory — Haines City, Florida" />
+            <meta property="og:description" content="Precision dental restorations crafted in Central Florida. Zirconia crowns, veneers, partials, and dentures. Fast turnaround, digital workflow." />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://kpdlabs.com" />
+            <link rel="canonical" href="https://kpdlabs.com" />
+        </Helmet>
+
         {(!sessionStorage.getItem("id")) ?
         <div className="page-wrapper">
 
@@ -97,7 +103,7 @@ export const Home = (props) => {
             <section className="banner-section">
                 <div className="banner-slider slick-initialized slick-slider">
                     <div className="banner-slide">
-                        <img src={Intro} style={{ position: "absolute" }} />
+                        <img src={Intro} style={{ position: "absolute" }} alt="KPD Labs dental laboratory" />
                         <div className="outer-box" style={{ zIndex: "2" }}>
                             <div className="auto-container" style={{ zIndex: "2" }}>
                                 <div className="content-box" style={{ zIndex: "2" }}>
@@ -122,21 +128,12 @@ export const Home = (props) => {
                                             </li>
                                             <li>
                                                 <p style={{ color: "rgba(255,255,255,0.7)", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "420px", lineHeight: "1.7", marginBottom: "32px" }}>
-                                                   Digital precision. Handcrafted quality. Every case, every time.
+                                                    Digital precision. Handcrafted quality. Every case, every time.
                                                 </p>
                                             </li>
                                             <li>
                                                 <div className="btn-box" style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
-                                                    <a href="/signup" className="theme-btn" style={{
-														display: "inline-block",
-														padding: "16px 48px",
-														height: "auto",
-														lineHeight: "normal",
-														fontSize: "14px",
-														letterSpacing: "2px",
-														textTransform: "uppercase",
-														whiteSpace: "nowrap"
-													}}>Send Us a Case</a>
+                                                    <a href="/signup" className="theme-btn">Send Us A Case</a>
                                                     <a href="/pricing" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Arial', sans-serif", fontSize: "13px", letterSpacing: "1px", textDecoration: "none" }}>
                                                         Request Pricing →
                                                     </a>
@@ -188,7 +185,7 @@ export const Home = (props) => {
                                     <span className="sub-title">KPD Labs ::::::</span>
                                     <h2>Our Promise</h2>
                                     <div className="text" style={{ textTransform: "none", color: "#333" }}>
-                                        As a family-run dental lab, we synergize modern digital technology with time-tested craftsmanship to deliver restorations that exceed expectations — at every price point. Our commitment goes beyond production. We streamline lab-to-doctor communication, guarantee clear timelines, and stand behind every case we deliver. From the initial scan to the final placement, we're with you every step of the way.
+                                        As a family-run dental lab based in Central Florida, we combine modern digital technology with time-tested craftsmanship to deliver restorations that exceed expectations. Our commitment goes beyond production — we streamline lab-to-doctor communication, guarantee clear timelines, and stand behind every case we deliver. From the initial scan to final placement, we're with you every step of the way.
                                     </div>
                                 </div>
                                 <div className="btn-box">
@@ -265,12 +262,12 @@ export const Home = (props) => {
                 <div className="auto-container">
                     <div className="sec-title">
                         <span className="sub-title">CONNECT ::::::</span>
-                        <h2>Connect KPD to<br />Your Digital Scanner</h2>
-                        <p style={{ color: "#808287", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "520px", lineHeight: "1.7", marginTop: "16px" }}>
-                            We're connected to all major intraoral scanning platforms. Click your scanner below for step-by-step setup instructions.
+                        <h2>Already Have an Intraoral Scanner?<br />Connect to KPD in Minutes.</h2>
+                        <p style={{ color: "#808287", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "560px", lineHeight: "1.7", marginTop: "16px" }}>
+                            We're integrated with all major digital scanning platforms. Select your scanner below for step-by-step setup instructions and start sending cases digitally today.
                         </p>
                     </div>
-                    <div style={{ marginRight: "0px" }} className="outer-box">
+                    <div className="outer-box">
                         <div className="row">
                             {scanners.map((scanner, i) => (
                                 <div key={i} className="project-block col-lg-3 col-sm-12 wow fadeInRight">
@@ -352,7 +349,6 @@ export const Home = (props) => {
                             </div>
                         </div>
 
-                        {/* Blog */}
                         <div className="image-column col-lg-6" style={{ backgroundImage: `url(${Layer11})`, paddingRight: "20px" }}>
                             <div className="inner-column" style={{ paddingTop: "20px" }}>
                                 <div className="image-box text-center">
@@ -379,15 +375,21 @@ export const Home = (props) => {
                 <div className="auto-container">
                     <div className="outer-box" style={{ backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat" }}>
                         <div className="content-box wow fadeInLeft" data-wow-delay="400ms">
-                            <span style={{ color: "#ffaa17", fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "600" }}>
-                                Ready to get started?
-                            </span>
-                            <h3 className="title" style={{ color: "white", marginTop: "8px" }}>
+                            <h3 className="title" style={{ color: "white" }}>
                                 Experience the KPD difference — precision craftsmanship, delivered on time.
                             </h3>
                         </div>
                         <div className="btn-box wow fadeInRight" data-wow-delay="400ms">
-                            <a href="/signup" className="ser-btn theme-btn">Send Us a Case</a>
+                            <a href="/signup" className="theme-btn" style={{
+                                display: "inline-block",
+                                padding: "16px 48px",
+                                height: "auto",
+                                lineHeight: "normal",
+                                fontSize: "14px",
+                                letterSpacing: "2px",
+                                textTransform: "uppercase",
+                                whiteSpace: "nowrap"
+                            }}>Send Us a Case</a>
                         </div>
                     </div>
                 </div>

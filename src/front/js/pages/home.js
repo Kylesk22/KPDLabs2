@@ -1,904 +1,391 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import Sparkle from 'react-sparkle'
+import Sparkle from 'react-sparkle';
 import "../../styles/home.css";
-import "../../styles/slick-theme.css"
-import "../../styles/slick.css"
-import "../../styles/style.css"
-import "../../styles/animate.css"
+import "../../styles/slick-theme.css";
+import "../../styles/slick.css";
+import "../../styles/style.css";
+import "../../styles/animate.css";
 import { Fade, Slide } from "react-awesome-reveal";
-
 import { Link, Navigate } from "react-router-dom";
-
-import CustomVideoPlayer from "../component/CustomVideoPlayer"
-
-import "../../styles/_about.scss"
-import "../../styles/_banner.scss"
-import "../../styles/_benefit.scss"
-import "../../styles/_button.scss"
-import "../../styles/_call-to-action.scss"
-import "../../styles/_client.scss"
-import "../../styles/_contact.scss"
-import "../../styles/_faq.scss"
-import "../../styles/_feature.scss"
-import "../../styles/_food.scss"
-import "../../styles/_footer.scss"
-import "../../styles/_funfact.scss"
-import "../../styles/_googel-maps.scss"
-import "../../styles/_header.scss"
-import "../../styles/_main-slider.scss"
-import "../../styles/_marquee.scss"
-import "../../styles/_mega-menu.scss"
-import "../../styles/_menegement.scss"
-import "../../styles/_mobile-menu.scss"
-import "../../styles/_news.scss"
-import "../../styles/_offer.scss"
-import "../../styles/_pricing.scss"
-import "../../styles/_process.scss"
-import "../../styles/_progress.scss"
-import "../../styles/_reset.scss"
-import "../../styles/_projects.scss"
-import "../../styles/_room.scss"
-import "../../styles/_search-popup.scss"
-import "../../styles/_section-title.scss"
-import "../../styles/_services.scss"
-import "../../styles/_team.scss"
-import "../../styles/_testimonials.scss"
-import "../../styles/_what-we-do.scss"
-import "../../styles/_why-choose.scss"
-import "../../styles/_page-title.scss"
-
-
-
-
+import CustomVideoPlayer from "../component/CustomVideoPlayer";
 import ThreeScene2 from "../component/Scene2";
 
-import Zirc from "../../img/Crown.png"
-import ZircV from "../../img/Veneer.png"
-import Partial from "../../img/TCS Unbreakable Partial Denture.png"
-import Denture from "../../img/Denture.png"
-import Intro from "../../img/footer-flip.jpg"
-import AboutBKG from "../../img/testi-bg.jpg"
-import Lines21 from "../../img/lines2-1.png"
-import Layer11 from "../../img/layer1-1.jpg"
-import MillingClip from "../../img/MillingClip1080p2.mp4"
-import Itero from "../../img/itero-logo-2-300x103.png"
-import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png"
-import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png"
-import Medit from "../../img/medit-logo-300.png"
-import Program from "../../img/1.png"
-import KPD from "../../img/kpd_logo_pos2(1).png"
-import Layer from "../../img/layer.png"
-
-
-
-
-
+import Zirc from "../../img/Crown.png";
+import ZircV from "../../img/Veneer.png";
+import PartialImg from "../../img/TCS Unbreakable Partial Denture.png";
+import Denture from "../../img/Denture.png";
+import Intro from "../../img/footer-flip.jpg";
+import AboutBKG from "../../img/testi-bg.jpg";
+import Lines21 from "../../img/lines2-1.png";
+import Layer11 from "../../img/layer1-1.jpg";
+import MillingClip from "../../img/MillingClip1080p2.mp4";
+import Itero from "../../img/itero-logo-2-300x103.png";
+import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png";
+import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png";
+import Medit from "../../img/medit-logo-300.png";
+import KPD from "../../img/kpd_logo_pos2(1).png";
+import Layer from "../../img/layer.png";
 
 export const Home = (props) => {
-	const { store, actions } = useContext(Context);
-	const [image, setImage] = useState()
-	const [scan, setScan] = useState()
-	const isLargeScreen = window.innerWidth >= 992
-	const [loggedIn, setLoggedIn] = useState(props.logState);
-	const [pressedLogIn, setPressedLogin] = useState(false);
-	const [show, setShow] = useState(props.logState);
-	const [showModal, setShowModal] = useState(false);
-	const [faq1, setFaq1] = useState(false)
-	const [faq2, setFaq2] = useState(false)
-	const [faq3, setFaq3] = useState(false)
-	const [faq4, setFaq4] = useState(false)
+    const { store, actions } = useContext(Context);
+    const [loggedIn, setLoggedIn] = useState(props.logState);
+    const [faq1, setFaq1] = useState(false);
+    const [faq2, setFaq2] = useState(false);
+    const [faq3, setFaq3] = useState(false);
+    const [faq4, setFaq4] = useState(false);
+    const [iteroShow, setIteroShow] = useState(false);
+    const [cerecShow, setCerecShow] = useState(false);
+    const [shapeShow, setShapeShow] = useState(false);
+    const [meditShow, setMeditShow] = useState(false);
 
-	const [iteroShow, setIteroShow] = useState(false)
-	const [cerecShow, setCerecShow] = useState(false)
-	const [shapeShow, setShapeShow] = useState(false)
-	const [meditShow, setMeditShow] = useState(false)
-
-	const handleToggleModal = () => {
-	  setShowModal(!showModal);
-	};
-
-	const handleClose = () => setShow(false);
-	const handleShow = () => {
-		setShow(true);
-		console.log(loggedIn)
-	
-	};
-	
-	
-	
-
-	function submitHandler(e) {
-		
-		setImage(scan);
-		console.log(scan)
-	
-	}
-	
-	function sendEmail() {
-        var recipient = "kpdlabs@kpdlabs.com";
-        var subject = "Feedback";
-    
-        window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject);
+    function sendEmail() {
+        window.location.href = "mailto:kpdlabs@kpdlabs.com?subject=Feedback";
     }
-	
-	
 
-	return (
-		
+    const products = [
+        { img: Zirc, title: "Crown & Bridge", desc: "Full Contour Zirconia, Microlayered PFZ, PMMA Temporary", link: "/crownandbridge" },
+        { img: ZircV, title: "Veneer", desc: "Microlayered PFZ with Structure, Stain & Glaze", link: "/veneer" },
+        { img: PartialImg, title: "KPD Premier Partial", desc: "Precision-fit, flexible, metal-free removable partial", link: "/partial" },
+        { img: Denture, title: "KPD Premier Denture", desc: "CNC-milled PMMA with hand-characterized Vita Akzent gingiva", link: "/denture" },
+    ];
 
+    const scanners = [
+        {
+            img: Itero, name: "iTero", show: iteroShow, toggle: () => setIteroShow(!iteroShow),
+            steps: [
+                "Login to your iTero/Align Tech Doctor's portal.",
+                "Navigate to \"Add Preferred Lab\" and input our Company ID: 420339.",
+                "If issues arise, call iTero support directly with our Company ID (420339) and they'll connect your practice with KPD Labs.",
+            ]
+        },
+        {
+            img: Cerec, name: "CEREC", show: cerecShow, toggle: () => setCerecShow(!cerecShow),
+            steps: [
+                "Login to your Sirona Connect Doctor's Portal and navigate to \"Add\".",
+                "Under \"My Account\" click \"My Favorite Laboratories\" then \"Search Labs\".",
+                "Enter KPD Labs in the Company Name field, or search by zip code: 33844.",
+                "Find KPD Labs and click the plus sign in the \"Add\" column.",
+            ]
+        },
+        {
+            img: Shape, name: "3Shape", show: shapeShow, toggle: () => setShapeShow(!shapeShow),
+            steps: [
+                "Login to your 3Shape Communicate account.",
+                "Navigate to \"More\" → \"Settings\" → \"Connections\" → \"Labs\" → \"Add\".",
+                "Type our email: kpdlabs@kpdlabs.com",
+                "KPD Labs will appear — click \"Connect\".",
+            ]
+        },
+        {
+            img: Medit, name: "Medit", show: meditShow, toggle: () => setMeditShow(!meditShow),
+            steps: [
+                "Sign in to your Medit Link account.",
+                "Click \"Partners\" in the left-hand column, then \"Search for Partners\".",
+                "Search for kpdlabs@kpdlabs.com",
+                "Select KPD Labs to add us as a partner.",
+            ]
+        },
+    ];
 
-	<>
-	{(!sessionStorage.getItem("id"))?
-		<div className="page-wrapper">
+    return (
+        <>
+        {(!sessionStorage.getItem("id")) ?
+        <div className="page-wrapper">
 
+            {/* ── HERO ── */}
+            <section className="banner-section">
+                <div className="banner-slider slick-initialized slick-slider">
+                    <div className="banner-slide">
+                        <img src={Intro} style={{ position: "absolute" }} />
+                        <div className="outer-box" style={{ zIndex: "2" }}>
+                            <div className="auto-container" style={{ zIndex: "2" }}>
+                                <div className="content-box" style={{ zIndex: "2" }}>
+                                    <Fade cascade>
+                                        <ul>
+                                            <li>
+                                                <span className="sub-title" style={{
+                                                    border: "1px solid #ffaa17",
+                                                    backgroundColor: "transparent",
+                                                    color: "#ffaa17",
+                                                    padding: "4px 12px",
+                                                    letterSpacing: "3px",
+                                                    fontSize: "11px",
+                                                    fontWeight: "600"
+                                                }}>KPD DENTAL LABORATORY</span>
+                                            </li>
+                                            <li>
+                                                <h1 data-animation-in="fadeInLeft" data-delay-in="0.2">
+                                                    Wizards of <br />Dental Technology
+                                                    <Sparkle minSize={6} maxSize={12} count={40} fadeOutSpeed={12} color={'#ffaa17'} flickerSpeed={'slowest'} />
+                                                </h1>
+                                            </li>
+                                            <li>
+                                                <p style={{ color: "rgba(255,255,255,0.7)", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "420px", lineHeight: "1.7", marginBottom: "32px" }}>
+                                                    A family-run dental laboratory combining digital precision with hands-on craftsmanship — delivering restorations your patients will never think about.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div className="btn-box" style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
+                                                    <a href="/signup" className="theme-btn">Send Us A Case</a>
+                                                    <a href="/pricing" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Arial', sans-serif", fontSize: "13px", letterSpacing: "1px", textDecoration: "none" }}>
+                                                        Request Pricing →
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </Fade>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-none d-md-flex outer-box col-lg-8 float-end"
+                            style={{ width: "50%", height: "auto", position: "absolute", zIndex: "1", left: "auto", right: "0" }}>
+                            <ThreeScene2 />
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            {/* ── THREE PILLARS ── */}
+            <section style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17" }}>
+                <div className="auto-container">
+                    <div className="row g-0">
+                        {[
+                            { icon: "fa-solid fa-award", title: "Unparalleled Quality", text: "Every restoration leaves our lab meeting the standard we'd set for our own patients." },
+                            { icon: "fa-solid fa-comments", title: "Seamless Communication", text: "Clear, fast communication from scan received to case delivered — no guesswork." },
+                            { icon: "fa-solid fa-person-running", title: "Fast Turnaround", text: "Standard production 4–6 business days. Rush options available." },
+                        ].map((item, i) => (
+                            <div key={i} className="service-block col-lg-4 col-md-6">
+                                <div className="inner-box">
+                                    <div className="icon-box">
+                                        <i className={item.icon}></i>
+                                        <h5 className="title"><a>{item.title}</a></h5>
+                                    </div>
+                                    <div className="text">{item.text}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
+            {/* ── OUR PROMISE ── */}
+            <section className="about-section" style={{ backgroundImage: `url(${AboutBKG})` }}>
+                <div className="auto-container">
+                    <div className="row">
+                        <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
+                            <div className="inner-column">
+                                <div className="sec-title">
+                                    <span className="sub-title">KPD Labs ::::::</span>
+                                    <h2>Our Promise</h2>
+                                    <div className="text" style={{ textTransform: "none", color: "#333" }}>
+                                        As a family-run dental lab, we synergize modern digital technology with time-tested craftsmanship to deliver restorations that exceed expectations — at every price point. Our commitment goes beyond production. We streamline lab-to-doctor communication, guarantee clear timelines, and stand behind every case we deliver. From the initial scan to the final placement, we're with you every step of the way.
+                                    </div>
+                                </div>
+                                <div className="btn-box">
+                                    <a href="/aboutus" className="btn theme-btn" style={{ textTransform: "none" }}>Discover More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="image-column col-lg-6 wow fadeInRight millvideo" data-wow-delay="600ms">
+                            <div className="inner-column">
+                                <div className="image-box">
+                                    <CustomVideoPlayer />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            {/* ── PRODUCTS ── */}
+            <section className="service-section-two" id="products">
+                <div className="auto-container">
+                    <div className="sec-title text-center">
+                        <span className="sub-title">::::::  WHAT WE OFFER  ::::::</span>
+                        <h2>Precision Restorations<br />For Every Case</h2>
+                    </div>
+                    <div className="row">
+                        {products.map((p, i) => (
+                            <div key={i} className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay={`${400 + i * 200}ms`}>
+                                <div className="inner-box">
+                                    <div className="image-box">
+                                        <figure className="image overlay-animr">
+                                            <img src={p.img} alt={p.title} className="product-pic" />
+                                        </figure>
+                                    </div>
+                                    <div className="content-box">
+                                        <h4 className="title"><a href={p.link}>{p.title}</a></h4>
+                                        <div className="text">{p.desc}</div>
+                                        <a href={p.link} className="ser-btn">Learn More <i className="fa-solid fa-angles-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
+            {/* ── REMOVABLE PROGRAM ── */}
+            <section className="service-banner" style={{ backgroundColor: "#ffaa17", backgroundImage: `url(${Layer})` }}>
+                <div className="auto-container">
+                    <div className="outer-box wow fadeInUp" style={{ backgroundColor: "white", borderRadius: "20px", boxShadow: "4px -3px 1px black" }} data-wow-delay="400ms">
+                        <img src={KPD} alt="KPD Labs" />
+                        <h2 style={{ color: "black" }}>KPD Removable Program</h2>
+                        <p style={{ color: "#555", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "600px", margin: "0 auto 32px", lineHeight: "1.7" }}>
+                            Every removable restoration from KPD comes backed by our industry-leading warranty program — because we stand behind our work long after delivery.
+                        </p>
+                        <div className="row">
+                            <div className="col-6">
+                                <i className="fa-solid fa-shield-halved" style={{ color: "#ffaa17", fontSize: "40px", marginBottom: "12px", display: "block" }}></i>
+                                <h3>30-Day Warranty</h3>
+                                <h5>After the device is approved by both the dentist and patient, all KPD removables come with a 30-day breakage warranty — no questions asked.</h5>
+                            </div>
+                            <div className="col-6">
+                                <i className="fa-solid fa-rotate" style={{ color: "#ffaa17", fontSize: "40px", marginBottom: "12px", display: "block" }}></i>
+                                <h3>Forever Replacement</h3>
+                                <h5>After the warranty period, we replace any removable at $100 off. No realigns, no wasted chair time — your patient keeps their device while we craft a new one.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            {/* ── CONNECT YOUR SCANNER ── */}
+            <section className="project-section">
+                <div className="auto-container">
+                    <div className="sec-title">
+                        <span className="sub-title">CONNECT ::::::</span>
+                        <h2>Connect KPD to<br />Your Digital Scanner</h2>
+                        <p style={{ color: "#808287", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "520px", lineHeight: "1.7", marginTop: "16px" }}>
+                            We're connected to all major intraoral scanning platforms. Click your scanner below for step-by-step setup instructions.
+                        </p>
+                    </div>
+                    <div style={{ marginRight: "0px" }} className="outer-box">
+                        <div className="row">
+                            {scanners.map((scanner, i) => (
+                                <div key={i} className="project-block col-lg-3 col-sm-12 wow fadeInRight">
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+                                        onClick={scanner.toggle}>
+                                        <div className="inner-box">
+                                            <div className="image-box" style={{ height: "200px", display: "flex", alignItems: "center" }}>
+                                                <figure className="image overlay-anim">
+                                                    <img src={scanner.img} alt={scanner.name} />
+                                                </figure>
+                                            </div>
+                                            <i className={scanner.show ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"}
+                                                style={{ position: "absolute" }}></i>
+                                        </div>
+                                    </div>
+                                    {scanner.show && (
+                                        <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+                                            <ol style={{ paddingLeft: "20px" }}>
+                                                {scanner.steps.map((step, j) => (
+                                                    <li key={j} style={{ marginBottom: "10px", fontFamily: "'Arial', sans-serif", fontSize: "14px", color: "#444", lineHeight: "1.6" }}>{step}</li>
+                                                ))}
+                                            </ol>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<section className="banner-section" >
-  <div className="banner-slider slick-initialized slick-slider" >
-	<div className="banner-slide" ><img src={Intro} style={{position: "absolute"}}/> 
+            {/* ── FAQ + BLOG ── */}
+            <section className="faqs-section" style={{ backgroundColor: "#F6F6F6" }}>
+                <div className="auto-container">
+                    <div className="row">
+                        <div className="faq-column col-lg-6 wow fadeInUp" data-wow-delay="400ms">
+                            <div className="inner-column">
+                                <div className="sec-title">
+                                    <span className="sub-title">QUESTIONS & ANSWERS ::::::</span>
+                                    <h2>Frequently Asked<br />Questions</h2>
+                                </div>
+                                <ul className="accordion-box">
+                                    {[
+                                        {
+                                            state: faq1, setState: setFaq1,
+                                            q: "How do I get started with KPD?",
+                                            a: <span>Click <a href="/signup">sign up</a> to create an account. Feel free to <a href="/contactus">contact us</a> with any questions about getting started.</span>
+                                        },
+                                        {
+                                            state: faq2, setState: setFaq2,
+                                            q: "What products does KPD offer?",
+                                            a: "Crown & Bridge (Full Contour Zirconia, Microlayered PFZ, PMMA Temporary), Veneers (Microlayered PFZ), KPD Premier Partial, and KPD Premier Denture. Visit our Products pages for full details on each."
+                                        },
+                                        {
+                                            state: faq3, setState: setFaq3,
+                                            q: "What are KPD's terms?",
+                                            a: <span>Review our full <a href="/terms">terms and conditions here</a>.</span>
+                                        },
+                                        {
+                                            state: faq4, setState: setFaq4,
+                                            q: "What is KPD's turnaround time?",
+                                            a: "Standard production is 4–6 business days. Rush production options are available — contact us to discuss your timeline."
+                                        },
+                                    ].map((faq, i) => (
+                                        <li key={i} className={`accordion block ${faq.state ? 'active-block' : ''}`}>
+                                            <div className={`acc-btn ${faq.state ? 'active' : ''}`}
+                                                onClick={() => faq.setState(!faq.state)}>
+                                                {faq.q}
+                                                <i className="icon fas fa-angle-right"></i>
+                                            </div>
+                                            <div className={`acc-content ${faq.state ? 'current' : ''}`}>
+                                                <div className="content">
+                                                    <div className="text">{faq.a}</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
 
-	
-	  <div className="outer-box" style={{zIndex: "2"}} >
-		<div className="auto-container" style={{zIndex: "2"}}>
-		
-		  <div className="content-box" style={{zIndex: "2"}}> 
-		  <Fade cascade>
-		  <ul>
-			<li>
-				
-		  		<span className="sub-title" style={{
-    border: "1px solid #ffaa17",
-    backgroundColor: "transparent",
-    color: "#ffaa17 !important",
-    padding: "4px 12px",
-    letterSpacing: "3px",
-    fontSize: "11px",
-    fontWeight: "600"
-}}>DENTAL SOLUTIONS</span>
-				  
-			</li>
-		  	<li>
-			<h1 data-animation-in="fadeInLeft" data-delay-in="0.2" >Wizards of <br/>Dental Technology
-			<Sparkle
-				minSize={6}
-				maxSize={12}
-				count={40}
-				fadeOutSpeed={12}
-				color={'#ffaa17'}
-				flickerSpeed={'slowest'}
+                        {/* Blog */}
+                        <div className="image-column col-lg-6" style={{ backgroundImage: `url(${Layer11})`, paddingRight: "20px" }}>
+                            <div className="inner-column" style={{ paddingTop: "20px" }}>
+                                <div className="image-box text-center">
+                                    <span style={{ color: "#ffaa17", fontSize: "10px", letterSpacing: "3px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "700" }}>Latest from KPD</span>
+                                    <h2 style={{ color: "white", marginTop: "12px" }}>From the Lab</h2>
+                                    <h4 style={{ color: "rgba(255,255,255,0.8)", fontWeight: "400", lineHeight: "1.5", marginTop: "16px" }}>
+                                        The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
+                                    </h4>
+                                    <span style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Arial', sans-serif", fontSize: "12px", letterSpacing: "1px" }}>
+                                        June 26, 2024
+                                    </span>
+                                    <div style={{ paddingTop: "28px" }} className="btn-box">
+                                        <a href="/blogs" className="theme-btn">All Blog Posts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-			/></h1>
-			</li>
-			<li>
-			<div className="btn-box"> <a href="/signup" data-animation-in="fadeInUp" data-delay-in="0.4" className="theme-btn">Send Us A Case</a></div>
-			</li>
-			</ul>
-			</Fade>
-		  </div>
-		  
-		  
-		</div>
-	  </div>
-	  <div className="d-none d-md-flex outer-box col-lg-8 float-end 3models" 
-	  style={{width: "50%", height:"auto", position: "absolute", zIndex:"1", left:"auto", right:"0"}}
-	  ><ThreeScene2/></div>
-	  
-	</div>
-	
+            {/* ── BOTTOM CTA ── */}
+            <section className="contact-banner" style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17" }}>
+                <div className="auto-container">
+                    <div className="outer-box" style={{ backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat" }}>
+                        <div className="content-box wow fadeInLeft" data-wow-delay="400ms">
+                            <span style={{ color: "#ffaa17", fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "600" }}>
+                                Ready to get started?
+                            </span>
+                            <h3 className="title" style={{ color: "white", marginTop: "8px" }}>
+                                Experience the KPD difference — precision craftsmanship, delivered on time.
+                            </h3>
+                        </div>
+                        <div className="btn-box wow fadeInRight" data-wow-delay="400ms">
+                            <a href="/signup" className="ser-btn theme-btn">Send Us a Case</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  </div>
-  
-</section>
-{/* <!-- End banner-section -->
-
-
-
-
-<!-- service section --> */}
-
-<section className="contact-banner" style={{backgroundColor: "#F6F6F6"}}>
-  <div className="auto-container">
-	<div className="outer-box" style={{backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat"}}>
-	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> 
-		{/* <span>We’re here for your dental needs. </span> */}
-		<h3 className="title">Contact us for exclusive rates and bulk discounts!</h3>
-	  </div>
-	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="mailto:kpdlabs@kpdlabs.com" className="ser-btn theme-btn">Get Rates</a> </div>
-	</div>
-  </div>
-</section>
-
-
-
-<section className="service-section pt-0 pb-0" style={{backgroundColor: "#f4f5f8"}}>
-  <div className="auto-container" >
-	<div className="row g-0"> 
-	  {/* <!-- service-block --> */}
-	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="400ms">
-		<div className="inner-box">
-		  <div className="icon-box"> <i className="fa-solid fa-award"></i>
-			<h5 className="title"><a href="">Unparalleled Quality</a></h5>
-		  </div>
-		  <div className="text">Get the right fit, the first time</div>
-		</div>
-	  </div>
-	  {/* <!-- service-block --> */}
-	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="600ms">
-		<div className="inner-box">
-		  <div className="icon-box"> <i className="fa-solid fa-circle-dollar-to-slot"></i>
-			<h5 className="title"><a href="">Affordable Price</a></h5>
-		  </div>
-		  <div className="text">Competitive pricing on all products</div>
-		</div>
-	  </div>
-	  {/* <!-- service-block --> */}
-	  <div className="service-block col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="800ms">
-		<div className="inner-box">
-		  <div className="icon-box"> <i className="fa-solid fa-person-running"></i>
-			<h5 className="title"><a href="">Quick Turnaround</a></h5>
-		  </div>
-		  <div className="text">Standard production 4-6 days</div>
-		</div>
-	  </div>
-	</div>
-  </div>
-</section>
-{/* <!-- End service-section -->
-
-<!-- about-section --> */}
-<section className="about-section" style={{backgroundImage: `url(${AboutBKG})`}}>
-	
-  <div className="auto-container">
-	<div className="row"> 
-	  {/* <!-- content-column --> */}
-	  <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
-		<div className="inner-column">
-		  <div className="sec-title"> <span className="sub-title">KPD Labs ::::::</span>
-			<h2>Our Promise</h2>
-			<div className="text" style={{textTransform: "none", color: "#333"}}>As a family-run Dental Lab, we synergize modern technology with time-tested methods to deliver unparalleled quality and design at affordable price points. Our commitment extends beyond mere production; we aim to streamline the entire process, reducing the hassle of lab-to-doctor communication. Through a blend of cutting-edge technology and personalized service, we guarantee clear communication and swift turnaround times, ensuring seamless integration from receiving the initial scan to the final placement with your patient’s full satisfaction. </div>
-		  </div>
-		  <div className="row"> 
-			{/* <!-- about-block --> */}
-			
-			{/* <!-- about-block --> */}
-			
-		  </div>
-		  <div className="btn-box"> <a href="/aboutus" className="btn theme-btn" style={{textTransform: "none"}}>Discover More</a> 
-		  {/* <img src={BKG} alt=""/>  */}
-		  </div>
-		</div>
-	  </div>
-	  {/* <!-- image-column --> */}
-	  <div className="image-column col-lg-6 wow fadeInRight millvideo" data-wow-delay="600ms">
-		<div className="inner-column">
-		  <div className="image-box">
-			
-				
-
-			
-			<CustomVideoPlayer/>
-			
-
-
-		  </div>
-		</div>
-	  </div>
-	</div>
-	
-  </div>
-  
-</section>
-
-{/* <!-- End about-section -->
-
-<!-- service-section --> */}
-<section className="service-section-two" id="products">
-  <div className="auto-container">
-	<div className="sec-title text-center"> <span className="sub-title">::::::  PRODUCTS WE’RE OFFERING  ::::::</span>
-	  <h2>Providing Quality Products<br/> At The Right Price</h2>
-	</div>
-	<div className="row "> 
-	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
-		<div className="inner-box">
-		  <div className="image-box" >
-			<figure className="image overlay-animr">
-				
-					<img src={Zirc} alt="" className="product-pic" />
-				
-			</figure>
-			{/* <i className="flaticon-clock-1"></i> */}
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/crownandbridge">Crown and Bridge</a></h4>
-
-			<div className="text">Zirconia/PMMA Temporary</div>
-			<a href="/crownandbridge" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={ZircV} alt="" className="product-pic" /></figure>
-			{/* <i className="flaticon-monitor-1"></i> */}
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/veneer">Veneer</a></h4>
-
-			<div className="text">Zirconia/PMMA Temporary</div>
-			<a href="/veneer" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	  {/* <!-- service-block-two --> */}
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
-			{/* <i className="flaticon-cog-1"></i> */}
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/partial">Partial</a></h4>
-	
-			<div className="text">Milled Acetal</div>
-			<a href="/partial" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	  <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt="" className="product-pic" /></figure>
-			{/* <i className="flaticon-cog-1"></i> */}
-		  </div>
-		  <div className="content-box">
-			<h4 className="title"><a href="/denture">Denture</a></h4>
-
-			<div className="text">Milled Multilayer PMMA</div>
-			<a href="/denture" className="ser-btn">Read More<i className="fa-solid fa-angles-right"></i></a>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
-
-
-
-  </div>
-</section>
-{/* <!-- End service-section -->
-
-<!-- service-banner --> */}
-<section className="service-banner" style={{backgroundColor: "#ffaa17", backgroundImage: `url(${Layer})`}}>
-  <div className="auto-container">
-	<div className="outer-box wow fadeInUp" style={{backgroundColor: "white", borderRadius: "20px", boxShadow: "4px -3px 1px black" }} data-wow-delay="400ms">
-		<img src={KPD}></img>
-	  <h2 style={{color: "black"}}>Removable Program </h2>
-	  <div className="row"> 
-	  <div className="col-6">
-	  <i className="fa-solid fa-star" style={{color: "#ffaa17", fontSize: "40px", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000,-1px  1px 0 #000, 1px  1px 0 #000"}}></i>
-	  	<h3>30 Day Warranty</h3>
-			<h5>After  the  device  is  approved  by  both  the
-				Dentist  and  the  customer,  all  removable
-				products  from  KPD  come  with  a  30-day
-				breakage warranty, no questions asked.
-			</h5>
-	  </div>
-	  <div className="col-6">
-	  <i className="fa-solid fa-star" style={{color: "#ffaa17", fontSize: "40px", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000,-1px  1px 0 #000, 1px  1px 0 #000"}}></i>
-	  	<h3>Forever Replacement</h3>
-		<h5>
-		After the 30 day warranty period, we will replace any
-		removable at a discounted rate of $100 off! No need for
-		realigns and wasted chair time, let your patient keep
-		their device while we create them a brand new one.
-		</h5>
-	  </div>
-	  </div>
-	  
-	</div>
-  </div>
-</section>
-
-
-{/* <section> */}
-	{/* <img src={Program}>
-	</img> */}
-{/* </section> */}
-{/* <!-- end service section --> 
-
-<!-- project-section --> */}
-<section className="project-section">
-  <div className="auto-container">
-	<div className="sec-title"> <span className="sub-title">CONNECT  ::::::</span>
-	  <h2>Connect with KPD <br/>With Your Digital Provider</h2>
-	  
-	</div>
-	<div style={{marginRight: "0px"}} className="outer-box">
-	  <div className="row"> 
-		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight ">
-		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}} 
-		// className="project-block col-lg-3 col-sm-6 wow fadeInRight" 
-		data-wow-delay="400ms">
-		  <div className="inner-box" 
-		//   onClick={()=>{(iteroShow)? setIteroShow(false): setIteroShow(true)}}
-		  >
-			<div className="image-box" style={{height: "200px", display: "flex", alignItems: "center"}}>
-			  <figure className="image overlay-anim"><img src={Itero} alt=""/></figure>
-			</div>
-			
-			<i className={iteroShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} 
-			style={{position: "absolute"}}
-			></i>
-		
-		  </div>
-		  
-		</div>
-		{(iteroShow)?
-			<div style={{paddingTop: "30px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}> Login to your iTero/Align Tech Doctor’s portal</li>
-					<li style={{listStyle: "initial"}}>Navigate to “Add Preferred Lab” and input our lab’s Company ID (420339) to connect your practice with KPD Labs directly.</li>
-					<li style={{listStyle: "initial"}}>If any issues appear, please call iTero’s support line directly to set up KPD Labs as your “Preferred Lab” – simply give them our Company ID (420339) and they will connect your practice with our lab directly.</li>
-				</ul>
-		  </div>
-			:""}
-		</div>
-		
-		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight">
-		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(cerecShow)? setCerecShow(false): setCerecShow(true)}} data-wow-delay="600ms">
-		  <div className="inner-box">
-			<div className="image-box" style={{height: "200px", display: "flex", alignItems: "center"}}>
-			  <figure className="image overlay-anim"><img src={Cerec} alt=""/></figure>
-			</div>
-			
-			<i className={cerecShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			></i>
-		
-		  </div>
-		 
-		</div>
-		{(cerecShow)?
-			<div style={{paddingTop: "30px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Login to your Sirona Connect Doctor’s Portal and navigate to “Add”</li>
-					<li style={{listStyle: "initial"}}>Now under “My Account,” click on “My Favorite Laboratories”</li>
-					<li style={{listStyle: "initial"}}>Click on “Search Labs”</li>
-					<li style={{listStyle: "initial"}}>Enter KPD Labs in the Company Name field</li>
-					<li style={{listStyle: "initial"}}>If you can’t find us you may also search by location – select “United States” and then enter KPD Labs’s Florida zip code: “33844” </li>
-					<li style={{listStyle: "initial"}}>Find KPD Labs and click on the plus sign in the “Add” column all the way to the right</li>
-					<li style={{listStyle: "initial"}}>Your scans are ready to be sent right away – just choose KPD Labs from your drop down menu.</li>
-				</ul>
-		  </div>
-			:""}
-		</div>
-		
-		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight">
-		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(shapeShow)? setShapeShow(false): setShapeShow(true)}} data-wow-delay="800ms">
-		  <div className="inner-box">
-			<div className="image-box" style={{height: "200px", display: "flex", alignItems: "center"}}>
-			  <figure className="image overlay-anim"><img src={Shape} alt=""/></figure>
-			</div>
-			
-			<i className={shapeShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			
-			></i>
-			
-		  </div>
-		 
-		</div>
-		{(shapeShow)?
-			<div style={{paddingTop: "30px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Login to your 3Shape Communicate account</li>
-					<li style={{listStyle: "initial"}}>Navigate to “More” and then select “Settings”</li>
-					<li style={{listStyle: "initial"}}>In the menu, select “Connections” then “Labs” and then “Add”</li>
-					<li style={{listStyle: "initial"}}>Click on “Add Connections”</li>
-					<li style={{listStyle: "initial"}}>Type in our email address: kpdlabs@kpdlabs.com</li>
-					<li style={{listStyle: "initial"}}>KPD Labs will be shown. Click “Connect”</li>
-				</ul>
-		  </div>
-			: ""}
-		</div>
-		
-
-		<div className="project-block col-lg-3 col-sm-12 wow fadeInRight">
-		<div style={{display: "flex", alignItems: "center", justifyContent: "center"}} onClick={()=>{(meditShow)? setMeditShow(false): setMeditShow(true)}} data-wow-delay="1000ms">
-		  <div className="inner-box">
-			<div className="image-box" style={{height: "200px", display: "flex", alignItems: "center"}}>
-			  <figure className="image overlay-anim"><img src={Medit} alt=""/></figure>
-			</div>
-			
-			<i className={meditShow ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"} style={{position: "absolute"}} 
-			
-			></i>
-			
-		  </div>
-		  
-		</div>
-		{(meditShow)?
-			<div style={{paddingTop: "30px"}}>
-				<ul style={{listStyle: "initial"}}>
-					<li style={{listStyle: "initial"}}>Sign in through your Medit Link account</li>
-					<li style={{listStyle: "initial"}}>Click on “Partners” in the left-hand column</li>
-					<li style={{listStyle: "initial"}}>Select “Search for Partners” at the top</li>
-					<li style={{listStyle: "initial"}}>Click in the search bar and type in our email address: kpdlabs@kpdlabs.com</li>
-					<li style={{listStyle: "initial"}}>KPD Labs will populate. Select our lab to add us as a partner</li>
-					
-				</ul>
-		  </div>
-			:""}
-		</div>
-
-
-
-	  </div>
-	</div>
-  </div>
-</section>
-{/* <!-- End project-section --> 
-
-<!-- client section --> */}
-
-{/* <!-- End client section --> 
-
-<!-- about-section-two --> */}
-{/* <section className="about-section-two pt-0">
-  <div className="auto-container">
-	<div className="row">  */}
-	  {/* <!-- image-column --> */}
-	  {/* <div className="image-column col-lg-6 wow fadeInLeft" data-wow-delay="400ms">
-		<div className="inner-column">
-		  <div className="image-box">
-			<figure className="image overlay-anim">  */}
-			{/* <img src={Denture} alt=""/> */}
-			  {/* <div className="btn-box"> <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" className="play-now" data-fancybox="gallery" data-caption=""><i className="icon fa fa-play" aria-hidden="true"></i><span className="ripple"></span></a> </div> */}
-			{/* </figure>
-			<div className="exp-box">
-			  <h3 className="title">Professional Dental Lab You Can Trust</h3>
-			</div>
-		  </div>
-		</div>
-	  </div> */}
-	  {/* <!-- content-column --> */}
-	  {/* <div className="content-column col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-		<div className="inner-column">
-		  <div className="sec-title"> <span className="sub-title">TECH MANAGEMENT  ::::::</span>
-			<h2>The Best Source For IT Solutions</h2>
-			<div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </div>
-		  </div>
-		  <div className="title-box">
-			<h6 className="title">Lorem Ipsum is simply available typesetting industry been the industry standard. </h6>
-		  </div>
-		  <div className="content-box">  */}
-			{/* <!--Skills--> */}
-			{/* <div className="skills">  */}
-			  {/* <!--Skill Item--> */}
-			  {/* <div className="skill-item">
-				<div className="skill-header">
-				  <h6 className="skill-title">Technology</h6>
-				</div>
-				<div className="skill-bar">
-				  <div className="bar-inner">
-					<div className="bar progress-line" data-width="86">
-					  <div className="skill-percentage">
-						<div className="count-box"><span className="count-text" data-speed="3000" data-stop="86">0</span>%</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div className="btn-box"> <a href="page-about.html" className="ser-btn theme-btn">Discover More</a> </div>
-		</div>
-	  </div>
-	</div>
-  </div>
-</section> */}
-{/* <!-- End about-section-two --> 
-
-<!-- testimonial-section --> */}
-{/* <section className="testimonial-section">
-  <div className="auto-container">
-	<div className="row">  */}
-	  {/* <!-- content-column --> */}
-	  {/* <div className="content-column col-lg-5 col wow fadeInUp" data-wow-delay="400ms">
-		<div className="inner-column">
-		  <div className="sec-title"> <span className="sub-title">OUR FEEDBAKCS  ::::::</span>
-			<h2>What They are Talking About Company</h2>
-		  </div>
-		  <div className="btn-wrap pt-slider">
-			<button className="prev-btn"><i className="fa fa-angle-left"></i></button>
-			<button className="next-btn"><i className="fa fa-angle-right"></i></button>
-		  </div>
-		</div>
-	  </div> */}
-	  {/* <!-- block-column --> */}
-	  {/* <div className="col-lg-7 col-md-6 col-sm-12 wow fadeInRight" data-wow-delay="400ms">
-		<div className="outer-box">
-		  <div className="row testimonial-slider">  */}
-			{/* <!-- testimonial-block --> */}
-			{/* <div className="testimonial-block col-md-6">
-			  <div className="inner-box">
-				<ul className="rating">
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				</ul>
-				<div className="auther-info">
-				  <h4 className="name">Sarah Albert</h4>
-				  <span className="designation">DESIGNER</span>
-				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
-				  <img src={Denture} alt=""/>
-				</div>
-			  </div>
-			</div> */}
-			{/* <!-- testimonial-block --> */}
-			{/* <div className="testimonial-block col-md-6">
-			  <div className="inner-box">
-				<ul className="rating">
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				</ul>
-				<div className="auther-info">
-				  <h4 className="name">Kenvin Martin</h4>
-				  <span className="designation">DESIGNER</span>
-				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
-				  <img src={Denture} alt=""/>
-				</div>
-			  </div>
-			</div> */}
-			{/* <!-- testimonial-block --> */}
-			{/* <div className="testimonial-block col-md-6">
-			  <div className="inner-box">
-				<ul className="rating">
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				</ul>
-				<div className="auther-info">
-				  <h4 className="name">Sarah Albert</h4>
-				  <span className="designation">DESIGNER</span>
-				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
-				  <img src={Denture} alt=""/>
-				</div>
-			  </div>
-			</div> */}
-			{/* <!-- testimonial-block --> */}
-			{/* <div className="testimonial-block col-md-6">
-			  <div className="inner-box">
-				<ul className="rating">
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				  <li><i className="fa fa-star"></i></li>
-				</ul>
-				<div className="auther-info">
-				  <h4 className="name">Kenvin Martin</h4>
-				  <span className="designation">DESIGNER</span>
-				  <div className="text">We believe in four pillars of influence that drive our growth. This is ingrained in everything we do We use technology to create a better and smarter environment </div>
-				  <img src={Denture} alt=""/>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </div>
-</section> */}
-{/* <!-- End testimonial-section -->*/}
-
-
-{/* <section>
-	<img src={Program}>
-	</img>
-</section> */}
-
-
-{/*<!-- FAQ Section --> */}
-<section className="faqs-section" style={{backgroundColor: "#F6F6F6"}}>
-  <div className="auto-container">
-	<div className="row"> 
-	  {/* <!-- FAQ Column --> */}
-	  <div className="faq-column col-lg-6 wow fadeInUp" data-wow-delay="400ms">
-		<div className="inner-column">
-		  <div className="sec-title"> <span className="sub-title">QUESTIONS & ANSWERS  ::::::</span>
-			<h2>Frequently Asked <br/>Questions For You</h2>
-		  </div>
-		  <ul className="accordion-box">
-			{/* <!--Block--> */}
-			<li className={`accordion block ${faq1 ? 'active-block' : ''}`}>
-			  <div className={`acc-btn ${faq1 ? 'active' : ''}`} onClick={()=>{
-				!faq1 ? setFaq1(true): setFaq1(false)}}>How do I get started with KPD? <i className="icon fas fa-angle-right" 
-			  ></i> </div>
-			  <div className={`acc-content ${faq1 ? 'current' : ''}`}>
-				<div className="content">
-				  <div className="text">Click <a href="/signup">signup</a> and make an account with us! Feel free to <a href="/contact">contact</a> us with any questions regarding signing up!</div>
-				</div>
-			  </div>
-			</li>
-			{/* <!--Block--> */}
-			<li className={`accordion block ${faq2 ? 'active-block' : ''}`}>
-			  <div className={`acc-btn ${faq2 ? 'active' : ''}`} onClick={()=>{
-				!faq2 ? setFaq2(true): setFaq2(false)}}>What materials do we offer?<i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content ${faq2 ? 'current' : ''}`}>
-				<div className="content">
-				  <div className="text">We currently offer Zirconia for crown, bridge, and veneer. Milled TCS unbreakable for partials. Milled Multiplayer PMMA With Gingival PMMA Base for Dentures.</div>
-				</div>
-			  </div>
-			</li>
-			{/* <!--Block--> */}
-			<li className={`accordion block ${faq3 ? 'active-block' : ''}`}>
-			  <div className={`acc-btn ${faq3 ? 'active' : ''}`} onClick={()=>{
-				!faq3 ? setFaq3(true): setFaq3(false)}}>What are KPD's terms? <i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content ${faq3 ? 'current' : ''}`}>
-				<div className="content">
-				  <div className="text">Check out our <a href="/terms">terms.</a></div>
-				</div>
-			  </div>
-			</li>
-			{/* <!--Block--> */}
-			<li className={`accordion block ${faq4 ? 'active-block' : ''}`}>
-			  <div className={`acc-btn ${faq4 ? 'active' : ''}`} onClick={()=>{
-				!faq4 ? setFaq4(true): setFaq4(false)}}>What is KPD's turnaround time? <i className="icon fas fa-angle-right"  ></i> </div>
-			  <div className={`acc-content ${faq4 ? 'current' : ''}`}>
-				<div className="content">
-				  <div className="text">4-6 Business days on average with rush options available.</div>
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	  </div>
-	  <div className="image-column col-lg-6" style={{backgroundImage: `url(${Layer11})`, paddingRight: "20px"}} >
-		{/* <img src={Layer11}></img> */}
-		<div className="inner-column" style={{paddingTop: "20px"}}>
-		  <div className="image-box text-center">
-			<h2 style={{color: "white"}}>
-				Check out our latest blog post
-			</h2>
-			<h4 style={{color: "white"}}>
-			The Aesthetic and Functional Benefits of Super High Translucent Zirconia Finished with MiYO Liquid Ceramics for Anterior and Posterior Restorations
-
-			</h4>
-			<span style={{color: "white"}}>
-				6/26/2024
-			</span>
-			<div style={{paddingTop: "20px", paddingBottom: "20px"}} className="btn-box"> 
-				<a href="/blogs" className="theme-btn">All Blog Posts</a>
-			</div>
-			
-		  </div>
-		</div>
-		
-	  </div>
-	  {/* <!-- image-column --> */}
-	  {/* <div className="image-column col-lg-6 wow fadeInUp" data-wow-delay="600ms">
-		<div className="inner-column">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<div className="exp-box bounce-y"> <i className="flaticon-chat"></i>
-			  <h6 className="title">Top Quality Marketing Solution</h6>
-			</div>
-		  </div>
-		</div>
-	  </div> */}
-	</div>
-  </div>
-</section>
-{/* <!--End FAQ Section --> 
-
-<!-- news-section --> */}
-{/* <section className="news-section pt-0">
-  <div className="auto-container">
-	<div className="sec-title text-center wow fadeInUp" data-wow-delay="400ms"> <span className="sub-title">::::::  FROM THE BLOG  ::::::</span>
-	  <h2>Our Latest News Update <br/>and Artical </h2>
-	</div>
-	<div className="row">  */}
-	  {/* <!-- news-block --> */}
-	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<span className="date">11 MAR, 2023</span>
-		  </div>
-		  <div className="content-box">
-			<div className="auther-info"> <img src={Denture} alt=""/>
-			  <ul className="auther-content">
-				<li>By Jackson Mile</li>
-				<li>3 Comments</li>
-			  </ul>
-			</div><h4 className="title"><a href="news-details.html">Crypto Exchange For influencers in China</a></h4>
-			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
-		  </div>
-		</div>
-	  </div> */}
-	  {/* <!-- news-block --> */}
-	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<span className="date">11 MAR, 2023</span>
-		  </div>
-		  <div className="content-box">
-			<div className="auther-info"> <img src={Denture} alt=""/>
-			  <ul className="auther-content">
-				<li>By Jackson Mile</li>
-				<li>3 Comments</li>
-			  </ul>
-			</div>
-			<h4 className="title"><a href="news-details.html">Technology Support us Allows Erie to Serve</a></h4>
-			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
-		  </div>
-		</div>
-	  </div> */}
-	  {/* <!-- news-block --> */}
-	  {/* <div className="news-block col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="800ms">
-		<div className="inner-box">
-		  <div className="image-box">
-			<figure className="image overlay-anim"><img src={Denture} alt=""/></figure>
-			<span className="date">11 MAR, 2023</span>
-		  </div>
-		  <div className="content-box">
-			<div className="auther-info"> <img src={Denture} alt=""/>
-			  <ul className="auther-content">
-				<li>By Jackson Mile</li>
-				<li>3 Comments</li>
-			  </ul>
-			</div>
-			<h4 className="title"><a href="news-details.html">Necessity May Give us Best Virtual Court</a></h4>
-			<a href="news-details.html" className="news-btn theme-btn"><span>Read More</span><i className="fa-solid fa-arrow-right"></i></a>
-		  </div>
-		</div>
-	  </div> */}
-	{/* </div>
-  </div>
-</section> */}
-{/* <!-- End news-section -->
-
-<!-- contact-banner --> */}
-<section className="contact-banner" style={{backgroundColor: "#F6F6F6"}}>
-  <div className="auto-container">
-	<div className="outer-box" style={{backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat"}}>
-	  <div className="content-box wow fadeInLeft" data-wow-delay="400ms"> <span>We’re here for your dental needs. </span>
-		<h3 className="title">Ready to try out the Wizards of Dental Technology?</h3>
-	  </div>
-	  <div className="btn-box wow fadeInRight" data-wow-delay="400ms"> <a href="/signup" className="ser-btn theme-btn">Sign Up</a> </div>
-	</div>
-  </div>
-</section>
-{/* <!-- End contect-banner --> 
-
-<!-- Main Footer --> */}
-
-  
- 
-
-
-</div>
-
-
-
-: <Navigate to= {`/account/${sessionStorage.getItem("id")}`}> </Navigate>}
-	</>
-
-	
-);
+        </div>
+        : <Navigate to={`/account/${sessionStorage.getItem("id")}`} />}
+        </>
+    );
 };

@@ -421,7 +421,7 @@ export const PricingInfo = props => {
         <div style={styles.page}>
 
             {/* Hero */}
-            <div style={styles.hero}>
+            <div style={styles.hero} className="pricing-hero">
                 <div style={styles.heroGlow} />
                 <div style={styles.heroContent}>
                     <p style={styles.heroEyebrow}>Kronemeyer Precision Dental Laboratories</p>
@@ -932,4 +932,7 @@ const styles = {
         fontFamily: "'Arial', sans-serif",
         lineHeight: "1.7",
     },
+
+    
 };
+

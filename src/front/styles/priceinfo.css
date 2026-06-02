@@ -31,3 +31,15 @@
     }
     
   }
+
+  @media only screen and (max-width: 1200px) {
+    .pricing-hero {
+        padding-top: 220px !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .pricing-hero {
+        padding-top: 250px !important;
+    }
+}

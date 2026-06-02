@@ -145,10 +145,10 @@ export const Navbar = (props) => {
 		<header className="main-header header-style-one" >
 			<div className="logo-box ">
 			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
-			<div>
-				<span style={{color: "white", fontSize: "11px", display: "block"}}>Kronemeyer Precision</span>
-				<span style={{color: '#ffaa17', fontSize: "11px", display: "block"}}>Dental Laboratories, LLC</span>
-			</div>
+			<span style={{fontSize: "11px", whiteSpace: "nowrap"}}>
+				<span style={{color: "white"}}>Kronemeyer Precision </span>
+				<span style={{color: '#ffaa17'}}>Dental Laboratories, LLC</span>
+			</span>
 			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">
@@ -361,10 +361,10 @@ export const Navbar = (props) => {
 <header className="main-header header-style-one" >
 			<div className="logo-box ">
 			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "110px", width: "175px"}}/></a></div>
-			<div>
-				<span style={{color: "white", fontSize: "11px", display: "block"}}>Kronemeyer Precision</span>
-				<span style={{color: '#ffaa17', fontSize: "11px", display: "block"}}>Dental Laboratories, LLC</span>
-			</div>
+			<span style={{fontSize: "11px", whiteSpace: "nowrap"}}>
+				<span style={{color: "white"}}>Kronemeyer Precision </span>
+				<span style={{color: '#ffaa17'}}>Dental Laboratories, LLC</span>
+			</span>
 			</div>
 		{/* <!-- header-top --> */}
 		<div className="header-top">

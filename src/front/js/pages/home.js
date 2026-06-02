@@ -122,12 +122,21 @@ export const Home = (props) => {
                                             </li>
                                             <li>
                                                 <p style={{ color: "rgba(255,255,255,0.7)", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "420px", lineHeight: "1.7", marginBottom: "32px" }}>
-                                                    A family-run dental laboratory combining digital precision with hands-on craftsmanship — delivering restorations your patients will never think about.
+                                                   Digital precision. Handcrafted quality. Every case, every time.
                                                 </p>
                                             </li>
                                             <li>
                                                 <div className="btn-box" style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
-                                                    <a href="/signup" className="theme-btn">Send Us A Case</a>
+                                                    <a href="/signup" className="theme-btn" style={{
+														display: "inline-block",
+														padding: "16px 48px",
+														height: "auto",
+														lineHeight: "normal",
+														fontSize: "14px",
+														letterSpacing: "2px",
+														textTransform: "uppercase",
+														whiteSpace: "nowrap"
+													}}>Send Us a Case</a>
                                                     <a href="/pricing" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Arial', sans-serif", fontSize: "13px", letterSpacing: "1px", textDecoration: "none" }}>
                                                         Request Pricing →
                                                     </a>

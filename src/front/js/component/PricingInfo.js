@@ -338,14 +338,13 @@
 
 
 import React, { useState } from "react";
-import Intro from "../../img/footer-flip.jpg"
 
 const services = [
     {
         name: "Crown & Bridge",
         tagline: "Precision-milled zirconia, layered to perfection",
         detail: "Full contour, microlayered PFZ, and PMMA temporaries crafted to exact specifications.",
-        icon: "👑"
+        icon: "◈"
     },
     {
         name: "Veneers",
@@ -357,25 +356,25 @@ const services = [
         name: "Partial Dentures",
         tagline: "Strength and comfort in every case",
         detail: "TCS Unbreakable partials engineered for long-term performance and patient satisfaction.",
-        icon: "◈"
+        icon: "◉"
     },
     {
         name: "Complete Dentures",
         tagline: "Restorations that restore confidence",
         detail: "Premium and economy denture options, including try-in and wax rim services.",
-        icon: "◉"
+        icon: "⬡"
     },
     {
         name: "Implant Restorations",
         tagline: "Digital precision for implant success",
         detail: "Implant crowns and hybrid dentures milled from biocompatible, high-strength materials.",
-        icon: "⬡"
+        icon: "◎"
     },
     {
         name: "Removable Appliances",
         tagline: "Night guards, trays, and more",
         detail: "Custom night guards, occlusal rims, custom trays, and Smile in a Snap solutions.",
-        icon: "◎"
+        icon: "✧"
     }
 ];
 
@@ -420,23 +419,25 @@ export const PricingInfo = props => {
 
     return (
         <div style={styles.page}>
+
             {/* Hero */}
             <div style={styles.hero}>
-                <div style={styles.heroOverlay} />
+                <div style={styles.heroGlow} />
                 <div style={styles.heroContent}>
-                    <p style={styles.heroEyebrow}>KPD Dental Laboratory</p>
+                    <p style={styles.heroEyebrow}>Kronemeyer Precision Dental Laboratories</p>
                     <h1 style={styles.heroTitle}>Quality Without<br />Compromise</h1>
+                    <div style={styles.heroRule} />
                     <p style={styles.heroSub}>
                         We don't compete on price. We compete on results.<br />
-                        Request your custom price list to learn what sets KPD apart.
+                        Request your custom price list and discover what sets KPD apart.
                     </p>
-                    <a href="#form" style={styles.heroCta}>Request Pricing</a>
+                    <a href="#form" style={styles.heroCta}>Request Pricing →</a>
                 </div>
             </div>
 
             {/* Services Grid */}
             <div style={styles.servicesSection}>
-                <div style={styles.sectionLabel}>Our Services</div>
+                <p style={styles.eyebrow}>What We Offer</p>
                 <h2 style={styles.sectionTitle}>Crafted for the Cases That Matter Most</h2>
                 <p style={styles.sectionSub}>Every restoration leaves our lab meeting the standard we'd want for our own patients.</p>
                 <div style={styles.servicesGrid}>
@@ -451,7 +452,7 @@ export const PricingInfo = props => {
                 </div>
             </div>
 
-            {/* Value Props */}
+            {/* Value Props — dark bar matching navbar */}
             <div style={styles.valueSection}>
                 <div style={styles.valueProp}>
                     <div style={styles.valueNum}>01</div>
@@ -481,20 +482,24 @@ export const PricingInfo = props => {
             {/* Form */}
             <div id="form" style={styles.formSection}>
                 <div style={styles.formLeft}>
-                    <div style={styles.sectionLabel}>Get Started</div>
+                    <p style={styles.eyebrowLight}>Get Started</p>
                     <h2 style={styles.formTitle}>Request Your<br />Price List</h2>
                     <p style={styles.formIntro}>
-                        Fill out the form and we'll send you our complete fee schedule. 
-                        No pressure, no sales call — just transparent pricing from a lab 
+                        Fill out the form and we'll send you our complete fee schedule.
+                        No pressure, no sales call — just transparent pricing from a lab
                         that stands behind its work.
                     </p>
                     <div style={styles.contactLine}>
-                        <span style={styles.contactIcon}>📞</span>
+                        <i className="fas fa-phone" style={styles.contactIcon}></i>
                         <span>863-438-2109</span>
                     </div>
                     <div style={styles.contactLine}>
-                        <span style={styles.contactIcon}>✉</span>
+                        <i className="fas fa-envelope" style={styles.contactIcon}></i>
                         <span>kpdlabs@kpdlabs.com</span>
+                    </div>
+                    <div style={styles.contactLine}>
+                        <i className="fas fa-clock" style={styles.contactIcon}></i>
+                        <span>Mon – Fri, 9:00AM – 5:00PM</span>
                     </div>
                 </div>
 
@@ -569,12 +574,14 @@ export const PricingInfo = props => {
     );
 };
 
-const gold = "#c9a84c";
-const dark = "#0f1e3c";
-const mid = "#1a2f52";
+const gold = "#ffaa17";       // matches navbar/footer gold exactly
+const dark = "#222429";       // matches navbar bg exactly
+const darkMid = "#2a2d33";    // slightly lighter for form left panel
 const light = "#f8f6f1";
+const white = "#ffffff";
 const text = "#2c2c2c";
 const muted = "#6b7280";
+const border = "#e5e0d8";
 
 const styles = {
     page: {
@@ -587,48 +594,53 @@ const styles = {
     // Hero
     hero: {
         position: "relative",
-        minHeight: "100vh",
-        background: `linear-gradient(135deg, ${dark} 0%, ${mid} 60%, #0d2744 100%)`,
+        minHeight: "92vh",
+        background: dark,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        padding: "120px 40px 80px",
+        padding: "160px 40px 100px",
         overflow: "hidden",
     },
-    heroOverlay: {
+    heroGlow: {
         position: "absolute",
         inset: 0,
-        background: `radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
-                     radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%)`,
+        background: `radial-gradient(ellipse at 50% 60%, rgba(255,170,23,0.1) 0%, transparent 65%)`,
         pointerEvents: "none",
     },
     heroContent: {
         position: "relative",
         zIndex: 1,
-        maxWidth: "700px",
+        maxWidth: "680px",
     },
     heroEyebrow: {
         fontSize: "11px",
-        letterSpacing: "4px",
+        letterSpacing: "3px",
         textTransform: "uppercase",
         color: gold,
         fontFamily: "'Arial', sans-serif",
-        marginBottom: "24px",
         fontWeight: "600",
+        marginBottom: "28px",
     },
     heroTitle: {
-        fontSize: "clamp(48px, 7vw, 84px)",
+        fontSize: "clamp(52px, 7vw, 88px)",
         fontWeight: "400",
-        color: "#ffffff",
+        color: white,
         lineHeight: "1.05",
-        marginBottom: "28px",
+        marginBottom: "24px",
         letterSpacing: "-1px",
     },
+    heroRule: {
+        width: "60px",
+        height: "2px",
+        backgroundColor: gold,
+        margin: "0 auto 28px",
+    },
     heroSub: {
-        fontSize: "18px",
-        color: "rgba(255,255,255,0.7)",
-        lineHeight: "1.7",
+        fontSize: "17px",
+        color: "rgba(255,255,255,0.65)",
+        lineHeight: "1.8",
         marginBottom: "48px",
         fontFamily: "'Arial', sans-serif",
         fontWeight: "300",
@@ -636,25 +648,33 @@ const styles = {
     heroCta: {
         display: "inline-block",
         padding: "16px 48px",
-        background: gold,
+        backgroundColor: gold,
         color: dark,
         textDecoration: "none",
-        fontSize: "13px",
+        fontSize: "12px",
         letterSpacing: "2px",
         textTransform: "uppercase",
         fontFamily: "'Arial', sans-serif",
         fontWeight: "700",
-        transition: "all 0.3s ease",
     },
 
     // Services
     servicesSection: {
-        padding: "120px 60px",
+        padding: "100px 60px",
         maxWidth: "1200px",
         margin: "0 auto",
         textAlign: "center",
     },
-    sectionLabel: {
+    eyebrow: {
+        fontSize: "10px",
+        letterSpacing: "4px",
+        textTransform: "uppercase",
+        color: gold,
+        fontFamily: "'Arial', sans-serif",
+        fontWeight: "600",
+        marginBottom: "16px",
+    },
+    eyebrowLight: {
         fontSize: "10px",
         letterSpacing: "4px",
         textTransform: "uppercase",
@@ -664,159 +684,158 @@ const styles = {
         marginBottom: "16px",
     },
     sectionTitle: {
-        fontSize: "clamp(32px, 4vw, 52px)",
+        fontSize: "clamp(30px, 4vw, 48px)",
         fontWeight: "400",
         color: dark,
-        marginBottom: "20px",
+        marginBottom: "16px",
         letterSpacing: "-0.5px",
     },
     sectionSub: {
-        fontSize: "16px",
+        fontSize: "15px",
         color: muted,
-        marginBottom: "72px",
+        marginBottom: "64px",
         fontFamily: "'Arial', sans-serif",
-        maxWidth: "560px",
-        margin: "0 auto 72px",
+        maxWidth: "520px",
+        margin: "0 auto 64px",
         lineHeight: "1.7",
     },
     servicesGrid: {
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: "2px",
-        backgroundColor: "#e5e0d8",
+        backgroundColor: border,
     },
     serviceCard: {
-        backgroundColor: light,
-        padding: "48px 40px",
+        backgroundColor: white,
+        padding: "44px 36px",
         textAlign: "left",
-        transition: "background-color 0.3s ease",
     },
     serviceIcon: {
-        fontSize: "28px",
-        marginBottom: "20px",
+        fontSize: "22px",
+        marginBottom: "18px",
         display: "block",
         color: gold,
     },
     serviceName: {
-        fontSize: "20px",
+        fontSize: "19px",
         fontWeight: "400",
         color: dark,
-        marginBottom: "8px",
-        letterSpacing: "0.3px",
+        marginBottom: "6px",
     },
     serviceTagline: {
-        fontSize: "13px",
+        fontSize: "10px",
         color: gold,
         fontFamily: "'Arial', sans-serif",
-        fontWeight: "600",
-        letterSpacing: "0.5px",
-        marginBottom: "14px",
+        fontWeight: "700",
+        letterSpacing: "1px",
+        marginBottom: "12px",
         textTransform: "uppercase",
-        fontSize: "11px",
     },
     serviceDetail: {
-        fontSize: "14px",
+        fontSize: "13px",
         color: muted,
         fontFamily: "'Arial', sans-serif",
         lineHeight: "1.7",
         margin: 0,
     },
 
-    // Value props
+    // Value bar — matches navbar exactly
     valueSection: {
         backgroundColor: dark,
-        padding: "80px 60px",
+        padding: "72px 40px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: "0",
         flexWrap: "wrap",
+        borderTop: `3px solid ${gold}`,
     },
     valueProp: {
         display: "flex",
         alignItems: "flex-start",
-        gap: "24px",
-        padding: "40px 60px",
+        gap: "20px",
+        padding: "32px 52px",
         flex: "1",
-        minWidth: "260px",
-        maxWidth: "360px",
+        minWidth: "240px",
+        maxWidth: "340px",
     },
     valueDivider: {
         width: "1px",
-        height: "80px",
-        backgroundColor: "rgba(201,168,76,0.3)",
+        height: "70px",
+        backgroundColor: "rgba(255,170,23,0.25)",
         alignSelf: "center",
     },
     valueNum: {
-        fontSize: "36px",
-        color: "rgba(201,168,76,0.3)",
+        fontSize: "32px",
+        color: "rgba(255,170,23,0.25)",
         fontWeight: "400",
         lineHeight: "1",
-        minWidth: "48px",
+        minWidth: "44px",
         paddingTop: "4px",
     },
     valueTitle: {
-        fontSize: "16px",
-        color: "#ffffff",
+        fontSize: "15px",
+        color: white,
         fontWeight: "400",
-        marginBottom: "10px",
+        marginBottom: "8px",
         letterSpacing: "0.3px",
     },
     valueText: {
         fontSize: "13px",
-        color: "rgba(255,255,255,0.55)",
+        color: "rgba(255,255,255,0.5)",
         fontFamily: "'Arial', sans-serif",
         lineHeight: "1.7",
         margin: 0,
     },
 
-    // Form section
+    // Form
     formSection: {
         display: "flex",
-        minHeight: "100vh",
+        minHeight: "90vh",
         flexWrap: "wrap",
     },
     formLeft: {
         flex: "1",
         minWidth: "300px",
-        backgroundColor: mid,
+        backgroundColor: darkMid,
         padding: "100px 60px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
     },
     formTitle: {
-        fontSize: "clamp(36px, 4vw, 52px)",
+        fontSize: "clamp(34px, 4vw, 50px)",
         fontWeight: "400",
-        color: "#ffffff",
+        color: white,
         lineHeight: "1.1",
-        marginBottom: "28px",
+        marginBottom: "24px",
         letterSpacing: "-0.5px",
     },
     formIntro: {
-        fontSize: "15px",
-        color: "rgba(255,255,255,0.65)",
+        fontSize: "14px",
+        color: "rgba(255,255,255,0.6)",
         fontFamily: "'Arial', sans-serif",
-        lineHeight: "1.8",
-        marginBottom: "48px",
-        maxWidth: "400px",
+        lineHeight: "1.9",
+        marginBottom: "44px",
+        maxWidth: "380px",
     },
     contactLine: {
         display: "flex",
         alignItems: "center",
         gap: "12px",
-        color: "rgba(255,255,255,0.7)",
+        color: "rgba(255,255,255,0.65)",
         fontFamily: "'Arial', sans-serif",
-        fontSize: "14px",
-        marginBottom: "16px",
+        fontSize: "13px",
+        marginBottom: "14px",
     },
     contactIcon: {
-        fontSize: "16px",
+        color: gold,
+        fontSize: "14px",
+        width: "18px",
     },
     formRight: {
-        flex: "1.2",
+        flex: "1.3",
         minWidth: "340px",
-        backgroundColor: "#ffffff",
+        backgroundColor: white,
         padding: "80px 60px",
         display: "flex",
         alignItems: "center",
@@ -833,33 +852,32 @@ const styles = {
     formGroup: {
         display: "flex",
         flexDirection: "column",
-        marginBottom: "24px",
+        marginBottom: "22px",
         flex: "1",
     },
     label: {
-        fontSize: "11px",
+        fontSize: "10px",
         letterSpacing: "1.5px",
         textTransform: "uppercase",
         color: muted,
         fontFamily: "'Arial', sans-serif",
-        fontWeight: "600",
-        marginBottom: "8px",
+        fontWeight: "700",
+        marginBottom: "7px",
     },
     input: {
-        border: "1px solid #e5e0d8",
+        border: `1px solid ${border}`,
         borderRadius: "0",
-        padding: "14px 16px",
+        padding: "13px 14px",
         fontSize: "14px",
         fontFamily: "'Arial', sans-serif",
         color: text,
         backgroundColor: "#fafaf8",
         outline: "none",
-        transition: "border-color 0.2s ease",
     },
     select: {
-        border: "1px solid #e5e0d8",
+        border: `1px solid ${border}`,
         borderRadius: "0",
-        padding: "14px 16px",
+        padding: "13px 14px",
         fontSize: "14px",
         fontFamily: "'Arial', sans-serif",
         color: text,
@@ -870,46 +888,46 @@ const styles = {
     },
     submitBtn: {
         width: "100%",
-        padding: "18px",
+        padding: "17px",
         backgroundColor: dark,
-        color: "#ffffff",
-        border: "none",
-        fontSize: "12px",
+        color: white,
+        border: `2px solid ${dark}`,
+        fontSize: "11px",
         letterSpacing: "2px",
         textTransform: "uppercase",
         fontFamily: "'Arial', sans-serif",
         fontWeight: "700",
         cursor: "pointer",
         marginTop: "8px",
-        transition: "background-color 0.3s ease",
+        transition: "all 0.2s ease",
     },
 
     // Success
     successBox: {
         textAlign: "center",
         padding: "60px 40px",
-        maxWidth: "400px",
+        maxWidth: "380px",
     },
     successIcon: {
-        width: "72px",
-        height: "72px",
+        width: "68px",
+        height: "68px",
         borderRadius: "50%",
         backgroundColor: dark,
         color: gold,
-        fontSize: "32px",
+        fontSize: "28px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        margin: "0 auto 32px",
+        margin: "0 auto 28px",
     },
     successTitle: {
-        fontSize: "28px",
+        fontSize: "26px",
         fontWeight: "400",
         color: dark,
-        marginBottom: "16px",
+        marginBottom: "14px",
     },
     successText: {
-        fontSize: "15px",
+        fontSize: "14px",
         color: muted,
         fontFamily: "'Arial', sans-serif",
         lineHeight: "1.7",

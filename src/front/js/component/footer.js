@@ -107,7 +107,8 @@ return (
   <div className="footer-bottom" style={{zIndex:1}}/>
 	<div className="auto-container">
 	  <div className="inner-container">
-		<div className="copyright-text text-center">© {currentYear} KPD Labs Copyright All Rights Reserved <a href="index.html">kodesolution.com</a>
+		<div className="copyright-text text-center">© {currentYear} KPD Labs Copyright All Rights Reserved 
+			{/* <a href="index.html">kodesolution.com</a> */}
 		<a href="#" className="footer-btn"></a>
 	  </div>
 	</div>

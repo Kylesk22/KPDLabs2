@@ -428,7 +428,7 @@ export const PricingInfo = props => {
                     <h1 style={styles.heroTitle}>Quality Without<br />Compromise</h1>
                     <div style={styles.heroRule} />
                     <p style={styles.heroSub}>
-                        We don't compete on price. We compete on results.<br />
+                        {/* We don't compete on price. We compete on results.<br /> */}
                         Request your custom price list and discover what sets KPD apart.
                     </p>
                     <a href="#form" style={styles.heroCta}>Request Pricing →</a>

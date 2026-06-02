@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../component/Login";
-import Logo from "../../img/kpd_logo_final.svg";
+import Logo from "../../../../public/kpd_logo_final.svg";
 import KPDLogo from "../../img/KPD-Logo.png"
 import KPDtransparent from "../../img/KPD-Transparent.png"
 import "../../styles/home.css";

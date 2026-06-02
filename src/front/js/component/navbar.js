@@ -144,7 +144,7 @@ export const Navbar = (props) => {
 		(!loggedIn) ? 	
 		<header className="main-header header-style-one" >
 			<div className="logo-box ">
-			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "70px", width: "auto"}}/></div>
+			<div className="logo"><a href="/"><img src={Logo} alt="" style={{height: "70px", width: "auto"}}/></a></div>
 			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
 			</div>
 		{/* <!-- header-top --> */}

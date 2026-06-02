@@ -355,13 +355,13 @@ const services = [
     {
         name: "Partial Dentures",
         tagline: "Strength and comfort in every case",
-        detail: "TCS Unbreakable partials engineered for long-term performance and patient satisfaction.",
+        detail: "Flexible partials engineered for long-term performance and patient satisfaction.",
         icon: "◉"
     },
     {
         name: "Complete Dentures",
         tagline: "Restorations that restore confidence",
-        detail: "Premium and economy denture options, including try-in and wax rim services.",
+        detail: "The KPD Premier Denture — our signature full denture, crafted for fit, function, and a natural aesthetic. Try-in and wax rim services available.",
         icon: "⬡"
     },
     {
@@ -428,7 +428,7 @@ export const PricingInfo = props => {
                     <h1 style={styles.heroTitle}>Quality Without<br />Compromise</h1>
                     <div style={styles.heroRule} />
                     <p style={styles.heroSub}>
-                        {/* We don't compete on price. We compete on results.<br /> */}
+                        Every restoration that leaves our lab represents the standard we'd set for our own patients.<br />
                         Request your custom price list and discover what sets KPD apart.
                     </p>
                     <a href="#form" style={styles.heroCta}>Request Pricing →</a>

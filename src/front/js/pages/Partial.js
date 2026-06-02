@@ -174,21 +174,20 @@
 
 // )}
 
-S
 import React, { useState } from "react";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
- 
+
 const shades = [
     { name: "Opaque Pink", desc: "The most lifelike option for patients with naturally pink, opaque gingiva. Seamlessly blends with tissue for a natural emergence profile.", swatch: "#e8a0a8" },
     { name: "Translucent Pink", desc: "A translucent pink tone that captures the subtle depth of natural gingiva — ideal for lighter tissue types and high-smile-line cases.", swatch: "#f0bec4" },
     { name: "Translucent Meharry", desc: "Developed to harmonize with deeper, richer gingival tones. The go-to choice for patients with naturally darker tissue pigmentation.", swatch: "#c47a7a" },
     { name: "100% Clear", desc: "Fully transparent base for cases where maximum discretion is required. Adapts to the patient's own tissue color underneath.", swatch: "#e8e0d8" },
 ];
- 
+
 export const Partial = props => {
     const [activeShade, setActiveShade] = useState(0);
- 
+
     return (
         <div style={styles.page}>
             {/* Hero */}
@@ -203,7 +202,7 @@ export const Partial = props => {
                     <p style={styles.heroBreadcrumb}><a href="/" style={styles.breadcrumbLink}>Home</a> <span style={styles.breadcrumbSep}>›</span> Products <span style={styles.breadcrumbSep}>›</span> Partial</p>
                 </div>
             </div>
- 
+
             {/* Product Overview */}
             <div style={styles.overviewSection}>
                 <Fade triggerOnce>
@@ -238,10 +237,10 @@ export const Partial = props => {
                                 { label: "ADA Mandibular", value: "D5226" },
                                 { label: "Available Shades", value: "4 Options" },
                                 { label: "Scan Requirement", value: "Full Arch + 15mm Gingiva" },
-                            ].map((s, i) => (
+                            ].map((spec, i) => (
                                 <div key={i} style={styles.specRow}>
-                                    <span style={styles.specLabel}>{s.label}</span>
-                                    <span style={styles.specValue}>{s.value}</span>
+                                    <span style={styles.specLabel}>{spec.label}</span>
+                                    <span style={styles.specValue}>{spec.value}</span>
                                 </div>
                             ))}
                         </div>
@@ -249,7 +248,7 @@ export const Partial = props => {
                 </div>
                 </Fade>
             </div>
- 
+
             {/* Shade Selector */}
             <div style={styles.shadeSection}>
                 <div style={styles.shadeInner}>
@@ -257,7 +256,7 @@ export const Partial = props => {
                     <h2 style={styles.shadeSectionTitle}>Four Shades. Every Patient.</h2>
                     <p style={styles.shadeSectionSub}>Each shade is selected to blend naturally with the patient's existing tissue tone, ensuring the partial remains virtually invisible in the smile.</p>
                     <div style={styles.shadeGrid}>
-                        {shades.map((s, i) => (
+                        {shades.map((spec, i) => (
                             <button
                                 key={i}
                                 onClick={() => setActiveShade(i)}
@@ -282,7 +281,7 @@ export const Partial = props => {
                     </Fade>
                 </div>
             </div>
- 
+
             {/* CTA Banner */}
             <div style={styles.ctaBanner}>
                 <h2 style={styles.ctaBannerTitle}>Ready to Send a Partial Case?</h2>
@@ -292,14 +291,14 @@ export const Partial = props => {
         </div>
     );
 };
- 
+
 const gold = "#ffaa17";
 const dark = "#222429";
 const light = "#f8f6f1";
 const white = "#ffffff";
 const muted = "#6b7280";
 const border = "#e5e0d8";
- 
+
 const styles = {
     page: { fontFamily: "'Georgia', serif", backgroundColor: light, color: dark, overflowX: "hidden" },
     hero: { minHeight: "60vh", backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "180px 40px 80px" },
@@ -312,7 +311,7 @@ const styles = {
     breadcrumbSep: { margin: "0 8px", color: gold },
     eyebrow: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
     eyebrowLight: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
- 
+
     overviewSection: { padding: "100px 60px", maxWidth: "1200px", margin: "0 auto" },
     overviewInner: { display: "flex", gap: "80px", alignItems: "flex-start", flexWrap: "wrap" },
     overviewLeft: { flex: "1.3", minWidth: "300px", position: "relative", paddingLeft: "24px" },
@@ -329,7 +328,7 @@ const styles = {
     specRow: { backgroundColor: white, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px", flexWrap: "wrap" },
     specLabel: { fontSize: "10px", letterSpacing: "1.5px", textTransform: "uppercase", color: muted, fontFamily: "'Arial', sans-serif", fontWeight: "700" },
     specValue: { fontSize: "14px", color: dark, fontFamily: "'Georgia', serif", textAlign: "right" },
- 
+
     shadeSection: { backgroundColor: dark, padding: "100px 60px", borderTop: `3px solid ${gold}` },
     shadeInner: { maxWidth: "1200px", margin: "0 auto" },
     shadeSectionTitle: { fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", color: white, marginBottom: "16px", letterSpacing: "-0.5px" },
@@ -343,7 +342,7 @@ const styles = {
     shadeDetailSwatch: { width: "64px", height: "64px", borderRadius: "50%", flexShrink: "0", border: "2px solid rgba(255,255,255,0.2)" },
     shadeDetailName: { fontSize: "20px", color: white, fontWeight: "400", marginBottom: "8px" },
     shadeDetailDesc: { fontSize: "14px", color: "rgba(255,255,255,0.55)", fontFamily: "'Arial', sans-serif", lineHeight: "1.7", margin: "0" },
- 
+
     ctaBanner: { backgroundColor: dark, borderTop: `3px solid ${gold}`, padding: "80px 60px", textAlign: "center" },
     ctaBannerTitle: { fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", color: white, marginBottom: "16px", letterSpacing: "-0.5px" },
     ctaBannerSub: { fontSize: "14px", color: "rgba(255,255,255,0.55)", fontFamily: "'Arial', sans-serif", marginBottom: "40px", maxWidth: "600px", margin: "0 auto 40px", lineHeight: "1.8" },

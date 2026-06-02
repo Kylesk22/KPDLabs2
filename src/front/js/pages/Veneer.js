@@ -176,7 +176,7 @@
 import React from "react";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
- 
+
 export const Veneer = props => {
     return (
         <div style={styles.page}>
@@ -192,7 +192,7 @@ export const Veneer = props => {
                     <p style={styles.heroBreadcrumb}><a href="/" style={styles.breadcrumbLink}>Home</a> <span style={styles.breadcrumbSep}>›</span> Products <span style={styles.breadcrumbSep}>›</span> Veneer</p>
                 </div>
             </div>
- 
+
             {/* Product Feature */}
             <div style={styles.featureSection}>
                 <Fade triggerOnce>
@@ -219,10 +219,10 @@ export const Veneer = props => {
                                 { label: "Surface Treatment", value: "MiYO Liquid Ceramics" },
                                 { label: "Indications", value: "Anterior Veneers" },
                                 { label: "ADA Code", value: "D2962" },
-                            ].map((s, i) => (
+                            ].map((spec, i) => (
                                 <div key={i} style={styles.specRow}>
-                                    <span style={styles.specLabel}>{s.label}</span>
-                                    <span style={styles.specValue}>{s.value}</span>
+                                    <span style={styles.specLabel}>{spec.label}</span>
+                                    <span style={styles.specValue}>{spec.value}</span>
                                 </div>
                             ))}
                         </div>
@@ -230,7 +230,7 @@ export const Veneer = props => {
                 </div>
                 </Fade>
             </div>
- 
+
             {/* What Sets Us Apart */}
             <div style={styles.apartSection}>
                 <div style={styles.apartInner}>
@@ -251,7 +251,7 @@ export const Veneer = props => {
                     </div>
                 </div>
             </div>
- 
+
             {/* Preparation Note */}
             <div style={styles.prepSection}>
                 <div style={styles.prepInner}>
@@ -265,7 +265,7 @@ export const Veneer = props => {
                     </div>
                 </div>
             </div>
- 
+
             {/* CTA Banner */}
             <div style={styles.ctaBanner}>
                 <h2 style={styles.ctaBannerTitle}>Ready to Elevate Your Veneer Cases?</h2>
@@ -275,14 +275,14 @@ export const Veneer = props => {
         </div>
     );
 };
- 
+
 const gold = "#ffaa17";
 const dark = "#222429";
 const light = "#f8f6f1";
 const white = "#ffffff";
 const muted = "#6b7280";
 const border = "#e5e0d8";
- 
+
 const styles = {
     page: { fontFamily: "'Georgia', serif", backgroundColor: light, color: dark, overflowX: "hidden" },
     hero: { minHeight: "60vh", backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "180px 40px 80px" },
@@ -295,7 +295,7 @@ const styles = {
     breadcrumbSep: { margin: "0 8px", color: gold },
     eyebrow: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
     eyebrowLight: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
- 
+
     featureSection: { padding: "100px 60px", maxWidth: "1200px", margin: "0 auto" },
     featureInner: { display: "flex", gap: "80px", alignItems: "flex-start", flexWrap: "wrap" },
     featureLeft: { flex: "1.2", minWidth: "300px", position: "relative", paddingLeft: "24px" },
@@ -309,7 +309,7 @@ const styles = {
     specRow: { backgroundColor: white, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px" },
     specLabel: { fontSize: "10px", letterSpacing: "1.5px", textTransform: "uppercase", color: muted, fontFamily: "'Arial', sans-serif", fontWeight: "700" },
     specValue: { fontSize: "14px", color: dark, fontFamily: "'Georgia', serif", textAlign: "right" },
- 
+
     apartSection: { backgroundColor: dark, padding: "100px 60px", borderTop: `3px solid ${gold}` },
     apartInner: { maxWidth: "1200px", margin: "0 auto" },
     apartTitle: { fontSize: "clamp(26px, 3vw, 40px)", fontWeight: "400", color: white, marginBottom: "60px", letterSpacing: "-0.5px", maxWidth: "600px" },
@@ -318,14 +318,14 @@ const styles = {
     apartIcon: { fontSize: "24px", color: gold, display: "block", marginBottom: "20px" },
     apartCardTitle: { fontSize: "18px", color: white, fontWeight: "400", marginBottom: "12px" },
     apartCardBody: { fontSize: "13px", color: "rgba(255,255,255,0.5)", fontFamily: "'Arial', sans-serif", lineHeight: "1.8", margin: "0" },
- 
+
     prepSection: { padding: "80px 60px", maxWidth: "1200px", margin: "0 auto" },
     prepInner: { display: "flex", gap: "80px", flexWrap: "wrap", borderTop: `1px solid ${border}`, paddingTop: "60px" },
     prepLeft: { flex: "1", minWidth: "240px" },
     prepTitle: { fontSize: "clamp(22px, 3vw, 32px)", fontWeight: "400", color: dark, letterSpacing: "-0.3px" },
     prepRight: { flex: "2", minWidth: "300px" },
     prepText: { fontSize: "14px", color: muted, fontFamily: "'Arial', sans-serif", lineHeight: "1.9", marginBottom: "16px" },
- 
+
     ctaBanner: { backgroundColor: dark, borderTop: `3px solid ${gold}`, padding: "80px 60px", textAlign: "center" },
     ctaBannerTitle: { fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", color: white, marginBottom: "16px", letterSpacing: "-0.5px" },
     ctaBannerSub: { fontSize: "15px", color: "rgba(255,255,255,0.55)", fontFamily: "'Arial', sans-serif", marginBottom: "40px", maxWidth: "500px", margin: "0 auto 40px" },

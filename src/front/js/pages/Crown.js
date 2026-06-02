@@ -672,12 +672,11 @@
 
 // )}
 
-
 import React, { useState } from "react";
 import Intro from "../../img/footer-flip.jpg";
 import AboutBKG from "../../img/testi-bg.jpg";
 import { Fade } from "react-awesome-reveal";
- 
+
 const products = [
     {
         name: "Full Contour Zirconia",
@@ -716,16 +715,16 @@ const products = [
         ]
     }
 ];
- 
+
 const adaCodes = [
     { code: "D2740", desc: "Crown – porcelain/ceramic substrate" },
     { code: "D6740", desc: "Retainer crown – porcelain/ceramic" },
     { code: "D6245", desc: "Pontic – porcelain/ceramic" },
 ];
- 
+
 export const Crown = props => {
     const [activeProduct, setActiveProduct] = useState(0);
- 
+
     return (
         <div style={styles.page}>
             {/* Hero */}
@@ -740,7 +739,7 @@ export const Crown = props => {
                     <p style={styles.heroBreadcrumb}><a href="/" style={styles.breadcrumbLink}>Home</a> <span style={styles.breadcrumbSep}>›</span> Products <span style={styles.breadcrumbSep}>›</span> Crown & Bridge</p>
                 </div>
             </div>
- 
+
             {/* Product Selector */}
             <div style={styles.selectorSection}>
                 <p style={styles.eyebrow}>Our Offerings</p>
@@ -760,7 +759,7 @@ export const Crown = props => {
                         </button>
                     ))}
                 </div>
- 
+
                 {/* Product Detail */}
                 <Fade key={activeProduct} triggerOnce={false}>
                 <div style={styles.productDetail}>
@@ -773,10 +772,10 @@ export const Crown = props => {
                     </div>
                     <div style={styles.productRight}>
                         <div style={styles.specsGrid}>
-                            {products[activeProduct].specs.map((s, i) => (
+                            {products[activeProduct].specs.map((spec, i) => (
                                 <div key={i} style={styles.specCard}>
-                                    <span style={styles.specLabel}>{s.label}</span>
-                                    <span style={styles.specValue}>{s.value}</span>
+                                    <span style={styles.specLabel}>{spec.label}</span>
+                                    <span style={styles.specValue}>{spec.value}</span>
                                 </div>
                             ))}
                         </div>
@@ -784,7 +783,7 @@ export const Crown = props => {
                 </div>
                 </Fade>
             </div>
- 
+
             {/* Why KPD */}
             <div style={styles.whySection}>
                 <div style={styles.whyInner}>
@@ -805,7 +804,7 @@ export const Crown = props => {
                     </div>
                 </div>
             </div>
- 
+
             {/* ADA Codes */}
             <div style={styles.adaSection}>
                 <p style={styles.eyebrow}>Reference</p>
@@ -819,7 +818,7 @@ export const Crown = props => {
                     ))}
                 </div>
             </div>
- 
+
             {/* CTA Banner */}
             <div style={styles.ctaBanner}>
                 <h2 style={styles.ctaBannerTitle}>Ready to Send a Case?</h2>
@@ -829,17 +828,17 @@ export const Crown = props => {
         </div>
     );
 };
- 
+
 const gold = "#ffaa17";
 const dark = "#222429";
 const light = "#f8f6f1";
 const white = "#ffffff";
 const muted = "#6b7280";
 const border = "#e5e0d8";
- 
+
 const styles = {
     page: { fontFamily: "'Georgia', serif", backgroundColor: light, color: dark, overflowX: "hidden" },
- 
+
     // Hero
     hero: { minHeight: "60vh", backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "180px 40px 80px" },
     heroInner: { maxWidth: "700px" },
@@ -850,7 +849,7 @@ const styles = {
     heroBreadcrumb: { fontSize: "13px", color: "rgba(255,255,255,0.55)", fontFamily: "'Arial', sans-serif" },
     breadcrumbLink: { color: "rgba(255,255,255,0.55)", textDecoration: "none" },
     breadcrumbSep: { margin: "0 8px", color: gold },
- 
+
     // Selector
     selectorSection: { padding: "100px 60px", maxWidth: "1200px", margin: "0 auto" },
     eyebrow: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
@@ -873,7 +872,7 @@ const styles = {
     specCard: { backgroundColor: white, padding: "24px 20px", display: "flex", flexDirection: "column", gap: "8px" },
     specLabel: { fontSize: "9px", letterSpacing: "2px", textTransform: "uppercase", color: muted, fontFamily: "'Arial', sans-serif", fontWeight: "700" },
     specValue: { fontSize: "16px", fontWeight: "400", color: dark, fontFamily: "'Georgia', serif" },
- 
+
     // Why
     whySection: { backgroundColor: dark, padding: "100px 60px", borderTop: `3px solid ${gold}` },
     whyInner: { maxWidth: "1200px", margin: "0 auto" },
@@ -883,14 +882,14 @@ const styles = {
     whyNum: { fontSize: "32px", color: "rgba(255,170,23,0.25)", fontWeight: "400", display: "block", marginBottom: "16px" },
     whyTitle: { fontSize: "18px", color: white, fontWeight: "400", marginBottom: "12px" },
     whyBody: { fontSize: "13px", color: "rgba(255,255,255,0.5)", fontFamily: "'Arial', sans-serif", lineHeight: "1.8", margin: "0" },
- 
+
     // ADA
     adaSection: { padding: "100px 60px", maxWidth: "1200px", margin: "0 auto" },
     adaGrid: { display: "flex", flexDirection: "column", gap: "2px", backgroundColor: border },
     adaCard: { backgroundColor: white, padding: "24px 32px", display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" },
     adaCode: { fontSize: "18px", color: gold, fontFamily: "'Georgia', serif", fontWeight: "400", minWidth: "80px" },
     adaDesc: { fontSize: "14px", color: muted, fontFamily: "'Arial', sans-serif" },
- 
+
     // CTA Banner
     ctaBanner: { backgroundColor: dark, borderTop: `3px solid ${gold}`, padding: "80px 60px", textAlign: "center" },
     ctaBannerTitle: { fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", color: white, marginBottom: "16px", letterSpacing: "-0.5px" },

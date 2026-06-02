@@ -176,11 +176,10 @@
 
 // )}
 
-
 import React from "react";
 import Intro from "../../img/footer-flip.jpg";
 import { Fade } from "react-awesome-reveal";
- 
+
 export const Denture = props => {
     return (
         <div style={styles.page}>
@@ -196,7 +195,7 @@ export const Denture = props => {
                     <p style={styles.heroBreadcrumb}><a href="/" style={styles.breadcrumbLink}>Home</a> <span style={styles.breadcrumbSep}>›</span> Products <span style={styles.breadcrumbSep}>›</span> Denture</p>
                 </div>
             </div>
- 
+
             {/* Product Overview */}
             <div style={styles.overviewSection}>
                 <Fade triggerOnce>
@@ -225,10 +224,10 @@ export const Denture = props => {
                                 { label: "Gingival Finish", value: "Hand-Characterized with Vita Akzent" },
                                 { label: "ADA Maxillary", value: "D5110" },
                                 { label: "ADA Mandibular", value: "D5120" },
-                            ].map((s, i) => (
+                            ].map((spec, i) => (
                                 <div key={i} style={styles.specRow}>
-                                    <span style={styles.specLabel}>{s.label}</span>
-                                    <span style={styles.specValue}>{s.value}</span>
+                                    <span style={styles.specLabel}>{spec.label}</span>
+                                    <span style={styles.specValue}>{spec.value}</span>
                                 </div>
                             ))}
                         </div>
@@ -236,7 +235,7 @@ export const Denture = props => {
                 </div>
                 </Fade>
             </div>
- 
+
             {/* Vita Akzent Feature */}
             <div style={styles.vitaSection}>
                 <div style={styles.vitaInner}>
@@ -267,7 +266,7 @@ export const Denture = props => {
                     </div>
                 </div>
             </div>
- 
+
             {/* Impression Guidelines */}
             <div style={styles.prepSection}>
                 <div style={styles.prepInner}>
@@ -281,7 +280,7 @@ export const Denture = props => {
                     </div>
                 </div>
             </div>
- 
+
             {/* CTA Banner */}
             <div style={styles.ctaBanner}>
                 <h2 style={styles.ctaBannerTitle}>Ready to Send a Denture Case?</h2>
@@ -291,14 +290,14 @@ export const Denture = props => {
         </div>
     );
 };
- 
+
 const gold = "#ffaa17";
 const dark = "#222429";
 const light = "#f8f6f1";
 const white = "#ffffff";
 const muted = "#6b7280";
 const border = "#e5e0d8";
- 
+
 const styles = {
     page: { fontFamily: "'Georgia', serif", backgroundColor: light, color: dark, overflowX: "hidden" },
     hero: { minHeight: "60vh", backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "180px 40px 80px" },
@@ -311,7 +310,7 @@ const styles = {
     breadcrumbSep: { margin: "0 8px", color: gold },
     eyebrow: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
     eyebrowLight: { fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: gold, fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" },
- 
+
     overviewSection: { padding: "100px 60px", maxWidth: "1200px", margin: "0 auto" },
     overviewInner: { display: "flex", gap: "80px", alignItems: "flex-start", flexWrap: "wrap" },
     overviewLeft: { flex: "1.3", minWidth: "300px", position: "relative", paddingLeft: "24px" },
@@ -324,7 +323,7 @@ const styles = {
     specRow: { backgroundColor: white, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px", flexWrap: "wrap" },
     specLabel: { fontSize: "10px", letterSpacing: "1.5px", textTransform: "uppercase", color: muted, fontFamily: "'Arial', sans-serif", fontWeight: "700" },
     specValue: { fontSize: "14px", color: dark, fontFamily: "'Georgia', serif", textAlign: "right" },
- 
+
     vitaSection: { backgroundColor: dark, padding: "100px 60px", borderTop: `3px solid ${gold}` },
     vitaInner: { maxWidth: "1200px", margin: "0 auto", display: "flex", gap: "80px", flexWrap: "wrap" },
     vitaLeft: { flex: "1", minWidth: "280px" },
@@ -335,14 +334,14 @@ const styles = {
     featureNum: { fontSize: "28px", color: "rgba(255,170,23,0.25)", fontWeight: "400", minWidth: "40px", lineHeight: "1" },
     featureTitle: { fontSize: "16px", color: white, fontWeight: "400", marginBottom: "8px" },
     featureBody: { fontSize: "13px", color: "rgba(255,255,255,0.5)", fontFamily: "'Arial', sans-serif", lineHeight: "1.7", margin: "0" },
- 
+
     prepSection: { padding: "80px 60px", maxWidth: "1200px", margin: "0 auto" },
     prepInner: { display: "flex", gap: "80px", flexWrap: "wrap", borderTop: `1px solid ${border}`, paddingTop: "60px" },
     prepLeft: { flex: "1", minWidth: "240px" },
     prepTitle: { fontSize: "clamp(22px, 3vw, 32px)", fontWeight: "400", color: dark, letterSpacing: "-0.3px" },
     prepRight: { flex: "2", minWidth: "300px" },
     prepText: { fontSize: "14px", color: muted, fontFamily: "'Arial', sans-serif", lineHeight: "1.9", marginBottom: "16px" },
- 
+
     ctaBanner: { backgroundColor: dark, borderTop: `3px solid ${gold}`, padding: "80px 60px", textAlign: "center" },
     ctaBannerTitle: { fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", color: white, marginBottom: "16px", letterSpacing: "-0.5px" },
     ctaBannerSub: { fontSize: "15px", color: "rgba(255,255,255,0.55)", fontFamily: "'Arial', sans-serif", marginBottom: "40px", maxWidth: "500px", margin: "0 auto 40px", lineHeight: "1.8" },

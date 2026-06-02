@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../component/Login";
-import { ReactComponent as Logo } from "../../img/kpd_logo_final.svg";
+import Logo from "../../img/kpd_logo_final.svg";
 import KPDLogo from "../../img/KPD-Logo.png"
 import KPDtransparent from "../../img/KPD-Transparent.png"
 import "../../styles/home.css";
@@ -144,7 +144,7 @@ export const Navbar = (props) => {
 		(!loggedIn) ? 	
 		<header className="main-header header-style-one" >
 			<div className="logo-box ">
-			<div className="logo"><a href="/"><Logo style={{height: "70px", width: "auto"}}/></a></div>
+			<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
 			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
 			</div>
 		{/* <!-- header-top --> */}
@@ -259,7 +259,7 @@ export const Navbar = (props) => {
 		
 		<nav className="menu-box">
 			<div className="upper-box" style={{backgroundColor: "black"}}>
-			<div className="nav-logo" ><a href="/"><Logo style={{height: "70px", width: "auto"}}/></a></div>
+			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" title=""/></a></div>
 			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 			</div>
 			<ul className="navigation clearfix">
@@ -357,7 +357,7 @@ export const Navbar = (props) => {
 
 <header className="main-header header-style-one" >
 			<div className="logo-box ">
-			<div className="logo"><a href="/"><Logo style={{height: "70px", width: "auto"}}/></a></div>
+			<div className="logo"><a href="/"><img src={Logo} alt=""/></a></div>
 			<strong> <span className="logo-text" style={{color: "white", fontSize: "12px"}}>Kronemeyer Precision</span><span className="logo-text" style={{color: '#ffaa17', fontSize: "12px"}}> Dental Laboratories, LLC</span></strong>
 			</div>
 		{/* <!-- header-top --> */}
@@ -440,7 +440,7 @@ export const Navbar = (props) => {
 		
 		<nav className="menu-box">
 			<div className="upper-box" style={{backgroundColor: "black"}}>
-			<div className="nav-logo" ><a href="/"><Logo style={{height: "70px", width: "auto"}}/></a></div>
+			<div className="nav-logo" ><a href="/"><img src={Logo} alt="" title=""/></a></div>
 			<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 			</div>
 			<ul className="navigation clearfix">

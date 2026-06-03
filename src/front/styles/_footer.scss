@@ -321,3 +321,16 @@
 .main-footer .widgets-section {
     padding-top: 40px !important;
 }
+
+.main-footer .widgets-section .row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+}
+
+.main-footer .widgets-section .footer-column {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}

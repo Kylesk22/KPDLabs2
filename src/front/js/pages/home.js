@@ -24,8 +24,7 @@ import Itero from "../../img/itero-logo-2-300x103.png";
 import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png";
 import Shape from "../../img/3shape-logo-vector-removebg-preview-300x167.png";
 import Medit from "../../img/medit-logo-300.png";
-import KPD from "../../img/kpd_logo_pos2(1).png";
-import Layer from "../../img/layer.png";
+
 
 export const Home = (props) => {
     const { store, actions } = useContext(Context);
@@ -229,30 +228,43 @@ export const Home = (props) => {
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            {/* ── REMOVABLE PROGRAM ── */}
-            <section className="service-banner" style={{ backgroundColor: "#ffaa17", backgroundImage: `url(${Layer})` }}>
-                <div className="auto-container">
-                    <div className="outer-box wow fadeInUp" style={{ backgroundColor: "white", borderRadius: "20px", boxShadow: "4px -3px 1px black" }} data-wow-delay="400ms">
-                        <img src={KPD} alt="KPD Labs" />
-                        <h2 style={{ color: "black" }}>KPD Removable Program</h2>
-                        <p style={{ color: "#555", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "600px", margin: "0 auto 32px", lineHeight: "1.7" }}>
-                            Every removable restoration from KPD comes backed by our industry-leading warranty program — because we stand behind our work long after delivery.
-                        </p>
-                        <div className="row">
-                            <div className="col-6">
-                                <i className="fa-solid fa-shield-halved" style={{ color: "#ffaa17", fontSize: "40px", marginBottom: "12px", display: "block" }}></i>
-                                <h3>30-Day Warranty</h3>
-                                <h5>After the device is approved by both the dentist and patient, all KPD removables come with a 30-day breakage warranty — no questions asked.</h5>
-                            </div>
-                            <div className="col-6">
-                                <i className="fa-solid fa-rotate" style={{ color: "#ffaa17", fontSize: "40px", marginBottom: "12px", display: "block" }}></i>
-                                <h3>Forever Replacement</h3>
-                                <h5>After the warranty period, we replace any removable at $100 off. No realigns, no wasted chair time — your patient keeps their device while we craft a new one.</h5>
+                    {/* ── REMOVABLE PROGRAM CALLOUT ── */}
+                    <div style={{
+                        backgroundColor: "#222429",
+                        borderTop: "3px solid #ffaa17",
+                        borderRadius: "8px",
+                        padding: "36px 48px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: "24px",
+                        marginTop: "48px"
+                    }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "20px", flex: "1", minWidth: "280px" }}>
+                            <i className="fa-solid fa-shield-halved" style={{ color: "#ffaa17", fontSize: "36px", flexShrink: "0" }}></i>
+                            <div>
+                                <p style={{ color: "#ffaa17", fontSize: "10px", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "700", marginBottom: "4px" }}>KPD Removable Program</p>
+                                <p style={{ color: "white", fontFamily: "'Georgia', serif", fontSize: "16px", margin: "0", lineHeight: "1.5" }}>
+                                    Every removable comes backed by our 30-day warranty and forever replacement program.
+                                </p>
                             </div>
                         </div>
+                        <a href="/partial" style={{
+                            display: "inline-block",
+                            padding: "12px 32px",
+                            backgroundColor: "transparent",
+                            color: "#ffaa17",
+                            border: "1px solid #ffaa17",
+                            fontSize: "11px",
+                            letterSpacing: "2px",
+                            textTransform: "uppercase",
+                            fontFamily: "'Arial', sans-serif",
+                            fontWeight: "700",
+                            textDecoration: "none",
+                            whiteSpace: "nowrap"
+                        }}>Learn More →</a>
                     </div>
                 </div>
             </section>
@@ -268,23 +280,23 @@ export const Home = (props) => {
                         </p>
                     </div>
                     <div className="outer-box">
-                        <div className="row">
+                        <div className="row justify-content-center">
                             {scanners.map((scanner, i) => (
-                                <div key={i} className="project-block col-lg-3 col-sm-12 wow fadeInRight">
-                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+                                <div key={i} className="project-block col-lg-3 col-sm-6 wow fadeInRight" style={{ textAlign: "center" }}>
+                                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
                                         onClick={scanner.toggle}>
-                                        <div className="inner-box">
-                                            <div className="image-box" style={{ height: "200px", display: "flex", alignItems: "center" }}>
-                                                <figure className="image overlay-anim">
-                                                    <img src={scanner.img} alt={scanner.name} />
+                                        <div className="inner-box" style={{ width: "100%" }}>
+                                            <div className="image-box" style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                <figure className="image overlay-anim" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                    <img src={scanner.img} alt={scanner.name} style={{ maxHeight: "80px", width: "auto", objectFit: "contain" }} />
                                                 </figure>
                                             </div>
                                             <i className={scanner.show ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"}
-                                                style={{ position: "absolute" }}></i>
+                                                style={{ display: "block", textAlign: "center", marginTop: "8px" }}></i>
                                         </div>
                                     </div>
                                     {scanner.show && (
-                                        <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+                                        <div style={{ paddingTop: "20px", paddingBottom: "20px", textAlign: "left" }}>
                                             <ol style={{ paddingLeft: "20px" }}>
                                                 {scanner.steps.map((step, j) => (
                                                     <li key={j} style={{ marginBottom: "10px", fontFamily: "'Arial', sans-serif", fontSize: "14px", color: "#444", lineHeight: "1.6" }}>{step}</li>

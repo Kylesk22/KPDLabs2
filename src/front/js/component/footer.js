@@ -18,11 +18,11 @@ export const Footer = () => {
             {/* Widgets */}
             <div className="widgets-section">
                 <div className="auto-container">
-                    <div className="row">
+                    <div className="row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
 
                         {/* Logo column */}
-                        <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft" style={{ paddingRight: "60px" }}>
-                            <div className="logo" style={{ marginBottom: "12px", textAlign: "center" }}>
+                        <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+                            <div className="logo" style={{ marginBottom: "12px" }}>
                                 <a href="/">
                                     <img
                                         src={Logo}
@@ -35,9 +35,9 @@ export const Footer = () => {
                                 </a>
                             </div>
                             <p style={{ margin: "0", fontSize: "13px", fontFamily: "'Arial', sans-serif", fontWeight: "400", textAlign: "center" }}>
-								<span style={{ color: "white" }}>Kronemeyer Precision </span>
-								<span style={{ color: "#ffaa17" }}>Dental Laboratories, LLC</span>
-							</p>
+                                <span style={{ color: "white" }}>Kronemeyer Precision </span>
+                                <span style={{ color: "#ffaa17" }}>Dental Laboratories, LLC</span>
+                            </p>
                         </div>
 
                         {/* Quick Links */}

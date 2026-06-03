@@ -22,14 +22,14 @@ export const Footer = () => {
 
                         {/* Logo column */}
                         <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft">
-                            <div className="footer-widget about-widget text-center text-lg-start">
+                            <div className="footer-widget about-widget">
                                 <div className="logo ps-4">
-                                    <a href="/"><img src={Logo} alt="KPD Labs" style={{ height: "70px", width: "111px" }} /></a>
+                                    <a href="/"><img src={Logo} alt="KPD Labs" style={{ height: "110px", width: "175px" }} /></a>
                                 </div>
-                                <strong>
-                                    <span style={{ color: "white", fontSize: "12px" }}>Kronemeyer Precision</span>
-                                    <span style={{ color: "#ffaa17", fontSize: "12px" }}> Dental Laboratories, LLC</span>
-                                </strong>
+                                <div style={{ paddingLeft: "16px" }}>
+                                    <span style={{ color: "white", fontSize: "11px" }}>Kronemeyer Precision </span>
+                                    <span style={{ color: "#ffaa17", fontSize: "11px" }}>Dental Laboratories, LLC</span>
+                                </div>
                             </div>
                         </div>
 

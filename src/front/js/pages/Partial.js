@@ -271,8 +271,8 @@ export const Partial = props => {
                                     ...(activeShade === i ? styles.shadeCardActive : {})
                                 }}
                             >
-                                <div style={{ ...styles.shadeSwatch, backgroundColor: s.swatch }}/>
-                                <span style={styles.shadeName}>{s.name}</span>
+                                <div style={{ ...styles.shadeSwatch, backgroundColor: spec.swatch }}/>
+                                <span style={styles.shadeName}>{spec.name}</span>
                             </button>
                         ))}
                     </div>

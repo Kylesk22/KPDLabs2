@@ -17,8 +17,7 @@ import ZircV from "../../img/Veneer.png";
 import PartialImg from "../../img/TCS Unbreakable Partial Denture.png";
 import Denture from "../../img/Denture.png";
 import Intro from "../../img/footer-flip.jpg";
-import AboutBKG from "../../img/testi-bg.jpg";
-import Lines21 from "../../img/lines2-1.png";
+
 import Layer11 from "../../img/layer1-1.jpg";
 import Itero from "../../img/itero-logo-2-300x103.png";
 import Cerec from "../../img/CEREC-Logo-removebg-preview-300x94.png";
@@ -175,7 +174,7 @@ export const Home = (props) => {
             </section>
 
             {/* ── OUR PROMISE ── */}
-            <section className="about-section" style={{ backgroundImage: `url(${AboutBKG})` }}>
+            <section className="about-section" style={{ backgroundColor: "#f8f6f1" }}>
                 <div className="auto-container">
                     <div className="row">
                         <div className="content-column col-lg-6 wow fadeInLeft" data-wow-delay="600ms">
@@ -415,7 +414,7 @@ export const Home = (props) => {
             {/* ── BOTTOM CTA ── */}
             <section className="contact-banner" style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17" }}>
                 <div className="auto-container">
-                    <div className="outer-box" style={{ backgroundImage: `url(${Lines21})`, backgroundRepeat: "no-repeat" }}>
+                    <div className="outer-box">
                         <div className="content-box wow fadeInLeft" data-wow-delay="400ms">
                             <h3 className="title" style={{ color: "white" }}>
                                 Experience the KPD difference — precision craftsmanship, delivered on time.

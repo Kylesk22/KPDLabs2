@@ -18,19 +18,16 @@ export const Footer = () => {
             {/* Widgets */}
             <div className="widgets-section">
                 <div className="auto-container">
-                    <div className="row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px" }}>
 
                         {/* Logo column */}
-                        <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+                        <div style={{ flex: "1", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
                             <div className="logo" style={{ marginBottom: "12px" }}>
                                 <a href="/">
                                     <img
                                         src={Logo}
                                         alt="KPD Labs"
-                                        style={{
-                                            display: "block",
-                                            objectFit: "contain"
-                                        }}
+                                        style={{ display: "block", objectFit: "contain" }}
                                     />
                                 </a>
                             </div>
@@ -41,7 +38,7 @@ export const Footer = () => {
                         </div>
 
                         {/* Quick Links */}
-                        <div className="footer-column col-lg-4 col-sm-6 fadeInLeft">
+                        <div style={{ flex: "1" }}>
                             <div className="footer-widget contact-widget">
                                 <h3 className="widget-title">Quick Links</h3>
                                 <ul className="contact-info">
@@ -58,7 +55,7 @@ export const Footer = () => {
                         </div>
 
                         {/* Contact */}
-                        <div className="footer-column col-lg-4 col-sm-6 fadeInLeft">
+                        <div style={{ flex: "1" }}>
                             <div className="footer-widget contact-widget">
                                 <h3 className="widget-title">Contact Now</h3>
                                 <div className="widget-content">

@@ -22,7 +22,7 @@ export const Footer = () => {
 
                         {/* Logo column */}
                         <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft">
-                            <div className="logo" style={{ marginBottom: "12px" }}>
+                            <div className="logo" style={{ marginBottom: "12px", textAlign: "center" }}>
                                 <a href="/">
                                     <img
                                         src={Logo}
@@ -34,7 +34,7 @@ export const Footer = () => {
                                     />
                                 </a>
                             </div>
-                            <p style={{ margin: "0", fontSize: "13px", fontFamily: "'Arial', sans-serif", fontWeight: "400" }}>
+                            <p style={{ margin: "0", fontSize: "13px", fontFamily: "'Arial', sans-serif", fontWeight: "400", textAlign: "center" }}>
 								<span style={{ color: "white" }}>Kronemeyer Precision </span>
 								<span style={{ color: "#ffaa17" }}>Dental Laboratories, LLC</span>
 							</p>

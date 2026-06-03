@@ -21,7 +21,7 @@ export const Footer = () => {
                     <div className="row">
 
                         {/* Logo column */}
-                        <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft">
+                        <div className="footer-column col-lg-4 col-sm-6 wow fadeInLeft" style={{ paddingRight: "60px" }}>
                             <div className="logo" style={{ marginBottom: "12px", textAlign: "center" }}>
                                 <a href="/">
                                     <img

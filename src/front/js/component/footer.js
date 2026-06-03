@@ -34,10 +34,10 @@ export const Footer = () => {
                                     />
                                 </a>
                             </div>
-                            <p style={{ margin: "0", fontSize: "11px", fontFamily: "'Arial', sans-serif", fontWeight: "400" }}>
-                                <span style={{ color: "white" }}>Kronemeyer Precision </span>
-                                <span style={{ color: "#ffaa17" }}>Dental Laboratories, LLC</span>
-                            </p>
+                            <p style={{ margin: "0", fontSize: "13px", fontFamily: "'Arial', sans-serif", fontWeight: "400" }}>
+								<span style={{ color: "white" }}>Kronemeyer Precision </span>
+								<span style={{ color: "#ffaa17" }}>Dental Laboratories, LLC</span>
+							</p>
                         </div>
 
                         {/* Quick Links */}

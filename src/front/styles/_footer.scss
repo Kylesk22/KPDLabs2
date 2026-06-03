@@ -303,7 +303,9 @@
 .main-footer .footer-column .logo img {
     width: 175px !important;
     height: 110px !important;
-    max-width: none !important;
+    max-width: 175px !important;
+    min-width: unset !important;
+    min-height: unset !important;
 }
 
 .main-footer .footer-column p span {

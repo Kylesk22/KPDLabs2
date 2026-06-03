@@ -29,9 +29,6 @@ export const Footer = () => {
                                         alt="KPD Labs"
                                         style={{
                                             display: "block",
-                                            maxWidth: "none",
-                                            minWidth: "175px",
-                                            minHeight: "110px",
                                             objectFit: "contain"
                                         }}
                                     />

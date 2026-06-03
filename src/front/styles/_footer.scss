@@ -300,8 +300,18 @@
 		}
 	}
 }
-.main-footer .footer-column img {
+.main-footer .footer-column .logo img {
     width: 175px !important;
     height: 110px !important;
     max-width: none !important;
+}
+
+.main-footer .footer-column p span {
+    color: white !important;
+}
+
+.main-footer .footer-column p a,
+.main-footer .footer-column p {
+    color: white !important;
+    text-decoration: none !important;
 }

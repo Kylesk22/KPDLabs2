@@ -412,25 +412,45 @@ export const Home = (props) => {
             </section>
 
             {/* ── BOTTOM CTA ── */}
-            <section className="contact-banner" style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17" }}>
+            <section style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17", padding: "80px 60px" }}>
                 <div className="auto-container">
-                    <div className="outer-box">
-                        <div className="content-box wow fadeInLeft" data-wow-delay="400ms">
-                            <h3 className="title" style={{ color: "white" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "32px" }}>
+                        <div style={{ flex: "1", minWidth: "280px" }}>
+                            <p style={{ color: "#ffaa17", fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "600", marginBottom: "12px" }}>
+                                Ready to get started?
+                            </p>
+                            <h3 style={{ color: "white", fontSize: "clamp(22px, 3vw, 36px)", fontWeight: "400", fontFamily: "'Georgia', serif", letterSpacing: "-0.5px", margin: "0", lineHeight: "1.3" }}>
                                 Experience the KPD difference — precision craftsmanship, delivered on time.
                             </h3>
                         </div>
-                        <div className="btn-box wow fadeInRight" data-wow-delay="400ms">
-                            <a href="/signup" className="theme-btn" style={{
+                        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
+                            <a href="/signup" style={{
                                 display: "inline-block",
                                 padding: "16px 48px",
-                                height: "auto",
-                                lineHeight: "normal",
-                                fontSize: "14px",
+                                backgroundColor: "#ffaa17",
+                                color: "#222429",
+                                textDecoration: "none",
+                                fontSize: "12px",
                                 letterSpacing: "2px",
                                 textTransform: "uppercase",
+                                fontFamily: "'Arial', sans-serif",
+                                fontWeight: "700",
                                 whiteSpace: "nowrap"
                             }}>Send Us a Case</a>
+                            <a href="/pricing" style={{
+                                display: "inline-block",
+                                padding: "16px 48px",
+                                backgroundColor: "transparent",
+                                color: "white",
+                                border: "1px solid rgba(255,255,255,0.3)",
+                                textDecoration: "none",
+                                fontSize: "12px",
+                                letterSpacing: "2px",
+                                textTransform: "uppercase",
+                                fontFamily: "'Arial', sans-serif",
+                                fontWeight: "700",
+                                whiteSpace: "nowrap"
+                            }}>Request Pricing</a>
                         </div>
                     </div>
                 </div>

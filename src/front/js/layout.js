@@ -92,6 +92,7 @@ const Layout = () => {
                         <Route element={<Terms /> } path = "/terms"/>
                         <Route element={<Portfolio /> } path = "/portfolio"/>
                         <Route element={<Shop /> } path = "/shop"/>
+                        <Route element={<RemovableProgram />} path="/removable-program" />
                         
                         
                         <Route element={<h1>Not found!</h1>} />

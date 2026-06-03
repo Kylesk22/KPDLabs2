@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FootBKG from "../../img/footer-bg.jpg";
 import Logo from "../../img/kpd_logo_final.png";
 import "../../styles/home.css";
@@ -10,6 +10,13 @@ import "../../styles/adminSingle.css";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <footer className="main-footer no-print" style={{ backgroundImage: `url(${FootBKG})` }}>
@@ -18,10 +25,10 @@ export const Footer = () => {
             {/* Widgets */}
             <div className="widgets-section">
                 <div className="auto-container">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px" }}>
+                    <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "center" : "flex-start", gap: "40px" }}>
 
                         {/* Logo column */}
-                        <div style={{ flex: "1", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+                        <div style={{ flex: "1", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
                             <div className="logo" style={{ marginBottom: "12px" }}>
                                 <a href="/">
                                     <img
@@ -38,7 +45,7 @@ export const Footer = () => {
                         </div>
 
                         {/* Quick Links */}
-                        <div style={{ flex: "1" }}>
+                        <div style={{ flex: "1", width: "100%" }}>
                             <div className="footer-widget contact-widget">
                                 <h3 className="widget-title">Quick Links</h3>
                                 <ul className="contact-info">
@@ -55,7 +62,7 @@ export const Footer = () => {
                         </div>
 
                         {/* Contact */}
-                        <div style={{ flex: "1" }}>
+                        <div style={{ flex: "1", width: "100%" }}>
                             <div className="footer-widget contact-widget">
                                 <h3 className="widget-title">Contact Now</h3>
                                 <div className="widget-content">

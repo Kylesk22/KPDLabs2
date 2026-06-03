@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Helmet } from "react-helmet";
 import Sparkle from 'react-sparkle';
@@ -28,6 +28,13 @@ import Medit from "../../img/medit-logo-300.png";
 export const Home = (props) => {
     const { store, actions } = useContext(Context);
     const [faq1, setFaq1] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     const [faq2, setFaq2] = useState(false);
     const [faq3, setFaq3] = useState(false);
     const [faq4, setFaq4] = useState(false);
@@ -283,7 +290,7 @@ export const Home = (props) => {
                     </div>
 
                     {/* Logo grid — fully inline, no template classes */}
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2px", backgroundColor: "rgba(255,170,23,0.1)" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: "2px", backgroundColor: "rgba(255,170,23,0.1)" }}>
                         {scanners.map((scanner, i) => (
                             <div key={i} style={{ backgroundColor: "#222429" }}>
                                 {/* Logo button */}

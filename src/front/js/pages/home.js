@@ -290,7 +290,7 @@ export const Home = (props) => {
                     </div>
 
                     {/* Logo grid — fully inline, no template classes */}
-                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: "2px", backgroundColor: "rgba(255,170,23,0.1)" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)", gap: "2px", backgroundColor: "rgba(255,170,23,0.1)" }}>
                         {scanners.map((scanner, i) => (
                             <div key={i} style={{ backgroundColor: "#222429" }}>
                                 {/* Logo button */}

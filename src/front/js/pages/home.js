@@ -251,7 +251,7 @@ export const Home = (props) => {
                                 </p>
                             </div>
                         </div>
-                        <a href="/removable-program" style={{
+                        <a href="/partial" style={{
                             display: "inline-block",
                             padding: "12px 32px",
                             backgroundColor: "transparent",
@@ -270,43 +270,73 @@ export const Home = (props) => {
             </section>
 
             {/* ── CONNECT YOUR SCANNER ── */}
-            <section className="project-section">
+            <section style={{ backgroundColor: "#222429", borderTop: "3px solid #ffaa17", padding: "80px 60px" }}>
                 <div className="auto-container">
-                    <div className="sec-title">
-                        <span className="sub-title">CONNECT ::::::</span>
-                        <h2>Already Have an Intraoral Scanner?<br />Connect to KPD in Minutes.</h2>
-                        <p style={{ color: "#808287", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "560px", lineHeight: "1.7", marginTop: "16px" }}>
+                    {/* Header */}
+                    <div style={{ marginBottom: "60px" }}>
+                        <span style={{ fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: "#ffaa17", fontFamily: "'Arial', sans-serif", fontWeight: "600" }}>CONNECT</span>
+                        <h2 style={{ color: "white", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "400", letterSpacing: "-0.5px", marginTop: "12px", marginBottom: "16px" }}>
+                            Already Have an Intraoral Scanner?<br />Connect to KPD in Minutes.
+                        </h2>
+                        <p style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Arial', sans-serif", fontSize: "15px", maxWidth: "560px", lineHeight: "1.7", margin: "0" }}>
                             We're integrated with all major digital scanning platforms. Select your scanner below for step-by-step setup instructions and start sending cases digitally today.
                         </p>
                     </div>
-                    <div className="outer-box">
-                        <div className="row justify-content-center">
-                            {scanners.map((scanner, i) => (
-                                <div key={i} className="project-block col-lg-3 col-sm-6 wow fadeInRight" style={{ textAlign: "center" }}>
-                                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
-                                        onClick={scanner.toggle}>
-                                        <div className="inner-box" style={{ width: "100%" }}>
-                                            <div className="image-box" style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                                <figure className="image overlay-anim" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                                    <img src={scanner.img} alt={scanner.name} style={{ maxHeight: "80px", width: "auto", objectFit: "contain" }} />
-                                                </figure>
-                                            </div>
-                                            <i className={scanner.show ? "fa-solid fa-angle-down" : "fa-solid fa-angle-right"}
-                                                style={{ display: "block", textAlign: "center", marginTop: "8px" }}></i>
-                                        </div>
-                                    </div>
-                                    {scanner.show && (
-                                        <div style={{ paddingTop: "20px", paddingBottom: "20px", textAlign: "left" }}>
-                                            <ol style={{ paddingLeft: "20px" }}>
-                                                {scanner.steps.map((step, j) => (
-                                                    <li key={j} style={{ marginBottom: "10px", fontFamily: "'Arial', sans-serif", fontSize: "14px", color: "#444", lineHeight: "1.6" }}>{step}</li>
-                                                ))}
-                                            </ol>
-                                        </div>
-                                    )}
+
+                    {/* Logo grid — fully inline, no template classes */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2px", backgroundColor: "rgba(255,170,23,0.1)" }}>
+                        {scanners.map((scanner, i) => (
+                            <div key={i} style={{ backgroundColor: "#222429" }}>
+                                {/* Logo button */}
+                                <div
+                                    onClick={scanner.toggle}
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: "40px 24px 24px",
+                                        cursor: "pointer",
+                                        borderBottom: scanner.show ? "2px solid #ffaa17" : "2px solid transparent",
+                                        transition: "border-color 0.2s ease"
+                                    }}
+                                >
+                                    <img
+                                        src={scanner.img}
+                                        alt={scanner.name}
+                                        style={{
+                                            maxHeight: "70px",
+                                            maxWidth: "160px",
+                                            width: "auto",
+                                            objectFit: "contain",
+                                            filter: "brightness(0) invert(1)",
+                                            opacity: scanner.show ? "1" : "0.6",
+                                            transition: "opacity 0.2s ease"
+                                        }}
+                                    />
+                                    <i
+                                        className={scanner.show ? "fa-solid fa-angle-up" : "fa-solid fa-angle-down"}
+                                        style={{ color: "#ffaa17", fontSize: "14px", marginTop: "20px" }}
+                                    ></i>
                                 </div>
-                            ))}
-                        </div>
+
+                                {/* Steps dropdown */}
+                                {scanner.show && (
+                                    <div style={{ padding: "24px 28px 32px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                                        <p style={{ color: "#ffaa17", fontSize: "10px", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", fontWeight: "700", marginBottom: "16px" }}>
+                                            {scanner.name} Setup
+                                        </p>
+                                        <ol style={{ paddingLeft: "18px", margin: "0" }}>
+                                            {scanner.steps.map((step, j) => (
+                                                <li key={j} style={{ marginBottom: "10px", fontFamily: "'Arial', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: "1.7" }}>
+                                                    {step}
+                                                </li>
+                                            ))}
+                                        </ol>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

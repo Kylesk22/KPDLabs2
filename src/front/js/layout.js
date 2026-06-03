@@ -34,7 +34,7 @@ import {Portfolio} from "./pages/Portfolio";
 import {Shop} from "./pages/Shop";
 import { AuthProvider } from "./component/AuthProvider";
 import { LogoutNotice } from "./component/LogoutNotice";
-import { RemovableProgram } from "./pages/Removeableprogram";
+import { RemovableProgram } from "./pages/Removableprogram";
 
 
 import Orb from "../../front/img/image.png";

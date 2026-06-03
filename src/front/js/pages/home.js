@@ -251,7 +251,7 @@ export const Home = (props) => {
                                 </p>
                             </div>
                         </div>
-                        <a href="/removeable-program" style={{
+                        <a href="/removable-program" style={{
                             display: "inline-block",
                             padding: "12px 32px",
                             backgroundColor: "transparent",

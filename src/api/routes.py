@@ -735,7 +735,8 @@ def new_case(id):
             update_case.model3D = model3D
             update_case.scanner_id = scanner_id
             update_case.tooth_designations = json.dumps(tooth_designations) if tooth_designations else None
-            update_case.doctor_name = doctor_name
+            if doctor_name is not None:
+                update_case.doctor_name = doctor_name
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"
@@ -831,7 +832,8 @@ def new_case(id):
             update_case.notes = notes
             update_case.finish = finish
             update_case.model3D = model3D
-            update_case.doctor_name = doctor_name
+            if doctor_name is not None:
+                update_case.doctor_name = doctor_name
 
             if update_case.status == "Created":
                 update_case.status = "Submitted"

@@ -16,27 +16,28 @@ export function AuthProvider({ children }) {
   const [logoutReason, setLogoutReason] = useState(null);
 
   const logout = useCallback((reason = "manual") => {
-    setUser(null);
-    setLogoutReason(reason);
-    sessionStorage.clear();
-    localStorage.clear();
-    console.log("Logging out due to:", reason);
-
-    if (reason === "expired") window.location.href = "/";
+      setUser(null);
+      setLogoutReason(reason);
+      sessionStorage.clear();
+      localStorage.clear();
+      // No redirect here — LogoutNotice will show the modal
   }, []);
 
   // Poll for token only if a user is logged in
-  useEffect(() => {
-    if (!user) return; // skip polling if no user
-
-    const interval = setInterval(() => {
-      if (!getCookie("access_token_cookie") && logoutReason !== "expired") {
-        logout("expired");
-      }
-    }, 10000); // check every 10s
-
-    return () => clearInterval(interval);
-  }, [user, logout, logoutReason]);
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            if (!sessionStorage.getItem("id")) return;
+            try {
+                const res = await fetch("/api/session-check", { credentials: "include" });
+                if (res.status === 401) {
+                    logout("expired");
+                }
+            } catch (err) {
+                console.log("Session check error:", err);
+            }
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [logout]);
 
   return (
     <AuthContext.Provider value={{ user, setUser, logout, logoutReason, setUser }}>

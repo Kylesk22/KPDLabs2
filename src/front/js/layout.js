@@ -55,6 +55,8 @@ const Layout = () => {
     useEffect(()=>{
         console.log(loggedIn)
     })
+
+
     return (
         
         <div 

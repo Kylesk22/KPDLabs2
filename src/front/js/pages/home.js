@@ -164,7 +164,7 @@ export const Home = (props) => {
                         {[
                             { icon: "fa-solid fa-award", title: "Unparalleled Quality", text: "Every restoration leaves our lab meeting the standard we'd set for our own patients." },
                             { icon: "fa-solid fa-comments", title: "Seamless Communication", text: "Clear, fast communication from scan received to case delivered — no guesswork." },
-                            { icon: "fa-solid fa-person-running", title: "Fast Turnaround", text: "Standard production 4–6 business days. Rush options available." },
+                            { icon: "fa-solid fa-person-running", title: "Fast Turnaround", text: "Standard production 6 business days. Rush options available." },
                         ].map((item, i) => (
                             <div key={i} className="service-block col-lg-4 col-md-6">
                                 <div className="inner-box">
@@ -377,7 +377,7 @@ export const Home = (props) => {
                                         {
                                             state: faq4, setState: setFaq4,
                                             q: "What is KPD's turnaround time?",
-                                            a: "Standard production is 4–6 business days. Rush production options are available — contact us to discuss your timeline."
+                                            a: "Standard production is 6 business days. Rush production options are available — contact us to discuss your timeline."
                                         },
                                     ].map((faq, i) => (
                                         <li key={i} className={`accordion block ${faq.state ? 'active-block' : ''}`}>

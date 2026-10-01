@@ -1,3 +1,4 @@
+import { dueLabel, todayInFlorida, matchesPriority, isHeld } from "../component/casePriorities";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
@@ -9,6 +10,10 @@ import "../../styles/adminPage.css";
 
 
 export const AdminPage = props => {
+    const [priorityFilter, setPriorityFilter] = useState('all');
+    const [priorityToday, setPriorityToday] = useState(todayInFlorida);
+    useEffect(() => { const timer=setInterval(()=>setPriorityToday(todayInFlorida()),60000); return ()=>clearInterval(timer); }, []);
+    useEffect(() => { setPageMin(0); setPageMax(20); setPageNumber(1); }, [priorityFilter,search,statusToFilter]);
     const [cases, setCases] = useState([{}])
     const [users, setUsers] = useState([{}])
     const url = process.env.BACKEND_URL
@@ -207,7 +212,9 @@ export const AdminPage = props => {
     //     return filteredCases
     // }
 
-    const sortedCases = cases.sort((a, b) => {
+    const priorityOptions = [['all','All in this view'],['overdue','Overdue'],['today','Due today'],['rush','Rush production'],['hold','On hold']];
+    const priorityCounts = Object.fromEntries(priorityOptions.map(([key])=>[key,cases.filter(c=>c.id && matchesPriority(c,key,priorityToday)).length]));
+    const sortedCases = cases.filter(c=>c.id && matchesPriority(c,priorityFilter,priorityToday)).sort((a, b) => {
         // Perform sorting based on the selected column and sort order
         
 
@@ -506,7 +513,12 @@ export const AdminPage = props => {
         useEffect(()=>{
             if (sessionStorage.getItem('filterType') && originalCases){
             const storedFilterType = sessionStorage.getItem('filterType');
-            statusFilter(storedFilterType)}
+            if (storedFilterType === 'Created') {
+                sessionStorage.removeItem('filterType');
+                productionFilter();
+            } else {
+                statusFilter(storedFilterType);
+            }}
             
             
         
@@ -543,7 +555,6 @@ export const AdminPage = props => {
                 style={{border: "1px solid black", marginBottom: "5px"}}
                  />
                  {/* <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Created")}>Created</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
@@ -555,7 +566,6 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button> */}
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Created"); setStatusToFilter("Created")}}>Created</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Submitted"); setStatusToFilter("Submitted")}}>Submitted</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Scanning"); setStatusToFilter("Scanning")}}>Scanning</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Design"); setStatusToFilter("Design")}}>Design</button>
@@ -566,6 +576,12 @@ export const AdminPage = props => {
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Shipped"); setStatusToFilter("Shipped")}}>Shipped</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Billed"); setStatusToFilter("Billed")}}>Billed</button>
                  <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{getClosedCases(); sessionStorage.setItem('filterType', "Closed"); setStatusToFilter("Closed")}}>Closed</button>
+                <div style={{background:'#fff',color:'#222429',padding:12,margin:'12px 0',border:'1px solid #ddd',borderRadius:6}}>
+                    <strong>Priority in this view</strong>
+                    <div style={{display:'flex',flexWrap:'wrap',gap:8,marginTop:8}}>{priorityOptions.map(([key,label])=><button key={key} type="button" aria-pressed={priorityFilter===key} onClick={()=>setPriorityFilter(key)} style={{background:priorityFilter===key?'#ffaa17':'#fff',color:'#222429',border:'1px solid #777',borderRadius:4,padding:'8px 12px'}}>{label} ({priorityCounts[key]})</button>)}</div>
+                    <small>Counts follow the current list/search. Due filters include active production and exclude held cases. Dates use Florida time.</small>
+                    {sortedCases.length===0 && <p role="status" style={{margin:'8px 0 0',color:'#505050'}}>No cases match this view. Try All in this view or another status.</p>}
+                </div>
                 <div >
                     <div className="row">
                         <div className="col-3">
@@ -687,7 +703,7 @@ export const AdminPage = props => {
                                                                                                                                                                                                                                                                                                                                                                         : "N/A"}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>${item["price"]}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{statusToFilter === 'Shipped' ? item["scanner_id"] : item["shade"]}</div>
-                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}<div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:3,padding:'4px 0'}}>{[item.production==='Rush'?'Rush production':null,item.shipping==='Express'?'Express shipping':null,isHeld(item)?'On hold':null,dueLabel(item,priorityToday)].filter(Boolean).map(label=><span key={label} style={{display:'inline-block',background:'#fff',color:'#222429',border:'1px solid #555',borderRadius:3,padding:'2px 4px',fontSize:12,lineHeight:1.35,fontWeight:600}}>{label}</span>)}</div></div>
                                     </>
                                 
                             :""}

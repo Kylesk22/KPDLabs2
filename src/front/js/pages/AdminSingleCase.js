@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import { AuthContext } from "../component/AuthProvider";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { useParams } from 'react-router-dom';
 import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
@@ -13,6 +14,10 @@ import { PrintPDFButton } from "../component/PrintScript";
 
 
 export const AdminSingleCase = props => {
+    const { verifyForSave, logout, logoutReason } = useContext(AuthContext);
+    const saveInFlight = useRef(false);
+    const saveUncertain = useRef(false);
+
     const url = process.env.BACKEND_URL
     const [crownTooth, setCrownTooth] = useState([])
     const [toothInput, setToothInput] = useState("")
@@ -647,12 +652,13 @@ export const AdminSingleCase = props => {
         fetchData();
     }, []);
 
-    const updateCase = () => {
-
-       
-        // uploadObject();
-        // uploadPictures();
-        
+    const updateCase = async () => {
+        if (saveInFlight.current) return;
+        if (saveUncertain.current) { alert("Save status is uncertain. Check this case in another tab before making another save. Your edits remain here."); return; }
+        saveInFlight.current = true;
+        let requestStarted = false;
+        try {
+            if (logoutReason || !(await verifyForSave())) return;
         const url = process.env.BACKEND_URL
 
        
@@ -689,56 +695,18 @@ export const AdminSingleCase = props => {
                 },
                 body: JSON.stringify(updateCase)
             }
-            fetch(`${url}/${id}/new_case`, options)
-            .then((res)=> {
-                if (res.ok) {
-                    return res.json()
-                    .then((data)=>{
 
-                        alert("Case Uploaded")
-                        setCrownTooth([])
-                        setToothInput("")
-                        setToothInput2("")
-                        setPatientName("")
-                        setStlFile([])
-                        setFileName([])
-                        setPhotos([])
-                        setCaseNum("")
-                        setProduct("")
-                        setFinish("")
-                        setBridge("false")
-                        setBridgeTooth([])
-                        setNote("")
-                        setType("")
-                        setGumShade("")
-                        setRefId("")
-                        setDrName("")
-                        setSubmissionDate("")
-                        // props.handleGetPage("home")
-                        // props.generateCase()
-                        props.getCase("")
-
-                        setTimeout(() => {
-                            window.location.href = `/admin/${id}`;
-                        }, 500);
-                        
-                    })}
-                return(res.json())
-                .then((body)=>{
-                    alert(body.message)
-                    
-                })
-                
-                })
-              
-        
-            .catch((err)=> {
-                console.log(err);
-        })
-        
-    
-        }
-      ;
+            requestStarted = true;
+            const response = await fetch(`${url}/${id}/new_case`, {...options, credentials:"include", signal:AbortSignal.timeout(30000)});
+            if (response.status === 401 || response.status === 422) { requestStarted=false; logout("expired"); alert("Your session expired. Sign back in and save again. Your edits remain here."); return; }
+            if (!response.ok) throw new Error("Save could not be confirmed");
+            await response.json();
+            window.location.href = `/admin/${id}`;
+        } catch (error) {
+            saveUncertain.current = requestStarted;
+            alert(requestStarted ? "We could not confirm whether your changes were saved. Your edits remain here. Check this case in another tab before saving again." : "Unable to verify your session. Your edits remain here.");
+        } finally { saveInFlight.current = false; }
+    };
         
         ////cloning remake cases 
 

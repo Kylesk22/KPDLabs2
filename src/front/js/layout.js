@@ -1,5 +1,7 @@
+import { createBrowserHistory } from "history";
+const navigationHistory = createBrowserHistory();
 import React, { useContext, useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { unstable_HistoryRouter as BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
@@ -32,7 +34,7 @@ import {Terms} from "./pages/Terms";
 import {Resources} from "./component/Resources";
 import {Portfolio} from "./pages/Portfolio";
 import {Shop} from "./pages/Shop";
-import { AuthProvider } from "./component/AuthProvider";
+import { AuthProvider, SessionContent } from "./component/AuthProvider";
 import { LogoutNotice } from "./component/LogoutNotice";
 import { RemovableProgram } from "./pages/Removableprogram";
 
@@ -65,10 +67,10 @@ const Layout = () => {
         //     backgroundImage:`url(${Orb})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "100%, 100%, contain", height: "80%"}}
             >
          {/* background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${Orb})`, height: "40%", marginTop: "40px"}}> */}
-         <AuthProvider>
-            <BrowserRouter basename={basename}>
+         <AuthProvider navigationHistory={navigationHistory}>
+            <BrowserRouter basename={basename} history={navigationHistory}>
                 <ScrollToTop>
-                    <Navbar setUserPage = {setUserPage} movbileActive={mobileActive} setMobileActive={setMobileActive} logState ={loggedIn} updateLogState={setLoggedIn}/>
+                    <SessionContent><Navbar setUserPage = {setUserPage} movbileActive={mobileActive} setMobileActive={setMobileActive} logState ={loggedIn} updateLogState={setLoggedIn}/>
                     <Routes>
                         {/* <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" /> */}
@@ -101,7 +103,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
-                    <LogoutNotice />
+                    </SessionContent><LogoutNotice />
                 </ScrollToTop>
             </BrowserRouter>
             </AuthProvider>

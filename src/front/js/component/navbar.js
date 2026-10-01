@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useFormLeave } from "./FormLeaveGuard";
+import { AuthContext } from "./AuthProvider";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Login } from "../component/Login";
 import Logo from "../../img/kpd_logo_final.png";
@@ -58,12 +60,9 @@ export const Navbar = (props) => {
 		window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject);
 	}
 
-	const logout = () => {
-		sessionStorage.clear();
-		setLoggedIn(false);
-		props.updateLogState(false);
-		window.location.href = "/";
-	};
+	const { signOut } = useContext(AuthContext);
+    const formLeave = useFormLeave();
+    const logout = () => formLeave.leave(signOut);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => { setShow(true); };
@@ -255,10 +254,10 @@ export const Navbar = (props) => {
 							<div className="close-btn" onClick={()=>setMobileActive(false)}><i className="fas fa-times"></i></div>
 						</div>
 						<ul className="navigation clearfix">
-							<li className="current dropdown"><a onClick={()=>{props.setUserPage("home"); setMobileActive(false)}}>Home</a></li>
-							<li className="dropdown"><a onClick={()=>{props.setUserPage("create"); setMobileActive(false)}}>Create A Case</a></li>
-							<li className="dropdown"><a onClick={()=>{props.setUserPage("updateAccountInfo"); setMobileActive(false)}}>Update Account</a></li>
-							<li><a onClick={()=>{props.setUserPage("contactUs"); setMobileActive(false)}}>Contact</a></li>
+							<li className="current dropdown"><a onClick={()=>{formLeave.leave(()=>{props.setUserPage("home"); setMobileActive(false)})}}>Home</a></li>
+							<li className="dropdown"><a onClick={()=>{formLeave.leave(()=>{props.setUserPage("create"); setMobileActive(false)})}}>Create A Case</a></li>
+							<li className="dropdown"><a onClick={()=>{formLeave.leave(()=>{props.setUserPage("updateAccountInfo"); setMobileActive(false)})}}>Update Account</a></li>
+							<li><a onClick={()=>{formLeave.leave(()=>{props.setUserPage("contactUs"); setMobileActive(false)})}}>Contact</a></li>
 						</ul>
 						<ul className="contact-list-one">
 							<li>

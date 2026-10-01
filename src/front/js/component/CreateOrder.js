@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useFormLeave } from "./FormLeaveGuard";
+import { AuthContext } from "../component/AuthProvider";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import KPDLogo from "../../img/KPD-Logo.png"
 import { STLExporter} from 'three/addons/exporters/STLExporter.js';
@@ -25,6 +27,12 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 
 export const CreateOrder = props => {
+    const formLeave = useFormLeave();
+    useEffect(() => () => formLeave.clear(), []);
+    const { verifyForSave, logout, logoutReason } = useContext(AuthContext);
+    const saveInFlight = useRef(false);
+    const saveUncertain = useRef(false);
+
 
 
     const [crownTooth, setCrownTooth] = useState([])
@@ -283,8 +291,7 @@ const uploadObject = async () => {
 
         return uploadedFiles;
     } catch (err) {
-        console.log("Error", err);
-        return [];
+        throw new Error("A file could not be uploaded. Your form is unchanged. Please retry.");
     }
 };
 
@@ -314,8 +321,7 @@ const uploadPictures = async () => {
 
         return uploadedPhotos;
     } catch (err) {
-        console.log("Error", err);
-        return [];
+        throw new Error("A file could not be uploaded. Your form is unchanged. Please retry.");
     }
 };
 
@@ -390,44 +396,18 @@ AWS.config.update({
 
 
     const uploadCase = async () => {
-
-        if (!patientName) {
-            alert("Please enter patient name");
-            return;
-        }
-        if (!product) {
-            alert("Please select a product");
-            return;
-        }
-        if (!crownTooth.length) {
-            alert("Please select at least one tooth");
-            return;
-        }
-
+        if (saveInFlight.current) return;
+        if (saveUncertain.current) { alert("Submission status is uncertain. Check your case list in another tab or contact KPD before submitting again. Your form is still here."); return; }
+        if (!patientName || !product || !crownTooth.length) { alert("Please enter a patient name, product, and at least one tooth."); return; }
+        saveInFlight.current = true;
         setLoading(true);
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth', // Smooth scrolling behavior
-          });
-        await uploadObject();
-        await uploadPictures();
-        setLoading(false);
-        
-        const url = process.env.BACKEND_URL
-            // (type === "crown")?
-            // setType("Crown"):
-            // (type === "veneer")?
-            // setType("Veneer"):
-            // (type === "partial")?
-            // setType("Partial"):
-            // (type === "denture")?
-            // setType("Denture"):
-            // (type === "implant")?
-            // setType("Implant"):
-            // (type === "removeableAppliances")?
-            // setType("Removeable Appliances"):
-            // (type === )
-       
+        let requestStarted = false;
+        let confirmed = false;
+        try {
+            if (logoutReason || !(await verifyForSave())) return;
+            await uploadObject();
+            await uploadPictures();
+            if (!(await verifyForSave())) return;
         const isBridge = Object.values(toothDesignations).some(d => d === 'abutment' || d === 'pontic')
 
             const updateCase = {
@@ -461,12 +441,16 @@ AWS.config.update({
                 },
                 body: JSON.stringify(updateCase)
             }
-            fetch(`${url}/${id}/new_case`, options)
-            .then((res)=> {
-                if (res.ok) {
-                    return res.json()
-                    .then((data)=>{
 
+            requestStarted = true;
+            const response = await fetch(`${url}/${id}/new_case`, {...options, credentials:"include", signal:AbortSignal.timeout(30000)});
+            if (response.status === 401 || response.status === 422) { requestStarted=false; logout("expired"); alert("Your session expired. Sign back in and submit again. Your form is unchanged."); return; }
+            if (!response.ok) throw new Error("The server could not confirm the submission.");
+            await response.json();
+            confirmed = true;
+            formLeave.clear();
+            // Notification failure must never cause a confirmed case to be resubmitted.
+            try { sentToSlack(); } catch (_) {}
                         alert("Case Uploaded")
                         setCrownTooth([])
                         setToothInput("")
@@ -489,19 +473,14 @@ AWS.config.update({
                         props.getCase("")
                         props.handleGetPage("home")
                         
-                    })}
-                return(res.json())
-                .then((body)=>{alert(body.message)})
-                
-                })
-        
-            .catch((err)=> {
-                console.log(err);
-        })
-        
-        sentToSlack()
-        }
-      ;
+
+        } catch (error) {
+            if (!confirmed) {
+                saveUncertain.current = requestStarted;
+                alert(requestStarted ? "We could not confirm whether the case was saved. Your form is unchanged. Check your case list in another tab or contact KPD before submitting again." : (error.message || "Upload failed. Your form is unchanged. Please retry."));
+            }
+        } finally { setLoading(false); saveInFlight.current = false; }
+    };
 
       
 
@@ -1005,7 +984,7 @@ AWS.config.update({
 
 
     return(
-        <>
+        <div onChangeCapture={formLeave.mark} onClickCapture={event => { if(event.target.closest("form")) formLeave.mark(); }}>
              {loading ? (
                 <div className="row justify-content-center">
                     <div className="mx auto mt-4 text-center justify-content-center col-6 sm-col-4">
@@ -6847,7 +6826,7 @@ AWS.config.update({
 
         </form>:""}
             </>}
-        </>
+        </div>
     )
 }
 

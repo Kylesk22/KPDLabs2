@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, User
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -40,7 +40,7 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 # app.config['SESSION_COOKIE_SAMESITE'] = "None"
 app.config["JWT_ACCESS_COOKIE_EXPIRES"] = timedelta(days=365) 
 
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=3)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=30)
 app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 app.config['JWT_CSRF_CHECK_FORM'] = True
@@ -56,20 +56,16 @@ def unauthorized_callback(err_str):
 
 
 
-@app.after_request
-def refresh_expiring_jwts(response):
-    try:
-        exp_timestamp = get_jwt()["exp"]
-        now = datetime.now(timezone.utc)
-        target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
-        if target_timestamp > exp_timestamp:
-            access_token = create_access_token(identity=get_jwt_identity())
-            set_access_cookies(response, access_token)
-        return response
-    except (RuntimeError, KeyError):
-        # Case where there is not a valid JWT. Just return the original response
-        return response
+# Session renewal is explicit: background polling must never renew a session.
+from api.session import register_session_routes
+app.config['SESSION_IDLE_SECONDS'] = 1800
+app.config['SESSION_PUBLIC_ORIGIN'] = os.getenv('SESSION_PUBLIC_ORIGIN', 'https://kpdlabs.com').rstrip('/')
 
+def session_user(identity):
+    account = User.query.filter_by(email=identity).first()
+    return {"id": account.id, "role": account.role} if account else None
+
+register_session_routes(app, session_user)
 
 
 # database condiguration

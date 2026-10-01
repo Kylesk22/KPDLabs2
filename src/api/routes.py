@@ -162,11 +162,6 @@ def list_files(folder):
 
 
 
-@api.route('/get_cookies', methods=['GET'])
-def your_route():
-    access_token = request.cookies.get('access_token_cookie')
-    print(access_token)  # Access the cookie here
-    return jsonify(access_token)
 
 
 @api.route('/slack', methods=['POST'])
@@ -1469,18 +1464,6 @@ def add_blog():
 #     return jsonify({"message": "Session valid", "user": user_id}), 200
 
 
-@app.route("/api/session-check", methods=["GET"])
-@jwt_required(optional=True)  # allow request but don’t fail yet
-def session_check():
-    token = request.cookies.get("access_token_cookie")
-    if not token:
-        return jsonify({"msg": "No valid access token"}), 401
-    
-    user_id = get_jwt_identity()
-    if not user_id:
-        return jsonify({"msg": "Invalid or expired token"}), 401
-
-    return jsonify({"message": "Session valid", "user": user_id}), 200
 
 
 @api.route('/upload_case', methods=['POST'])

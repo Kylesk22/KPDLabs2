@@ -12,12 +12,6 @@ export const SideBar = props => {
     
     
     useEffect(()=>setCurrentPage(props.page),[props.page])
-    useEffect(()=>{
-        
-        props.handleGetPage(currentPage);
-        console.log(currentPage)
-    },[currentPage])
-
     // const getCases = () => {
            
     //     const options = {
@@ -56,17 +50,17 @@ export const SideBar = props => {
                 <div className="position-sticky">
                 <div className="list-group list-group-flush ">
             
-                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "home"  ? "active" : ""}`} onClick={()=>setCurrentPage("home")}>
+                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "home"  ? "active" : ""}`} onClick={()=>props.handleGetPage("home")}>
                             <i className="fas fa-house fa-fw me-3"></i><span>Home</span>
                         </a>
-                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "create" ? "active" : ""}`} onClick={()=>setCurrentPage("create")}>
+                        <a className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "create" ? "active" : ""}`} onClick={()=>props.handleGetPage("create")}>
                             <i className="fas fa-plus fa-fw me-3"></i><span>Create a Case</span>
                         </a>
                         {/* <a href="#" className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "userCases" ? "active" : ""}`} onClick={()=>{setCurrentPage("userCases")}}>
                             <i className="fas fa-lock fa-fw me-3"></i><span>Your Cases</span></a> */}
-                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccountInfo" ? "active" : ""}`} onClick={()=>setCurrentPage("updateAccountInfo")}><i
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "updateAccountInfo" ? "active" : ""}`} onClick={()=>props.handleGetPage("updateAccountInfo")}><i
                             className="fas fa-pen-nib fa-fw me-3"></i><span>Update Account</span></a>
-                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contactUs" ? "active" : ""}`} onClick={()=>setCurrentPage("contactUs")}>
+                        <a  className={`list-group-item list-group-item-action py-2 ripple ${currentPage === "contactUs" ? "active" : ""}`} onClick={()=>props.handleGetPage("contactUs")}>
                             <i className="fas fa-address-book fa-fw me-3"></i><span>Contact Us</span>
                         </a>
                         {/* <a href="#" className="list-group-item list-group-item-action py-2 ripple"><i

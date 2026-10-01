@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useFormLeave } from "../component/FormLeaveGuard";
+import { AuthContext } from "../component/AuthProvider";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { SideBar } from "../component/SideBar";
 import { CreateOrder } from "../component/CreateOrder";
 import { UserCases } from "../component/UserCases";
@@ -12,6 +14,7 @@ import AboutBKG from "../../img/testi-bg.jpg"
 
 
 export const UserPage = props => {
+    const formLeave = useFormLeave();
     const [page, setPage] = useState("home")
     const [firstNameLower, setFirstNameLower] =useState("")
     const [firstName, setFirstName] = useState(sessionStorage.getItem("firstName"))
@@ -33,14 +36,10 @@ export const UserPage = props => {
     let id = sessionStorage.getItem("id");
     const url = process.env.BACKEND_URL
 
-    const logout = () => {
-		sessionStorage.clear();
-		setLoggedIn(false);
-		props.updateLogState(false)
-		window.location.href = "/";
-
-
-	}
+    const { logout, account } = useContext(AuthContext);
+    const [loadError, setLoadError] = useState("");
+    const [accountLoaded, setAccountLoaded] = useState(false);
+    const preparing = useRef(false);
 
     function getCookie(name) {
         const cookies = document.cookie.split('; ');
@@ -58,220 +57,48 @@ export const UserPage = props => {
 
 
     useEffect(()=>{
-        // if (!getCookie("csrf_access_token")){
-        // alert("Logged out due to inactivity and security purposes");
-        // logout()
-        // }
-       
-        // if (loggedIn)
-        //     if (getCookie("csrf_access_token")=== null || !getCookie("access_token_cookie")){
-        //         alert("Logged out due to inactivity and security purposes")
-        //         logout()
-        //     }
-            
-            // console.log("TESTING", getCookie("csrf_access_token"))
-            
-            // console.log(document.cookie.split('; '))
-
-            const options = {
-                method:"GET",
-                credentials: 'include',
-                headers:{
-                    "Content-Type": "application/json",
-                },
-                
-            }
-            fetch(`${url}/get_cookies`, options)
-            .then((res)=> {
-                if (res.ok) {
-                    return res.json()
-                    .then((data)=>{
-                        setAccessCookie(data)
-                        // console.log(data)
-                        
-                        
-    
-                        
-                    })}
-                return(res.json())
-                .then((body)=>{
-                    if (body.message){
-                    alert(body.message)
-                }
-                })
-                
-                })
-           
-            .catch((err)=> {
-                console.log(err);
-                console.log("ERROR")
-        })
-        
-        // console.log(`access ${accessCookie}`)
-
-        if (loggedIn)
-                if (getCookie("csrf_access_token")=== null || accessCookie===null){
-                    alert("Logged out due to inactivity and security purposes")
-                    logout()
-                }
-
-
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    useEffect(()=>{
-        setPage(props.userPage)
+        if (props.userPage !== page) formLeave.leave(() => setPage(props.userPage))
     },[props.userPage])
     
-    useEffect(()=>{
-        if (caseId === ""){
-            generateCase();
-            
+    async function readResponse(response) {
+        if (response.status === 401 || response.status === 422) {
+            logout("expired");
+            throw new Error("Sign back in, then retry preparing your case.");
         }
-        console.log(page)
-
-        // 
-        const options1 = {
-            method:"GET",
-            credentials: 'include',
-            headers:{
-                "Content-Type": "application/json",
-            },
-            
-            
-        }
-        fetch(`${url}token/refresh`, options1)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-                    
-                   
-
-                    
-                })}
-            return(res.json())
-            .then((body)=>{
-                if (body.message !== "undefined"){
-                alert(body.message)
-                }
-                else console.log(body.message)
-            
-            })
-            
-            })
-       
-        .catch((err)=> {
-            console.log(err);
-    })
-
-        // 
-       
-        
-        const options = {
-            method:"GET",
-            credentials: 'include',
-            headers:{
-                "Content-Type": "application/json"
-            },
-            
-        }
-        fetch(`${url}/${id}`, options)
-        .then((res)=> {
-            if (res.ok) {
-                console.log(res)
-                return res.json()
-                .then((data)=>{
-                    setDoctors(data.doctors || [])
-                    // Auto-select if only one doctor
-                    if (data.doctors && data.doctors.length === 1) {
-                        setSelectedDoctor(data.doctors[0])
-                    }
-                    setEmail(data.email)
-                    setFirstName(data.fname.toUpperCase())
-                    setFirstNameLower(data.fname)
-                    setLastName(data.lname)
-                    setLoggedIn(true);
-                    setAddress(data.address)
-                    setLicense(data.license)
-                    setPractice(data.practice)
-
-                    if (data.msg=== "Token has expired"){
-                        logout()
-                        console.log(data.msg)
-                    }
-
-                    
-                })}
-            return(res.json())
-            .then((body)=>{
-                if(body.message !== "undefined"){
-                alert(body.message)}
-                else console.log(body.message)
-            
-            })
-            
-            })
-       
-        .catch((err)=> {
-            console.log(err);
-    })
-    }, [])
-    
-    
-    let generateCase = () => {
-        
-        const options = {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
-            },
-
-        }
-        fetch(`${url}/${id}/new_case`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-
-                    setCaseId(data.id)
-
-                    
-                })}
-            return(res.json())
-            .then((body)=>{
-                // if (body.message !== "undefined"){
-                // alert(body.message)}
-                // else (console.log(body.message))
-                console.log(body.message)
-            
-            })
-            
-            })
-       
-        .catch((err)=> {
-            console.log(err);
-    })
+        if (!response.ok) throw new Error("Unable to prepare your case. Please retry.");
+        return response.json();
     }
+    async function generateCase() {
+        if (preparing.current) return;
+        preparing.current = true;
+        setLoadError("");
+        setCaseId("");
+        try {
+            const data = await readResponse(await fetch(`${url}/${account}/new_case`, {
+                method:"POST", credentials:"include", signal:AbortSignal.timeout(15000),
+                headers:{"Content-Type":"application/json", "X-CSRF-TOKEN":getCookie("csrf_access_token")}
+            }));
+            if (!data.id) throw new Error("No case number received. Please retry.");
+            setCaseId(data.id);
+        } catch (error) { setLoadError(error.message || "Unable to prepare case. Please retry."); }
+        finally { preparing.current = false; }
+    }
+    async function loadAccount() {
+        setLoadError("");
+        try {
+            const data = await readResponse(await fetch(`${url}/${account}`, {
+                credentials:"include", signal:AbortSignal.timeout(15000)
+            }));
+            setDoctors(data.doctors || []);
+            if (data.doctors && data.doctors.length === 1) setSelectedDoctor(data.doctors[0]);
+            setEmail(data.email); setFirstName(data.fname.toUpperCase()); setFirstNameLower(data.fname);
+            setLastName(data.lname); setLoggedIn(true); setAddress(data.address);
+            setLicense(data.license); setPractice(data.practice); setAccountLoaded(true);
+            if (!caseId) await generateCase();
+        } catch (error) { setLoadError(error.message || "Unable to load account. Please retry."); }
+    }
+    useEffect(()=>{ loadAccount(); }, []);
 
-    
     function getCaseInfo(info){
         setCases([...cases, ...info])
         
@@ -279,7 +106,7 @@ export const UserPage = props => {
     }
     
     function getPage(selected){
-        setPage(selected)
+        if (selected !== page) formLeave.leave(() => setPage(selected))
     }
     
     function getCase(a){
@@ -296,6 +123,7 @@ export const UserPage = props => {
     
     return(
         <div >
+            {loadError && <div role="alert">{loadError} <button onClick={() => accountLoaded ? generateCase() : loadAccount()}>Retry</button></div>}
             {(sessionStorage.getItem("id"))?
             <div style={{backgroundImage: `url(${AboutBKG})`}}>
             <div className="row" style={{paddingTop: "150px"}}>
@@ -304,7 +132,7 @@ export const UserPage = props => {
                         Welcome {selectedDoctor ? `Dr. ${selectedDoctor.fname} ${selectedDoctor.lname}` : `Dr. ${firstNameLower} ${lastName}`}
                         {doctors.length > 1 && (
                             <span
-                                onClick={() => setSelectedDoctor(null)}
+                                onClick={() => formLeave.leave(() => setSelectedDoctor(null))}
                                 style={{fontSize: '0.85rem', marginLeft: '15px', cursor: 'pointer', color: '#137ea7'}}
                             >
                                 Switch Doctor
@@ -337,7 +165,7 @@ export const UserPage = props => {
                 {(page === "home")?
                 <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}  updateLogState={setLoggedIn} logouts={logout} />:
                 (page === "create")?
-                <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId} selectedDoctor={selectedDoctor} fname={firstNameLower} lname={lastName}/>:
+                (caseId && accountLoaded ? <CreateOrder handleGetPage={getPage} practice={practice} getCase = {generateCase} caseId = {caseId} selectedDoctor={selectedDoctor} fname={firstNameLower} lname={lastName}/> : <p role="status">Preparing your case…</p>):
                 // (page === "userCases")?
                 // <UserCases allCases= {cases} handleGetPage={getPage} page={page} setSingleCaseID  ={setSingleCaseID}/>:
                 (page === "singleCase")?

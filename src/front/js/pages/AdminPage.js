@@ -13,7 +13,6 @@ export const AdminPage = props => {
     const [priorityFilter, setPriorityFilter] = useState('all');
     const [priorityToday, setPriorityToday] = useState(todayInFlorida);
     useEffect(() => { const timer=setInterval(()=>setPriorityToday(todayInFlorida()),60000); return ()=>clearInterval(timer); }, []);
-    useEffect(() => { setPageMin(0); setPageMax(20); setPageNumber(1); }, [priorityFilter,search,statusToFilter]);
     const [cases, setCases] = useState([{}])
     const [users, setUsers] = useState([{}])
     const url = process.env.BACKEND_URL
@@ -29,6 +28,8 @@ export const AdminPage = props => {
     const [bulkStatus, setBulkStatus] = useState("")
     const [caseChecked, setCaseChecked] = useState(false)
     const [statusToFilter, setStatusToFilter] = useState("")
+    useEffect(() => { setPageMin(0); setPageMax(20); setPageNumber(1); }, [priorityFilter,search,statusToFilter]);
+
     
 
     //blog variables
@@ -526,7 +527,7 @@ export const AdminPage = props => {
         
     
         return (
-            <div  style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
+            <div className="kpd-admin" style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
         <div className="container" style={{maxWidth: "90%"}}>
             {/* <div>
                 <button className="btn btn-primary" onClick={()=>setBlogModal(true)}>Add blog</button>
@@ -542,53 +543,35 @@ export const AdminPage = props => {
                 }
             </div> */}
             <div>
-                Legend: <i className="fa-solid fa-square" style={{color:"orange"}}></i> Rush Production | <i className="fa-solid fa-square" style={{color:"yellow", paddingLeft: "5px"}}></i> Rush Shipping |<i className="fa-solid fa-square" style={{color:"red", paddingLeft: "5px"}}></i> Rush Production and Shipping |<i className="fa-solid fa-square" style={{color:"pink", paddingLeft: "5px"}} ></i> Hold
-            </div>
-            
-            <div  >
-                <input 
-                type="text" 
-                placeholder="Search..." 
-                value={search} 
-                onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} 
-                className="p-2"
-                style={{border: "1px solid black", marginBottom: "5px"}}
-                 />
-                 {/* <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Submitted")}>Submitted</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Scanning")}>Scanning</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Design")}>Design</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Manufacturing")}>Manufact</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Pre-Finish")}>PreFin</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Finish")}>Fin</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Ready to Ship")}>Rdy Ship</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Shipped")}>Shipped</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Billed")}>Billed</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>statusFilter("Closed")}>Closed</button> */}
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>productionFilter()}>Production</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Submitted"); setStatusToFilter("Submitted")}}>Submitted</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Scanning"); setStatusToFilter("Scanning")}}>Scanning</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Design"); setStatusToFilter("Design")}}>Design</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Manufacturing"); setStatusToFilter("Manufacturing")}}>Manufact</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Pre-Finish"); setStatusToFilter("Pre-Finish")}}>PreFin</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Finish"); setStatusToFilter("Finish")}}>Fin</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Ready to Ship"); setStatusToFilter("Ready to Ship")}}>Rdy Ship</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Shipped"); setStatusToFilter("Shipped")}}>Shipped</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{sessionStorage.setItem('filterType', "Billed"); setStatusToFilter("Billed")}}>Billed</button>
-                 <button className="btn btn-primary filter-btn" style ={{marginLeft: "5px"}} onClick={()=>{getClosedCases(); sessionStorage.setItem('filterType', "Closed"); setStatusToFilter("Closed")}}>Closed</button>
+                <section className="kpd-controls" aria-label="Case filters">
+                  <div className="kpd-toolbar"><div><h2>Case dashboard</h2><p>Find cases and plan today's production.</p></div>
+                    <details className="kpd-color-key"><summary>Color key</summary><p>Red: overdue · Gold: rush · Blue: express shipping · Purple: on hold</p></details>
+                  </div>
+                  <label className="kpd-search">Search cases<input type="search" placeholder="Case number, patient, or doctor" value={search} onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} /></label>
                 <div style={{background:'#fff',color:'#222429',padding:12,margin:'12px 0',border:'1px solid #ddd',borderRadius:6}}>
-                    <strong>Priority in this view</strong>
+                    <strong>Priorities</strong>
                     <div style={{display:'flex',flexWrap:'wrap',gap:8,marginTop:8}}>{priorityOptions.map(([key,label])=><button key={key} type="button" aria-pressed={priorityFilter===key} onClick={()=>setPriorityFilter(key)} style={{background:priorityFilter===key?'#ffaa17':'#fff',color:'#222429',border:'1px solid #777',borderRadius:4,padding:'8px 12px'}}>{label} ({priorityCounts[key]})</button>)}</div>
                     <small>Counts follow the current list/search. Due filters include active production and exclude held cases. Dates use Florida time.</small>
                     {sortedCases.length===0 && <p role="status" style={{margin:'8px 0 0',color:'#505050'}}>No cases match this view. Try All in this view or another status.</p>}
                 </div>
+
+                  <div className="kpd-status-group"><strong>Production stages</strong><div>
+                    <button type="button" className="btn btn-primary filter-btn" onClick={()=>{sessionStorage.removeItem('filterType');setStatusToFilter('');productionFilter();}}>All production</button>
+                    {['Submitted','Scanning','Design','Manufacturing','Pre-Finish','Finish','Ready to Ship'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="btn btn-primary filter-btn" onClick={()=>{sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                  </div></div>
+                  <div className="kpd-status-group"><strong>Shipping & billing</strong><div>
+                    {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="btn btn-primary filter-btn" onClick={()=>{if(status==='Closed')getClosedCases();sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                  </div></div>
+                </section>
                 <div >
                     <div className="row">
-                        <div className="col-3">
+                        <div className="kpd-bulkbar">
+                            <span>{sortedCases.length} cases in this view</span>
                             {(!showBulkBox)?
-                            <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select Bulk Status Cases</button>
+                            <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select cases</button>
                             :
                             <>
+                            <span>{bulkCases.length} selected</span>
                             <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
                                 <option value="Select One" onClick={()=>setBulkStatus("Select One")}>Select One</option>
                                 <option value="Submitted" onClick={()=>setBulkStatus("Submitted")}>Submitted</option>
@@ -603,27 +586,27 @@ export const AdminPage = props => {
                                 <option value="Closed" onClick={()=>setBulkStatus("Closed")}>Closed</option>
                                 
                             </select>
-                            <button className="btn btn-primary" onClick={()=>{handleUpdateCaseStatus()}}>Submit</button>
+                            <button className="btn btn-primary" onClick={()=>{handleUpdateCaseStatus()}}>Apply status</button>
                             <button className="btn btn-primary" onClick={()=>setShowBulkBox(false)}>Cancel</button>
                             </>
                             }
                             </div>
                     </div>
-                    <div className="row" >
+                    <div className={`row kpd-table-head ${showBulkBox ? "kpd-bulk" : ""}`} >
                     {(showBulkBox)?
                     <div className = "col-1 text-center" >Select Cases</div>
                     :
                     ""
                     }
-                    <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case #</div>
-                    <div className = "col-2 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr.</div>
-                    <div className = "col-2 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name</div>
-                    <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type</div>
-                    <div className = "col-1 text-center" onClick={() => handleSort('update date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date</div>
-                    <div className = "col-1 text-center" onClick={() => handleSort('due date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Due Date</div>
-                    <div className = "col-1 text-center" onClick={() => handleSort('price')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Price</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Case # {sortBy === 'id' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-2 text-center"  onClick={() => handleSort('user id')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Dr. {sortBy === 'user id' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-2 text-center" onClick={() => handleSort('name')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Patient Name {sortBy === 'name' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-2 text-center" onClick={() => handleSort('type')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Type {sortBy === 'type' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('update date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Submit Date {sortBy === 'update date' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('due date')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Due Date {sortBy === 'due date' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('price')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Price {sortBy === 'price' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
                     <div className = "col-1 text-center" onClick={() => handleSort(statusToFilter === 'Shipped' ? 'scanner_id' : 'shade')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{statusToFilter === 'Shipped' ? 'Scanner ID' : 'Shade'}</div>
-                    <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status</div>
+                    <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status {sortBy === 'status' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
                 </div>
                 <div className = "row justinfy-content-end">
                 <div className="col=10">
@@ -644,10 +627,10 @@ export const AdminPage = props => {
 
                         return (
                             
-                            <Link to = {(item.status !== "Created")? `/admin/${id}/${item["id"]}` :""}>
+                            <Link key={item.id} to = {(item.status !== "Created")? `/admin/${id}/${item["id"]}` :""}>
                             
 
-                            <div key={index} className="row" >
+                            <div key={index} className={`row kpd-case-row ${showBulkBox ? "kpd-bulk" : ""}`} >
                                 
                             
                                 {(index <= pageMax && index >= pageMin)?
@@ -700,10 +683,10 @@ export const AdminPage = props => {
                                                                                                                                                                                                                                                                                                                                                                         const [month, day, year] = datePart.split("/");
                                                                                                                                                                                                                                                                                                                                                                         return `${parseInt(month)}/${parseInt(day)}/${year.slice(-2)}`; // Convert to M/D/YY
                                                                                                                                                                                                                                                                                                                                                                         })() 
-                                                                                                                                                                                                                                                                                                                                                                        : "N/A"}</div>
+                                                                                                                                                                                                                                                                                                                                                                        : "N/A"}<div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:3,padding:'4px 0'}}>{[item.production==='Rush'?'Rush production':null,item.shipping==='Express'?'Express shipping':null,isHeld(item)?'On hold':null,dueLabel(item,priorityToday)].filter(Boolean).map(label=><span key={label} className={label.startsWith("Overdue")?"kpd-overdue":label==="Rush production"?"kpd-rush":label==="Express shipping"?"kpd-express":label==="On hold"?"kpd-hold":"kpd-due"} style={{display:'inline-block',background:'#fff',color:'#222429',border:'1px solid #555',borderRadius:3,padding:'2px 4px',fontSize:12,lineHeight:1.35,fontWeight:600}}>{label}</span>)}</div></div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>${item["price"]}</div>
                                         <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{statusToFilter === 'Shipped' ? item["scanner_id"] : item["shade"]}</div>
-                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}<div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:3,padding:'4px 0'}}>{[item.production==='Rush'?'Rush production':null,item.shipping==='Express'?'Express shipping':null,isHeld(item)?'On hold':null,dueLabel(item,priorityToday)].filter(Boolean).map(label=><span key={label} style={{display:'inline-block',background:'#fff',color:'#222429',border:'1px solid #555',borderRadius:3,padding:'2px 4px',fontSize:12,lineHeight:1.35,fontWeight:600}}>{label}</span>)}</div></div>
+                                        <div className = "col-1 text-center" style={{border: "solid black 1px", color:"black", backgroundColor:(item["production"] === "Rush" && item["shipping"] === "Express")? "red":(item["shipping"] === "Express")? "yellow" :(item["production"] === "Rush")? "orange" : (item["hold"])? "pink" : (index % 2 === 1)? "rgba(0, 0, 0, .125)" : "white"}}>{item["status"]}</div>
                                     </>
                                 
                             :""}

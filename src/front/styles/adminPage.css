@@ -1,3 +1,33 @@
 .filter-btn{
     margin-bottom: 5px
 }
+.kpd-admin .kpd-controls {background:#fff;border:1px solid #ddd;border-radius:10px;padding:22px;margin-bottom:18px;color:#222429;}
+.kpd-admin .kpd-toolbar {display:flex;justify-content:space-between;gap:20px;align-items:start;}
+.kpd-admin .kpd-toolbar h2 {font-size:28px;line-height:1.2;margin:0 0 6px;color:#222429;}
+.kpd-admin .kpd-toolbar p {color:#60646b;margin:0 0 16px;}
+.kpd-admin .kpd-color-key {max-width:280px;font-size:14px;}
+.kpd-admin summary {cursor:pointer;color:#505050;}
+.kpd-admin .kpd-search {display:block;font-size:14px;font-weight:600;max-width:600px;}
+.kpd-admin .kpd-search input {display:block;width:100%;padding:12px 14px;border:1px solid #aeb3b9;border-radius:6px;margin-top:6px;background:#fff;color:#222429;font-size:16px;}
+.kpd-admin .kpd-status-group {display:flex;gap:16px;margin-top:14px;align-items:start;flex-wrap:wrap;}
+.kpd-admin .kpd-status-group strong {width:150px;font-size:14px;padding-top:8px;}
+.kpd-admin .kpd-status-group>div {display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+.kpd-admin .filter-btn {background:#f4f5f6;color:#222429;border:1px solid #d3d6da;padding:8px 12px;border-radius:5px;}
+.kpd-admin .filter-btn[aria-pressed="true"] {background:#222429;color:#fff;border-color:#222429;}
+.kpd-admin .kpd-bulkbar {display:flex;align-items:center;gap:12px;flex-wrap:wrap;width:100%;padding:12px;color:#222429;background:#fff;}
+.kpd-admin .kpd-bulkbar select {width:220px;}
+.kpd-admin .kpd-table-head,.kpd-admin .kpd-case-row {display:grid;grid-template-columns:.65fr 1.3fr 1.3fr 1.2fr .9fr 1.8fr .7fr .75fr 1fr;margin:0;min-width:1000px;}
+.kpd-admin .kpd-bulk {grid-template-columns:.5fr .65fr 1.3fr 1.3fr 1.2fr .9fr 1.8fr .7fr .75fr 1fr;}
+.kpd-admin .kpd-table-head>div,.kpd-admin .kpd-case-row>div {width:auto;max-width:none;padding:12px 8px;border:0!important;border-bottom:1px solid #e1e4e8!important;overflow-wrap:anywhere;}
+.kpd-admin .kpd-table-head>div {background:#e9ecef!important;font-size:13px;font-weight:700;cursor:pointer;}
+.kpd-admin .kpd-case-row>div {background:#fff!important;font-size:14px;}
+.kpd-admin a:nth-of-type(even) .kpd-case-row>div {background:#f5f6f7!important;}
+.kpd-admin .kpd-case-row:hover>div {background:#fff8e8!important;}
+.kpd-admin .kpd-case-row .col-2,.kpd-admin .kpd-table-head .col-2 {text-align:left!important;}
+.kpd-admin .kpd-overdue {background:#fee2e2!important;color:#991b1b!important;border-color:#ef9a9a!important;}
+.kpd-admin .kpd-rush {background:#fff0c2!important;color:#704400!important;border-color:#d6a544!important;}
+.kpd-admin .kpd-express {background:#e0efff!important;color:#194d85!important;border-color:#8fb7df!important;}
+.kpd-admin .kpd-hold {background:#eee5fa!important;color:#624080!important;border-color:#bba2d3!important;}
+.kpd-admin .kpd-due {background:#edf1f4!important;color:#334155!important;border-color:#a8b2bf!important;}
+.kpd-admin .container {overflow-x:auto;}
+.kpd-admin button:focus-visible,.kpd-admin input:focus-visible {outline:3px solid #b57400;outline-offset:2px;}

@@ -87,7 +87,11 @@ export function AuthProvider({ children, navigationHistory }) {
       const s=state.current;
       if(s.locked)return;
       if(Date.now()-s.lastActivity>=s.limit || (s.deadline && Date.now()>=s.deadline)){logout('expired');return;}
-      logout('checking');check(false);
+      // A verified, unexpired session stays visible during the read-only check.
+      // Focus and visibility events can arrive together; reuse an in-flight check.
+      if(s.controller)return;
+      if(!s.account || !s.deadline)logout('checking');
+      check(false);
     };
     const events=['pointerdown','keydown','scroll','touchstart'];
     events.forEach(n=>window.addEventListener(n,activity,true));

@@ -95,6 +95,11 @@ setup_commands(app)
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
 
+# Isolated, read-only ADW connection check; disabled unless explicitly configured.
+from api.adw.connection import register_connection_probe
+register_connection_probe(app, os.environ)
+
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):

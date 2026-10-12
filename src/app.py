@@ -99,6 +99,10 @@ app.register_blueprint(api, url_prefix='/api')
 from api.adw.connection import register_connection_probe
 register_connection_probe(app, os.environ)
 
+# ADW upload pilot remains disabled unless explicitly configured.
+from api.adw.intake_bootstrap import configure_intake
+configure_intake(app, db, os.environ)
+
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

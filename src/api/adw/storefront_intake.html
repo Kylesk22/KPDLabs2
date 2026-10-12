@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Send case files | American Dental Works</title>
+<style>body{font:16px system-ui;margin:0;background:#f5f7fa;color:#142738}header{padding:24px;background:#142738;color:white}main{max-width:760px;margin:32px auto;padding:0 20px}section,form{background:white;padding:28px;border:1px solid #d6dfe6;margin:24px 0}label{display:block;margin:18px 0 8px;font-weight:700}input,button{font:inherit;padding:12px;max-width:100%;box-sizing:border-box}input[type=text]{width:100%}button{background:#a63c31;color:white;border:0;margin-top:20px;cursor:pointer}button:disabled{opacity:.6}p{line-height:1.6}small{display:block;line-height:1.5;color:#45596b}code{overflow-wrap:anywhere}progress{width:100%}</style>
+<header>ADW | AMERICAN DENTAL WORKS</header><main><h1>Send your case files</h1>
+<p>Upload one case at a time. Files remain subject to manufacturing review. Uploading does not place an order or take payment.</p>
+<form id="case-form"><label for="reference">Your lab’s case reference</label>
+<input id="reference" required pattern="[A-Za-z0-9_-]{3,40}" maxlength="40" autocomplete="off">
+<small>Use letters, numbers, hyphens or underscores. Do not enter patient names.</small>
+<label for="files">Case files</label><input id="files" type="file" multiple required accept=".stl,.ply,.obj,.jpg,.jpeg,.png,.pdf">
+<small>Up to 12 files: STL, PLY, OBJ, JPG, PNG or PDF. Maximum {{ max_file_bytes // 1048576 }} MB per file and {{ max_case_bytes // 1048576 }} MB per case. No ZIP archives.</small>
+<button id="send">Upload files</button><progress id="progress" value="0" max="100" hidden></progress>
+<p id="status" role="status" aria-live="polite"></p></form>
+<section id="receipt" hidden><h2>Files received</h2><p>Save this receipt for your order. It confirms file transfer, not manufacturing acceptance or payment.</p><code id="receipt-id"></code><br><button id="copy">Copy receipt</button></section>
+<p><a href="/collections/all">Return to services</a></p></main>
+<script>
+const uploadURL={{ upload_url|tojson }},maxFile={{ max_file_bytes }},maxCase={{ max_case_bytes }};
+const form=document.querySelector('#case-form'),reference=document.querySelector('#reference'),files=document.querySelector('#files'),button=document.querySelector('#send'),status=document.querySelector('#status'),progress=document.querySelector('#progress');
+let busy=false,attempt=null,unconfirmed=false;
+window.addEventListener('beforeunload',e=>{if(busy||unconfirmed){e.preventDefault();e.returnValue=''}});
+async function prepare(){
+ const selected=Array.from(files.files),ref=reference.value.trim();
+ if(!/^[A-Za-z0-9_-]{3,40}$/.test(ref)||!selected.length||selected.length>12||selected.some(f=>!f.size||f.size>maxFile)||selected.reduce((n,f)=>n+f.size,0)>maxCase)throw Error('Check your case reference and file size limits.');
+ const manifest=[];
+ for(const file of selected){
+  const extension='.'+file.name.split('.').pop().toLowerCase();
+  if(!['.stl','.ply','.obj','.jpg','.jpeg','.png','.pdf'].includes(extension)||file.name.length>160||/[\\/\x00\r\n]/.test(file.name))throw Error('Choose supported files with simple filenames.');
+  status.textContent='Preparing files…';
+  const digest=await crypto.subtle.digest('SHA-256',await file.arrayBuffer());
+  manifest.push({extension,bytes:file.size,sha256:Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('')});
+ }
+ return {reference:ref,files:selected,manifest,key:crypto.randomUUID()};
+}
+function transfer(token){return new Promise((resolve,reject)=>{
+ const data=new FormData();data.append('reference',attempt.reference);for(const f of attempt.files)data.append('files',f);
+ const xhr=new XMLHttpRequest();xhr.open('POST',uploadURL);xhr.withCredentials=false;xhr.timeout=600000;
+ xhr.setRequestHeader('Authorization','Bearer '+token);
+ xhr.upload.onprogress=e=>{if(e.lengthComputable)progress.value=e.loaded/e.total*100};
+ xhr.onerror=xhr.ontimeout=()=>reject(Error('Receipt unconfirmed. Keep this page open and retry the same files.'));
+ xhr.onload=()=>{let data;try{data=JSON.parse(xhr.responseText)}catch{reject(Error('Receipt unconfirmed. Keep this page open and retry.'));return}
+ if(xhr.status===201&&/^ADW-[0-9a-f]{32}$/.test(data.receipt)){resolve(data);return}
+ reject(Error(xhr.status===429?'Uploads are busy. Keep this page open and retry shortly.':xhr.status===403?'Authorization expired or access changed. Sign in in another tab, then retry here.':'Receipt unconfirmed. Keep this page open and retry.'));};xhr.send(data);
+});}
+form.onsubmit=async e=>{
+ e.preventDefault();if(busy)return;busy=true;button.disabled=true;files.disabled=true;reference.readOnly=true;
+ try{
+  if(!attempt)attempt=await prepare();
+  status.textContent='Checking lab access…';
+  const response=await fetch('/apps/adw/grant',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({reference:attempt.reference,files:attempt.manifest,request_key:attempt.key})});
+  if(!response.ok)throw Error(response.status===403?'Sign in through ADW and confirm your lab is approved, then retry here.':'Upload authorization unavailable. Keep this page open and retry.');
+  const grant=await response.json();if(typeof grant.authorization!=='string')throw Error('Upload authorization unavailable. Retry shortly.');
+  unconfirmed=true;progress.hidden=false;progress.value=0;status.textContent='Uploading files…';
+  const receipt=await transfer(grant.authorization);unconfirmed=false;
+  document.querySelector('#receipt-id').textContent=receipt.receipt;document.querySelector('#receipt').hidden=false;
+  status.textContent='Files received. Save your receipt.';form.hidden=true;
+ }catch(error){status.textContent=error.message;if(!attempt){files.disabled=false;reference.readOnly=false}}
+ finally{busy=false;button.disabled=false;button.textContent=attempt?'Retry same upload':'Upload files'}
+};
+document.querySelector('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(document.querySelector('#receipt-id').textContent);document.querySelector('#copy').textContent='Copied'}catch{document.querySelector('#copy').textContent='Select the receipt above to copy'}};
+</script></html>

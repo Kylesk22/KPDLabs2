@@ -17,6 +17,11 @@ export const Forgot = props => {
     const [securityAnswer2, setSecurityAnswer2] = useState("")
     const [newPW, setNewPW] = useState("")
     const [showNewPW, setShowNewPW] = useState(false)
+    const [resetAuthorization, setResetAuthorization] = useState("")
+    useEffect(() => {
+        setResetAuthorization("");
+        setShowNewPW(false);
+    }, [email]);
 
     const url = process.env.BACKEND_URL
     let user;
@@ -59,6 +64,8 @@ export const Forgot = props => {
     
 
     const verifyAnswers = () => {
+        setResetAuthorization("");
+        setShowNewPW(false);
         user = {
             email,
             securityAnswer1,
@@ -87,9 +94,9 @@ export const Forgot = props => {
                 return res.json()
                 .then((body)=>{
                     setShowCode(true)
-                    console.log(body)
                     
-                    if (body.message === "Success"){
+                    if (body.message === "Success" && body.resetAuthorization){
+                        setResetAuthorization(body.resetAuthorization)
                         setShowNewPW(true)
                         alert(body.message)
                     }
@@ -175,7 +182,8 @@ export const Forgot = props => {
     const submitNewPW = () =>{
         user = {
             email,
-            newPW
+            newPW,
+            resetAuthorization
         }
         const options = {
             method:"PUT",
@@ -209,7 +217,7 @@ export const Forgot = props => {
                 return res.json()
                 .then((body)=>{
                     console.log(body)
-                    alert(body[0].message);
+                    alert(body.message || "Password reset failed. Please verify your answers again.");
                     setShowCode(false)
                 });
             }

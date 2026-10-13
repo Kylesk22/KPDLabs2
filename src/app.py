@@ -94,6 +94,8 @@ setup_commands(app)
 
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
+from api.recovery import register_recovery
+register_recovery(app, db, User)
 
 # Isolated, read-only ADW connection check; disabled unless explicitly configured.
 from api.adw.connection import register_connection_probe

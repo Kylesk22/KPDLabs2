@@ -4,7 +4,19 @@ Only the exact portal host is dispatched here. Other hosts continue through the
 existing KPD application unchanged, including existing health-check behavior.
 """
 from werkzeug.wrappers import Response
+from ipaddress import ip_address
 PORTAL_HOST = 'portal.americandentalworks.com'
+
+def digitalocean_client_address(request):
+    """Only for App Platform ingress, which supplies DO-Connecting-IP.
+
+    No X-Forwarded-For fallback: DO documents that as its ingress address.
+    Missing, duplicate, or malformed values fail closed in the quota layer.
+    """
+    value = request.headers.get('DO-Connecting-IP', '').strip()
+    if not value or '%' in value:
+        raise ValueError('Trusted client address unavailable')
+    return str(ip_address(value))
 
 def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_factory=None):
     unavailable = Response('ADW case submission is not available yet.', status=503, headers={'Cache-Control': 'no-store', 'Retry-After': '300'})
@@ -13,9 +25,8 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
         try:
             if environ.get('ADW_PORTAL_INGRESS_VERIFIED') != 'true':
                 raise ValueError('Ingress review required')
-            hops = int(environ.get('ADW_PORTAL_PROXY_HOPS', '0'))
-            if hops not in (1, 2, 3):
-                raise ValueError('Explicit trusted hop count required')
+            if environ.get('ADW_PORTAL_INGRESS') != 'digitalocean-app-platform':
+                raise ValueError('Explicit trusted ingress required')
             required = ('ADW_UPLOAD_SIGNING_SECRET', 'ADW_RESEND_API_KEY', 'ADW_STORAGE_ACCESS_KEY_ID', 'ADW_STORAGE_SECRET_ACCESS_KEY', 'ADW_STORAGE_BUCKET')
             if any((not environ.get(key) for key in required)):
                 raise ValueError('Configuration required')
@@ -30,9 +41,9 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 from .portal_runtime import create_runtime
                 runtime_factory = create_runtime
             with kpd_app.app_context():
-                portal = runtime_factory(db.engine, client, config, client_address=lambda request: request.remote_addr)
+                portal = runtime_factory(db.engine, client, config, client_address=digitalocean_client_address)
             from werkzeug.middleware.proxy_fix import ProxyFix
-            portal = ProxyFix(portal, x_for=hops, x_proto=1, x_host=0, x_port=0, x_prefix=0)
+            portal = ProxyFix(portal, x_for=0, x_proto=1, x_host=0, x_port=0, x_prefix=0)
         except Exception:
             kpd_app.logger.error('ADW portal unavailable: configuration or readiness check failed.')
             portal = unavailable

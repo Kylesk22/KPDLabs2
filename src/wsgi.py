@@ -1,7 +1,10 @@
-# This file was created to run the application on heroku using gunicorn.
-# Read more about it here: https://devcenter.heroku.com/articles/python-gunicorn
+"""Production entry point; ADW portal stays unavailable until enabled."""
+import os
+from app import app
+from api.models import db
+from api.adw_portal.portal_bootstrap import configure_portal
 
-from app import app as application
+application = configure_portal(app, db, os.environ)
 
 if __name__ == "__main__":
-    application.run()
+    app.run()

@@ -105,6 +105,10 @@ register_connection_probe(app, os.environ)
 from api.adw.intake_bootstrap import configure_intake
 configure_intake(app, db, os.environ)
 
+# Register additive ADW tables for migration discovery; no database writes.
+from api.adw_portal.integration_schema import register_integration_metadata
+register_integration_metadata(db.metadata)
+
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

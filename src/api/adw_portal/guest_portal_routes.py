@@ -70,6 +70,7 @@ def blueprint(verification, sessions, *, secret, allow_request, checkout=None, e
         case_limit = request_limit_bytes - 1024 * 1024
         page = page.replace('{{CASE_BYTES}}', str(case_limit)).replace('{{FILE_BYTES}}', str(min(100 * 1024 * 1024, case_limit)))
         page = page.replace('{{CASE_MB}}', str(case_limit // (1024 * 1024))).replace('{{FILE_MB}}', str(min(100, case_limit // (1024 * 1024))))
+        page = page.replace('{{CHECKOUT_ENABLED}}', 'true' if checkout is not None else 'false')
         response = make_response(page)
         try:
             value = binding()

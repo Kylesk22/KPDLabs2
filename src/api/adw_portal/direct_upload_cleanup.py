@@ -11,6 +11,25 @@ class DirectUploadCleanup:
     def __init__(self, repo, storage, receipts, clock):
         (self.repo, self.storage, self.receipts, self.clock) = (repo, storage, receipts, clock)
 
+    def preview(self, limit=20):
+        """Read-only operational summary; never returns file keys or lab data."""
+        if type(limit) is not int or not 1 <= limit <= 100:
+            raise ValueError('Invalid batch limit')
+        now = self.clock()
+        with self.repo.engine.connect() as db:
+            rows = db.execute(select(reservations).where(reservations.c.state.in_(['reserved', 'uploading', 'cleanup_pending'])).order_by(reservations.c.created).limit(limit)).mappings().all()
+        result = {'examined': len(rows), 'ready_to_clean': 0, 'abandoned': 0}
+        for row in rows:
+            if self.receipts.get(row['id']) is not None:
+                continue
+            files = json.loads(row['manifest'])
+            if row['state'] == 'cleanup_pending':
+                if all((f.get('cleanup_after', float('inf')) <= now for f in files)):
+                    result['ready_to_clean'] += 1
+            elif row['created'] <= now - 86400 and (not any((f.get('lease_until', 0) > now for f in files))):
+                result['abandoned'] += 1
+        return result
+
     def run(self, limit=20):
         if type(limit) is not int or not 1 <= limit <= 100:
             raise ValueError('Invalid batch limit')
@@ -59,3 +78,21 @@ class DirectUploadCleanup:
                 return True
             expired += bool(self.repo.change({'lab_id': row['lab_id'], 'adw_approved': True}, row['id'], expire))
         return expired
+
+def register_cleanup_command(app, worker):
+    """Operator command only: preview by default, never a background thread."""
+    import click
+
+    @app.cli.command('adw-upload-cleanup')
+    @click.option('--apply', is_flag=True, help='Remove eligible unsubmitted temporary uploads.')
+    @click.option('--limit', type=click.IntRange(1, 100), default=20, show_default=True)
+    def cleanup_command(apply, limit):
+        if not apply:
+            click.echo(json.dumps(dict(mode='preview', **worker.preview(limit))))
+            return
+        try:
+            expired = worker.expire_abandoned(limit)
+            cleaned = worker.run(limit)
+        except Exception:
+            raise click.ClickException('Cleanup stopped; unresolved uploads remain reserved. Retry after investigating.') from None
+        click.echo(json.dumps({'mode': 'apply', 'expired': expired, 'cleaned': cleaned}))

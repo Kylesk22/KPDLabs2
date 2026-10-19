@@ -42,6 +42,10 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 runtime_factory = create_runtime
             with kpd_app.app_context():
                 portal = runtime_factory(db.engine, client, config, client_address=digitalocean_client_address)
+            cleanup_worker = portal.extensions.get('adw_direct_cleanup')
+            if cleanup_worker is not None:
+                from .direct_upload_cleanup import register_cleanup_command
+                register_cleanup_command(kpd_app, cleanup_worker)
             from werkzeug.middleware.proxy_fix import ProxyFix
             portal = ProxyFix(portal, x_for=0, x_proto=1, x_host=0, x_port=0, x_prefix=0)
         except Exception:

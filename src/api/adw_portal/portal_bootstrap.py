@@ -31,7 +31,7 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
             if any((not environ.get(key) for key in required)):
                 raise ValueError('Configuration required')
             config = {key: environ[key] for key in required}
-            config.update(ADW_PORTAL_ENABLED=True, ADW_GUEST_CHECKOUT_ENABLED=environ.get('ADW_GUEST_CHECKOUT_ENABLED') == 'true')
+            config.update(ADW_PORTAL_ENABLED=True, ADW_DIRECT_UPLOAD_ENABLED=environ.get('ADW_DIRECT_UPLOAD_ENABLED') == 'true', ADW_GUEST_CHECKOUT_ENABLED=environ.get('ADW_GUEST_CHECKOUT_ENABLED') == 'true')
             if client_factory is None:
                 import boto3
                 client_factory = boto3.client

@@ -5,6 +5,7 @@ disabled until the storefront and paid-order handoff have been reviewed.
 """
 import hashlib
 import hmac
+import time
 from sqlalchemy import inspect
 from .guest_email_verification import EmailVerification, metadata as email_metadata
 from .guest_upload_session import GuestUploadSession, metadata as session_metadata
@@ -18,6 +19,10 @@ from .private_storage import PrivateObjectStorage
 from .streaming_intake import StreamingIntake
 from .transactional_mail import ResendVerificationMail
 from .portal_application import create_portal
+from .direct_upload_reservations import DirectReservations, metadata as direct_metadata
+from .direct_multipart_storage import DirectMultipartStorage
+from .direct_upload_service import DirectUploadService
+from .direct_upload_cleanup import DirectUploadCleanup
 
 def create_runtime(engine, storage_client, config, *, client_address, mail_post=None):
     if config.get('ADW_PORTAL_ENABLED') is not True:
@@ -38,6 +43,8 @@ def create_runtime(engine, storage_client, config, *, client_address, mail_post=
     tables = list(INTAKE_TABLES)
     for metadata in (email_metadata, session_metadata, enrollment_metadata, checkout_metadata, quota_metadata):
         tables.extend(metadata.tables.values())
+    if config.get('ADW_DIRECT_UPLOAD_ENABLED') is True:
+        tables.extend(direct_metadata.tables.values())
     for table in tables:
         columns = {column['name'] for column in inspector.get_columns(table.name)}
         if not set(table.columns.keys()).issubset(columns):
@@ -51,5 +58,10 @@ def create_runtime(engine, storage_client, config, *, client_address, mail_post=
     sessions = GuestUploadSession(engine, verification, enrollment.resolve, StreamingIntake(receipts, storage), enrollment=enrollment)
     limiter = PortalRateLimits(engine, bytes.fromhex(derive('adw-portal-rate-limits-v1')), client_address=client_address)
     checkout = GuestCheckout(engine, receipts) if config.get('ADW_GUEST_CHECKOUT_ENABLED') is True else None
-    app = create_portal(verification, sessions, secret=derive('adw-portal-csrf-v1'), allow_request=limiter, checkout=checkout, enabled=True, request_limit_bytes=config.get('ADW_PORTAL_REQUEST_LIMIT_BYTES', 20 * 1024 * 1024))
+    direct = None
+    if config.get('ADW_DIRECT_UPLOAD_ENABLED') is True:
+        direct = DirectUploadService(DirectReservations(engine), DirectMultipartStorage(storage_client), receipts, time.time)
+    app = create_portal(verification, sessions, secret=derive('adw-portal-csrf-v1'), allow_request=limiter, checkout=checkout, enabled=True, request_limit_bytes=config.get('ADW_PORTAL_REQUEST_LIMIT_BYTES', 20 * 1024 * 1024), direct_upload=direct)
+    if direct is not None:
+        app.extensions['adw_direct_cleanup'] = DirectUploadCleanup(direct.reservations, direct.storage, receipts, time.time)
     return app

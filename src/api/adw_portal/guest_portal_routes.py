@@ -18,7 +18,7 @@ ORIGIN = 'https://portal.americandentalworks.com'
 BINDING = '__Host-adw-binding'
 UPLOAD = '__Host-adw-upload'
 
-def blueprint(verification, sessions, *, secret, allow_request, checkout=None, enabled=False, clock=time.time, request_limit_bytes=20 * 1024 * 1024):
+def blueprint(verification, sessions, *, secret, allow_request, checkout=None, enabled=False, clock=time.time, request_limit_bytes=20 * 1024 * 1024, direct_upload=None):
     if enabled is not True or not isinstance(secret, str) or len(secret) < 32:
         raise ValueError('Reviewed portal configuration required')
     if not callable(allow_request):
@@ -53,7 +53,7 @@ def blueprint(verification, sessions, *, secret, allow_request, checkout=None, e
                 return (jsonify(message='Reload this page and try again'), 403)
             if allow_request(request) is not True:
                 return (jsonify(message='Please wait before trying again'), 429)
-            if request.path in ('/adw/upload', '/adw/checkout'):
+            if request.path in ('/adw/upload', '/adw/checkout') or request.path.startswith('/adw/direct/'):
                 try:
                     sessions.principal(request.cookies.get(UPLOAD, ''), binding(), now=clock())
                 except PermissionError:
@@ -62,15 +62,19 @@ def blueprint(verification, sessions, *, secret, allow_request, checkout=None, e
     @routes.after_request
     def private(response):
         response.headers.update({'Cache-Control': 'private, no-store', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'Content-Security-Policy': "default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"})
+        if direct_upload is not None:
+            response.headers['Content-Security-Policy'] = response.headers['Content-Security-Policy'].replace("connect-src 'self'", "connect-src 'self' https://adw-case-files.nyc3.digitaloceanspaces.com")
         return response
 
     @routes.get('/adw/verify')
     def page():
         page = Path(__file__).with_name('guest_portal.html').read_text(encoding='utf-8')
-        case_limit = request_limit_bytes - 1024 * 1024
+        case_limit = MAX_CASE_BYTES if direct_upload is not None else request_limit_bytes - 1024 * 1024
         page = page.replace('{{CASE_BYTES}}', str(case_limit)).replace('{{FILE_BYTES}}', str(min(100 * 1024 * 1024, case_limit)))
         page = page.replace('{{CASE_MB}}', str(case_limit // (1024 * 1024))).replace('{{FILE_MB}}', str(min(100, case_limit // (1024 * 1024))))
         page = page.replace('{{CHECKOUT_ENABLED}}', 'true' if checkout is not None else 'false')
+        page = page.replace('{{DIRECT_ENABLED}}', 'true' if direct_upload is not None else 'false')
+        page = page.replace('{{DIRECT_SCRIPT}}', '<script src="/adw/direct-upload.js" defer></script>' if direct_upload is not None else '')
         response = make_response(page)
         try:
             value = binding()
@@ -84,6 +88,47 @@ def blueprint(verification, sessions, *, secret, allow_request, checkout=None, e
         response = make_response(Path(__file__).with_name('guest_portal.js').read_text(encoding='utf-8'))
         response.mimetype = 'application/javascript'
         return response
+
+    @routes.get('/adw/direct-upload.js')
+    def direct_script():
+        if direct_upload is None:
+            return (jsonify(message='Unavailable'), 404)
+        response = make_response(Path(__file__).with_name('direct_upload_client.js').read_text(encoding='utf-8'))
+        response.mimetype = 'application/javascript'
+        return response
+
+    @routes.post('/adw/direct/<action>')
+    def direct_action(action):
+        if direct_upload is None:
+            return (jsonify(message='Unavailable'), 404)
+        body = request.get_json(silent=True)
+        if not isinstance(body, dict):
+            return (jsonify(message='Invalid upload request'), 400)
+        authorize = lambda : sessions.principal(request.cookies.get(UPLOAD, ''), binding(), now=clock())
+        if not upload_slot.acquire(blocking=False):
+            return (jsonify(message='Upload processing. Retry shortly.'), 429)
+        try:
+            if action == 'begin':
+                result = direct_upload.begin(authorize, body.get('reference'), body.get('files'), body.get('request_key'))
+            elif action == 'part':
+                result = direct_upload.part(authorize, body.get('id'), body.get('file'), body.get('part'))
+            elif action == 'complete-file':
+                result = direct_upload.complete_file(authorize, body.get('id'), body.get('file'))
+            elif action == 'finish':
+                result = direct_upload.finish(authorize, body.get('id'))
+            elif action == 'cancel':
+                result = direct_upload.cancel(authorize, body.get('id'))
+            else:
+                return (jsonify(message='Unavailable'), 404)
+            return jsonify(result)
+        except PermissionError:
+            return (jsonify(message='Verify your email again before uploading'), 401)
+        except ValueError as error:
+            return (jsonify(message=str(error)), 400)
+        except Exception:
+            return (jsonify(message='Upload could not be confirmed. Retry with the same files.'), 503)
+        finally:
+            upload_slot.release()
 
     @routes.get('/adw/verification/state')
     def state():

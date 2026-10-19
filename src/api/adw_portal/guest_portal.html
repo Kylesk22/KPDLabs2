@@ -12,14 +12,14 @@
 <label for="contact">Contact name</label><input id="contact" required maxlength="120" autocomplete="name">
 <label for="phone">Phone</label><input id="phone" type="tel" required maxlength="40" autocomplete="tel">
 <button type="submit">Verify and continue</button></form>
-<form id="upload-form" data-case-bytes="{{CASE_BYTES}}" data-file-bytes="{{FILE_BYTES}}" hidden>
+<form id="upload-form" data-direct="{{DIRECT_ENABLED}}" data-case-bytes="{{CASE_BYTES}}" data-file-bytes="{{FILE_BYTES}}" hidden>
 <p>Upload your case files, then choose your service and pay on ADW. Files are reviewed before production.</p>
 <label for="reference">Your case reference (no patient name)</label><p>Use 3–40 letters, numbers, hyphens or underscores. No spaces.</p><input id="reference" required pattern="[A-Za-z0-9_-]{3,40}" maxlength="40">
 <label for="files">Case files</label><input id="files" type="file" multiple required accept=".stl,.ply,.obj,.jpg,.jpeg,.png,.pdf">
 <p>Up to 12 files; {{FILE_MB}} MB per file and {{CASE_MB}} MB per case.</p>
-<button type="submit">Upload files</button></form>
+<button type="submit">Upload files</button><button id="discard-upload" type="button" hidden>Discard this upload</button></form>
 <form id="checkout-form" data-enabled="{{CHECKOUT_ENABLED}}" hidden><p>Files received. Choose the service for these files.</p>
 <label for="service">Service</label><select id="service"><option value="zirconia">Multilayer zirconia</option><option value="cad">Crown and bridge CAD design</option></select>
 <button type="submit">Continue to ADW order</button></form>
 <p id="status" role="status" aria-live="polite"></p><p><a href="https://americandentalworks.com">Return to American Dental Works</a></p>
-</main><script src="/adw/verify.js" defer></script></html>
+</main>{{DIRECT_SCRIPT}}<script src="/adw/verify.js" defer></script></html>

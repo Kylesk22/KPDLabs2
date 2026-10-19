@@ -6,7 +6,8 @@
   const confirmForm = document.getElementById('confirm-form');
   const uploadForm = document.getElementById('upload-form');
   const checkoutForm = document.getElementById('checkout-form');
-  let receipt = '', uploadKey = '';
+  let receipt = '', uploadKey = '', pendingUpload = '';
+  const discardButton=document.getElementById('discard-upload');
   let proof = location.hash.slice(1);
   history.replaceState(null, '', location.pathname);
   if (proof) {
@@ -59,6 +60,29 @@
     }
   });
   uploadForm.addEventListener('input',()=>{ uploadKey=''; });
+  async function directRequest(action,values) {
+    const state=await fetch('/adw/verification/state',{cache:'no-store'});
+    if(!state.ok)throw Object.assign(new Error('Your verification session expired. Verify your email again.'),{permanent:true});
+    const {csrf}=await state.json();
+    const response=await fetch('/adw/direct/'+action,{method:'POST',
+      headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify(values)});
+    const json=(response.headers.get('content-type')||'').includes('application/json');
+    const result=json?await response.json():{};
+    if(!response.ok)throw Object.assign(new Error(result.message||'Connection interrupted. Retry with the same files.'),
+      {permanent:response.status>=400&&response.status<500&&response.status!==429});
+    return result;
+  }
+  if(discardButton)discardButton.addEventListener('click',async()=>{
+    if(!pendingUpload)return;
+    discardButton.disabled=true;
+    try {
+      await directRequest('cancel',{id:pendingUpload});
+      pendingUpload='';uploadKey='';discardButton.hidden=true;
+      uploadForm.querySelectorAll('input').forEach(c=>c.disabled=false);
+      status.textContent='Upload discarded. Choose your files to start again.';
+    } catch(error){status.textContent=error.message;}
+    finally {discardButton.disabled=false;}
+  });
   uploadForm.addEventListener('submit',async event=>{
     event.preventDefault();
     const files=Array.from(document.getElementById('files').files);
@@ -73,7 +97,23 @@
     uploadKey=uploadKey||crypto.randomUUID();
     const data=new FormData();data.append('reference',document.getElementById('reference').value);
     files.forEach(file=>data.append('files',file));
-    const result=await submit('/adw/upload',data,uploadForm,{'Idempotency-Key':uploadKey});
+    let result;
+    if(uploadForm.dataset.direct==='true') {
+      const controls=Array.from(uploadForm.querySelectorAll('input,button'));controls.forEach(c=>c.disabled=true);
+      try {
+        result=await uploadDirect({files,reference:document.getElementById('reference').value,
+          requestKey:uploadKey,api:directRequest,
+          onReservation:id=>{pendingUpload=id;},
+          progress:({bytes,total,checking})=>{status.textContent=checking?'Checking uploaded file…':'Uploading files: '+Math.round(bytes/total*100)+'%';}});
+      } catch(error) {status.textContent=error.message||'Connection interrupted. Retry with the same files.';}
+      finally {
+        controls.forEach(c=>c.disabled=false);
+        if(pendingUpload && !result?.receipt){
+          uploadForm.querySelectorAll('input').forEach(c=>c.disabled=true);
+          if(discardButton)discardButton.hidden=false;
+        }
+      }
+    } else result=await submit('/adw/upload',data,uploadForm,{'Idempotency-Key':uploadKey});
     if(result && result.receipt){
       receipt=result.receipt;uploadForm.hidden=true;
       const ordering=checkoutForm.dataset.enabled==='true';

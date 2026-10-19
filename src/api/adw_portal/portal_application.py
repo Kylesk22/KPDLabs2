@@ -7,11 +7,11 @@ from flask import Flask, jsonify
 from .guest_portal_routes import blueprint
 from .intake import MAX_CASE_BYTES
 
-def create_portal(verification, sessions, *, secret, allow_request, checkout=None, enabled=False, clock=None, request_limit_bytes=20 * 1024 * 1024):
+def create_portal(verification, sessions, *, secret, allow_request, checkout=None, enabled=False, clock=None, request_limit_bytes=20 * 1024 * 1024, direct_upload=None):
     app = Flask('adw_portal', static_folder=None)
     app.config.update(MAX_CONTENT_LENGTH=request_limit_bytes, MAX_FORM_MEMORY_SIZE=64 * 1024, MAX_FORM_PARTS=20)
     options = {} if clock is None else {'clock': clock}
-    app.register_blueprint(blueprint(verification, sessions, secret=secret, allow_request=allow_request, checkout=checkout, enabled=enabled, request_limit_bytes=request_limit_bytes, **options))
+    app.register_blueprint(blueprint(verification, sessions, secret=secret, allow_request=allow_request, checkout=checkout, enabled=enabled, request_limit_bytes=request_limit_bytes, direct_upload=direct_upload, **options))
 
     @app.errorhandler(413)
     def too_large(error):

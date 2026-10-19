@@ -1,3 +1,4 @@
+import ADWStaffReview from "../component/ADWStaffReview";
 import { dueLabel, todayInFlorida, matchesPriority, isHeld } from "../component/casePriorities";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
@@ -543,6 +544,7 @@ export const AdminPage = props => {
                 }
             </div> */}
             <div>
+                <ADWStaffReview />
                 <section className="kpd-controls" aria-label="Case filters">
                   <div className="kpd-toolbar"><div><h2>Case dashboard</h2><p>Find cases and plan today's production.</p></div>
                     <details className="kpd-color-key"><summary>Color key</summary><p>Red: overdue · Gold: rush · Blue: express shipping · Purple: on hold</p></details>

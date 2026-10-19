@@ -1,0 +1,15 @@
+.adw-staff-panel {background:#fff;color:#222429;border:1px solid #d3d6da;border-radius:8px;margin:0 0 20px;padding:20px;}
+.adw-staff-panel .adw-staff-toggle {background:#222429;color:#fff;font-weight:700;}
+.adw-staff-panel button {border:1px solid #aeb3b9;border-radius:5px;padding:10px 16px;margin:0 8px 8px 0;background:#f4f5f6;color:#222429;min-height:44px;}
+.adw-staff-panel button:disabled {opacity:.6;cursor:wait;}
+.adw-staff-panel p {margin:12px 0;line-height:1.5;}
+.adw-staff-panel .adw-lab-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;}
+.adw-staff-panel article {padding:16px;border:1px solid #d3d6da;border-radius:6px;overflow-wrap:anywhere;}
+.adw-staff-panel h3 {font-size:20px;color:#222429;margin:0 0 12px;}
+.adw-staff-panel dt {font-size:13px;color:#525963;}
+.adw-staff-panel dd {margin:0 0 10px;}
+.adw-staff-panel .adw-review-form {border-top:3px solid #dba83d;padding-top:20px;margin-top:20px;max-width:650px;}
+.adw-staff-panel label {display:block;font-weight:600;margin:12px 0;}
+.adw-staff-panel select,.adw-staff-panel textarea {display:block;width:100%;font:inherit;font-size:16px;padding:12px;border:1px solid #aeb3b9;border-radius:5px;background:#fff;color:#222429;margin-top:6px;}
+.adw-staff-panel textarea {min-height:100px;}
+.adw-staff-panel :focus-visible {outline:3px solid #b57400;outline-offset:3px;}

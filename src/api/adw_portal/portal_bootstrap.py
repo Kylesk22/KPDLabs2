@@ -42,13 +42,13 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 runtime_factory = create_runtime
             with kpd_app.app_context():
                 portal = runtime_factory(db.engine, client, config, client_address=digitalocean_client_address)
+                from .order_preflight import register_order_preflight
+                register_order_preflight(kpd_app, db.engine, environ)
                 if environ.get('ADW_STAFF_REVIEW_ENABLED') == 'true':
                     from .staff_bootstrap import configure_staff
                     from .shared_receipts import SharedReceiptRepository
                     configure_staff(kpd_app, db.engine, client, SharedReceiptRepository(db.engine), staff_lookup)
             cleanup_worker = portal.extensions.get('adw_direct_cleanup')
-            from .order_preflight import register_order_preflight
-            register_order_preflight(kpd_app, db.engine, environ)
             if cleanup_worker is not None:
                 from .direct_upload_cleanup import register_cleanup_command
                 register_cleanup_command(kpd_app, cleanup_worker)

@@ -6,7 +6,10 @@ def blueprint(service, authenticate_staff):
 
     @routes.get('/adw/staff/orders/<order_id>/lines/<line_id>/files/<int:index>')
     def download(order_id, line_id, index):
-        staff = authenticate_staff()
+        try:
+            staff = authenticate_staff()
+        except PermissionError:
+            return (jsonify(error='Staff access required'), 403)
         try:
             (stream, filename) = service.open(staff, order_id, line_id, index)
         except PermissionError:

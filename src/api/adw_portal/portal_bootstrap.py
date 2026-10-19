@@ -18,7 +18,7 @@ def digitalocean_client_address(request):
         raise ValueError('Trusted client address unavailable')
     return str(ip_address(value))
 
-def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_factory=None):
+def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_factory=None, staff_lookup=None):
     unavailable = Response('ADW case submission is not available yet.', status=503, headers={'Cache-Control': 'no-store', 'Retry-After': '300'})
     portal = unavailable
     if environ.get('ADW_PORTAL_ENABLED', '').lower() == 'true':
@@ -42,6 +42,10 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 runtime_factory = create_runtime
             with kpd_app.app_context():
                 portal = runtime_factory(db.engine, client, config, client_address=digitalocean_client_address)
+                if environ.get('ADW_STAFF_REVIEW_ENABLED') == 'true':
+                    from .staff_bootstrap import configure_staff
+                    from .shared_receipts import SharedReceiptRepository
+                    configure_staff(kpd_app, db.engine, client, SharedReceiptRepository(db.engine), staff_lookup)
             cleanup_worker = portal.extensions.get('adw_direct_cleanup')
             if cleanup_worker is not None:
                 from .direct_upload_cleanup import register_cleanup_command

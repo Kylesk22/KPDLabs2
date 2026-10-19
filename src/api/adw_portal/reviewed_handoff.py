@@ -33,6 +33,14 @@ class ReviewedHandoff:
             account_address = ', '.join((address[field] for field in ['address1', 'address2', 'city', 'provinceCode', 'zip'] if address[field])) if address else 'Digital delivery - no shipping address'
         self.claims.reserve_for_review(plan)
         with self.engine.begin() as connection:
+            if self.guest_checkout is not None:
+                from sqlalchemy import select
+                from .guest_enrollment import labs
+                latest = connection.execute(select(labs).where(labs.c.lab_id == plan['lab_id']).with_for_update()).mappings().one_or_none()
+                if latest is None or latest['blocked'] or latest['lab_review'] != 'approved':
+                    raise PermissionError('Current lab approval required before production')
+                if any((latest[key] != lab_profile.get(key) for key in ('practice',))):
+                    raise ValueError('Lab profile changed. Reload before accepting.')
             provision_lab(connection, self.users, lab_id=plan['lab_id'], practice=lab_profile['practice'], address=account_address, auth_guard_enabled=self.auth_guard_enabled)
             if address is not None:
                 save_destination(connection, self.shop, plan['order_id'], address)

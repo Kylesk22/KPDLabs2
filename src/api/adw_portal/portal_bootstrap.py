@@ -36,7 +36,7 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 import boto3
                 client_factory = boto3.client
             from botocore.config import Config
-            client = client_factory('s3', endpoint_url='https://nyc3.digitaloceanspaces.com', region_name='nyc3', aws_access_key_id=config['ADW_STORAGE_ACCESS_KEY_ID'], aws_secret_access_key=config['ADW_STORAGE_SECRET_ACCESS_KEY'], config=Config(connect_timeout=5, read_timeout=60, retries={'max_attempts': 2, 'mode': 'standard'}))
+            client = client_factory('s3', endpoint_url='https://nyc3.digitaloceanspaces.com', region_name='nyc3', aws_access_key_id=config['ADW_STORAGE_ACCESS_KEY_ID'], aws_secret_access_key=config['ADW_STORAGE_SECRET_ACCESS_KEY'], config=Config(signature_version='s3v4', s3={'addressing_style': 'virtual'}, connect_timeout=5, read_timeout=60, retries={'max_attempts': 2, 'mode': 'standard'}))
             if runtime_factory is None:
                 from .portal_runtime import create_runtime
                 runtime_factory = create_runtime

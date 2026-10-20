@@ -47,7 +47,7 @@ def configure_portal(kpd_app, db, environ, *, client_factory=None, runtime_facto
                 if environ.get('ADW_STAFF_REVIEW_ENABLED') == 'true':
                     from .staff_bootstrap import configure_staff
                     from .shared_receipts import SharedReceiptRepository
-                    configure_staff(kpd_app, db.engine, client, SharedReceiptRepository(db.engine), staff_lookup)
+                    configure_staff(kpd_app, db.engine, client, SharedReceiptRepository(db.engine), staff_lookup, environ=environ)
             cleanup_worker = portal.extensions.get('adw_direct_cleanup')
             if cleanup_worker is not None:
                 from .direct_upload_cleanup import register_cleanup_command

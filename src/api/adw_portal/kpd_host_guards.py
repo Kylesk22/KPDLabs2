@@ -2,6 +2,7 @@
 from flask import request, jsonify
 from sqlalchemy import select
 from .kpd_case_links import links
+from .lab_accounts import lab_accounts
 from .internal_account_guard import register_internal_account_guard
 
 def register_kpd_guards(app, *, enabled, engine, authenticate_staff, lookup_user):
@@ -19,6 +20,12 @@ def register_kpd_guards(app, *, enabled, engine, authenticate_staff, lookup_user
             return None
         if request.method not in {'POST', 'PUT', 'PATCH', 'DELETE'}:
             return None
+        if request.url_rule and request.url_rule.rule in {'/api/shippo/get_rates/<int:id>', '/api/shippo/get_rates_kpd_ups/<int:id>'}:
+            account_id = (request.view_args or {}).get('id')
+            with engine.connect() as connection:
+                adw_account = connection.execute(select(lab_accounts.c.lab_id).where(lab_accounts.c.user_id == account_id)).scalar_one_or_none()
+            if adw_account is not None:
+                return (jsonify(message='ADW labels require the verified order shipping flow.'), 409)
         body = request.get_json(silent=True)
         if not isinstance(body, dict):
             return None

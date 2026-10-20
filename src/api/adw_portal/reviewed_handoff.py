@@ -7,17 +7,21 @@ from .order_shipping import normalize_address, save_destination
 from .lab_provisioning import provision_lab
 from .kpd_case_links import create_reviewed_cases
 import time
+import hmac
+import re
+from .order_review_snapshot import review_fingerprint
 
 class ReviewedHandoff:
 
-    def __init__(self, engine, users, client, memberships, receipts, claims, *, shop, catalog, writer, auth_guard_enabled=False, guest_checkout=None, clock=time.time):
+    def __init__(self, engine, users, client, memberships, receipts, claims, *, shop, catalog, writer, auth_guard_enabled=False, guest_checkout=None, clock=time.time, writer_factory=None):
         (self.engine, self.users, self.client) = (engine, users, client)
         (self.memberships, self.receipts, self.claims) = (memberships, receipts, claims)
         (self.shop, self.catalog, self.writer) = (shop, dict(catalog), writer)
         self.auth_guard_enabled = auth_guard_enabled
         (self.guest_checkout, self.clock) = (guest_checkout, clock)
+        self.writer_factory = writer_factory
 
-    def submit(self, order_id, *, staff, lab_profile):
+    def submit(self, order_id, *, staff, lab_profile, expected_review=None):
         if not staff or staff.get('role') != 'Admin' or (not staff.get('id')):
             raise PermissionError('Staff review required')
         if lab_profile.get('lab_review') != 'approved' or lab_profile.get('blocked') is True:
@@ -41,7 +45,12 @@ class ReviewedHandoff:
                     raise PermissionError('Current lab approval required before production')
                 if any((latest[key] != lab_profile.get(key) for key in ('practice',))):
                     raise ValueError('Lab profile changed. Reload before accepting.')
+                lab_profile = dict(latest)
+            if expected_review is not None:
+                if not isinstance(expected_review, str) or not re.fullmatch('[0-9a-f]{64}', expected_review) or (not hmac.compare_digest(expected_review, review_fingerprint(plan, address, lab_profile, self.receipts))):
+                    raise ValueError('Order review changed. Reload and review before accepting.')
             provision_lab(connection, self.users, lab_id=plan['lab_id'], practice=lab_profile['practice'], address=account_address, auth_guard_enabled=self.auth_guard_enabled)
             if address is not None:
                 save_destination(connection, self.shop, plan['order_id'], address)
-            return create_reviewed_cases(connection, plan, staff=staff, writer=self.writer)
+            writer = self.writer_factory(lab_profile) if self.writer_factory else self.writer
+            return create_reviewed_cases(connection, plan, staff=staff, writer=writer)

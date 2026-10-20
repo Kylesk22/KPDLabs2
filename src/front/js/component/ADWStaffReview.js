@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext, apiBase, csrf } from './AuthProvider';
 import '../../styles/adwStaffReview.css';
+import ADWOrderReview from './ADWOrderReview';
 
 export default function ADWStaffReview() {
   const auth = useContext(AuthContext);
@@ -93,6 +94,7 @@ export default function ADWStaffReview() {
         <button type="submit" disabled={busy || !reason.trim()}>Save review</button>
         <button type="button" disabled={busy} onClick={() => setSelected(null)}>Cancel</button>
       </form>}
+      <ADWOrderReview />
     </div>}
   </section>;
 }

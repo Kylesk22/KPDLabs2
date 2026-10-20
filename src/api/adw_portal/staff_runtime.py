@@ -6,8 +6,9 @@ from .staff_files import StaffFiles
 from .staff_review_routes import blueprint as review_blueprint
 from .staff_file_routes import blueprint as file_blueprint
 from .staff_shipping import preview_shipment
+from .staff_order_routes import blueprint as order_blueprint
 
-def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage):
+def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage, order_service=None):
     if enabled is not True:
         return False
     if not callable(lookup_user):
@@ -54,7 +55,10 @@ def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipt
             return (jsonify(error='Same-origin request required'), 403)
         if request.method == 'POST' and (request.content_length is None or request.content_length > 8192):
             return (jsonify(error='Invalid request size'), 413)
-    for routes in (review, files, shipping):
+    blueprints = [review, files, shipping]
+    if order_service is not None:
+        blueprints.append(order_blueprint(order_service, authenticate, csrf))
+    for routes in blueprints:
         routes.before_request(boundary)
         app.register_blueprint(routes, url_prefix='/api')
     return True

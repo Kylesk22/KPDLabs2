@@ -55,6 +55,8 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
         def writer_factory(profile):
             return case_writer(cases, accepted_at=datetime.now(timezone.utc), practice=profile['practice'], holidays=holidays)
         order_service = StaffOrders(ReviewedHandoff(engine, users, ShopifyOrders(environ['ADW_SHOPIFY_CLIENT_ID'], environ['ADW_SHOPIFY_SECRET']), None, receipts, claims, shop=SHOP, catalog=CATALOG, writer=None, auth_guard_enabled=True, guest_checkout=GuestCheckout(engine, receipts), writer_factory=writer_factory))
+        from .paid_order_worker import register_paid_order_command
+        register_paid_order_command(app, order_service.handoff)
         if environ.get('ADW_SHIPPING_RATES_ENABLED') == 'true':
             from .staff_shipping_rates import StaffShippingRates
             from .shipping_rates import ShippoRates

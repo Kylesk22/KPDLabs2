@@ -6,6 +6,9 @@ export default function ADWShippingReview() {
   const auth = useContext(AuthContext);
   const [ids,setIds] = useState(''), [parcel,setParcel] = useState({length:'6',width:'4',height:'4',weight:'1'});
   const [preview,setPreview] = useState(null), [message,setMessage] = useState(''), [busy,setBusy] = useState(false);
+  const [labelTools,setLabelTools] = useState(() => {
+    try {return Boolean(sessionStorage.getItem('adw-label-request'));} catch (_) {return false;}
+  });
   const alive = useRef(true), active = useRef(null), working = useRef(false);
   useEffect(() => { alive.current = true; return () => {alive.current = false; active.current?.abort();}; }, []);
   function changeParcel(key,value) {setParcel(current => ({...current,[key]:value})); setPreview(null);}
@@ -30,7 +33,10 @@ export default function ADWShippingReview() {
       const data = await response.json();
       if (!response.ok) throw Error(data.error || 'Unable to check shipping.');
       if (!data.sender || !data.destination) throw Error('Unexpected shipping response.');
-      if (alive.current) setPreview(data);
+      if (alive.current) {
+        setPreview(data);
+        if (data.rates?.some(rate => rate.quote_id)) setLabelTools(true);
+      }
     } catch (error) {
       if (alive.current) setMessage(error.name === 'AbortError' ? 'The rate check timed out. No label was purchased.' : error.message);
     } finally {
@@ -62,8 +68,7 @@ export default function ADWShippingReview() {
         <thead><tr><th>Carrier</th><th>Service</th><th>Price</th></tr></thead>
         <tbody>{preview.rates.map((rate,index) => <tr key={index}><td>{rate.carrier}</td><td>{rate.service}</td>
           <td>${rate.amount} {rate.currency}</td></tr>)}</tbody></table>}
-      {preview.rates?.some(rate => rate.quote_id) &&
-        <ADWLabelActions rates={preview.rates.filter(rate => rate.quote_id)} />}
     </>}
+    {labelTools && <ADWLabelActions rates={preview?.rates?.filter(rate => rate.quote_id) || []} />}
   </section>;
 }

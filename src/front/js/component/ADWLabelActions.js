@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext, apiBase, csrf} from './AuthProvider';
 
 export default function ADWLabelActions({rates}) {
@@ -8,6 +8,7 @@ export default function ADWLabelActions({rates}) {
     try {return sessionStorage.getItem('adw-label-request') || '';} catch (_) {return '';}
   }), [transaction,setTransaction] = useState('');
   const [busy,setBusy] = useState(false), [result,setResult] = useState(null), [message,setMessage] = useState('');
+  useEffect(() => {setChosen(null);setConfirmed(false);},[rates]);
   async function act(action) {
     if (busy) return;
     const id = action === 'purchase' ? chosen?.quote_id : requestId.trim();

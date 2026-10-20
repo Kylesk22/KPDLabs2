@@ -7,7 +7,7 @@ from .shopify_orders import ShopifyUnavailable
 def public_result(row):
     return {key: row[key] for key in ('id', 'state', 'amount_cents', 'tracking_number', 'label_url')}
 
-def blueprint(service, authenticate, csrf, *, clock=time.time):
+def blueprint(service, authenticate, csrf, *, clock=time.time, shipment_service=None):
     routes = Blueprint('adw_staff_labels', __name__)
 
     @routes.post('/adw/staff/shipping/labels/<label_id>/<action>')
@@ -17,7 +17,14 @@ def blueprint(service, authenticate, csrf, *, clock=time.time):
             if not csrf():
                 raise PermissionError()
             body = request.get_json(silent=True)
-            if action == 'purchase':
+            if action == 'confirm-shipment':
+                if shipment_service is None:
+                    return (jsonify(error='Shipment confirmation is not enabled yet'), 503)
+                if not isinstance(body, dict) or set(body) != {'tracking_number', 'confirmed'}:
+                    raise ValueError('Tracking number and carrier handoff confirmation required')
+                result = shipment_service.confirm(label_id, staff=staff, tracking_number=body['tracking_number'], confirmed=body['confirmed'], now=clock())
+                return jsonify(result)
+            elif action == 'purchase':
                 if not isinstance(body, dict) or set(body) != {'amount_cents', 'confirmed'} or body['confirmed'] is not True:
                     raise ValueError('Explicit confirmation of the quoted amount is required')
                 result = service.buy(label_id, staff=staff, amount_cents=body['amount_cents'], now=clock())
@@ -31,7 +38,7 @@ def blueprint(service, authenticate, csrf, *, clock=time.time):
                 result = service.ledger.get(label_id, staff=staff)
             else:
                 return (jsonify(error='Unknown label action'), 404)
-            return jsonify(public_result(result))
+            return jsonify(dict(public_result(result), shipment_confirmation_enabled=shipment_service is not None))
         except PermissionError:
             return (jsonify(error='Staff access required'), 403)
         except ValueError as error:

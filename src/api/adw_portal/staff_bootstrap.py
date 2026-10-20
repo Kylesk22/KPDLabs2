@@ -20,6 +20,9 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
     order_service = None
     shipping_service = None
     label_service = None
+    shipment_service = None
+    if (environ or {}).get('ADW_SHIPMENT_CONFIRMATION_ENABLED') == 'true' and (environ or {}).get('ADW_LABEL_PURCHASE_ENABLED') != 'true':
+        raise ValueError('Label service required before shipment confirmation')
     if (environ or {}).get('ADW_LABEL_PURCHASE_ENABLED') == 'true' and (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') != 'true':
         raise ValueError('Shipping rates required before label purchasing')
     if (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') == 'true' and (environ or {}).get('ADW_STAFF_ORDERS_ENABLED') != 'true':
@@ -66,9 +69,12 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
                 provider = ShippoLabels(environ.get('SHIPPO_TOKEN'), enabled=True, test_mode=mode == 'test')
                 shipping_service.ledger = ledger
                 label_service = LabelPurchases(ledger, provider, cases, LabelValidation(order_service.handoff, cases), test_mode=mode == 'test')
+                if environ.get('ADW_SHIPMENT_CONFIRMATION_ENABLED') == 'true':
+                    from .shipment_confirmation import ShipmentConfirmation
+                    shipment_service = ShipmentConfirmation(engine, cases, LabelValidation(order_service.handoff, cases))
 
     def authenticate():
         verify_jwt_in_request(locations=['cookies'])
         return lookup_user(get_jwt_identity())
     register_kpd_guards(app, enabled=True, engine=engine, authenticate_staff=authenticate, lookup_user=lookup_user)
-    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service, shipping_service=shipping_service, label_service=label_service)
+    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service, shipping_service=shipping_service, label_service=label_service, shipment_service=shipment_service)

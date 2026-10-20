@@ -18,6 +18,9 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
             raise ValueError('Staff migration required')
     claims = OrderClaims(engine)
     order_service = None
+    shipping_service = None
+    if (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') == 'true' and (environ or {}).get('ADW_STAFF_ORDERS_ENABLED') != 'true':
+        raise ValueError('Staff order review must be enabled before shipping rates')
     if (environ or {}).get('ADW_STAFF_ORDERS_ENABLED') == 'true':
         from sqlalchemy import MetaData, Table
         from datetime import datetime, timezone, date
@@ -41,9 +44,13 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
         def writer_factory(profile):
             return case_writer(cases, accepted_at=datetime.now(timezone.utc), practice=profile['practice'], holidays=holidays)
         order_service = StaffOrders(ReviewedHandoff(engine, users, ShopifyOrders(environ['ADW_SHOPIFY_CLIENT_ID'], environ['ADW_SHOPIFY_SECRET']), None, receipts, claims, shop=SHOP, catalog=CATALOG, writer=None, auth_guard_enabled=True, guest_checkout=GuestCheckout(engine, receipts), writer_factory=writer_factory))
+        if environ.get('ADW_SHIPPING_RATES_ENABLED') == 'true':
+            from .staff_shipping_rates import StaffShippingRates
+            from .shipping_rates import ShippoRates
+            shipping_service = StaffShippingRates(order_service.handoff, cases, ShippoRates(environ.get('SHIPPO_TOKEN')))
 
     def authenticate():
         verify_jwt_in_request(locations=['cookies'])
         return lookup_user(get_jwt_identity())
     register_kpd_guards(app, enabled=True, engine=engine, authenticate_staff=authenticate, lookup_user=lookup_user)
-    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service)
+    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service, shipping_service=shipping_service)

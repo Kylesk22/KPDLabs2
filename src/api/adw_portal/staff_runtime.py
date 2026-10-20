@@ -7,8 +7,10 @@ from .staff_review_routes import blueprint as review_blueprint
 from .staff_file_routes import blueprint as file_blueprint
 from .staff_shipping import preview_shipment
 from .staff_order_routes import blueprint as order_blueprint
+from .shipping_rates import RatesUnavailable
+from .shopify_orders import ShopifyUnavailable
 
-def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage, order_service=None):
+def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage, order_service=None, shipping_service=None):
     if enabled is not True:
         return False
     if not callable(lookup_user):
@@ -28,6 +30,23 @@ def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipt
     review = review_blueprint(LabReview(engine), authenticate, csrf)
     files = file_blueprint(StaffFiles(claims, receipts, storage, bucket='adw-case-files', shop='0z8umb-uq.myshopify.com'), authenticate)
     shipping = Blueprint('adw_staff_shipping', __name__)
+
+    @shipping.post('/adw/staff/shipping/rates')
+    def shipping_rates():
+        try:
+            staff = authenticate()
+            if shipping_service is None:
+                return (jsonify(error='ADW shipping rates are not enabled yet'), 503)
+            body = request.get_json(silent=True)
+            if not isinstance(body, dict) or set(body) != {'case_ids', 'parcel'}:
+                raise ValueError('Send only selected case IDs and package measurements')
+            return jsonify(shipping_service.quote(body['case_ids'], body['parcel'], staff=staff))
+        except PermissionError:
+            return (jsonify(error='Staff access required'), 403)
+        except ValueError as error:
+            return (jsonify(error=str(error)), 400)
+        except (RatesUnavailable, ShopifyUnavailable):
+            return (jsonify(error='Shipping verification or rates unavailable. No label purchased.'), 503)
 
     @shipping.post('/adw/staff/shipping/preview')
     def shipping_preview():

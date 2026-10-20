@@ -5,7 +5,9 @@ from .label_purchase import PurchaseUncertain
 from .shopify_orders import ShopifyUnavailable
 
 def public_result(row):
-    return {key: row[key] for key in ('id', 'state', 'amount_cents', 'tracking_number', 'label_url')}
+    result = {key: row[key] for key in ('id', 'state', 'amount_cents', 'tracking_number', 'label_url')}
+    result['tracking_state'] = row.get('tracking_state')
+    return result
 
 def blueprint(service, authenticate, csrf, *, clock=time.time, shipment_service=None):
     routes = Blueprint('adw_staff_labels', __name__)

@@ -38,9 +38,10 @@ class LabelLedger:
         require_staff(staff)
         with self.engine.connect() as db:
             row = db.execute(select(labels).where(labels.c.id == label_id)).mappings().one_or_none()
+            tracking_state = db.execute(select(tracking_jobs.c.state).where(tracking_jobs.c.label_id == label_id)).scalar_one_or_none()
         if row is None:
             raise ValueError('Label request unavailable')
-        return dict(row)
+        return dict(row, tracking_state=tracking_state)
 
     def claim(self, label_id, *, staff, amount_cents, now, validate):
         """validate(db, snapshot) must lock/check current case and lab rows."""

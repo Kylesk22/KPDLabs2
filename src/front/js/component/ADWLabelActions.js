@@ -69,7 +69,15 @@ export default function ADWLabelActions({rates}) {
     {result && <div><p>Request: {result.id} — {result.state}</p>
       {result.state === 'purchased' && <p>Tracking: {result.tracking_number}.{' '}
         <a href={result.label_url} target="_blank" rel="noopener noreferrer">Open purchased label</a></p>}
-      {result.state === 'purchased' && result.shipment_confirmation_enabled && <>
+      {result.state === 'purchased' && <p role="status">{({
+        pending:'Awaiting carrier handoff. No customer tracking update has been queued.',
+        ready:'Carrier handoff recorded. Tracking update is queued.',
+        sending:'Tracking update is in progress or awaiting verification. Check status before taking further action.',
+        sent:'Shopify tracking update confirmed. This status does not confirm email delivery.',
+        needs_reconciliation:'Tracking update needs review. Do not send it again; ask an administrator to check the existing Shopify fulfillment.'
+      })[result.tracking_state] || 'Check status to see the carrier handoff and tracking update.'}</p>}
+      {result.state === 'purchased' && result.shipment_confirmation_enabled &&
+        (!result.tracking_state || result.tracking_state === 'pending') && <>
         <label><input type="checkbox" checked={handedOver} disabled={busy}
           onChange={event => setHandedOver(event.target.checked)} />
           I confirm this parcel, with tracking {result.tracking_number}, has been handed to the carrier.

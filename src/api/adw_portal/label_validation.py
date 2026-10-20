@@ -10,7 +10,10 @@ from .shipping_rates import DEFAULT_PARCEL, parcel_details
 
 class LabelValidation:
 
-    def __init__(self, handoff, cases):
+    def __init__(self, handoff, cases, *, required_status='Ready to Ship'):
+        if required_status not in ('Ready to Ship', 'Shipped'):
+            raise ValueError('Unsupported shipment validation status')
+        self.required_status = required_status
         (self.handoff, self.cases) = (handoff, cases)
 
     def __call__(self, db, snapshot):
@@ -29,8 +32,8 @@ class LabelValidation:
         if len(approved) != len(lab_ids) or any((row['lab_review'] != 'approved' or row['blocked'] for row in approved)):
             raise ValueError('Lab approval required before shipping')
         cases = db.execute(select(self.cases).where(self.cases.c.id.in_(ids)).order_by(self.cases.c.id).with_for_update()).mappings().all()
-        if len(cases) != len(ids) or any((row['status'] != 'Ready to Ship' or row['hold'] not in (None, '') for row in cases)):
-            raise ValueError('Every selected case must be Ready to Ship and not on hold')
+        if len(cases) != len(ids) or any((row['status'] != self.required_status or row['hold'] not in (None, '') for row in cases)):
+            raise ValueError('Every selected case must be ' + self.required_status + ' and not on hold')
         expected = {(row['shop'], row['order_id']) for row in selected}
         saved = snapshot.get('orders', [])
         if len(saved) != len(expected) or {(row['shop'], row['order_id']) for row in saved} != expected:

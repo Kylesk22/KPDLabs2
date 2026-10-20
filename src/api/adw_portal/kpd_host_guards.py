@@ -49,6 +49,8 @@ def register_kpd_guards(app, *, enabled, engine, authenticate_staff, lookup_user
             return (jsonify(message='Administrator access required for ADW cases'), 403)
         if body.get('status') == 'Billed':
             return (jsonify(message='ADW cases are paid through Shopify and cannot be billed again in KPD.'), 409)
+        if body.get('status') == 'Shipped':
+            return (jsonify(message='Confirm ADW carrier handoff in the verified shipping panel.'), 409)
         if request.path.startswith('/api/shippo/'):
             return (jsonify(message='ADW labels require the verified order shipping flow.'), 409)
     app.extensions['adw_kpd_guards'] = True

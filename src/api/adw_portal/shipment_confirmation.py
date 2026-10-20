@@ -39,6 +39,6 @@ class ShipmentConfirmation:
                 if len(encoded) > 2000:
                     raise ValueError('Case log requires review')
                 db.execute(self.cases.update().where(self.cases.c.id == row['id']).values(status='Shipped', log=encoded))
-            payload = dict(job['payload'], confirmed_by=str(staff['id']), confirmed_at=int(now))
+            payload = dict(job['payload'], confirmed_by=str(staff['id']), confirmed_at=int(now), notify_customer=True)
             db.execute(tracking_jobs.update().where(tracking_jobs.c.label_id == label_id).values(state='ready', payload=payload))
             return dict(label_id=label_id, state='ready', duplicate=False)

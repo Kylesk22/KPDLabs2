@@ -21,6 +21,11 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
     shipping_service = None
     label_service = None
     shipment_service = None
+    tracking_config = environ or {}
+    if any((tracking_config.get(key) == 'true' for key in ('ADW_TRACKING_SEND_ENABLED', 'ADW_TRACKING_EMAIL_ENABLED'))) and tracking_config.get('ADW_TRACKING_REVIEW_ENABLED') != 'true':
+        raise ValueError('Tracking review required before tracking sending')
+    if tracking_config.get('ADW_TRACKING_REVIEW_ENABLED') == 'true' and tracking_config.get('ADW_STAFF_ORDERS_ENABLED') != 'true':
+        raise ValueError('Staff orders required before tracking review')
     if (environ or {}).get('ADW_SHIPMENT_CONFIRMATION_ENABLED') == 'true' and (environ or {}).get('ADW_LABEL_PURCHASE_ENABLED') != 'true':
         raise ValueError('Label service required before shipment confirmation')
     if (environ or {}).get('ADW_LABEL_PURCHASE_ENABLED') == 'true' and (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') != 'true':
@@ -72,6 +77,14 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
                 if environ.get('ADW_SHIPMENT_CONFIRMATION_ENABLED') == 'true':
                     from .shipment_confirmation import ShipmentConfirmation
                     shipment_service = ShipmentConfirmation(engine, cases, LabelValidation(order_service.handoff, cases))
+        if environ.get('ADW_TRACKING_REVIEW_ENABLED') == 'true':
+            from .tracking_commands import assemble_tracking, register_tracking_commands
+            from .label_ledger import metadata as tracking_metadata
+            for table in tracking_metadata.tables.values():
+                columns = {entry['name'] for entry in inspector.get_columns(table.name)}
+                if not set(table.columns.keys()).issubset(columns):
+                    raise ValueError('Label migration required before tracking review')
+            register_tracking_commands(app, assemble_tracking(engine, order_service.handoff, cases, environ))
 
     def authenticate():
         verify_jwt_in_request(locations=['cookies'])

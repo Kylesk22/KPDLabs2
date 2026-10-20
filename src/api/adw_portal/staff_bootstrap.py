@@ -22,6 +22,8 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
     label_service = None
     shipment_service = None
     tracking_config = environ or {}
+    if tracking_config.get('ADW_PAID_WEBHOOK_ENABLED') == 'true' and tracking_config.get('ADW_STAFF_ORDERS_ENABLED') != 'true':
+        raise ValueError('Staff orders required before paid notifications')
     if any((tracking_config.get(key) == 'true' for key in ('ADW_TRACKING_SEND_ENABLED', 'ADW_TRACKING_EMAIL_ENABLED'))) and tracking_config.get('ADW_TRACKING_REVIEW_ENABLED') != 'true':
         raise ValueError('Tracking review required before tracking sending')
     if tracking_config.get('ADW_TRACKING_REVIEW_ENABLED') == 'true' and tracking_config.get('ADW_STAFF_ORDERS_ENABLED') != 'true':
@@ -57,6 +59,8 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
         order_service = StaffOrders(ReviewedHandoff(engine, users, ShopifyOrders(environ['ADW_SHOPIFY_CLIENT_ID'], environ['ADW_SHOPIFY_SECRET']), None, receipts, claims, shop=SHOP, catalog=CATALOG, writer=None, auth_guard_enabled=True, guest_checkout=GuestCheckout(engine, receipts), writer_factory=writer_factory))
         from .paid_order_worker import register_paid_order_command
         register_paid_order_command(app, order_service.handoff)
+        from .paid_webhook import register_paid_webhook
+        register_paid_webhook(app, engine, secret=environ['ADW_SHOPIFY_SECRET'], shop=SHOP, enabled=environ.get('ADW_PAID_WEBHOOK_ENABLED') == 'true')
         if environ.get('ADW_SHIPPING_RATES_ENABLED') == 'true':
             from .staff_shipping_rates import StaffShippingRates
             from .shipping_rates import ShippoRates

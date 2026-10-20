@@ -16,7 +16,8 @@ from .guest_checkout import metadata as checkout
 from .portal_rate_limits import metadata as rate_limits
 from .direct_upload_reservations import metadata as direct
 from .label_ledger import metadata as shipping
-INTEGRATION_TABLES = tuple((table for metadata in (orders, email, sessions, enrollment, checkout, rate_limits, direct, shipping) for table in metadata.tables.values()))
+from .shared_queues import notifications, jobs
+INTEGRATION_TABLES = tuple((table for metadata in (orders, email, sessions, enrollment, checkout, rate_limits, direct, shipping) for table in metadata.tables.values())) + (notifications, jobs)
 
 def register_integration_metadata(target):
     for table in INTEGRATION_TABLES:

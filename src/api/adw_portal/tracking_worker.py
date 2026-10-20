@@ -51,3 +51,30 @@ class TrackingWorker:
     def reconcile(self, label_id, key):
         self.delivery.reconcile(label_id, key)
         return self.status(label_id)
+
+    def batch(self, *, limit=25, after=None, send=False):
+        """One bounded queue page. Uncertain sends always need reconciliation."""
+        if type(limit) is not int or not 1 <= limit <= 100:
+            raise ValueError('Batch limit must be between 1 and 100')
+        if after is not None and (not isinstance(after, str) or len(after) > 40):
+            raise ValueError('Invalid queue cursor')
+        if send and self.enabled is not True:
+            raise ValueError('Tracking dispatch is disabled')
+        query = select(tracking_jobs).where(tracking_jobs.c.state.in_(('ready', 'sending', 'needs_reconciliation')))
+        if after:
+            query = query.where(tracking_jobs.c.label_id > after)
+        with self.engine.connect() as db:
+            jobs = db.execute(query.order_by(tracking_jobs.c.label_id).limit(limit + 1)).mappings().all()
+        results = []
+        for job in jobs[:limit]:
+            label_id = job['label_id']
+            rows = job['payload'].get('deliveries', [])
+            uncertain = any((row['state'] in ('sending', 'needs_reconciliation') for row in rows))
+            state = 'needs_reconciliation' if uncertain else job['state']
+            if send and (not uncertain) and (state != 'needs_reconciliation'):
+                try:
+                    state = self.run(label_id)['state']
+                except Exception:
+                    state = 'review_required'
+            results.append(dict(label_id=label_id, state=state))
+        return dict(jobs=results, preview=not send, next_cursor=jobs[limit - 1]['label_id'] if len(jobs) > limit else None)

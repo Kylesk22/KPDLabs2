@@ -4,6 +4,20 @@ import click
 
 def register_tracking_commands(app, worker):
 
+    @app.cli.command('adw-tracking-queue')
+    @click.option('--limit', type=click.IntRange(1, 100), default=25, show_default=True)
+    @click.option('--after', default=None)
+    @click.option('--send', is_flag=True, help='Send eligible jobs only when host sending is enabled.')
+    def tracking_queue(limit, after, send):
+        """Preview pending shipments by default; process a bounded page with --send."""
+        try:
+            result = worker.batch(limit=limit, after=after, send=send)
+        except Exception:
+            raise click.ClickException('Tracking queue unavailable; check configuration.') from None
+        click.echo(json.dumps(result))
+        if send and any((row['state'] != 'sent' for row in result['jobs'])):
+            raise click.ClickException('Some shipments need review; no uncertain attempt was retried.')
+
     @app.cli.command('adw-tracking')
     @click.option('--label-id', required=True)
     @click.option('--action', type=click.Choice(['status', 'prepare', 'send', 'reconcile']), default='status', show_default=True)

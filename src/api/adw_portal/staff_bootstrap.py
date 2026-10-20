@@ -60,7 +60,9 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
         from .paid_order_worker import register_paid_order_command
         register_paid_order_command(app, order_service.handoff)
         from .paid_webhook import register_paid_webhook
-        register_paid_webhook(app, engine, secret=environ['ADW_SHOPIFY_SECRET'], shop=SHOP, enabled=environ.get('ADW_PAID_WEBHOOK_ENABLED') == 'true')
+        from .slack_notice import SlackNotice
+        notifier = SlackNotice(environ.get('SLACK_WEBHOOK')) if environ.get('SLACK_WEBHOOK') else None
+        register_paid_webhook(app, engine, secret=environ['ADW_SHOPIFY_SECRET'], shop=SHOP, enabled=environ.get('ADW_PAID_WEBHOOK_ENABLED') == 'true', notifier=notifier)
         if environ.get('ADW_SHIPPING_RATES_ENABLED') == 'true':
             from .staff_shipping_rates import StaffShippingRates
             from .shipping_rates import ShippoRates

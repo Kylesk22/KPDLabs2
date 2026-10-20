@@ -4,7 +4,7 @@ from sqlalchemy import inspect
 from .shared_queues import SharedInbox, notifications, jobs
 PATH = '/adw/webhooks/orders-paid'
 
-def register_paid_webhook(app, engine, *, secret, shop, enabled=False, inbox=None):
+def register_paid_webhook(app, engine, *, secret, shop, enabled=False, inbox=None, notifier=None):
     if enabled is not True:
         return False
     if not isinstance(secret, str) or len(secret.encode()) < 16:
@@ -26,11 +26,18 @@ def register_paid_webhook(app, engine, *, secret, shop, enabled=False, inbox=Non
         if len(raw) > 2000000:
             return (jsonify(error='Notification too large'), 413)
         try:
-            receiver.receive(raw, dict(request.headers), secret=secret.encode(), shop=shop, allow_test=False)
+            result = receiver.receive(raw, dict(request.headers), secret=secret.encode(), shop=shop, allow_test=False)
         except ValueError:
             return (jsonify(error='Notification rejected'), 401)
         except Exception:
             return (jsonify(error='Notification temporarily unavailable'), 503)
+        if notifier is not None and result.get('new_order'):
+            try:
+                sent = notifier.send(result['order_id'])
+            except Exception:
+                sent = False
+            if not sent:
+                app.logger.warning('ADW Slack alert unconfirmed; order remains in staff queue.')
         return (jsonify(received=True), 200)
 
     @bp.after_request

@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AuthContext, apiBase, csrf} from './AuthProvider';
+import ADWWaitingOrders from './ADWWaitingOrders';
 
 export default function ADWOrderReview() {
   const auth = useContext(AuthContext);
@@ -75,6 +76,9 @@ export default function ADWOrderReview() {
   return <section className="adw-review-form" aria-label="ADW order review">
     <h3>Review an ADW order</h3>
     <p>Check the paid order and its files before creating KPD work. Shopify test orders cannot enter production.</p>
+    <ADWWaitingOrders disabled={busy} onSelect={id => {
+      setOrderId(id); setReview(null); setChecked(false); setMessage('');
+    }} />
     <form onSubmit={event => { event.preventDefault(); run(false); }}>
       <label>Shopify order ID
         <input value={orderId} disabled={busy} required inputMode="numeric" pattern="[1-9][0-9]{0,31}"

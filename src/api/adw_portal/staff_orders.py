@@ -12,6 +12,19 @@ class StaffOrders:
     def __init__(self, handoff):
         self.handoff = handoff
 
+    def waiting(self, *, staff, after=None):
+        require_staff(staff)
+        from .shared_queues import jobs
+        from .kpd_case_links import links
+        if after is not None and (not re.fullmatch('[1-9][0-9]{0,31}', after)):
+            raise ValueError('Invalid order cursor')
+        query = select(jobs.c.order_id, jobs.c.status).where(jobs.c.shop == self.handoff.shop, ~select(links.c.case_id).where(links.c.shop == jobs.c.shop, links.c.order_id == jobs.c.order_id).exists())
+        if after is not None:
+            query = query.where(jobs.c.order_id > after)
+        with self.handoff.engine.connect() as db:
+            rows = list(db.execute(query.order_by(jobs.c.order_id).limit(26)).mappings())
+        return dict(orders=[dict(row) for row in rows[:25]], next_cursor=rows[24]['order_id'] if len(rows) > 25 else None)
+
     def profile(self, lab_id):
         with self.handoff.engine.connect() as db:
             row = db.execute(select(labs).where(labs.c.lab_id == lab_id)).mappings().one_or_none()

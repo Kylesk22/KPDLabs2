@@ -24,7 +24,8 @@ class SharedInbox:
                     raise ValueError('Delivery identity reused with different content')
                 return {'duplicate': True, 'order_id': notice['order_id']}
             db.execute(self.insert_builder(jobs).values(shop=shop, order_id=notice['order_id'], status='awaiting_reconciliation', version=1).on_conflict_do_update(index_elements=['shop', 'order_id'], set_={'status': 'awaiting_reconciliation', 'version': jobs.c.version + 1}))
-        return {'duplicate': False, 'order_id': notice['order_id']}
+            version = db.execute(select(jobs.c.version).where(jobs.c.shop == shop, jobs.c.order_id == notice['order_id'])).scalar_one()
+        return {'duplicate': False, 'order_id': notice['order_id'], 'new_order': version == 1}
 
     def pending(self):
         with self.engine.connect() as db:

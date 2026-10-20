@@ -7,6 +7,17 @@ from .shopify_orders import ShopifyUnavailable
 def blueprint(service, authenticate_staff, verify_csrf):
     routes = Blueprint('adw_staff_orders', __name__)
 
+    @routes.get('/adw/staff/orders/waiting')
+    def waiting():
+        try:
+            staff = authenticate_staff()
+            require_staff(staff)
+            return jsonify(service.waiting(staff=staff, after=request.args.get('after')))
+        except PermissionError:
+            return (jsonify(error='Staff access required'), 403)
+        except ValueError:
+            return (jsonify(error='Invalid order cursor'), 400)
+
     def identity(order_id):
         staff = authenticate_staff()
         require_staff(staff)

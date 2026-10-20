@@ -10,7 +10,7 @@ from .staff_order_routes import blueprint as order_blueprint
 from .shipping_rates import RatesUnavailable
 from .shopify_orders import ShopifyUnavailable
 
-def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage, order_service=None, shipping_service=None):
+def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipts, storage, order_service=None, shipping_service=None, label_service=None):
     if enabled is not True:
         return False
     if not callable(lookup_user):
@@ -75,6 +75,9 @@ def register_staff_runtime(app, *, enabled, engine, lookup_user, claims, receipt
         if request.method == 'POST' and (request.content_length is None or request.content_length > 8192):
             return (jsonify(error='Invalid request size'), 413)
     blueprints = [review, files, shipping]
+    if label_service is not None:
+        from .staff_label_routes import blueprint as label_blueprint
+        blueprints.append(label_blueprint(label_service, authenticate, csrf))
     if order_service is not None:
         blueprints.append(order_blueprint(order_service, authenticate, csrf))
     for routes in blueprints:

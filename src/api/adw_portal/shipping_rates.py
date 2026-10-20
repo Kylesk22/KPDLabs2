@@ -36,7 +36,7 @@ class ShippoRates:
             raise ValueError('Shippo credentials required')
         (self.token, self.opener) = (token, opener)
 
-    def quote(self, sender, destination, parcel):
+    def quote(self, sender, destination, parcel, *, include_rate_ids=False):
         payload = dict(address_from=shippo_address(sender), address_to=shippo_address(destination), parcels=[parcel_details(parcel)], **{'async': False})
         request = Request('https://api.goshippo.com/shipments/', data=json.dumps(payload).encode(), method='POST', headers={'Authorization': 'ShippoToken ' + self.token, 'Content-Type': 'application/json', 'SHIPPO-API-VERSION': '2018-02-08'})
         try:
@@ -67,6 +67,11 @@ class ShippoRates:
                 if not isinstance(provider, str) or not isinstance(service, str):
                     raise ValueError()
                 prepared.append(dict(carrier=provider[:100], service=service[:100], amount=format(amount, '.2f'), currency='USD'))
+                if include_rate_ids:
+                    rate_id = rate.get('object_id')
+                    if not isinstance(rate_id, str) or not 1 <= len(rate_id) <= 80 or (not rate_id.isalnum()):
+                        raise ValueError()
+                    prepared[-1]['rate_id'] = rate_id
             if not prepared:
                 raise ValueError()
             return sorted(prepared, key=lambda rate: Decimal(rate['amount']))

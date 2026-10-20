@@ -19,6 +19,9 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
     claims = OrderClaims(engine)
     order_service = None
     shipping_service = None
+    label_service = None
+    if (environ or {}).get('ADW_LABEL_PURCHASE_ENABLED') == 'true' and (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') != 'true':
+        raise ValueError('Shipping rates required before label purchasing')
     if (environ or {}).get('ADW_SHIPPING_RATES_ENABLED') == 'true' and (environ or {}).get('ADW_STAFF_ORDERS_ENABLED') != 'true':
         raise ValueError('Staff order review must be enabled before shipping rates')
     if (environ or {}).get('ADW_STAFF_ORDERS_ENABLED') == 'true':
@@ -48,9 +51,24 @@ def configure_staff(app, engine, storage, receipts, lookup_user, *, environ=None
             from .staff_shipping_rates import StaffShippingRates
             from .shipping_rates import ShippoRates
             shipping_service = StaffShippingRates(order_service.handoff, cases, ShippoRates(environ.get('SHIPPO_TOKEN')))
+            if environ.get('ADW_LABEL_PURCHASE_ENABLED') == 'true':
+                from .label_ledger import LabelLedger, metadata as label_metadata
+                from .label_purchase import LabelPurchases, ShippoLabels
+                from .label_validation import LabelValidation
+                mode = environ.get('ADW_LABEL_MODE')
+                if mode not in ('test', 'live'):
+                    raise ValueError('Explicit label mode required')
+                for table in label_metadata.tables.values():
+                    columns = {entry['name'] for entry in inspector.get_columns(table.name)}
+                    if not set(table.columns.keys()).issubset(columns):
+                        raise ValueError('Label migration required')
+                ledger = LabelLedger(engine)
+                provider = ShippoLabels(environ.get('SHIPPO_TOKEN'), enabled=True, test_mode=mode == 'test')
+                shipping_service.ledger = ledger
+                label_service = LabelPurchases(ledger, provider, cases, LabelValidation(order_service.handoff, cases), test_mode=mode == 'test')
 
     def authenticate():
         verify_jwt_in_request(locations=['cookies'])
         return lookup_user(get_jwt_identity())
     register_kpd_guards(app, enabled=True, engine=engine, authenticate_staff=authenticate, lookup_user=lookup_user)
-    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service, shipping_service=shipping_service)
+    register_staff_runtime(app, enabled=True, engine=engine, lookup_user=lookup_user, claims=claims, receipts=receipts, storage=storage, order_service=order_service, shipping_service=shipping_service, label_service=label_service)

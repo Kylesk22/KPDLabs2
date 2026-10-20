@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AuthContext, apiBase, csrf} from './AuthProvider';
+import ADWLabelActions from './ADWLabelActions';
 
 export default function ADWShippingReview() {
   const auth = useContext(AuthContext);
@@ -61,6 +62,8 @@ export default function ADWShippingReview() {
         <thead><tr><th>Carrier</th><th>Service</th><th>Price</th></tr></thead>
         <tbody>{preview.rates.map((rate,index) => <tr key={index}><td>{rate.carrier}</td><td>{rate.service}</td>
           <td>${rate.amount} {rate.currency}</td></tr>)}</tbody></table>}
+      {preview.rates?.some(rate => rate.quote_id) &&
+        <ADWLabelActions rates={preview.rates.filter(rate => rate.quote_id)} />}
     </>}
   </section>;
 }

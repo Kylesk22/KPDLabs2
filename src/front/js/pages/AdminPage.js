@@ -545,6 +545,10 @@ export const AdminPage = props => {
             </div> */}
             <div>
                 <ADWStaffReview />
+                <nav className="kpd-operations-shortcuts" aria-label="Lab tools" style={{display:'flex',gap:12,marginBottom:20}}>
+                  <Link className="btn btn-primary" to={`/admin/${id}/shipping`}>Shipping</Link>
+                  <Link className="btn btn-primary" to={`/admin/${id}/reports`}>Reports</Link>
+                </nav>
                 <section className="kpd-controls" aria-label="Case filters">
                   <div className="kpd-toolbar"><div><h2>Case dashboard</h2><p>Find cases and plan today's production.</p></div>
                     <details className="kpd-color-key"><summary>Color key</summary><p>Red: overdue · Gold: rush · Blue: express shipping · Purple: on hold</p></details>

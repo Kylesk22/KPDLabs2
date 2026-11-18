@@ -1385,38 +1385,9 @@ def get_rates_to_kpd(id):
 @api.route('/shippo/get_label', methods=['POST'])
 @jwt_required()
 def get_label():
-    cases_included = request.json.get("cases", [])
+    # Older browser tabs must not bypass durable purchase reservations.
+    return jsonify(message="Use the Shipping page to purchase and reprint labels."), 409
 
-    # Get the first rate in the rates results.
-    # Customize this based on your business logic.
-    rates = request.json.get("rate", None)
-    print(rates)
-    shippo_sdk = shippo.Shippo(api_key_header=shippo_token)
-
-    # Purchase the desired rate. 
-    transaction = shippo_sdk.transactions.create(
-        components.TransactionCreateRequest(
-            rate=rates["object_id"],
-            label_file_type=components.LabelFileTypeEnum.PDF,
-            async_=False
-        )
-    )
-
-    # Retrieve label url and tracking number or error message
-    if transaction.status == "SUCCESS":
-        print(transaction.label_url)
-        print(transaction.tracking_number)
-        
-
-        for case in cases_included:           
-            update_case = Case.query.filter_by(id=case).first()
-            update_case.add_log(f"Tracking Number: {transaction.tracking_number}")
-            db.session.commit()
-        return jsonify(transaction.label_url)
-    else:
-        print(transaction.messages)
-        return(transaction.messages)
-    
 @api.route('/blogs', methods=['GET'])
 @jwt_required()
 def get_blogs():
@@ -1492,3 +1463,6 @@ def update_doctors(user_id):
     user.doctors = json.dumps(doctors)
     db.session.commit()
     return jsonify({"message": "Doctors updated", "doctors": doctors}), 200
+
+from api.kpd_operations import register_operations
+register_operations(api)

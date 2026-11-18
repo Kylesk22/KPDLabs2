@@ -1839,61 +1839,9 @@ export const AdminSingleCase = props => {
                     <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); updateCase(); window.location.href = `/admin/${id}`}}>Update Case</button>
                     </div>
                 </div> */}
-                <div className="row form-group justify-content-center mt-3 no-print">
-                    <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); setShippingStart(true)}}>Shipping Label</button>
-                    </div>
+                <div className="text-center mt-3 no-print">
+                    <a className="btn btn-primary" href={`/admin/${id}/shipping`}>Open Shipping — ready cases &amp; 4 × 6 labels</a>
                 </div>
-                {(shippingStart && cases)?
-                <div className="row form-group justify-content-center no-print">
-                    <div className="col-4 text-center justify-content-center no-print">
-                    Select All Cases Being Shipped
-                    {cases.map((item, index) => {
-                        const backgroundColor = colorMap[item["id"]] || 'lightgray';
-                        return (
-                            <div key={index} className="row form-group justify-content-center no-print" style={{backgroundColor, margin: "auto", width: "100px"}} onClick={()=>{handleSelectedCasesColor(item["id"])}}>{item["id"]}
-                            </div>
-                    )})}
-                    <button className="btn btn-primary no-print" onClick={(e)=>{e.preventDefault(); setShippingStart(false); setShippingRates(true)}}>
-                        Submit
-                    </button>
-                    </div>
-                </div>
-                :""}
-                {(shippingRates)?
-                <>
-                <div className="row form-group justify-content-center mt-3 no-print">
-                    <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); shippoTest2()}}>Get Rates</button>
-                    </div>
-                </div>
-                <div className="row justify-content-center mt-3">
-                    {rates.map((item, index) => {
-                        return (
-                            <div className="col-2" style={{border: "black 1px solid"}}key={index} onClick={()=> {console.log(item); getLabel(item); setShippingRates(false)}}>
-                                <div>{item.amount}</div>
-                                <div>{item.provider}</div>
-                                <div>{item.servicelevel.name}</div>
-                            </div>
-                            
-                    )})}
-                </div>
-                </>
-                :""}
-                <div className="row form-group justify-content-center mt-3 no-print">
-                    {(labelUrl)?
-                    <div className="text-center col-8 col-lg-4 pt-3">
-                    <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); window.open(labelUrl, '_blank'); }}>
-                        Label
-                    </button>
-                    </div>
-                     :""   }
-                </div>
-                
-               
-                
-                
-            
             </form>
                 
             </>)

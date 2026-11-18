@@ -1,3 +1,5 @@
+import KPDReports from "./pages/KPDReports";
+import KPDShipping from "./pages/KPDShipping";
 import { createBrowserHistory } from "history";
 const navigationHistory = createBrowserHistory();
 import React, { useContext, useState, useEffect } from "react";
@@ -88,6 +90,8 @@ const Layout = () => {
                         <Route element={<Forgot /> } path = "/forgot"/>
                         <Route element={<AdminLogin /> } path = "/admin/login"/>
                         <Route element={<AdminPage /> } path = "/admin/:user_id"/>
+                        <Route element={<KPDReports />} path="/admin/:user_id/reports"/>
+                        <Route element={<KPDShipping />} path="/admin/:user_id/shipping"/>
                         <Route element={<AdminSingleCase /> } path = "/admin/:user_id/:case_id"/>
                         <Route element={<Blogs /> } path = "/blogs"/>
                         <Route element={<Blog1 />  } path = "/blogs/blog1"/>

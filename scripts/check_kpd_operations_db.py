@@ -8,6 +8,36 @@ from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.engine import make_url
 
 
+def safe_connection_error(error):
+    """Classify the driver error without returning any of its private text."""
+    original = getattr(error, 'orig', error)
+    message = str(original).lower()
+    code = getattr(original, 'pgcode', None)
+    if code == '28P01' or 'password authentication failed' in message:
+        return 'Database login rejected: the configured username or password was not accepted.'
+    if 'no pg_hba.conf entry' in message:
+        return 'Database access rejected: this connection is not allowed by the server access rules.'
+    if code == '3D000' or ('database' in message and 'does not exist' in message):
+        return 'The configured database name was not found on the server.'
+    if code == '42501' or 'permission denied for' in message:
+        return 'Connected, but the database account cannot read the migration metadata.'
+    if any(part in message for part in ('could not translate host name', 'getaddrinfo', 'name or service not known', 'no such host', 'nodename nor servname')):
+        return 'DNS lookup failed: this computer could not resolve the configured database hostname.'
+    if any(part in message for part in ('timeout expired', 'timed out', 'timeout')):
+        return 'Connection timed out: the database did not respond. Network access, database availability, or DigitalOcean trusted sources may be responsible.'
+    if 'connection refused' in message or 'actively refused' in message:
+        return 'Connection refused: the configured database host and port did not accept the connection.'
+    if any(part in message for part in ('certificate verify failed', 'root certificate', 'ssl error', 'does not support ssl', 'ssl connection')):
+        return 'An SSL connection error prevented the database check.'
+    if 'permission denied' in message or 'forbidden by its access permissions' in message:
+        return 'This computer or execution environment blocked the network connection.'
+    if any(part in message for part in ('network is unreachable', 'no route to host', 'network is down')):
+        return 'The network could not reach the configured database server.'
+    if 'server closed the connection' in message or 'connection reset' in message:
+        return 'The database connection was closed before the check completed.'
+    return f'The database check failed ({type(original).__name__}); the cause needs further inspection.'
+
+
 def main():
     load_dotenv(Path(__file__).resolve().parents[1] / '.env', override=False)
     value = os.getenv('DATABASE_URL')
@@ -42,7 +72,8 @@ def main():
     except Exception as error:
         # Driver errors can contain database addresses/usernames. Return only a
         # safe category; never print the URL, password, or raw exception string.
-        print(f'Unable to complete read-only check ({type(error).__name__}). Check database connectivity and trusted sources. No changes made.')
+        print(safe_connection_error(error))
+        print('No changes made. Connection details and credentials are hidden.')
         return 1
 
 

@@ -95,6 +95,12 @@ def quantity(case):
     return None, 'unit', True
 
 
+def doctor_label(value):
+    """Unify legacy names with/without Dr. without fuzzy matching people."""
+    name = ' '.join(str(value or '').split())
+    return re.sub(r'^dr\.?\s+', '', name, flags=re.IGNORECASE).strip()
+
+
 def normalize_case(case):
     status = str(case.get('status') or '').strip().lower()
     if status in {'created', 'void', 'voided', 'cancelled', 'canceled', ''}:
@@ -108,7 +114,7 @@ def normalize_case(case):
     shipped = event_day(logs, 'Shipped:')
     units, unit_kind, unknown = quantity(case)
     return dict(id=case['id'], patient=case.get('name') or '', customer_id=case.get('user_id'),
-                customer=case.get('customer') or 'Unknown customer', doctor=case.get('doctor_name') or case.get('customer') or '',
+                customer=case.get('customer') or 'Unknown customer', doctor=doctor_label(case.get('doctor_name')) or doctor_label(case.get('customer')),
                 type=case.get('type') or 'Unspecified', product=case.get('product') or 'Unspecified',
                 status=(case.get('status') or '').strip(), received=received, shipped=shipped,
                 value_cents=money_cents(case.get('price')), units=units, unit_kind=unit_kind,
@@ -129,11 +135,18 @@ def build_report(cases, start, end, view='received', customer_id=None, product=N
     if start > end or view not in VIEWS:
         raise ValueError('Choose a valid date range and report.')
     all_rows = [row for row in (normalize_case(c) for c in cases) if row]
+    # One display label and filter choice for title, casing and whitespace variants.
+    doctor_names = {}
+    for name in sorted({r['doctor'] for r in all_rows}):
+        doctor_names.setdefault(name.casefold(), name)
+    for row in all_rows:
+        row['doctor'] = doctor_names[row['doctor'].casefold()]
+    doctor_key = doctor_label(doctor).casefold()
     customers = sorted({(r['customer_id'], r['customer']) for r in all_rows}, key=lambda pair: pair[1])
     products = sorted({r['product'] for r in all_rows})
     doctors = sorted({r['doctor'] for r in all_rows if r['doctor']})
     rows = [r for r in all_rows if (not customer_id or str(r['customer_id']) == str(customer_id))
-            and (not product or r['product'] == product) and (not doctor or r['doctor'] == doctor)]
+            and (not product or r['product'] == product) and (not doctor_key or r['doctor'].casefold() == doctor_key)]
     groups = {
         'received': [r for r in rows if r['received'] and start <= r['received'] <= end],
         'shipped': [r for r in rows if r['shipped'] and start <= r['shipped'] <= end],

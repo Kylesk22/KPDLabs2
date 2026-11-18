@@ -43,6 +43,29 @@ def record(id=1, **overrides):
 
 
 class ReportTests(unittest.TestCase):
+    def test_dentist_title_variants_share_filters_totals_and_breakdown(self):
+        cases = [record(doctor_name='Adele Example'),
+                 record(2, doctor_name='Dr. Adele Example', status='Shipped',
+                        log='["Submitted: 11/16/2026 09:00:00", "Shipped: 11/17/2026 10:00:00"]'),
+                 record(3, doctor_name='  dr.  adele\u00a0Example  '),
+                 record(4, doctor_name=' ', customer='Adele Example'),
+                 record(5, doctor_name='Dr. Adele Other')]
+        for choice in ('Adele Example', 'Dr. Adele Example', ' DR Adele   Example '):
+            result = build_report(cases, '2026-11-16', '2026-11-18', doctor=choice)
+            self.assertEqual(result['filters']['doctors'], ['Adele Example', 'Adele Other'])
+            self.assertEqual(result['summary']['received']['cases'], 4)
+            self.assertEqual(result['summary']['received']['value_cents'], 60000)
+            self.assertEqual(result['summary']['shipped']['cases'], 1)
+            self.assertEqual(result['summary']['in_house']['cases'], 3)
+            self.assertEqual(len(result['breakdowns']['doctor']), 1)
+            self.assertEqual(result['breakdowns']['doctor'][0]['name'], 'Adele Example')
+        self.assertEqual(cases[1]['doctor_name'], 'Dr. Adele Example')
+        # Similar names are not fuzzy-matched and account constraints still apply.
+        result = build_report(cases, '2026-11-16', '2026-11-18', doctor='Adele')
+        self.assertEqual(result['rows'], [])
+        result = build_report(cases, '2026-11-16', '2026-11-18', doctor='Adele Example', customer_id=99)
+        self.assertEqual(result['rows'], [])
+
     def test_period_flow_and_all_time_backlog_are_distinct(self):
         cases = [record(), record(2, status='Ready to Ship', update_date='11/01/2026 09:00:00', log='["Submitted: 11/01/2026 09:00:00"]'),
                  record(3, status='Billed', price='300', log='["Submitted: 11/01/2026 09:00:00", "Shipped: 11/17/2026 10:00:00", "Billed: 11/18/2026 10:00:00"]')]
@@ -232,6 +255,26 @@ class OperationsTests(unittest.TestCase):
         self.assertEqual(report.status_code,200); self.assertEqual(report.json['summary']['shipped']['cases'],1)
         csv_response=self.client.get('/api/admin/operations/'+query+'&format=csv')
         self.assertIn('100.00',csv_response.text); self.assertEqual(csv_response.headers['Cache-Control'],'no-store')
+    def test_report_dentist_dropdown_round_trip_includes_titled_cases_and_csv(self):
+        case = db.session.get(Case, 1)
+        case.doctor_name = 'Dr. Adele Example'
+        case.status = 'Shipped'
+        case.add_log('Shipped: 11/18/2026 10:00:00')
+        db.session.commit()
+        url = '/api/admin/operations/reports'
+        query = dict(start='2026-11-16', end='2026-11-18', view='received')
+        initial = self.client.get(url, query_string=query).json
+        self.assertEqual(initial['filters']['doctors'], ['Adele Example'])
+        query['doctor'] = initial['filters']['doctors'][0]
+        result = self.client.get(url, query_string=query).json
+        self.assertEqual(result['summary']['received']['cases'], 5)
+        self.assertEqual(result['summary']['shipped']['cases'], 1)
+        self.assertEqual(result['summary']['in_house']['cases'], 4)
+        query.update(view='shipped', format='csv')
+        rows = list(csv.reader(io.StringIO(self.client.get(url, query_string=query).text.lstrip('\ufeff'))))
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[1][0], '1')
+        self.assertEqual(rows[1][2], 'Adele Example')
     def test_adw_linked_case_excluded_and_rejected(self):
         db.session.execute(db.text('CREATE TABLE adw_kpd_case_link (case_id INTEGER PRIMARY KEY)'))
         db.session.execute(db.text('INSERT INTO adw_kpd_case_link VALUES (1)')); db.session.commit()

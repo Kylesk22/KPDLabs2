@@ -1055,12 +1055,11 @@ AWS.config.update({
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                 <div className="inner-box" onClick={()=>setType("partial")}>
                     <div className="image-box">
-                    <figure className="image overlay-anim"><img src={Partial} alt={PARTIAL_MATERIAL} className="product-pic" style={{objectFit:'contain'}} /></figure>
+                    <figure className="image overlay-anim"><img src={Partial} alt={PARTIAL_MATERIAL} className="product-pic" style={{width:'100%', aspectRatio:'1 / 1', objectFit:'contain', objectPosition:'center'}} /></figure>
                     {/* <i className="flaticon-cog-1"></i> */}
                     </div>
                     <div className="content-box text-center">
                     <h4 className="title"><a >Partial</a></h4>
-                    <p style={{fontSize:'13px',lineHeight:1.5}}>{PARTIAL_MATERIAL}</p>
                     </div>
                 </div>
                 </div>

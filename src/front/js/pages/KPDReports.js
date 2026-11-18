@@ -20,6 +20,11 @@ function dateRange(preset) {
   const end = floridaToday(), date = new Date(end + 'T12:00:00Z');
   if (preset === 'week') date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 6) % 7);
   if (preset === 'month') date.setUTCDate(1);
+  if (preset === 'year') date.setUTCMonth(0, 1);
+  if (preset === 'last_year') {
+    const year = date.getUTCFullYear() - 1;
+    return { start: `${year}-01-01`, end: `${year}-12-31` };
+  }
   if (preset === 'last_month') {
     date.setUTCDate(1); date.setUTCDate(0);
     const last = date.toISOString().slice(0, 10); date.setUTCDate(1);
@@ -70,7 +75,7 @@ export default function KPDReports() {
     <header className="kpd-ops-heading"><div><p className="kpd-eyebrow">A CLEAR VIEW OF YOUR LAB</p><h1>Reports</h1><p>See what came in, what went out, and what’s still with you.</p></div><button onClick={() => setRefresh(x => x + 1)} disabled={loading}>Refresh</button></header>
     <section className="kpd-panel kpd-report-filters" aria-label="Report filters">
       <label>Period<select value={preset} onChange={event => { const value = event.target.value; setPreset(value); if (value !== 'custom') setRange(dateRange(value)); }}>
-        <option value="today">Today</option><option value="week">This week</option><option value="month">This month</option><option value="last_month">Last month</option><option value="custom">Custom dates</option>
+        <option value="today">Today</option><option value="week">This week</option><option value="month">This month</option><option value="last_month">Last month</option><option value="year">This year</option><option value="last_year">Last year</option><option value="custom">Custom dates</option>
       </select></label>
       <label>From<input type="date" value={range.start} onChange={e => { setPreset('custom'); setRange({ ...range, start: e.target.value }); }} /></label>
       <label>Through<input type="date" value={range.end} onChange={e => { setPreset('custom'); setRange({ ...range, end: e.target.value }); }} /></label>

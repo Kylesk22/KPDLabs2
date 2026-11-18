@@ -1,10 +1,13 @@
 # KPD shipping and operations reports
 
 Implemented on `feature/kpd-operations` from local main commit
-`b2893ad442f9179ba5eac68ba8874e858cee0278`. The original VS Code checkout,
-production database, and live site have not been modified. GitHub access was
-unavailable in the execution environment, so remote main has not been compared
-and this branch has not been pushed.
+`b2893ad442f9179ba5eac68ba8874e858cee0278`. Kyle transferred the changes into his
+usual checkout and will handle the GitHub push. On November 18, the live
+DigitalOcean app was verified to run that baseline commit with autodeploy from
+main. The additive production database migration has now been applied and
+verified; existing case data and trusted sources were not modified. The new
+application code has not yet been deployed. See `KPD-local-handoff.md` for the
+verified deployment checkpoint.
 
 ## What changes
 

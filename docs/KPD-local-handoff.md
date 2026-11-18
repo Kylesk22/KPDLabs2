@@ -1,7 +1,34 @@
 # Bring the tested changes into the usual local KPD repository
 
+## Deployment checkpoint — November 18, 2026
+
+The production database step is now complete. Through the authenticated
+DigitalOcean App Platform console, the live app's existing connection confirmed
+`adw_paid_20261020` and the absence of the two new tables. The exact additive
+`kpd_operations_20261118` migration was then applied transactionally, with a
+database target check, version-row lock, advisory lock, and short lock timeout.
+Verification confirmed both tables exist with zero rows and the case reservation
+primary key is `case_id`. Existing cases and network/trusted-source settings were
+not modified. Do not rerun the migration snippet or the earlier database setup.
+
+Verified hosting: DigitalOcean App Platform `shark-app`, service `kpd`, app ID
+`d2a50000-502b-4478-bcc1-51b3c1854124`. Source is `Kylesk22/KPDLabs2`, branch `main`,
+autodeploy On. The running commit before this update is `b2893ad`. Build command
+is `npm run build`; run command is Gunicorn with two workers, four threads and
+a 60-second timeout. The database UI advertises seven-day point-in-time recovery;
+no new backup cluster was created.
+
+The personal-PC timeout remains unexplained. Its configured host/port/database
+match the live app and DO connection details. Saved home/work IPs exist, but the
+PC's current public address was not verified. Access changes were not needed to
+complete this deployment step through the existing app connection.
+
+Kyle still needs to push the completed code from the usual local repository.
+Application deployment, live UI verification and physical label printing remain
+pending. The earlier instructions below describe the original handoff.
+
 The completed code is in a separate local checkout on `feature/kpd-operations`.
-The live site and database have not been changed. Kyle will handle GitHub pushes.
+Kyle will handle GitHub pushes.
 
 In the VS Code PowerShell terminal:
 

@@ -5,11 +5,11 @@ Reprint / already printed. All eligible KPD manufacturing cases are included,
 independent of the dashboard search. Held cases and ADW cases are excluded.
 
 New labels are preselected, up to 100 per job. Staff can uncheck cases before
-printing. The browser opens one print window, with one case per 4 x 6 page and
+printing. The browser opens one print window, with each case starting on a new 4 x 6 page and
 the existing case information and tooth artwork. Set the thermal driver to
 4 x 6, actual size (100%), and disable browser headers/footers. Stored due dates
-are used. Long notes wrap; an excessively dense label stops printing and identifies
-the case for individual handling. Wisdom teeth remain text-only, as in the old
+are used. Labels use final-size normal flow instead of a scaled, clipped container.
+Long notes wrap and continue onto additional labels, preserving the case total. Wisdom teeth remain text-only, as in the old
 28-tooth illustration. The individual case Print button is unchanged.
 
 After printing, explicitly confirm the labels that succeeded. Uncheck failures,

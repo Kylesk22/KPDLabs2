@@ -308,19 +308,34 @@ export function printManufacturingLabels(printWindow, labels) {
     ${legacyStyles}
     @page { size:4in 6in; margin:0.12in; }
     *{box-sizing:border-box}body{font-family:Arial,sans-serif;margin:0;background:#e9e9e9;color:#000}
-    .label-frame{position:relative;width:3.76in;height:5.76in;margin:18px auto;background:white;break-after:page;page-break-after:always;overflow:hidden}
+    .label-frame{width:3.76in;margin:18px auto;background:white;break-after:page;page-break-after:always}
     .label-frame:last-child{break-after:auto;page-break-after:auto}
-    .label-content{position:absolute;top:0;left:0;width:760px;transform-origin:top left;padding:4px}
+    /* Final-size normal flow avoids Chromium clipping before a scale transform. */
+    .label-content{padding:2px;font-size:10px;line-height:1.25;overflow-wrap:anywhere}
+    .label-content .title{font-size:20px}
+    .label-content .subtitle{font-size:12px}
+    .label-content .case{font-size:11px;margin-top:5px}
+    .label-content .text-left,.label-content .text-right,.label-content .text-center{font-size:10px}
+    .label-content .info-data{font-size:10px;margin-top:5px;padding:5px;break-inside:avoid;page-break-inside:avoid}
+    .label-content .inline-container{gap:6px;margin-top:5px}
+    .label-content .inline-container-2{gap:10px;padding:8px;align-items:flex-start}
+    .label-content .inline-container-2>.text-right{flex:1;min-width:0}
+    .label-content .info-selected-teeth{margin-top:6px;text-align:left}
+    .label-content .info-data-3{font-size:10px;margin-top:8px}
+    .label-content .info-data-4{font-size:10px}
+    .label-content .padding-top{padding-top:5px}
+    .label-content .svg-image{margin-top:5px;flex-shrink:0}
+    .label-content .tooth-svg{width:100px;height:125px}
     .label-content .info-data-4{white-space:pre-wrap;overflow-wrap:anywhere}
-    .label-content .border3{height:auto;min-height:150px}
+    .label-content .border3{display:block;height:auto;min-height:50px;break-inside:auto;page-break-inside:auto}
+    .label-content .border3 .info-data-4{text-align:left;orphans:2;widows:2}
     .label-content .inline-container>div{min-width:0;overflow-wrap:anywhere}
     .label-content .select{fill:#9b9b9b;stroke:#000;stroke-width:3px}
     .print-instructions{max-width:620px;margin:18px auto;padding:14px;background:#fff;font:14px/1.5 Arial,sans-serif}
     @media print{body{background:#fff}.label-frame{margin:0}.print-instructions{display:none}}
-  </style></head><body><aside class="print-instructions"><strong>${labels.length} case labels</strong><br>Use 4 x 6 paper, actual size (100%), and turn browser headers and footers off. Return to Cases to confirm only the labels that printed successfully.</aside>
+  </style></head><body><aside class="print-instructions"><strong>${labels.length} case labels</strong><br>Use 4 x 6 paper, actual size (100%), and turn browser headers and footers off. Long notes continue onto additional labels rather than being cut off. Return to Cases to confirm only the labels that printed successfully.</aside>
   ${labels.map(label=>`<section class="label-frame" aria-label="Case ${escapeHTML(label.caseNumber)}"><div class="label-content">${labelMarkup(label)}</div></section>`).join('')}</body></html>`;
   printWindow.document.open(); printWindow.document.write(html); printWindow.document.close();
-  const dense = [];
   printWindow.document.querySelectorAll('.label-frame').forEach((frame, index) => {
     const label = labels[index], content = frame.querySelector('.label-content'), teeth = selectedTeeth(label.crownTooth);
     content.querySelectorAll('[data-tooth]').forEach(path=> { if(teeth.has(path.getAttribute('data-tooth'))) { path.classList.add('select'); path.classList.remove('replace'); } });
@@ -328,16 +343,7 @@ export function printManufacturingLabels(printWindow, labels) {
       const field = node.getAttribute('data-optional'), value = label[field === 'gum' ? 'gumShade' : field];
       if (value !== null && value !== undefined && String(value).trim() && !['N/A','undefined','null'].includes(String(value))) node.classList.remove('hide');
     });
-    const scale = Math.min(frame.clientWidth / 760, frame.clientHeight / content.scrollHeight);
-    if (!Number.isFinite(scale) || scale <= 0) throw new Error('The print layout could not be prepared. Try opening the labels again.');
-    content.style.transform = `scale(${scale})`;
-    content.style.left = `${Math.max(0,(frame.clientWidth-760*scale)/2)}px`;
-    if(scale < 0.35) dense.push(label.caseNumber);
   });
-  if(dense.length) {
-    printWindow.document.querySelector('.print-instructions').textContent = `Printing paused: cases ${dense.join(', ')} have too much information to remain readable on one 4 x 6 label. Print those cases individually or shorten their notes, then prepare the batch again.`;
-    throw new Error(`Cases ${dense.join(', ')} are too dense for one label. Leave those cases out of the batch and use their individual Print option.`);
-  }
   printWindow.focus();
   printWindow.print();
 }

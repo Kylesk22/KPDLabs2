@@ -1,5 +1,11 @@
 # KPD shipping and operations reports
 
+Current follow-up: manufacturing batch label printing is implemented; see
+`KPD-manufacturing-labels.md`. Its additive production migration is applied.
+The Cases styling is present in Kyle's usual local checkout at `cee9787`.
+The new manufacturing application code awaits Kyle's push. Earlier shipping
+delivery notes below are historical; `KPD-local-handoff.md` has the current steps.
+
 Implemented on `feature/kpd-operations` from local main commit
 `b2893ad442f9179ba5eac68ba8874e858cee0278`. Kyle transferred the changes into his
 usual checkout and will handle the GitHub push. On November 18, the live

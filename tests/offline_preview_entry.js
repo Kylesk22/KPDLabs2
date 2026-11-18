@@ -14,6 +14,7 @@ const pdfBytes = Uint8Array.from(atob(fixture.label_url.split(',')[1]), characte
 fixture.label_url = URL.createObjectURL(new Blob([pdfBytes], {type:'application/pdf'}));
 let rows = fixture.report.rows;
 const quotes = {}, batches = {}, history = [];
+const labelReceipts = {}, labelBatches = {};
 let serial = 0;
 const copy = value => JSON.parse(JSON.stringify(value));
 const totals = list => ({ cases: list.length, value_cents: list.reduce((n,r)=>n+(r.value_cents||0),0), units:list.reduce((n,r)=>n+(r.units||0),0), missing_values:list.filter(r=>r.value_cents===null).length, missing_quantities:list.filter(r=>r.units===null).length });
@@ -39,7 +40,17 @@ window.fetch = async (raw, options={}) => {
   if(!url.pathname.startsWith('/api/admin/operations/')) throw new Error('Offline sample preview only.');
   const path=url.pathname.slice('/api/admin/operations/'.length), body=options.body?JSON.parse(options.body):{};
   let data;
-  if(path==='reports') {
+  if(path==='manufacturing-labels') {
+    const cases=rows.filter(r=>r.status==='Manufacturing'&&!r.held).map(r=>({id:r.id,patient:r.patient,doctor:r.doctor,type:r.type,product:r.product,reason:labelReceipts[r.id]?'printed':'new',printed_at:labelReceipts[r.id]||null}));
+    data={cases,pending:cases.filter(c=>c.reason==='new').length};
+  } else if(path==='manufacturing-labels/prepare') {
+    const id=`LABEL-${++serial}`;
+    data={id,token:id,mode:body.mode,labels:rows.filter(r=>body.cases.includes(r.id)).map(r=>({caseNumber:r.id,patientName:r.patient,doctorFirst:r.doctor,doctorLast:'',license:'DEMO',street:'123 Example Street',city:'Orlando',state:'FL',zip:'32801',submittedDate:r.received,dueDate:fixture.today,type:r.type,product:r.product,crownTooth:['8','9'],shade:'A2',gumShade:'N/A',finish:'Glazed',model3D:'No',production:'Standard',shipping:'Ground',note:'Sample case for print review. No real patient information.',price:(r.value_cents/100).toFixed(2)}))};
+    labelBatches[id]=data;
+  } else if(path==='manufacturing-labels/confirm') {
+    if(!labelBatches[body.token]||body.cases.some(id=>!labelBatches[body.token].labels.some(c=>c.caseNumber===id))) throw new Error('Review these sample labels again.');
+    body.cases.forEach(id=>labelReceipts[id]=new Date().toISOString()); data={confirmed:body.cases};
+  } else if(path==='reports') {
     data=report(url.searchParams);
     if(url.searchParams.get('format')==='csv') {
       const csv=['Case,Dentist,Product,Status,Value',...data.rows.map(r=>[r.id,r.doctor,r.product,r.status,(r.value_cents/100).toFixed(2)].join(','))].join('\r\n');

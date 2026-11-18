@@ -382,4 +382,127 @@ class OperationsTests(unittest.TestCase):
         self.assertEqual(self.buy(self.quote().json).status_code,200)
 
 
+class ManufacturingTests(unittest.TestCase):
+    tearDown = OperationsTests.tearDown
+    login = OperationsTests.login
+    post = OperationsTests.post
+
+    def setUp(self):
+        OperationsTests.setUp(self)
+        Case.query.update({'status': 'Manufacturing'})
+        db.session.get(Case, 5).user_id = 3
+        db.session.commit()
+        from api.kpd_manufacturing import KPDManufacturingLabel
+        self.receipts = KPDManufacturingLabel
+
+    def queue(self):
+        response = self.client.get('/api/admin/operations/manufacturing-labels')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers['Cache-Control'], 'no-store')
+        return response.json
+
+    def prepare(self, ids=None, mode='new'):
+        return self.post('manufacturing-labels/prepare', {'cases': ids if ids is not None else [1,2], 'mode': mode})
+
+    def confirm(self, batch, ids=None):
+        return self.post('manufacturing-labels/confirm', {'token': batch['token'], 'cases': ids if ids is not None else [1,2]})
+
+    def test_queue_excludes_hold_other_status_and_adw(self):
+        db.session.get(Case,2).hold='held'
+        db.session.get(Case,3).status='Design'
+        db.session.commit()
+        with patch('api.kpd_manufacturing.adw_case_ids', return_value={4}):
+            self.assertEqual([c['id'] for c in self.queue()['cases']], [1,5])
+            self.assertEqual(self.prepare([1,4]).status_code, 409)
+        self.assertEqual(self.prepare([1,2]).status_code,409)
+        self.assertEqual(self.prepare([1,3]).status_code,409)
+
+    def test_preparation_or_cancel_does_not_record_printing(self):
+        response=self.prepare([1,5])
+        self.assertEqual(response.status_code,200)
+        self.assertEqual([r['caseNumber'] for r in response.json['labels']],[1,5])
+        self.assertEqual(response.headers['Cache-Control'],'no-store')
+        self.assertEqual(self.receipts.query.count(),0)
+        self.assertEqual(self.queue()['pending'],5)
+        self.assertEqual(Case.query.filter_by(status='Manufacturing').count(),5)
+
+    def test_partial_confirmation_and_idempotent_retry(self):
+        batch=self.prepare().json
+        self.assertEqual(self.confirm(batch,[1]).status_code,200)
+        first=db.session.get(self.receipts,1).printed_at
+        self.assertEqual(self.queue()['pending'],4)
+        self.assertIsNone(db.session.get(self.receipts,2))
+        self.assertEqual(self.confirm(batch,[1]).status_code,200)
+        self.assertEqual(db.session.get(self.receipts,1).printed_at,first)
+        self.assertEqual(db.session.get(self.receipts,1).printed_by,1)
+        self.assertEqual(Case.query.filter_by(status='Manufacturing').count(),5)
+        self.assertTrue(all(c.get_logs()==['Submitted: 11/16/2026 09:00:00'] for c in Case.query.all()))
+
+    def test_confirmed_labels_require_reprint_changed_content_returns_to_queue(self):
+        batch=self.prepare().json
+        self.assertEqual(self.confirm(batch).status_code,200)
+        self.assertEqual(self.prepare().status_code,409)
+        self.assertEqual(self.prepare(mode='reprint').status_code,200)
+        db.session.get(Case,1).notes='New instruction'; db.session.commit()
+        result=self.queue()
+        self.assertEqual(result['pending'],4)
+        self.assertEqual(result['cases'][0]['reason'],'changed')
+        self.assertEqual(self.prepare([1]).status_code,200)
+
+    def test_changed_case_blocks_entire_confirmation(self):
+        batch=self.prepare().json
+        db.session.get(Case,2).shade='B2'; db.session.commit()
+        self.assertEqual(self.confirm(batch).status_code,409)
+        self.assertEqual(self.receipts.query.count(),0)
+
+    def test_hold_or_status_change_after_preparation_blocks_confirmation(self):
+        batch=self.prepare().json
+        db.session.get(Case,2).hold='held'; db.session.commit()
+        self.assertEqual(self.confirm(batch).status_code,409)
+        db.session.get(Case,2).hold=None
+        db.session.get(Case,2).status='Finish'; db.session.commit()
+        self.assertEqual(self.confirm(batch).status_code,409)
+        self.assertEqual(self.receipts.query.count(),0)
+
+    def test_invalid_expired_and_out_of_batch_tokens_cannot_confirm(self):
+        from itsdangerous import SignatureExpired
+        batch=self.prepare().json
+        self.assertEqual(self.confirm(batch,[3]).status_code,409)
+        self.assertEqual(self.confirm({'token':batch['token']+'tampered'}).status_code,409)
+        with patch('api.kpd_manufacturing.URLSafeTimedSerializer.loads',side_effect=SignatureExpired('expired')):
+            self.assertEqual(self.confirm(batch).status_code,409)
+        self.assertEqual(self.receipts.query.count(),0)
+
+    def test_validation_admin_and_csrf(self):
+        for ids in ([], [1,1], [True], ['1'], [0], [999], list(range(1,102))):
+            self.assertEqual(self.prepare(ids).status_code,409)
+        self.assertEqual(self.prepare(mode='unknown').status_code,409)
+        self.assertEqual(self.client.post('/api/admin/operations/manufacturing-labels/prepare',json={'cases':[1]}).status_code,401)
+        self.headers=self.login('Adele@example.test')
+        self.assertEqual(self.client.get('/api/admin/operations/manufacturing-labels').status_code,403)
+        self.assertEqual(self.prepare().status_code,403)
+        self.assertEqual(self.confirm({'token':'invalid'}).status_code,403)
+
+    def test_existing_labels_can_be_recorded_without_printing(self):
+        batch=self.prepare([1,5],mode='existing').json
+        self.assertEqual(self.confirm(batch,[1,5]).status_code,200)
+        self.assertEqual(self.queue()['pending'],3)
+        self.assertEqual(self.provider.purchases,0)
+
+    def test_additive_migration_preserves_cases(self):
+        from alembic.migration import MigrationContext
+        from alembic.operations import Operations
+        from sqlalchemy import inspect
+        self.receipts.__table__.drop(db.engine)
+        path=Path(__file__).resolve().parents[1]/'migrations/versions/kpd_manufacturing_20261118.py'
+        spec=importlib.util.spec_from_file_location('manufacturing_migration',path)
+        migration=importlib.util.module_from_spec(spec); spec.loader.exec_module(migration)
+        self.assertEqual(migration.down_revision,'kpd_operations_20261118')
+        with db.engine.begin() as connection:
+            with Operations.context(MigrationContext.configure(connection)): migration.upgrade()
+            self.assertEqual(inspect(connection).get_pk_constraint('kpd_manufacturing_label')['constrained_columns'],['case_id'])
+        self.assertEqual(Case.query.count(),5)
+        self.assertEqual(self.confirm(self.prepare().json).status_code,200)
+
+
 if __name__ == '__main__': unittest.main(verbosity=2)

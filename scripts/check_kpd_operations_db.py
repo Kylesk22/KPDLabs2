@@ -57,13 +57,15 @@ def main():
             revision = list(connection.execute(text('SELECT version_num FROM alembic_version')).scalars()) if schema.has_table('alembic_version') else []
             print('Database: PostgreSQL (SSL required; read-only check)')
             print('Migration revision: ' + (', '.join(revision) or 'No Alembic revision recorded'))
-            for name in ('kpd_shipment', 'kpd_shipment_case'):
+            for name in ('kpd_shipment', 'kpd_shipment_case', 'kpd_manufacturing_label'):
                 exists = schema.has_table(name)
                 print(name + ': ' + ('present' if exists else 'not created yet'))
             if revision == ['adw_paid_20261020']:
                 print('Expected predecessor found. The new KPD migration can be applied on its own.')
             elif revision == ['kpd_operations_20261118']:
-                print('KPD operations migration is recorded as applied.')
+                print('Shipping migration is applied. Manufacturing label migration is not yet recorded.')
+            elif revision == ['kpd_manufacturing_20261118']:
+                print('Shipping and manufacturing label migrations are recorded as applied.')
             else:
                 print('Review this revision before upgrading. Do not stamp or run unrelated migrations automatically.')
             print('No database changes made. No patient data or credentials read out.')

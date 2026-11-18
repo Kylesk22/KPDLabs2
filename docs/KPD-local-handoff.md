@@ -1,6 +1,41 @@
 # Bring the tested changes into the usual local KPD repository
 
-## Deployment checkpoint — November 18, 2026
+## Current handoff: manufacturing labels - November 18, 2026
+
+The feature is ready for Kyle's GitHub push. The usual local main was verified
+at `cee9787` (Cases styling). Transfer the committed feature branch locally:
+
+```powershell
+git -C 'C:\Users\Kyle\Desktop\CrownDental\react-flask-hello' pull --ff-only 'C:\Users\Kyle\Documents\Codex\2026-11-18\new-chat\work\kpd-website' feature/kpd-operations
+```
+
+Then push from the usual repository. No additional database script is needed.
+If the local transfer reports diverged history or conflicts, preserve the error;
+do not reset or force. A remote push rejection also needs review, not force-push.
+
+The additive migration `kpd_manufacturing_20261118`, following
+`kpd_operations_20261118`, was applied through the authenticated DigitalOcean
+console. The transaction checked the expected database and predecessor, locked
+the migration row, used an advisory lock and short timeouts, created only
+`kpd_manufacturing_label`, and recorded the revision. Verification confirmed the
+new revision, zero receipt rows, and primary key `case_id`. No existing cases
+were rewritten. Keep this table when rolling back application code.
+
+Validation: 46 offline backend tests, manufacturing markup/escaping checks,
+production webpack build and portable preview build passed. Existing asset-size
+and old Browserslist warnings remain. Browser layout and physical thermal output
+still require the first real printer check; no actual labels were printed here.
+
+After deployment: Cases > Manufacturing > Print new labels. Select one case for
+the first test. Use 4 x 6 paper, 100%/actual size, and no browser headers/footers.
+Confirm only labels that physically printed. Use Reprint / already printed for
+historic labels; individual case Print buttons have no confirmation receipts.
+See `KPD-manufacturing-labels.md` for the workflow and recovery details.
+
+## Historical shipping deployment checkpoint - November 18, 2026
+
+The instructions below describe the earlier shipping delivery. The current
+handoff above supersedes its pending-deployment and database-check steps.
 
 The production database step is now complete. Through the authenticated
 DigitalOcean App Platform console, the live app's existing connection confirmed

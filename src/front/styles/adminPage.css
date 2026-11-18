@@ -34,4 +34,10 @@
 .kpd-admin .kpd-hold {background:#eee5fa!important;color:#624080!important;border-color:#bba2d3!important;}
 .kpd-admin .kpd-due {background:#edf1f4!important;color:#334155!important;border-color:#a8b2bf!important;}
 .kpd-admin .kpd-pagination {margin:0;padding:16px 22px;}
+.kpd-admin .kpd-label-checklist {max-height:330px;overflow:auto;margin:12px 0;}
+.kpd-admin .kpd-label-checklist label {display:flex;flex-direction:row;align-items:center;gap:12px;max-width:none;padding:12px 4px;border-bottom:1px solid #e5e8df;margin:0;}
+.kpd-admin .kpd-label-checklist input {width:18px;min-height:18px;flex-shrink:0;accent-color:#b4770d;}
+.kpd-admin .kpd-label-checklist small {display:block;font-weight:400;margin-top:3px;}
+.kpd-admin .kpd-manufacturing-labels>small {font-size:11px;color:#737a6a;}
+.kpd-admin .kpd-label-review {margin-top:18px;border-top:1px solid #dfe2da;padding-top:18px;}
 @media(max-width:800px){.kpd-admin .kpd-toolbar {flex-direction:column;gap:12px;}.kpd-admin .kpd-status-group {flex-direction:column;gap:8px;}.kpd-admin .kpd-status-group strong {width:auto;padding-top:0;}.kpd-admin .kpd-bulkbar {padding:16px;}.kpd-admin .kpd-pagination {padding:16px;}}

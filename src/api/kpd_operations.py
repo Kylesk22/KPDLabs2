@@ -1,4 +1,4 @@
-"""Admin-only reports and outbound shipping endpoints."""
+"""Admin-only reports, outbound shipping and manufacturing label endpoints."""
 from functools import wraps
 from datetime import datetime
 from flask import jsonify, request, Response, current_app
@@ -6,6 +6,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from sqlalchemy.exc import SQLAlchemyError
 from api.models import db, User, Case
 from api.kpd_reporting import build_report, report_csv, held, case_logs, FLORIDA
+from api.kpd_manufacturing import manufacturing_queue, prepare_labels, confirm_labels
 from api.kpd_shipments import (KPDShipment, KPDShipmentCase, ShippingError, adw_case_ids,
                                doctor_for, address_for, serialize_shipment, create_quote,
                                buy_label, reconcile, mark_shipped, create_group_quote, buy_group, mark_group_shipped)
@@ -27,11 +28,11 @@ def admin_only(function):
         except SQLAlchemyError:
             db.session.rollback()
             current_app.logger.exception('KPD operations database operation failed')
-            return jsonify(message='The operation could not be saved. Refresh shipment history before attempting a label purchase again.'), 503
+            return jsonify(message='The operation could not be completed. Refresh before trying again. For shipping purchases, check shipment history first.'), 503
         except Exception:
             db.session.rollback()
             current_app.logger.exception('KPD operations request failed')
-            return jsonify(message='The service is temporarily unavailable. Refresh shipment history before retrying a purchase.'), 502
+            return jsonify(message='The service is temporarily unavailable. Refresh before trying again. For shipping purchases, check shipment history first.'), 502
     return wrapped
 
 
@@ -43,6 +44,27 @@ def body():
 
 
 def register_operations(api):
+    @api.route('/admin/operations/manufacturing-labels', methods=['GET'])
+    @admin_only
+    def manufacturing_label_queue(staff):
+        response = jsonify(manufacturing_queue())
+        response.headers['Cache-Control'] = 'no-store'
+        return response
+
+    @api.route('/admin/operations/manufacturing-labels/prepare', methods=['POST'])
+    @admin_only
+    def manufacturing_label_prepare(staff):
+        data = body()
+        response = jsonify(prepare_labels(data.get('cases'), data.get('mode', 'new')))
+        response.headers['Cache-Control'] = 'no-store'
+        return response
+
+    @api.route('/admin/operations/manufacturing-labels/confirm', methods=['POST'])
+    @admin_only
+    def manufacturing_label_confirm(staff):
+        data = body()
+        return jsonify(confirm_labels(data.get('token'), data.get('cases'), staff.id))
+
     @api.route('/admin/operations/reports', methods=['GET'])
     @admin_only
     def reports(staff):

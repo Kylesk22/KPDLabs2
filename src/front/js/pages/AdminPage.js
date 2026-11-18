@@ -3,6 +3,7 @@ import { dueLabel, todayInFlorida, matchesPriority, isHeld } from "../component/
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { OperationsLayout } from "../component/KPDOperations";
+import ManufacturingLabels from "../component/ManufacturingLabels";
 import "../../styles/adminPage.css";
 
 
@@ -25,7 +26,7 @@ export const AdminPage = props => {
     const [bulkCases, setBulkCases] = useState([])
     const [bulkStatus, setBulkStatus] = useState("")
     const [caseChecked, setCaseChecked] = useState(false)
-    const [statusToFilter, setStatusToFilter] = useState("")
+    const [statusToFilter, setStatusToFilter] = useState(() => sessionStorage.getItem('filterType') || '')
     useEffect(() => { setPageMin(0); setPageMax(20); setPageNumber(1); }, [priorityFilter,search,statusToFilter]);
 
     
@@ -563,6 +564,7 @@ export const AdminPage = props => {
                     {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{if(status==='Closed')getClosedCases();sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
                   </div></div>
                 </section>
+                {statusToFilter === 'Manufacturing' && <ManufacturingLabels />}
                 <div className="kpd-panel kpd-cases-panel">
                     <div className="row">
                         <div className="kpd-bulkbar">

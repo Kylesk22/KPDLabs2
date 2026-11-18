@@ -22,7 +22,7 @@ export function OperationsLayout({ active, children }) {
     <div className="kpd-ops-shell">
       <div className="kpd-ops-brand"><span>KPD</span> LAB OPERATIONS</div>
       <nav className="kpd-ops-nav" aria-label="Lab operations">
-        <Link to={`/admin/${user_id}`}>Cases</Link>
+        <Link to={`/admin/${user_id}`} aria-current={active === 'cases' ? 'page' : undefined}>Cases</Link>
         <Link to={`/admin/${user_id}/shipping`} aria-current={active === 'shipping' ? 'page' : undefined}>Shipping</Link>
         <Link to={`/admin/${user_id}/reports`} aria-current={active === 'reports' ? 'page' : undefined}>Reports</Link>
       </nav>

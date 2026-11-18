@@ -1,11 +1,8 @@
 import ADWStaffReview from "../component/ADWStaffReview";
 import { dueLabel, todayInFlorida, matchesPriority, isHeld } from "../component/casePriorities";
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import KPDLogo from "../../img/KPD-Logo.png"
-import { STLExporter} from 'three/addons/exporters/STLExporter.js';
-import {STLLoader} from "../../../../node_modules/three/examples/jsm/loaders/STLLoader"
-import AboutBKG from "../../img/testi-bg.jpg"
+import { Link } from "react-router-dom";
+import { OperationsLayout } from "../component/KPDOperations";
 import "../../styles/adminPage.css";
 
 
@@ -528,57 +525,54 @@ export const AdminPage = props => {
         
     
         return (
-            <div className="kpd-admin" style={{backgroundImage: `url(${AboutBKG})`, paddingTop: "180px"}}>
-        <div className="container" style={{maxWidth: "90%"}}>
+        <OperationsLayout active="cases">
+        <div className="kpd-admin">
             {/* <div>
-                <button className="btn btn-primary" onClick={()=>setBlogModal(true)}>Add blog</button>
+                <button className="kpd-button" onClick={()=>setBlogModal(true)}>Add blog</button>
                 {(blogModal)?
                 <div>
                     <input type="text" required className="form-control" id="title" placeholder="Blog Title" value={title} onChange={(e)=>setTitle(e.target.value)} />
                     <input type="text" required className="form-control" id="firstName" placeholder="Blog Description (under 500 characters)" value={description} onChange={(e)=>setDescription(e.target.value)} />
                     <input type="text" required className="form-control" id="firstName" placeholder="Date m/d/FullYear" value={date} onChange={(e)=>setDate(e.target.value)} />
                     <input type="text" required className="form-control" id="firstName" placeholder="Full Blog 2500 characters" value={info} onChange={(e)=>setInfo(e.target.value)} />
-                    <button className="btn btn-primary" onClick={()=>{addBlog(); setBlogModal(false)}}>Submit Blog</button>
+                    <button className="kpd-button" onClick={()=>{addBlog(); setBlogModal(false)}}>Submit Blog</button>
                 </div>
                     :""
                 }
             </div> */}
             <div>
+                <header className="kpd-ops-heading"><div><p className="kpd-eyebrow">FROM RECEIVED CASE TO READY TO SHIP</p><h1>Cases</h1><p>Find cases and plan today's production.</p></div></header>
                 <ADWStaffReview />
-                <nav className="kpd-operations-shortcuts" aria-label="Lab tools" style={{display:'flex',gap:12,marginBottom:20}}>
-                  <Link className="btn btn-primary" to={`/admin/${id}/shipping`}>Shipping</Link>
-                  <Link className="btn btn-primary" to={`/admin/${id}/reports`}>Reports</Link>
-                </nav>
-                <section className="kpd-controls" aria-label="Case filters">
-                  <div className="kpd-toolbar"><div><h2>Case dashboard</h2><p>Find cases and plan today's production.</p></div>
+                <section className="kpd-panel kpd-controls" aria-label="Case filters">
+                  <div className="kpd-section-heading kpd-toolbar"><div><h2>Find and filter cases</h2></div>
                     <details className="kpd-color-key"><summary>Color key</summary><p>Red: overdue · Gold: rush · Blue: express shipping · Purple: on hold</p></details>
                   </div>
                   <label className="kpd-search">Search cases<input type="search" placeholder="Case number, patient, or doctor" value={search} onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} /></label>
-                <div style={{background:'#fff',color:'#222429',padding:12,margin:'12px 0',border:'1px solid #ddd',borderRadius:6}}>
+                <div className="kpd-priorities">
                     <strong>Priorities</strong>
-                    <div style={{display:'flex',flexWrap:'wrap',gap:8,marginTop:8}}>{priorityOptions.map(([key,label])=><button key={key} type="button" aria-pressed={priorityFilter===key} onClick={()=>setPriorityFilter(key)} style={{background:priorityFilter===key?'#ffaa17':'#fff',color:'#222429',border:'1px solid #777',borderRadius:4,padding:'8px 12px'}}>{label} ({priorityCounts[key]})</button>)}</div>
+                    <div className="kpd-priority-options">{priorityOptions.map(([key,label])=><button key={key} type="button" aria-pressed={priorityFilter===key} onClick={()=>setPriorityFilter(key)}>{label} ({priorityCounts[key]})</button>)}</div>
                     <small>Counts follow the current list/search. Due filters include active production and exclude held cases. Dates use Florida time.</small>
                     {sortedCases.length===0 && <p role="status" style={{margin:'8px 0 0',color:'#505050'}}>No cases match this view. Try All in this view or another status.</p>}
                 </div>
 
                   <div className="kpd-status-group"><strong>Production stages</strong><div>
-                    <button type="button" className="btn btn-primary filter-btn" onClick={()=>{sessionStorage.removeItem('filterType');setStatusToFilter('');productionFilter();}}>All production</button>
-                    {['Submitted','Scanning','Design','Manufacturing','Pre-Finish','Finish','Ready to Ship'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="btn btn-primary filter-btn" onClick={()=>{sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                    <button type="button" className="kpd-button filter-btn" onClick={()=>{sessionStorage.removeItem('filterType');setStatusToFilter('');productionFilter();}}>All production</button>
+                    {['Submitted','Scanning','Design','Manufacturing','Pre-Finish','Finish','Ready to Ship'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
                   </div></div>
                   <div className="kpd-status-group"><strong>Shipping & billing</strong><div>
-                    {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="btn btn-primary filter-btn" onClick={()=>{if(status==='Closed')getClosedCases();sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                    {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{if(status==='Closed')getClosedCases();sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
                   </div></div>
                 </section>
-                <div >
+                <div className="kpd-panel kpd-cases-panel">
                     <div className="row">
                         <div className="kpd-bulkbar">
                             <span>{sortedCases.length} cases in this view</span>
                             {(!showBulkBox)?
-                            <button className="btn btn-primary" onClick={()=>setShowBulkBox(true)}>Select cases</button>
+                            <button className="kpd-button" onClick={()=>setShowBulkBox(true)}>Select cases</button>
                             :
                             <>
                             <span>{bulkCases.length} selected</span>
-                            <select className="form-select" id="status"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
+                            <select className="form-select" id="status" aria-label="Status" onChange={(e)=>{setBulkStatus(e.target.value)}}>
                                 <option value="Select One" onClick={()=>setBulkStatus("Select One")}>Select One</option>
                                 <option value="Submitted" onClick={()=>setBulkStatus("Submitted")}>Submitted</option>
                                 <option value="Scanning" onClick={()=>setBulkStatus("Scanning")}>Scanning</option>
@@ -592,12 +586,13 @@ export const AdminPage = props => {
                                 <option value="Closed" onClick={()=>setBulkStatus("Closed")}>Closed</option>
                                 
                             </select>
-                            <button className="btn btn-primary" onClick={()=>{handleUpdateCaseStatus()}}>Apply status</button>
-                            <button className="btn btn-primary" onClick={()=>setShowBulkBox(false)}>Cancel</button>
+                            <button className="kpd-button kpd-primary" onClick={()=>{handleUpdateCaseStatus()}}>Apply status</button>
+                            <button className="kpd-button" onClick={()=>setShowBulkBox(false)}>Cancel</button>
                             </>
                             }
                             </div>
                     </div>
+                    <div className="kpd-case-table-scroll" role="region" aria-label="Case list" tabIndex={0}>
                     <div className={`row kpd-table-head ${showBulkBox ? "kpd-bulk" : ""}`} >
                     {(showBulkBox)?
                     <div className = "col-1 text-center" >Select Cases</div>
@@ -614,8 +609,7 @@ export const AdminPage = props => {
                     <div className = "col-1 text-center" onClick={() => handleSort(statusToFilter === 'Shipped' ? 'scanner_id' : 'shade')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>{statusToFilter === 'Shipped' ? 'Scanner ID' : 'Shade'}</div>
                     <div className = "col-1 text-center" onClick={() => handleSort('status')} style={{border: "solid black 1px", color:"black", backgroundColor:"white"}}>Status {sortBy === 'status' ? (sortOrder === "asc" ? "↑" : "↓") : ""}</div>
                 </div>
-                <div className = "row justinfy-content-end">
-                <div className="col=10">
+                <div className="kpd-case-rows">
                 
                 {sortedCases.map((item, index) => {
                     
@@ -702,26 +696,21 @@ export const AdminPage = props => {
                             
                         );
                     })}
-                    <div className="col-10 ">
-                        <div className="row justify-content-end" >
+                    </div>
+                    </div>
+                    <div className="kpd-pagination">
                             {(pageNumber === 1)?
-                            <button className="btn btn-primary col-2 float-end mt-1" style={{height: "40px", width:"80px"}} onClick={()=>{setPageMin(pageMin + 20); setPageMax(pageMax+20); setPageNumber(pageNumber+1)}}>Next</button>
+                            <button className="kpd-button" onClick={()=>{setPageMin(pageMin + 20); setPageMax(pageMax+20); setPageNumber(pageNumber+1)}}>Next</button>
                             : 
                             <>
-                                <button className="btn btn-primary col-2 float-start mt-1" style={{height: "40px", width:"100px"}} onClick={()=>{setPageMin(pageMin - 20); setPageMax(pageMax-20); setPageNumber(pageNumber-1)}}>Previous</button>
-                                <button className="btn btn-primary col-2 float-end mt-1" style={{height: "40px", width:"80px"}} onClick={()=>{setPageMin(pageMin + 20); setPageMax(pageMax+20); setPageNumber(pageNumber+1)}}>Next</button>
+                                <button className="kpd-button" onClick={()=>{setPageMin(pageMin - 20); setPageMax(pageMax-20); setPageNumber(pageNumber-1)}}>Previous</button>
+                                <button className="kpd-button" onClick={()=>{setPageMin(pageMin + 20); setPageMax(pageMax+20); setPageNumber(pageNumber+1)}}>Next</button>
                             </>
                             }
-                            </div>
                     </div>
-                    
-                    </div>
-                </div>
-
-                  
                 </div>
             </div>
 
         </div>
-        </div>)
+        </OperationsLayout>)
 }

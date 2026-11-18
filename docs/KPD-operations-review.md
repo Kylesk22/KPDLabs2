@@ -11,6 +11,13 @@ verified deployment checkpoint.
 
 ## What changes
 
+The Cases dashboard now uses the same operations layout, active navigation,
+cream background, gold selections, outlined buttons and white panels as Shipping
+and Reports. Case search, sorting, priority/status filters, bulk updates and ADW
+controls retain their existing behavior. The case list scrolls horizontally on
+narrow screens while filters and pagination stay accessible. This styling
+follow-up needs no database migration. The portable preview now opens on Cases.
+
 The admin case dashboard gains Shipping and Reports links. The case detail
 Shipping Label button now opens the shipping workspace. The former outbound
 purchase endpoint returns a message directing old browser tabs to that workspace,

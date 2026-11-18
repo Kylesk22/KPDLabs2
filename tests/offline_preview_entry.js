@@ -5,9 +5,11 @@ import ReactDOM from 'react-dom';
 import { MemoryRouter, Routes, Route, Navigate, useParams, Link } from 'react-router-dom';
 import KPDReports from '../src/front/js/pages/KPDReports';
 import KPDShipping from '../src/front/js/pages/KPDShipping';
+import { AdminPage } from '../src/front/js/pages/AdminPage';
 import { OperationsLayout } from '../src/front/js/component/KPDOperations';
 
 const fixture = window.KPD_PREVIEW_FIXTURE;
+sessionStorage.setItem('id', '1');
 const pdfBytes = Uint8Array.from(atob(fixture.label_url.split(',')[1]), character => character.charCodeAt(0));
 fixture.label_url = URL.createObjectURL(new Blob([pdfBytes], {type:'application/pdf'}));
 let rows = fixture.report.rows;
@@ -28,6 +30,12 @@ function report(query) {
 }
 window.fetch = async (raw, options={}) => {
   const url=new URL(raw,'https://offline-preview.invalid');
+  if(url.pathname==='/api/admin/1'||url.pathname==='/api/admin/1/closed') {
+    const date=value=>value?`${value.slice(5,7)}/${value.slice(8,10)}/${value.slice(0,4)} 10:00:00`:'';
+    const data={cases:rows.filter(r=>url.pathname.endsWith('/closed')?r.status==='Closed':r.status!=='Closed').map(r=>({id:r.id,name:r.patient,doctor_name:r.doctor,'user id':r.customer_id,type:r.type,product:r.product,status:r.status,price:r.value_cents===null?'':(r.value_cents/100).toFixed(2),'update date':date(r.received),'due date':date(fixture.today),hold:r.held?'demo hold':null,shade:'A2',production:r.id===4203?'Rush':'Standard',shipping:'Ground'})),users:fixture.report.filters.customers.map(u=>({id:u.id,fname:u.name,lname:''}))};
+    return {ok:true,status:200,json:async()=>copy(data)};
+  }
+  if(url.pathname==='/api/adw/staff/labs/pending') return {ok:true,status:200,headers:{get:()=> 'application/json'},json:async()=>({labs:[]})};
   if(!url.pathname.startsWith('/api/admin/operations/')) throw new Error('Offline sample preview only.');
   const path=url.pathname.slice('/api/admin/operations/'.length), body=options.body?JSON.parse(options.body):{};
   let data;
@@ -78,8 +86,9 @@ function SampleCase() {
   const {case_id}=useParams(), row=rows.find(r=>String(r.id)===case_id);
   return <OperationsLayout><h1>Sample case #{case_id}</h1><div className="kpd-panel"><p>This preview uses invented patients. The live case detail page is unchanged.</p>{row&&<><h2>{row.patient}</h2><p>{row.doctor} · {row.product} · {row.status}</p></>}<Link to="/admin/1/reports">Back to Reports</Link></div></OperationsLayout>;
 }
-ReactDOM.render(<MemoryRouter initialEntries={['/admin/1/reports']}><div style={{position:'absolute',top:0,left:0,right:0,padding:'22px 35px',background:'#222429',color:'#ffb328',fontFamily:'Arial,sans-serif'}}><strong>KPD LABS</strong><span style={{display:'block',fontSize:12,color:'#deded8',marginTop:5}}>Offline development preview · sample cases · purchases are simulated</span></div><Routes>
+ReactDOM.render(<MemoryRouter initialEntries={['/admin/1']}><div style={{position:'absolute',top:0,left:0,right:0,padding:'22px 35px',background:'#222429',color:'#ffb328',fontFamily:'Arial,sans-serif'}}><strong>KPD LABS</strong><span style={{display:'block',fontSize:12,color:'#deded8',marginTop:5}}>Offline development preview · sample cases · purchases are simulated</span></div><Routes>
   <Route path="/admin/:user_id/reports" element={<KPDReports />} />
+  <Route path="/admin/:user_id" element={<AdminPage />} />
   <Route path="/admin/:user_id/shipping" element={<KPDShipping />} />
   <Route path="/admin/:user_id/:case_id" element={<SampleCase />} />
   <Route path="*" element={<Navigate to="/admin/1/reports" replace />} />

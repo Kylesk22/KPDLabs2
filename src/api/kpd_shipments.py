@@ -16,6 +16,9 @@ from api.kpd_reporting import held, case_logs, money_cents, FLORIDA
 class KPDShipment(db.Model):
     __tablename__ = 'kpd_shipment'
     id = db.Column(db.String(36), primary_key=True)
+    group_id = db.Column(db.String(36), index=True)
+    box_number = db.Column(db.Integer, nullable=False, default=1)
+    box_count = db.Column(db.Integer, nullable=False, default=1)
     state = db.Column(db.String(24), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -46,7 +49,7 @@ def now_utc():
 
 def adw_case_ids():
     # This is a shared repository. ADW keeps its own verified fulfillment flow.
-    if inspect(db.engine).has_table('adw_kpd_case_link'):
+    if inspect(db.session.connection()).has_table('adw_kpd_case_link'):
         return {row[0] for row in db.session.execute(text('SELECT case_id FROM adw_kpd_case_link'))}
     return set()
 
@@ -54,7 +57,7 @@ def adw_case_ids():
 def address_for(user, doctor):
     parts = [part.strip() for part in (user.address or '').split(',')]
     if len(parts) < 4:
-        raise ShippingError('Update this customer’s saved shipping address before creating a label.')
+        raise ShippingError("Update this customer's saved shipping address before creating a label.")
     street, city, state, zipcode = ', '.join(parts[:-3]), parts[-3], parts[-2], parts[-1]
     if not street or not city or not re.fullmatch(r'[A-Za-z]{2}', state) or not re.fullmatch(r'\d{5}(?:-\d{4})?', zipcode):
         raise ShippingError('The saved address needs a street, city, two-letter state, and ZIP code.')
@@ -143,14 +146,15 @@ def provider():
 
 
 def serialize_shipment(shipment):
-    return dict(id=shipment.id, state=shipment.state, created_at=shipment.created_at.isoformat() + 'Z',
+    return dict(id=shipment.id, group_id=shipment.group_id, box_number=shipment.box_number, box_count=shipment.box_count,
+                state=shipment.state, created_at=shipment.created_at.isoformat() + 'Z',
                 customer_id=shipment.customer_id, **shipment.snapshot, rates=shipment.rates,
                 selected_rate=shipment.selected_rate, transaction_id=shipment.transaction_id,
                 tracking_number=shipment.tracking_number, label_url=shipment.label_url,
                 shipped_at=shipment.shipped_at.isoformat() + 'Z' if shipment.shipped_at else None)
 
 
-def create_quote(ids, parcel, staff_id):
+def create_quote(ids, parcel, staff_id, group_id=None, box_number=1, box_count=1, commit=True):
     cases, user = selected_cases(ids)
     if KPDShipmentCase.query.filter(KPDShipmentCase.case_id.in_(ids)).first():
         raise ShippingError('A label already exists or a purchase is pending for one of these cases. Open shipment history.')
@@ -167,11 +171,29 @@ def create_quote(ids, parcel, staff_id):
     if not rates:
         raise ShippingError('No shipping rates are available for this address and package. Check the saved address and try again.')
     rates.sort(key=lambda rate: (not (rate['provider'].upper() == 'UPS' and rate['token'] == 'ups_ground'), rate['amount_cents']))
-    shipment = KPDShipment(id=str(uuid.uuid4()), state='quoted', created_at=now_utc(), created_by=staff_id,
+    shipment = KPDShipment(id=str(uuid.uuid4()), group_id=group_id, box_number=box_number, box_count=box_count,
+                           state='quoted', created_at=now_utc(), created_by=staff_id,
                            customer_id=user.id, snapshot=snapshot, rates=rates)
     db.session.add(shipment)
-    db.session.commit()
+    if commit:
+        db.session.commit()
     return serialize_shipment(shipment)
+
+
+def create_group_quote(boxes, staff_id):
+    if not isinstance(boxes, list) or not 1 <= len(boxes) <= 20 or any(not isinstance(b, dict) for b in boxes):
+        raise ShippingError('Prepare between 1 and 20 boxes.')
+    if any(not isinstance(b.get('cases'), list) or not b['cases'] for b in boxes):
+        raise ShippingError('Assign at least one case to each box, or remove the empty box.')
+    # Validate the entire packing plan before requesting rates for any box.
+    selected_cases([case for box in boxes for case in box['cases']])
+    for box in boxes:
+        package_values(box.get('parcel'))
+    group_id = str(uuid.uuid4())
+    result = [create_quote(box['cases'], box.get('parcel'), staff_id, group_id, index + 1, len(boxes), commit=False)
+              for index, box in enumerate(boxes)]
+    db.session.commit()
+    return dict(id=group_id, boxes=result)
 
 
 def complete(shipment, raw):
@@ -195,8 +217,7 @@ def complete(shipment, raw):
     db.session.commit()
 
 
-def buy_label(shipment_id, rate_id, amount_cents):
-    shipment = KPDShipment.query.filter_by(id=shipment_id).with_for_update().first()
+def reserve_purchase(shipment, rate_id, amount_cents):
     if not shipment:
         raise ShippingError('Shipment not found.')
     if shipment.state in {'purchased', 'shipped'}:
@@ -217,11 +238,14 @@ def buy_label(shipment_id, rate_id, amount_cents):
     shipment.state = 'purchasing'
     for case in cases:
         db.session.add(KPDShipmentCase(case_id=case.id, shipment_id=shipment.id))
+
+
+def perform_purchase(shipment):
+    shipment_id = shipment.id
     # Persist the reservation BEFORE contacting the provider. A timeout/crash is
     # never permission to charge again. A unique case PK also fences SQLite tests.
-    db.session.commit()
     try:
-        raw = provider().buy(selected['id'], shipment.id)
+        raw = provider().buy(shipment.selected_rate['id'], shipment.id)
         if raw.get('status') == 'ERROR':
             shipment.state = 'failed'
             shipment.transaction_id = raw.get('object_id')
@@ -245,6 +269,61 @@ def buy_label(shipment_id, rate_id, amount_cents):
     return serialize_shipment(shipment)
 
 
+def buy_label(shipment_id, rate_id, amount_cents):
+    shipment = KPDShipment.query.filter_by(id=shipment_id).populate_existing().with_for_update().first()
+    if shipment and shipment.group_id:
+        raise ShippingError('Purchase these boxes together from their shipment review.')
+    saved = reserve_purchase(shipment, rate_id, amount_cents)
+    if saved:
+        return saved
+    db.session.commit()
+    return perform_purchase(shipment)
+
+
+def group_shipments(group_id):
+    shipments = KPDShipment.query.filter_by(group_id=group_id).order_by(KPDShipment.id).populate_existing().with_for_update().all()
+    if not shipments or len(shipments) != shipments[0].box_count:
+        raise ShippingError('Shipment group not found or incomplete. Refresh shipment history.')
+    return sorted(shipments, key=lambda s: s.box_number)
+
+
+def buy_group(group_id, selections, total_cents):
+    shipments = group_shipments(group_id)
+    if all(s.state in {'purchased', 'shipped'} for s in shipments):
+        return dict(id=group_id, boxes=[serialize_shipment(s) for s in shipments], errors=[])
+    if any(s.state != 'quoted' for s in shipments):
+        raise ShippingError('This group has already been processed. Open saved labels in shipment history; prepare any unpurchased cases again.')
+    if (not isinstance(selections, list) or len(selections) != len(shipments) or
+            any(not isinstance(s, dict) or not isinstance(s.get('id'), str) for s in selections) or
+            {s['id'] for s in selections} != {s.id for s in shipments}):
+        raise ShippingError('Review a shipping rate for every box.')
+    choices = {s['id']: s for s in selections}
+    if (any(type(s.get('amount_cents')) is not int for s in selections) or type(total_cents) is not int or
+            total_cents != sum(s['amount_cents'] for s in selections)):
+        raise ShippingError('Review the total shipping price before purchasing.')
+    # Lock all cases in a consistent order, then reserve every box atomically.
+    # No provider call occurs until every case, rate, price and address passes.
+    selected_cases([i for s in shipments for i in s.snapshot['cases']], lock=True)
+    for shipment in shipments:
+        choice = choices[shipment.id]
+        reserve_purchase(shipment, choice.get('rate_id'), choice.get('amount_cents'))
+    db.session.commit()
+    errors = []
+    for index, shipment in enumerate(shipments):
+        try:
+            perform_purchase(shipment)
+        except ShippingError as error:
+            errors.append(dict(box_number=shipment.box_number, message=str(error)))
+            # These later boxes were never sent to Shippo. Release only those;
+            # the failed/uncertain box is handled by perform_purchase itself.
+            for pending in shipments[index + 1:]:
+                pending.state = 'not_purchased'
+                KPDShipmentCase.query.filter_by(shipment_id=pending.id).delete()
+            db.session.commit()
+            break
+    return dict(id=group_id, boxes=[serialize_shipment(s) for s in shipments], errors=errors)
+
+
 def reconcile(shipment_id, transaction_id):
     shipment = KPDShipment.query.filter_by(id=shipment_id).with_for_update().first()
     if not shipment or shipment.state not in {'purchasing', 'uncertain', 'purchased'}:
@@ -266,14 +345,14 @@ def reconcile(shipment_id, transaction_id):
     return serialize_shipment(shipment)
 
 
-def mark_shipped(shipment_id):
+def mark_shipped(shipment_id, commit=True):
     shipment = KPDShipment.query.filter_by(id=shipment_id).with_for_update().first()
     if not shipment or shipment.state not in {'purchased', 'shipped'}:
         raise ShippingError('Purchase or reconcile the label before confirming shipment.')
     if shipment.state == 'shipped':
         return serialize_shipment(shipment)
     cases = Case.query.filter(Case.id.in_(shipment.snapshot['cases'])).order_by(Case.id).with_for_update().all()
-    if any(held(c.hold) or c.status not in {'Ready to Ship', 'Shipped'} for c in cases):
+    if len(cases) != len(shipment.snapshot['cases']) or any(held(c.hold) or c.status not in {'Ready to Ship', 'Shipped'} for c in cases):
         raise ShippingError('A case is on hold or its status changed. Review the cases before confirming shipment.')
     day = datetime.now(FLORIDA).strftime('%m/%d/%Y %H:%M:%S')
     for case in cases:
@@ -282,5 +361,17 @@ def mark_shipped(shipment_id):
             case.add_log('Shipped: ' + day)
     shipment.state = 'shipped'
     shipment.shipped_at = now_utc()
-    db.session.commit()
+    if commit:
+        db.session.commit()
     return serialize_shipment(shipment)
+
+
+def mark_group_shipped(group_id):
+    shipments = group_shipments(group_id)
+    if any(s.state not in {'purchased', 'shipped'} for s in shipments):
+        raise ShippingError('Every box needs a verified label before confirming all boxes. You can confirm a labeled box individually.')
+    ids = [i for s in shipments for i in s.snapshot['cases']]
+    Case.query.filter(Case.id.in_(ids)).order_by(Case.id).with_for_update().all()
+    result = [mark_shipped(s.id, commit=False) for s in shipments]
+    db.session.commit()
+    return dict(id=group_id, boxes=result)

@@ -110,7 +110,9 @@ class FakeShippo:
                           dict(object_id='ground', amount='8.25', currency='USD', provider='UPS', servicelevel=dict(name='Ground', token='ups_ground'))]}
     def buy(self, rate, shipment):
         self.purchases += 1
-        self.last = dict(status='SUCCESS', object_id='transaction123', rate=rate, metadata='kpd:' + shipment, tracking_number='DEMO123', label_url='https://example.test/label.pdf')
+        number = 122 + self.purchases
+        self.last = dict(status='SUCCESS', object_id=f'transaction{number}', rate=rate, metadata='kpd:' + shipment,
+                         tracking_number=f'DEMO{number}', label_url=f'https://example.test/label.pdf?box={number}')
         if self.mode == 'timeout': raise TimeoutError('synthetic timeout')
         if self.mode == 'failed': return dict(status='ERROR', object_id='error123')
         return self.last
@@ -244,6 +246,124 @@ class OperationsTests(unittest.TestCase):
             self.assertEqual(request.call_args.kwargs['json']['label_file_type'],'PDF_4x6')
             self.assertEqual(request.call_args.kwargs['json']['metadata'],'kpd:test123')
             self.assertEqual(request.call_count,1)
+
+    def group_quote(self, ids=None):
+        ids = ids or [[1,2,3], [4,5]]
+        return self.post('shipping/groups/quotes', {'boxes': [dict(cases=box, parcel=dict(length='6',width='4',height='4',weight=str(index+1))) for index,box in enumerate(ids)]})
+
+    def group_buy(self, quote, total=None):
+        return self.post(f"shipping/groups/{quote['id']}/buy", dict(boxes=[dict(id=b['id'],rate_id='ground',amount_cents=825) for b in quote['boxes']], total_cents=total if total is not None else 825*len(quote['boxes'])))
+
+    def test_ten_cases_two_boxes_keep_distinct_tracking_and_confirm_separately(self):
+        for id in range(6,11):
+            db.session.add(Case(id=id,user_id=2,doctor_name='Adele Example',name=f'Demo {id}',type='crown',product='Zirconia',teeth='8',status='Ready to Ship',price='100',log='[]'))
+        db.session.commit()
+        quote=self.group_quote([list(range(1,6)),list(range(6,11))]).json
+        response=self.group_buy(quote)
+        self.assertEqual(response.status_code,200)
+        boxes=response.json['boxes']
+        self.assertEqual([b['box_number'] for b in boxes],[1,2])
+        self.assertNotEqual(boxes[0]['tracking_number'],boxes[1]['tracking_number'])
+        self.assertNotEqual(boxes[0]['label_url'],boxes[1]['label_url'])
+        self.assertEqual(Case.query.filter_by(status='Ready to Ship').count(),10)
+        for box in boxes:
+            for id in box['cases']:
+                logs=db.session.get(Case,id).get_logs()
+                self.assertIn('Tracking Number: '+box['tracking_number'],logs)
+                self.assertEqual(sum(s.startswith('Tracking Number:') for s in logs),1)
+        self.assertEqual(self.group_buy(quote).status_code,200)
+        self.assertEqual(self.provider.purchases,2)
+        self.assertEqual(self.post(f"shipping/{boxes[0]['id']}/shipped",{}).status_code,200)
+        self.assertEqual(Case.query.filter_by(status='Shipped').count(),5)
+        self.assertEqual(Case.query.filter_by(status='Ready to Ship').count(),5)
+        self.assertEqual(self.post(f"shipping/groups/{quote['id']}/shipped",{}).status_code,200)
+        self.assertEqual(self.post(f"shipping/groups/{quote['id']}/shipped",{}).status_code,200)
+        self.assertEqual(Case.query.filter_by(status='Shipped').count(),10)
+        self.assertTrue(all(sum(s.startswith('Shipped:') for s in c.get_logs())==1 for c in Case.query.all()))
+
+    def test_invalid_box_assignments_rejected(self):
+        for ids in ([[1,2],[2,3]], [[1],[]], []):
+            response=self.post('shipping/groups/quotes',{'boxes':[dict(cases=b,parcel=dict(length='6',width='4',height='4',weight='1')) for b in ids]})
+            self.assertEqual(response.status_code,409)
+        db.session.get(Case,5).doctor_name='Other'; db.session.commit()
+        self.assertEqual(self.group_quote().status_code,409)
+        self.assertEqual(KPDShipment.query.count(),0)
+
+    def test_group_preflight_checks_last_box_before_any_charge(self):
+        quote=self.group_quote().json
+        self.assertEqual(self.group_buy(quote,total=1).status_code,409)
+        db.session.get(Case,5).hold='held'; db.session.commit()
+        self.assertEqual(self.group_buy(quote).status_code,409)
+        self.assertEqual(self.provider.purchases,0)
+        self.assertEqual(KPDShipmentCase.query.count(),0)
+        self.assertTrue(all(s.state=='quoted' for s in KPDShipment.query.all()))
+
+    def test_partial_purchase_retains_first_label_and_releases_unattempted_box(self):
+        quote=self.group_quote([[1,2],[3,4],[5]]).json
+        original=self.provider.buy
+        def fail_second(rate, shipment):
+            if self.provider.purchases==1: self.provider.mode='failed'
+            return original(rate,shipment)
+        with patch.object(self.provider,'buy',side_effect=fail_second):
+            response=self.group_buy(quote)
+        self.assertEqual(response.status_code,200)
+        self.assertEqual([b['state'] for b in response.json['boxes']],['purchased','failed','not_purchased'])
+        self.assertEqual(self.provider.purchases,2)
+        self.assertEqual(KPDShipmentCase.query.count(),2)
+        self.assertEqual(self.group_buy(quote).status_code,409)
+        self.assertEqual(self.provider.purchases,2)
+        self.assertEqual(self.post(f"shipping/groups/{quote['id']}/shipped",{}).status_code,409)
+        self.assertEqual(self.post(f"shipping/{quote['boxes'][0]['id']}/shipped",{}).status_code,200)
+        self.assertEqual(Case.query.filter_by(status='Shipped').count(),2)
+        queued=self.client.get('/api/admin/operations/shipping').json['groups'][0]['cases']
+        self.assertEqual([c['id'] for c in queued],[3,4,5])
+
+    def test_group_timeout_keeps_uncertain_box_reserved(self):
+        quote=self.group_quote([[1,2],[3,4],[5]]).json
+        original=self.provider.buy
+        def timeout_second(rate, shipment):
+            if self.provider.purchases==1: self.provider.mode='timeout'
+            return original(rate,shipment)
+        with patch.object(self.provider,'buy',side_effect=timeout_second): response=self.group_buy(quote)
+        self.assertEqual([b['state'] for b in response.json['boxes']],['purchased','uncertain','not_purchased'])
+        self.assertEqual(KPDShipmentCase.query.count(),4)
+        second=quote['boxes'][1]
+        self.assertEqual(self.post(f"shipping/{second['id']}/reconcile",{'transaction_id':'transaction124'}).status_code,200)
+        self.assertEqual(self.provider.purchases,2)
+        self.assertEqual(self.group_buy(quote).status_code,409)
+
+    def test_group_confirmation_rolls_back_all_if_one_box_held(self):
+        quote=self.group_quote().json; self.group_buy(quote)
+        db.session.get(Case,5).hold='held'; db.session.commit()
+        self.assertEqual(self.post(f"shipping/groups/{quote['id']}/shipped",{}).status_code,409)
+        self.assertEqual(Case.query.filter_by(status='Shipped').count(),0)
+        self.assertTrue(all(s.state=='purchased' for s in KPDShipment.query.all()))
+
+    def test_group_quote_failure_does_not_save_half_a_group(self):
+        original=self.provider.quote
+        def fail_second(snapshot):
+            if 5 in snapshot['cases']: raise ValueError('No rate for second box')
+            return original(snapshot)
+        with patch.object(self.provider,'quote',side_effect=fail_second): self.assertEqual(self.group_quote().status_code,409)
+        self.assertEqual(KPDShipment.query.count(),0)
+
+    def test_group_boxes_cannot_be_purchased_via_single_endpoint(self):
+        quote=self.group_quote().json
+        self.assertEqual(self.buy(quote['boxes'][0]).status_code,409)
+        self.assertEqual(self.provider.purchases,0)
+
+    def test_left_behind_cases_remain_ready_and_unreserved(self):
+        quote=self.group_quote([[1,2],[3,4]]).json
+        self.assertEqual(self.group_buy(quote).status_code,200)
+        self.assertEqual(self.post(f"shipping/groups/{quote['id']}/shipped",{}).status_code,200)
+        self.assertEqual(db.session.get(Case,5).status,'Ready to Ship')
+        self.assertIsNone(db.session.get(KPDShipmentCase,5))
+
+    def test_overlapping_group_quotes_do_not_charge_twice(self):
+        first=self.group_quote().json; second=self.group_quote([[1,3],[2,4,5]]).json
+        self.assertEqual(self.group_buy(first).status_code,200)
+        self.assertEqual(self.group_buy(second).status_code,409)
+        self.assertEqual(self.provider.purchases,2)
 
     def test_additive_migration_preserves_cases_and_reserves_uniquely(self):
         from alembic.migration import MigrationContext

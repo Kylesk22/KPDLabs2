@@ -8,7 +8,7 @@ from api.models import db, User, Case
 from api.kpd_reporting import build_report, report_csv, held, case_logs, FLORIDA
 from api.kpd_shipments import (KPDShipment, KPDShipmentCase, ShippingError, adw_case_ids,
                                doctor_for, address_for, serialize_shipment, create_quote,
-                               buy_label, reconcile, mark_shipped)
+                               buy_label, reconcile, mark_shipped, create_group_quote, buy_group, mark_group_shipped)
 
 
 def admin_only(function):
@@ -107,6 +107,22 @@ def register_operations(api):
     def purchase(staff, shipment_id):
         data = body()
         return jsonify(buy_label(shipment_id, data.get('rate_id'), data.get('amount_cents')))
+
+    @api.route('/admin/operations/shipping/groups/quotes', methods=['POST'])
+    @admin_only
+    def group_quote(staff):
+        return jsonify(create_group_quote(body().get('boxes'), staff.id))
+
+    @api.route('/admin/operations/shipping/groups/<group_id>/buy', methods=['POST'])
+    @admin_only
+    def group_purchase(staff, group_id):
+        data = body()
+        return jsonify(buy_group(group_id, data.get('boxes'), data.get('total_cents')))
+
+    @api.route('/admin/operations/shipping/groups/<group_id>/shipped', methods=['POST'])
+    @admin_only
+    def group_handoff(staff, group_id):
+        return jsonify(mark_group_shipped(group_id))
 
     @api.route('/admin/operations/shipping/<shipment_id>/reconcile', methods=['POST'])
     @admin_only

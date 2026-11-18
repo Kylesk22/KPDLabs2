@@ -26,17 +26,17 @@ with app.app_context():
                             address='123 Example Street, Haines City, FL, 33844', fname=first, lname=last, practice='', license_number=str(id),
                             security_question_1='Demo', security_answer_1='Demo', security_question_2='Demo', security_answer_2='Demo'))
     for i in range(1, 25):
-        customer = 2 if i <= 5 else 3 if i % 2 else 4
+        customer = 2 if i <= 10 else 3 if i % 2 else 4
         doctor = {2:'Adele Example',3:'River Dental',4:'Pinecrest Dental'}[customer]
-        status = 'Ready to Ship' if i <= 5 else ['Design','Manufacturing','Finish','Billed','Shipped','Closed'][i % 6]
-        received_days = 1 if i <= 5 else i % 12
+        status = 'Ready to Ship' if i <= 10 else ['Design','Manufacturing','Finish','Billed','Shipped','Closed'][i % 6]
+        received_days = 1 if i <= 10 else i % 12
         logs = [f'Submitted: {stamp(received_days)}']
         if status in {'Shipped','Billed','Closed'}: logs.append(f'Shipped: {stamp(i % 2)}')
         denture = i % 5 == 0
         db.session.add(Case(id=4200+i, user_id=customer, doctor_name=doctor, name=f'Sample patient {i:02d}',
                             type='newDenture' if denture else 'crown', product='PMMA' if denture else 'Zirconia',
                             teeth='["Upper Arch"]' if denture else '["8","9"]', status=status, price='0' if i==9 else '195' if denture else '110',
-                            hold=stamp(1) if i in {6,12,18} else None, update_date=stamp(received_days), log=json.dumps(logs)))
+                            hold=stamp(1) if i in {12,18} else None, update_date=stamp(received_days), log=json.dumps(logs)))
     db.session.commit()
 
 @app.after_request

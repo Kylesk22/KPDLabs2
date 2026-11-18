@@ -20,8 +20,15 @@ cases with legacy tracking are excluded. The existing 6 × 4 × 4 inch / 1 lb
 package is the editable default. UPS Ground is selected when available; another
 service requires an explicit selection. Buying opens a native 4 × 6 PDF and saves
 its transaction, label link, price, and tracking against every included case.
-Printing does not set Shipped. Confirm box has shipped records the event for all
-included cases. Shipment history displays the most recent 100 purchases.
+Add box creates another package for the same dentist. Each case can be assigned
+to exactly one box or left in the lab. Each box has its own measurements, weight,
+rate, label and tracking. The reviewed total covers all boxes. All cases and
+prices are checked and reserved before any purchase; a partial failure preserves
+successful labels, retains an uncertain box for review, and releases boxes that
+were never attempted. Preparing the remaining cases never repurchases saved labels.
+Printing does not set Shipped. Confirm a box individually or confirm all boxes
+after departure. The all-box action is atomic if a case has gone on hold.
+Shipment history displays the most recent 100 box records, grouped by shipment.
 
 Purchases reserve cases before contacting Shippo. A repeated click/request returns
 the existing purchase; a timeout or ambiguous outcome cannot trigger another
@@ -58,12 +65,15 @@ and unit bases. Values use the stored case total, including a valid $0 remake.
 
 ## Validation
 
-The offline unittest suite exercises report periods/backlog, holds and remakes,
+The 36-test offline unittest suite exercises report periods/backlog, holds and remakes,
 product units, missing-history handling, CSV escaping, admin authorization/CSRF,
 five-case grouping, held/mixed/changed cases, price verification, overlapping
 quotes, idempotent purchases, uncertain and failed purchases, reconciliation,
 shipment confirmations, ADW isolation, 4 × 6 provider requests, and the additive
-migration. It uses synthetic records, SQLite, and a fake provider; no live
+migration. It also covers ten cases in two boxes, separate tracking, left-behind
+cases, invalid/duplicate box assignments, whole-group preflight, partial failures,
+uncertain purchases, overlapping groups and atomic group confirmation.
+It uses synthetic records, SQLite, and a fake provider; no live
 database or postage API is contacted.
 
 Run with the existing project Python dependencies:
@@ -86,7 +96,8 @@ Open `docs/KPD-operations-preview.html` in a local browser. This self-contained
 preview reuses the production React pages with a synthetic API simulator; every
 patient, amount, and purchase is a demonstration. It makes no network requests.
 It supports reports, filters, drill-through, shipping preparation, simulated
-purchases, and shipment confirmation. Refreshing resets the example data. The
+purchases, Add box (ten ready cases for Adele), and shipment confirmation.
+Refreshing resets the example data. The
 simulator is not included in the production entry point.
 
 For an API-integrated local preview using a synthetic Flask database:
@@ -103,6 +114,8 @@ admin account, and uses fake shipping responses. Never deploy the preview server
 
 1. Compare the branch with current remote main and preserve newer work before
    merging. No production branch has been pushed by this change.
+   Kyle will push from his usual local repository. See
+   `KPD-local-handoff.md` for the local transfer and read-only database check.
 2. Review the sample UI and verify one 4 × 6 print with the actual thermal printer.
 3. On staging, check the existing Alembic revision and a database backup. The new
    revision `kpd_operations_20261118` follows `adw_paid_20261020`; if production is

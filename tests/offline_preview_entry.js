@@ -11,7 +11,7 @@ const fixture = window.KPD_PREVIEW_FIXTURE;
 const pdfBytes = Uint8Array.from(atob(fixture.label_url.split(',')[1]), character => character.charCodeAt(0));
 fixture.label_url = URL.createObjectURL(new Blob([pdfBytes], {type:'application/pdf'}));
 let rows = fixture.report.rows;
-const quotes = {}, history = [];
+const quotes = {}, batches = {}, history = [];
 let serial = 0;
 const copy = value => JSON.parse(JSON.stringify(value));
 const totals = list => ({ cases: list.length, value_cents: list.reduce((n,r)=>n+(r.value_cents||0),0), units:list.reduce((n,r)=>n+(r.units||0),0), missing_values:list.filter(r=>r.value_cents===null).length, missing_quantities:list.filter(r=>r.units===null).length });
@@ -40,6 +40,26 @@ window.fetch = async (raw, options={}) => {
   } else if(path==='shipping') {
     const claimed=new Set(history.flatMap(item=>item.cases));
     data={...fixture.queue,groups:fixture.queue.groups.map(g=>({...g,cases:g.cases.filter(c=>!claimed.has(c.id))})).filter(g=>g.cases.length),history};
+  } else if(path==='shipping/groups/quotes') {
+    const id=`GROUP-${++serial}`;
+    data={id,boxes:body.boxes.map((box,index)=>{
+      const group=fixture.queue.groups.find(g=>g.cases.some(c=>box.cases.includes(c.id)));
+      const item={id:`DEMO-${++serial}`,group_id:id,box_number:index+1,box_count:body.boxes.length,state:'quoted',doctor:group.doctor,customer_id:group.customer_id,cases:box.cases,address:group.address,parcel:box.parcel,created_at:new Date().toISOString(),rates:fixture.rates};
+      quotes[item.id]=item; return item;
+    })}; batches[id]=data;
+  } else if(path.startsWith('shipping/groups/')&&path.endsWith('/buy')) {
+    const batch=batches[path.split('/')[2]];
+    for(const box of batch.boxes) {
+      if(box.state==='purchased'||box.state==='shipped') continue;
+      const choice=body.boxes.find(b=>b.id===box.id);
+      Object.assign(box,{state:'purchased',selected_rate:box.rates.find(r=>r.id===choice.rate_id),tracking_number:`DEMO-BOX-${box.box_number}-${box.id}`,label_url:fixture.label_url}); history.unshift(box);
+    }
+    data={...batch,errors:[]};
+  } else if(path.startsWith('shipping/groups/')&&path.endsWith('/shipped')) {
+    data=batches[path.split('/')[2]];
+    for(const box of data.boxes) { box.state='shipped'; box.shipped_at=new Date().toISOString(); }
+    const ids=data.boxes.flatMap(b=>b.cases);
+    rows=rows.map(row=>ids.includes(row.id)?{...row,status:'Shipped',in_house:false,held:false,shipped:fixture.today}:row);
   } else if(path==='shipping/quotes') {
     const group=fixture.queue.groups.find(g=>g.cases.some(c=>body.cases.includes(c.id)));
     const id=`DEMO-${++serial}`;

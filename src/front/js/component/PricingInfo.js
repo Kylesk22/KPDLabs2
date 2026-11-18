@@ -9,7 +9,6 @@
 
 // import Zirc from "../../img/Crown.png"
 // import ZircV from "../../img/Veneer.png"
-// import Partial from "../../img/TCS Unbreakable Partial Denture.png"
 // import Denture from "../../img/Denture.png"
 // import Implant from "../../img/Implant.png"
 // import NightGuard from "../../img/NightGuard.png"
@@ -356,7 +355,7 @@ const services = [
     {
         name: "Partial Dentures",
         tagline: "Strength and comfort in every case",
-        detail: "TCS Unbreakable partials engineered for long-term performance and patient satisfaction.",
+        detail: "Flexible PMMA with Gingival Composite. A 100% clear flexible PMMA base with Pink or Meharry gingival composite included.",
         icon: "◉"
     },
     {

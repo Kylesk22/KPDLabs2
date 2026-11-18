@@ -10,7 +10,8 @@ import JSZip from 'jszip';
 
 import Zirc from "../../img/Crown.png"
 import ZircV from "../../img/Veneer.png"
-import Partial from "../../img/TCS Unbreakable Partial Denture.png"
+import Partial from "../../img/flexible-pmma-partial-front.png"
+import { PARTIAL_MATERIAL, PARTIAL_PRODUCTS, PARTIAL_SHADES, partialOrderPrice } from './partialCatalog';
 import Denture from "../../img/Denture.png"
 import Implant from "../../img/Implant.png"
 import ImplantCrown from "../../img/implantCrown.png"
@@ -93,7 +94,6 @@ export const CreateOrder = props => {
         PartialTryIn: 35,
         DentureTryIn: 50,
         WaxRim: 50,
-        TCSUnbreakable: 250,
         Denture: 250,
         PremiumDenture: 100
 
@@ -399,6 +399,8 @@ AWS.config.update({
         if (saveInFlight.current) return;
         if (saveUncertain.current) { alert("Submission status is uncertain. Check your case list in another tab or contact KPD before submitting again. Your form is still here."); return; }
         if (!patientName || !product || !crownTooth.length) { alert("Please enter a patient name, product, and at least one tooth."); return; }
+        if (type === 'partial' && !PARTIAL_PRODUCTS.includes(product)) { alert('Select Try In, Unilateral, or Bilateral.'); return; }
+        if (type === 'partial' && product !== 'Try In' && !PARTIAL_SHADES.some(option => option.value === gumShade)) { alert('Select Pink or Meharry gingival composite.'); return; }
         saveInFlight.current = true;
         setLoading(true);
         let requestStarted = false;
@@ -422,8 +424,8 @@ AWS.config.update({
                 "note": doctorDueDate ? `${note}\nPatient Appointment Date: ${doctorDueDate}` : note,
                 "status": "Submitted",
                 "type": isBridge ? "Bridge" : type,
-                "gum_shade": gumShade,
-                "price": finalPrice,
+                "gum_shade": type === 'partial' && product === 'Try In' ? '' : gumShade,
+                "price": type === 'partial' ? partialOrderPrice(product, crownTooth, model3D) : finalPrice,
                 "shipping": shipping,
                 "production": production,
                 "model3D": model3D,
@@ -1053,11 +1055,12 @@ AWS.config.update({
                 <div className="service-block-two col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="800ms">
                 <div className="inner-box" onClick={()=>setType("partial")}>
                     <div className="image-box">
-                    <figure className="image overlay-anim"><img src={Partial} alt="" className="product-pic" /></figure>
+                    <figure className="image overlay-anim"><img src={Partial} alt={PARTIAL_MATERIAL} className="product-pic" style={{objectFit:'contain'}} /></figure>
                     {/* <i className="flaticon-cog-1"></i> */}
                     </div>
                     <div className="content-box text-center">
                     <h4 className="title"><a >Partial</a></h4>
+                    <p style={{fontSize:'13px',lineHeight:1.5}}>{PARTIAL_MATERIAL}</p>
                     </div>
                 </div>
                 </div>
@@ -2420,91 +2423,26 @@ AWS.config.update({
             <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
                     <label  htmlFor="product"><h5>Product</h5></label>
-                    <select className="form-select" id="product"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Product" onChange={(e)=>{setProduct(e.target.value)}}>
-                        <option value="Select One">Select One</option>
-                        {/* <option value="Custom Tray" onClick={()=>setProduct("Custom Tray")}>Custom Tray</option>
-                        <option value="Wax Rim" onClick={()=>setProduct("Wax Rim")}>Wax Rim</option> */}
-                        <option value="Try In" onClick={()=>setProduct("Try In")}>Try In</option>
-                        {/* <option value="TCS Unbreakable" onClick={()=>setProduct("TCS Unbreakable")}>TCS Unbreakable</option> */}
-                        <option value="Unilateral" onClick={()=>setProduct("Unilateral")}>Unilateral</option>
-                        <option value="Bilateral" onClick={()=>setProduct("Bilateral")}>Bilateral</option>
+                    <p>{PARTIAL_MATERIAL}</p>
+                    <select className="form-select" id="product" required value={product} style={{borderRadius:'1rem', minHeight:'40px', backgroundColor:'white', border:'black 1px solid'}} aria-label="Product" onChange={e => {setProduct(e.target.value); setGumShade('');}}>
+                        <option value="">Select One</option>
+                        {PARTIAL_PRODUCTS.map(option => <option key={option} value={option}>{option}</option>)}
                     </select>
-                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                                {(product === "Custom Tray" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                
-                                    `$${(price += 35)}`
-                                
-
-                                : (product === "Custom Tray" && lowerArch && upperArch)?    
-                                    `$${(price += 70)}`
-
-                                :(product==="Occlusal Rim" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 75)}`
-
-                                : (product === "Occlusal Rim" && lowerArch && upperArch)?    
-                                    `$${(price += 150)}`
-                                
-                                :(product==="Try In" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                `$${(price += 50)}`
-
-                                : (product === "Try In" && lowerArch && upperArch)?    
-                                    `$${(price += 100)}`
-
-                                
-                                :(product==="Unilateral" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                    `$${(price += 250)}`
-    
-                                : (product === "Unilateral" && lowerArch && upperArch)?    
-                                        `$${(price += 500)}`
-
-                                :(product==="Bilateral" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                    `$${(price += 325)}`
-    
-                                : (product === "Bilateral" && lowerArch && upperArch)?    
-                                        `$${(price += 650)}`
-                                    
-                                :""
-                                
-                                    
-                                }
-                                
-                                </strong></small>
+                    <small className="form-text text-muted"><strong>Product total: ${partialOrderPrice(product, crownTooth)}</strong></small>
                 </div>
             </div>
-            {(product === "Unilateral") || (product === "Bilateral")?                 
+            {(product === 'Unilateral' || product === 'Bilateral') &&
             <div className="row form-group text-center justify-content-center mt-5">
-                <div className= "col-8 col-lg-4">
-                    <label  htmlFor="gum-shade"><h5>Gum Shade</h5></label>
-                    <select className="form-select" id="gum-shade"  style={{borderRadius: "1rem", minHeight:"40px", backgroundColor:"white", border:"black 1px solid"}} aria-label="Gum-Shade" onChange={(e)=>{setGumShade(e.target.value)}}>
-                        <option value="Select One">Select One</option>
-                        <option value="Opaque Pink" onClick={()=>setGumShade("Opaque Pink")}>Opaque Pink (Standard)</option>
-                        <option value="100% Clear" onClick={()=>setGumShade("100% Clear")}>100% Clear</option>
-                        <option value="Translucent Pink" onClick={()=>setGumShade("Translucent Pink")}>Translucent Pink</option>
-                        <option value="Meharry" onClick={()=>setGumShade("Meharry")}>Meharry</option>
-                        <option value="Clear with Pink Facial Tissue Composite" onClick={()=>setGumShade("Clear with Pink Facial Tissue Composite")}>Clear with Pink Facial Tissue Composite</option>
-                        
+                <div className="col-8 col-lg-5">
+                    <label htmlFor="gum-shade"><h5>Gingival Composite Shade</h5></label>
+                    <p>100% Clear Flexible PMMA base. Gingival composite is included in the base price.</p>
+                    <select className="form-select" id="gum-shade" required value={gumShade} style={{borderRadius:'1rem', minHeight:'40px', backgroundColor:'white', border:'black 1px solid'}} onChange={e => setGumShade(e.target.value)}>
+                        <option value="">Select One</option>
+                        {PARTIAL_SHADES.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                     </select>
-                    <small id="productPrice" className="form-text text-muted"  style={{color:"white"}}><strong>
-                                {(gumShade === "Clear with Pink Facial Tissue Composite" && ((!lowerArch && upperArch) || (lowerArch && !upperArch)))?
-                                
-                                    `$${(price2 += 50)}`
-                                
-
-
-                               
-                                    
-                                : (product === "Clear with Pink Facial Tissue Composite" && lowerArch && upperArch)?    
-                                `$${(price2 += 100)}`
-                            
-                                :""
-                                
-                                    
-                                }
-                                
-                                </strong></small>
                 </div>
-            </div>
-            :""}
+            </div>}
+
             
             {/* <div className="row form-group text-center justify-content-center mt-5">
                 <div className= "col-8 col-lg-4">
@@ -2699,9 +2637,9 @@ AWS.config.update({
         
             <div className="row form-group justify-content-center mt-5">
                 <div className="text-center col-8 col-lg-4">
-                    <button className="btn btn-primary" type = "submit"  onClick={()=>{setFinalPrice((price+price2+price3))}}>Upload</button>
+                    <button className="btn btn-primary" type="submit">Upload</button>
                     <br></br>
-                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${(price+price2+price3)} *Not including Rush Production and/or Shipping</strong></small>
+                            <small id="emailHelp" className="form-text text-muted"  style={{color:"white"}}><strong>Case Total = ${partialOrderPrice(product, crownTooth, model3D)} *Not including Rush Production and/or Shipping</strong></small>
                 </div>
             </div>
             

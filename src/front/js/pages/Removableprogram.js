@@ -137,7 +137,7 @@ export const RemovableProgram = props => {
                             {
                                 icon: "◈",
                                 title: "KPD Premier Partial",
-                                desc: "Our precision-fit, flexible, metal-free removable partial. More stable than nylon, more comfortable than metal. Available in 4 gingival shades.",
+                                desc: "Flexible PMMA with Gingival Composite. A 100% clear flexible PMMA base with your choice of Pink or Meharry gingival composite.",
                                 link: "/partial"
                             },
                             {

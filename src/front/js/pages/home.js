@@ -14,7 +14,8 @@ import ThreeScene2 from "../component/Scene2";
 
 import Zirc from "../../img/Crown.png";
 import ZircV from "../../img/Veneer.png";
-import PartialImg from "../../img/TCS Unbreakable Partial Denture.png";
+import PartialImg from "../../img/flexible-pmma-partial-front.png";
+import { PARTIAL_NAME, PARTIAL_MATERIAL } from '../component/partialCatalog';
 import Denture from "../../img/Denture.png";
 import Intro from "../../img/footer-flip.jpg";
 
@@ -46,7 +47,7 @@ export const Home = (props) => {
     const products = [
         { img: Zirc, title: "Crown & Bridge", desc: "Full Contour Zirconia, Microlayered PFZ, PMMA Temporary", link: "/crownandbridge" },
         { img: ZircV, title: "Veneer", desc: "Microlayered PFZ with Structure, Stain & Glaze", link: "/veneer" },
-        { img: PartialImg, title: "KPD Premier Partial", desc: "Precision-fit, flexible, metal-free removable partial", link: "/partial" },
+        { img: PartialImg, title: PARTIAL_NAME, desc: PARTIAL_MATERIAL + ' — Pink or Meharry', link: "/partial" },
         { img: Denture, title: "KPD Premier Denture", desc: "CNC-milled PMMA with hand-characterized Vita Akzent gingiva", link: "/denture" },
     ];
 
@@ -367,7 +368,7 @@ export const Home = (props) => {
                                         {
                                             state: faq2, setState: setFaq2,
                                             q: "What products does KPD offer?",
-                                            a: "Crown & Bridge (Full Contour Zirconia, Microlayered PFZ, PMMA Temporary), Veneers (Microlayered PFZ), KPD Premier Partial, and KPD Premier Denture. Visit our Products pages for full details on each."
+                                            a: "Crown & Bridge (Full Contour Zirconia, Microlayered PFZ, PMMA Temporary), Veneers (Microlayered PFZ), KPD Premier Partial (Flexible PMMA with Gingival Composite), and KPD Premier Denture. Visit our Products pages for full details on each."
                                         },
                                         {
                                             state: faq3, setState: setFaq3,

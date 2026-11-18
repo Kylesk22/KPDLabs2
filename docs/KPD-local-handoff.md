@@ -1,5 +1,16 @@
 # Bring the tested changes into the usual local KPD repository
 
+## Latest handoff: partial product update - November 18, 2026
+
+Flexible PMMA with Gingival Composite wording and the approved front-facing
+photo replace the TCS presentation. Product choices remain Try In, Unilateral,
+and Bilateral. Final partials now offer Pink or Meharry composite included in the
+base price ($250 unilateral / $325 bilateral per arch). Try-ins remain $50 per
+arch. No database migration or historical case rewrite is required.
+
+The same local pull command below transfers this update; Kyle then pushes from
+the usual checkout. See `KPD-partial-update.md` and `KPD-partials-preview.html`.
+
 ## Current handoff: manufacturing labels - November 18, 2026
 
 The feature is ready for Kyle's GitHub push. The usual local main was verified

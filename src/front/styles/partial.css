@@ -1,0 +1,10 @@
+.kpd-partial-material{color:#f5e3c2;font:16px/1.6 Arial,sans-serif;margin:0 0 24px}
+.kpd-partial-gallery{margin:0 0 28px;padding:20px;background:#fff;border:1px solid #e5e0d8;border-radius:12px}
+.kpd-partial-main-photo{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:contain}
+.kpd-partial-gallery figcaption{font:12px/1.5 Arial,sans-serif;color:#6b7280;margin:14px 0 0}
+@media(max-width:600px){
+ .kpd-partial-page .kpd-partial-overview,.kpd-partial-page .kpd-partial-shades{padding:48px 20px!important}
+ .kpd-partial-overview>div{width:100%}
+ .kpd-partial-copy,.kpd-partial-visual{min-width:0!important;flex-basis:100%!important}
+ .kpd-partial-gallery{padding:12px}
+}

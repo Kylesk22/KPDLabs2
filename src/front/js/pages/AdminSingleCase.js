@@ -9,6 +9,7 @@ import AboutBKG from "../../img/testi-bg.jpg"
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import "../../styles/adminSingle.css";
 import { PrintPDFButton } from "../component/PrintScript";
+import CADDownload from "../component/CADDownload";
 
 
 
@@ -1806,7 +1807,7 @@ export const AdminSingleCase = props => {
                 </div> */}
                 <div className="row form-group justify-content-center mt-5 no-print">
                     <div className="text-center col-8 col-lg-4">
-                        <button className="btn btn-primary" onClick={(e)=>{e.preventDefault(); fetchFiles()}}>Download Scans/Photos</button>
+                        <CADDownload api={url} patientName={patientName} caseNumber={caseNum} />
                         
                     </div>
                 </div>

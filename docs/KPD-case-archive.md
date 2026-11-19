@@ -1,0 +1,11 @@
+# Searchable Closed archive
+
+The Closed button now opens a server-searched archive, returning at most 25 summary rows per request. The main case search also offers Search all cases, including Closed. Staff can search patient, dentist, customer account, or scanner ID; a numeric query or #number selects the exact case number. Highest case number is the default order. The archive supports global sorting, inclusive date bounds, page navigation, empty/error/loading states, and request cancellation when filters change.
+
+Dates refer to the saved case date (`update_date`, the existing case-list date), not closure time. Both MM/DD/YYYY and ISO-formatted dates are supported. Leave dates empty for all years, including undated records. Unrecognized/absent dates do not match a date-bounded search. No historical dates are rewritten.
+
+The admin-only GET `/admin/operations/archive` returns summary columns only and uses SQL filtering, count, ordering, offset, and limit. It avoids `Case.serialize()` and scan relationship lookups. ADW-linked cases retain their separate workflow. Requests are marked no-store. Closed records remain in the existing database for reports and direct case access. Production filters, bulk status changes, shipping, printing, and doctor submissions retain their existing paths. No new patient-matching or warranty classification is implemented.
+
+Deployment requires the normal code deployment; no database migration or data movement. The old closed-list endpoint is retained for compatibility but the admin page no longer calls it or appends its results. Search performance on much larger databases may benefit from measured, targeted indexes; this change does not create indexes on the live database.
+
+Validation: `python -m unittest discover -s tests -p test_kpd_archive.py` plus the existing operations suite, and the production frontend build. Offline API tests use synthetic SQLite records and cover access controls, dates, search, pagination, sorting, no-store responses, summary-only queries, and preservation of full records. A browser smoke test after deployment should cover Closed, searching, changing pages, opening/back from a case, all-case search, and switching back to production. Live deployment and lab browser verification are performed separately.

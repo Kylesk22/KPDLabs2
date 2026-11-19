@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { OperationsLayout } from "../component/KPDOperations";
 import ManufacturingLabels from "../component/ManufacturingLabels";
+import CaseArchive from "../component/CaseArchive";
 import "../../styles/adminPage.css";
 
 
@@ -27,6 +28,12 @@ export const AdminPage = props => {
     const [bulkStatus, setBulkStatus] = useState("")
     const [caseChecked, setCaseChecked] = useState(false)
     const [statusToFilter, setStatusToFilter] = useState(() => sessionStorage.getItem('filterType') || '')
+    const [archiveMode, setArchiveMode] = useState(() => sessionStorage.getItem('filterType') === 'Closed' ? 'closed' : null);
+    function chooseStatus(status) {
+        setArchiveMode(status === 'Closed' ? 'closed' : null);
+        setBulkCases([]); setShowBulkBox(false);
+        sessionStorage.setItem('filterType', status); setStatusToFilter(status);
+    }
     useEffect(() => { setPageMin(0); setPageMax(20); setPageNumber(1); }, [priorityFilter,search,statusToFilter]);
 
     
@@ -368,60 +375,6 @@ export const AdminPage = props => {
 
 
 
-    const getClosedCases = () => {
-        const options = {
-            method:"GET",
-            credentials: 'include',
-            headers:{
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": getCookie("csrf_access_token"),
-            },
-            
-        }
-        fetch(`${url}/admin/${id}/closed`, options)
-        .then((res)=> {
-            if (res.ok) {
-                return res.json()
-                .then((data)=>{
-                    if (data.message === "You are not an admin, please log in at kpdlabs.com"){
-                        if (id){
-                        alert(data.message);
-                        window.location.href = `/account/${id}`}
-                        else{
-                            alert(data.message);
-                            window.location.href = '/login'
-                        }
-                    }
-                    console.log(data)
-                    setCases([...cases, ...data.cases])
-                    setOriginalCases([...originalCases, ...data.cases])
-
-                    
-
-                    const newUsers = {};
-                    for (let i = 0; i < data.users.length; i++) {
-                        const userId = data.users[i].id;
-                        const fullName = `${data.users[i].fname} ${data.users[i].lname}`;
-                        newUsers[userId] = fullName;
-                    }
-                    setUsers(newUsers);
-                    
-                    
-                    
-
-                    
-                })}
-            return(res.json())
-            .then((body)=>{alert(body.message)})
-            
-            })
-       
-        .catch((err)=> {
-            console.log(err);
-    })
-
-    }
-
     const calculateBusinessDays = (submissionDate, numberOfDays) => {
         // console.log(submissionDate.split(" "))
         
@@ -511,7 +464,7 @@ export const AdminPage = props => {
           const isItemSelected = (itemId) => bulkCases.includes(itemId);
 
         useEffect(()=>{
-            if (sessionStorage.getItem('filterType') && originalCases){
+            if (sessionStorage.getItem('filterType') && sessionStorage.getItem('filterType') !== 'Closed' && originalCases){
             const storedFilterType = sessionStorage.getItem('filterType');
             if (storedFilterType === 'Created') {
                 sessionStorage.removeItem('filterType');
@@ -548,7 +501,9 @@ export const AdminPage = props => {
                   <div className="kpd-section-heading kpd-toolbar"><div><h2>Find and filter cases</h2></div>
                     <details className="kpd-color-key"><summary>Color key</summary><p>Red: overdue · Gold: rush · Blue: express shipping · Purple: on hold</p></details>
                   </div>
+                  {!archiveMode && <>
                   <label className="kpd-search">Search cases<input type="search" placeholder="Case number, patient, or doctor" value={search} onChange={(e)=>{setSearch(e.target.value); filterCases(e.target.value)}} /></label>
+                  <button type="button" className="kpd-button" onClick={()=>{setArchiveMode('all');setBulkCases([]);setShowBulkBox(false);}}>Search all cases, including Closed</button>
                 <div className="kpd-priorities">
                     <strong>Priorities</strong>
                     <div className="kpd-priority-options">{priorityOptions.map(([key,label])=><button key={key} type="button" aria-pressed={priorityFilter===key} onClick={()=>setPriorityFilter(key)}>{label} ({priorityCounts[key]})</button>)}</div>
@@ -556,14 +511,16 @@ export const AdminPage = props => {
                     {sortedCases.length===0 && <p role="status" style={{margin:'8px 0 0',color:'#505050'}}>No cases match this view. Try All in this view or another status.</p>}
                 </div>
 
+                  </>}
                   <div className="kpd-status-group"><strong>Production stages</strong><div>
-                    <button type="button" className="kpd-button filter-btn" onClick={()=>{sessionStorage.removeItem('filterType');setStatusToFilter('');productionFilter();}}>All production</button>
-                    {['Submitted','Scanning','Design','Manufacturing','Pre-Finish','Finish','Ready to Ship'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                    <button type="button" className="kpd-button filter-btn" onClick={()=>{setArchiveMode(null);setBulkCases([]);setShowBulkBox(false);sessionStorage.removeItem('filterType');setStatusToFilter('');productionFilter();}}>All production</button>
+                    {['Submitted','Scanning','Design','Manufacturing','Pre-Finish','Finish','Ready to Ship'].map(status=><button type="button" key={status} aria-pressed={!archiveMode && statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{chooseStatus(status);}}>{status}</button>)}
                   </div></div>
                   <div className="kpd-status-group"><strong>Shipping & billing</strong><div>
-                    {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{if(status==='Closed')getClosedCases();sessionStorage.setItem('filterType',status);setStatusToFilter(status);}}>{status}</button>)}
+                    {['Shipped','Billed','Closed'].map(status=><button type="button" key={status} aria-pressed={status === 'Closed' ? archiveMode === 'closed' : !archiveMode && statusToFilter===status} className="kpd-button filter-btn" onClick={()=>{chooseStatus(status);}}>{status}</button>)}
                   </div></div>
                 </section>
+                {archiveMode ? <CaseArchive scope={archiveMode} initialSearch={search} onScopeChange={setArchiveMode} /> : <>
                 {statusToFilter === 'Manufacturing' && <ManufacturingLabels />}
                 <div className="kpd-panel kpd-cases-panel">
                     <div className="row">
@@ -711,6 +668,7 @@ export const AdminPage = props => {
                             }
                     </div>
                 </div>
+                </>}
             </div>
 
         </div>

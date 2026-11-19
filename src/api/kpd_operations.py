@@ -7,6 +7,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from api.models import db, User, Case
 from api.kpd_reporting import build_report, report_csv, held, case_logs, FLORIDA
 from api.kpd_manufacturing import manufacturing_queue, prepare_labels, confirm_labels
+from api.kpd_archive import search_archive
 from api.kpd_shipments import (KPDShipment, KPDShipmentCase, ShippingError, adw_case_ids,
                                doctor_for, address_for, serialize_shipment, create_quote,
                                buy_label, reconcile, mark_shipped, create_group_quote, buy_group, mark_group_shipped)
@@ -44,6 +45,17 @@ def body():
 
 
 def register_operations(api):
+    @api.route('/admin/operations/archive', methods=['GET'])
+    @admin_only
+    def archive(staff):
+        try:
+            result = search_archive(request.args)
+        except ValueError as error:
+            return jsonify(message=str(error)), 400
+        response = jsonify(result)
+        response.headers['Cache-Control'] = 'no-store'
+        return response
+
     @api.route('/admin/operations/manufacturing-labels', methods=['GET'])
     @admin_only
     def manufacturing_label_queue(staff):
